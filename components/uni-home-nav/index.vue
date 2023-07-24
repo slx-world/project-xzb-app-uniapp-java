@@ -20,13 +20,7 @@
 <script setup>
 import { ref, reactive, onMounted } from 'vue';
 import { useStore } from 'vuex';
-// 获取父组件值、方法
-const props = defineProps({
-  newVal: {
-    type: Number,
-    default: '',
-  },
-});
+
 // ------定义变量------
 const baseSetting = reactive([
   {

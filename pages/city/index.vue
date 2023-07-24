@@ -15,8 +15,8 @@
         <!-- 定位模块 -->
         <view class="position top">
           <view class="position_city">
-            <view class="position_city_one" @tap="back_city(position, true)">
-              {{ currentCity ? currentCity.cityName : '定位失败' }}
+            <view class="position_city_one">
+              {{ currentCity ? currentCity.name : '定位失败' }}
             </view>
             <view class="WarpWeft" @click="getWarpWeft">
               <image class="image" src="../../static/new/positions.png" />
@@ -39,7 +39,7 @@
               :key="index"
               @tap="activeCity(item)"
             >
-              {{ item.cityName }}
+              {{ item.name }}
             </view>
           </view>
         </view>
@@ -49,20 +49,14 @@
       <!-- 城市列表 -->
       <view
         v-for="(item, index) in list"
-        :id="item.idx"
+        :id="item.id"
         :key="index"
         class="cityList"
       >
-        <view class="letter-header bold">{{ item.idx }}</view>
+        <!-- <view class="letter-header bold">{{ item.idx }}</view> -->
         <view class="contents">
-          <view
-            class="city-div"
-            v-for="(city, i) in item['cities']"
-            :key="i"
-            @tap="back_city(city)"
-            @click="selectCity(city)"
-          >
-            <text class="city">{{ city.cityName }}</text>
+          <view class="city-div" @click="selectCity(item)">
+            <text class="city">{{ item.name }}</text>
           </view>
         </view>
       </view>
@@ -74,7 +68,7 @@
     <view
       class="letters"
       id="list"
-      v-if="searchValue == ''"
+      v-show="false"
       @touchstart="touchStart"
       @touchmove.stop.prevent="touchMove"
       @touchend="touchEnd"
@@ -85,7 +79,7 @@
     </view>
 
     <!-- 选中之后字母 -->
-    <view class="mask" v-if="touchmove">
+    <view class="mask" v-show="false">
       <view class="mask-r bold">{{ scrollIntoId }}</view>
     </view>
   </view>
@@ -94,9 +88,12 @@
 <script setup>
 // 导航组件
 import UniNav from '@/components/uni-nav/index.vue';
+import { getOpenCity } from '../api/setting.js';
 import { Citys } from '@/pages/city/city.js';
 import { ref, reactive, onMounted, watch, getCurrentInstance } from 'vue';
+import { onLoad } from '@dcloudio/uni-app';
 // import { getAddress } from '../api/address';
+const address = ref('');
 const customBar = ref('87px'); //导航栏高度
 const winHeight = ref(0); //屏幕高度
 const itemHeight = ref(0); //每个item的高度
@@ -115,10 +112,10 @@ const currentCity = ref();
 const position = ref();
 const po_tips = ref('重新定位');
 const hotCity = ref([
-  { cityName: '北京', cityCode: '010' },
-  { cityName: '上海', cityCode: '021' },
-  { cityName: '广州', cityCode: '020' },
-  { cityName: '深圳', cityCode: '0755' },
+  { name: '北京市', cityCode: '010' },
+  { name: '上海市', cityCode: '021' },
+  { name: '广州市', cityCode: '020' },
+  { name: '深圳市', cityCode: '0755' },
 ]);
 const instance = getCurrentInstance(); //获取当前实例
 // 获取元素信息，并用于计算
@@ -134,10 +131,19 @@ const setList = () => {
       itemHeight.value = winHeight.value / list.value.length;
     });
 };
+onLoad((option) => {
+  address.value = option.address;
+});
 // 返回上一页
 const goBack = () => {
   uni.redirectTo({
-    url: '/pages/serviceRange/index',
+    url:
+      '/pages/serviceRange/index?cityCode=' +
+      city.cityCode +
+      '&name=' +
+      city.name +
+      '&address=' +
+      address.value,
   });
 };
 // touchStart是手指触摸到屏幕触发的事件
@@ -176,6 +182,10 @@ onMounted(() => {
   letter.value = Citys.index;
   list.value = Citys.list;
   setList();
+  getOpenCity().then((res) => {
+    list.value = res.data;
+    console.log(res, 'getOpenCity');
+  });
 });
 // 定位
 const getWarpWeft = () => {
@@ -186,10 +196,10 @@ const getWarpWeft = () => {
     geocode: true,
     success: function (res) {
       currentCity.value = {
-        cityName: res.address.city,
+        name: res.address.city,
       };
       activeId.value = res.address.cityCode;
-      console.log(res, activeId.value, 'resres');
+      // console.log(res, activeId.value, 'resres');
       // position.value = res;
       // getCity(position.value);
       // 延时500毫秒，保证效果，展现出定位中的过程
@@ -221,7 +231,17 @@ const getCity = (position) => {
   // });
 };
 const selectCity = (city) => {
+  console.log(city, 'city');
   currentCity.value = city;
+  uni.redirectTo({
+    url:
+      '/pages/serviceRange/index?cityCode=' +
+      city.cityCode +
+      '&name=' +
+      city.name +
+      '&address=' +
+      address.value,
+  });
   uni.setStorageSync('city', city);
 };
 watch(list, () => {

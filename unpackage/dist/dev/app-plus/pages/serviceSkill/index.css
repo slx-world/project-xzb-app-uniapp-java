@@ -614,6 +614,29 @@
   flex-shrink: 0;
   background: var(--neutral-color-white);
 }
+.serviceSkill .servicePage .left .tagBox[data-v-f34db350] {
+  height: 3.5rem;
+  font-family: PingFangSC-Regular;
+  font-weight: 400;
+  font-size: 1rem;
+  color: var(--color-gray-59);
+  text-align: center;
+  line-height: 3.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.serviceSkill .servicePage .left .tagBox .tag[data-v-f34db350] {
+  height: 1.375rem;
+  line-height: 1.28125rem;
+}
+.serviceSkill .servicePage .left .tagBox .tag .selectNum[data-v-f34db350] {
+  color: var(--color-gray-59);
+  font-size: 0.75rem;
+  font-weight: lighter;
+  position: relative;
+  bottom: 0.625rem;
+}
 .serviceSkill .servicePage .left .active[data-v-f34db350] {
   font-family: PingFangSC-Medium;
   font-weight: bold !important;
@@ -629,21 +652,10 @@
   left: 0;
   background: #f74145;
 }
-.serviceSkill .servicePage .left .tagBox[data-v-f34db350] {
-  height: 3.5rem;
-  font-family: PingFangSC-Regular;
-  font-weight: 400;
-  font-size: 1rem;
-  color: var(--color-black-19);
-  text-align: center;
-  line-height: 3.5rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.serviceSkill .servicePage .left .tagBox .tag[data-v-f34db350] {
-  height: 1.375rem;
-  line-height: 1.28125rem;
+.serviceSkill .servicePage .left .active .tag .selectNum[data-v-f34db350] {
+  color: var(--color-red-bg);
+  font-size: 0.75rem;
+  font-weight: lighter;
 }
 .serviceSkill .servicePage .serviceBox[data-v-f34db350] {
   padding-left: 0.9375rem;
@@ -674,6 +686,7 @@
   font-size: 0.875rem;
   color: #151515;
   border-radius: 0.5rem;
+  border: 0.0625rem solid transparent;
 }
 .serviceSkill .servicePage .serviceBox .clean .card[data-v-f34db350]:nth-child(2n) {
   margin-right: 0;

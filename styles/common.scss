@@ -10,6 +10,20 @@ uni-app {
 	max-width: 1500rpx;
 	margin: 0 auto;
 }
+//绿色成功按钮
+.btn-successGreen{
+  background-color: var(--neutral-color-white);
+  color:var(--color-green-27BA9B) ;
+  border:2rpx solid var(--color-green-27BA9B);
+  font-size: 32rpx;
+}
+
+//浅红按钮（disabled）
+.btn-lowRed{
+  background-color: var(--color-red-ffdbdc);
+  color:var(--neutral-color-white) ;
+  font-size: 32rpx;
+}
 
 //红色按钮
 .btn-red{

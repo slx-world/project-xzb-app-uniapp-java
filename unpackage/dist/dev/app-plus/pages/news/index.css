@@ -608,6 +608,7 @@
 	--color-black-19:#191919;
 	--color-red-bg:#F74347;
   --color-red-ffeaea:#FFEAEA;
+  --color-red-ffdbdc:#FFDBDC;
   --color-gray-f8:#F8F8F8;
   --color-gray-e9:#E9E9E9;
   --color-gray-e8:#E8E8E8;
@@ -616,6 +617,8 @@
   --color-gray-93:#939393;
   --color-gray-fa:#fafafa;
   --neutral-color-white:#FFFFFF;
+  --color-green-27BA9B:#27BA9B;
+
 
 	--essential-color-red:#EF4F3F;
 	--assist-color-green:#27BA9B;
@@ -638,6 +641,17 @@ uni-app[data-v-a750b56c] {
   min-width: 23.4375rem;
   max-width: 46.875rem;
   margin: 0 auto;
+}
+.btn-successGreen[data-v-a750b56c] {
+  background-color: var(--neutral-color-white);
+  color: var(--color-green-27BA9B);
+  border: 0.0625rem solid var(--color-green-27BA9B);
+  font-size: 1rem;
+}
+.btn-lowRed[data-v-a750b56c] {
+  background-color: var(--color-red-ffdbdc);
+  color: var(--neutral-color-white);
+  font-size: 1rem;
 }
 .btn-red[data-v-a750b56c] {
   background-color: var(--color-red-bg);

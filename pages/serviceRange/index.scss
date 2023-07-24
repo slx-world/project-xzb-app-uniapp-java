@@ -11,6 +11,7 @@
     padding:60rpx 46rpx 46rpx 46rpx ;
     .city,.range{
       // display: flex;
+      // white-space: pre-wrap;
       .label{
         display: inline-block;
         font-size: 32rpx;
@@ -19,11 +20,13 @@
       .content{
         display: inline-block;
         float: right;
+        white-space: nowrap;
         .cityName,.rangeName{
           font-size: 32rpx;
           color: var(--color-black-19);
           display: inline-block;
           margin-right: 16rpx;
+          // white-space: nowrap;
         }
         .icon{
           // background-image: url('../../static/new/icon_more@2x.png');

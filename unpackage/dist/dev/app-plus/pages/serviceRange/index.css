@@ -622,6 +622,7 @@
 .serviceRange .address .city .content[data-v-6cac4378], .serviceRange .address .range .content[data-v-6cac4378] {
   display: inline-block;
   float: right;
+  white-space: nowrap;
 }
 .serviceRange .address .city .content .cityName[data-v-6cac4378], .serviceRange .address .city .content .rangeName[data-v-6cac4378], .serviceRange .address .range .content .cityName[data-v-6cac4378], .serviceRange .address .range .content .rangeName[data-v-6cac4378] {
   font-size: 1rem;

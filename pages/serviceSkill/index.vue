@@ -11,12 +11,15 @@
     <view class="servicePage">
       <view class="left">
         <view
-          v-for="(item, index) in serviceTypeData"
+          v-for="(item, index) in serviceSkill.data"
           :key="index"
           :class="activeId === item.serveTypeId ? 'active tagBox' : 'tagBox'"
-          @click="tabChange(item.serveTypeId)"
+          @click="tabChange(item.serveTypeId, index)"
         >
-          <view class="tag">{{ item.serveTypeName }}</view>
+          <view class="tag"
+            >{{ item.serveTypeName }}
+            <text class="selectNum">{{ item.count }}</text>
+          </view>
         </view>
       </view>
       <!-- 右边内容区域 -->
@@ -25,10 +28,10 @@
           <view class="clean">
             <view
               class="card"
-              :class="activeItemId.includes(item.id) ? 'active' : ''"
-              v-for="(item, index) in serviceItemData"
+              :class="item.isSelected ? 'active' : ''"
+              v-for="(item, index) in rightItem.data"
               :key="index"
-              @click="handleDetail(item.id, item.serveItemName)"
+              @click="handleSelect(item)"
             >
               {{ item.serveItemName }}
             </view>
@@ -45,42 +48,90 @@
 
 <script setup>
 import { ref, reactive, onMounted } from 'vue';
+import { updateServiceSkill, getServiceSkillAll } from '../api/setting.js';
 // 导航组件
 import UniNav from '@/components/uni-nav/index.vue';
-const activeId = ref(1); // 当前选中的id
-const activeItemId = reactive([1, 2]);
+const activeId = ref(null); // 当前选中的id
+const activeIndex = ref(0); //左侧当前选中索引
+
+const serviceSkill = reactive({
+  data: [],
+});
+const rightItem = reactive({
+  data: [],
+});
+
 const status = ref('read');
-const serviceItemData = reactive([
-  {
-    serveItemName: '日常保洁',
-    id: 1,
-  },
-  {
-    serveItemName: '家居清洗',
-    id: 2,
-  },
-  {
-    serveItemName: '深度保洁',
-    id: 3,
-  },
-]);
-const serviceTypeData = reactive([
-  {
-    serveTypeName: '保洁清洗',
-    serveTypeId: 1,
-  },
-  {
-    serveTypeName: '日常维修',
-    serveTypeId: 2,
-  },
-  {
-    serveTypeName: '五字分类名',
-    serveTypeId: 3,
-  },
-]);
+
+onMounted(() => {
+  getServiceSkillAllFunc();
+});
+//获取服务技能及其下的服务技能所有数据
+const getServiceSkillAllFunc = () => {
+  getServiceSkillAll()
+    .then((res) => {
+      if (res.code == 200) {
+        serviceSkill.data = res.data;
+        activeId.value = res.data[0].serveTypeId;
+        rightItem.data = serviceSkill.data[0].serveSkillItemResDTOList;
+        console.log(serviceSkill.data, 'serviceSkill.data');
+      }
+    })
+    .catch((err) => {
+      uni.showToast({
+        title: err.msg || '接口调用失败',
+        duration: 1500,
+        icon: 'none',
+      });
+    });
+};
+
+//点击服务技能项
+const handleSelect = (active) => {
+  if ((status.value = 'read')) return;
+  (serviceSkill.data[activeIndex.value].serveSkillItemResDTOList =
+    serviceSkill.data[activeIndex.value].serveSkillItemResDTOList.map(
+      (item) => {
+        if (active.serveItemId === item.serveItemId) {
+          return Object.assign({}, item, { isSelected: !item.isSelected });
+        } else {
+          return item;
+        }
+      }
+    )),
+    (rightItem.data = [
+      ...serviceSkill.data[activeIndex.value].serveSkillItemResDTOList,
+    ]);
+  console.log(serviceSkill.data, '点击后 ');
+};
 //点击保存
 const handleSubmit = () => {
-  status.value = 'read';
+  const selectedList = [];
+  serviceSkill.data.forEach((item, index) => {
+    item.serveSkillItemResDTOList.forEach((item1, index1) => {
+      if (item1.isSelected) {
+        selectedList.push({
+          serveItemId: item1.serveItemId,
+          serveTypeId: item.serveTypeId,
+        });
+      }
+    });
+  });
+  console.log(selectedList, 'selectedList');
+  updateServiceSkill(selectedList)
+    .then((res) => {
+      if (res.code === 200) {
+        status.value = 'read';
+        // getServiceClassifyFunc();
+      }
+    })
+    .catch((err) => {
+      uni.showToast({
+        title: err.msg || '接口调用失败',
+        duration: 1500,
+        icon: 'none',
+      });
+    });
 };
 //点击取消
 const handleCancel = () => {
@@ -92,8 +143,12 @@ const handleEdit = () => {
   console.log('编辑状态');
 };
 // 切换侧边栏
-const tabChange = (id) => {
+const tabChange = (id, index) => {
   activeId.value = id;
+  activeIndex.value = index;
+  rightItem.data =
+    serviceSkill.data[activeIndex.value].serveSkillItemResDTOList;
+  // getServiceSkillByClassifyFunc();
 };
 
 // 返回上一页

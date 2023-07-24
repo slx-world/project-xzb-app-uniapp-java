@@ -6,19 +6,19 @@
       <!-- 登录表单 -->
       <view class="loginMain">
         <uni-forms ref="customForm" :rules="customRules" :modelValue="fromInfo">
-          <uni-forms-item name="account">
+          <uni-forms-item name="phone">
             <uni-easyinput
               :clearable="false"
               class="item"
-              v-model="fromInfo.account"
+              v-model="fromInfo.phone"
               placeholder="请输入手机号"
             />
           </uni-forms-item>
-          <uni-forms-item name="password" class="pwdBox">
+          <uni-forms-item name="veriryCode" class="pwdBox">
             <uni-easyinput
               :clearable="false"
               class="item"
-              v-model="fromInfo.password"
+              v-model="fromInfo.veriryCode"
               placeholder="请输入验证码"
             />
             <text class="clearIcon" @click="handlePwd">获取验证码</text>
@@ -29,10 +29,10 @@
           <button
             class="btn-default"
             :disabled="
-              fromInfo.account.length === 0 || fromInfo.password.length === 0
+              fromInfo.phone.length === 0 || fromInfo.veriryCode.length === 0
             "
             :class="
-              fromInfo.account.length === 0 || fromInfo.password.length === 0
+              fromInfo.phone.length === 0 || fromInfo.veriryCode.length === 0
                 ? 'disabled'
                 : ''
             "
@@ -63,7 +63,8 @@ import { ref, reactive, onMounted } from 'vue';
 import { useStore } from 'vuex';
 import storage from '@/utils/storage.js';
 // 接口
-import { userLogins } from '../api/user.js';
+import { phoneLogins, getsmsCode } from '../api/user.js';
+import { getUserSetting } from '../api/setting.js';
 // 导入接口
 import { getHomeInfo } from '@/pages/api/index.js';
 // ------定义变量------
@@ -72,8 +73,9 @@ let showPassword = ref(false); //控制密码右侧图标显示隐藏
 const customForm = ref(); //表单校验
 // 表单数据
 let fromInfo = reactive({
-  account: 'qykdy001', //账号
-  password: '123456', // 密码
+  phone: '', //账号
+  veriryCode: '', // 密码
+  userType: 2,
 });
 // let fromInfo = reactive({
 // 	account: '', //账号
@@ -81,25 +83,25 @@ let fromInfo = reactive({
 // });
 // 表单校验
 const customRules = reactive({
-  account: {
+  phone: {
     rules: [
       {
         required: true,
         errorMessage: '请输入手机号',
       },
-      // {
-      // 	validateFunction: function(rule, value, data, callback) {
-      // 		const reg = /^1[3-9]\d{9}$/
+      {
+        validateFunction: function (rule, value, data, callback) {
+          const reg = /^1[3-9]\d{9}$/;
 
-      // 		if (!reg.test(value)) {
-      // 			callback('手机号输入错误！请重新输入')
-      // 		}
-      // 		return true
-      // 	}
-      // }
+          if (!reg.test(value)) {
+            callback('手机号输入错误！请重新输入');
+          }
+          return true;
+        },
+      },
     ],
   },
-  password: {
+  veriryCode: {
     rules: [
       {
         required: true,
@@ -119,7 +121,7 @@ onMounted(() => {
 // ------定义方法------
 // 登录
 const handleSubmit = async () => {
-  // // 表单校验
+  // 表单校验
   const valid = await customForm.value.validate();
   if (valid) {
     // 登录接口
@@ -130,27 +132,28 @@ const handleSubmit = async () => {
         mask: true,
       });
     }, 500);
-    // 判断配置的url是否正确，超过5秒中提示报错，清除定时器
-    let timVal = 1;
-    let t = setInterval(() => {
-      timVal++;
-      if (timVal > 5) {
-        uni.showToast({
-          title: '网络异常，请重新检查url配置',
-          duration: 2000,
-          icon: 'none',
-        });
-        clearInterval(t);
-        setTimeout(function () {
-          uni.hideLoading();
-        }, 500);
-      }
-    }, 1000);
+    // // 判断配置的url是否正确，超过5秒中提示报错，清除定时器
+    // let timVal = 1;
+    // let t = setInterval(() => {
+    //   timVal++;
+    //   if (timVal > 5) {
+    //     uni.showToast({
+    //       title: '网络异常，请重新检查url配置',
+    //       duration: 2000,
+    //       icon: 'none',
+    //     });
+    //     clearInterval(t);
+    //     setTimeout(function () {
+    //       uni.hideLoading();
+    //     }, 500);
+    //   }
+    // }, 1000);
 
-    await userLogins(fromInfo)
+    await phoneLogins(fromInfo)
       .then(async (res) => {
+        console.log(res, '登录结果获取');
         // 清除定时器
-        clearInterval(t);
+        // clearInterval(t);
         if (res.code === 200) {
           // 操作成功后清除loading
           setTimeout(function () {
@@ -160,13 +163,17 @@ const handleSubmit = async () => {
           // 存储token
           uni.setStorageSync('token', res.data.token);
           store.commit('user/setToken', res.data.token);
-          // // 通过vuex获取用户信息
-          store.dispatch('user/GetUsersInfo');
-          await getHomeInfo().then((res) => {
-            if (res.code === 200) {
+          await getUserSetting().then((res) => {
+            console.log(res, 'getUserSetting');
+            if (Boolean(res.data.settingsStatus)) {
               // 跳转到首页
               uni.redirectTo({
                 url: '/pages/index/index',
+              });
+            } else {
+              // 跳转到业务配置
+              uni.redirectTo({
+                url: '/pages/setting/index',
               });
             }
           });
@@ -194,8 +201,29 @@ const goLogin = () => {
   });
 };
 // 设置密码
-const handlePwd = () => {
-  fromInfo.password = '';
+const handlePwd = async () => {
+  const reg = /^1[3-9]\d{9}$/;
+  if (!reg.test(fromInfo.phone)) {
+    return uni.showToast({
+      title: '手机号输入错误！请重新输入',
+      duration: 2000,
+      icon: 'none',
+    });
+  }
+  getsmsCode({
+    bussinessType: 3,
+    phone: fromInfo.phone,
+  })
+    .then((res) => {
+      fromInfo.veriryCode = '123456';
+    })
+    .catch((err) => {
+      uni.showToast({
+        title: err.msg || '获取验证码失败',
+        duration: 1500,
+        icon: 'none',
+      });
+    });
 };
 // 打开设置Url窗口
 const baseURL = ref(uni.getStorageSync('baseUrl'));

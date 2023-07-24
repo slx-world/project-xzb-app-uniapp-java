@@ -50,6 +50,18 @@
 				"navigationBarTitleText": "选择服务城市"
 			}
 		},
+    {
+			"path": "pages/setting/index",
+			"style": {
+				"navigationStyle": "custom",
+				"navigationBarTitleText": "基础配置"
+			}
+		},
+
+
+
+
+
 
 
 		{

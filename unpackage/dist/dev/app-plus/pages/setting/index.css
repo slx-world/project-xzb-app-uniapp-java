@@ -598,189 +598,81 @@
 }
 /* 水平间距 */
 /* 水平间距 */
-[data-v-30dede9e] .uni-nav-bar-right-text {
-  font-size: 1rem;
+.setting {
+  background-color: var(--neutral-color-white);
+  height: 100vh;
 }
-/* 水平间距 */
-/* 水平间距 */
-[data-v-3ce92776]:root {
-	--color-gray-9:#999999;
-	--color-black-19:#191919;
-	--color-red-bg:#F74347;
-  --color-red-ffeaea:#FFEAEA;
-  --color-red-ffdbdc:#FFDBDC;
-  --color-gray-f8:#F8F8F8;
-  --color-gray-e9:#E9E9E9;
-  --color-gray-e8:#E8E8E8;
-  --color-gray-59:#595959;
-  --color-gray-f2:#F2F2F2;
-  --color-gray-93:#939393;
-  --color-gray-fa:#fafafa;
-  --neutral-color-white:#FFFFFF;
-  --color-green-27BA9B:#27BA9B;
-
-
-	--essential-color-red:#EF4F3F;
-	--assist-color-green:#27BA9B;
-	--assist-color-orange:#E19A30; 
-	--assist-color-orange:#FF4C4C; 
-	--assist-color-logbtn:#FADCD9; 
-	--neutral-color-main:#2A2929;
-	--neutral-color-border:#D9D9D9;
-	--neutral-color-font:#818181;
-	--neutral-color-segmentation:#EEEEEE;
-
-	--neutral-color-placeholder:#C2C1C1;
-	--neutral-color-background:#F4F4F4;
-	--font-size-16:1rem;
-	--font-size-14:0.875rem;
-	--font-size-13:0.8125rem;
-	--font-size-12:0.75rem;
+.setting .uni-navbar__header {
+  height: 0 !important;
 }
-body[data-v-3ce92776],
-uni-page-body[data-v-3ce92776],
-uni-page-head[data-v-3ce92776],
-.uni-page-head[data-v-3ce92776] {
-  background-color: var(--neutral-color-background) !important;
-}
-[data-v-3ce92776] .expressage {
-  position: relative;
-}
-[data-v-3ce92776] .expressage .uni-data-checklist .checklist-group .checklist-box {
-  margin-right: 0;
-}
-[data-v-3ce92776] .expressage .uni-data-checklist .checklist-group .checklist-box .checkbox__inner {
-  background: url(../../static/checkbox.png) no-repeat !important;
-  background-size: contain !important;
-  border: 0 none !important;
-}
-[data-v-3ce92776] .expressage .uni-data-checklist .checklist-group .checklist-box.is--default.is-checked .checkbox__inner {
-  background: url(../../static/checkboxActive.png) no-repeat !important;
-  background-size: contain !important;
-}
-[data-v-3ce92776] .expressage .uni-data-checklist .checklist-group .checklist-box.is--default.is-checked .checkbox__inner .checkbox__inner-icon {
-  opacity: 0;
-}
-[data-v-3ce92776] .expressage .checkbox {
-  position: absolute;
-  left: 1.8125rem;
-  top: 50%;
-  transform: translate(-50%, -50%);
-}
-[data-v-3ce92776] .expressage .cancelList {
-  color: var(--neutral-color-font);
-}
-[data-v-3ce92776] .expressage .cancelList .concelBtn {
-  font-weight: 400;
-}
-.filtrateBox[data-v-3ce92776] {
-  display: flex;
-  padding: 0.625rem 1.0625rem;
-  border-top: 1px solid var(--neutral-color-background);
-  background: var(--neutral-color-white);
-}
-.filtrateBox[data-v-3ce92776] .item {
-  flex: 1;
-  background: var(--neutral-color-background);
-  height: 1.875rem;
-  line-height: 1.875rem;
-  border-radius: 0.25rem;
+.setting .guide {
   text-align: center;
-  color: var(--neutral-color-font);
-  position: relative;
-  padding-right: 1.4375rem;
+  margin-bottom: 2.0625rem;
 }
-.filtrateBox[data-v-3ce92776] .item:nth-child(2) {
-  margin: 0 1.375rem;
+.setting .guide uni-image {
+  width: 10rem;
+  height: 6.625rem;
+  margin-top: 1.875rem;
+  margin-bottom: 0.71875rem;
 }
-.filtrateBox[data-v-3ce92776] .item:last-child {
-  padding: 0 0.71875rem;
+.setting .guide .content {
+  font-size: 1rem;
+  color: var(--color-black-19);
 }
-.filtrateBox[data-v-3ce92776] .item.onHover {
-  color: var(--essential-color-red);
+.setting .step {
+  padding: 0 0.9375rem 2.125rem 1.28125rem;
 }
-.filtrateBox[data-v-3ce92776] .item uni-icon {
-  width: 0.625rem;
-  height: 0.375rem;
-  position: absolute;
-  right: 0.8125rem;
-}
-.filtrateBox[data-v-3ce92776] .item .up {
-  background: url(../../static/up.png) no-repeat;
-  background-size: contain;
-  top: 0.5625rem;
-}
-.filtrateBox[data-v-3ce92776] .item .up.hover {
-  background: url(../../static/uphover.png) no-repeat;
-  background-size: contain;
-}
-.filtrateBox[data-v-3ce92776] .item .down {
-  background: url(../../static/down.png) no-repeat;
-  background-size: contain;
-  bottom: 0.5625rem;
-}
-.filtrateBox[data-v-3ce92776] .item .down.hover {
-  background: url(../../static/downhover.png) no-repeat;
-  background-size: contain;
-}
-[data-v-3ce92776] .adminActive {
-  margin-left: 3.375rem !important;
-  margin-right: -0.5rem !important;
-}
-[data-v-3ce92776] .turnBox {
-  margin-top: 0.75rem;
-  padding: 1rem 0.875rem;
-}
-[data-v-3ce92776] .turnBox .boxBg {
-  margin: 0 0 1rem;
-  box-shadow: none;
-}
-.concelBox .tabConList .item[data-v-3ce92776] {
+.setting .step .stepItem {
   display: flex;
-  padding-left: 1.875rem;
-  padding-right: 1.5625rem;
-  color: var(--neutral-color-main);
-}
-.concelBox .tabConList .item > uni-view[data-v-3ce92776] {
-  display: block;
-  flex: 1;
-}
-.concelBox .tabConList .item .cause[data-v-3ce92776] {
-  text-align: right;
   align-items: center;
 }
-.concelBox .tabConList .item .cause .nextIcon[data-v-3ce92776] {
-  margin-left: 0.625rem;
-  vertical-align: middle;
+.setting .step .stepItem uni-image {
+  width: 1.75rem;
+  height: 1.75rem;
+  margin-right: 1.21875rem;
+  margin-bottom: 1.09375rem;
 }
-.conCenter[data-v-3ce92776] {
+.setting .step .stepItem .stepBox {
+  border-top: 0.0625rem solid var(--color-gray-e8);
+  display: flex;
+  padding: 0.9375rem 0;
+  width: 17.9375rem;
+  justify-content: space-between;
+}
+.setting .step .stepItem .stepBox .stepContent .setpTitle {
+  font-size: 1rem;
+  color: var(--color-black-19);
+  margin-bottom: 0.25rem;
+}
+.setting .step .stepItem .stepBox .stepContent .setpIntroduce {
+  font-size: 0.875rem;
+  color: var(--color-gray-9);
+}
+.setting .step .stepItem .stepBox .btn {
+  border-radius: 1rem;
+  width: 4.5625rem;
+  height: 1.75rem;
   text-align: center;
+  line-height: 1.75rem;
+  font-size: 0.75rem;
+  margin-top: 0.625rem;
 }
-[data-v-3ce92776] .pickupBoxTop {
-  margin-top: 13.125rem;
+.setting .step .stepItem .stepBox uni-switch {
+  position: relative;
+  left: 0.625rem;
 }
-[data-v-3ce92776] .pickupBoxTop .empty .image {
-  margin-top: 16.25rem;
+.setting .step .stepItem:last-child .stepBox {
+  border-bottom: 0.0625rem solid var(--color-gray-e8);
 }
-[data-v-3ce92776] .pickupTop {
-  margin-top: 9.875rem;
+.setting .footerBtn {
+  height: 2.75rem;
+  line-height: 2.75rem;
+  text-align: center;
+  width: 12.75rem;
+  border-radius: 1.5625rem;
+  margin: 0 auto;
+  margin-bottom: 2.125rem;
 }
-[data-v-3ce92776] .pickupTop .empty .image {
-  margin-top: 13rem;
-}
-[data-v-3ce92776] .pickupTab {
-  position: fixed;
-  top: 6.5rem;
-  z-index: 1;
-  width: 100% !important;
-}
-[data-v-3ce92776] .pickupTab .uni-scroll-view-content .scroll-row-item {
-  margin-right: 2.5rem;
-}
-[data-v-3ce92776] .pickupFilrate {
-  position: fixed;
-  z-index: 1;
-  top: 10rem;
-  width: 100%;
-  box-sizing: border-box;
+.setting .notSetting {
+  background-color: var(--color-red-ffdbdc);
 }

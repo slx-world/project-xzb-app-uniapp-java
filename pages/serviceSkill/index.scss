@@ -9,7 +9,29 @@
       font-size: 28rpx;
       flex-shrink: 0;
       background: var(--neutral-color-white);
-  
+      .tagBox {
+        height: 112rpx;
+        font-family: PingFangSC-Regular;
+        font-weight: 400;
+        font-size: 32rpx;
+        color: var(--color-gray-59);
+        text-align: center;
+        line-height: 112rpx;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        .tag {
+          height: 44rpx;
+          line-height: 41rpx;
+          .selectNum{
+            color: var(--color-gray-59);
+            font-size: 24rpx;
+            font-weight: lighter;
+            position: relative;
+            bottom: 20rpx;
+          }
+        }
+      }
       .active {
         font-family: PingFangSC-Medium;
         font-weight: bold !important;
@@ -26,30 +48,11 @@
             left: 0;
             background: #f74145;
           }
-        }
-      }
-  
-      .tagBox {
-        height: 112rpx;
-        font-family: PingFangSC-Regular;
-        font-weight: 400;
-        font-size: 32rpx;
-        color: var(--color-black-19);
-        text-align: center;
-        line-height: 112rpx;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-  
-        // &:first-child {
-        //   height: 78rpx;
-        //   line-height: 78rpx;
-        //   display: block;
-        // }
-  
-        .tag {
-          height: 44rpx;
-          line-height: 41rpx;
+          .selectNum{
+            color: var(--color-red-bg);
+            font-size: 24rpx;
+            font-weight: lighter;
+          }
         }
       }
     }
@@ -85,6 +88,7 @@
           font-size: 28rpx;
           color: #151515;
           border-radius: 16rpx;
+          border: 2rpx solid transparent;
   
           &:nth-child(2n) {
             margin-right: 0;

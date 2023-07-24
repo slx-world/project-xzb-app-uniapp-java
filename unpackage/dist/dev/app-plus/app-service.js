@@ -45,8 +45,58 @@ if (typeof uni !== "undefined" && uni && uni.requireGlobal) {
 if (uni.restoreGlobal) {
   uni.restoreGlobal(Vue, weex, plus, setTimeout, clearTimeout, setInterval, clearInterval);
 }
-(function(vue, shared) {
+(function(shared, vue) {
   "use strict";
+  const ON_SHOW = "onShow";
+  const ON_LOAD = "onLoad";
+  const ON_REACH_BOTTOM = "onReachBottom";
+  const ON_PULL_DOWN_REFRESH = "onPullDownRefresh";
+  function isDebugMode() {
+    return typeof __channelId__ === "string" && __channelId__;
+  }
+  function jsonStringifyReplacer(k, p) {
+    switch (shared.toRawType(p)) {
+      case "Function":
+        return "function() { [native code] }";
+      default:
+        return p;
+    }
+  }
+  function normalizeLog(type, filename, args) {
+    if (isDebugMode()) {
+      args.push(filename.replace("at ", "uni-app:///"));
+      return console[type].apply(console, args);
+    }
+    const msgs = args.map(function(v) {
+      const type2 = shared.toTypeString(v).toLowerCase();
+      if (["[object object]", "[object array]", "[object module]"].indexOf(type2) !== -1) {
+        try {
+          v = "---BEGIN:JSON---" + JSON.stringify(v, jsonStringifyReplacer) + "---END:JSON---";
+        } catch (e) {
+          v = type2;
+        }
+      } else {
+        if (v === null) {
+          v = "---NULL---";
+        } else if (v === void 0) {
+          v = "---UNDEFINED---";
+        } else {
+          const vType = shared.toRawType(v).toUpperCase();
+          if (vType === "NUMBER" || vType === "BOOLEAN") {
+            v = "---BEGIN:" + vType + "---" + v + "---END:" + vType + "---";
+          } else {
+            v = String(v);
+          }
+        }
+      }
+      return v;
+    });
+    return msgs.join("---COMMA---") + " " + filename;
+  }
+  function formatAppLog(type, filename, ...args) {
+    const res2 = normalizeLog(type, filename, args);
+    res2 && console[type](res2);
+  }
   var icons = {
     "id": "2852637",
     "name": "uniui\u56FE\u6807\u5E93",
@@ -1229,7 +1279,7 @@ if (uni.restoreGlobal) {
     const reg = /^[0-9]*$/g;
     return typeof val === "number" || reg.test(val) ? val + "px" : val;
   };
-  const _sfc_main$1i = {
+  const _sfc_main$1j = {
     name: "UniIcons",
     emits: ["click"],
     props: {
@@ -1280,56 +1330,7 @@ if (uni.restoreGlobal) {
       onClick: _cache[0] || (_cache[0] = (...args) => $options._onClick && $options._onClick(...args))
     }, null, 6);
   }
-  var __easycom_0$8 = /* @__PURE__ */ _export_sfc(_sfc_main$1i, [["render", _sfc_render$e], ["__scopeId", "data-v-a2e81f6e"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java/uni_modules/uni-icons/components/uni-icons/uni-icons.vue"]]);
-  const ON_SHOW = "onShow";
-  const ON_REACH_BOTTOM = "onReachBottom";
-  const ON_PULL_DOWN_REFRESH = "onPullDownRefresh";
-  function isDebugMode() {
-    return typeof __channelId__ === "string" && __channelId__;
-  }
-  function jsonStringifyReplacer(k, p) {
-    switch (shared.toRawType(p)) {
-      case "Function":
-        return "function() { [native code] }";
-      default:
-        return p;
-    }
-  }
-  function normalizeLog(type, filename, args) {
-    if (isDebugMode()) {
-      args.push(filename.replace("at ", "uni-app:///"));
-      return console[type].apply(console, args);
-    }
-    const msgs = args.map(function(v) {
-      const type2 = shared.toTypeString(v).toLowerCase();
-      if (["[object object]", "[object array]", "[object module]"].indexOf(type2) !== -1) {
-        try {
-          v = "---BEGIN:JSON---" + JSON.stringify(v, jsonStringifyReplacer) + "---END:JSON---";
-        } catch (e) {
-          v = type2;
-        }
-      } else {
-        if (v === null) {
-          v = "---NULL---";
-        } else if (v === void 0) {
-          v = "---UNDEFINED---";
-        } else {
-          const vType = shared.toRawType(v).toUpperCase();
-          if (vType === "NUMBER" || vType === "BOOLEAN") {
-            v = "---BEGIN:" + vType + "---" + v + "---END:" + vType + "---";
-          } else {
-            v = String(v);
-          }
-        }
-      }
-      return v;
-    });
-    return msgs.join("---COMMA---") + " " + filename;
-  }
-  function formatAppLog(type, filename, ...args) {
-    const res2 = normalizeLog(type, filename, args);
-    res2 && console[type](res2);
-  }
+  var __easycom_0$8 = /* @__PURE__ */ _export_sfc(_sfc_main$1j, [["render", _sfc_render$e], ["__scopeId", "data-v-a2e81f6e"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/uni_modules/uni-icons/components/uni-icons/uni-icons.vue"]]);
   function resolveEasycom(component, easycom) {
     return shared.isString(component) ? easycom : component;
   }
@@ -1337,9 +1338,10 @@ if (uni.restoreGlobal) {
     !vue.isInSSRComponentSetup && vue.injectHook(lifecycle, hook, target);
   };
   const onShow = /* @__PURE__ */ createHook(ON_SHOW);
+  const onLoad = /* @__PURE__ */ createHook(ON_LOAD);
   const onReachBottom = /* @__PURE__ */ createHook(ON_REACH_BOTTOM);
   const onPullDownRefresh = /* @__PURE__ */ createHook(ON_PULL_DOWN_REFRESH);
-  const _sfc_main$1h = {
+  const _sfc_main$1i = {
     name: "uni-easyinput",
     emits: ["click", "iconClick", "update:modelValue", "input", "focus", "blur", "confirm"],
     model: {
@@ -1650,8 +1652,8 @@ if (uni.restoreGlobal) {
       ], 6)
     ], 6);
   }
-  var __easycom_0$7 = /* @__PURE__ */ _export_sfc(_sfc_main$1h, [["render", _sfc_render$d], ["__scopeId", "data-v-abe12412"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java/uni_modules/uni-easyinput/components/uni-easyinput/uni-easyinput.vue"]]);
-  const _sfc_main$1g = {
+  var __easycom_0$7 = /* @__PURE__ */ _export_sfc(_sfc_main$1i, [["render", _sfc_render$d], ["__scopeId", "data-v-abe12412"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/uni_modules/uni-easyinput/components/uni-easyinput/uni-easyinput.vue"]]);
+  const _sfc_main$1h = {
     name: "uniFormsItem",
     props: {
       custom: {
@@ -1976,7 +1978,7 @@ if (uni.restoreGlobal) {
       ])
     ], 2);
   }
-  var __easycom_1 = /* @__PURE__ */ _export_sfc(_sfc_main$1g, [["render", _sfc_render$c], ["__scopeId", "data-v-61dfc0d0"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java/uni_modules/uni-forms/components/uni-forms-item/uni-forms-item.vue"]]);
+  var __easycom_1 = /* @__PURE__ */ _export_sfc(_sfc_main$1h, [["render", _sfc_render$c], ["__scopeId", "data-v-61dfc0d0"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/uni_modules/uni-forms/components/uni-forms-item/uni-forms-item.vue"]]);
   var pattern = {
     email: /^\S+?@\S+?\.\S+?$/,
     idcard: /^[1-9]\d{5}(18|19|([23]\d))\d{2}((0[1-9])|(10|11|12))(([0-2][1-9])|10|20|30|31)\d{3}[0-9Xx]$/,
@@ -2393,7 +2395,7 @@ if (uni.restoreGlobal) {
     };
   }
   SchemaValidator.message = new Message();
-  const _sfc_main$1f = {
+  const _sfc_main$1g = {
     name: "uniForms",
     components: {},
     emits: ["input", "reset", "validate", "submit"],
@@ -2722,7 +2724,7 @@ if (uni.restoreGlobal) {
       ], 32)
     ], 2);
   }
-  var __easycom_2 = /* @__PURE__ */ _export_sfc(_sfc_main$1f, [["render", _sfc_render$b], ["__scopeId", "data-v-7ae0e404"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java/uni_modules/uni-forms/components/uni-forms/uni-forms.vue"]]);
+  var __easycom_2 = /* @__PURE__ */ _export_sfc(_sfc_main$1g, [["render", _sfc_render$b], ["__scopeId", "data-v-7ae0e404"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/uni_modules/uni-forms/components/uni-forms/uni-forms.vue"]]);
   var _imports_0 = "/static/new/img_logo@2x.png";
   function getDevtoolsGlobalHook() {
     return getTarget().__VUE_DEVTOOLS_GLOBAL_HOOK__;
@@ -3727,9 +3729,9 @@ if (uni.restoreGlobal) {
   Object.defineProperties(Store.prototype, prototypeAccessors);
   function request({ url = "", params = {}, method = "GET" }) {
     if (!uni.getStorageSync("baseUrl")) {
-      uni.setStorageSync("baseUrl", "http://slwl-geteway.itheima.net/courier");
+      uni.setStorageSync("baseUrl", "http://172.17.2.58");
     }
-    let baseUrl = uni.getStorageSync("baseUrl");
+    let baseUrl = "http://172.17.2.58/api";
     const token = uni.getStorageSync("token");
     let header = {
       "Access-Control-Allow-Origin": "*",
@@ -3746,6 +3748,7 @@ if (uni.restoreGlobal) {
         header,
         method
       }).then((res2) => {
+        formatAppLog("log", "at utils/request.js:29", res2, "res");
         const { data } = res2;
         if (res2.statusCode == 401) {
           uni.showToast({
@@ -3790,12 +3793,12 @@ if (uni.restoreGlobal) {
     return requestRes;
   }
   const phoneLogins = (params) => request({
-    url: `/logins/phone`,
+    url: `/login/worker`,
     method: "post",
     params
   });
-  const userLogins = (params) => request({
-    url: `/login/account`,
+  const getsmsCode = (params) => request({
+    url: `/sms-code/send`,
     method: "post",
     params
   });
@@ -3804,9 +3807,39 @@ if (uni.restoreGlobal) {
     method: "get",
     params
   });
-  const getHomeInfo = (params) => request({
-    url: "/messages/home/get",
+  const getUserSetting = (params) => request({
+    url: `/serve-settings/status`,
     method: "get",
+    params
+  });
+  const setPickUpStatus = (params) => request({
+    url: `/serve-settings/pick-up`,
+    method: "put",
+    params
+  });
+  const getServiceSkillAll = (params) => request({
+    url: `/serve-skill/category`,
+    method: "get",
+    params
+  });
+  const updateServiceSkill = (params) => request({
+    url: `/serve-skill/batchUpsert`,
+    method: "post",
+    params
+  });
+  const getSettingInfo = (params) => request({
+    url: `/serve-settings`,
+    method: "get",
+    params
+  });
+  const getOpenCity = (params) => request({
+    url: `/region/listSimple`,
+    method: "get",
+    params
+  });
+  const setServiceSetting = (params) => request({
+    url: `/serve-settings/serve-scope`,
+    method: "put",
     params
   });
   const getDeliveryList = (params) => request({
@@ -3897,26 +3930,36 @@ if (uni.restoreGlobal) {
     data: params,
     params
   });
-  const _sfc_main$1e = {
+  const _sfc_main$1f = {
     __name: "user",
     setup(__props) {
       const store2 = useStore();
       vue.ref(false);
       const customForm = vue.ref();
       let fromInfo = vue.reactive({
-        account: "qykdy001",
-        password: "123456"
+        phone: "",
+        veriryCode: "",
+        userType: 2
       });
       const customRules = vue.reactive({
-        account: {
+        phone: {
           rules: [
             {
               required: true,
               errorMessage: "\u8BF7\u8F93\u5165\u624B\u673A\u53F7"
+            },
+            {
+              validateFunction: function(rule, value, data, callback) {
+                const reg = /^1[3-9]\d{9}$/;
+                if (!reg.test(value)) {
+                  callback("\u624B\u673A\u53F7\u8F93\u5165\u9519\u8BEF\uFF01\u8BF7\u91CD\u65B0\u8F93\u5165");
+                }
+                return true;
+              }
             }
           ]
         },
-        password: {
+        veriryCode: {
           rules: [
             {
               required: true,
@@ -3936,23 +3979,8 @@ if (uni.restoreGlobal) {
               mask: true
             });
           }, 500);
-          let timVal = 1;
-          let t2 = setInterval(() => {
-            timVal++;
-            if (timVal > 5) {
-              uni.showToast({
-                title: "\u7F51\u7EDC\u5F02\u5E38\uFF0C\u8BF7\u91CD\u65B0\u68C0\u67E5url\u914D\u7F6E",
-                duration: 2e3,
-                icon: "none"
-              });
-              clearInterval(t2);
-              setTimeout(function() {
-                uni.hideLoading();
-              }, 500);
-            }
-          }, 1e3);
-          await userLogins(fromInfo).then(async (res2) => {
-            clearInterval(t2);
+          await phoneLogins(fromInfo).then(async (res2) => {
+            formatAppLog("log", "at pages/login/user.vue:154", res2, "\u767B\u5F55\u7ED3\u679C\u83B7\u53D6");
             if (res2.code === 200) {
               setTimeout(function() {
                 uni.hideLoading();
@@ -3960,11 +3988,15 @@ if (uni.restoreGlobal) {
               clearTimeout(times);
               uni.setStorageSync("token", res2.data.token);
               store2.commit("user/setToken", res2.data.token);
-              store2.dispatch("user/GetUsersInfo");
-              await getHomeInfo().then((res3) => {
-                if (res3.code === 200) {
+              await getUserSetting().then((res3) => {
+                formatAppLog("log", "at pages/login/user.vue:167", res3, "getUserSetting");
+                if (Boolean(res3.data.settingsStatus)) {
                   uni.redirectTo({
                     url: "/pages/index/index"
+                  });
+                } else {
+                  uni.redirectTo({
+                    url: "/pages/setting/index"
                   });
                 }
               });
@@ -3979,8 +4011,27 @@ if (uni.restoreGlobal) {
           });
         }
       };
-      const handlePwd = () => {
-        fromInfo.password = "";
+      const handlePwd = async () => {
+        const reg = /^1[3-9]\d{9}$/;
+        if (!reg.test(fromInfo.phone)) {
+          return uni.showToast({
+            title: "\u624B\u673A\u53F7\u8F93\u5165\u9519\u8BEF\uFF01\u8BF7\u91CD\u65B0\u8F93\u5165",
+            duration: 2e3,
+            icon: "none"
+          });
+        }
+        getsmsCode({
+          bussinessType: 3,
+          phone: fromInfo.phone
+        }).then((res2) => {
+          fromInfo.veriryCode = "123456";
+        }).catch((err) => {
+          uni.showToast({
+            title: err.msg || "\u83B7\u53D6\u9A8C\u8BC1\u7801\u5931\u8D25",
+            duration: 1500,
+            icon: "none"
+          });
+        });
       };
       vue.ref(uni.getStorageSync("baseUrl"));
       vue.ref(null);
@@ -4003,28 +4054,28 @@ if (uni.restoreGlobal) {
                 modelValue: vue.unref(fromInfo)
               }, {
                 default: vue.withCtx(() => [
-                  vue.createVNode(_component_uni_forms_item, { name: "account" }, {
+                  vue.createVNode(_component_uni_forms_item, { name: "phone" }, {
                     default: vue.withCtx(() => [
                       vue.createVNode(_component_uni_easyinput, {
                         clearable: false,
                         class: "item",
-                        modelValue: vue.unref(fromInfo).account,
-                        "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => vue.unref(fromInfo).account = $event),
+                        modelValue: vue.unref(fromInfo).phone,
+                        "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => vue.unref(fromInfo).phone = $event),
                         placeholder: "\u8BF7\u8F93\u5165\u624B\u673A\u53F7"
                       }, null, 8, ["modelValue"])
                     ]),
                     _: 1
                   }),
                   vue.createVNode(_component_uni_forms_item, {
-                    name: "password",
+                    name: "veriryCode",
                     class: "pwdBox"
                   }, {
                     default: vue.withCtx(() => [
                       vue.createVNode(_component_uni_easyinput, {
                         clearable: false,
                         class: "item",
-                        modelValue: vue.unref(fromInfo).password,
-                        "onUpdate:modelValue": _cache[1] || (_cache[1] = ($event) => vue.unref(fromInfo).password = $event),
+                        modelValue: vue.unref(fromInfo).veriryCode,
+                        "onUpdate:modelValue": _cache[1] || (_cache[1] = ($event) => vue.unref(fromInfo).veriryCode = $event),
                         placeholder: "\u8BF7\u8F93\u5165\u9A8C\u8BC1\u7801"
                       }, null, 8, ["modelValue"]),
                       vue.createElementVNode("text", {
@@ -4042,9 +4093,9 @@ if (uni.restoreGlobal) {
                 vue.createElementVNode("button", {
                   class: vue.normalizeClass([
                     "btn-default",
-                    vue.unref(fromInfo).account.length === 0 || vue.unref(fromInfo).password.length === 0 ? "disabled" : ""
+                    vue.unref(fromInfo).phone.length === 0 || vue.unref(fromInfo).veriryCode.length === 0 ? "disabled" : ""
                   ]),
-                  disabled: vue.unref(fromInfo).account.length === 0 || vue.unref(fromInfo).password.length === 0,
+                  disabled: vue.unref(fromInfo).phone.length === 0 || vue.unref(fromInfo).veriryCode.length === 0,
                   type: "primary",
                   onClick: handleSubmit
                 }, " \u767B\u5F55 ", 10, ["disabled"])
@@ -4061,8 +4112,8 @@ if (uni.restoreGlobal) {
       };
     }
   };
-  var PagesLoginUser = /* @__PURE__ */ _export_sfc(_sfc_main$1e, [["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java/pages/login/user.vue"]]);
-  const _sfc_main$1d = {
+  var PagesLoginUser = /* @__PURE__ */ _export_sfc(_sfc_main$1f, [["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/pages/login/user.vue"]]);
+  const _sfc_main$1e = {
     name: "UniStatusBar",
     data() {
       return {
@@ -4081,9 +4132,9 @@ if (uni.restoreGlobal) {
       vue.renderSlot(_ctx.$slots, "default", {}, void 0, true)
     ], 4);
   }
-  var statusBar = /* @__PURE__ */ _export_sfc(_sfc_main$1d, [["render", _sfc_render$a], ["__scopeId", "data-v-f9a87a8e"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java/uni_modules/uni-nav-bar/components/uni-nav-bar/uni-status-bar.vue"]]);
+  var statusBar = /* @__PURE__ */ _export_sfc(_sfc_main$1e, [["render", _sfc_render$a], ["__scopeId", "data-v-f9a87a8e"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/uni_modules/uni-nav-bar/components/uni-nav-bar/uni-status-bar.vue"]]);
   const getVal = (val) => typeof val === "number" ? val + "px" : val;
-  const _sfc_main$1c = {
+  const _sfc_main$1d = {
     name: "UniNavBar",
     components: {
       statusBar
@@ -4298,7 +4349,7 @@ if (uni.restoreGlobal) {
       ])) : vue.createCommentVNode("v-if", true)
     ], 2);
   }
-  var __easycom_0$6 = /* @__PURE__ */ _export_sfc(_sfc_main$1c, [["render", _sfc_render$9], ["__scopeId", "data-v-6bda1a90"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java/uni_modules/uni-nav-bar/components/uni-nav-bar/uni-nav-bar.vue"]]);
+  var __easycom_0$6 = /* @__PURE__ */ _export_sfc(_sfc_main$1d, [["render", _sfc_render$9], ["__scopeId", "data-v-6bda1a90"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/uni_modules/uni-nav-bar/components/uni-nav-bar/uni-nav-bar.vue"]]);
   const taskTimeFormat = (val) => {
     const times = getTimeDate(val);
     return times.date;
@@ -4609,14 +4660,8 @@ if (uni.restoreGlobal) {
       content: "\u795E\u9886\u7269\u6D412.0\u7248\u672C-\u5FEB\u9012\u5458\u7AEF\u7EC8\u4E8E\u57282022\u5E74\u4E0A\u534A\u5E74\u5B8C\u7F8E\u4E0A\u7EBF\u7EBF\uFF0C\u5176\u4E2D\u53D6\u4EF6/\u6D3E\u4EF6\u6D41\u7A0B\u6A21\u5757\u4F5C\u51FA\u4E86\u5F88\u591A\u65B0\u9896\u7684\u8C03\u6574\uFF0C\u8BF7\u5927\u5BB6\u591A\u591A\u5173\u6CE8\u652F\u6301\uFF01"
     }
   ];
-  const _sfc_main$1b = {
+  const _sfc_main$1c = {
     __name: "index",
-    props: {
-      newVal: {
-        type: Number,
-        default: ""
-      }
-    },
     setup(__props) {
       const baseSetting = vue.reactive([
         {
@@ -4666,8 +4711,8 @@ if (uni.restoreGlobal) {
       };
     }
   };
-  var UniNav$1 = /* @__PURE__ */ _export_sfc(_sfc_main$1b, [["__scopeId", "data-v-02b269f0"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java/components/uni-home-nav/index.vue"]]);
-  const _sfc_main$1a = {
+  var UniNav$1 = /* @__PURE__ */ _export_sfc(_sfc_main$1c, [["__scopeId", "data-v-02b269f0"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/components/uni-home-nav/index.vue"]]);
+  const _sfc_main$1b = {
     __name: "index",
     props: {
       pagePath: {
@@ -4785,8 +4830,8 @@ if (uni.restoreGlobal) {
       };
     }
   };
-  var UniFooter = /* @__PURE__ */ _export_sfc(_sfc_main$1a, [["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java/components/uni-footer/index.vue"]]);
-  const _sfc_main$19 = {
+  var UniFooter = /* @__PURE__ */ _export_sfc(_sfc_main$1b, [["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/components/uni-footer/index.vue"]]);
+  const _sfc_main$1a = {
     __name: "homeFilter",
     props: {
       fixTop: {
@@ -4863,8 +4908,8 @@ if (uni.restoreGlobal) {
       };
     }
   };
-  var HomeFilter = /* @__PURE__ */ _export_sfc(_sfc_main$19, [["__scopeId", "data-v-1426d0ea"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java/pages/index/components/homeFilter.vue"]]);
-  const _sfc_main$18 = {
+  var HomeFilter = /* @__PURE__ */ _export_sfc(_sfc_main$1a, [["__scopeId", "data-v-1426d0ea"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/pages/index/components/homeFilter.vue"]]);
+  const _sfc_main$19 = {
     __name: "homeList",
     setup(__props) {
       const isOpen = vue.ref(false);
@@ -4994,8 +5039,8 @@ if (uni.restoreGlobal) {
       };
     }
   };
-  var HomeList = /* @__PURE__ */ _export_sfc(_sfc_main$18, [["__scopeId", "data-v-62e7a190"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java/pages/index/components/homeList.vue"]]);
-  const _sfc_main$17 = {
+  var HomeList = /* @__PURE__ */ _export_sfc(_sfc_main$19, [["__scopeId", "data-v-62e7a190"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/pages/index/components/homeList.vue"]]);
+  const _sfc_main$18 = {
     __name: "index",
     setup(__props) {
       const fixTop = vue.ref(false);
@@ -5053,8 +5098,8 @@ if (uni.restoreGlobal) {
       };
     }
   };
-  var PagesIndexIndex = /* @__PURE__ */ _export_sfc(_sfc_main$17, [["__scopeId", "data-v-57280228"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java/pages/index/index.vue"]]);
-  const _sfc_main$16 = {
+  var PagesIndexIndex = /* @__PURE__ */ _export_sfc(_sfc_main$18, [["__scopeId", "data-v-57280228"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/pages/index/index.vue"]]);
+  const _sfc_main$17 = {
     __name: "index",
     props: {
       title: {
@@ -5100,53 +5145,88 @@ if (uni.restoreGlobal) {
       };
     }
   };
-  var UniNav = /* @__PURE__ */ _export_sfc(_sfc_main$16, [["__scopeId", "data-v-30dede9e"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java/components/uni-nav/index.vue"]]);
-  const _sfc_main$15 = {
+  var UniNav = /* @__PURE__ */ _export_sfc(_sfc_main$17, [["__scopeId", "data-v-30dede9e"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/components/uni-nav/index.vue"]]);
+  const _sfc_main$16 = {
     __name: "index",
     setup(__props) {
-      const activeId = vue.ref(1);
-      const activeItemId = vue.reactive([1, 2]);
+      const activeId = vue.ref(null);
+      const activeIndex = vue.ref(0);
+      const serviceSkill = vue.reactive({
+        data: []
+      });
+      const rightItem = vue.reactive({
+        data: []
+      });
       const status = vue.ref("read");
-      const serviceItemData = vue.reactive([
-        {
-          serveItemName: "\u65E5\u5E38\u4FDD\u6D01",
-          id: 1
-        },
-        {
-          serveItemName: "\u5BB6\u5C45\u6E05\u6D17",
-          id: 2
-        },
-        {
-          serveItemName: "\u6DF1\u5EA6\u4FDD\u6D01",
-          id: 3
-        }
-      ]);
-      const serviceTypeData = vue.reactive([
-        {
-          serveTypeName: "\u4FDD\u6D01\u6E05\u6D17",
-          serveTypeId: 1
-        },
-        {
-          serveTypeName: "\u65E5\u5E38\u7EF4\u4FEE",
-          serveTypeId: 2
-        },
-        {
-          serveTypeName: "\u4E94\u5B57\u5206\u7C7B\u540D",
-          serveTypeId: 3
-        }
-      ]);
+      vue.onMounted(() => {
+        getServiceSkillAllFunc();
+      });
+      const getServiceSkillAllFunc = () => {
+        getServiceSkillAll().then((res2) => {
+          if (res2.code == 200) {
+            serviceSkill.data = res2.data;
+            activeId.value = res2.data[0].serveTypeId;
+            rightItem.data = serviceSkill.data[0].serveSkillItemResDTOList;
+            formatAppLog("log", "at pages/serviceSkill/index.vue:77", serviceSkill.data, "serviceSkill.data");
+          }
+        }).catch((err) => {
+          uni.showToast({
+            title: err.msg || "\u63A5\u53E3\u8C03\u7528\u5931\u8D25",
+            duration: 1500,
+            icon: "none"
+          });
+        });
+      };
+      const handleSelect = (active) => {
+        if (status.value = "read")
+          return;
+        serviceSkill.data[activeIndex.value].serveSkillItemResDTOList = serviceSkill.data[activeIndex.value].serveSkillItemResDTOList.map((item) => {
+          if (active.serveItemId === item.serveItemId) {
+            return Object.assign({}, item, { isSelected: !item.isSelected });
+          } else {
+            return item;
+          }
+        }), rightItem.data = [
+          ...serviceSkill.data[activeIndex.value].serveSkillItemResDTOList
+        ];
+        formatAppLog("log", "at pages/serviceSkill/index.vue:105", serviceSkill.data, "\u70B9\u51FB\u540E ");
+      };
       const handleSubmit = () => {
-        status.value = "read";
+        const selectedList = [];
+        serviceSkill.data.forEach((item, index) => {
+          item.serveSkillItemResDTOList.forEach((item1, index1) => {
+            if (item1.isSelected) {
+              selectedList.push({
+                serveItemId: item1.serveItemId,
+                serveTypeId: item.serveTypeId
+              });
+            }
+          });
+        });
+        formatAppLog("log", "at pages/serviceSkill/index.vue:120", selectedList, "selectedList");
+        updateServiceSkill(selectedList).then((res2) => {
+          if (res2.code === 200) {
+            status.value = "read";
+          }
+        }).catch((err) => {
+          uni.showToast({
+            title: err.msg || "\u63A5\u53E3\u8C03\u7528\u5931\u8D25",
+            duration: 1500,
+            icon: "none"
+          });
+        });
       };
       const handleCancel = () => {
         status.value = "read";
       };
       const handleEdit = () => {
         status.value = "edit";
-        formatAppLog("log", "at pages/serviceSkill/index.vue:92", "\u7F16\u8F91\u72B6\u6001");
+        formatAppLog("log", "at pages/serviceSkill/index.vue:143", "\u7F16\u8F91\u72B6\u6001");
       };
-      const tabChange = (id) => {
+      const tabChange = (id, index) => {
         activeId.value = id;
+        activeIndex.value = index;
+        rightItem.data = serviceSkill.data[activeIndex.value].serveSkillItemResDTOList;
       };
       const goBack = () => {
         uni.redirectTo({
@@ -5164,13 +5244,16 @@ if (uni.restoreGlobal) {
           }, null, 8, ["rithtText"]),
           vue.createElementVNode("view", { class: "servicePage" }, [
             vue.createElementVNode("view", { class: "left" }, [
-              (vue.openBlock(true), vue.createElementBlock(vue.Fragment, null, vue.renderList(serviceTypeData, (item, index) => {
+              (vue.openBlock(true), vue.createElementBlock(vue.Fragment, null, vue.renderList(serviceSkill.data, (item, index) => {
                 return vue.openBlock(), vue.createElementBlock("view", {
                   key: index,
                   class: vue.normalizeClass(activeId.value === item.serveTypeId ? "active tagBox" : "tagBox"),
-                  onClick: ($event) => tabChange(item.serveTypeId)
+                  onClick: ($event) => tabChange(item.serveTypeId, index)
                 }, [
-                  vue.createElementVNode("view", { class: "tag" }, vue.toDisplayString(item.serveTypeName), 1)
+                  vue.createElementVNode("view", { class: "tag" }, [
+                    vue.createTextVNode(vue.toDisplayString(item.serveTypeName) + " ", 1),
+                    vue.createElementVNode("text", { class: "selectNum" }, vue.toDisplayString(item.count), 1)
+                  ])
                 ], 10, ["onClick"]);
               }), 128))
             ]),
@@ -5178,11 +5261,11 @@ if (uni.restoreGlobal) {
             vue.createElementVNode("view", { class: "serviceBox right" }, [
               vue.createElementVNode("view", null, [
                 vue.createElementVNode("view", { class: "clean" }, [
-                  (vue.openBlock(true), vue.createElementBlock(vue.Fragment, null, vue.renderList(serviceItemData, (item, index) => {
+                  (vue.openBlock(true), vue.createElementBlock(vue.Fragment, null, vue.renderList(rightItem.data, (item, index) => {
                     return vue.openBlock(), vue.createElementBlock("view", {
-                      class: vue.normalizeClass(["card", activeItemId.includes(item.id) ? "active" : ""]),
+                      class: vue.normalizeClass(["card", item.isSelected ? "active" : ""]),
                       key: index,
-                      onClick: ($event) => _ctx.handleDetail(item.id, item.serveItemName)
+                      onClick: ($event) => handleSelect(item)
                     }, vue.toDisplayString(item.serveItemName), 11, ["onClick"]);
                   }), 128))
                 ])
@@ -5205,8 +5288,8 @@ if (uni.restoreGlobal) {
       };
     }
   };
-  var PagesServiceSkillIndex = /* @__PURE__ */ _export_sfc(_sfc_main$15, [["__scopeId", "data-v-f34db350"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java/pages/serviceSkill/index.vue"]]);
-  const _sfc_main$14 = {
+  var PagesServiceSkillIndex = /* @__PURE__ */ _export_sfc(_sfc_main$16, [["__scopeId", "data-v-f34db350"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/pages/serviceSkill/index.vue"]]);
+  const _sfc_main$15 = {
     __name: "index",
     setup(__props) {
       const goBack = () => {
@@ -5232,61 +5315,123 @@ if (uni.restoreGlobal) {
       };
     }
   };
-  var PagesGetOrderIndex = /* @__PURE__ */ _export_sfc(_sfc_main$14, [["__scopeId", "data-v-6bad7658"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java/pages/getOrder/index.vue"]]);
-  const _sfc_main$13 = {
+  var PagesGetOrderIndex = /* @__PURE__ */ _export_sfc(_sfc_main$15, [["__scopeId", "data-v-6bad7658"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/pages/getOrder/index.vue"]]);
+  const _sfc_main$14 = {
     __name: "index",
     setup(__props) {
-      const address = vue.reactive({
-        name: "\u6731\u8F9B\u5E84\u5730\u94C1\u7AD9",
-        latitude: "",
-        longitude: ""
-      });
+      const cityName = vue.ref("\u8BF7\u9009\u62E9");
+      const address = vue.ref("\u8BF7\u9009\u62E9");
+      const store2 = useStore();
+      const users = store2.state.user;
       const location = vue.reactive({
         latitude: "",
         longitude: ""
       });
-      const markers = vue.reactive([
-        {
+      const params = vue.reactive({
+        cityCode: "",
+        location: "",
+        intentionScope: ""
+      });
+      const markers = vue.reactive({
+        data: {
           id: 1,
-          latitude: 39.916296,
-          longitude: 116.410344,
+          latitude: 0,
+          longitude: 0,
           iconPath: "/static/new/img_weizhi@2x.png",
-          title: "\u554A\u554A\u554A\u554A\u554A\u554A\u554A\u554A\u554A",
-          width: 30,
-          height: 30
+          title: "\u5929\u5B89\u95E8",
+          content: "\u8FD9\u91CC\u662F\u5929\u5B89\u95E8\u5E7F\u573A",
+          width: 60,
+          height: 60,
+          callout: {
+            content: "\u5929\u5B89\u95E8",
+            color: "#ffffff",
+            fontSize: 14,
+            borderRadius: 4,
+            bgColor: "#000000",
+            padding: 8,
+            display: "ALWAYS"
+          }
         }
-      ]);
+      });
+      const markerTap = () => {
+        formatAppLog("log", "at pages/serviceRange/index.vue:88", "111");
+      };
       const handleSelectCity = () => {
         uni.redirectTo({
-          url: "/pages/city/index"
+          url: "/pages/city/index?address=" + address.value
         });
       };
       const handleChooseRange = () => {
-        formatAppLog("log", "at pages/serviceRange/index.vue:76", 123);
+        formatAppLog("log", "at pages/serviceRange/index.vue:98", 123);
         uni.chooseLocation({
           latitude: location.longitude,
           longitude: location.latitude,
           success: function(res2) {
-            address.name = res2.name;
-            address.latitude = res2.latitude;
-            address.longitude = res2.longitude;
-            formatAppLog("log", "at pages/serviceRange/index.vue:84", res2, "res");
+            address.value = res2.name;
+            location.latitude = res2.longitude;
+            location.longitude = res2.latitude;
+            markers.data.latitude = res2.latitude;
+            markers.data.longitude = res2.longitude;
+            store2.commit("user/setLocation", location);
+            store2.commit("user/setAddress", address.value);
           },
           fail: function(err) {
-            formatAppLog("log", "at pages/serviceRange/index.vue:87", err, "err");
+            formatAppLog("log", "at pages/serviceRange/index.vue:114", err, "err");
           }
         });
       };
-      vue.onMounted(() => {
-        uni.getLocation({
-          type: "gcj02",
-          geocode: true,
-          success: function(res2) {
-            location.latitude = res2.longitude;
-            location.longitude = res2.latitude;
-            formatAppLog("log", "at pages/serviceRange/index.vue:98", location, res2, "-----");
-          }
+      const handleSubmit = () => {
+        setServiceSetting({
+          cityCode: params.cityCode,
+          location: String(location.latitude) + "," + String(location.longitude),
+          intentionScope: users.address
+        }).then((res2) => {
+          uni.showToast({
+            title: "\u4FDD\u5B58\u6210\u529F",
+            duration: 1500,
+            icon: "none"
+          });
+          formatAppLog("log", "at pages/serviceRange/index.vue:129", res2, "\u8BBE\u7F6E\u670D\u52A1\u8303\u56F4");
         });
+      };
+      onLoad((option) => {
+        getSettingInfo().then((res2) => {
+          formatAppLog("log", "at pages/serviceRange/index.vue:135", res2, option, "\u83B7\u53D6\u5F53\u524D\u914D\u7F6E\u7684\u4F4D\u7F6E\u4FE1\u606F");
+          if (!res2.data.location) {
+            uni.getLocation({
+              type: "gcj02",
+              geocode: true,
+              success: function(res3) {
+                location.latitude = res3.longitude;
+                location.longitude = res3.latitude;
+                markers.data.latitude = res3.latitude;
+                markers.data.longitude = res3.longitude;
+              }
+            });
+          } else {
+            cityName.value = res2.data.cityName;
+            address.value = res2.data.intentionScope;
+            location.latitude = res2.data.location.split(",")[0];
+            location.longitude = res2.data.location.split(",")[1];
+            markers.data.latitude = res2.data.location.split(",")[1];
+            markers.data.longitude = res2.data.location.split(",")[0];
+          }
+          if (option.name) {
+            cityName.value = option.name;
+            address.value = option.address;
+            params.cityCode = option.cityCode;
+            params.intentionScope = option.name;
+            formatAppLog("log", "at pages/serviceRange/index.vue:169", cityName.value, "ffffffffffffffffff");
+          }
+        }).catch((err) => {
+          uni.showToast({
+            title: err.msg || "\u63A5\u53E3\u8C03\u7528\u5931\u8D25",
+            duration: 1500,
+            icon: "none"
+          });
+        });
+      });
+      vue.onMounted(() => {
       });
       const goBack = () => {
         uni.redirectTo({
@@ -5302,15 +5447,16 @@ if (uni.restoreGlobal) {
           }),
           vue.createElementVNode("map", {
             class: "map",
-            markers,
+            markers: [markers.data],
             latitude: location.latitude,
-            longitude: location.longitude
-          }, null, 8, ["markers", "latitude", "longitude"]),
+            longitude: location.longitude,
+            onMarkertap: markerTap
+          }, null, 40, ["markers", "latitude", "longitude"]),
           vue.createElementVNode("cover-view", { class: "address" }, [
             vue.createElementVNode("cover-view", { class: "city" }, [
               vue.createElementVNode("cover-view", { class: "label" }, "\u670D\u52A1\u57CE\u5E02"),
               vue.createElementVNode("cover-view", { class: "content" }, [
-                vue.createElementVNode("cover-view", { class: "cityName" }, "\u5317\u4EAC"),
+                vue.createElementVNode("cover-view", { class: "cityName" }, vue.toDisplayString(cityName.value), 1),
                 vue.createElementVNode("cover-image", {
                   onClick: handleSelectCity,
                   class: "icon",
@@ -5321,7 +5467,7 @@ if (uni.restoreGlobal) {
             vue.createElementVNode("cover-view", { class: "range" }, [
               vue.createElementVNode("cover-view", { class: "label" }, "\u610F\u5411\u63A5\u5355\u8303\u56F4"),
               vue.createElementVNode("cover-view", { class: "content" }, [
-                vue.createElementVNode("cover-view", { class: "rangeName" }, vue.toDisplayString(address.name), 1),
+                vue.createElementVNode("cover-view", { class: "rangeName" }, vue.toDisplayString(address.value), 1),
                 vue.createElementVNode("cover-image", {
                   onClick: handleChooseRange,
                   class: "icon",
@@ -5330,14 +5476,17 @@ if (uni.restoreGlobal) {
               ])
             ]),
             vue.createElementVNode("cover-view", { class: "btn-red" }, [
-              vue.createElementVNode("cover-view", { class: "text" }, "\u4FDD\u5B58")
+              vue.createElementVNode("cover-view", {
+                class: "text",
+                onClick: handleSubmit
+              }, "\u4FDD\u5B58")
             ])
           ])
         ]);
       };
     }
   };
-  var PagesServiceRangeIndex = /* @__PURE__ */ _export_sfc(_sfc_main$13, [["__scopeId", "data-v-6cac4378"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java/pages/serviceRange/index.vue"]]);
+  var PagesServiceRangeIndex = /* @__PURE__ */ _export_sfc(_sfc_main$14, [["__scopeId", "data-v-6cac4378"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/pages/serviceRange/index.vue"]]);
   const Citys = {
     list: [
       {
@@ -7019,9 +7168,10 @@ if (uni.restoreGlobal) {
       }
     ]
   };
-  const _sfc_main$12 = {
+  const _sfc_main$13 = {
     __name: "index",
     setup(__props) {
+      const address = vue.ref("");
       const customBar = vue.ref("87px");
       const winHeight = vue.ref(0);
       const itemHeight = vue.ref(0);
@@ -7029,19 +7179,19 @@ if (uni.restoreGlobal) {
       const touchmove = vue.ref(false);
       const scrollHeight = vue.ref("");
       const letter = vue.ref([]);
-      const searchValue = vue.ref("");
+      vue.ref("");
       const scrollIntoId = vue.ref("");
       const list = vue.ref([]);
       const activeId = vue.ref(1);
       const disPosition = vue.ref(true);
       const currentCity = vue.ref();
-      const position = vue.ref();
+      vue.ref();
       const po_tips = vue.ref("\u91CD\u65B0\u5B9A\u4F4D");
       const hotCity = vue.ref([
-        { cityName: "\u5317\u4EAC", cityCode: "010" },
-        { cityName: "\u4E0A\u6D77", cityCode: "021" },
-        { cityName: "\u5E7F\u5DDE", cityCode: "020" },
-        { cityName: "\u6DF1\u5733", cityCode: "0755" }
+        { name: "\u5317\u4EAC\u5E02", cityCode: "010" },
+        { name: "\u4E0A\u6D77\u5E02", cityCode: "021" },
+        { name: "\u5E7F\u5DDE\u5E02", cityCode: "020" },
+        { name: "\u6DF1\u5733\u5E02", cityCode: "0755" }
       ]);
       const instance = vue.getCurrentInstance();
       const setList = () => {
@@ -7051,9 +7201,12 @@ if (uni.restoreGlobal) {
           itemHeight.value = winHeight.value / list.value.length;
         });
       };
+      onLoad((option) => {
+        address.value = option.address;
+      });
       const goBack = () => {
         uni.redirectTo({
-          url: "/pages/serviceRange/index"
+          url: "/pages/serviceRange/index?cityCode=" + city.cityCode + "&name=" + city.name + "&address=" + address.value
         });
       };
       const touchStart = (e) => {
@@ -7087,6 +7240,10 @@ if (uni.restoreGlobal) {
         letter.value = Citys.index;
         list.value = Citys.list;
         setList();
+        getOpenCity().then((res2) => {
+          list.value = res2.data;
+          formatAppLog("log", "at pages/city/index.vue:187", res2, "getOpenCity");
+        });
       });
       const getWarpWeft = () => {
         po_tips.value = "\u5B9A\u4F4D\u4E2D...";
@@ -7095,16 +7252,15 @@ if (uni.restoreGlobal) {
           geocode: true,
           success: function(res2) {
             currentCity.value = {
-              cityName: res2.address.city
+              name: res2.address.city
             };
             activeId.value = res2.address.cityCode;
-            formatAppLog("log", "at pages/city/index.vue:192", res2, activeId.value, "resres");
             setTimeout(() => {
               po_tips.value = "\u91CD\u65B0\u5B9A\u4F4D";
             }, 500);
           },
           fail: function(res2) {
-            formatAppLog("log", "at pages/city/index.vue:201", res2);
+            formatAppLog("log", "at pages/city/index.vue:211", res2);
             setTimeout(() => {
               po_tips.value = "\u5B9A\u4F4D\u5931\u8D25";
             }, 500);
@@ -7112,9 +7268,13 @@ if (uni.restoreGlobal) {
           }
         });
       };
-      const selectCity = (city) => {
-        currentCity.value = city;
-        uni.setStorageSync("city", city);
+      const selectCity = (city2) => {
+        formatAppLog("log", "at pages/city/index.vue:234", city2, "city");
+        currentCity.value = city2;
+        uni.redirectTo({
+          url: "/pages/serviceRange/index?cityCode=" + city2.cityCode + "&name=" + city2.name + "&address=" + address.value
+        });
+        uni.setStorageSync("city", city2);
       };
       vue.watch(list, () => {
         setTimeout(() => {
@@ -7133,7 +7293,7 @@ if (uni.restoreGlobal) {
             "scroll-y": "true",
             "scroll-into-view": scrollIntoId.value,
             style: vue.normalizeStyle({ height: scrollHeight.value }),
-            onTouchmove: _cache[1] || (_cache[1] = vue.withModifiers(() => {
+            onTouchmove: _cache[0] || (_cache[0] = vue.withModifiers(() => {
             }, ["stop", "prevent"]))
           }, [
             disPosition.value ? (vue.openBlock(), vue.createElementBlock("view", {
@@ -7144,10 +7304,7 @@ if (uni.restoreGlobal) {
               vue.createCommentVNode(" \u5B9A\u4F4D\u6A21\u5757 "),
               vue.createElementVNode("view", { class: "position top" }, [
                 vue.createElementVNode("view", { class: "position_city" }, [
-                  vue.createElementVNode("view", {
-                    class: "position_city_one",
-                    onClick: _cache[0] || (_cache[0] = ($event) => _ctx.back_city(position.value, true))
-                  }, vue.toDisplayString(currentCity.value ? currentCity.value.cityName : "\u5B9A\u4F4D\u5931\u8D25"), 1),
+                  vue.createElementVNode("view", { class: "position_city_one" }, vue.toDisplayString(currentCity.value ? currentCity.value.name : "\u5B9A\u4F4D\u5931\u8D25"), 1),
                   vue.createElementVNode("view", {
                     class: "WarpWeft",
                     onClick: getWarpWeft
@@ -7173,7 +7330,7 @@ if (uni.restoreGlobal) {
                       class: vue.normalizeClass(activeId.value === item.cityCode ? "position_city_tag_active position_city_tag" : "position_city_tag"),
                       key: index,
                       onClick: ($event) => activeCity(item)
-                    }, vue.toDisplayString(item.cityName), 11, ["onClick"]);
+                    }, vue.toDisplayString(item.name), 11, ["onClick"]);
                   }), 128))
                 ])
               ])) : vue.createCommentVNode("v-if", true),
@@ -7182,29 +7339,25 @@ if (uni.restoreGlobal) {
             vue.createCommentVNode(" \u57CE\u5E02\u5217\u8868 "),
             (vue.openBlock(true), vue.createElementBlock(vue.Fragment, null, vue.renderList(list.value, (item, index) => {
               return vue.openBlock(), vue.createElementBlock("view", {
-                id: item.idx,
+                id: item.id,
                 key: index,
                 class: "cityList"
               }, [
-                vue.createElementVNode("view", { class: "letter-header bold" }, vue.toDisplayString(item.idx), 1),
+                vue.createCommentVNode(' <view class="letter-header bold">{{ item.idx }}</view> '),
                 vue.createElementVNode("view", { class: "contents" }, [
-                  (vue.openBlock(true), vue.createElementBlock(vue.Fragment, null, vue.renderList(item["cities"], (city, i) => {
-                    return vue.openBlock(), vue.createElementBlock("view", {
-                      class: "city-div",
-                      key: i,
-                      onClick: [($event) => _ctx.back_city(city), ($event) => selectCity(city)]
-                    }, [
-                      vue.createElementVNode("text", { class: "city" }, vue.toDisplayString(city.cityName), 1)
-                    ], 8, ["onClick"]);
-                  }), 128))
+                  vue.createElementVNode("view", {
+                    class: "city-div",
+                    onClick: ($event) => selectCity(item)
+                  }, [
+                    vue.createElementVNode("text", { class: "city" }, vue.toDisplayString(item.name), 1)
+                  ], 8, ["onClick"])
                 ])
               ], 8, ["id"]);
             }), 128)),
             vue.createElementVNode("view", { class: "placeholder footer" })
           ], 44, ["scroll-into-view"]),
           vue.createCommentVNode(" \u53F3\u4FA7\u5B57\u6BCD "),
-          searchValue.value == "" ? (vue.openBlock(), vue.createElementBlock("view", {
-            key: 0,
+          vue.withDirectives(vue.createElementVNode("view", {
             class: "letters",
             id: "list",
             onTouchstart: touchStart,
@@ -7217,19 +7370,151 @@ if (uni.restoreGlobal) {
                 key: item.idx
               }, vue.toDisplayString(item.idx), 1);
             }), 128))
-          ], 40, ["onTouchmove"])) : vue.createCommentVNode("v-if", true),
+          ], 40, ["onTouchmove"]), [
+            [vue.vShow, false]
+          ]),
           vue.createCommentVNode(" \u9009\u4E2D\u4E4B\u540E\u5B57\u6BCD "),
-          touchmove.value ? (vue.openBlock(), vue.createElementBlock("view", {
-            key: 1,
-            class: "mask"
-          }, [
+          vue.withDirectives(vue.createElementVNode("view", { class: "mask" }, [
             vue.createElementVNode("view", { class: "mask-r bold" }, vue.toDisplayString(scrollIntoId.value), 1)
-          ])) : vue.createCommentVNode("v-if", true)
+          ], 512), [
+            [vue.vShow, false]
+          ])
         ]);
       };
     }
   };
-  var PagesCityIndex = /* @__PURE__ */ _export_sfc(_sfc_main$12, [["__scopeId", "data-v-49347d67"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java/pages/city/index.vue"]]);
+  var PagesCityIndex = /* @__PURE__ */ _export_sfc(_sfc_main$13, [["__scopeId", "data-v-49347d67"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/pages/city/index.vue"]]);
+  const _sfc_main$12 = {
+    __name: "index",
+    setup(__props) {
+      const canPickUp = vue.ref(false);
+      const settingsStatus = vue.ref(false);
+      const serveRangeStatus = vue.ref(false);
+      const serveSkillStatus = vue.ref(false);
+      vue.onMounted(() => {
+        getSetting();
+      });
+      const getSetting = () => {
+        getUserSetting().then((res2) => {
+          if (res2.code == 200) {
+            canPickUp.value = res2.data.canPickUp;
+            settingsStatus.value = res2.data.settingsStatus;
+            serveRangeStatus.value = res2.data.serveScopeSetted;
+          }
+        }).catch((err) => {
+          uni.showToast({
+            title: err.msg || "\u63A5\u53E3\u8C03\u7528\u5931\u8D25",
+            duration: 1500,
+            icon: "none"
+          });
+        });
+      };
+      const handlePickUpStatus = () => {
+        setPickUpStatus({
+          canPickUp: canPickUp.value ? 0 : 1
+        }).then((res2) => {
+          if (res2.code == 200) {
+            getSetting();
+          }
+        }).catch((err) => {
+          uni.showToast({
+            title: err.msg || "\u63A5\u53E3\u8C03\u7528\u5931\u8D25",
+            duration: 1500,
+            icon: "none"
+          });
+        });
+      };
+      const toServiceSikll = () => {
+        uni.redirectTo({
+          url: "/pages/serviceSkill/index"
+        });
+      };
+      const toServiceRange = () => {
+        uni.redirectTo({
+          url: "/pages/serviceRange/index"
+        });
+      };
+      const toIndex = () => {
+        if (!settingsStatus.value) {
+          return;
+        }
+      };
+      return (_ctx, _cache) => {
+        const _component_uni_nav_bar = resolveEasycom(vue.resolveDynamicComponent("uni-nav-bar"), __easycom_0$6);
+        return vue.openBlock(), vue.createElementBlock("view", { class: "setting" }, [
+          vue.createCommentVNode(" \u624B\u673A\u72B6\u6001\u680F "),
+          vue.createVNode(_component_uni_nav_bar, { statusBar: "true" }),
+          vue.createCommentVNode(" \u5F15\u5BFC\u8BCD "),
+          vue.createElementVNode("view", { class: "guide" }, [
+            vue.createElementVNode("image", { src: "/static/new/img_logo@2x.png" }),
+            vue.createElementVNode("view", { class: "content" }, "\u4EB2\uFF0C\u5B8C\u6210\u4EE5\u4E0B4\u6B65\u8BBE\u7F6E\uFF0C\u65B9\u53EF\u63A5\u5355\u54E6\uFF5E")
+          ]),
+          vue.createCommentVNode(" \u5177\u4F53\u6B65\u9AA4 "),
+          vue.createElementVNode("view", { class: "step" }, [
+            vue.createElementVNode("view", { class: "stepOne stepItem" }, [
+              vue.createElementVNode("image", { src: "/static/new/stepOne.png" }),
+              vue.createElementVNode("view", { class: "stepBox" }, [
+                vue.createElementVNode("view", { class: "stepContent" }, [
+                  vue.createElementVNode("view", { class: "setpTitle" }, "\u5B9E\u540D\u8BA4\u8BC1"),
+                  vue.createElementVNode("view", { class: "setpIntroduce" }, "\u5E73\u53F0\u4F1A\u4FDD\u62A4\u4F60\u7684\u4E2A\u4EBA\u4FE1\u606F")
+                ]),
+                vue.createElementVNode("view", {
+                  class: vue.normalizeClass(["btn", canPickUp.value ? "btn-successGreen" : "btn-red"])
+                }, vue.toDisplayString(canPickUp.value ? "\u5DF2\u5B8C\u6210" : "\u53BB\u8BA4\u8BC1"), 3)
+              ])
+            ]),
+            vue.createElementVNode("view", { class: "stepTwo stepItem" }, [
+              vue.createElementVNode("image", { src: "/static/new/stepTwo.png" }),
+              vue.createElementVNode("view", { class: "stepBox" }, [
+                vue.createElementVNode("view", { class: "stepContent" }, [
+                  vue.createElementVNode("view", { class: "setpTitle" }, "\u670D\u52A1\u6280\u80FD\u8BBE\u7F6E"),
+                  vue.createElementVNode("view", { class: "setpIntroduce" }, "\u8BBE\u7F6E\u5B8C\u6210\u540E\uFF0C\u65B9\u53EF\u4E3A\u60A8\u63A8\u8350\u8BA2\u5355")
+                ]),
+                vue.createElementVNode("view", {
+                  class: vue.normalizeClass(["btn", serveSkillStatus.value ? "btn-successGreen" : "btn-red"]),
+                  onClick: toServiceSikll
+                }, vue.toDisplayString(serveSkillStatus.value ? "\u5DF2\u5B8C\u6210" : "\u53BB\u8BBE\u7F6E"), 3)
+              ])
+            ]),
+            vue.createElementVNode("view", { class: "stepThree stepItem" }, [
+              vue.createElementVNode("image", { src: "/static/new/stepThree.png" }),
+              vue.createElementVNode("view", { class: "stepBox" }, [
+                vue.createElementVNode("view", { class: "stepContent" }, [
+                  vue.createElementVNode("view", { class: "setpTitle" }, "\u670D\u52A1\u8303\u56F4\u8BBE\u7F6E"),
+                  vue.createElementVNode("view", { class: "setpIntroduce" }, "\u8BBE\u7F6E\u5B8C\u6210\u540E\uFF0C\u65B9\u53EF\u4E3A\u60A8\u63A8\u8350\u8BA2\u5355")
+                ]),
+                vue.createElementVNode("view", {
+                  class: vue.normalizeClass(["btn", serveRangeStatus.value ? "btn-successGreen" : "btn-red"]),
+                  onClick: toServiceRange
+                }, vue.toDisplayString(serveRangeStatus.value ? "\u5DF2\u5B8C\u6210" : "\u53BB\u8BBE\u7F6E"), 3)
+              ])
+            ]),
+            vue.createElementVNode("view", { class: "stepFour stepItem" }, [
+              vue.createElementVNode("image", { src: "/static/new/stepFour.png" }),
+              vue.createElementVNode("view", { class: "stepBox" }, [
+                vue.createElementVNode("view", { class: "stepContent" }, [
+                  vue.createElementVNode("view", { class: "setpTitle" }, "\u63A5\u5355\u8BBE\u7F6E"),
+                  vue.createElementVNode("view", { class: "setpIntroduce" }, "\u5F00\u542F\u63A5\u5355\u540E\uFF0C\u65B9\u53EF\u8FDB\u884C\u63A5\u5355\u54E6")
+                ]),
+                vue.createElementVNode("switch", {
+                  color: "#F74347",
+                  style: { "transform": "scale(0.7)" },
+                  onChange: handlePickUpStatus,
+                  checked: canPickUp.value
+                }, null, 40, ["checked"])
+              ])
+            ])
+          ]),
+          vue.createCommentVNode(" \u5E95\u90E8\u6309\u94AE "),
+          vue.createElementVNode("view", {
+            onClick: toIndex,
+            class: vue.normalizeClass(["btn-red footerBtn", settingsStatus.value ? "" : "notSetting"])
+          }, "\u8FDB\u5165\u9996\u9875", 2)
+        ]);
+      };
+    }
+  };
+  var PagesSettingIndex = /* @__PURE__ */ _export_sfc(_sfc_main$12, [["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/pages/setting/index.vue"]]);
   function validatePhone(rule, value, data, callback) {
     const reg = /^[1][3-9][0-9]{9}$/;
     if (value === "" || value === void 0 || value === null) {
@@ -7445,7 +7730,7 @@ if (uni.restoreGlobal) {
       };
     }
   };
-  var PagesLoginIndex = /* @__PURE__ */ _export_sfc(_sfc_main$11, [["__scopeId", "data-v-4586967a"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java/pages/login/index.vue"]]);
+  var PagesLoginIndex = /* @__PURE__ */ _export_sfc(_sfc_main$11, [["__scopeId", "data-v-4586967a"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/pages/login/index.vue"]]);
   const _sfc_main$10 = {
     __name: "index",
     props: {
@@ -7533,7 +7818,7 @@ if (uni.restoreGlobal) {
       };
     }
   };
-  var SearchPage = /* @__PURE__ */ _export_sfc(_sfc_main$10, [["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java/components/uni-search/index.vue"]]);
+  var SearchPage = /* @__PURE__ */ _export_sfc(_sfc_main$10, [["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/components/uni-search/index.vue"]]);
   const _sfc_main$$ = {
     __name: "index",
     props: {
@@ -7567,7 +7852,7 @@ if (uni.restoreGlobal) {
       };
     }
   };
-  var EmptyPage = /* @__PURE__ */ _export_sfc(_sfc_main$$, [["__scopeId", "data-v-a750b56c"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java/components/uni-empty-page/index.vue"]]);
+  var EmptyPage = /* @__PURE__ */ _export_sfc(_sfc_main$$, [["__scopeId", "data-v-a750b56c"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/components/uni-empty-page/index.vue"]]);
   var popup = {
     data() {
       return {};
@@ -8052,7 +8337,7 @@ if (uni.restoreGlobal) {
       ])
     ]);
   }
-  var __easycom_0$5 = /* @__PURE__ */ _export_sfc(_sfc_main$_, [["render", _sfc_render$8], ["__scopeId", "data-v-6f54520a"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java/uni_modules/uni-popup/components/uni-popup-dialog/uni-popup-dialog.vue"]]);
+  var __easycom_0$5 = /* @__PURE__ */ _export_sfc(_sfc_main$_, [["render", _sfc_render$8], ["__scopeId", "data-v-6f54520a"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/uni_modules/uni-popup/components/uni-popup-dialog/uni-popup-dialog.vue"]]);
   class MPAnimation {
     constructor(options, _this) {
       this.options = options;
@@ -8399,7 +8684,7 @@ if (uni.restoreGlobal) {
       vue.renderSlot(_ctx.$slots, "default")
     ], 14, ["animation"])) : vue.createCommentVNode("v-if", true);
   }
-  var __easycom_0$4 = /* @__PURE__ */ _export_sfc(_sfc_main$Z, [["render", _sfc_render$7], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java/uni_modules/uni-transition/components/uni-transition/uni-transition.vue"]]);
+  var __easycom_0$4 = /* @__PURE__ */ _export_sfc(_sfc_main$Z, [["render", _sfc_render$7], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/uni_modules/uni-transition/components/uni-transition/uni-transition.vue"]]);
   const _sfc_main$Y = {
     name: "uniPopup",
     components: {},
@@ -8738,7 +9023,7 @@ if (uni.restoreGlobal) {
       ], 32)
     ], 2)) : vue.createCommentVNode("v-if", true);
   }
-  var __easycom_0$3 = /* @__PURE__ */ _export_sfc(_sfc_main$Y, [["render", _sfc_render$6], ["__scopeId", "data-v-7c43d41b"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java/uni_modules/uni-popup/components/uni-popup/uni-popup.vue"]]);
+  var __easycom_0$3 = /* @__PURE__ */ _export_sfc(_sfc_main$Y, [["render", _sfc_render$6], ["__scopeId", "data-v-7c43d41b"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/uni_modules/uni-popup/components/uni-popup/uni-popup.vue"]]);
   const _sfc_main$X = {
     __name: "index",
     props: {
@@ -8786,7 +9071,7 @@ if (uni.restoreGlobal) {
       };
     }
   };
-  var UniPopup = /* @__PURE__ */ _export_sfc(_sfc_main$X, [["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java/components/uni-popup/index.vue"]]);
+  var UniPopup = /* @__PURE__ */ _export_sfc(_sfc_main$X, [["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/components/uni-popup/index.vue"]]);
   var en$1 = {
     "uni-load-more.contentdown": "Pull up to show more",
     "uni-load-more.contentrefresh": "loading...",
@@ -8934,7 +9219,7 @@ if (uni.restoreGlobal) {
       }, vue.toDisplayString($props.status === "more" ? $options.contentdownText : $props.status === "loading" ? $options.contentrefreshText : $options.contentnomoreText), 5)) : vue.createCommentVNode("v-if", true)
     ]);
   }
-  var __easycom_0$2 = /* @__PURE__ */ _export_sfc(_sfc_main$W, [["render", _sfc_render$5], ["__scopeId", "data-v-90d4256a"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java/uni_modules/uni-load-more/components/uni-load-more/uni-load-more.vue"]]);
+  var __easycom_0$2 = /* @__PURE__ */ _export_sfc(_sfc_main$W, [["render", _sfc_render$5], ["__scopeId", "data-v-90d4256a"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/uni_modules/uni-load-more/components/uni-load-more/uni-load-more.vue"]]);
   const _sfc_main$V = {
     __name: "index",
     setup(__props, { expose }) {
@@ -8957,7 +9242,7 @@ if (uni.restoreGlobal) {
       };
     }
   };
-  var ReachBottom = /* @__PURE__ */ _export_sfc(_sfc_main$V, [["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java/components/reach-bottom/index.vue"]]);
+  var ReachBottom = /* @__PURE__ */ _export_sfc(_sfc_main$V, [["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/components/reach-bottom/index.vue"]]);
   const _sfc_main$U = {
     __name: "AlreadyPicUp",
     props: {
@@ -8995,7 +9280,7 @@ if (uni.restoreGlobal) {
       };
     }
   };
-  var AlreadyPicUp = /* @__PURE__ */ _export_sfc(_sfc_main$U, [["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java/pages/search/components/AlreadyPicUp.vue"]]);
+  var AlreadyPicUp = /* @__PURE__ */ _export_sfc(_sfc_main$U, [["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/pages/search/components/AlreadyPicUp.vue"]]);
   const _sfc_main$T = {
     __name: "Canceled",
     props: {
@@ -9022,7 +9307,7 @@ if (uni.restoreGlobal) {
       };
     }
   };
-  var Canceled = /* @__PURE__ */ _export_sfc(_sfc_main$T, [["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java/pages/search/components/Canceled.vue"]]);
+  var Canceled = /* @__PURE__ */ _export_sfc(_sfc_main$T, [["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/pages/search/components/Canceled.vue"]]);
   const _sfc_main$S = {
     __name: "SignFor",
     props: {
@@ -9060,7 +9345,7 @@ if (uni.restoreGlobal) {
       };
     }
   };
-  var SignFor = /* @__PURE__ */ _export_sfc(_sfc_main$S, [["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java/pages/search/components/SignFor.vue"]]);
+  var SignFor = /* @__PURE__ */ _export_sfc(_sfc_main$S, [["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/pages/search/components/SignFor.vue"]]);
   const _sfc_main$R = {
     __name: "Accomplish",
     props: {
@@ -9098,7 +9383,7 @@ if (uni.restoreGlobal) {
       };
     }
   };
-  var Accomplish = /* @__PURE__ */ _export_sfc(_sfc_main$R, [["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java/pages/search/components/Accomplish.vue"]]);
+  var Accomplish = /* @__PURE__ */ _export_sfc(_sfc_main$R, [["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/pages/search/components/Accomplish.vue"]]);
   const _sfc_main$Q = {
     __name: "index",
     setup(__props) {
@@ -9427,7 +9712,7 @@ if (uni.restoreGlobal) {
       };
     }
   };
-  var PagesSearchIndex = /* @__PURE__ */ _export_sfc(_sfc_main$Q, [["__scopeId", "data-v-482e85b8"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java/pages/search/index.vue"]]);
+  var PagesSearchIndex = /* @__PURE__ */ _export_sfc(_sfc_main$Q, [["__scopeId", "data-v-482e85b8"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/pages/search/index.vue"]]);
   class Calendar {
     constructor({
       date,
@@ -9793,7 +10078,7 @@ if (uni.restoreGlobal) {
       }, null, 2)
     ], 34);
   }
-  var calendarItem = /* @__PURE__ */ _export_sfc(_sfc_main$P, [["render", _sfc_render$4], ["__scopeId", "data-v-39ec3f8e"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java/uni_modules/uni-datetime-picker/components/uni-datetime-picker/calendar-item.vue"]]);
+  var calendarItem = /* @__PURE__ */ _export_sfc(_sfc_main$P, [["render", _sfc_render$4], ["__scopeId", "data-v-39ec3f8e"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/uni_modules/uni-datetime-picker/components/uni-datetime-picker/calendar-item.vue"]]);
   var en = {
     "uni-datetime-picker.selectDate": "select date",
     "uni-datetime-picker.selectTime": "select time",
@@ -10536,7 +10821,7 @@ if (uni.restoreGlobal) {
       ], 6)) : vue.createCommentVNode("v-if", true)
     ]);
   }
-  var timePicker = /* @__PURE__ */ _export_sfc(_sfc_main$O, [["render", _sfc_render$3], ["__scopeId", "data-v-60a1244c"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java/uni_modules/uni-datetime-picker/components/uni-datetime-picker/time-picker.vue"]]);
+  var timePicker = /* @__PURE__ */ _export_sfc(_sfc_main$O, [["render", _sfc_render$3], ["__scopeId", "data-v-60a1244c"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/uni_modules/uni-datetime-picker/components/uni-datetime-picker/time-picker.vue"]]);
   const {
     t: t$1
   } = initVueI18n(messages);
@@ -11121,7 +11406,7 @@ if (uni.restoreGlobal) {
       ], 2)) : vue.createCommentVNode("v-if", true)
     ], 32);
   }
-  var calendar = /* @__PURE__ */ _export_sfc(_sfc_main$N, [["render", _sfc_render$2], ["__scopeId", "data-v-94becebc"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java/uni_modules/uni-datetime-picker/components/uni-datetime-picker/calendar.vue"]]);
+  var calendar = /* @__PURE__ */ _export_sfc(_sfc_main$N, [["render", _sfc_render$2], ["__scopeId", "data-v-94becebc"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/uni_modules/uni-datetime-picker/components/uni-datetime-picker/calendar.vue"]]);
   const {
     t
   } = initVueI18n(messages);
@@ -12009,7 +12294,7 @@ if (uni.restoreGlobal) {
       ])
     ]);
   }
-  var __easycom_0$1 = /* @__PURE__ */ _export_sfc(_sfc_main$M, [["render", _sfc_render$1], ["__scopeId", "data-v-6e13d7e2"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java/uni_modules/uni-datetime-picker/components/uni-datetime-picker/uni-datetime-picker.vue"]]);
+  var __easycom_0$1 = /* @__PURE__ */ _export_sfc(_sfc_main$M, [["render", _sfc_render$1], ["__scopeId", "data-v-6e13d7e2"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/uni_modules/uni-datetime-picker/components/uni-datetime-picker/uni-datetime-picker.vue"]]);
   const _sfc_main$L = {
     __name: "date",
     setup(__props, { emit }) {
@@ -12163,7 +12448,7 @@ if (uni.restoreGlobal) {
       };
     }
   };
-  var TateSelete = /* @__PURE__ */ _export_sfc(_sfc_main$L, [["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java/pages/history/commponents/date.vue"]]);
+  var TateSelete = /* @__PURE__ */ _export_sfc(_sfc_main$L, [["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/pages/history/commponents/date.vue"]]);
   const _sfc_main$K = {
     __name: "index",
     props: {
@@ -12215,7 +12500,7 @@ if (uni.restoreGlobal) {
       };
     }
   };
-  var UniTab = /* @__PURE__ */ _export_sfc(_sfc_main$K, [["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java/components/uni-tab/index.vue"]]);
+  var UniTab = /* @__PURE__ */ _export_sfc(_sfc_main$K, [["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/components/uni-tab/index.vue"]]);
   const _sfc_main$J = {
     __name: "pickup",
     props: {
@@ -12330,7 +12615,7 @@ if (uni.restoreGlobal) {
       };
     }
   };
-  var Pickup = /* @__PURE__ */ _export_sfc(_sfc_main$J, [["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java/pages/history/commponents/pickup.vue"]]);
+  var Pickup = /* @__PURE__ */ _export_sfc(_sfc_main$J, [["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/pages/history/commponents/pickup.vue"]]);
   const _sfc_main$I = {
     __name: "delivery",
     props: {
@@ -12452,7 +12737,7 @@ if (uni.restoreGlobal) {
       };
     }
   };
-  var Delivery = /* @__PURE__ */ _export_sfc(_sfc_main$I, [["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java/pages/history/commponents/delivery.vue"]]);
+  var Delivery = /* @__PURE__ */ _export_sfc(_sfc_main$I, [["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/pages/history/commponents/delivery.vue"]]);
   const _sfc_main$H = {
     __name: "index",
     props: {
@@ -12633,7 +12918,7 @@ if (uni.restoreGlobal) {
       };
     }
   };
-  var TabList$2 = /* @__PURE__ */ _export_sfc(_sfc_main$H, [["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java/pages/history/commponents/index.vue"]]);
+  var TabList$2 = /* @__PURE__ */ _export_sfc(_sfc_main$H, [["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/pages/history/commponents/index.vue"]]);
   const _sfc_main$G = {
     __name: "index",
     setup(__props) {
@@ -12722,7 +13007,7 @@ if (uni.restoreGlobal) {
       };
     }
   };
-  var PagesHistoryIndex = /* @__PURE__ */ _export_sfc(_sfc_main$G, [["__scopeId", "data-v-6c15e724"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java/pages/history/index.vue"]]);
+  var PagesHistoryIndex = /* @__PURE__ */ _export_sfc(_sfc_main$G, [["__scopeId", "data-v-6c15e724"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/pages/history/index.vue"]]);
   const getNewList = (type) => request({
     url: `/messages/list?bussinessType=3&contentType=${type}`,
     method: "get"
@@ -12817,7 +13102,7 @@ if (uni.restoreGlobal) {
       };
     }
   };
-  var Announcement = /* @__PURE__ */ _export_sfc(_sfc_main$F, [["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java/pages/news/components/announcement.vue"]]);
+  var Announcement = /* @__PURE__ */ _export_sfc(_sfc_main$F, [["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/pages/news/components/announcement.vue"]]);
   const _sfc_main$E = {
     __name: "notification",
     props: {
@@ -12942,7 +13227,7 @@ if (uni.restoreGlobal) {
       };
     }
   };
-  var Notification = /* @__PURE__ */ _export_sfc(_sfc_main$E, [["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java/pages/news/components/notification.vue"]]);
+  var Notification = /* @__PURE__ */ _export_sfc(_sfc_main$E, [["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/pages/news/components/notification.vue"]]);
   const _sfc_main$D = {
     __name: "index",
     setup(__props) {
@@ -13035,7 +13320,7 @@ if (uni.restoreGlobal) {
       };
     }
   };
-  var PagesNewsIndex = /* @__PURE__ */ _export_sfc(_sfc_main$D, [["__scopeId", "data-v-452e6662"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java/pages/news/index.vue"]]);
+  var PagesNewsIndex = /* @__PURE__ */ _export_sfc(_sfc_main$D, [["__scopeId", "data-v-452e6662"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/pages/news/index.vue"]]);
   const _sfc_main$C = {
     __name: "detail",
     setup(__props) {
@@ -13073,7 +13358,7 @@ if (uni.restoreGlobal) {
       };
     }
   };
-  var PagesNewsDetail = /* @__PURE__ */ _export_sfc(_sfc_main$C, [["__scopeId", "data-v-6803dca4"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java/pages/news/detail.vue"]]);
+  var PagesNewsDetail = /* @__PURE__ */ _export_sfc(_sfc_main$C, [["__scopeId", "data-v-6803dca4"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/pages/news/detail.vue"]]);
   const _sfc_main$B = {
     __name: "system",
     setup(__props) {
@@ -13281,7 +13566,7 @@ if (uni.restoreGlobal) {
       };
     }
   };
-  var PagesNewsSystem = /* @__PURE__ */ _export_sfc(_sfc_main$B, [["__scopeId", "data-v-67cbd0fc"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java/pages/news/system.vue"]]);
+  var PagesNewsSystem = /* @__PURE__ */ _export_sfc(_sfc_main$B, [["__scopeId", "data-v-67cbd0fc"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/pages/news/system.vue"]]);
   const calculateFreight = (params) => request({
     url: "/tasks/calculate",
     method: "post",
@@ -13450,17 +13735,17 @@ if (uni.restoreGlobal) {
       };
     }
   };
-  var CityPopup = /* @__PURE__ */ _export_sfc(_sfc_main$A, [["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java/components/uni-address/index.vue"]]);
+  var CityPopup = /* @__PURE__ */ _export_sfc(_sfc_main$A, [["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/components/uni-address/index.vue"]]);
   const _sfc_main$z = {
     __name: "address",
     setup(__props, { expose, emit }) {
-      const city = vue.ref();
+      const city2 = vue.ref();
       let type = vue.ref(null);
       let mailCity = vue.ref({});
       let consigneeCity = vue.ref({});
       const handleDate = (val) => {
         type.value = val;
-        city.value.handleOpen();
+        city2.value.handleOpen();
       };
       const getCity = (obj) => {
         if (type.value === 1) {
@@ -13519,7 +13804,7 @@ if (uni.restoreGlobal) {
           ]),
           vue.createVNode(CityPopup, {
             ref_key: "city",
-            ref: city,
+            ref: city2,
             type: vue.unref(type),
             onGetCity: getCity
           }, null, 8, ["type"])
@@ -13527,7 +13812,7 @@ if (uni.restoreGlobal) {
       };
     }
   };
-  var UniAddress = /* @__PURE__ */ _export_sfc(_sfc_main$z, [["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java/pages/freight/components/address.vue"]]);
+  var UniAddress = /* @__PURE__ */ _export_sfc(_sfc_main$z, [["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/pages/freight/components/address.vue"]]);
   const _sfc_main$y = {
     __name: "index",
     props: {
@@ -13840,7 +14125,7 @@ if (uni.restoreGlobal) {
       };
     }
   };
-  var GoodsInfo = /* @__PURE__ */ _export_sfc(_sfc_main$y, [["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java/components/uni-goods/index.vue"]]);
+  var GoodsInfo = /* @__PURE__ */ _export_sfc(_sfc_main$y, [["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/components/uni-goods/index.vue"]]);
   const _sfc_main$x = {
     __name: "result",
     props: {
@@ -13863,7 +14148,7 @@ if (uni.restoreGlobal) {
       };
     }
   };
-  var Result = /* @__PURE__ */ _export_sfc(_sfc_main$x, [["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java/pages/freight/components/result.vue"]]);
+  var Result = /* @__PURE__ */ _export_sfc(_sfc_main$x, [["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/pages/freight/components/result.vue"]]);
   const _sfc_main$w = {
     __name: "index",
     setup(__props) {
@@ -13969,7 +14254,7 @@ if (uni.restoreGlobal) {
       };
     }
   };
-  var PagesFreightIndex = /* @__PURE__ */ _export_sfc(_sfc_main$w, [["__scopeId", "data-v-628b0746"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java/pages/freight/index.vue"]]);
+  var PagesFreightIndex = /* @__PURE__ */ _export_sfc(_sfc_main$w, [["__scopeId", "data-v-628b0746"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/pages/freight/index.vue"]]);
   const _sfc_main$v = {
     __name: "index",
     props: {
@@ -14040,7 +14325,7 @@ if (uni.restoreGlobal) {
       };
     }
   };
-  var ListFiltrate = /* @__PURE__ */ _export_sfc(_sfc_main$v, [["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java/components/uni-list-filtrate/index.vue"]]);
+  var ListFiltrate = /* @__PURE__ */ _export_sfc(_sfc_main$v, [["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/components/uni-list-filtrate/index.vue"]]);
   const _sfc_main$u = {
     __name: "index",
     props: {
@@ -14185,7 +14470,7 @@ if (uni.restoreGlobal) {
       };
     }
   };
-  var ExpressageFoot = /* @__PURE__ */ _export_sfc(_sfc_main$u, [["__scopeId", "data-v-74ae7a27"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java/components/uni-expressage-foot/index.vue"]]);
+  var ExpressageFoot = /* @__PURE__ */ _export_sfc(_sfc_main$u, [["__scopeId", "data-v-74ae7a27"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/components/uni-expressage-foot/index.vue"]]);
   const _sfc_main$t = {
     __name: "index",
     props: {
@@ -14230,7 +14515,7 @@ if (uni.restoreGlobal) {
       };
     }
   };
-  var Phone = /* @__PURE__ */ _export_sfc(_sfc_main$t, [["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java/components/uni-phone/index.vue"]]);
+  var Phone = /* @__PURE__ */ _export_sfc(_sfc_main$t, [["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/components/uni-phone/index.vue"]]);
   const _sfc_main$s = {
     __name: "dealParcel",
     props: {
@@ -14499,7 +14784,7 @@ if (uni.restoreGlobal) {
       };
     }
   };
-  var DealParcel$1 = /* @__PURE__ */ _export_sfc(_sfc_main$s, [["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java/pages/delivery/components/components/dealParcel.vue"]]);
+  var DealParcel$1 = /* @__PURE__ */ _export_sfc(_sfc_main$s, [["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/pages/delivery/components/components/dealParcel.vue"]]);
   const _sfc_main$r = {
     __name: "alreadyParcel",
     props: {
@@ -14748,7 +15033,7 @@ if (uni.restoreGlobal) {
       };
     }
   };
-  var AlreadyParcel$1 = /* @__PURE__ */ _export_sfc(_sfc_main$r, [["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java/pages/delivery/components/components/alreadyParcel.vue"]]);
+  var AlreadyParcel$1 = /* @__PURE__ */ _export_sfc(_sfc_main$r, [["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/pages/delivery/components/components/alreadyParcel.vue"]]);
   const _sfc_main$q = {
     __name: "list",
     props: {
@@ -14872,7 +15157,7 @@ if (uni.restoreGlobal) {
       };
     }
   };
-  var TabList$1 = /* @__PURE__ */ _export_sfc(_sfc_main$q, [["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java/pages/delivery/components/list.vue"]]);
+  var TabList$1 = /* @__PURE__ */ _export_sfc(_sfc_main$q, [["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/pages/delivery/components/list.vue"]]);
   const _sfc_main$p = {
     __name: "index",
     emits: "",
@@ -15066,7 +15351,7 @@ if (uni.restoreGlobal) {
       };
     }
   };
-  var PagesDeliveryIndex = /* @__PURE__ */ _export_sfc(_sfc_main$p, [["__scopeId", "data-v-7c6df030"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java/pages/delivery/index.vue"]]);
+  var PagesDeliveryIndex = /* @__PURE__ */ _export_sfc(_sfc_main$p, [["__scopeId", "data-v-7c6df030"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/pages/delivery/index.vue"]]);
   const _sfc_main$o = {
     __name: "dealParcel",
     props: {
@@ -15356,7 +15641,7 @@ if (uni.restoreGlobal) {
       };
     }
   };
-  var DealParcel = /* @__PURE__ */ _export_sfc(_sfc_main$o, [["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java/pages/pickup/components/components/dealParcel.vue"]]);
+  var DealParcel = /* @__PURE__ */ _export_sfc(_sfc_main$o, [["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/pages/pickup/components/components/dealParcel.vue"]]);
   const _sfc_main$n = {
     __name: "alreadyParcel",
     props: {
@@ -15608,7 +15893,7 @@ if (uni.restoreGlobal) {
       };
     }
   };
-  var AlreadyParcel = /* @__PURE__ */ _export_sfc(_sfc_main$n, [["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java/pages/pickup/components/components/alreadyParcel.vue"]]);
+  var AlreadyParcel = /* @__PURE__ */ _export_sfc(_sfc_main$n, [["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/pages/pickup/components/components/alreadyParcel.vue"]]);
   const _sfc_main$m = {
     __name: "cancelParcel",
     props: {
@@ -15848,7 +16133,7 @@ if (uni.restoreGlobal) {
       };
     }
   };
-  var CancelParcel = /* @__PURE__ */ _export_sfc(_sfc_main$m, [["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java/pages/pickup/components/components/cancelParcel.vue"]]);
+  var CancelParcel = /* @__PURE__ */ _export_sfc(_sfc_main$m, [["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/pages/pickup/components/components/cancelParcel.vue"]]);
   const _sfc_main$l = {
     __name: "list",
     props: {
@@ -15989,7 +16274,7 @@ if (uni.restoreGlobal) {
       };
     }
   };
-  var TabList = /* @__PURE__ */ _export_sfc(_sfc_main$l, [["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java/pages/pickup/components/list.vue"]]);
+  var TabList = /* @__PURE__ */ _export_sfc(_sfc_main$l, [["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/pages/pickup/components/list.vue"]]);
   const _sfc_main$k = {
     __name: "index",
     emits: "",
@@ -16181,7 +16466,7 @@ if (uni.restoreGlobal) {
       };
     }
   };
-  var PagesPickupIndex = /* @__PURE__ */ _export_sfc(_sfc_main$k, [["__scopeId", "data-v-0e6a68f8"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java/pages/pickup/index.vue"]]);
+  var PagesPickupIndex = /* @__PURE__ */ _export_sfc(_sfc_main$k, [["__scopeId", "data-v-0e6a68f8"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/pages/pickup/index.vue"]]);
   const _sfc_main$j = {
     __name: "index",
     setup(__props) {
@@ -16367,7 +16652,7 @@ if (uni.restoreGlobal) {
       };
     }
   };
-  var PagesTurnorderIndex = /* @__PURE__ */ _export_sfc(_sfc_main$j, [["__scopeId", "data-v-566d70cb"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java/pages/turnorder/index.vue"]]);
+  var PagesTurnorderIndex = /* @__PURE__ */ _export_sfc(_sfc_main$j, [["__scopeId", "data-v-566d70cb"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/pages/turnorder/index.vue"]]);
   const _sfc_main$i = {
     __name: "index",
     setup(__props) {
@@ -16509,7 +16794,7 @@ if (uni.restoreGlobal) {
       };
     }
   };
-  var PagesCancelIndex = /* @__PURE__ */ _export_sfc(_sfc_main$i, [["__scopeId", "data-v-3ce92776"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java/pages/cancel/index.vue"]]);
+  var PagesCancelIndex = /* @__PURE__ */ _export_sfc(_sfc_main$i, [["__scopeId", "data-v-3ce92776"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/pages/cancel/index.vue"]]);
   const _sfc_main$h = {
     __name: "cause",
     setup(__props) {
@@ -16559,7 +16844,7 @@ if (uni.restoreGlobal) {
       };
     }
   };
-  var PagesCancelCause = /* @__PURE__ */ _export_sfc(_sfc_main$h, [["__scopeId", "data-v-17014f8d"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java/pages/cancel/cause.vue"]]);
+  var PagesCancelCause = /* @__PURE__ */ _export_sfc(_sfc_main$h, [["__scopeId", "data-v-17014f8d"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/pages/cancel/cause.vue"]]);
   const _sfc_main$g = {
     __name: "address",
     props: {
@@ -16601,7 +16886,7 @@ if (uni.restoreGlobal) {
       };
     }
   };
-  var Address = /* @__PURE__ */ _export_sfc(_sfc_main$g, [["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java/pages/details/components/address.vue"]]);
+  var Address = /* @__PURE__ */ _export_sfc(_sfc_main$g, [["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/pages/details/components/address.vue"]]);
   const _sfc_main$f = {
     __name: "authentication",
     props: {
@@ -16733,7 +17018,7 @@ if (uni.restoreGlobal) {
       };
     }
   };
-  var Authentication = /* @__PURE__ */ _export_sfc(_sfc_main$f, [["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java/pages/details/components/authentication.vue"]]);
+  var Authentication = /* @__PURE__ */ _export_sfc(_sfc_main$f, [["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/pages/details/components/authentication.vue"]]);
   const _sfc_main$e = {
     __name: "uppop",
     props: {
@@ -16955,7 +17240,7 @@ if (uni.restoreGlobal) {
       };
     }
   };
-  var Uppop$1 = /* @__PURE__ */ _export_sfc(_sfc_main$e, [["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java/pages/details/components/uppop.vue"]]);
+  var Uppop$1 = /* @__PURE__ */ _export_sfc(_sfc_main$e, [["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/pages/details/components/uppop.vue"]]);
   const _sfc_main$d = {
     __name: "index",
     emits: "",
@@ -17332,7 +17617,7 @@ if (uni.restoreGlobal) {
       };
     }
   };
-  var PagesDetailsIndex = /* @__PURE__ */ _export_sfc(_sfc_main$d, [["__scopeId", "data-v-54d3589c"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java/pages/details/index.vue"]]);
+  var PagesDetailsIndex = /* @__PURE__ */ _export_sfc(_sfc_main$d, [["__scopeId", "data-v-54d3589c"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/pages/details/index.vue"]]);
   const _sfc_main$c = {
     __name: "waybill",
     emits: "",
@@ -17751,7 +18036,7 @@ if (uni.restoreGlobal) {
       };
     }
   };
-  var PagesDetailsWaybill = /* @__PURE__ */ _export_sfc(_sfc_main$c, [["__scopeId", "data-v-6bc258c0"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java/pages/details/waybill.vue"]]);
+  var PagesDetailsWaybill = /* @__PURE__ */ _export_sfc(_sfc_main$c, [["__scopeId", "data-v-6bc258c0"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/pages/details/waybill.vue"]]);
   const _sfc_main$b = {
     __name: "index",
     setup(__props) {
@@ -17848,7 +18133,7 @@ if (uni.restoreGlobal) {
       };
     }
   };
-  var PagesPayIndex = /* @__PURE__ */ _export_sfc(_sfc_main$b, [["__scopeId", "data-v-32f2f1fc"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java/pages/pay/index.vue"]]);
+  var PagesPayIndex = /* @__PURE__ */ _export_sfc(_sfc_main$b, [["__scopeId", "data-v-32f2f1fc"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/pages/pay/index.vue"]]);
   let uQRCode = {};
   (function() {
     function QR8bitByte(data) {
@@ -18863,7 +19148,7 @@ if (uni.restoreGlobal) {
       };
     }
   };
-  var Uppop = /* @__PURE__ */ _export_sfc(_sfc_main$a, [["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java/pages/pay/components/uppop.vue"]]);
+  var Uppop = /* @__PURE__ */ _export_sfc(_sfc_main$a, [["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/pages/pay/components/uppop.vue"]]);
   const _sfc_main$9 = {
     __name: "scanPay",
     setup(__props) {
@@ -19068,7 +19353,7 @@ if (uni.restoreGlobal) {
       };
     }
   };
-  var PagesPayScanPay = /* @__PURE__ */ _export_sfc(_sfc_main$9, [["__scopeId", "data-v-a4052eca"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java/pages/pay/scanPay.vue"]]);
+  var PagesPayScanPay = /* @__PURE__ */ _export_sfc(_sfc_main$9, [["__scopeId", "data-v-a4052eca"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/pages/pay/scanPay.vue"]]);
   const _sfc_main$8 = {
     __name: "BaseInfo",
     props: {
@@ -19116,7 +19401,7 @@ if (uni.restoreGlobal) {
       };
     }
   };
-  var BaseInfo = /* @__PURE__ */ _export_sfc(_sfc_main$8, [["__scopeId", "data-v-1c1ce0bd"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java/pages/my/commponents/BaseInfo.vue"]]);
+  var BaseInfo = /* @__PURE__ */ _export_sfc(_sfc_main$8, [["__scopeId", "data-v-1c1ce0bd"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/pages/my/commponents/BaseInfo.vue"]]);
   const _sfc_main$7 = {
     name: "UniRate",
     props: {
@@ -19333,7 +19618,7 @@ if (uni.restoreGlobal) {
       ], 512)
     ]);
   }
-  var __easycom_0 = /* @__PURE__ */ _export_sfc(_sfc_main$7, [["render", _sfc_render], ["__scopeId", "data-v-978a5ada"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java/uni_modules/uni-rate/components/uni-rate/uni-rate.vue"]]);
+  var __easycom_0 = /* @__PURE__ */ _export_sfc(_sfc_main$7, [["render", _sfc_render], ["__scopeId", "data-v-978a5ada"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/uni_modules/uni-rate/components/uni-rate/uni-rate.vue"]]);
   const _sfc_main$6 = {
     __name: "Evaluate",
     props: {
@@ -19369,7 +19654,7 @@ if (uni.restoreGlobal) {
       };
     }
   };
-  var Evaluate = /* @__PURE__ */ _export_sfc(_sfc_main$6, [["__scopeId", "data-v-e5f99d92"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java/pages/my/commponents/Evaluate.vue"]]);
+  var Evaluate = /* @__PURE__ */ _export_sfc(_sfc_main$6, [["__scopeId", "data-v-e5f99d92"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/pages/my/commponents/Evaluate.vue"]]);
   const _sfc_main$5 = {
     __name: "HistoryScope",
     setup(__props) {
@@ -19409,7 +19694,7 @@ if (uni.restoreGlobal) {
       };
     }
   };
-  var HistoryScope = /* @__PURE__ */ _export_sfc(_sfc_main$5, [["__scopeId", "data-v-f05c4784"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java/pages/my/commponents/HistoryScope.vue"]]);
+  var HistoryScope = /* @__PURE__ */ _export_sfc(_sfc_main$5, [["__scopeId", "data-v-f05c4784"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/pages/my/commponents/HistoryScope.vue"]]);
   const _sfc_main$4 = {
     __name: "index",
     setup(__props) {
@@ -19452,7 +19737,7 @@ if (uni.restoreGlobal) {
       };
     }
   };
-  var PagesMyIndex = /* @__PURE__ */ _export_sfc(_sfc_main$4, [["__scopeId", "data-v-4dcceeb0"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java/pages/my/index.vue"]]);
+  var PagesMyIndex = /* @__PURE__ */ _export_sfc(_sfc_main$4, [["__scopeId", "data-v-4dcceeb0"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/pages/my/index.vue"]]);
   const getUserScope = (params) => request({
     url: `/users/scope`,
     method: "get",
@@ -19534,7 +19819,7 @@ if (uni.restoreGlobal) {
       };
     }
   };
-  var PagesMyMap = /* @__PURE__ */ _export_sfc(_sfc_main$3, [["__scopeId", "data-v-4adb27b2"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java/pages/my/map.vue"]]);
+  var PagesMyMap = /* @__PURE__ */ _export_sfc(_sfc_main$3, [["__scopeId", "data-v-4adb27b2"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/pages/my/map.vue"]]);
   const _sfc_main$2 = {
     __name: "qrCode",
     setup(__props) {
@@ -19583,7 +19868,7 @@ if (uni.restoreGlobal) {
       };
     }
   };
-  var PagesMyQrCode = /* @__PURE__ */ _export_sfc(_sfc_main$2, [["__scopeId", "data-v-699c7670"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java/pages/my/qrCode.vue"]]);
+  var PagesMyQrCode = /* @__PURE__ */ _export_sfc(_sfc_main$2, [["__scopeId", "data-v-699c7670"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/pages/my/qrCode.vue"]]);
   const _sfc_main$1 = {
     __name: "orderMap",
     setup(__props) {
@@ -19725,13 +20010,14 @@ if (uni.restoreGlobal) {
       };
     }
   };
-  var PagesDetailsOrderMap = /* @__PURE__ */ _export_sfc(_sfc_main$1, [["__scopeId", "data-v-d6902958"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java/pages/details/orderMap.vue"]]);
+  var PagesDetailsOrderMap = /* @__PURE__ */ _export_sfc(_sfc_main$1, [["__scopeId", "data-v-d6902958"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/pages/details/orderMap.vue"]]);
   __definePage("pages/login/user", PagesLoginUser);
   __definePage("pages/index/index", PagesIndexIndex);
   __definePage("pages/serviceSkill/index", PagesServiceSkillIndex);
   __definePage("pages/getOrder/index", PagesGetOrderIndex);
   __definePage("pages/serviceRange/index", PagesServiceRangeIndex);
   __definePage("pages/city/index", PagesCityIndex);
+  __definePage("pages/setting/index", PagesSettingIndex);
   __definePage("pages/login/index", PagesLoginIndex);
   __definePage("pages/search/index", PagesSearchIndex);
   __definePage("pages/history/index", PagesHistoryIndex);
@@ -19781,7 +20067,7 @@ if (uni.restoreGlobal) {
       };
     }
   };
-  var App = /* @__PURE__ */ _export_sfc(_sfc_main, [["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java/App.vue"]]);
+  var App = /* @__PURE__ */ _export_sfc(_sfc_main, [["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/App.vue"]]);
   var global$1 = {
     state: {
       footStatus: 0
@@ -19798,8 +20084,9 @@ if (uni.restoreGlobal) {
     namespaced: true,
     state() {
       return {
+        location: {},
+        address: "\u8BF7\u9009\u62E9",
         userBase: {},
-        loacation: {},
         pages: 0,
         page: 1,
         token: "",
@@ -19841,6 +20128,12 @@ if (uni.restoreGlobal) {
       };
     },
     mutations: {
+      setLocation(state, provider) {
+        state.loacation = provider;
+      },
+      setAddress(state, provider) {
+        state.address = provider;
+      },
       setToken(state, provider) {
         state.token = provider;
       },
@@ -19992,4 +20285,4 @@ if (uni.restoreGlobal) {
   const app = createApp(App);
   app.use(store);
   app.mount("#app");
-})(Vue, uni.VueShared);
+})(uni.VueShared, Vue);
