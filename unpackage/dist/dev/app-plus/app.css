@@ -2594,7 +2594,7 @@ body {
   vertical-align: middle;
 }
 .footBox {
-  position: fixed;
+  position: absolute;
   height: 3.125rem;
   bottom: 0;
   z-index: 0;

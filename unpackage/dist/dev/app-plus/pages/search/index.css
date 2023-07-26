@@ -765,7 +765,7 @@ body[data-v-a750b56c] {
   vertical-align: middle;
 }
 .footBox[data-v-a750b56c] {
-  position: fixed;
+  position: absolute;
   height: 3.125rem;
   bottom: 0;
   z-index: 0;

@@ -12,10 +12,8 @@ uni-page-head,
 		box-shadow: 0 0 22rpx 22rpx rgba(162, 162, 162, 0.06);}
 }
 .scrollList{
-  padding-bottom: 130rpx;
-  height: calc(100vh - 180rpx);
-  position: relative;
-  z-index: 9;
+  // margin-bottom: 130rpx;
+  height: calc(100vh - 50rpx);
 }
 .homeFilter{
   background-color: var(--neutral-color-white);
@@ -269,6 +267,7 @@ uni-page-head,
     font-size: 24rpx;
     color: var(--color-gray-9);
     text-align: center;
+    padding-bottom: 130rpx;
   }
   .dialog{
     width:442rpx ;
