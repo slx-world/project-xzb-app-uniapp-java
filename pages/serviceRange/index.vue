@@ -89,7 +89,7 @@ const markerTap = () => {
 };
 //选择服务城市
 const handleSelectCity = () => {
-  uni.redirectTo({
+  uni.navigateTo({
     url: '/pages/city/index?address=' + address.value,
   });
 };
@@ -185,9 +185,7 @@ onMounted(() => {
 });
 // 返回上一页
 const goBack = () => {
-  uni.redirectTo({
-    url: '/pages/index/index',
-  });
+  uni.navigateBack();
 };
 </script>
 <style src="./index.scss" lang="scss" scoped></style>

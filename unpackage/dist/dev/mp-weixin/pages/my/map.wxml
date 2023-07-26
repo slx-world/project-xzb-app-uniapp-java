@@ -1,0 +1,1 @@
+<uni-nav wx:if="{{b}}" class="data-v-4adb27b2" bindgoBack="{{a}}" u-i="4adb27b2-0" bind:__l="__l" u-p="{{b}}"></uni-nav><view class="content data-v-4adb27b2"><map class="mapBox data-v-4adb27b2" latitude="{{c}}" longitude="{{d}}" polygons="{{e}}" scale="16"></map></view>

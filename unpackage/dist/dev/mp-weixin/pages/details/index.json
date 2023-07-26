@@ -1,0 +1,11 @@
+{
+  "navigationStyle": "custom",
+  "navigationBarTitleText": "去取件",
+  "usingComponents": {
+    "uni-nav": "../../components/uni-nav/index",
+    "address": "./components/address",
+    "goods-info": "../../components/uni-goods/index",
+    "authentication": "./components/authentication",
+    "uppop": "./components/uppop"
+  }
+}

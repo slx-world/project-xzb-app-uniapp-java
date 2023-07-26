@@ -17,11 +17,9 @@
             <view class="setpTitle">实名认证</view>
             <view class="setpIntroduce">平台会保护你的个人信息</view>
           </view>
-          <view
-            class="btn"
-            :class="canPickUp ? 'btn-successGreen' : 'btn-red'"
-            >{{ canPickUp ? '已完成' : '去认证' }}</view
-          ></view
+          <view class="btn" :class="auth ? 'btn-successGreen' : 'btn-red'">{{
+            auth ? '已完成' : '去认证'
+          }}</view></view
         >
       </view>
       <view class="stepTwo stepItem">
@@ -83,13 +81,16 @@
 <script setup>
 import { ref, reactive, onMounted } from 'vue';
 import { getUserSetting, setPickUpStatus } from '../api/setting.js';
+import { onShow } from '@dcloudio/uni-app';
 const canPickUp = ref(false); //是否开启接单
 const settingsStatus = ref(false); //是否配置完成
 const serveRangeStatus = ref(false); //是否配置服务范围
-const serveSkillStatus = ref(false);
-onMounted(() => {
+const serveSkillStatus = ref(false); //是否配置服务技能
+const auth = ref(false); //是否实名认证
+onShow(() => {
   getSetting();
 });
+onMounted(() => {});
 //获取配置信息
 const getSetting = () => {
   getUserSetting()
@@ -98,6 +99,8 @@ const getSetting = () => {
         canPickUp.value = res.data.canPickUp;
         settingsStatus.value = res.data.settingsStatus;
         serveRangeStatus.value = res.data.serveScopeSetted;
+        serveSkillStatus.value = res.data.serveSkillSetted;
+        auth.value = res.data.authed;
       }
     })
     .catch((err) => {
@@ -128,13 +131,13 @@ const handlePickUpStatus = () => {
 };
 //设置服务技能
 const toServiceSikll = () => {
-  uni.redirectTo({
+  uni.navigateTo({
     url: '/pages/serviceSkill/index',
   });
 };
 //设置服务范围
 const toServiceRange = () => {
-  uni.redirectTo({
+  uni.navigateTo({
     url: '/pages/serviceRange/index',
   });
 };
@@ -143,6 +146,9 @@ const toIndex = () => {
   if (!settingsStatus.value) {
     return;
   } else {
+    uni.redirectTo({
+      url: '/pages/index/index',
+    });
   }
 };
 </script>

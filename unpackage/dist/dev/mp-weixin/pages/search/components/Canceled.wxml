@@ -1,0 +1,1 @@
+<view wx:if="{{a}}" class="expressage"><view class="cancelList"><view class="item"><view>寄件人：{{b}}</view><view>取件地址：{{c}}</view><view>取消原因：{{d}}</view><view>原因描述：{{e}}</view></view></view></view>

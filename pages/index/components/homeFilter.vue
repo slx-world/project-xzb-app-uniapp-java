@@ -23,17 +23,17 @@
       <view class="service">
         <view
           class="serviceItem"
-          :class="activeType === item.value ? 'active' : ''"
-          v-for="(item, index) in serviceType"
+          :class="activeType === item.id ? 'active' : ''"
+          v-for="(item, index) in serviceType.data"
           :key="index"
-          @click="handleService(item.value)"
+          @click="handleService(item.id)"
         >
-          {{ item.label }}
+          {{ item.name }}
         </view>
       </view>
       <view class="footer">
-        <view class="btn-gray btn">重置</view>
-        <view class="btn-red btn">确定</view>
+        <view class="btn-gray btn" @click="handleReset">重置</view>
+        <view class="btn-red btn" @click="handleSubmit">确定</view>
       </view>
     </view>
   </view>
@@ -41,42 +41,54 @@
 
 <script setup>
 import { useStore } from 'vuex';
-import { ref, reactive, onMounted } from 'vue';
+import { ref, reactive, watch } from 'vue';
+const emit = defineEmits(['handleCanScroll', 'getList']); //子组件向父组件事件传递
 // 获取父组件值、方法
 const props = defineProps({
   fixTop: {
     type: Boolean,
     default: false,
   },
+  homeFilterList: {
+    type: Array,
+    default: () => [],
+  },
 });
 const status = ref(0);
 const isOpen = ref(false);
-const serviceType = reactive([
-  {
-    label: '全部',
-    value: 1,
-  },
-  {
-    label: '保洁清洗',
-    value: 2,
-  },
-  {
-    label: '日常维修',
-    value: 3,
-  },
-]);
-const activeType = ref(1);
+let serviceType = reactive({
+  data: [],
+});
+const activeType = ref('');
 // ------定义方法------
 const handleClick = (val) => {
   status.value = val;
 };
 const handleOpen = () => {
   isOpen.value = !isOpen.value;
+  emit('handleCanScroll', isOpen.value);
+};
+
+const handleReset = () => {
+  activeType.value = '';
+  isOpen.value = false;
+  emit('getList', '');
 };
 
 const handleService = (val) => {
   activeType.value = val;
 };
+const handleSubmit = () => {
+  isOpen.value = false;
+  emit('getList', activeType.value);
+};
+watch(
+  () => props.homeFilterList,
+  () => {
+    serviceType.data = [{ id: '', name: '全部' }].concat(props.homeFilterList);
+    // console.log(serviceType.data, props.homeFilterList, '-fffffffffff');
+  }
+);
 </script>
 
 <style src="../index.scss" lang="scss"></style>

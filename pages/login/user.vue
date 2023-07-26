@@ -178,6 +178,9 @@ const handleSubmit = async () => {
             }
           });
         } else {
+          setTimeout(function () {
+            uni.hideLoading();
+          }, 500);
           uni.showToast({
             title: res.msg,
             duration: 1000,
@@ -186,11 +189,14 @@ const handleSubmit = async () => {
         }
       })
       .catch((err) => {
-        // uni.showToast({
-        // 	title: err.msg,
-        // 	duration: 15000,
-        // 	icon: 'none'
-        // });
+        setTimeout(function () {
+          uni.hideLoading();
+        }, 500);
+        uni.showToast({
+          title: err.msg,
+          duration: 1500,
+          icon: 'none',
+        });
       });
   }
 };

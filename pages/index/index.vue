@@ -3,18 +3,33 @@
   <view class="home">
     <!-- 手机状态栏 -->
     <uni-nav-bar statusBar="true" backgroundColor="#F74347"></uni-nav-bar>
-    <scroll-view scroll-y="true" class="scrollList" @scroll="handleScroll">
+    <scroll-view
+      :scroll-y="icCanScroll"
+      class="scrollList"
+      @scroll="handleScroll"
+    >
       <!-- 顶部基础配置和背景图 -->
       <view class="navFrame">
         <!-- nav -->
         <UniNav @goBack="goBack"></UniNav>
       </view>
       <!-- 首页筛选 -->
-      <HomeFilter> </HomeFilter>
+      <HomeFilter
+        @handleCanScroll="handleCanScroll"
+        :homeFilterList="homeFilterList.data"
+        @getList="getList"
+      >
+      </HomeFilter>
       <!-- 吸顶筛选 -->
-      <HomeFilter :fixTop="fixTop" v-show="fixTop"> </HomeFilter>
+      <HomeFilter
+        :fixTop="fixTop"
+        v-show="fixTop"
+        :homeFilterList="homeFilterList.data"
+        @getList="getList"
+      >
+      </HomeFilter>
       <!-- end -->
-      <HomeList></HomeList>
+      <HomeList :data="homeList.data" @refresh="getRobOrderList"></HomeList>
     </scroll-view>
 
     <!-- footer -->
@@ -31,11 +46,7 @@ import { getTimeDate, positionsUploadInit } from '@/utils/index.js';
 // 静态数据
 import { tabBars } from '@/utils/commonData.js';
 // 导入接口
-import {
-  getHomeInfo,
-  getHomeData,
-  getDeliveryList,
-} from '@/pages/api/index.js';
+import { getRobOrder, getHomeFilter } from '../api/order.js';
 // 导入组件
 // 导航
 import UniNav from '@/components/uni-home-nav/index.vue';
@@ -45,8 +56,18 @@ import HomeFilter from './components/homeFilter';
 import HomeList from './components/homeList';
 // ------定义变量------
 const fixTop = ref(false);
+const icCanScroll = ref(true);
+let homeFilterList = reactive({
+  data: [],
+});
+let homeList = reactive({
+  data: [],
+});
 // ------生命周期------
-onMounted(() => {});
+onMounted(() => {
+  getRobOrderList();
+  getHomeFilterList();
+});
 // ------定义方法------
 //下拉刷新
 onPullDownRefresh(() => {
@@ -55,6 +76,27 @@ onPullDownRefresh(() => {
   }, 1000);
   console.log('refresh');
 });
+const getList = (params) => {
+  getRobOrderList(params);
+};
+//获取抢单列表
+const getRobOrderList = (params) => {
+  getRobOrder(params).then((res) => {
+    console.log(res, 1111111);
+    homeList.data = res.data.ordersSeizes;
+  });
+};
+//获取首页顶部筛选服务项数据
+const getHomeFilterList = () => {
+  getHomeFilter().then((res) => {
+    // console.log(res.data, 'getHomeFilterList');
+    homeFilterList.data = res.data;
+  });
+};
+//点击服务类型展开时不可滚动
+const handleCanScroll = (val) => {
+  icCanScroll.value = !val;
+};
 // 监听滚动
 const handleScroll = (e) => {
   if (e.detail.scrollTop > 188) {

@@ -1,0 +1,9 @@
+{
+  "navigationStyle": "custom",
+  "navigationBarTitleText": "系统通知",
+  "usingComponents": {
+    "uni-nav": "../../components/uni-nav/index",
+    "empty-page": "../../components/uni-empty-page/index",
+    "reach-bottom": "../../components/reach-bottom/index"
+  }
+}

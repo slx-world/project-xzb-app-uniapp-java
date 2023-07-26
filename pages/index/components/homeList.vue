@@ -3,138 +3,83 @@
   <view class="homeList">
     <view class="card" v-for="(item, index) in data" :key="index">
       <view class="card-content">
-        <image class="leftCardContent" :src="item.imgUrl"></image>
+        <image class="leftCardContent" :src="item.serveItemImg"></image>
         <view class="rightCardContent">
           <view class="title">
-            {{ item.serviceFirst }}-{{ item.serviceSecond }}
+            {{ item.serveTypeName }}-{{ item.serveItemName }}
           </view>
           <view class="serviceTime">
             <text>服务时间</text>
-            <text>{{ item.time }}</text>
-          </view>
-          <view class="serviceAddress">
-            <view>服务地址</view>
-            <view class="address">
-              <view
-                :id="`addressContent` + index"
-                class="addressContent"
-                :class="`${isShowMoreThan2[index] ? 'moreThan2' : ''}`"
-                >{{ item.address }}</view
-              >
-              <view class="toggle" v-if="isShowMoreThan2List[index]">
-                <view
-                  class="icon"
-                  :class="isOpen ? 'up' : 'down'"
-                  @click="handleOpen(index)"
-                ></view>
-                <view class="toggleText">展开</view>
-              </view>
-            </view>
+            <text>{{ item.serveStartTime }}</text>
           </view>
         </view>
       </view>
+      <view class="serviceAddress">
+        <!-- <view>服务地址</view> -->
+        <view class="address">
+          <view class="addressContent">{{ item.serveAddress }}</view>
+        </view>
+      </view>
       <view class="cardFooter">
-        <view class="price">￥{{ item.tips }}</view>
-        <view class="robBtn btn-red">立即抢单</view>
+        <view class="price">
+          <text class="price-label">服务费用</text>
+          ￥{{ item.serveFee }}
+        </view>
+        <view class="robBtn btn-red" @click="handleRob(item.id)">立即抢单</view>
       </view>
     </view>
     <view class="footer">- 已 经 到 底 了 -</view>
+    <!-- 提示窗示例 -->
+    <uni-popup ref="alertDialog" type="dialog" :is-mask-click="false">
+      <view class="dialog">
+        <view class="img" :class="isRob ? 'success' : 'fail'"></view>
+        <view class="content">{{
+          isRob ? '抢单成功' : '很遗憾，抢单失败'
+        }}</view>
+        <view class="footer" @click="handleClose">确定</view>
+      </view>
+    </uni-popup>
   </view>
 </template>
 
 <script setup>
-import { ref, reactive, onMounted } from 'vue';
-
-const isOpen = ref(false); //展开收起
-const isShowMoreThan2 = ref([]); //控制是否隐藏以及正常显示
-const isShowMoreThan2List = ref([]); //控制展开按钮是否显示
-
-onMounted(() => {
-  data.forEach((item, index) => {
-    checkContentOverflow(index);
-  });
+import { ref, reactive, onMounted, watch } from 'vue';
+import { robOrder } from '../../api/order.js';
+const emit = defineEmits(['refresh']); //子组件向父组件事件传递
+// 获取父组件值、方法
+const props = defineProps({
+  data: {
+    type: Array,
+    default: () => [],
+  },
 });
-const checkContentOverflow = (index) => {
-  const query = uni.createSelectorQuery().in(this);
-  query
-    .select(`#addressContent${index}`)
-    .boundingClientRect((data) => {
-      // 更新 isShowMoreThan2 数组的值
-      isShowMoreThan2.value[index] = data.height > 32;
-      isShowMoreThan2List.value[index] = data.height > 32;
-    })
-    .exec();
+onMounted(() => {});
+const isRob = ref(true);
+let data = reactive([]);
+const alertDialog = ref(null);
+const handleClose = () => {
+  alertDialog.value.close();
+  emit('refresh');
 };
-
-const data = reactive([
-  {
-    serviceFirst: '保洁清洗',
-    serviceSecond: '日常保洁',
-    time: '2026.5.26 12:30',
-    address:
-      '北京市昌平区金艳龙4层按时打算大所大所大所大所大所多撒多所撒撒多撒大所大',
-    tips: 198,
-    imgUrl:
-      'https://yjy-rjwm-oss.oss-cn-hangzhou.aliyuncs.com/f507328c-27c4-41e6-88cd-09edfaba72c3.jpg',
-  },
-  {
-    serviceFirst: '保洁清洗',
-    serviceSecond: '日常保洁',
-    time: '2026.5.26 12:30',
-    address: '北京市昌平区金艳龙4层',
-    tips: 198,
-    imgUrl:
-      'https://yjy-rjwm-oss.oss-cn-hangzhou.aliyuncs.com/f507328c-27c4-41e6-88cd-09edfaba72c3.jpg',
-  },
-  {
-    serviceFirst: '保洁清洗',
-    serviceSecond: '日常保洁',
-    time: '2026.5.26 12:30',
-    address: '北京市昌平区金艳龙4层',
-    tips: 198,
-    imgUrl:
-      'https://yjy-rjwm-oss.oss-cn-hangzhou.aliyuncs.com/f507328c-27c4-41e6-88cd-09edfaba72c3.jpg',
-  },
-  {
-    serviceFirst: '保洁清洗',
-    serviceSecond: '日常保洁',
-    time: '2026.5.26 12:30',
-    address: '北京市昌平区金艳龙4层',
-    tips: 198,
-    imgUrl:
-      'https://yjy-rjwm-oss.oss-cn-hangzhou.aliyuncs.com/f507328c-27c4-41e6-88cd-09edfaba72c3.jpg',
-  },
-  {
-    serviceFirst: '保洁清洗',
-    serviceSecond: '日常保洁',
-    time: '2026.5.26 12:30',
-    address: '北京市昌平区金艳龙4层',
-    tips: 198,
-    imgUrl:
-      'https://yjy-rjwm-oss.oss-cn-hangzhou.aliyuncs.com/f507328c-27c4-41e6-88cd-09edfaba72c3.jpg',
-  },
-  {
-    serviceFirst: '保洁清洗',
-    serviceSecond: '日常保洁',
-    time: '2026.5.26 12:30',
-    address: '北京市昌平区金艳龙4层',
-    tips: 198,
-    imgUrl:
-      'https://yjy-rjwm-oss.oss-cn-hangzhou.aliyuncs.com/f507328c-27c4-41e6-88cd-09edfaba72c3.jpg',
-  },
-  {
-    serviceFirst: '保洁清洗1',
-    serviceSecond: '日常保洁',
-    time: '2026.5.26 12:30',
-    address: '北京市昌平区金艳龙4层',
-    tips: 198,
-    imgUrl:
-      'https://yjy-rjwm-oss.oss-cn-hangzhou.aliyuncs.com/f507328c-27c4-41e6-88cd-09edfaba72c3.jpg',
-  },
-]);
-const handleOpen = (index) => {
-  isOpen.value = !isOpen.value;
-  isShowMoreThan2.value[index] = !isShowMoreThan2.value[index];
+const handleRob = (id) => {
+  robOrder({
+    id: id,
+  }).then((res) => {
+    console.log(res, '抢单');
+    if (res.code === 200) {
+      isRob.value = true;
+    } else {
+      isRob.value = false;
+    }
+    alertDialog.value.open();
+  });
 };
+watch(
+  () => props.data,
+  () => {
+    data = props.data;
+    // console.log(serviceType.data, props.homeFilterList, '-fffffffffff');
+  }
+);
 </script>
 <style src="../index.scss" lang="scss"></style>

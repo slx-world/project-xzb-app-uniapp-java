@@ -1,0 +1,10 @@
+{
+  "navigationStyle": "custom",
+  "navigationBarTitleText": "转单",
+  "usingComponents": {
+    "uni-icons": "../../uni_modules/uni-icons/components/uni-icons/uni-icons",
+    "reach-bottom": "../../components/reach-bottom/index",
+    "uni-popup": "../../components/uni-popup/index",
+    "empty-page": "../../components/uni-empty-page/index"
+  }
+}

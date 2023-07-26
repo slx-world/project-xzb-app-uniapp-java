@@ -26,7 +26,7 @@ export function request ({ url = "", params = {}, method = "GET" }) {
       header: header,
       method: method,
     }).then((res) => {
-      console.log(res, 'res')
+      console.log(params, url, res, 'header')
       const { data } = res
       if (res.statusCode == 401) {
         uni.showToast({

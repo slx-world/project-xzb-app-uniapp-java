@@ -1,0 +1,1 @@
+<scroll-view scroll-x="true" class="tabScroll" scroll-into-view="{{b}}" scroll-with-animation="{{true}}"><view wx:for="{{a}}" wx:for-item="item" wx:key="c" id="{{item.d}}" class="scroll-row-item" bindtap="{{item.e}}"><view class="{{item.b}}"><text class="line"></text> {{item.a}}</view></view></scroll-view>

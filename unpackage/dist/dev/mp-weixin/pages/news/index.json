@@ -1,0 +1,9 @@
+{
+  "navigationStyle": "custom",
+  "navigationBarTitleText": "消息",
+  "usingComponents": {
+    "uni-nav": "../../components/uni-nav/index",
+    "announcement": "./components/announcement",
+    "notification": "./components/notification"
+  }
+}

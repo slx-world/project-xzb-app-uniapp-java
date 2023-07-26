@@ -1,0 +1,11 @@
+{
+  "component": true,
+  "usingComponents": {
+    "uni-tab": "../../../components/uni-tab/index",
+    "uni-popup": "../../../components/uni-popup/index",
+    "reach-bottom": "../../../components/reach-bottom/index",
+    "empty-page": "../../../components/uni-empty-page/index",
+    "pickup": "./pickup",
+    "delivery": "./delivery"
+  }
+}

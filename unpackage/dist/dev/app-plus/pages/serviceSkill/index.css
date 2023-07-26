@@ -643,6 +643,7 @@
   font-size: 16px !important;
   background-color: #fff !important;
   position: relative;
+  color: var(--color-gray-19);
 }
 .serviceSkill .servicePage .left .active .tag[data-v-f34db350]:after {
   content: "";

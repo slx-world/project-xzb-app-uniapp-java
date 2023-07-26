@@ -1,0 +1,7 @@
+{
+  "navigationStyle": "custom",
+  "navigationBarTitleText": "作业范围",
+  "usingComponents": {
+    "uni-nav": "../../components/uni-nav/index"
+  }
+}

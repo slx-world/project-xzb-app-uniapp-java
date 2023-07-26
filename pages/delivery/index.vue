@@ -1,59 +1,10 @@
-<!-- 派件页面 -->
+<!-- 消息页面 -->
 <template>
-  <!-- 搜索nav -->
-  <SearchPage
-    @handleSearch="handleSearch"
-    ref="search"
-    @clearSearchData="clearSearchData"
-  ></SearchPage>
-  <!-- end -->
   <view>
-    <!-- tab切换 -->
-    <UniTab
-      :tabBars="tabBars"
-      ref="tab"
-      @getTabIndex="getTabIndex"
-      class="pickupTab"
-    ></UniTab>
-    <!-- end -->
-    <!-- 筛选 -->
-    <ListFiltrate
-      v-if="tabIndex === 0"
-      @getList="getList"
-      class="pickupFilrate"
-    ></ListFiltrate>
-    <!-- end -->
-    <!-- 取件状态列表 -->
-    <view
-      :class="tabIndex === 0 ? 'pickupBoxTop' : 'pickupTop'"
-      style="padding: 0 0 200rpx 0"
-    >
-      <TabList
-        :tabBars="tabBars"
-        :tabIndex="tabIndex"
-        :isAdmin="isAdmin"
-        @onChangeSwiperTab="onChangeSwiperTab"
-        @checkbox="checkbox"
-        ref="list"
-      ></TabList>
-    </view>
-    <!-- end -->
+    消息页面
+    <UniFooter :pagePath="'pages/delivery/index'"></UniFooter>
   </view>
-  <!-- 底部管理 单选\转单\打印\删除 -->
-  <!-- 派件后期会加功能,所以这块代码先不删除 -->
-  <ExpressageFoot
-    ref="expressageFoot"
-    @getAdmin="getAdmin"
-    :isAdmin="isAdmin"
-    :isDelivery="isDelivery"
-    :selected="selected"
-    :tabIndex="tabIndex"
-    @allSelect="allSelect"
-    @handleClick="handleClick"
-  ></ExpressageFoot>
-  <!-- end -->
-  <!-- footer -->
-  <UniFooter :pagePath="'pages/delivery/index'"></UniFooter>
+
   <!-- end -->
 </template>
 

@@ -1,0 +1,1 @@
+<view class="boxBg result"><view>计费重量：{{a}} kg</view><view>计费体积：{{b}} m³</view><view>首重（1.0kg）{{c}}元，续重{{d}}元/kg</view><view class="price"><text>￥</text>{{e}}</view></view>

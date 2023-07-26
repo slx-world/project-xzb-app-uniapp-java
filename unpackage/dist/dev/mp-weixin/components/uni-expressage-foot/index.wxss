@@ -1,0 +1,44 @@
+/* 水平间距 */
+/* 水平间距 */
+.dataAdmin.data-v-74ae7a27 {
+  padding: 24rpx 30rpx 24rpx 36rpx;
+  position: fixed;
+  bottom: 100rpx;
+  left: 0;
+  right: 0;
+  z-index: 0;
+}
+.dataAdmin .concelBtn.data-v-74ae7a27,
+.dataAdmin .btn-default.data-v-74ae7a27 {
+  height: 60rpx;
+  line-height: 60rpx;
+  width: 140rpx;
+  border-radius: 30rpx;
+  font-weight: 600;
+}
+.dataAdmin .btn-default.data-v-74ae7a27 {
+  margin-left: 20rpx !important;
+}
+.dataAdmin .concelBtn.data-v-74ae7a27 {
+  float: right;
+}
+.dataAdmin .num.data-v-74ae7a27 {
+  color: var(--essential-color-red);
+  padding: 0 4rpx;
+}
+.dataAdmin .adminInfo.data-v-74ae7a27 {
+  display: flex;
+  align-items: center;
+  height: 60rpx;
+  line-height: 60rpx;
+}
+.dataAdmin .adminInfo > view.selectInfo.data-v-74ae7a27 {
+  flex: 1;
+}
+.dataAdmin .adminInfo > view.selectInfo .checkRadio.data-v-74ae7a27 {
+  padding-right: 24rpx;
+}
+.dataAdmin .adminInfo > view.data-v-74ae7a27:last-child {
+  text-align: right;
+  display: flex;
+}

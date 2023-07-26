@@ -1,0 +1,1 @@
+<view class="data-v-7c6df030"> 消息页面 <uni-footer wx:if="{{a}}" class="data-v-7c6df030" u-i="7c6df030-0" bind:__l="__l" u-p="{{a}}"></uni-footer></view>

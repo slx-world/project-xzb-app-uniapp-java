@@ -136,15 +136,16 @@ onLoad((option) => {
 });
 // 返回上一页
 const goBack = () => {
-  uni.redirectTo({
-    url:
-      '/pages/serviceRange/index?cityCode=' +
-      city.cityCode +
-      '&name=' +
-      city.name +
-      '&address=' +
-      address.value,
-  });
+  uni.navigateBack();
+  // uni.navigateTo({
+  //   url:
+  //     '/pages/serviceRange/index?cityCode=' +
+  //     currentCity.value.cityCode +
+  //     '&name=' +
+  //     currentCity.value.name +
+  //     '&address=' +
+  //     address.value,
+  // });
 };
 // touchStart是手指触摸到屏幕触发的事件
 const touchStart = (e) => {

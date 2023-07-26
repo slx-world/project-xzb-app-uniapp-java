@@ -1,0 +1,1 @@
+<view class="navBox data-v-02b269f0"><view class="baseSetting data-v-02b269f0"><view wx:for="{{a}}" wx:for-item="item" wx:key="c" class="item data-v-02b269f0" bindtap="{{item.d}}"><image src="{{item.a}}" class="itemImg data-v-02b269f0"></image><view class="itemLabel data-v-02b269f0">{{item.b}}</view></view></view><view class="bg data-v-02b269f0"></view></view>

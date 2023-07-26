@@ -46,7 +46,7 @@ const baseSetting = reactive([
 ]);
 // ------方法------
 const handleLink = (val) => {
-  uni.redirectTo({
+  uni.navigateTo({
     url: val,
   });
 };

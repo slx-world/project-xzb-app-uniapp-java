@@ -1,87 +1,40 @@
-<!-- 取件页面 -->
+<!-- 订单页面 -->
 <template>
-  <!-- 搜索nav -->
-  <SearchPage
-    @handleSearch="handleSearch"
-    ref="search"
-    @clearSearchData="clearSearchData"
-  ></SearchPage>
-  <!-- end -->
   <view>
-    <!-- tab切换 -->
-    <UniTab
-      :tabBars="tabBars"
-      ref="tab"
-      @getTabIndex="getTabIndex"
-      class="pickupTab"
-    ></UniTab>
-    <!-- end -->
-    <!-- 距离\时间\超时筛选 -->
-    <ListFiltrate
-      v-if="tabIndex === 0"
-      @getList="getList"
-      class="pickupFilrate"
-    ></ListFiltrate>
-    <!-- end -->
-    <!-- 取件状态列表 -->
-    <view
-      :class="tabIndex === 0 ? 'pickupBoxTop' : 'pickupTop'"
-      style="padding: 0 0 200rpx 0"
-    >
-      <TabList
-        :tabBars="tabBars"
-        :tabIndex="tabIndex"
-        :isAdmin="isAdmin"
-        @onChangeSwiperTab="onChangeSwiperTab"
-        @checkbox="checkbox"
-        :isInput="isInput"
-        ref="list"
-      ></TabList>
-    </view>
-
-    <!-- end -->
+    订单页面
+    <UniFooter :pagePath="'pages/delivery/index'"></UniFooter>
   </view>
-  <ExpressageFoot
-    ref="expressageFoot"
-    @getAdmin="getAdmin"
-    :isAdmin="isAdmin"
-    :selected="selected"
-    :tabIndex="tabIndex"
-    @allSelect="allSelect"
-    @handleClick="handleClick"
-  ></ExpressageFoot>
-  <!-- footer -->
-  <UniFooter :pagePath="'pages/delivery/index'"></UniFooter>
+
   <!-- end -->
 </template>
 
 <script setup>
-import { ref, reactive, onMounted } from "vue";
-import { useStore } from "vuex";
+import { ref, reactive, onMounted } from 'vue';
+import { useStore } from 'vuex';
 
 // 基本数据
-import { DeliveryData } from "@/utils/commonData.js";
+import { DeliveryData } from '@/utils/commonData.js';
 // 接口api
-import { taskBatchDelete } from "@/pages/api/index.js";
+import { taskBatchDelete } from '@/pages/api/index.js';
 // 导入组件
 // 导航
-import UniNav from "@/components/uni-nav/index.vue";
+import UniNav from '@/components/uni-nav/index.vue';
 // 搜索组件
-import SearchPage from "@/components/uni-search/index.vue";
+import SearchPage from '@/components/uni-search/index.vue';
 // 底部导航
-import UniFooter from "@/components/uni-footer/index.vue";
+import UniFooter from '@/components/uni-footer/index.vue';
 // tab切换
-import UniTab from "@/components/uni-tab/index.vue";
+import UniTab from '@/components/uni-tab/index.vue';
 // 筛选
-import ListFiltrate from "@/components/uni-list-filtrate/index.vue";
+import ListFiltrate from '@/components/uni-list-filtrate/index.vue';
 // 底部管理全选组件
-import ExpressageFoot from "@/components/uni-expressage-foot/index.vue";
+import ExpressageFoot from '@/components/uni-expressage-foot/index.vue';
 // list
-import TabList from "./components/list.vue";
+import TabList from './components/list.vue';
 // ------定义变量------
 const store = useStore();
 const users = store.state.user;
-const emit = defineEmits(""); //子组件向父组件事件传递
+const emit = defineEmits(''); //子组件向父组件事件传递
 const tab = ref();
 const list = ref(); //定义列表 ref
 const search = ref(); //定义搜索 ref
@@ -110,8 +63,8 @@ onMounted(() => {
 const handleSearch = () => {
   list.value.searchInfo.taskType = 1;
   list.value.searchInfo.keyword = search.value.searchVal;
-  store.commit("user/setIsInput", false); //是否在文本框里输入了文字，默认false
-  store.commit("user/setDeliveryData", []);
+  store.commit('user/setIsInput', false); //是否在文本框里输入了文字，默认false
+  store.commit('user/setDeliveryData', []);
   if (tabIndex.value === 0) {
     list.value.searchInfo.status = 1;
     list.value.dealSearchList();
@@ -134,22 +87,22 @@ const handleClick = async () => {
     if (res.code === 200) {
       list.value.cancelList();
       return uni.showToast({
-        title: "删除成功!",
+        title: '删除成功!',
         duration: 1000,
-        icon: "none",
+        icon: 'none',
       });
     }
   });
 };
 // 清除搜索
 const clearSearchData = () => {
-  store.commit("user/setIsInput", true);
-  store.commit("user/setDeliveryData", []); //清空列表数据
-  store.commit("user/setSearchText", ""); //清空搜索框内容
-  store.commit("user/setSearchClear", true); //是否清空搜索框
-  list.value.searchInfo.keyword = ""; //清空搜索框内容
+  store.commit('user/setIsInput', true);
+  store.commit('user/setDeliveryData', []); //清空列表数据
+  store.commit('user/setSearchText', ''); //清空搜索框内容
+  store.commit('user/setSearchClear', true); //是否清空搜索框
+  list.value.searchInfo.keyword = ''; //清空搜索框内容
   // 总页数清空
-  store.commit("user/setPages", 0);
+  store.commit('user/setPages', 0);
   if (tabIndex.value === 0) {
     list.value.dealPList();
   } else if (tabIndex.value === 1) {
@@ -160,10 +113,10 @@ const clearSearchData = () => {
 };
 // 获取tab切换当前的index
 const getTabIndex = (index) => {
-  store.commit("user/setFilterOverTime", null);
-  search.value.searchVal = "";
-  store.commit("user/setSearchText", ""); //清空搜索框内容
-  store.commit("user/setSearchClear", true); //是否清空搜索框
+  store.commit('user/setFilterOverTime', null);
+  search.value.searchVal = '';
+  store.commit('user/setSearchText', ''); //清空搜索框内容
+  store.commit('user/setSearchClear', true); //是否清空搜索框
   tabIndex.value = index;
   // 根据不同的tab值切更新 取件数据
   if (index === 0) {
@@ -177,10 +130,10 @@ const getTabIndex = (index) => {
   // 修改底部管理按钮状态，因为取件、派件公用了一个底部管理组件，因此切换tab的时候先把isAdmin设置成false，以防数据混搅。
   isAdmin.value = false;
   // 存储列表数据
-  store.commit("user/setDeliveryData", []);
+  store.commit('user/setDeliveryData', []);
   // 总页数清空
-  store.commit("user/setPages", 0);
-  store.commit("user/setSelectTaskData", new Map());
+  store.commit('user/setPages', 0);
+  store.commit('user/setSelectTaskData', new Map());
 };
 // 触发选项卡事件
 const onChangeSwiperTab = (e) => {
@@ -214,8 +167,8 @@ const allSelect = () => {
       }
     });
   }
-  emit("getSelected", selected);
-  store.commit("user/setSelectTaskData", selected);
+  emit('getSelected', selected);
+  store.commit('user/setSelectTaskData', selected);
 };
 // 选项框点击事件，参数是数据的下标
 const checkbox = (index) => {
@@ -230,7 +183,7 @@ const checkbox = (index) => {
     itemData[index].selected = true;
     selected.set(index, itemData[index].id);
   }
-  store.commit("user/setSelectTaskData", selected);
+  store.commit('user/setSelectTaskData', selected);
 };
 </script>
 <style src="../../styles/expressage.scss" lang="scss" scoped></style>

@@ -18,7 +18,7 @@
         >
           <view class="tag"
             >{{ item.serveTypeName }}
-            <text class="selectNum">{{ item.count }}</text>
+            <text v-if="item.count" class="selectNum">{{ item.count }}</text>
           </view>
         </view>
       </view>
@@ -88,7 +88,7 @@ const getServiceSkillAllFunc = () => {
 
 //点击服务技能项
 const handleSelect = (active) => {
-  if ((status.value = 'read')) return;
+  if (status.value === 'read') return;
   (serviceSkill.data[activeIndex.value].serveSkillItemResDTOList =
     serviceSkill.data[activeIndex.value].serveSkillItemResDTOList.map(
       (item) => {
@@ -153,9 +153,7 @@ const tabChange = (id, index) => {
 
 // 返回上一页
 const goBack = () => {
-  uni.redirectTo({
-    url: '/pages/index/index',
-  });
+  uni.navigateBack();
 };
 </script>
 <style src="./index.scss" lang="scss" scoped></style>
