@@ -29,7 +29,12 @@
       >
       </HomeFilter>
       <!-- end -->
-      <HomeList :data="homeList.data" @refresh="getRobOrderList"></HomeList>
+      <HomeList
+        v-if="homeList.data.length"
+        :data="homeList.data"
+        @refresh="getRobOrderList"
+      ></HomeList>
+      <Empty v-else></Empty>
     </scroll-view>
 
     <!-- footer -->
@@ -41,10 +46,6 @@
 <script setup>
 import { ref, reactive, onMounted } from 'vue';
 import { onPullDownRefresh } from '@dcloudio/uni-app';
-import { useStore } from 'vuex';
-import { getTimeDate, positionsUploadInit } from '@/utils/index.js';
-// 静态数据
-import { tabBars } from '@/utils/commonData.js';
 // 导入接口
 import { getRobOrder, getHomeFilter } from '../api/order.js';
 // 导入组件
@@ -52,6 +53,8 @@ import { getRobOrder, getHomeFilter } from '../api/order.js';
 import UniNav from '@/components/uni-home-nav/index.vue';
 // 底部导航
 import UniFooter from '@/components/uni-footer/index.vue';
+//空数据
+import Empty from '@/components/empty/index.vue';
 import HomeFilter from './components/homeFilter';
 import HomeList from './components/homeList';
 // ------定义变量------

@@ -69,19 +69,8 @@ const markers = reactive({
     latitude: 0,
     longitude: 0,
     iconPath: '/static/new/img_weizhi@2x.png',
-    title: '天安门',
-    content: '这里是天安门广场',
     width: 60,
     height: 60,
-    callout: {
-      content: '天安门',
-      color: '#ffffff',
-      fontSize: 14,
-      borderRadius: 4,
-      bgColor: '#000000',
-      padding: 8,
-      display: 'ALWAYS', // 一直显示callout
-    },
   },
 });
 const markerTap = () => {
@@ -95,7 +84,6 @@ const handleSelectCity = () => {
 };
 //选择具体服务范围
 const handleChooseRange = () => {
-  console.log(123);
   uni.chooseLocation({
     latitude: location.longitude,
     longitude: location.latitude,
@@ -150,23 +138,16 @@ onLoad((option) => {
         //有位置信息则进行赋值
         cityName.value = res.data.cityName;
         address.value = res.data.intentionScope;
-        // store.commit('user/setLocation', {
-        //   latitude: res.data.location.split(',')[1],
-        //   longitude: res.data.location.split(',')[0],
-        // });
         location.latitude = res.data.location.split(',')[0];
         location.longitude = res.data.location.split(',')[1];
         markers.data.latitude = res.data.location.split(',')[1];
         markers.data.longitude = res.data.location.split(',')[0];
-
-        // store.commit('user/setAddress', res.data.intentionScope);
       }
       if (option.name) {
         cityName.value = option.name;
         address.value = option.address;
         params.cityCode = option.cityCode;
         params.intentionScope = option.name;
-        console.log(cityName.value, 'ffffffffffffffffff');
       }
     })
     .catch((err) => {
@@ -176,8 +157,6 @@ onLoad((option) => {
         icon: 'none',
       });
     });
-
-  // console.log(option, 'onLoad');
 });
 onMounted(() => {
   //获取选择城市的页面参数

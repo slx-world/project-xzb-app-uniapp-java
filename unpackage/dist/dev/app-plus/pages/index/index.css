@@ -601,6 +601,7 @@
 [data-v-02b269f0]:root {
 	--color-gray-9:#999999;
 	--color-black-19:#191919;
+  --color-black-15:#151515;
 	--color-red-bg:#F74347;
   --color-red-ffeaea:#FFEAEA;
   --color-red-ffdbdc:#FFDBDC;
@@ -662,6 +663,22 @@
 .navBox .baseSetting .item .itemLabel[data-v-02b269f0] {
   font-size: 0.75rem;
   color: var(--neutral-color-white);
+}
+/* 水平间距 */
+/* 水平间距 */
+.empty .content[data-v-70a727a5] {
+  font-size: 0.8125rem;
+  color: var(--color-black-15);
+}
+.empty .image[data-v-70a727a5] {
+  width: 10rem;
+  height: 9rem;
+  background-image: url("../../static/new/empty.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin-top: 3.5625rem !important;
+  margin-bottom: 1.34375rem !important;
 }
 /* 水平间距 */
 /* 水平间距 */

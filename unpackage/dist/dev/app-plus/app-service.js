@@ -1279,7 +1279,7 @@ if (uni.restoreGlobal) {
     const reg = /^[0-9]*$/g;
     return typeof val === "number" || reg.test(val) ? val + "px" : val;
   };
-  const _sfc_main$19 = {
+  const _sfc_main$1a = {
     name: "UniIcons",
     emits: ["click"],
     props: {
@@ -1330,7 +1330,7 @@ if (uni.restoreGlobal) {
       onClick: _cache[0] || (_cache[0] = (...args) => $options._onClick && $options._onClick(...args))
     }, null, 6);
   }
-  var __easycom_0$8 = /* @__PURE__ */ _export_sfc(_sfc_main$19, [["render", _sfc_render$e], ["__scopeId", "data-v-a2e81f6e"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/uni_modules/uni-icons/components/uni-icons/uni-icons.vue"]]);
+  var __easycom_0$8 = /* @__PURE__ */ _export_sfc(_sfc_main$1a, [["render", _sfc_render$e], ["__scopeId", "data-v-a2e81f6e"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/uni_modules/uni-icons/components/uni-icons/uni-icons.vue"]]);
   function resolveEasycom(component, easycom) {
     return shared.isString(component) ? easycom : component;
   }
@@ -1341,7 +1341,7 @@ if (uni.restoreGlobal) {
   const onLoad = /* @__PURE__ */ createHook(ON_LOAD);
   const onReachBottom = /* @__PURE__ */ createHook(ON_REACH_BOTTOM);
   const onPullDownRefresh = /* @__PURE__ */ createHook(ON_PULL_DOWN_REFRESH);
-  const _sfc_main$18 = {
+  const _sfc_main$19 = {
     name: "uni-easyinput",
     emits: ["click", "iconClick", "update:modelValue", "input", "focus", "blur", "confirm"],
     model: {
@@ -1652,8 +1652,8 @@ if (uni.restoreGlobal) {
       ], 6)
     ], 6);
   }
-  var __easycom_0$7 = /* @__PURE__ */ _export_sfc(_sfc_main$18, [["render", _sfc_render$d], ["__scopeId", "data-v-abe12412"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/uni_modules/uni-easyinput/components/uni-easyinput/uni-easyinput.vue"]]);
-  const _sfc_main$17 = {
+  var __easycom_0$7 = /* @__PURE__ */ _export_sfc(_sfc_main$19, [["render", _sfc_render$d], ["__scopeId", "data-v-abe12412"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/uni_modules/uni-easyinput/components/uni-easyinput/uni-easyinput.vue"]]);
+  const _sfc_main$18 = {
     name: "uniFormsItem",
     props: {
       custom: {
@@ -1978,7 +1978,7 @@ if (uni.restoreGlobal) {
       ])
     ], 2);
   }
-  var __easycom_1 = /* @__PURE__ */ _export_sfc(_sfc_main$17, [["render", _sfc_render$c], ["__scopeId", "data-v-61dfc0d0"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/uni_modules/uni-forms/components/uni-forms-item/uni-forms-item.vue"]]);
+  var __easycom_1 = /* @__PURE__ */ _export_sfc(_sfc_main$18, [["render", _sfc_render$c], ["__scopeId", "data-v-61dfc0d0"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/uni_modules/uni-forms/components/uni-forms-item/uni-forms-item.vue"]]);
   var pattern = {
     email: /^\S+?@\S+?\.\S+?$/,
     idcard: /^[1-9]\d{5}(18|19|([23]\d))\d{2}((0[1-9])|(10|11|12))(([0-2][1-9])|10|20|30|31)\d{3}[0-9Xx]$/,
@@ -2395,7 +2395,7 @@ if (uni.restoreGlobal) {
     };
   }
   SchemaValidator.message = new Message();
-  const _sfc_main$16 = {
+  const _sfc_main$17 = {
     name: "uniForms",
     components: {},
     emits: ["input", "reset", "validate", "submit"],
@@ -2724,7 +2724,693 @@ if (uni.restoreGlobal) {
       ], 32)
     ], 2);
   }
-  var __easycom_2 = /* @__PURE__ */ _export_sfc(_sfc_main$16, [["render", _sfc_render$b], ["__scopeId", "data-v-7ae0e404"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/uni_modules/uni-forms/components/uni-forms/uni-forms.vue"]]);
+  var __easycom_2 = /* @__PURE__ */ _export_sfc(_sfc_main$17, [["render", _sfc_render$b], ["__scopeId", "data-v-7ae0e404"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/uni_modules/uni-forms/components/uni-forms/uni-forms.vue"]]);
+  class MPAnimation {
+    constructor(options, _this) {
+      this.options = options;
+      this.animation = uni.createAnimation(options);
+      this.currentStepAnimates = {};
+      this.next = 0;
+      this.$ = _this;
+    }
+    _nvuePushAnimates(type, args) {
+      let aniObj = this.currentStepAnimates[this.next];
+      let styles = {};
+      if (!aniObj) {
+        styles = {
+          styles: {},
+          config: {}
+        };
+      } else {
+        styles = aniObj;
+      }
+      if (animateTypes1.includes(type)) {
+        if (!styles.styles.transform) {
+          styles.styles.transform = "";
+        }
+        let unit = "";
+        if (type === "rotate") {
+          unit = "deg";
+        }
+        styles.styles.transform += `${type}(${args + unit}) `;
+      } else {
+        styles.styles[type] = `${args}`;
+      }
+      this.currentStepAnimates[this.next] = styles;
+    }
+    _animateRun(styles = {}, config = {}) {
+      let ref = this.$.$refs["ani"].ref;
+      if (!ref)
+        return;
+      return new Promise((resolve, reject) => {
+        nvueAnimation.transition(ref, __spreadValues({
+          styles
+        }, config), (res2) => {
+          resolve();
+        });
+      });
+    }
+    _nvueNextAnimate(animates, step = 0, fn) {
+      let obj = animates[step];
+      if (obj) {
+        let {
+          styles,
+          config
+        } = obj;
+        this._animateRun(styles, config).then(() => {
+          step += 1;
+          this._nvueNextAnimate(animates, step, fn);
+        });
+      } else {
+        this.currentStepAnimates = {};
+        typeof fn === "function" && fn();
+        this.isEnd = true;
+      }
+    }
+    step(config = {}) {
+      this.animation.step(config);
+      return this;
+    }
+    run(fn) {
+      this.$.animationData = this.animation.export();
+      this.$.timer = setTimeout(() => {
+        typeof fn === "function" && fn();
+      }, this.$.durationTime);
+    }
+  }
+  const animateTypes1 = [
+    "matrix",
+    "matrix3d",
+    "rotate",
+    "rotate3d",
+    "rotateX",
+    "rotateY",
+    "rotateZ",
+    "scale",
+    "scale3d",
+    "scaleX",
+    "scaleY",
+    "scaleZ",
+    "skew",
+    "skewX",
+    "skewY",
+    "translate",
+    "translate3d",
+    "translateX",
+    "translateY",
+    "translateZ"
+  ];
+  const animateTypes2 = ["opacity", "backgroundColor"];
+  const animateTypes3 = ["width", "height", "left", "right", "top", "bottom"];
+  animateTypes1.concat(animateTypes2, animateTypes3).forEach((type) => {
+    MPAnimation.prototype[type] = function(...args) {
+      this.animation[type](...args);
+      return this;
+    };
+  });
+  function createAnimation(option, _this) {
+    if (!_this)
+      return;
+    clearTimeout(_this.timer);
+    return new MPAnimation(option, _this);
+  }
+  const _sfc_main$16 = {
+    name: "uniTransition",
+    emits: ["click", "change"],
+    props: {
+      show: {
+        type: Boolean,
+        default: false
+      },
+      modeClass: {
+        type: [Array, String],
+        default() {
+          return "fade";
+        }
+      },
+      duration: {
+        type: Number,
+        default: 300
+      },
+      styles: {
+        type: Object,
+        default() {
+          return {};
+        }
+      },
+      customClass: {
+        type: String,
+        default: ""
+      }
+    },
+    data() {
+      return {
+        isShow: false,
+        transform: "",
+        opacity: 1,
+        animationData: {},
+        durationTime: 300,
+        config: {}
+      };
+    },
+    watch: {
+      show: {
+        handler(newVal) {
+          if (newVal) {
+            this.open();
+          } else {
+            if (this.isShow) {
+              this.close();
+            }
+          }
+        },
+        immediate: true
+      }
+    },
+    computed: {
+      stylesObject() {
+        let styles = __spreadProps(__spreadValues({}, this.styles), {
+          "transition-duration": this.duration / 1e3 + "s"
+        });
+        let transform = "";
+        for (let i in styles) {
+          let line = this.toLine(i);
+          transform += line + ":" + styles[i] + ";";
+        }
+        return transform;
+      },
+      transformStyles() {
+        return "transform:" + this.transform + ";opacity:" + this.opacity + ";" + this.stylesObject;
+      }
+    },
+    created() {
+      this.config = {
+        duration: this.duration,
+        timingFunction: "ease",
+        transformOrigin: "50% 50%",
+        delay: 0
+      };
+      this.durationTime = this.duration;
+    },
+    methods: {
+      init(obj = {}) {
+        if (obj.duration) {
+          this.durationTime = obj.duration;
+        }
+        this.animation = createAnimation(Object.assign(this.config, obj), this);
+      },
+      onClick() {
+        this.$emit("click", {
+          detail: this.isShow
+        });
+      },
+      step(obj, config = {}) {
+        if (!this.animation)
+          return;
+        for (let i in obj) {
+          try {
+            if (typeof obj[i] === "object") {
+              this.animation[i](...obj[i]);
+            } else {
+              this.animation[i](obj[i]);
+            }
+          } catch (e) {
+            formatAppLog("error", "at uni_modules/uni-transition/components/uni-transition/uni-transition.vue:139", `\u65B9\u6CD5 ${i} \u4E0D\u5B58\u5728`);
+          }
+        }
+        this.animation.step(config);
+        return this;
+      },
+      run(fn) {
+        if (!this.animation)
+          return;
+        this.animation.run(fn);
+      },
+      open() {
+        clearTimeout(this.timer);
+        this.transform = "";
+        this.isShow = true;
+        let { opacity, transform } = this.styleInit(false);
+        if (typeof opacity !== "undefined") {
+          this.opacity = opacity;
+        }
+        this.transform = transform;
+        this.$nextTick(() => {
+          this.timer = setTimeout(() => {
+            this.animation = createAnimation(this.config, this);
+            this.tranfromInit(false).step();
+            this.animation.run();
+            this.$emit("change", {
+              detail: this.isShow
+            });
+          }, 20);
+        });
+      },
+      close(type) {
+        if (!this.animation)
+          return;
+        this.tranfromInit(true).step().run(() => {
+          this.isShow = false;
+          this.animationData = null;
+          this.animation = null;
+          let { opacity, transform } = this.styleInit(false);
+          this.opacity = opacity || 1;
+          this.transform = transform;
+          this.$emit("change", {
+            detail: this.isShow
+          });
+        });
+      },
+      styleInit(type) {
+        let styles = {
+          transform: ""
+        };
+        let buildStyle = (type2, mode) => {
+          if (mode === "fade") {
+            styles.opacity = this.animationType(type2)[mode];
+          } else {
+            styles.transform += this.animationType(type2)[mode] + " ";
+          }
+        };
+        if (typeof this.modeClass === "string") {
+          buildStyle(type, this.modeClass);
+        } else {
+          this.modeClass.forEach((mode) => {
+            buildStyle(type, mode);
+          });
+        }
+        return styles;
+      },
+      tranfromInit(type) {
+        let buildTranfrom = (type2, mode) => {
+          let aniNum = null;
+          if (mode === "fade") {
+            aniNum = type2 ? 0 : 1;
+          } else {
+            aniNum = type2 ? "-100%" : "0";
+            if (mode === "zoom-in") {
+              aniNum = type2 ? 0.8 : 1;
+            }
+            if (mode === "zoom-out") {
+              aniNum = type2 ? 1.2 : 1;
+            }
+            if (mode === "slide-right") {
+              aniNum = type2 ? "100%" : "0";
+            }
+            if (mode === "slide-bottom") {
+              aniNum = type2 ? "100%" : "0";
+            }
+          }
+          this.animation[this.animationMode()[mode]](aniNum);
+        };
+        if (typeof this.modeClass === "string") {
+          buildTranfrom(type, this.modeClass);
+        } else {
+          this.modeClass.forEach((mode) => {
+            buildTranfrom(type, mode);
+          });
+        }
+        return this.animation;
+      },
+      animationType(type) {
+        return {
+          fade: type ? 1 : 0,
+          "slide-top": `translateY(${type ? "0" : "-100%"})`,
+          "slide-right": `translateX(${type ? "0" : "100%"})`,
+          "slide-bottom": `translateY(${type ? "0" : "100%"})`,
+          "slide-left": `translateX(${type ? "0" : "-100%"})`,
+          "zoom-in": `scaleX(${type ? 1 : 0.8}) scaleY(${type ? 1 : 0.8})`,
+          "zoom-out": `scaleX(${type ? 1 : 1.2}) scaleY(${type ? 1 : 1.2})`
+        };
+      },
+      animationMode() {
+        return {
+          fade: "opacity",
+          "slide-top": "translateY",
+          "slide-right": "translateX",
+          "slide-bottom": "translateY",
+          "slide-left": "translateX",
+          "zoom-in": "scale",
+          "zoom-out": "scale"
+        };
+      },
+      toLine(name) {
+        return name.replace(/([A-Z])/g, "-$1").toLowerCase();
+      }
+    }
+  };
+  function _sfc_render$a(_ctx, _cache, $props, $setup, $data, $options) {
+    return $data.isShow ? (vue.openBlock(), vue.createElementBlock("view", {
+      key: 0,
+      ref: "ani",
+      animation: $data.animationData,
+      class: vue.normalizeClass($props.customClass),
+      style: vue.normalizeStyle($options.transformStyles),
+      onClick: _cache[0] || (_cache[0] = (...args) => $options.onClick && $options.onClick(...args))
+    }, [
+      vue.renderSlot(_ctx.$slots, "default")
+    ], 14, ["animation"])) : vue.createCommentVNode("v-if", true);
+  }
+  var __easycom_0$6 = /* @__PURE__ */ _export_sfc(_sfc_main$16, [["render", _sfc_render$a], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/uni_modules/uni-transition/components/uni-transition/uni-transition.vue"]]);
+  const _sfc_main$15 = {
+    name: "uniPopup",
+    components: {},
+    emits: ["change", "maskClick"],
+    props: {
+      animation: {
+        type: Boolean,
+        default: true
+      },
+      type: {
+        type: String,
+        default: "center"
+      },
+      isMaskClick: {
+        type: Boolean,
+        default: null
+      },
+      maskClick: {
+        type: Boolean,
+        default: null
+      },
+      backgroundColor: {
+        type: String,
+        default: "none"
+      },
+      safeArea: {
+        type: Boolean,
+        default: true
+      },
+      maskBackgroundColor: {
+        type: String,
+        default: "rgba(0, 0, 0, 0.4)"
+      }
+    },
+    watch: {
+      type: {
+        handler: function(type) {
+          if (!this.config[type])
+            return;
+          this[this.config[type]](true);
+        },
+        immediate: true
+      },
+      isDesktop: {
+        handler: function(newVal) {
+          if (!this.config[newVal])
+            return;
+          this[this.config[this.type]](true);
+        },
+        immediate: true
+      },
+      maskClick: {
+        handler: function(val) {
+          this.mkclick = val;
+        },
+        immediate: true
+      },
+      isMaskClick: {
+        handler: function(val) {
+          this.mkclick = val;
+        },
+        immediate: true
+      },
+      showPopup(show) {
+      }
+    },
+    data() {
+      return {
+        duration: 300,
+        ani: [],
+        showPopup: false,
+        showTrans: false,
+        popupWidth: 0,
+        popupHeight: 0,
+        config: {
+          top: "top",
+          bottom: "bottom",
+          center: "center",
+          left: "left",
+          right: "right",
+          message: "top",
+          dialog: "center",
+          share: "bottom"
+        },
+        maskClass: {
+          position: "fixed",
+          bottom: 0,
+          top: 0,
+          left: 0,
+          right: 0,
+          backgroundColor: "rgba(0, 0, 0, 0.4)"
+        },
+        transClass: {
+          position: "fixed",
+          left: 0,
+          right: 0
+        },
+        maskShow: true,
+        mkclick: true,
+        popupstyle: this.isDesktop ? "fixforpc-top" : "top"
+      };
+    },
+    computed: {
+      isDesktop() {
+        return this.popupWidth >= 500 && this.popupHeight >= 500;
+      },
+      bg() {
+        if (this.backgroundColor === "" || this.backgroundColor === "none") {
+          return "transparent";
+        }
+        return this.backgroundColor;
+      }
+    },
+    mounted() {
+      const fixSize = () => {
+        const {
+          windowWidth,
+          windowHeight,
+          windowTop,
+          safeArea,
+          screenHeight,
+          safeAreaInsets
+        } = uni.getSystemInfoSync();
+        this.popupWidth = windowWidth;
+        this.popupHeight = windowHeight + (windowTop || 0);
+        if (safeArea && this.safeArea) {
+          this.safeAreaInsets = safeAreaInsets.bottom;
+        } else {
+          this.safeAreaInsets = 0;
+        }
+      };
+      fixSize();
+    },
+    unmounted() {
+      this.setH5Visible();
+    },
+    created() {
+      if (this.isMaskClick === null && this.maskClick === null) {
+        this.mkclick = true;
+      } else {
+        this.mkclick = this.isMaskClick !== null ? this.isMaskClick : this.maskClick;
+      }
+      if (this.animation) {
+        this.duration = 300;
+      } else {
+        this.duration = 0;
+      }
+      this.messageChild = null;
+      this.clearPropagation = false;
+      this.maskClass.backgroundColor = this.maskBackgroundColor;
+    },
+    methods: {
+      setH5Visible() {
+      },
+      closeMask() {
+        this.maskShow = false;
+      },
+      disableMask() {
+        this.mkclick = false;
+      },
+      clear(e) {
+        e.stopPropagation();
+        this.clearPropagation = true;
+      },
+      open(direction) {
+        if (this.showPopup) {
+          clearTimeout(this.timer);
+          this.showPopup = false;
+        }
+        let innerType = ["top", "center", "bottom", "left", "right", "message", "dialog", "share"];
+        if (!(direction && innerType.indexOf(direction) !== -1)) {
+          direction = this.type;
+        }
+        if (!this.config[direction]) {
+          formatAppLog("error", "at uni_modules/uni-popup/components/uni-popup/uni-popup.vue:280", "\u7F3A\u5C11\u7C7B\u578B\uFF1A", direction);
+          return;
+        }
+        this[this.config[direction]]();
+        this.$emit("change", {
+          show: true,
+          type: direction
+        });
+      },
+      close(type) {
+        this.showTrans = false;
+        this.$emit("change", {
+          show: false,
+          type: this.type
+        });
+        clearTimeout(this.timer);
+        this.timer = setTimeout(() => {
+          this.showPopup = false;
+        }, 300);
+      },
+      touchstart() {
+        this.clearPropagation = false;
+      },
+      onTap() {
+        if (this.clearPropagation) {
+          this.clearPropagation = false;
+          return;
+        }
+        this.$emit("maskClick");
+        if (!this.mkclick)
+          return;
+        this.close();
+      },
+      top(type) {
+        this.popupstyle = this.isDesktop ? "fixforpc-top" : "top";
+        this.ani = ["slide-top"];
+        this.transClass = {
+          position: "fixed",
+          left: 0,
+          right: 0,
+          backgroundColor: this.bg
+        };
+        if (type)
+          return;
+        this.showPopup = true;
+        this.showTrans = true;
+        this.$nextTick(() => {
+          if (this.messageChild && this.type === "message") {
+            this.messageChild.timerClose();
+          }
+        });
+      },
+      bottom(type) {
+        this.popupstyle = "bottom";
+        this.ani = ["slide-bottom"];
+        this.transClass = {
+          position: "fixed",
+          left: 0,
+          right: 0,
+          bottom: 0,
+          paddingBottom: this.safeAreaInsets + "px",
+          backgroundColor: this.bg
+        };
+        if (type)
+          return;
+        this.showPopup = true;
+        this.showTrans = true;
+      },
+      center(type) {
+        this.popupstyle = "center";
+        this.ani = ["zoom-out", "fade"];
+        this.transClass = {
+          position: "fixed",
+          display: "flex",
+          flexDirection: "column",
+          bottom: 0,
+          left: 0,
+          right: 0,
+          top: 0,
+          justifyContent: "center",
+          alignItems: "center"
+        };
+        if (type)
+          return;
+        this.showPopup = true;
+        this.showTrans = true;
+      },
+      left(type) {
+        this.popupstyle = "left";
+        this.ani = ["slide-left"];
+        this.transClass = {
+          position: "fixed",
+          left: 0,
+          bottom: 0,
+          top: 0,
+          backgroundColor: this.bg,
+          display: "flex",
+          flexDirection: "column"
+        };
+        if (type)
+          return;
+        this.showPopup = true;
+        this.showTrans = true;
+      },
+      right(type) {
+        this.popupstyle = "right";
+        this.ani = ["slide-right"];
+        this.transClass = {
+          position: "fixed",
+          bottom: 0,
+          right: 0,
+          top: 0,
+          backgroundColor: this.bg,
+          display: "flex",
+          flexDirection: "column"
+        };
+        if (type)
+          return;
+        this.showPopup = true;
+        this.showTrans = true;
+      }
+    }
+  };
+  function _sfc_render$9(_ctx, _cache, $props, $setup, $data, $options) {
+    const _component_uni_transition = resolveEasycom(vue.resolveDynamicComponent("uni-transition"), __easycom_0$6);
+    return $data.showPopup ? (vue.openBlock(), vue.createElementBlock("view", {
+      key: 0,
+      class: vue.normalizeClass(["uni-popup", [$data.popupstyle, $options.isDesktop ? "fixforpc-z-index" : ""]])
+    }, [
+      vue.createElementVNode("view", {
+        onTouchstart: _cache[1] || (_cache[1] = (...args) => $options.touchstart && $options.touchstart(...args))
+      }, [
+        $data.maskShow ? (vue.openBlock(), vue.createBlock(_component_uni_transition, {
+          key: "1",
+          name: "mask",
+          "mode-class": "fade",
+          styles: $data.maskClass,
+          duration: $data.duration,
+          show: $data.showTrans,
+          onClick: $options.onTap
+        }, null, 8, ["styles", "duration", "show", "onClick"])) : vue.createCommentVNode("v-if", true),
+        vue.createVNode(_component_uni_transition, {
+          key: "2",
+          "mode-class": $data.ani,
+          name: "content",
+          styles: $data.transClass,
+          duration: $data.duration,
+          show: $data.showTrans,
+          onClick: $options.onTap
+        }, {
+          default: vue.withCtx(() => [
+            vue.createElementVNode("view", {
+              class: vue.normalizeClass(["uni-popup__wrapper", [$data.popupstyle]]),
+              style: vue.normalizeStyle({ backgroundColor: $options.bg }),
+              onClick: _cache[0] || (_cache[0] = (...args) => $options.clear && $options.clear(...args))
+            }, [
+              vue.renderSlot(_ctx.$slots, "default", {}, void 0, true)
+            ], 6)
+          ]),
+          _: 3
+        }, 8, ["mode-class", "styles", "duration", "show", "onClick"])
+      ], 32)
+    ], 2)) : vue.createCommentVNode("v-if", true);
+  }
+  var __easycom_0$5 = /* @__PURE__ */ _export_sfc(_sfc_main$15, [["render", _sfc_render$9], ["__scopeId", "data-v-7c43d41b"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/uni_modules/uni-popup/components/uni-popup/uni-popup.vue"]]);
   var _imports_0 = "/static/new/img_logo@2x.png";
   function getDevtoolsGlobalHook() {
     return getTarget().__VUE_DEVTOOLS_GLOBAL_HOOK__;
@@ -3842,95 +4528,13 @@ if (uni.restoreGlobal) {
     method: "put",
     params
   });
-  const getDeliveryList = (params) => request({
-    url: "/tasks/page",
-    method: "get",
-    params
-  });
-  const transferBatch = (params) => request({
-    url: "/tasks/transfer/batch",
-    method: "post",
-    params
-  });
-  const taskDelete = (id) => request({
-    url: `/tasks/${id}`,
-    method: "delete"
-  });
-  const taskCancel = (params) => request({
-    url: `/tasks/cancel`,
-    method: "post",
-    params
-  });
-  const getDetail = (id) => request({
-    url: `/tasks/get/${id}`,
-    method: "get"
-  });
-  const idCardCheck = (params) => request({
-    url: `/tasks/idCard/check`,
-    method: "post",
-    params
-  });
-  const getPickup = (params) => request({
-    url: `/tasks/pickup`,
-    method: "put",
-    params
-  });
-  const getSameAgency = (params) => request({
-    url: `/users/sameAgency`,
-    method: "get",
-    params
-  });
-  const rejection = (id) => request({
-    url: `/tasks/reject/${id}`,
-    method: "put"
-  });
-  const tasksSign = (params) => request({
-    url: `/tasks/sign`,
-    method: "put",
-    params
-  });
-  const getQrCode = (params) => request({
-    url: `/pays/qrCode/get`,
-    method: "post",
-    params
-  });
-  const paySucceed = (id) => request({
-    url: `/pays/status/${id}`,
-    method: "get"
-  });
-  const getTracks = (id) => request({
-    url: `/tasks/tracks/${id}`,
-    method: "get"
-  });
-  const getSearch = (params) => request({
-    url: `/tasks/search`,
-    method: "post",
-    params
-  });
-  const getRecentSearch = () => request({
-    url: `/tasks/recentSearch`,
-    method: "get"
-  });
-  const setMarkRecent = (transportOrderId) => request({
-    url: `/tasks/markRecent/${transportOrderId}`,
-    method: "get"
-  });
-  const clearRecentSearch = () => request({
-    url: `/tasks/recentSearch`,
-    method: "delete"
-  });
-  const PositionUpload = (params) => request({
-    url: `/track/upload`,
-    method: "put",
-    data: params,
-    params
-  });
-  const _sfc_main$15 = {
+  const _sfc_main$14 = {
     __name: "user",
     setup(__props) {
       const store2 = useStore();
-      vue.ref(false);
       const customForm = vue.ref();
+      const alertDialog = vue.ref(null);
+      const reason = vue.ref("");
       let fromInfo = vue.reactive({
         phone: "",
         veriryCode: "",
@@ -3965,6 +4569,9 @@ if (uni.restoreGlobal) {
       });
       vue.onMounted(() => {
       });
+      const handleClose = () => {
+        alertDialog.value.close();
+      };
       const handleSubmit = async () => {
         const valid = await customForm.value.validate();
         if (valid) {
@@ -3975,7 +4582,7 @@ if (uni.restoreGlobal) {
             });
           }, 500);
           await phoneLogins(fromInfo).then(async (res2) => {
-            formatAppLog("log", "at pages/login/user.vue:154", res2, "\u767B\u5F55\u7ED3\u679C\u83B7\u53D6");
+            formatAppLog("log", "at pages/login/user.vue:169", res2, "\u767B\u5F55\u7ED3\u679C\u83B7\u53D6");
             if (res2.code === 200) {
               setTimeout(function() {
                 uni.hideLoading();
@@ -3984,7 +4591,7 @@ if (uni.restoreGlobal) {
               uni.setStorageSync("token", res2.data.token);
               store2.commit("user/setToken", res2.data.token);
               await getUserSetting().then((res3) => {
-                formatAppLog("log", "at pages/login/user.vue:167", res3, "getUserSetting");
+                formatAppLog("log", "at pages/login/user.vue:182", res3, "getUserSetting");
                 if (Boolean(res3.data.settingsStatus)) {
                   uni.redirectTo({
                     url: "/pages/index/index"
@@ -3995,7 +4602,7 @@ if (uni.restoreGlobal) {
                   });
                 }
               });
-            } else {
+            } else if (res2.code === 605) {
               setTimeout(function() {
                 uni.hideLoading();
               }, 500);
@@ -4009,11 +4616,17 @@ if (uni.restoreGlobal) {
             setTimeout(function() {
               uni.hideLoading();
             }, 500);
-            uni.showToast({
-              title: err.msg,
-              duration: 1500,
-              icon: "none"
-            });
+            formatAppLog("log", "at pages/login/user.vue:210", err, "err");
+            if (err.code === 605) {
+              reason.value = err.msg;
+              alertDialog.value.open();
+            } else {
+              uni.showToast({
+                title: err.msg || "\u767B\u5F55\u5931\u8D25",
+                duration: 1500,
+                icon: "none"
+              });
+            }
           });
         }
       };
@@ -4045,6 +4658,7 @@ if (uni.restoreGlobal) {
         const _component_uni_easyinput = resolveEasycom(vue.resolveDynamicComponent("uni-easyinput"), __easycom_0$7);
         const _component_uni_forms_item = resolveEasycom(vue.resolveDynamicComponent("uni-forms-item"), __easycom_1);
         const _component_uni_forms = resolveEasycom(vue.resolveDynamicComponent("uni-forms"), __easycom_2);
+        const _component_uni_popup = resolveEasycom(vue.resolveDynamicComponent("uni-popup"), __easycom_0$5);
         return vue.openBlock(), vue.createElementBlock("view", null, [
           vue.createElementVNode("image", {
             src: _imports_0,
@@ -4112,14 +4726,38 @@ if (uni.restoreGlobal) {
               vue.createCommentVNode(' <view class="setUrl" @click="inputDialogToggle">\u914D\u7F6E\u8BF7\u6C42url</view>\r\n			<uni-popup ref="inputDialog" type="dialog">\r\n				<uni-popup-dialog ref="inputClose" mode="input" title="\u914D\u7F6EURL" :value="baseURL" placeholder="\u8BF7\u8F93\u5165baseURL" @confirm="dialogInputConfirm"></uni-popup-dialog>\r\n			</uni-popup> '),
               vue.createCommentVNode(" \u66F4\u65B0\u8BF7\u6C42Url - \u6559\u5B66\u9700\u6C42 ")
             ]),
-            vue.createCommentVNode(" end ")
+            vue.createCommentVNode(" end "),
+            vue.createCommentVNode(" \u63D0\u793A\u7A97\u793A\u4F8B "),
+            vue.createVNode(_component_uni_popup, {
+              ref_key: "alertDialog",
+              ref: alertDialog,
+              type: "dialog",
+              "is-mask-click": false
+            }, {
+              default: vue.withCtx(() => [
+                vue.createElementVNode("view", { class: "dialog" }, [
+                  vue.createElementVNode("view", { class: "content" }, "\u8BE5\u624B\u673A\u53F7\u5DF2\u88AB\u51BB\u7ED3"),
+                  vue.createElementVNode("view", { class: "reason" }, [
+                    vue.createElementVNode("text", null, "\u51BB\u7ED3\u539F\u56E0\uFF1A"),
+                    vue.createElementVNode("text", null, vue.toDisplayString(reason.value), 1)
+                  ]),
+                  vue.createElementVNode("view", { class: "phoneLabel" }, "\u5982\u9700\u89E3\u51BB\u8BF7\u62E8\u6253\u5BA2\u670D\u7535\u8BDD\uFF1A"),
+                  vue.createElementVNode("view", { class: "phone" }, "400-000-4000"),
+                  vue.createElementVNode("view", {
+                    class: "footer",
+                    onClick: handleClose
+                  }, "\u77E5\u9053\u4E86")
+                ])
+              ]),
+              _: 1
+            }, 512)
           ])
         ]);
       };
     }
   };
-  var PagesLoginUser = /* @__PURE__ */ _export_sfc(_sfc_main$15, [["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/pages/login/user.vue"]]);
-  const _sfc_main$14 = {
+  var PagesLoginUser = /* @__PURE__ */ _export_sfc(_sfc_main$14, [["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/pages/login/user.vue"]]);
+  const _sfc_main$13 = {
     name: "UniStatusBar",
     data() {
       return {
@@ -4130,7 +4768,7 @@ if (uni.restoreGlobal) {
       this.statusBarHeight = uni.getSystemInfoSync().statusBarHeight + "px";
     }
   };
-  function _sfc_render$a(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$8(_ctx, _cache, $props, $setup, $data, $options) {
     return vue.openBlock(), vue.createElementBlock("view", {
       style: vue.normalizeStyle({ height: $data.statusBarHeight }),
       class: "uni-status-bar"
@@ -4138,9 +4776,9 @@ if (uni.restoreGlobal) {
       vue.renderSlot(_ctx.$slots, "default", {}, void 0, true)
     ], 4);
   }
-  var statusBar = /* @__PURE__ */ _export_sfc(_sfc_main$14, [["render", _sfc_render$a], ["__scopeId", "data-v-f9a87a8e"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/uni_modules/uni-nav-bar/components/uni-nav-bar/uni-status-bar.vue"]]);
+  var statusBar = /* @__PURE__ */ _export_sfc(_sfc_main$13, [["render", _sfc_render$8], ["__scopeId", "data-v-f9a87a8e"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/uni_modules/uni-nav-bar/components/uni-nav-bar/uni-status-bar.vue"]]);
   const getVal = (val) => typeof val === "number" ? val + "px" : val;
-  const _sfc_main$13 = {
+  const _sfc_main$12 = {
     name: "UniNavBar",
     components: {
       statusBar
@@ -4260,7 +4898,7 @@ if (uni.restoreGlobal) {
       }
     }
   };
-  function _sfc_render$9(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$7(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_status_bar = vue.resolveComponent("status-bar");
     const _component_uni_icons = resolveEasycom(vue.resolveDynamicComponent("uni-icons"), __easycom_0$8);
     return vue.openBlock(), vue.createElementBlock("view", {
@@ -4355,284 +4993,7 @@ if (uni.restoreGlobal) {
       ])) : vue.createCommentVNode("v-if", true)
     ], 2);
   }
-  var __easycom_0$6 = /* @__PURE__ */ _export_sfc(_sfc_main$13, [["render", _sfc_render$9], ["__scopeId", "data-v-6bda1a90"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/uni_modules/uni-nav-bar/components/uni-nav-bar/uni-nav-bar.vue"]]);
-  const taskTimeFormat = (val) => {
-    const times = getTimeDate(val);
-    return times.date;
-  };
-  const overTimeFormat = (val) => {
-    const times = getTimeDate(val);
-    return times.times;
-  };
-  const getTimeDate = (val) => {
-    const date = new Date(val);
-    date.setTime(date.getTime());
-    const year = date.getFullYear();
-    const month = date.getMonth() + 1;
-    const day = date.getDate();
-    const hour = date.getHours();
-    const minute = date.getMinutes();
-    date.getSeconds();
-    const time = {
-      date: addZero(month) + "-" + addZero(day) + " " + addZero(hour) + ":" + addZero(minute),
-      times: addZero(hour) + ":" + addZero(minute),
-      veryDayDate: addZero(year) + "-" + addZero(month) + "-" + addZero(day) + " 00:00:00"
-    };
-    return time;
-  };
-  function addZero(s) {
-    return s < 10 ? "0" + s : s;
-  }
-  const getTate = (val) => {
-    let date = new Date(val);
-    const year = date.getFullYear();
-    const month = date.getMonth() + 1;
-    const day = date.getDate();
-    const m = addZero(year) + "-" + addZero(month) + "-" + addZero(day) + " 00:00:00";
-    return m;
-  };
-  const getNow = (val) => {
-    let date = new Date(val);
-    date.getFullYear();
-    let m = date.getMonth() + 1;
-    let d = date.getDate();
-    return m + "\u6708" + d + "\u65E5";
-  };
-  const tomorrowDay = (date) => {
-    let odata = new Date(new Date().getTime() + 24 * 60 * 60 * 1e3);
-    return getTate(odata);
-  };
-  const afterTomorrowDay = (date) => {
-    let odata = new Date(new Date().getTime() + 48 * 60 * 60 * 1e3);
-    return getTate(odata);
-  };
-  const getDay = () => {
-    const times = timeList();
-    let arr = [];
-    times.forEach((val) => {
-      const obj = getTate(val);
-      arr.push(obj);
-    });
-    return arr;
-  };
-  const getMonthDay = (val) => {
-    const now = timeList();
-    const timeNow = Date.parse(val);
-    const timeStar = Date.parse(now[0]);
-    const timeEnd = Date.parse(now[now.length - 1]);
-    const times = {
-      timeNow,
-      timeStar,
-      timeEnd
-    };
-    return times;
-  };
-  const validateTextLength = (value) => {
-    if (value != void 0) {
-      let cnReg = /([\u4e00-\u9fa5]|[\u3000-\u303F]|[\uFF00-\uFF60])/g;
-      let mat = value.match(cnReg);
-      let length;
-      if (mat) {
-        length = mat.length + (value.length - mat.length) * 0.5;
-        return length;
-      } else {
-        return value.length * 0.5;
-      }
-    }
-  };
-  const timeList = () => {
-    var thrityMonth = [];
-    for (var i = 0; i < 30; i++) {
-      thrityMonth.unshift(new Date(new Date().setDate(new Date().getDate() - i)).toLocaleDateString());
-    }
-    return thrityMonth;
-  };
-  const positionUploadHandle = (item) => {
-    uni.getLocation({
-      type: "gcj02",
-      isHighAccuracy: true,
-      success: function(positions) {
-        if (positions) {
-          const posit = uni.getStorageSync("positions");
-          if (item) {
-            positionUploadAdmin(positions);
-            uni.setStorageSync("positions", { timer: posit.timer, lastPoint: positions, countTime: 0, countDist: 0 });
-            return;
-          }
-          if (!posit) {
-            const timer = setInterval(() => {
-              positionUploadHandle();
-            }, 1e3 * 60);
-            uni.setStorageSync("positions", { timer, lastPoint: positions, countTime: 0, countDist: 0 });
-            positionUploadAdmin(positions);
-          } else {
-            const dist = getDistance(posit.lastPoint.latitude, posit.lastPoint.longitude, positions.latitude, positions.longitude);
-            uni.setStorageSync("positions", { timer: posit.timer, lastPoint: positions, countTime: posit.countTime + 6e4, countDist: posit.countDist + dist });
-            if (posit.countTime + 6e4 >= 3e5 || posit.countDist + dist >= 100) {
-              positionUploadAdmin(positions);
-              uni.setStorageSync("positions", { timer: posit.timer, lastPoint: positions, countTime: 0, countDist: 0 });
-            }
-          }
-        } else {
-          uni.showToast({
-            title: "\u4F4D\u7F6E\u66F4\u65B0\u5931\u8D25\uFF0C\u8BF7\u68C0\u67E5\u5B9A\u4F4D\u529F\u80FD\u662F\u5426\u5F00\u542F\uFF0C\u6216\u5207\u7F51\u7EDC\u4E86\u91CD\u65B0\u4E0A\u4F20",
-            duration: 3e3,
-            icon: "none"
-          });
-        }
-      },
-      fail: function(err) {
-        uni.showToast({
-          title: "\u4F4D\u7F6E\u83B7\u53D6\u5931\u8D25\uFF0C\u8BF7\u68C0\u67E5\u5B9A\u4F4D\u529F\u80FD\u662F\u5426\u5F00\u542F\uFF0C\u6216\u5207\u7F51\u7EDC\u4E86\u91CD\u65B0\u4E0A\u4F20",
-          duration: 3e3,
-          icon: "none"
-        });
-      }
-    });
-  };
-  const getDistance = (lat1, lng1, lat2, lng2, lenType = 1, decimal = 2) => {
-    const EARTH_RADIUS = 6378.137;
-    const PI = 3.1415926;
-    const radLat1 = lat1 * PI / 180;
-    const radLat2 = lat2 * PI / 180;
-    let a = radLat1 - radLat2;
-    let b = lng1 * PI / 180 - lng2 * PI / 180;
-    let s = 2 * Math.asin(Math.sqrt(Math.pow(Math.sin(a / 2), 2) + Math.cos(radLat1) * Math.cos(radLat2) * Math.pow(Math.sin(b / 2), 2)));
-    s = s * EARTH_RADIUS;
-    s = lenType == 1 ? Math.round(s * 1e3) / 1 : Math.round(s * 1e4) / 1e4;
-    return s;
-  };
-  const positionUploadAdmin = (positions) => {
-    PositionUpload({ lat: positions.latitude.toString(), lng: positions.longitude.toString() }).then((res2) => {
-      if (res2.code == 200)
-        ;
-      else {
-        uni.showToast({
-          title: "\u4F4D\u7F6E\u4E0A\u62A5\u5931\u8D25\uFF0C\u8BF7\u68C0\u67E5\u5B9A\u4F4D\u529F\u80FD\u662F\u5426\u5F00\u542F\uFF0C\u6216\u5207\u7F51\u7EDC\u4E86\u91CD\u65B0\u4E0A\u4F20",
-          duration: 3e3,
-          icon: "none"
-        });
-      }
-    });
-  };
-  const cancelData = [
-    {
-      value: 1,
-      label: "\u7528\u6237\u6076\u610F\u4E0B\u5355"
-    },
-    {
-      value: 2,
-      label: "\u7528\u6237\u53D6\u6D88\u6295\u9012"
-    },
-    {
-      value: 3,
-      label: "\u8FDD\u7981\u54C1"
-    },
-    {
-      value: 4,
-      label: "\u91CD\u590D\u4E0B\u5355"
-    },
-    {
-      value: 5,
-      label: "\u65E0\u6CD5\u8054\u7CFB\u4E0A\u5BA2\u6237\uFF08\u7A7A\u53F7\u3001\u505C\u673A\u7B49\uFF09"
-    },
-    {
-      value: 6,
-      label: "\u865A\u5047\u5730\u5740"
-    },
-    {
-      value: 7,
-      label: "\u5B9E\u9645\u53D1\u8D27\u5730\u5740\u4E0E\u4E0B\u5355\u5730\u5740\u4E0D\u7B26"
-    },
-    {
-      value: 8,
-      label: "\u56E0\u4E2A\u4EBA\u65E0\u6CD5\u53D6\u4EF6\uFF0C\u9000\u56DE\u5230\u7F51\u70B9"
-    }
-  ];
-  const SignData = [
-    {
-      value: 1,
-      label: "\u672C\u4EBA"
-    },
-    {
-      value: 2,
-      label: "\u4EE3\u6536"
-    }
-  ];
-  const PayMethodData = [
-    {
-      value: 1,
-      label: "\u5BC4\u4ED8"
-    },
-    {
-      value: 2,
-      label: "\u5230\u4ED8"
-    }
-  ];
-  const GoodsData = [
-    {
-      value: 1,
-      label: "\u751F\u6D3B\u7528\u54C1"
-    },
-    {
-      value: 2,
-      label: "\u6587\u4EF6"
-    },
-    {
-      value: 3,
-      label: "\u6570\u7801\u4EA7\u54C1"
-    },
-    {
-      value: 4,
-      label: "\u98DF\u54C1"
-    },
-    {
-      value: 5,
-      label: "\u670D\u9970"
-    },
-    {
-      value: 6,
-      label: "\u5176\u4ED6"
-    }
-  ];
-  const PayWayData = [
-    {
-      value: 1,
-      label: "\u5FAE\u4FE1\u652F\u4ED8"
-    },
-    {
-      value: 2,
-      label: "\u652F\u4ED8\u5B9D\u652F\u4ED8"
-    }
-  ];
-  const HistoryTabData = [
-    {
-      value: 1,
-      label: "\u53D6\u4EF6"
-    },
-    {
-      value: 2,
-      label: "\u6D3E\u4EF6"
-    }
-  ];
-  const newItemData = [
-    {
-      id: 1,
-      title: "\u7269\u6D41\u4FDD\u901A\u4FDD\u7545\uFF1A\u6C11\u822A\u4FDD\u969C\u8D27\u8FD0\u822A\u73ED\u73AF\u6BD4\u589E\u957F9.7%",
-      created: "2022-09-15 06:16",
-      isRead: 0,
-      firstContent: "\u6700\u65B0\u6570\u636E\u663E\u793A\uFF0C9\u670814\u65E5\uFF0C\u5168\u56FD\u8D27\u8FD0\u7269\u6D41\u6709\u5E8F\u8FD0\u884C\uFF0C\u6C11\u822A\u4FDD\u969C\u8D27\u8FD0\u822A\u73ED\u73AF\u6BD4\u589E\u957F9.7%\u3002",
-      content: "\u56FD\u52A1\u9662\u7269\u6D41\u4FDD\u901A\u4FDD\u7545\u5DE5\u4F5C\u9886\u5BFC\u5C0F\u7EC4\u529E\u516C\u5BA4\u76D1\u6D4B\u6C47\u603B\u6570\u636E\u663E\u793A\uFF0C9\u670814\u65E5\uFF0C\u56FD\u5BB6\u94C1\u8DEF\u8D27\u8FD0\u7EE7\u7EED\u4FDD\u6301\u9AD8\u4F4D\u8FD0\u884C\uFF0C\u8FD0\u8F93\u8D27\u72691094.7\u4E07\u5428\uFF0C\u73AF\u6BD4\u4E0B\u964D0.23%\uFF1B\u5168\u56FD\u9AD8\u901F\u516C\u8DEF\u8D27\u8F66\u901A\u884C739.05\u4E07\u8F86\uFF0C\u73AF\u6BD4\u589E\u957F1.64%\uFF1B\u76D1\u6D4B\u6E2F\u53E3\u5B8C\u6210\u8D27\u7269\u541E\u5410\u91CF2374.5\u4E07\u5428\uFF0C\u73AF\u6BD4\u4E0B\u964D27.9%\uFF0C\u5B8C\u6210\u96C6\u88C5\u7BB1\u541E\u5410\u91CF53.1\u4E07\u6807\u7BB1\uFF0C\u73AF\u6BD4\u4E0B\u964D33.9%\uFF1B\u6C11\u822A\u4FDD\u969C\u8D27\u8FD0\u822A\u73ED653\u73ED\uFF08\u5176\u4E2D\u56FD\u9645\u8D27\u8FD0\u822A\u73ED452\u73ED\uFF0C\u56FD\u5185\u8D27\u8FD0\u822A\u73ED201\u73ED\uFF09\uFF0C\u73AF\u6BD4\u589E\u957F9.7%\uFF1B\u90AE\u653F\u5FEB\u9012\u63FD\u6536\u91CF\u7EA63.27\u4EBF\u4EF6\uFF0C\u73AF\u6BD4\u589E\u957F0.6%\uFF1B\u6295\u9012\u91CF\u7EA62.97\u4EBF\u4EF6\uFF0C\u73AF\u6BD4\u589E\u957F2.4%\u3002"
-    },
-    {
-      id: 2,
-      title: "\u795E\u9886\u7269\u6D41\u5168\u65B02.0\u7248\u672C\u4E0A\u7EBF\uFF0C\u57FA\u4E8E1.0\u7248\u672C\u5728\u4E1A\u52A1\u53CA\u529F\u80FD\u5C42\u9762\u8FDB\u884C\u4E86\u5347\u7EA7\u8FED\u4EE3",
-      created: "2022-04-02 20:23",
-      isRead: 1,
-      firstContent: null,
-      content: "\u795E\u9886\u7269\u6D412.0\u7248\u672C-\u5FEB\u9012\u5458\u7AEF\u7EC8\u4E8E\u57282022\u5E74\u4E0A\u534A\u5E74\u5B8C\u7F8E\u4E0A\u7EBF\u7EBF\uFF0C\u5176\u4E2D\u53D6\u4EF6/\u6D3E\u4EF6\u6D41\u7A0B\u6A21\u5757\u4F5C\u51FA\u4E86\u5F88\u591A\u65B0\u9896\u7684\u8C03\u6574\uFF0C\u8BF7\u5927\u5BB6\u591A\u591A\u5173\u6CE8\u652F\u6301\uFF01"
-    }
-  ];
+  var __easycom_0$4 = /* @__PURE__ */ _export_sfc(_sfc_main$12, [["render", _sfc_render$7], ["__scopeId", "data-v-6bda1a90"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/uni_modules/uni-nav-bar/components/uni-nav-bar/uni-nav-bar.vue"]]);
   const getRobOrder = (params) => request({
     url: params ? `/orders-seize/?serveTypeId=${params}` : "/orders-seize/",
     method: "get"
@@ -4646,7 +5007,7 @@ if (uni.restoreGlobal) {
     method: "post",
     params
   });
-  const _sfc_main$12 = {
+  const _sfc_main$11 = {
     __name: "index",
     setup(__props) {
       const baseSetting = vue.reactive([
@@ -4697,8 +5058,8 @@ if (uni.restoreGlobal) {
       };
     }
   };
-  var UniNav$1 = /* @__PURE__ */ _export_sfc(_sfc_main$12, [["__scopeId", "data-v-02b269f0"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/components/uni-home-nav/index.vue"]]);
-  const _sfc_main$11 = {
+  var UniNav$1 = /* @__PURE__ */ _export_sfc(_sfc_main$11, [["__scopeId", "data-v-02b269f0"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/components/uni-home-nav/index.vue"]]);
+  const _sfc_main$10 = {
     __name: "index",
     props: {
       pagePath: {
@@ -4810,8 +5171,22 @@ if (uni.restoreGlobal) {
       };
     }
   };
-  var UniFooter = /* @__PURE__ */ _export_sfc(_sfc_main$11, [["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/components/uni-footer/index.vue"]]);
-  const _sfc_main$10 = {
+  var UniFooter = /* @__PURE__ */ _export_sfc(_sfc_main$10, [["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/components/uni-footer/index.vue"]]);
+  const _sfc_main$$ = {
+    __name: "index",
+    props: {},
+    setup(__props, { emit }) {
+      return (_ctx, _cache) => {
+        return vue.openBlock(), vue.createElementBlock("view", { class: "empty" }, [
+          vue.createElementVNode("view", { class: "image" }),
+          vue.createCommentVNode(' <image class="aimage" src="../../static/new/empty.png"></image> '),
+          vue.createElementVNode("view", { class: "content" }, "\u6682\u65E0\u76F8\u5173\u5185\u5BB9\u54E6\uFF5E")
+        ]);
+      };
+    }
+  };
+  var Empty = /* @__PURE__ */ _export_sfc(_sfc_main$$, [["__scopeId", "data-v-70a727a5"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/components/empty/index.vue"]]);
+  const _sfc_main$_ = {
     __name: "homeFilter",
     props: {
       fixTop: {
@@ -4902,693 +5277,7 @@ if (uni.restoreGlobal) {
       };
     }
   };
-  var HomeFilter = /* @__PURE__ */ _export_sfc(_sfc_main$10, [["__scopeId", "data-v-1426d0ea"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/pages/index/components/homeFilter.vue"]]);
-  class MPAnimation {
-    constructor(options, _this) {
-      this.options = options;
-      this.animation = uni.createAnimation(options);
-      this.currentStepAnimates = {};
-      this.next = 0;
-      this.$ = _this;
-    }
-    _nvuePushAnimates(type, args) {
-      let aniObj = this.currentStepAnimates[this.next];
-      let styles = {};
-      if (!aniObj) {
-        styles = {
-          styles: {},
-          config: {}
-        };
-      } else {
-        styles = aniObj;
-      }
-      if (animateTypes1.includes(type)) {
-        if (!styles.styles.transform) {
-          styles.styles.transform = "";
-        }
-        let unit = "";
-        if (type === "rotate") {
-          unit = "deg";
-        }
-        styles.styles.transform += `${type}(${args + unit}) `;
-      } else {
-        styles.styles[type] = `${args}`;
-      }
-      this.currentStepAnimates[this.next] = styles;
-    }
-    _animateRun(styles = {}, config = {}) {
-      let ref = this.$.$refs["ani"].ref;
-      if (!ref)
-        return;
-      return new Promise((resolve, reject) => {
-        nvueAnimation.transition(ref, __spreadValues({
-          styles
-        }, config), (res2) => {
-          resolve();
-        });
-      });
-    }
-    _nvueNextAnimate(animates, step = 0, fn) {
-      let obj = animates[step];
-      if (obj) {
-        let {
-          styles,
-          config
-        } = obj;
-        this._animateRun(styles, config).then(() => {
-          step += 1;
-          this._nvueNextAnimate(animates, step, fn);
-        });
-      } else {
-        this.currentStepAnimates = {};
-        typeof fn === "function" && fn();
-        this.isEnd = true;
-      }
-    }
-    step(config = {}) {
-      this.animation.step(config);
-      return this;
-    }
-    run(fn) {
-      this.$.animationData = this.animation.export();
-      this.$.timer = setTimeout(() => {
-        typeof fn === "function" && fn();
-      }, this.$.durationTime);
-    }
-  }
-  const animateTypes1 = [
-    "matrix",
-    "matrix3d",
-    "rotate",
-    "rotate3d",
-    "rotateX",
-    "rotateY",
-    "rotateZ",
-    "scale",
-    "scale3d",
-    "scaleX",
-    "scaleY",
-    "scaleZ",
-    "skew",
-    "skewX",
-    "skewY",
-    "translate",
-    "translate3d",
-    "translateX",
-    "translateY",
-    "translateZ"
-  ];
-  const animateTypes2 = ["opacity", "backgroundColor"];
-  const animateTypes3 = ["width", "height", "left", "right", "top", "bottom"];
-  animateTypes1.concat(animateTypes2, animateTypes3).forEach((type) => {
-    MPAnimation.prototype[type] = function(...args) {
-      this.animation[type](...args);
-      return this;
-    };
-  });
-  function createAnimation(option, _this) {
-    if (!_this)
-      return;
-    clearTimeout(_this.timer);
-    return new MPAnimation(option, _this);
-  }
-  const _sfc_main$$ = {
-    name: "uniTransition",
-    emits: ["click", "change"],
-    props: {
-      show: {
-        type: Boolean,
-        default: false
-      },
-      modeClass: {
-        type: [Array, String],
-        default() {
-          return "fade";
-        }
-      },
-      duration: {
-        type: Number,
-        default: 300
-      },
-      styles: {
-        type: Object,
-        default() {
-          return {};
-        }
-      },
-      customClass: {
-        type: String,
-        default: ""
-      }
-    },
-    data() {
-      return {
-        isShow: false,
-        transform: "",
-        opacity: 1,
-        animationData: {},
-        durationTime: 300,
-        config: {}
-      };
-    },
-    watch: {
-      show: {
-        handler(newVal) {
-          if (newVal) {
-            this.open();
-          } else {
-            if (this.isShow) {
-              this.close();
-            }
-          }
-        },
-        immediate: true
-      }
-    },
-    computed: {
-      stylesObject() {
-        let styles = __spreadProps(__spreadValues({}, this.styles), {
-          "transition-duration": this.duration / 1e3 + "s"
-        });
-        let transform = "";
-        for (let i in styles) {
-          let line = this.toLine(i);
-          transform += line + ":" + styles[i] + ";";
-        }
-        return transform;
-      },
-      transformStyles() {
-        return "transform:" + this.transform + ";opacity:" + this.opacity + ";" + this.stylesObject;
-      }
-    },
-    created() {
-      this.config = {
-        duration: this.duration,
-        timingFunction: "ease",
-        transformOrigin: "50% 50%",
-        delay: 0
-      };
-      this.durationTime = this.duration;
-    },
-    methods: {
-      init(obj = {}) {
-        if (obj.duration) {
-          this.durationTime = obj.duration;
-        }
-        this.animation = createAnimation(Object.assign(this.config, obj), this);
-      },
-      onClick() {
-        this.$emit("click", {
-          detail: this.isShow
-        });
-      },
-      step(obj, config = {}) {
-        if (!this.animation)
-          return;
-        for (let i in obj) {
-          try {
-            if (typeof obj[i] === "object") {
-              this.animation[i](...obj[i]);
-            } else {
-              this.animation[i](obj[i]);
-            }
-          } catch (e) {
-            formatAppLog("error", "at uni_modules/uni-transition/components/uni-transition/uni-transition.vue:139", `\u65B9\u6CD5 ${i} \u4E0D\u5B58\u5728`);
-          }
-        }
-        this.animation.step(config);
-        return this;
-      },
-      run(fn) {
-        if (!this.animation)
-          return;
-        this.animation.run(fn);
-      },
-      open() {
-        clearTimeout(this.timer);
-        this.transform = "";
-        this.isShow = true;
-        let { opacity, transform } = this.styleInit(false);
-        if (typeof opacity !== "undefined") {
-          this.opacity = opacity;
-        }
-        this.transform = transform;
-        this.$nextTick(() => {
-          this.timer = setTimeout(() => {
-            this.animation = createAnimation(this.config, this);
-            this.tranfromInit(false).step();
-            this.animation.run();
-            this.$emit("change", {
-              detail: this.isShow
-            });
-          }, 20);
-        });
-      },
-      close(type) {
-        if (!this.animation)
-          return;
-        this.tranfromInit(true).step().run(() => {
-          this.isShow = false;
-          this.animationData = null;
-          this.animation = null;
-          let { opacity, transform } = this.styleInit(false);
-          this.opacity = opacity || 1;
-          this.transform = transform;
-          this.$emit("change", {
-            detail: this.isShow
-          });
-        });
-      },
-      styleInit(type) {
-        let styles = {
-          transform: ""
-        };
-        let buildStyle = (type2, mode) => {
-          if (mode === "fade") {
-            styles.opacity = this.animationType(type2)[mode];
-          } else {
-            styles.transform += this.animationType(type2)[mode] + " ";
-          }
-        };
-        if (typeof this.modeClass === "string") {
-          buildStyle(type, this.modeClass);
-        } else {
-          this.modeClass.forEach((mode) => {
-            buildStyle(type, mode);
-          });
-        }
-        return styles;
-      },
-      tranfromInit(type) {
-        let buildTranfrom = (type2, mode) => {
-          let aniNum = null;
-          if (mode === "fade") {
-            aniNum = type2 ? 0 : 1;
-          } else {
-            aniNum = type2 ? "-100%" : "0";
-            if (mode === "zoom-in") {
-              aniNum = type2 ? 0.8 : 1;
-            }
-            if (mode === "zoom-out") {
-              aniNum = type2 ? 1.2 : 1;
-            }
-            if (mode === "slide-right") {
-              aniNum = type2 ? "100%" : "0";
-            }
-            if (mode === "slide-bottom") {
-              aniNum = type2 ? "100%" : "0";
-            }
-          }
-          this.animation[this.animationMode()[mode]](aniNum);
-        };
-        if (typeof this.modeClass === "string") {
-          buildTranfrom(type, this.modeClass);
-        } else {
-          this.modeClass.forEach((mode) => {
-            buildTranfrom(type, mode);
-          });
-        }
-        return this.animation;
-      },
-      animationType(type) {
-        return {
-          fade: type ? 1 : 0,
-          "slide-top": `translateY(${type ? "0" : "-100%"})`,
-          "slide-right": `translateX(${type ? "0" : "100%"})`,
-          "slide-bottom": `translateY(${type ? "0" : "100%"})`,
-          "slide-left": `translateX(${type ? "0" : "-100%"})`,
-          "zoom-in": `scaleX(${type ? 1 : 0.8}) scaleY(${type ? 1 : 0.8})`,
-          "zoom-out": `scaleX(${type ? 1 : 1.2}) scaleY(${type ? 1 : 1.2})`
-        };
-      },
-      animationMode() {
-        return {
-          fade: "opacity",
-          "slide-top": "translateY",
-          "slide-right": "translateX",
-          "slide-bottom": "translateY",
-          "slide-left": "translateX",
-          "zoom-in": "scale",
-          "zoom-out": "scale"
-        };
-      },
-      toLine(name) {
-        return name.replace(/([A-Z])/g, "-$1").toLowerCase();
-      }
-    }
-  };
-  function _sfc_render$8(_ctx, _cache, $props, $setup, $data, $options) {
-    return $data.isShow ? (vue.openBlock(), vue.createElementBlock("view", {
-      key: 0,
-      ref: "ani",
-      animation: $data.animationData,
-      class: vue.normalizeClass($props.customClass),
-      style: vue.normalizeStyle($options.transformStyles),
-      onClick: _cache[0] || (_cache[0] = (...args) => $options.onClick && $options.onClick(...args))
-    }, [
-      vue.renderSlot(_ctx.$slots, "default")
-    ], 14, ["animation"])) : vue.createCommentVNode("v-if", true);
-  }
-  var __easycom_0$5 = /* @__PURE__ */ _export_sfc(_sfc_main$$, [["render", _sfc_render$8], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/uni_modules/uni-transition/components/uni-transition/uni-transition.vue"]]);
-  const _sfc_main$_ = {
-    name: "uniPopup",
-    components: {},
-    emits: ["change", "maskClick"],
-    props: {
-      animation: {
-        type: Boolean,
-        default: true
-      },
-      type: {
-        type: String,
-        default: "center"
-      },
-      isMaskClick: {
-        type: Boolean,
-        default: null
-      },
-      maskClick: {
-        type: Boolean,
-        default: null
-      },
-      backgroundColor: {
-        type: String,
-        default: "none"
-      },
-      safeArea: {
-        type: Boolean,
-        default: true
-      },
-      maskBackgroundColor: {
-        type: String,
-        default: "rgba(0, 0, 0, 0.4)"
-      }
-    },
-    watch: {
-      type: {
-        handler: function(type) {
-          if (!this.config[type])
-            return;
-          this[this.config[type]](true);
-        },
-        immediate: true
-      },
-      isDesktop: {
-        handler: function(newVal) {
-          if (!this.config[newVal])
-            return;
-          this[this.config[this.type]](true);
-        },
-        immediate: true
-      },
-      maskClick: {
-        handler: function(val) {
-          this.mkclick = val;
-        },
-        immediate: true
-      },
-      isMaskClick: {
-        handler: function(val) {
-          this.mkclick = val;
-        },
-        immediate: true
-      },
-      showPopup(show) {
-      }
-    },
-    data() {
-      return {
-        duration: 300,
-        ani: [],
-        showPopup: false,
-        showTrans: false,
-        popupWidth: 0,
-        popupHeight: 0,
-        config: {
-          top: "top",
-          bottom: "bottom",
-          center: "center",
-          left: "left",
-          right: "right",
-          message: "top",
-          dialog: "center",
-          share: "bottom"
-        },
-        maskClass: {
-          position: "fixed",
-          bottom: 0,
-          top: 0,
-          left: 0,
-          right: 0,
-          backgroundColor: "rgba(0, 0, 0, 0.4)"
-        },
-        transClass: {
-          position: "fixed",
-          left: 0,
-          right: 0
-        },
-        maskShow: true,
-        mkclick: true,
-        popupstyle: this.isDesktop ? "fixforpc-top" : "top"
-      };
-    },
-    computed: {
-      isDesktop() {
-        return this.popupWidth >= 500 && this.popupHeight >= 500;
-      },
-      bg() {
-        if (this.backgroundColor === "" || this.backgroundColor === "none") {
-          return "transparent";
-        }
-        return this.backgroundColor;
-      }
-    },
-    mounted() {
-      const fixSize = () => {
-        const {
-          windowWidth,
-          windowHeight,
-          windowTop,
-          safeArea,
-          screenHeight,
-          safeAreaInsets
-        } = uni.getSystemInfoSync();
-        this.popupWidth = windowWidth;
-        this.popupHeight = windowHeight + (windowTop || 0);
-        if (safeArea && this.safeArea) {
-          this.safeAreaInsets = safeAreaInsets.bottom;
-        } else {
-          this.safeAreaInsets = 0;
-        }
-      };
-      fixSize();
-    },
-    unmounted() {
-      this.setH5Visible();
-    },
-    created() {
-      if (this.isMaskClick === null && this.maskClick === null) {
-        this.mkclick = true;
-      } else {
-        this.mkclick = this.isMaskClick !== null ? this.isMaskClick : this.maskClick;
-      }
-      if (this.animation) {
-        this.duration = 300;
-      } else {
-        this.duration = 0;
-      }
-      this.messageChild = null;
-      this.clearPropagation = false;
-      this.maskClass.backgroundColor = this.maskBackgroundColor;
-    },
-    methods: {
-      setH5Visible() {
-      },
-      closeMask() {
-        this.maskShow = false;
-      },
-      disableMask() {
-        this.mkclick = false;
-      },
-      clear(e) {
-        e.stopPropagation();
-        this.clearPropagation = true;
-      },
-      open(direction) {
-        if (this.showPopup) {
-          clearTimeout(this.timer);
-          this.showPopup = false;
-        }
-        let innerType = ["top", "center", "bottom", "left", "right", "message", "dialog", "share"];
-        if (!(direction && innerType.indexOf(direction) !== -1)) {
-          direction = this.type;
-        }
-        if (!this.config[direction]) {
-          formatAppLog("error", "at uni_modules/uni-popup/components/uni-popup/uni-popup.vue:280", "\u7F3A\u5C11\u7C7B\u578B\uFF1A", direction);
-          return;
-        }
-        this[this.config[direction]]();
-        this.$emit("change", {
-          show: true,
-          type: direction
-        });
-      },
-      close(type) {
-        this.showTrans = false;
-        this.$emit("change", {
-          show: false,
-          type: this.type
-        });
-        clearTimeout(this.timer);
-        this.timer = setTimeout(() => {
-          this.showPopup = false;
-        }, 300);
-      },
-      touchstart() {
-        this.clearPropagation = false;
-      },
-      onTap() {
-        if (this.clearPropagation) {
-          this.clearPropagation = false;
-          return;
-        }
-        this.$emit("maskClick");
-        if (!this.mkclick)
-          return;
-        this.close();
-      },
-      top(type) {
-        this.popupstyle = this.isDesktop ? "fixforpc-top" : "top";
-        this.ani = ["slide-top"];
-        this.transClass = {
-          position: "fixed",
-          left: 0,
-          right: 0,
-          backgroundColor: this.bg
-        };
-        if (type)
-          return;
-        this.showPopup = true;
-        this.showTrans = true;
-        this.$nextTick(() => {
-          if (this.messageChild && this.type === "message") {
-            this.messageChild.timerClose();
-          }
-        });
-      },
-      bottom(type) {
-        this.popupstyle = "bottom";
-        this.ani = ["slide-bottom"];
-        this.transClass = {
-          position: "fixed",
-          left: 0,
-          right: 0,
-          bottom: 0,
-          paddingBottom: this.safeAreaInsets + "px",
-          backgroundColor: this.bg
-        };
-        if (type)
-          return;
-        this.showPopup = true;
-        this.showTrans = true;
-      },
-      center(type) {
-        this.popupstyle = "center";
-        this.ani = ["zoom-out", "fade"];
-        this.transClass = {
-          position: "fixed",
-          display: "flex",
-          flexDirection: "column",
-          bottom: 0,
-          left: 0,
-          right: 0,
-          top: 0,
-          justifyContent: "center",
-          alignItems: "center"
-        };
-        if (type)
-          return;
-        this.showPopup = true;
-        this.showTrans = true;
-      },
-      left(type) {
-        this.popupstyle = "left";
-        this.ani = ["slide-left"];
-        this.transClass = {
-          position: "fixed",
-          left: 0,
-          bottom: 0,
-          top: 0,
-          backgroundColor: this.bg,
-          display: "flex",
-          flexDirection: "column"
-        };
-        if (type)
-          return;
-        this.showPopup = true;
-        this.showTrans = true;
-      },
-      right(type) {
-        this.popupstyle = "right";
-        this.ani = ["slide-right"];
-        this.transClass = {
-          position: "fixed",
-          bottom: 0,
-          right: 0,
-          top: 0,
-          backgroundColor: this.bg,
-          display: "flex",
-          flexDirection: "column"
-        };
-        if (type)
-          return;
-        this.showPopup = true;
-        this.showTrans = true;
-      }
-    }
-  };
-  function _sfc_render$7(_ctx, _cache, $props, $setup, $data, $options) {
-    const _component_uni_transition = resolveEasycom(vue.resolveDynamicComponent("uni-transition"), __easycom_0$5);
-    return $data.showPopup ? (vue.openBlock(), vue.createElementBlock("view", {
-      key: 0,
-      class: vue.normalizeClass(["uni-popup", [$data.popupstyle, $options.isDesktop ? "fixforpc-z-index" : ""]])
-    }, [
-      vue.createElementVNode("view", {
-        onTouchstart: _cache[1] || (_cache[1] = (...args) => $options.touchstart && $options.touchstart(...args))
-      }, [
-        $data.maskShow ? (vue.openBlock(), vue.createBlock(_component_uni_transition, {
-          key: "1",
-          name: "mask",
-          "mode-class": "fade",
-          styles: $data.maskClass,
-          duration: $data.duration,
-          show: $data.showTrans,
-          onClick: $options.onTap
-        }, null, 8, ["styles", "duration", "show", "onClick"])) : vue.createCommentVNode("v-if", true),
-        vue.createVNode(_component_uni_transition, {
-          key: "2",
-          "mode-class": $data.ani,
-          name: "content",
-          styles: $data.transClass,
-          duration: $data.duration,
-          show: $data.showTrans,
-          onClick: $options.onTap
-        }, {
-          default: vue.withCtx(() => [
-            vue.createElementVNode("view", {
-              class: vue.normalizeClass(["uni-popup__wrapper", [$data.popupstyle]]),
-              style: vue.normalizeStyle({ backgroundColor: $options.bg }),
-              onClick: _cache[0] || (_cache[0] = (...args) => $options.clear && $options.clear(...args))
-            }, [
-              vue.renderSlot(_ctx.$slots, "default", {}, void 0, true)
-            ], 6)
-          ]),
-          _: 3
-        }, 8, ["mode-class", "styles", "duration", "show", "onClick"])
-      ], 32)
-    ], 2)) : vue.createCommentVNode("v-if", true);
-  }
-  var __easycom_0$4 = /* @__PURE__ */ _export_sfc(_sfc_main$_, [["render", _sfc_render$7], ["__scopeId", "data-v-7c43d41b"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/uni_modules/uni-popup/components/uni-popup/uni-popup.vue"]]);
+  var HomeFilter = /* @__PURE__ */ _export_sfc(_sfc_main$_, [["__scopeId", "data-v-1426d0ea"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/pages/index/components/homeFilter.vue"]]);
   const _sfc_main$Z = {
     __name: "homeList",
     props: {
@@ -5626,7 +5315,7 @@ if (uni.restoreGlobal) {
         data = props.data;
       });
       return (_ctx, _cache) => {
-        const _component_uni_popup = resolveEasycom(vue.resolveDynamicComponent("uni-popup"), __easycom_0$4);
+        const _component_uni_popup = resolveEasycom(vue.resolveDynamicComponent("uni-popup"), __easycom_0$5);
         return vue.openBlock(), vue.createElementBlock("view", { class: "homeList" }, [
           (vue.openBlock(true), vue.createElementBlock(vue.Fragment, null, vue.renderList(vue.unref(data), (item, index) => {
             return vue.openBlock(), vue.createElementBlock("view", {
@@ -5710,14 +5399,14 @@ if (uni.restoreGlobal) {
         setTimeout(function() {
           uni.stopPullDownRefresh();
         }, 1e3);
-        formatAppLog("log", "at pages/index/index.vue:77", "refresh");
+        formatAppLog("log", "at pages/index/index.vue:80", "refresh");
       });
       const getList = (params) => {
         getRobOrderList(params);
       };
       const getRobOrderList = (params) => {
         getRobOrder(params).then((res2) => {
-          formatAppLog("log", "at pages/index/index.vue:85", res2, 1111111);
+          formatAppLog("log", "at pages/index/index.vue:88", res2, 1111111);
           homeList.data = res2.data.ordersSeizes;
         });
       };
@@ -5742,7 +5431,7 @@ if (uni.restoreGlobal) {
         });
       };
       return (_ctx, _cache) => {
-        const _component_uni_nav_bar = resolveEasycom(vue.resolveDynamicComponent("uni-nav-bar"), __easycom_0$6);
+        const _component_uni_nav_bar = resolveEasycom(vue.resolveDynamicComponent("uni-nav-bar"), __easycom_0$4);
         return vue.openBlock(), vue.createElementBlock("view", { class: "home" }, [
           vue.createCommentVNode(" \u624B\u673A\u72B6\u6001\u680F "),
           vue.createVNode(_component_uni_nav_bar, {
@@ -5774,10 +5463,11 @@ if (uni.restoreGlobal) {
               [vue.vShow, fixTop.value]
             ]),
             vue.createCommentVNode(" end "),
-            vue.createVNode(vue.unref(HomeList), {
+            vue.unref(homeList).data.length ? (vue.openBlock(), vue.createBlock(vue.unref(HomeList), {
+              key: 0,
               data: vue.unref(homeList).data,
               onRefresh: getRobOrderList
-            }, null, 8, ["data"])
+            }, null, 8, ["data"])) : (vue.openBlock(), vue.createBlock(Empty, { key: 1 }))
           ], 40, ["scroll-y"]),
           vue.createCommentVNode(" footer "),
           vue.createVNode(UniFooter, { pagePath: "pages/index/index" }),
@@ -5813,7 +5503,7 @@ if (uni.restoreGlobal) {
         emit("handleAll");
       };
       return (_ctx, _cache) => {
-        const _component_uni_nav_bar = resolveEasycom(vue.resolveDynamicComponent("uni-nav-bar"), __easycom_0$6);
+        const _component_uni_nav_bar = resolveEasycom(vue.resolveDynamicComponent("uni-nav-bar"), __easycom_0$4);
         return __props.isLeftText ? (vue.openBlock(), vue.createBlock(_component_uni_nav_bar, {
           key: 0,
           title: __props.title,
@@ -6059,23 +5749,12 @@ if (uni.restoreGlobal) {
           latitude: 0,
           longitude: 0,
           iconPath: "/static/new/img_weizhi@2x.png",
-          title: "\u5929\u5B89\u95E8",
-          content: "\u8FD9\u91CC\u662F\u5929\u5B89\u95E8\u5E7F\u573A",
           width: 60,
-          height: 60,
-          callout: {
-            content: "\u5929\u5B89\u95E8",
-            color: "#ffffff",
-            fontSize: 14,
-            borderRadius: 4,
-            bgColor: "#000000",
-            padding: 8,
-            display: "ALWAYS"
-          }
+          height: 60
         }
       });
       const markerTap = () => {
-        formatAppLog("log", "at pages/serviceRange/index.vue:88", "111");
+        formatAppLog("log", "at pages/serviceRange/index.vue:77", "111");
       };
       const handleSelectCity = () => {
         uni.navigateTo({
@@ -6083,7 +5762,6 @@ if (uni.restoreGlobal) {
         });
       };
       const handleChooseRange = () => {
-        formatAppLog("log", "at pages/serviceRange/index.vue:98", 123);
         uni.chooseLocation({
           latitude: location.longitude,
           longitude: location.latitude,
@@ -6097,7 +5775,7 @@ if (uni.restoreGlobal) {
             store2.commit("user/setAddress", address.value);
           },
           fail: function(err) {
-            formatAppLog("log", "at pages/serviceRange/index.vue:114", err, "err");
+            formatAppLog("log", "at pages/serviceRange/index.vue:102", err, "err");
           }
         });
       };
@@ -6112,12 +5790,12 @@ if (uni.restoreGlobal) {
             duration: 1500,
             icon: "none"
           });
-          formatAppLog("log", "at pages/serviceRange/index.vue:129", res2, "\u8BBE\u7F6E\u670D\u52A1\u8303\u56F4");
+          formatAppLog("log", "at pages/serviceRange/index.vue:117", res2, "\u8BBE\u7F6E\u670D\u52A1\u8303\u56F4");
         });
       };
       onLoad((option) => {
         getSettingInfo().then((res2) => {
-          formatAppLog("log", "at pages/serviceRange/index.vue:135", res2, option, "\u83B7\u53D6\u5F53\u524D\u914D\u7F6E\u7684\u4F4D\u7F6E\u4FE1\u606F");
+          formatAppLog("log", "at pages/serviceRange/index.vue:123", res2, option, "\u83B7\u53D6\u5F53\u524D\u914D\u7F6E\u7684\u4F4D\u7F6E\u4FE1\u606F");
           if (!res2.data.location) {
             uni.getLocation({
               type: "gcj02",
@@ -6142,7 +5820,6 @@ if (uni.restoreGlobal) {
             address.value = option.address;
             params.cityCode = option.cityCode;
             params.intentionScope = option.name;
-            formatAppLog("log", "at pages/serviceRange/index.vue:169", cityName.value, "ffffffffffffffffff");
           }
         }).catch((err) => {
           uni.showToast({
@@ -8166,7 +7843,7 @@ if (uni.restoreGlobal) {
         }
       };
       return (_ctx, _cache) => {
-        const _component_uni_nav_bar = resolveEasycom(vue.resolveDynamicComponent("uni-nav-bar"), __easycom_0$6);
+        const _component_uni_nav_bar = resolveEasycom(vue.resolveDynamicComponent("uni-nav-bar"), __easycom_0$4);
         return vue.openBlock(), vue.createElementBlock("view", { class: "setting" }, [
           vue.createCommentVNode(" \u624B\u673A\u72B6\u6001\u680F "),
           vue.createVNode(_component_uni_nav_bar, { statusBar: "true" }),
@@ -8457,6 +8134,89 @@ if (uni.restoreGlobal) {
     }
   };
   var PagesLoginIndex = /* @__PURE__ */ _export_sfc(_sfc_main$R, [["__scopeId", "data-v-4586967a"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/pages/login/index.vue"]]);
+  const getDeliveryList = (params) => request({
+    url: "/tasks/page",
+    method: "get",
+    params
+  });
+  const transferBatch = (params) => request({
+    url: "/tasks/transfer/batch",
+    method: "post",
+    params
+  });
+  const taskDelete = (id) => request({
+    url: `/tasks/${id}`,
+    method: "delete"
+  });
+  const taskCancel = (params) => request({
+    url: `/tasks/cancel`,
+    method: "post",
+    params
+  });
+  const getDetail = (id) => request({
+    url: `/tasks/get/${id}`,
+    method: "get"
+  });
+  const idCardCheck = (params) => request({
+    url: `/tasks/idCard/check`,
+    method: "post",
+    params
+  });
+  const getPickup = (params) => request({
+    url: `/tasks/pickup`,
+    method: "put",
+    params
+  });
+  const getSameAgency = (params) => request({
+    url: `/users/sameAgency`,
+    method: "get",
+    params
+  });
+  const rejection = (id) => request({
+    url: `/tasks/reject/${id}`,
+    method: "put"
+  });
+  const tasksSign = (params) => request({
+    url: `/tasks/sign`,
+    method: "put",
+    params
+  });
+  const getQrCode = (params) => request({
+    url: `/pays/qrCode/get`,
+    method: "post",
+    params
+  });
+  const paySucceed = (id) => request({
+    url: `/pays/status/${id}`,
+    method: "get"
+  });
+  const getTracks = (id) => request({
+    url: `/tasks/tracks/${id}`,
+    method: "get"
+  });
+  const getSearch = (params) => request({
+    url: `/tasks/search`,
+    method: "post",
+    params
+  });
+  const getRecentSearch = () => request({
+    url: `/tasks/recentSearch`,
+    method: "get"
+  });
+  const setMarkRecent = (transportOrderId) => request({
+    url: `/tasks/markRecent/${transportOrderId}`,
+    method: "get"
+  });
+  const clearRecentSearch = () => request({
+    url: `/tasks/recentSearch`,
+    method: "delete"
+  });
+  const PositionUpload = (params) => request({
+    url: `/track/upload`,
+    method: "put",
+    data: params,
+    params
+  });
   const _sfc_main$Q = {
     __name: "index",
     props: {
@@ -9088,7 +8848,7 @@ if (uni.restoreGlobal) {
       });
       return (_ctx, _cache) => {
         const _component_uni_popup_dialog = resolveEasycom(vue.resolveDynamicComponent("uni-popup-dialog"), __easycom_0$3);
-        const _component_uni_popup = resolveEasycom(vue.resolveDynamicComponent("uni-popup"), __easycom_0$4);
+        const _component_uni_popup = resolveEasycom(vue.resolveDynamicComponent("uni-popup"), __easycom_0$5);
         return vue.openBlock(), vue.createBlock(_component_uni_popup, {
           ref_key: "message",
           ref: message,
@@ -9283,6 +9043,165 @@ if (uni.restoreGlobal) {
     }
   };
   var ReachBottom = /* @__PURE__ */ _export_sfc(_sfc_main$L, [["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/components/reach-bottom/index.vue"]]);
+  const taskTimeFormat = (val) => {
+    const times = getTimeDate(val);
+    return times.date;
+  };
+  const overTimeFormat = (val) => {
+    const times = getTimeDate(val);
+    return times.times;
+  };
+  const getTimeDate = (val) => {
+    const date = new Date(val);
+    date.setTime(date.getTime());
+    const year = date.getFullYear();
+    const month = date.getMonth() + 1;
+    const day = date.getDate();
+    const hour = date.getHours();
+    const minute = date.getMinutes();
+    date.getSeconds();
+    const time = {
+      date: addZero(month) + "-" + addZero(day) + " " + addZero(hour) + ":" + addZero(minute),
+      times: addZero(hour) + ":" + addZero(minute),
+      veryDayDate: addZero(year) + "-" + addZero(month) + "-" + addZero(day) + " 00:00:00"
+    };
+    return time;
+  };
+  function addZero(s) {
+    return s < 10 ? "0" + s : s;
+  }
+  const getTate = (val) => {
+    let date = new Date(val);
+    const year = date.getFullYear();
+    const month = date.getMonth() + 1;
+    const day = date.getDate();
+    const m = addZero(year) + "-" + addZero(month) + "-" + addZero(day) + " 00:00:00";
+    return m;
+  };
+  const getNow = (val) => {
+    let date = new Date(val);
+    date.getFullYear();
+    let m = date.getMonth() + 1;
+    let d = date.getDate();
+    return m + "\u6708" + d + "\u65E5";
+  };
+  const tomorrowDay = (date) => {
+    let odata = new Date(new Date().getTime() + 24 * 60 * 60 * 1e3);
+    return getTate(odata);
+  };
+  const afterTomorrowDay = (date) => {
+    let odata = new Date(new Date().getTime() + 48 * 60 * 60 * 1e3);
+    return getTate(odata);
+  };
+  const getDay = () => {
+    const times = timeList();
+    let arr = [];
+    times.forEach((val) => {
+      const obj = getTate(val);
+      arr.push(obj);
+    });
+    return arr;
+  };
+  const getMonthDay = (val) => {
+    const now = timeList();
+    const timeNow = Date.parse(val);
+    const timeStar = Date.parse(now[0]);
+    const timeEnd = Date.parse(now[now.length - 1]);
+    const times = {
+      timeNow,
+      timeStar,
+      timeEnd
+    };
+    return times;
+  };
+  const validateTextLength = (value) => {
+    if (value != void 0) {
+      let cnReg = /([\u4e00-\u9fa5]|[\u3000-\u303F]|[\uFF00-\uFF60])/g;
+      let mat = value.match(cnReg);
+      let length;
+      if (mat) {
+        length = mat.length + (value.length - mat.length) * 0.5;
+        return length;
+      } else {
+        return value.length * 0.5;
+      }
+    }
+  };
+  const timeList = () => {
+    var thrityMonth = [];
+    for (var i = 0; i < 30; i++) {
+      thrityMonth.unshift(new Date(new Date().setDate(new Date().getDate() - i)).toLocaleDateString());
+    }
+    return thrityMonth;
+  };
+  const positionUploadHandle = (item) => {
+    uni.getLocation({
+      type: "gcj02",
+      isHighAccuracy: true,
+      success: function(positions) {
+        if (positions) {
+          const posit = uni.getStorageSync("positions");
+          if (item) {
+            positionUploadAdmin(positions);
+            uni.setStorageSync("positions", { timer: posit.timer, lastPoint: positions, countTime: 0, countDist: 0 });
+            return;
+          }
+          if (!posit) {
+            const timer = setInterval(() => {
+              positionUploadHandle();
+            }, 1e3 * 60);
+            uni.setStorageSync("positions", { timer, lastPoint: positions, countTime: 0, countDist: 0 });
+            positionUploadAdmin(positions);
+          } else {
+            const dist = getDistance(posit.lastPoint.latitude, posit.lastPoint.longitude, positions.latitude, positions.longitude);
+            uni.setStorageSync("positions", { timer: posit.timer, lastPoint: positions, countTime: posit.countTime + 6e4, countDist: posit.countDist + dist });
+            if (posit.countTime + 6e4 >= 3e5 || posit.countDist + dist >= 100) {
+              positionUploadAdmin(positions);
+              uni.setStorageSync("positions", { timer: posit.timer, lastPoint: positions, countTime: 0, countDist: 0 });
+            }
+          }
+        } else {
+          uni.showToast({
+            title: "\u4F4D\u7F6E\u66F4\u65B0\u5931\u8D25\uFF0C\u8BF7\u68C0\u67E5\u5B9A\u4F4D\u529F\u80FD\u662F\u5426\u5F00\u542F\uFF0C\u6216\u5207\u7F51\u7EDC\u4E86\u91CD\u65B0\u4E0A\u4F20",
+            duration: 3e3,
+            icon: "none"
+          });
+        }
+      },
+      fail: function(err) {
+        uni.showToast({
+          title: "\u4F4D\u7F6E\u83B7\u53D6\u5931\u8D25\uFF0C\u8BF7\u68C0\u67E5\u5B9A\u4F4D\u529F\u80FD\u662F\u5426\u5F00\u542F\uFF0C\u6216\u5207\u7F51\u7EDC\u4E86\u91CD\u65B0\u4E0A\u4F20",
+          duration: 3e3,
+          icon: "none"
+        });
+      }
+    });
+  };
+  const getDistance = (lat1, lng1, lat2, lng2, lenType = 1, decimal = 2) => {
+    const EARTH_RADIUS = 6378.137;
+    const PI = 3.1415926;
+    const radLat1 = lat1 * PI / 180;
+    const radLat2 = lat2 * PI / 180;
+    let a = radLat1 - radLat2;
+    let b = lng1 * PI / 180 - lng2 * PI / 180;
+    let s = 2 * Math.asin(Math.sqrt(Math.pow(Math.sin(a / 2), 2) + Math.cos(radLat1) * Math.cos(radLat2) * Math.pow(Math.sin(b / 2), 2)));
+    s = s * EARTH_RADIUS;
+    s = lenType == 1 ? Math.round(s * 1e3) / 1 : Math.round(s * 1e4) / 1e4;
+    return s;
+  };
+  const positionUploadAdmin = (positions) => {
+    PositionUpload({ lat: positions.latitude.toString(), lng: positions.longitude.toString() }).then((res2) => {
+      if (res2.code == 200)
+        ;
+      else {
+        uni.showToast({
+          title: "\u4F4D\u7F6E\u4E0A\u62A5\u5931\u8D25\uFF0C\u8BF7\u68C0\u67E5\u5B9A\u4F4D\u529F\u80FD\u662F\u5426\u5F00\u542F\uFF0C\u6216\u5207\u7F51\u7EDC\u4E86\u91CD\u65B0\u4E0A\u4F20",
+          duration: 3e3,
+          icon: "none"
+        });
+      }
+    });
+  };
   const _sfc_main$K = {
     __name: "AlreadyPicUp",
     props: {
@@ -12489,6 +12408,124 @@ if (uni.restoreGlobal) {
     }
   };
   var TateSelete = /* @__PURE__ */ _export_sfc(_sfc_main$B, [["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/pages/history/commponents/date.vue"]]);
+  const cancelData = [
+    {
+      value: 1,
+      label: "\u7528\u6237\u6076\u610F\u4E0B\u5355"
+    },
+    {
+      value: 2,
+      label: "\u7528\u6237\u53D6\u6D88\u6295\u9012"
+    },
+    {
+      value: 3,
+      label: "\u8FDD\u7981\u54C1"
+    },
+    {
+      value: 4,
+      label: "\u91CD\u590D\u4E0B\u5355"
+    },
+    {
+      value: 5,
+      label: "\u65E0\u6CD5\u8054\u7CFB\u4E0A\u5BA2\u6237\uFF08\u7A7A\u53F7\u3001\u505C\u673A\u7B49\uFF09"
+    },
+    {
+      value: 6,
+      label: "\u865A\u5047\u5730\u5740"
+    },
+    {
+      value: 7,
+      label: "\u5B9E\u9645\u53D1\u8D27\u5730\u5740\u4E0E\u4E0B\u5355\u5730\u5740\u4E0D\u7B26"
+    },
+    {
+      value: 8,
+      label: "\u56E0\u4E2A\u4EBA\u65E0\u6CD5\u53D6\u4EF6\uFF0C\u9000\u56DE\u5230\u7F51\u70B9"
+    }
+  ];
+  const SignData = [
+    {
+      value: 1,
+      label: "\u672C\u4EBA"
+    },
+    {
+      value: 2,
+      label: "\u4EE3\u6536"
+    }
+  ];
+  const PayMethodData = [
+    {
+      value: 1,
+      label: "\u5BC4\u4ED8"
+    },
+    {
+      value: 2,
+      label: "\u5230\u4ED8"
+    }
+  ];
+  const GoodsData = [
+    {
+      value: 1,
+      label: "\u751F\u6D3B\u7528\u54C1"
+    },
+    {
+      value: 2,
+      label: "\u6587\u4EF6"
+    },
+    {
+      value: 3,
+      label: "\u6570\u7801\u4EA7\u54C1"
+    },
+    {
+      value: 4,
+      label: "\u98DF\u54C1"
+    },
+    {
+      value: 5,
+      label: "\u670D\u9970"
+    },
+    {
+      value: 6,
+      label: "\u5176\u4ED6"
+    }
+  ];
+  const PayWayData = [
+    {
+      value: 1,
+      label: "\u5FAE\u4FE1\u652F\u4ED8"
+    },
+    {
+      value: 2,
+      label: "\u652F\u4ED8\u5B9D\u652F\u4ED8"
+    }
+  ];
+  const HistoryTabData = [
+    {
+      value: 1,
+      label: "\u53D6\u4EF6"
+    },
+    {
+      value: 2,
+      label: "\u6D3E\u4EF6"
+    }
+  ];
+  const newItemData = [
+    {
+      id: 1,
+      title: "\u7269\u6D41\u4FDD\u901A\u4FDD\u7545\uFF1A\u6C11\u822A\u4FDD\u969C\u8D27\u8FD0\u822A\u73ED\u73AF\u6BD4\u589E\u957F9.7%",
+      created: "2022-09-15 06:16",
+      isRead: 0,
+      firstContent: "\u6700\u65B0\u6570\u636E\u663E\u793A\uFF0C9\u670814\u65E5\uFF0C\u5168\u56FD\u8D27\u8FD0\u7269\u6D41\u6709\u5E8F\u8FD0\u884C\uFF0C\u6C11\u822A\u4FDD\u969C\u8D27\u8FD0\u822A\u73ED\u73AF\u6BD4\u589E\u957F9.7%\u3002",
+      content: "\u56FD\u52A1\u9662\u7269\u6D41\u4FDD\u901A\u4FDD\u7545\u5DE5\u4F5C\u9886\u5BFC\u5C0F\u7EC4\u529E\u516C\u5BA4\u76D1\u6D4B\u6C47\u603B\u6570\u636E\u663E\u793A\uFF0C9\u670814\u65E5\uFF0C\u56FD\u5BB6\u94C1\u8DEF\u8D27\u8FD0\u7EE7\u7EED\u4FDD\u6301\u9AD8\u4F4D\u8FD0\u884C\uFF0C\u8FD0\u8F93\u8D27\u72691094.7\u4E07\u5428\uFF0C\u73AF\u6BD4\u4E0B\u964D0.23%\uFF1B\u5168\u56FD\u9AD8\u901F\u516C\u8DEF\u8D27\u8F66\u901A\u884C739.05\u4E07\u8F86\uFF0C\u73AF\u6BD4\u589E\u957F1.64%\uFF1B\u76D1\u6D4B\u6E2F\u53E3\u5B8C\u6210\u8D27\u7269\u541E\u5410\u91CF2374.5\u4E07\u5428\uFF0C\u73AF\u6BD4\u4E0B\u964D27.9%\uFF0C\u5B8C\u6210\u96C6\u88C5\u7BB1\u541E\u5410\u91CF53.1\u4E07\u6807\u7BB1\uFF0C\u73AF\u6BD4\u4E0B\u964D33.9%\uFF1B\u6C11\u822A\u4FDD\u969C\u8D27\u8FD0\u822A\u73ED653\u73ED\uFF08\u5176\u4E2D\u56FD\u9645\u8D27\u8FD0\u822A\u73ED452\u73ED\uFF0C\u56FD\u5185\u8D27\u8FD0\u822A\u73ED201\u73ED\uFF09\uFF0C\u73AF\u6BD4\u589E\u957F9.7%\uFF1B\u90AE\u653F\u5FEB\u9012\u63FD\u6536\u91CF\u7EA63.27\u4EBF\u4EF6\uFF0C\u73AF\u6BD4\u589E\u957F0.6%\uFF1B\u6295\u9012\u91CF\u7EA62.97\u4EBF\u4EF6\uFF0C\u73AF\u6BD4\u589E\u957F2.4%\u3002"
+    },
+    {
+      id: 2,
+      title: "\u795E\u9886\u7269\u6D41\u5168\u65B02.0\u7248\u672C\u4E0A\u7EBF\uFF0C\u57FA\u4E8E1.0\u7248\u672C\u5728\u4E1A\u52A1\u53CA\u529F\u80FD\u5C42\u9762\u8FDB\u884C\u4E86\u5347\u7EA7\u8FED\u4EE3",
+      created: "2022-04-02 20:23",
+      isRead: 1,
+      firstContent: null,
+      content: "\u795E\u9886\u7269\u6D412.0\u7248\u672C-\u5FEB\u9012\u5458\u7AEF\u7EC8\u4E8E\u57282022\u5E74\u4E0A\u534A\u5E74\u5B8C\u7F8E\u4E0A\u7EBF\u7EBF\uFF0C\u5176\u4E2D\u53D6\u4EF6/\u6D3E\u4EF6\u6D41\u7A0B\u6A21\u5757\u4F5C\u51FA\u4E86\u5F88\u591A\u65B0\u9896\u7684\u8C03\u6574\uFF0C\u8BF7\u5927\u5BB6\u591A\u591A\u5173\u6CE8\u652F\u6301\uFF01"
+    }
+  ];
   const _sfc_main$A = {
     __name: "index",
     props: {
@@ -13703,7 +13740,7 @@ if (uni.restoreGlobal) {
         handleOpen
       });
       return (_ctx, _cache) => {
-        const _component_uni_popup = resolveEasycom(vue.resolveDynamicComponent("uni-popup"), __easycom_0$4);
+        const _component_uni_popup = resolveEasycom(vue.resolveDynamicComponent("uni-popup"), __easycom_0$5);
         return vue.openBlock(), vue.createElementBlock("view", { class: "uniPopup" }, [
           vue.createVNode(_component_uni_popup, {
             ref_key: "popup",
@@ -15025,7 +15062,7 @@ if (uni.restoreGlobal) {
         current
       });
       return (_ctx, _cache) => {
-        const _component_uni_popup = resolveEasycom(vue.resolveDynamicComponent("uni-popup"), __easycom_0$4);
+        const _component_uni_popup = resolveEasycom(vue.resolveDynamicComponent("uni-popup"), __easycom_0$5);
         return vue.openBlock(), vue.createElementBlock("view", { class: "uniPopup detailPopup" }, [
           vue.createVNode(_component_uni_popup, {
             ref_key: "popup",
@@ -17029,7 +17066,7 @@ if (uni.restoreGlobal) {
         dialogOpen
       });
       return (_ctx, _cache) => {
-        const _component_uni_popup = resolveEasycom(vue.resolveDynamicComponent("uni-popup"), __easycom_0$4);
+        const _component_uni_popup = resolveEasycom(vue.resolveDynamicComponent("uni-popup"), __easycom_0$5);
         return vue.openBlock(), vue.createBlock(_component_uni_popup, {
           ref_key: "uppop",
           ref: uppop,

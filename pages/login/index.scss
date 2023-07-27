@@ -177,3 +177,42 @@ uni-page-head,
 	margin: 0 auto;
 	display: block;
 }
+
+//冻结弹窗提示
+.dialog{
+  width:556rpx ;
+  height: 392rpx;
+  background-color: var(--neutral-color-white);
+  border-radius: 24rpx;
+  position: relative;
+  .content{
+    // height: 225rpx;
+    text-align: center;
+    font-size: 36rpx;
+    color: var(--color-black-19);
+    padding-top: 38rpx;
+    padding-bottom: 40rpx;
+  }
+  .reason{
+    padding-bottom: 20rpx;
+    color: var(--color-gray-59);
+    padding-left: 63rpx;
+    
+  }
+  .phone{
+    padding-bottom: 29rpx;
+    color: var(--color-gray-59);
+    padding-left: 63rpx;
+  }
+  .phoneLabel{
+    color: var(--color-gray-59);
+    padding-left: 63rpx;
+  }
+  .footer{
+    font-size: 32rpx ;
+    color: var(--color-red-bg);
+    text-align: center;
+    border-top: 2rpx solid var(--color-gray-e8);
+    line-height: 99rpx;
+  }
+}

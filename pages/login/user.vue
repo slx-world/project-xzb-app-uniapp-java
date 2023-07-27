@@ -54,6 +54,19 @@
         <!-- 更新请求Url - 教学需求 -->
       </view>
       <!-- end -->
+      <!-- 提示窗示例 -->
+      <uni-popup ref="alertDialog" type="dialog" :is-mask-click="false">
+        <view class="dialog">
+          <view class="content">该手机号已被冻结</view>
+          <view class="reason">
+            <text>冻结原因：</text>
+            <text>{{ reason }}</text>
+          </view>
+          <view class="phoneLabel">如需解冻请拨打客服电话：</view>
+          <view class="phone">400-000-4000</view>
+          <view class="footer" @click="handleClose">知道了</view>
+        </view>
+      </uni-popup>
     </view>
   </view>
 </template>
@@ -65,12 +78,11 @@ import storage from '@/utils/storage.js';
 // 接口
 import { phoneLogins, getsmsCode } from '../api/user.js';
 import { getUserSetting } from '../api/setting.js';
-// 导入接口
-import { getHomeInfo } from '@/pages/api/index.js';
 // ------定义变量------
 const store = useStore(); //vuex获取储存数据
-let showPassword = ref(false); //控制密码右侧图标显示隐藏
 const customForm = ref(); //表单校验
+const alertDialog = ref(null);
+const reason = ref('');
 // 表单数据
 let fromInfo = reactive({
   phone: '', //账号
@@ -119,6 +131,9 @@ onMounted(() => {
   // uni.setStorageSync('positions', null);
 });
 // ------定义方法------
+const handleClose = () => {
+  alertDialog.value.close();
+};
 // 登录
 const handleSubmit = async () => {
   // 表单校验
@@ -177,7 +192,7 @@ const handleSubmit = async () => {
               });
             }
           });
-        } else {
+        } else if (res.code === 605) {
           setTimeout(function () {
             uni.hideLoading();
           }, 500);
@@ -192,11 +207,17 @@ const handleSubmit = async () => {
         setTimeout(function () {
           uni.hideLoading();
         }, 500);
-        uni.showToast({
-          title: err.msg,
-          duration: 1500,
-          icon: 'none',
-        });
+        console.log(err, 'err');
+        if (err.code === 605) {
+          reason.value = err.msg;
+          alertDialog.value.open();
+        } else {
+          uni.showToast({
+            title: err.msg || '登录失败',
+            duration: 1500,
+            icon: 'none',
+          });
+        }
       });
   }
 };

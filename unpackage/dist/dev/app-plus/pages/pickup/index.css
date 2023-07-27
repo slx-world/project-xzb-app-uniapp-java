@@ -907,6 +907,7 @@
 [data-v-a750b56c]:root {
 	--color-gray-9:#999999;
 	--color-black-19:#191919;
+  --color-black-15:#151515;
 	--color-red-bg:#F74347;
   --color-red-ffeaea:#FFEAEA;
   --color-red-ffdbdc:#FFDBDC;
@@ -1709,6 +1710,7 @@ body[data-v-a750b56c] {
 [data-v-0e6a68f8]:root {
 	--color-gray-9:#999999;
 	--color-black-19:#191919;
+  --color-black-15:#151515;
 	--color-red-bg:#F74347;
   --color-red-ffeaea:#FFEAEA;
   --color-red-ffdbdc:#FFDBDC;
