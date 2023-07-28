@@ -5795,7 +5795,7 @@ if (uni.restoreGlobal) {
       };
       onLoad((option) => {
         getSettingInfo().then((res2) => {
-          formatAppLog("log", "at pages/serviceRange/index.vue:123", res2, option, "\u83B7\u53D6\u5F53\u524D\u914D\u7F6E\u7684\u4F4D\u7F6E\u4FE1\u606F");
+          formatAppLog("log", "at pages/serviceRange/index.vue:123", res2, "\u83B7\u53D6\u5F53\u524D\u914D\u7F6E\u7684\u4F4D\u7F6E\u4FE1\u606F");
           if (!res2.data.location) {
             uni.getLocation({
               type: "gcj02",
@@ -5805,9 +5805,11 @@ if (uni.restoreGlobal) {
                 location2.longitude = res3.latitude;
                 markers.data.latitude = res3.latitude;
                 markers.data.longitude = res3.longitude;
+                formatAppLog("log", "at pages/serviceRange/index.vue:134", res3, "\u5F53\u524D\u4F4D\u7F6E1");
               }
             });
           } else {
+            params.cityCode = res2.data.cityCode;
             cityName.value = res2.data.cityName;
             address.value = res2.data.intentionScope;
             location2.latitude = res2.data.location.split(",")[0];
@@ -5832,7 +5834,9 @@ if (uni.restoreGlobal) {
       vue.onMounted(() => {
       });
       const goBack = () => {
-        uni.navigateBack();
+        uni.redirectTo({
+          url: "/pages/index/index"
+        });
       };
       return (_ctx, _cache) => {
         return vue.openBlock(), vue.createElementBlock("view", { class: "serviceRange" }, [

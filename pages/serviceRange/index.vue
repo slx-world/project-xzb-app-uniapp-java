@@ -45,7 +45,7 @@
 <script setup>
 import { ref, reactive, onMounted } from 'vue';
 import { useStore } from 'vuex';
-import { onLoad } from '@dcloudio/uni-app';
+import { onLoad, onShow } from '@dcloudio/uni-app';
 import { getSettingInfo, setServiceSetting } from '../api/setting.js';
 // 导航组件
 import UniNav from '@/components/uni-nav/index.vue';
@@ -120,7 +120,7 @@ const handleSubmit = () => {
 onLoad((option) => {
   getSettingInfo()
     .then((res) => {
-      console.log(res, option, '获取当前配置的位置信息');
+      console.log(res, '获取当前配置的位置信息');
       //没有设置位置则获取当前位置
       if (!res.data.location) {
         uni.getLocation({
@@ -131,11 +131,12 @@ onLoad((option) => {
             location.longitude = res.latitude;
             markers.data.latitude = res.latitude;
             markers.data.longitude = res.longitude;
-            // console.log(location, res, '当前位置');
+            console.log(res, '当前位置1');
           },
         });
       } else {
         //有位置信息则进行赋值
+        params.cityCode = res.data.cityCode;
         cityName.value = res.data.cityName;
         address.value = res.data.intentionScope;
         location.latitude = res.data.location.split(',')[0];
@@ -164,7 +165,9 @@ onMounted(() => {
 });
 // 返回上一页
 const goBack = () => {
-  uni.navigateBack();
+  uni.redirectTo({
+    url: '/pages/index/index',
+  });
 };
 </script>
 <style src="./index.scss" lang="scss" scoped></style>
