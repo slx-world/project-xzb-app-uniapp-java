@@ -599,6 +599,7 @@
 /* 水平间距 */
 /* 水平间距 */
 [data-v-02b269f0]:root {
+  --color-gray-8:#888888;
 	--color-gray-9:#999999;
 	--color-black-19:#191919;
   --color-black-15:#151515;
@@ -612,6 +613,7 @@
   --color-gray-f2:#F2F2F2;
   --color-gray-93:#939393;
   --color-gray-fa:#fafafa;
+  --color-gray-eb:#EBEBEB;
   --neutral-color-white:#FFFFFF;
   --color-green-27BA9B:#27BA9B;
 
@@ -832,7 +834,7 @@ uni-page-head[data-v-1426d0ea],
   top: 3.125rem;
 }
 .homeList .card[data-v-1426d0ea] {
-  border-radius: 16px;
+  border-radius: 0.5rem;
   background-color: var(--neutral-color-white);
   min-height: 8.4375rem;
   margin: 0.9375rem;
@@ -1122,7 +1124,7 @@ uni-page-head[data-v-62e7a190],
   top: 3.125rem;
 }
 .homeList .card[data-v-62e7a190] {
-  border-radius: 16px;
+  border-radius: 0.5rem;
   background-color: var(--neutral-color-white);
   min-height: 8.4375rem;
   margin: 0.9375rem;
@@ -1388,7 +1390,7 @@ uni-page-head[data-v-57280228],
   top: 3.125rem;
 }
 .homeList .card[data-v-57280228] {
-  border-radius: 16px;
+  border-radius: 0.5rem;
   background-color: var(--neutral-color-white);
   min-height: 8.4375rem;
   margin: 0.9375rem;

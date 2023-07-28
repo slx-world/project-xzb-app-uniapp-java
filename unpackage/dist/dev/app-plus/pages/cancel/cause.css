@@ -604,6 +604,7 @@
 /* 水平间距 */
 /* 水平间距 */
 [data-v-17014f8d]:root {
+  --color-gray-8:#888888;
 	--color-gray-9:#999999;
 	--color-black-19:#191919;
   --color-black-15:#151515;
@@ -617,6 +618,7 @@
   --color-gray-f2:#F2F2F2;
   --color-gray-93:#939393;
   --color-gray-fa:#fafafa;
+  --color-gray-eb:#EBEBEB;
   --neutral-color-white:#FFFFFF;
   --color-green-27BA9B:#27BA9B;
 

@@ -57,7 +57,20 @@
 				"navigationBarTitleText": "基础配置"
 			}
 		},
-
+		{
+			"path": "pages/pickup/index",
+			"style": {
+				"navigationStyle": "custom",
+				"navigationBarTitleText": "派件"
+			}
+		},
+    {
+			"path": "pages/orderInfo/index",
+			"style": {
+				"navigationStyle": "custom",
+				"navigationBarTitleText": "订单详情"
+			}
+		},
 
 
 
@@ -126,13 +139,7 @@
 			}
 		},
 
-		{
-			"path": "pages/pickup/index",
-			"style": {
-				"navigationStyle": "custom",
-				"navigationBarTitleText": "派件"
-			}
-		},
+
 
 		{
 			"path": "pages/turnorder/index",

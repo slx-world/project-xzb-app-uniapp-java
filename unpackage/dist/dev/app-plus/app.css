@@ -5,6 +5,7 @@
 /*每个页面公共css */
 /* 水平间距 */
 :root {
+  --color-gray-8:#888888;
 	--color-gray-9:#999999;
 	--color-black-19:#191919;
   --color-black-15:#151515;
@@ -18,6 +19,7 @@
   --color-gray-f2:#F2F2F2;
   --color-gray-93:#939393;
   --color-gray-fa:#fafafa;
+  --color-gray-eb:#EBEBEB;
   --neutral-color-white:#FFFFFF;
   --color-green-27BA9B:#27BA9B;
 
@@ -2778,7 +2780,7 @@ body {
   text-align: right;
 }
 .tabScroll {
-  padding: 0.8125rem 0.875rem 0.5rem;
+  padding: 0 0.875rem 0;
   width: auto !important;
   background: var(--neutral-color-white);
 }
@@ -2787,14 +2789,16 @@ body {
   line-height: 1.5625rem;
   font-weight: 600;
   font-size: 1rem;
-  color: #a0a0a0;
+  color: var(--color-black-19);
   letter-spacing: 0.36px;
+  justify-content: space-between;
 }
 .tabScroll .scroll-row-item {
   margin-right: 1.4375rem;
+  padding-top: 0.8125rem;
 }
 .tabScroll .scroll-row-item-act {
-  color: var(--neutral-color-main);
+  color: var(--color-red-bg);
   position: relative;
   padding-bottom: 0.625rem;
 }
@@ -2802,8 +2806,7 @@ body {
   width: 1.4375rem;
   height: 0.25rem;
   display: block;
-  background-image: linear-gradient(210deg, #f25c4d 25%, #e52d21 100%, #e52d21 100%);
-  border-radius: 0.25rem;
+  background-color: var(--color-red-bg);
   transform: translate(-50%, -50%);
   position: absolute;
   bottom: -0.125rem;

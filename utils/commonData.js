@@ -1,3 +1,44 @@
+//订单状态
+export const orderStatus = [
+  {
+    value: 1,
+    label: '待上门'
+  },
+  {
+    value: 2,
+    label: '待完工'
+  }, {
+    value: 3,
+    label: '已完成'
+  },
+  {
+    value: 4,
+    label: '已取消'
+  }, {
+    value: 5,
+    label: '被退单'
+  },
+]
+// 订单筛选状态
+export const DeliveryData = [
+  {
+    value: 1,
+    label: "待上门",
+  },
+  {
+    value: 2,
+    label: "待完工",
+  },
+  {
+    value: 3,
+    label: "已完成",
+  },
+  {
+    value: '',
+    label: "全部",
+  },
+];
+
 // 取消原因数据
 export const cancelData = [
   {
@@ -94,21 +135,7 @@ export const PayWayData = [
     label: "支付宝支付",
   },
 ];
-// 取件tab数据
-export const DeliveryData = [
-  {
-    value: 1,
-    label: "待取件",
-  },
-  {
-    value: 2,
-    label: "已取件",
-  },
-  {
-    value: 3,
-    label: "已取消",
-  },
-];
+
 // 派件tab数据
 export const PickUpData = [
   {

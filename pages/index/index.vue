@@ -86,7 +86,7 @@ const getList = (params) => {
 const getRobOrderList = (params) => {
   getRobOrder(params).then((res) => {
     console.log(res, 1111111);
-    homeList.data = res.data.ordersSeizes;
+    homeList.data = res.data.ordersSeizes || [];
   });
 };
 //获取首页顶部筛选服务项数据

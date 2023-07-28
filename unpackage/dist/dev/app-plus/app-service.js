@@ -1279,7 +1279,7 @@ if (uni.restoreGlobal) {
     const reg = /^[0-9]*$/g;
     return typeof val === "number" || reg.test(val) ? val + "px" : val;
   };
-  const _sfc_main$1a = {
+  const _sfc_main$1d = {
     name: "UniIcons",
     emits: ["click"],
     props: {
@@ -1323,14 +1323,14 @@ if (uni.restoreGlobal) {
       }
     }
   };
-  function _sfc_render$e(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$f(_ctx, _cache, $props, $setup, $data, $options) {
     return vue.openBlock(), vue.createElementBlock("text", {
       style: vue.normalizeStyle({ color: $props.color, "font-size": $options.iconSize }),
       class: vue.normalizeClass(["uni-icons", ["uniui-" + $props.type, $props.customPrefix, $props.customPrefix ? $props.type : ""]]),
       onClick: _cache[0] || (_cache[0] = (...args) => $options._onClick && $options._onClick(...args))
     }, null, 6);
   }
-  var __easycom_0$8 = /* @__PURE__ */ _export_sfc(_sfc_main$1a, [["render", _sfc_render$e], ["__scopeId", "data-v-a2e81f6e"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/uni_modules/uni-icons/components/uni-icons/uni-icons.vue"]]);
+  var __easycom_0$9 = /* @__PURE__ */ _export_sfc(_sfc_main$1d, [["render", _sfc_render$f], ["__scopeId", "data-v-a2e81f6e"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/uni_modules/uni-icons/components/uni-icons/uni-icons.vue"]]);
   function resolveEasycom(component, easycom) {
     return shared.isString(component) ? easycom : component;
   }
@@ -1341,7 +1341,7 @@ if (uni.restoreGlobal) {
   const onLoad = /* @__PURE__ */ createHook(ON_LOAD);
   const onReachBottom = /* @__PURE__ */ createHook(ON_REACH_BOTTOM);
   const onPullDownRefresh = /* @__PURE__ */ createHook(ON_PULL_DOWN_REFRESH);
-  const _sfc_main$19 = {
+  const _sfc_main$1c = {
     name: "uni-easyinput",
     emits: ["click", "iconClick", "update:modelValue", "input", "focus", "blur", "confirm"],
     model: {
@@ -1565,8 +1565,8 @@ if (uni.restoreGlobal) {
       }
     }
   };
-  function _sfc_render$d(_ctx, _cache, $props, $setup, $data, $options) {
-    const _component_uni_icons = resolveEasycom(vue.resolveDynamicComponent("uni-icons"), __easycom_0$8);
+  function _sfc_render$e(_ctx, _cache, $props, $setup, $data, $options) {
+    const _component_uni_icons = resolveEasycom(vue.resolveDynamicComponent("uni-icons"), __easycom_0$9);
     return vue.openBlock(), vue.createElementBlock("view", {
       class: vue.normalizeClass(["uni-easyinput", { "uni-easyinput-error": $options.msg }]),
       style: vue.normalizeStyle({ color: $props.inputBorder && $options.msg ? "#e43d33" : $props.styles.color })
@@ -1652,8 +1652,8 @@ if (uni.restoreGlobal) {
       ], 6)
     ], 6);
   }
-  var __easycom_0$7 = /* @__PURE__ */ _export_sfc(_sfc_main$19, [["render", _sfc_render$d], ["__scopeId", "data-v-abe12412"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/uni_modules/uni-easyinput/components/uni-easyinput/uni-easyinput.vue"]]);
-  const _sfc_main$18 = {
+  var __easycom_0$8 = /* @__PURE__ */ _export_sfc(_sfc_main$1c, [["render", _sfc_render$e], ["__scopeId", "data-v-abe12412"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/uni_modules/uni-easyinput/components/uni-easyinput/uni-easyinput.vue"]]);
+  const _sfc_main$1b = {
     name: "uniFormsItem",
     props: {
       custom: {
@@ -1928,8 +1928,8 @@ if (uni.restoreGlobal) {
       }
     }
   };
-  function _sfc_render$c(_ctx, _cache, $props, $setup, $data, $options) {
-    const _component_uni_icons = resolveEasycom(vue.resolveDynamicComponent("uni-icons"), __easycom_0$8);
+  function _sfc_render$d(_ctx, _cache, $props, $setup, $data, $options) {
+    const _component_uni_icons = resolveEasycom(vue.resolveDynamicComponent("uni-icons"), __easycom_0$9);
     return vue.openBlock(), vue.createElementBlock("view", {
       class: vue.normalizeClass(["uni-forms-item", { "uni-forms-item--border": $data.border, "is-first-border": $data.border && $data.isFirstBorder, "uni-forms-item-error": $options.msg }])
     }, [
@@ -1978,7 +1978,7 @@ if (uni.restoreGlobal) {
       ])
     ], 2);
   }
-  var __easycom_1 = /* @__PURE__ */ _export_sfc(_sfc_main$18, [["render", _sfc_render$c], ["__scopeId", "data-v-61dfc0d0"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/uni_modules/uni-forms/components/uni-forms-item/uni-forms-item.vue"]]);
+  var __easycom_1 = /* @__PURE__ */ _export_sfc(_sfc_main$1b, [["render", _sfc_render$d], ["__scopeId", "data-v-61dfc0d0"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/uni_modules/uni-forms/components/uni-forms-item/uni-forms-item.vue"]]);
   var pattern = {
     email: /^\S+?@\S+?\.\S+?$/,
     idcard: /^[1-9]\d{5}(18|19|([23]\d))\d{2}((0[1-9])|(10|11|12))(([0-2][1-9])|10|20|30|31)\d{3}[0-9Xx]$/,
@@ -2395,7 +2395,7 @@ if (uni.restoreGlobal) {
     };
   }
   SchemaValidator.message = new Message();
-  const _sfc_main$17 = {
+  const _sfc_main$1a = {
     name: "uniForms",
     components: {},
     emits: ["input", "reset", "validate", "submit"],
@@ -2712,7 +2712,7 @@ if (uni.restoreGlobal) {
       }
     }
   };
-  function _sfc_render$b(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$c(_ctx, _cache, $props, $setup, $data, $options) {
     return vue.openBlock(), vue.createElementBlock("view", {
       class: vue.normalizeClass(["uni-forms", { "uni-forms--top": !$props.border }])
     }, [
@@ -2724,7 +2724,7 @@ if (uni.restoreGlobal) {
       ], 32)
     ], 2);
   }
-  var __easycom_2 = /* @__PURE__ */ _export_sfc(_sfc_main$17, [["render", _sfc_render$b], ["__scopeId", "data-v-7ae0e404"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/uni_modules/uni-forms/components/uni-forms/uni-forms.vue"]]);
+  var __easycom_2 = /* @__PURE__ */ _export_sfc(_sfc_main$1a, [["render", _sfc_render$c], ["__scopeId", "data-v-7ae0e404"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/uni_modules/uni-forms/components/uni-forms/uni-forms.vue"]]);
   class MPAnimation {
     constructor(options, _this) {
       this.options = options;
@@ -2834,7 +2834,7 @@ if (uni.restoreGlobal) {
     clearTimeout(_this.timer);
     return new MPAnimation(option, _this);
   }
-  const _sfc_main$16 = {
+  const _sfc_main$19 = {
     name: "uniTransition",
     emits: ["click", "change"],
     props: {
@@ -3059,7 +3059,7 @@ if (uni.restoreGlobal) {
       }
     }
   };
-  function _sfc_render$a(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$b(_ctx, _cache, $props, $setup, $data, $options) {
     return $data.isShow ? (vue.openBlock(), vue.createElementBlock("view", {
       key: 0,
       ref: "ani",
@@ -3071,8 +3071,8 @@ if (uni.restoreGlobal) {
       vue.renderSlot(_ctx.$slots, "default")
     ], 14, ["animation"])) : vue.createCommentVNode("v-if", true);
   }
-  var __easycom_0$6 = /* @__PURE__ */ _export_sfc(_sfc_main$16, [["render", _sfc_render$a], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/uni_modules/uni-transition/components/uni-transition/uni-transition.vue"]]);
-  const _sfc_main$15 = {
+  var __easycom_0$7 = /* @__PURE__ */ _export_sfc(_sfc_main$19, [["render", _sfc_render$b], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/uni_modules/uni-transition/components/uni-transition/uni-transition.vue"]]);
+  const _sfc_main$18 = {
     name: "uniPopup",
     components: {},
     emits: ["change", "maskClick"],
@@ -3369,8 +3369,8 @@ if (uni.restoreGlobal) {
       }
     }
   };
-  function _sfc_render$9(_ctx, _cache, $props, $setup, $data, $options) {
-    const _component_uni_transition = resolveEasycom(vue.resolveDynamicComponent("uni-transition"), __easycom_0$6);
+  function _sfc_render$a(_ctx, _cache, $props, $setup, $data, $options) {
+    const _component_uni_transition = resolveEasycom(vue.resolveDynamicComponent("uni-transition"), __easycom_0$7);
     return $data.showPopup ? (vue.openBlock(), vue.createElementBlock("view", {
       key: 0,
       class: vue.normalizeClass(["uni-popup", [$data.popupstyle, $options.isDesktop ? "fixforpc-z-index" : ""]])
@@ -3410,7 +3410,7 @@ if (uni.restoreGlobal) {
       ], 32)
     ], 2)) : vue.createCommentVNode("v-if", true);
   }
-  var __easycom_0$5 = /* @__PURE__ */ _export_sfc(_sfc_main$15, [["render", _sfc_render$9], ["__scopeId", "data-v-7c43d41b"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/uni_modules/uni-popup/components/uni-popup/uni-popup.vue"]]);
+  var __easycom_0$6 = /* @__PURE__ */ _export_sfc(_sfc_main$18, [["render", _sfc_render$a], ["__scopeId", "data-v-7c43d41b"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/uni_modules/uni-popup/components/uni-popup/uni-popup.vue"]]);
   var _imports_0 = "/static/new/img_logo@2x.png";
   function getDevtoolsGlobalHook() {
     return getTarget().__VUE_DEVTOOLS_GLOBAL_HOOK__;
@@ -4528,7 +4528,7 @@ if (uni.restoreGlobal) {
     method: "put",
     params
   });
-  const _sfc_main$14 = {
+  const _sfc_main$17 = {
     __name: "user",
     setup(__props) {
       const store2 = useStore();
@@ -4655,10 +4655,10 @@ if (uni.restoreGlobal) {
       vue.ref(uni.getStorageSync("baseUrl"));
       vue.ref(null);
       return (_ctx, _cache) => {
-        const _component_uni_easyinput = resolveEasycom(vue.resolveDynamicComponent("uni-easyinput"), __easycom_0$7);
+        const _component_uni_easyinput = resolveEasycom(vue.resolveDynamicComponent("uni-easyinput"), __easycom_0$8);
         const _component_uni_forms_item = resolveEasycom(vue.resolveDynamicComponent("uni-forms-item"), __easycom_1);
         const _component_uni_forms = resolveEasycom(vue.resolveDynamicComponent("uni-forms"), __easycom_2);
-        const _component_uni_popup = resolveEasycom(vue.resolveDynamicComponent("uni-popup"), __easycom_0$5);
+        const _component_uni_popup = resolveEasycom(vue.resolveDynamicComponent("uni-popup"), __easycom_0$6);
         return vue.openBlock(), vue.createElementBlock("view", null, [
           vue.createElementVNode("image", {
             src: _imports_0,
@@ -4756,8 +4756,8 @@ if (uni.restoreGlobal) {
       };
     }
   };
-  var PagesLoginUser = /* @__PURE__ */ _export_sfc(_sfc_main$14, [["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/pages/login/user.vue"]]);
-  const _sfc_main$13 = {
+  var PagesLoginUser = /* @__PURE__ */ _export_sfc(_sfc_main$17, [["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/pages/login/user.vue"]]);
+  const _sfc_main$16 = {
     name: "UniStatusBar",
     data() {
       return {
@@ -4768,7 +4768,7 @@ if (uni.restoreGlobal) {
       this.statusBarHeight = uni.getSystemInfoSync().statusBarHeight + "px";
     }
   };
-  function _sfc_render$8(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$9(_ctx, _cache, $props, $setup, $data, $options) {
     return vue.openBlock(), vue.createElementBlock("view", {
       style: vue.normalizeStyle({ height: $data.statusBarHeight }),
       class: "uni-status-bar"
@@ -4776,9 +4776,9 @@ if (uni.restoreGlobal) {
       vue.renderSlot(_ctx.$slots, "default", {}, void 0, true)
     ], 4);
   }
-  var statusBar = /* @__PURE__ */ _export_sfc(_sfc_main$13, [["render", _sfc_render$8], ["__scopeId", "data-v-f9a87a8e"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/uni_modules/uni-nav-bar/components/uni-nav-bar/uni-status-bar.vue"]]);
+  var statusBar = /* @__PURE__ */ _export_sfc(_sfc_main$16, [["render", _sfc_render$9], ["__scopeId", "data-v-f9a87a8e"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/uni_modules/uni-nav-bar/components/uni-nav-bar/uni-status-bar.vue"]]);
   const getVal = (val) => typeof val === "number" ? val + "px" : val;
-  const _sfc_main$12 = {
+  const _sfc_main$15 = {
     name: "UniNavBar",
     components: {
       statusBar
@@ -4898,9 +4898,9 @@ if (uni.restoreGlobal) {
       }
     }
   };
-  function _sfc_render$7(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$8(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_status_bar = vue.resolveComponent("status-bar");
-    const _component_uni_icons = resolveEasycom(vue.resolveDynamicComponent("uni-icons"), __easycom_0$8);
+    const _component_uni_icons = resolveEasycom(vue.resolveDynamicComponent("uni-icons"), __easycom_0$9);
     return vue.openBlock(), vue.createElementBlock("view", {
       class: vue.normalizeClass(["uni-navbar", { "uni-dark": $props.dark }])
     }, [
@@ -4993,7 +4993,7 @@ if (uni.restoreGlobal) {
       ])) : vue.createCommentVNode("v-if", true)
     ], 2);
   }
-  var __easycom_0$4 = /* @__PURE__ */ _export_sfc(_sfc_main$12, [["render", _sfc_render$7], ["__scopeId", "data-v-6bda1a90"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/uni_modules/uni-nav-bar/components/uni-nav-bar/uni-nav-bar.vue"]]);
+  var __easycom_0$5 = /* @__PURE__ */ _export_sfc(_sfc_main$15, [["render", _sfc_render$8], ["__scopeId", "data-v-6bda1a90"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/uni_modules/uni-nav-bar/components/uni-nav-bar/uni-nav-bar.vue"]]);
   const getRobOrder = (params) => request({
     url: params ? `/orders-seize/?serveTypeId=${params}` : "/orders-seize/",
     method: "get"
@@ -5007,7 +5007,7 @@ if (uni.restoreGlobal) {
     method: "post",
     params
   });
-  const _sfc_main$11 = {
+  const _sfc_main$14 = {
     __name: "index",
     setup(__props) {
       const baseSetting = vue.reactive([
@@ -5058,8 +5058,8 @@ if (uni.restoreGlobal) {
       };
     }
   };
-  var UniNav$1 = /* @__PURE__ */ _export_sfc(_sfc_main$11, [["__scopeId", "data-v-02b269f0"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/components/uni-home-nav/index.vue"]]);
-  const _sfc_main$10 = {
+  var UniNav$1 = /* @__PURE__ */ _export_sfc(_sfc_main$14, [["__scopeId", "data-v-02b269f0"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/components/uni-home-nav/index.vue"]]);
+  const _sfc_main$13 = {
     __name: "index",
     props: {
       pagePath: {
@@ -5171,8 +5171,8 @@ if (uni.restoreGlobal) {
       };
     }
   };
-  var UniFooter = /* @__PURE__ */ _export_sfc(_sfc_main$10, [["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/components/uni-footer/index.vue"]]);
-  const _sfc_main$$ = {
+  var UniFooter = /* @__PURE__ */ _export_sfc(_sfc_main$13, [["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/components/uni-footer/index.vue"]]);
+  const _sfc_main$12 = {
     __name: "index",
     props: {},
     setup(__props, { emit }) {
@@ -5185,8 +5185,8 @@ if (uni.restoreGlobal) {
       };
     }
   };
-  var Empty = /* @__PURE__ */ _export_sfc(_sfc_main$$, [["__scopeId", "data-v-70a727a5"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/components/empty/index.vue"]]);
-  const _sfc_main$_ = {
+  var Empty = /* @__PURE__ */ _export_sfc(_sfc_main$12, [["__scopeId", "data-v-70a727a5"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/components/empty/index.vue"]]);
+  const _sfc_main$11 = {
     __name: "homeFilter",
     props: {
       fixTop: {
@@ -5277,8 +5277,8 @@ if (uni.restoreGlobal) {
       };
     }
   };
-  var HomeFilter = /* @__PURE__ */ _export_sfc(_sfc_main$_, [["__scopeId", "data-v-1426d0ea"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/pages/index/components/homeFilter.vue"]]);
-  const _sfc_main$Z = {
+  var HomeFilter = /* @__PURE__ */ _export_sfc(_sfc_main$11, [["__scopeId", "data-v-1426d0ea"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/pages/index/components/homeFilter.vue"]]);
+  const _sfc_main$10 = {
     __name: "homeList",
     props: {
       data: {
@@ -5315,7 +5315,7 @@ if (uni.restoreGlobal) {
         data = props.data;
       });
       return (_ctx, _cache) => {
-        const _component_uni_popup = resolveEasycom(vue.resolveDynamicComponent("uni-popup"), __easycom_0$5);
+        const _component_uni_popup = resolveEasycom(vue.resolveDynamicComponent("uni-popup"), __easycom_0$6);
         return vue.openBlock(), vue.createElementBlock("view", { class: "homeList" }, [
           (vue.openBlock(true), vue.createElementBlock(vue.Fragment, null, vue.renderList(vue.unref(data), (item, index) => {
             return vue.openBlock(), vue.createElementBlock("view", {
@@ -5379,8 +5379,8 @@ if (uni.restoreGlobal) {
       };
     }
   };
-  var HomeList = /* @__PURE__ */ _export_sfc(_sfc_main$Z, [["__scopeId", "data-v-62e7a190"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/pages/index/components/homeList.vue"]]);
-  const _sfc_main$Y = {
+  var HomeList$1 = /* @__PURE__ */ _export_sfc(_sfc_main$10, [["__scopeId", "data-v-62e7a190"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/pages/index/components/homeList.vue"]]);
+  const _sfc_main$$ = {
     __name: "index",
     setup(__props) {
       const fixTop = vue.ref(false);
@@ -5407,7 +5407,7 @@ if (uni.restoreGlobal) {
       const getRobOrderList = (params) => {
         getRobOrder(params).then((res2) => {
           formatAppLog("log", "at pages/index/index.vue:88", res2, 1111111);
-          homeList.data = res2.data.ordersSeizes;
+          homeList.data = res2.data.ordersSeizes || [];
         });
       };
       const getHomeFilterList = () => {
@@ -5431,7 +5431,7 @@ if (uni.restoreGlobal) {
         });
       };
       return (_ctx, _cache) => {
-        const _component_uni_nav_bar = resolveEasycom(vue.resolveDynamicComponent("uni-nav-bar"), __easycom_0$4);
+        const _component_uni_nav_bar = resolveEasycom(vue.resolveDynamicComponent("uni-nav-bar"), __easycom_0$5);
         return vue.openBlock(), vue.createElementBlock("view", { class: "home" }, [
           vue.createCommentVNode(" \u624B\u673A\u72B6\u6001\u680F "),
           vue.createVNode(_component_uni_nav_bar, {
@@ -5463,7 +5463,7 @@ if (uni.restoreGlobal) {
               [vue.vShow, fixTop.value]
             ]),
             vue.createCommentVNode(" end "),
-            vue.unref(homeList).data.length ? (vue.openBlock(), vue.createBlock(vue.unref(HomeList), {
+            vue.unref(homeList).data.length ? (vue.openBlock(), vue.createBlock(vue.unref(HomeList$1), {
               key: 0,
               data: vue.unref(homeList).data,
               onRefresh: getRobOrderList
@@ -5476,8 +5476,8 @@ if (uni.restoreGlobal) {
       };
     }
   };
-  var PagesIndexIndex = /* @__PURE__ */ _export_sfc(_sfc_main$Y, [["__scopeId", "data-v-57280228"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/pages/index/index.vue"]]);
-  const _sfc_main$X = {
+  var PagesIndexIndex = /* @__PURE__ */ _export_sfc(_sfc_main$$, [["__scopeId", "data-v-57280228"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/pages/index/index.vue"]]);
+  const _sfc_main$_ = {
     __name: "index",
     props: {
       title: {
@@ -5503,7 +5503,7 @@ if (uni.restoreGlobal) {
         emit("handleAll");
       };
       return (_ctx, _cache) => {
-        const _component_uni_nav_bar = resolveEasycom(vue.resolveDynamicComponent("uni-nav-bar"), __easycom_0$4);
+        const _component_uni_nav_bar = resolveEasycom(vue.resolveDynamicComponent("uni-nav-bar"), __easycom_0$5);
         return __props.isLeftText ? (vue.openBlock(), vue.createBlock(_component_uni_nav_bar, {
           key: 0,
           title: __props.title,
@@ -5523,8 +5523,8 @@ if (uni.restoreGlobal) {
       };
     }
   };
-  var UniNav = /* @__PURE__ */ _export_sfc(_sfc_main$X, [["__scopeId", "data-v-30dede9e"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/components/uni-nav/index.vue"]]);
-  const _sfc_main$W = {
+  var UniNav = /* @__PURE__ */ _export_sfc(_sfc_main$_, [["__scopeId", "data-v-30dede9e"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/components/uni-nav/index.vue"]]);
+  const _sfc_main$Z = {
     __name: "index",
     setup(__props) {
       const activeId = vue.ref(null);
@@ -5667,8 +5667,8 @@ if (uni.restoreGlobal) {
       };
     }
   };
-  var PagesServiceSkillIndex = /* @__PURE__ */ _export_sfc(_sfc_main$W, [["__scopeId", "data-v-f34db350"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/pages/serviceSkill/index.vue"]]);
-  const _sfc_main$V = {
+  var PagesServiceSkillIndex = /* @__PURE__ */ _export_sfc(_sfc_main$Z, [["__scopeId", "data-v-f34db350"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/pages/serviceSkill/index.vue"]]);
+  const _sfc_main$Y = {
     __name: "index",
     setup(__props) {
       const canPickUp = vue.ref(false);
@@ -5726,8 +5726,8 @@ if (uni.restoreGlobal) {
       };
     }
   };
-  var PagesGetOrderIndex = /* @__PURE__ */ _export_sfc(_sfc_main$V, [["__scopeId", "data-v-6bad7658"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/pages/getOrder/index.vue"]]);
-  const _sfc_main$U = {
+  var PagesGetOrderIndex = /* @__PURE__ */ _export_sfc(_sfc_main$Y, [["__scopeId", "data-v-6bad7658"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/pages/getOrder/index.vue"]]);
+  const _sfc_main$X = {
     __name: "index",
     setup(__props) {
       const cityName = vue.ref("\u8BF7\u9009\u62E9");
@@ -5882,7 +5882,7 @@ if (uni.restoreGlobal) {
       };
     }
   };
-  var PagesServiceRangeIndex = /* @__PURE__ */ _export_sfc(_sfc_main$U, [["__scopeId", "data-v-6cac4378"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/pages/serviceRange/index.vue"]]);
+  var PagesServiceRangeIndex = /* @__PURE__ */ _export_sfc(_sfc_main$X, [["__scopeId", "data-v-6cac4378"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/pages/serviceRange/index.vue"]]);
   const Citys = {
     list: [
       {
@@ -7564,7 +7564,7 @@ if (uni.restoreGlobal) {
       }
     ]
   };
-  const _sfc_main$T = {
+  const _sfc_main$W = {
     __name: "index",
     setup(__props) {
       const address = vue.ref("");
@@ -7777,8 +7777,8 @@ if (uni.restoreGlobal) {
       };
     }
   };
-  var PagesCityIndex = /* @__PURE__ */ _export_sfc(_sfc_main$T, [["__scopeId", "data-v-49347d67"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/pages/city/index.vue"]]);
-  const _sfc_main$S = {
+  var PagesCityIndex = /* @__PURE__ */ _export_sfc(_sfc_main$W, [["__scopeId", "data-v-49347d67"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/pages/city/index.vue"]]);
+  const _sfc_main$V = {
     __name: "index",
     setup(__props) {
       const canPickUp = vue.ref(false);
@@ -7843,7 +7843,7 @@ if (uni.restoreGlobal) {
         }
       };
       return (_ctx, _cache) => {
-        const _component_uni_nav_bar = resolveEasycom(vue.resolveDynamicComponent("uni-nav-bar"), __easycom_0$4);
+        const _component_uni_nav_bar = resolveEasycom(vue.resolveDynamicComponent("uni-nav-bar"), __easycom_0$5);
         return vue.openBlock(), vue.createElementBlock("view", { class: "setting" }, [
           vue.createCommentVNode(" \u624B\u673A\u72B6\u6001\u680F "),
           vue.createVNode(_component_uni_nav_bar, { statusBar: "true" }),
@@ -7917,7 +7917,776 @@ if (uni.restoreGlobal) {
       };
     }
   };
-  var PagesSettingIndex = /* @__PURE__ */ _export_sfc(_sfc_main$S, [["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/pages/setting/index.vue"]]);
+  var PagesSettingIndex = /* @__PURE__ */ _export_sfc(_sfc_main$V, [["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/pages/setting/index.vue"]]);
+  const orderStatus = [
+    {
+      value: 1,
+      label: "\u5F85\u4E0A\u95E8"
+    },
+    {
+      value: 2,
+      label: "\u5F85\u5B8C\u5DE5"
+    },
+    {
+      value: 3,
+      label: "\u5DF2\u5B8C\u6210"
+    },
+    {
+      value: 4,
+      label: "\u5DF2\u53D6\u6D88"
+    },
+    {
+      value: 5,
+      label: "\u88AB\u9000\u5355"
+    }
+  ];
+  const DeliveryData = [
+    {
+      value: 1,
+      label: "\u5F85\u4E0A\u95E8"
+    },
+    {
+      value: 2,
+      label: "\u5F85\u5B8C\u5DE5"
+    },
+    {
+      value: 3,
+      label: "\u5DF2\u5B8C\u6210"
+    },
+    {
+      value: "",
+      label: "\u5168\u90E8"
+    }
+  ];
+  const cancelData = [
+    {
+      value: 1,
+      label: "\u7528\u6237\u6076\u610F\u4E0B\u5355"
+    },
+    {
+      value: 2,
+      label: "\u7528\u6237\u53D6\u6D88\u6295\u9012"
+    },
+    {
+      value: 3,
+      label: "\u8FDD\u7981\u54C1"
+    },
+    {
+      value: 4,
+      label: "\u91CD\u590D\u4E0B\u5355"
+    },
+    {
+      value: 5,
+      label: "\u65E0\u6CD5\u8054\u7CFB\u4E0A\u5BA2\u6237\uFF08\u7A7A\u53F7\u3001\u505C\u673A\u7B49\uFF09"
+    },
+    {
+      value: 6,
+      label: "\u865A\u5047\u5730\u5740"
+    },
+    {
+      value: 7,
+      label: "\u5B9E\u9645\u53D1\u8D27\u5730\u5740\u4E0E\u4E0B\u5355\u5730\u5740\u4E0D\u7B26"
+    },
+    {
+      value: 8,
+      label: "\u56E0\u4E2A\u4EBA\u65E0\u6CD5\u53D6\u4EF6\uFF0C\u9000\u56DE\u5230\u7F51\u70B9"
+    }
+  ];
+  const SignData = [
+    {
+      value: 1,
+      label: "\u672C\u4EBA"
+    },
+    {
+      value: 2,
+      label: "\u4EE3\u6536"
+    }
+  ];
+  const PayMethodData = [
+    {
+      value: 1,
+      label: "\u5BC4\u4ED8"
+    },
+    {
+      value: 2,
+      label: "\u5230\u4ED8"
+    }
+  ];
+  const GoodsData = [
+    {
+      value: 1,
+      label: "\u751F\u6D3B\u7528\u54C1"
+    },
+    {
+      value: 2,
+      label: "\u6587\u4EF6"
+    },
+    {
+      value: 3,
+      label: "\u6570\u7801\u4EA7\u54C1"
+    },
+    {
+      value: 4,
+      label: "\u98DF\u54C1"
+    },
+    {
+      value: 5,
+      label: "\u670D\u9970"
+    },
+    {
+      value: 6,
+      label: "\u5176\u4ED6"
+    }
+  ];
+  const PayWayData = [
+    {
+      value: 1,
+      label: "\u5FAE\u4FE1\u652F\u4ED8"
+    },
+    {
+      value: 2,
+      label: "\u652F\u4ED8\u5B9D\u652F\u4ED8"
+    }
+  ];
+  const HistoryTabData = [
+    {
+      value: 1,
+      label: "\u53D6\u4EF6"
+    },
+    {
+      value: 2,
+      label: "\u6D3E\u4EF6"
+    }
+  ];
+  const newItemData = [
+    {
+      id: 1,
+      title: "\u7269\u6D41\u4FDD\u901A\u4FDD\u7545\uFF1A\u6C11\u822A\u4FDD\u969C\u8D27\u8FD0\u822A\u73ED\u73AF\u6BD4\u589E\u957F9.7%",
+      created: "2022-09-15 06:16",
+      isRead: 0,
+      firstContent: "\u6700\u65B0\u6570\u636E\u663E\u793A\uFF0C9\u670814\u65E5\uFF0C\u5168\u56FD\u8D27\u8FD0\u7269\u6D41\u6709\u5E8F\u8FD0\u884C\uFF0C\u6C11\u822A\u4FDD\u969C\u8D27\u8FD0\u822A\u73ED\u73AF\u6BD4\u589E\u957F9.7%\u3002",
+      content: "\u56FD\u52A1\u9662\u7269\u6D41\u4FDD\u901A\u4FDD\u7545\u5DE5\u4F5C\u9886\u5BFC\u5C0F\u7EC4\u529E\u516C\u5BA4\u76D1\u6D4B\u6C47\u603B\u6570\u636E\u663E\u793A\uFF0C9\u670814\u65E5\uFF0C\u56FD\u5BB6\u94C1\u8DEF\u8D27\u8FD0\u7EE7\u7EED\u4FDD\u6301\u9AD8\u4F4D\u8FD0\u884C\uFF0C\u8FD0\u8F93\u8D27\u72691094.7\u4E07\u5428\uFF0C\u73AF\u6BD4\u4E0B\u964D0.23%\uFF1B\u5168\u56FD\u9AD8\u901F\u516C\u8DEF\u8D27\u8F66\u901A\u884C739.05\u4E07\u8F86\uFF0C\u73AF\u6BD4\u589E\u957F1.64%\uFF1B\u76D1\u6D4B\u6E2F\u53E3\u5B8C\u6210\u8D27\u7269\u541E\u5410\u91CF2374.5\u4E07\u5428\uFF0C\u73AF\u6BD4\u4E0B\u964D27.9%\uFF0C\u5B8C\u6210\u96C6\u88C5\u7BB1\u541E\u5410\u91CF53.1\u4E07\u6807\u7BB1\uFF0C\u73AF\u6BD4\u4E0B\u964D33.9%\uFF1B\u6C11\u822A\u4FDD\u969C\u8D27\u8FD0\u822A\u73ED653\u73ED\uFF08\u5176\u4E2D\u56FD\u9645\u8D27\u8FD0\u822A\u73ED452\u73ED\uFF0C\u56FD\u5185\u8D27\u8FD0\u822A\u73ED201\u73ED\uFF09\uFF0C\u73AF\u6BD4\u589E\u957F9.7%\uFF1B\u90AE\u653F\u5FEB\u9012\u63FD\u6536\u91CF\u7EA63.27\u4EBF\u4EF6\uFF0C\u73AF\u6BD4\u589E\u957F0.6%\uFF1B\u6295\u9012\u91CF\u7EA62.97\u4EBF\u4EF6\uFF0C\u73AF\u6BD4\u589E\u957F2.4%\u3002"
+    },
+    {
+      id: 2,
+      title: "\u795E\u9886\u7269\u6D41\u5168\u65B02.0\u7248\u672C\u4E0A\u7EBF\uFF0C\u57FA\u4E8E1.0\u7248\u672C\u5728\u4E1A\u52A1\u53CA\u529F\u80FD\u5C42\u9762\u8FDB\u884C\u4E86\u5347\u7EA7\u8FED\u4EE3",
+      created: "2022-04-02 20:23",
+      isRead: 1,
+      firstContent: null,
+      content: "\u795E\u9886\u7269\u6D412.0\u7248\u672C-\u5FEB\u9012\u5458\u7AEF\u7EC8\u4E8E\u57282022\u5E74\u4E0A\u534A\u5E74\u5B8C\u7F8E\u4E0A\u7EBF\u7EBF\uFF0C\u5176\u4E2D\u53D6\u4EF6/\u6D3E\u4EF6\u6D41\u7A0B\u6A21\u5757\u4F5C\u51FA\u4E86\u5F88\u591A\u65B0\u9896\u7684\u8C03\u6574\uFF0C\u8BF7\u5927\u5BB6\u591A\u591A\u5173\u6CE8\u652F\u6301\uFF01"
+    }
+  ];
+  const _sfc_main$U = {
+    __name: "homeList",
+    props: {
+      data: {
+        type: Array,
+        default: () => []
+      }
+    },
+    emits: ["refresh"],
+    setup(__props, { emit }) {
+      const props = __props;
+      vue.onMounted(() => {
+      });
+      const isRob = vue.ref(true);
+      let data = vue.reactive([
+        {
+          serveTypeName: "\u4FDD\u6D01\u670D\u52A1",
+          serveItemName: "\u7A7A\u8C03\u6E05\u6D17",
+          serveStartTime: "2023-7-28 11:48",
+          serveAddress: "\u91D1\u71D5\u9F99",
+          serveFee: "666"
+        }
+      ]);
+      const alertDialog = vue.ref(null);
+      const handleClose = () => {
+        alertDialog.value.close();
+        emit("refresh");
+      };
+      const handleToInfo = () => {
+        uni.navigateTo({
+          url: "/pages/orderInfo/index"
+        });
+      };
+      const handleRob = (id) => {
+        robOrder({
+          id
+        }).then((res2) => {
+          formatAppLog("log", "at pages/pickup/components/homeList.vue:90", res2, "\u62A2\u5355");
+          if (res2.code === 200) {
+            isRob.value = true;
+          } else {
+            isRob.value = false;
+          }
+          alertDialog.value.open();
+        });
+      };
+      vue.watch(() => props.data, () => {
+        data = props.data;
+        formatAppLog("log", "at pages/pickup/components/homeList.vue:103", data, "dddddddddddddddd");
+      });
+      return (_ctx, _cache) => {
+        const _component_uni_popup = resolveEasycom(vue.resolveDynamicComponent("uni-popup"), __easycom_0$6);
+        return vue.openBlock(), vue.createElementBlock("view", { class: "homeList" }, [
+          (vue.openBlock(true), vue.createElementBlock(vue.Fragment, null, vue.renderList(vue.unref(data), (item, index) => {
+            return vue.openBlock(), vue.createElementBlock("view", {
+              class: "card",
+              key: index,
+              onClick: handleToInfo
+            }, [
+              vue.createElementVNode("view", { class: "card-content" }, [
+                vue.createElementVNode("image", {
+                  class: "leftCardContent",
+                  src: item.serveItemImg || "../../../static/new/empty.png"
+                }, null, 8, ["src"]),
+                vue.createElementVNode("view", { class: "rightCardContent" }, [
+                  vue.createElementVNode("view", { class: "title" }, vue.toDisplayString(item.serveTypeName) + "-" + vue.toDisplayString(item.serveItemName), 1),
+                  vue.createElementVNode("view", { class: "serviceTime" }, [
+                    vue.createElementVNode("text", null, "\u670D\u52A1\u65F6\u95F4"),
+                    vue.createElementVNode("text", null, vue.toDisplayString(item.serveStartTime), 1)
+                  ])
+                ]),
+                vue.createElementVNode("view", { class: "orderStatus" }, "\u5F85\u4E0A\u95E8")
+              ]),
+              vue.createElementVNode("view", { class: "serviceAddress" }, [
+                vue.createCommentVNode(" <view>\u670D\u52A1\u5730\u5740</view> "),
+                vue.createElementVNode("view", { class: "address" }, [
+                  vue.createElementVNode("view", { class: "addressContent" }, vue.toDisplayString(item.serveAddress), 1)
+                ])
+              ]),
+              vue.createElementVNode("view", { class: "cardFooter" }, [
+                vue.createElementVNode("view", { class: "price" }, [
+                  vue.createElementVNode("text", { class: "price-label" }, "\u670D\u52A1\u8D39\u7528"),
+                  vue.createTextVNode(" \uFFE5" + vue.toDisplayString(item.serveFee), 1)
+                ]),
+                vue.createElementVNode("view", {
+                  class: "robBtn btn-red",
+                  onClick: ($event) => handleRob(item.id)
+                }, "\u7ACB\u5373\u62A2\u5355", 8, ["onClick"])
+              ])
+            ]);
+          }), 128)),
+          vue.createElementVNode("view", { class: "footer" }, "- \u5DF2 \u7ECF \u5230 \u5E95 \u4E86 -"),
+          vue.createCommentVNode(" \u63D0\u793A\u7A97\u793A\u4F8B "),
+          vue.createVNode(_component_uni_popup, {
+            ref_key: "alertDialog",
+            ref: alertDialog,
+            type: "dialog",
+            "is-mask-click": false
+          }, {
+            default: vue.withCtx(() => [
+              vue.createElementVNode("view", { class: "dialog" }, [
+                vue.createElementVNode("view", {
+                  class: vue.normalizeClass(["img", isRob.value ? "success" : "fail"])
+                }, null, 2),
+                vue.createElementVNode("view", { class: "content" }, vue.toDisplayString(isRob.value ? "\u62A2\u5355\u6210\u529F" : "\u5F88\u9057\u61BE\uFF0C\u62A2\u5355\u5931\u8D25"), 1),
+                vue.createElementVNode("view", {
+                  class: "footer",
+                  onClick: handleClose
+                }, "\u786E\u5B9A")
+              ])
+            ]),
+            _: 1
+          }, 512)
+        ]);
+      };
+    }
+  };
+  var HomeList = /* @__PURE__ */ _export_sfc(_sfc_main$U, [["__scopeId", "data-v-58ad869c"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/pages/pickup/components/homeList.vue"]]);
+  const _sfc_main$T = {
+    name: "UniBadge",
+    emits: ["click"],
+    props: {
+      type: {
+        type: String,
+        default: "error"
+      },
+      inverted: {
+        type: Boolean,
+        default: false
+      },
+      isDot: {
+        type: Boolean,
+        default: false
+      },
+      maxNum: {
+        type: Number,
+        default: 99
+      },
+      absolute: {
+        type: String,
+        default: ""
+      },
+      offset: {
+        type: Array,
+        default() {
+          return [0, 0];
+        }
+      },
+      text: {
+        type: [String, Number],
+        default: ""
+      },
+      size: {
+        type: String,
+        default: "small"
+      },
+      customStyle: {
+        type: Object,
+        default() {
+          return {};
+        }
+      }
+    },
+    data() {
+      return {};
+    },
+    computed: {
+      width() {
+        return String(this.text).length * 8 + 12;
+      },
+      classNames() {
+        const {
+          inverted,
+          type,
+          size,
+          absolute
+        } = this;
+        return [
+          inverted ? "uni-badge--" + type + "-inverted" : "",
+          "uni-badge--" + type,
+          "uni-badge--" + size,
+          absolute ? "uni-badge--absolute" : ""
+        ].join(" ");
+      },
+      positionStyle() {
+        if (!this.absolute)
+          return {};
+        let w = this.width / 2, h = 10;
+        if (this.isDot) {
+          w = 5;
+          h = 5;
+        }
+        const x = `${-w + this.offset[0]}px`;
+        const y = `${-h + this.offset[1]}px`;
+        const whiteList = {
+          rightTop: {
+            right: x,
+            top: y
+          },
+          rightBottom: {
+            right: x,
+            bottom: y
+          },
+          leftBottom: {
+            left: x,
+            bottom: y
+          },
+          leftTop: {
+            left: x,
+            top: y
+          }
+        };
+        const match = whiteList[this.absolute];
+        return match ? match : whiteList["rightTop"];
+      },
+      badgeWidth() {
+        return {
+          width: `${this.width}px`
+        };
+      },
+      dotStyle() {
+        if (!this.isDot)
+          return {};
+        return {
+          width: "10px",
+          height: "10px",
+          borderRadius: "10px"
+        };
+      },
+      displayValue() {
+        const {
+          isDot,
+          text,
+          maxNum
+        } = this;
+        return isDot ? "" : Number(text) > maxNum ? `${maxNum}+` : text;
+      }
+    },
+    methods: {
+      onClick() {
+        this.$emit("click");
+      }
+    }
+  };
+  function _sfc_render$7(_ctx, _cache, $props, $setup, $data, $options) {
+    return vue.openBlock(), vue.createElementBlock("view", { class: "uni-badge--x" }, [
+      vue.renderSlot(_ctx.$slots, "default", {}, void 0, true),
+      $props.text ? (vue.openBlock(), vue.createElementBlock("text", {
+        key: 0,
+        class: vue.normalizeClass([$options.classNames, "uni-badge"]),
+        style: vue.normalizeStyle([$options.badgeWidth, $options.positionStyle, $props.customStyle, $options.dotStyle]),
+        onClick: _cache[0] || (_cache[0] = ($event) => $options.onClick())
+      }, vue.toDisplayString($options.displayValue), 7)) : vue.createCommentVNode("v-if", true)
+    ]);
+  }
+  var __easycom_0$4 = /* @__PURE__ */ _export_sfc(_sfc_main$T, [["render", _sfc_render$7], ["__scopeId", "data-v-7c66581c"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/uni_modules/uni-badge/components/uni-badge/uni-badge.vue"]]);
+  const _sfc_main$S = {
+    __name: "index",
+    props: {
+      tabBars: {
+        type: Array,
+        default: () => []
+      }
+    },
+    emits: "",
+    setup(__props, { expose, emit }) {
+      const store2 = useStore();
+      const users = store2.state.user;
+      const scrollinto = vue.ref("tab0");
+      let tabIndex = vue.ref(users.tabIndex ? users.tabIndex : 0);
+      const changeTab = (index) => {
+        if (tabIndex.value == index) {
+          return;
+        }
+        tabIndex.value = index;
+        emit("getTabIndex", index);
+        scrollinto.value = "tab" + index;
+      };
+      expose({
+        changeTab
+      });
+      return (_ctx, _cache) => {
+        const _component_uni_badge = resolveEasycom(vue.resolveDynamicComponent("uni-badge"), __easycom_0$4);
+        return vue.openBlock(), vue.createElementBlock("scroll-view", {
+          "scroll-x": "true",
+          class: "tabScroll",
+          "scroll-into-view": scrollinto.value,
+          "scroll-with-animation": true
+        }, [
+          (vue.openBlock(true), vue.createElementBlock(vue.Fragment, null, vue.renderList(__props.tabBars, (item, index) => {
+            return vue.openBlock(), vue.createElementBlock("view", {
+              key: index,
+              id: "tab" + index,
+              class: "scroll-row-item",
+              onClick: ($event) => changeTab(index)
+            }, [
+              vue.createVNode(_component_uni_badge, {
+                class: "uni-badge-left-margin",
+                text: 100,
+                absolute: "rightTop",
+                offset: [-8, 3],
+                size: "small"
+              }, {
+                default: vue.withCtx(() => [
+                  vue.createElementVNode("view", {
+                    class: vue.normalizeClass(vue.unref(tabIndex) == index ? "scroll-row-item-act" : "")
+                  }, [
+                    vue.createElementVNode("text", { class: "line" }),
+                    vue.createTextVNode(" " + vue.toDisplayString(item.label), 1)
+                  ], 2)
+                ]),
+                _: 2
+              }, 1024)
+            ], 8, ["id", "onClick"]);
+          }), 128))
+        ], 8, ["scroll-into-view"]);
+      };
+    }
+  };
+  var UniTab = /* @__PURE__ */ _export_sfc(_sfc_main$S, [["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/components/uni-tab/index.vue"]]);
+  const _sfc_main$R = {
+    __name: "index",
+    emits: "",
+    setup(__props, { emit }) {
+      useStore();
+      vue.ref();
+      const tabBars = DeliveryData;
+      vue.ref(0);
+      const icCanScroll = vue.ref(true);
+      const homeList = vue.reactive({
+        data: [
+          {
+            serveTypeName: "\u4FDD\u6D01\u670D\u52A1",
+            serveItemName: "\u7A7A\u8C03\u6E05\u6D17",
+            serveStartTime: "2023-7-28 11:48",
+            serveAddress: "\u91D1\u71D5\u9F99",
+            serveFee: "666"
+          }
+        ]
+      });
+      vue.onMounted(() => {
+      });
+      const getRobOrderList = () => {
+      };
+      return (_ctx, _cache) => {
+        const _component_uni_nav_bar = resolveEasycom(vue.resolveDynamicComponent("uni-nav-bar"), __easycom_0$5);
+        return vue.openBlock(), vue.createElementBlock(vue.Fragment, null, [
+          vue.createElementVNode("view", { class: "order" }, [
+            vue.createCommentVNode(" \u624B\u673A\u72B6\u6001\u680F "),
+            vue.createVNode(_component_uni_nav_bar, {
+              statusBar: "false",
+              backgroundColor: "white",
+              height: "0"
+            }),
+            vue.createCommentVNode(" nav "),
+            vue.createCommentVNode(" \u72B6\u6001\u7B5B\u9009 "),
+            vue.createVNode(UniTab, { tabBars: vue.unref(tabBars) }, null, 8, ["tabBars"]),
+            vue.createCommentVNode(" \u8BA2\u5355\u5217\u8868 "),
+            vue.createElementVNode("scroll-view", {
+              "scroll-y": icCanScroll.value,
+              class: "scrollList",
+              onScroll: _cache[0] || (_cache[0] = (...args) => _ctx.handleScroll && _ctx.handleScroll(...args))
+            }, [
+              homeList.data.length ? (vue.openBlock(), vue.createBlock(vue.unref(HomeList), {
+                key: 0,
+                data: homeList.data,
+                onRefresh: getRobOrderList
+              }, null, 8, ["data"])) : vue.createCommentVNode("v-if", true)
+            ], 40, ["scroll-y"]),
+            vue.createVNode(UniFooter, { pagePath: "pages/pickup/index" })
+          ]),
+          vue.createCommentVNode(" end ")
+        ], 2112);
+      };
+    }
+  };
+  var PagesPickupIndex = /* @__PURE__ */ _export_sfc(_sfc_main$R, [["__scopeId", "data-v-0e6a68f8"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/pages/pickup/index.vue"]]);
+  const _sfc_main$Q = {
+    __name: "index",
+    props: {
+      tabBars: {
+        type: Array,
+        default: () => []
+      }
+    },
+    emits: "",
+    setup(__props, { expose, emit }) {
+      const store2 = useStore();
+      const users = store2.state.user;
+      const scrollinto = vue.ref("tab0");
+      const info = vue.reactive({
+        serveStatus: 1,
+        customerInfo: {
+          serveAddress: "\u5317\u4EAC\u5E02\u660C\u5E73\u533A\u7EA2\u65D7\u5927\u8857124\u53F7\u4E94\u661F\u5927\u53A619\u5C42109\u5BA44\u53F7\u4E94\u661F\u5927\u53A619\u5C42109\u5BA4",
+          contactsName: "\u67EF\u80DC\u4F26",
+          contactsPhone: "17788884444"
+        },
+        ordersInfo: {
+          serveCode: "7364734677776",
+          serveStartTime: "2026.5.26 12:30"
+        },
+        refundInfo: {
+          refundReason: "\u672A\u4E0A\u95E8\u670D\u52A1",
+          refundTime: "2026.5.26 12:30",
+          refundAmount: "198"
+        },
+        cancelInfo: {
+          cancelReason: "\u672A\u4E0A\u95E8\u670D\u52A1",
+          cancelTime: "2026.5.26 12:30"
+        },
+        serveInfo: {
+          serveTypeName: "\u4FDD\u6D01\u6E05\u6D17",
+          serveItemName: "\u65E5\u5E38\u4FDD\u6D01",
+          serveNum: "1",
+          serveFee: "198",
+          serveBeforeIllustrate: "\u670D\u52A1\u5F00\u59CB\u8BF4\u660E",
+          realServeStartTime: "2022-12-03  12:00",
+          serveBeforeImgs: [
+            "https://yjy-slwl-oss.oss-cn-hangzhou.aliyuncs.com/61032c27-43eb-49cc-86df-ba8cbeb2c27d.png",
+            "https://yjy-slwl-oss.oss-cn-hangzhou.aliyuncs.com/61032c27-43eb-49cc-86df-ba8cbeb2c27d.png",
+            "https://yjy-slwl-oss.oss-cn-hangzhou.aliyuncs.com/61032c27-43eb-49cc-86df-ba8cbeb2c27d.png"
+          ],
+          serveAfterIllustrate: "\u670D\u52A1\u7ED3\u675F\u8BF4\u660E",
+          realServeEndTime: "2022-12-03  12:00",
+          serveAfterImgs: [
+            "https://yjy-slwl-oss.oss-cn-hangzhou.aliyuncs.com/61032c27-43eb-49cc-86df-ba8cbeb2c27d.png",
+            "https://yjy-slwl-oss.oss-cn-hangzhou.aliyuncs.com/61032c27-43eb-49cc-86df-ba8cbeb2c27d.png",
+            "https://yjy-slwl-oss.oss-cn-hangzhou.aliyuncs.com/61032c27-43eb-49cc-86df-ba8cbeb2c27d.png"
+          ]
+        }
+      });
+      let tabIndex = vue.ref(users.tabIndex ? users.tabIndex : 0);
+      const changeTab = (index) => {
+        if (tabIndex.value == index) {
+          return;
+        }
+        tabIndex.value = index;
+        emit("getTabIndex", index);
+        scrollinto.value = "tab" + index;
+      };
+      const goBack = () => {
+        uni.navigateBack();
+      };
+      expose({
+        changeTab
+      });
+      return (_ctx, _cache) => {
+        return vue.openBlock(), vue.createElementBlock("view", { class: "order-info" }, [
+          vue.createVNode(UniNav, {
+            title: "\u8BA2\u5355\u8BE6\u60C5",
+            onGoBack: goBack
+          }),
+          vue.createCommentVNode(" \u8BA2\u5355\u72B6\u6001 "),
+          vue.createElementVNode("view", {
+            class: vue.normalizeClass([
+              "serveStatus",
+              [1, 2, 3].includes(info.serveStatus) ? "successStatus" : "failStatus"
+            ])
+          }, [
+            vue.createElementVNode("view", { class: "status" }, vue.toDisplayString(vue.unref(orderStatus).filter((item) => item.value === info.serveStatus)[0].label), 1),
+            info.serveStatus === 1 ? (vue.openBlock(), vue.createElementBlock("view", {
+              key: 0,
+              class: "serveTime"
+            }, " \u8BF7\u5728" + vue.toDisplayString(info.ordersInfo.serveStartTime) + "\u524D\u4E0A\u95E8\u670D\u52A1 ", 1)) : vue.createCommentVNode("v-if", true)
+          ], 2),
+          vue.createCommentVNode(" \u5BA2\u6237\u4FE1\u606F "),
+          vue.createElementVNode("view", { class: "customerInfo card" }, [
+            vue.createElementVNode("view", { class: "title" }, "\u5BA2\u6237\u4FE1\u606F"),
+            vue.createElementVNode("view", { class: "nameAndPhone" }, [
+              vue.createElementVNode("text", { class: "name" }, vue.toDisplayString(info.customerInfo.contactsName), 1),
+              vue.createElementVNode("text", { class: "phone" }, vue.toDisplayString(info.customerInfo.contactsPhone), 1)
+            ]),
+            vue.createElementVNode("view", { class: "address" }, [
+              vue.createElementVNode("view", { class: "location" }),
+              vue.createElementVNode("view", { class: "addressInfo" }, vue.toDisplayString(info.customerInfo.serveAddress), 1)
+            ])
+          ]),
+          vue.createCommentVNode(" \u670D\u52A1\u4FE1\u606F "),
+          vue.createElementVNode("view", { class: "serveInfo card" }, [
+            vue.createElementVNode("view", { class: "title" }, "\u670D\u52A1\u4FE1\u606F"),
+            vue.createElementVNode("view", { class: "content" }, [
+              vue.createElementVNode("image", {
+                class: "serveImg",
+                src: "/static/new/img_success@2x.png"
+              }),
+              vue.createElementVNode("view", { class: "serveTypeBox" }, [
+                vue.createElementVNode("view", { class: "serveType" }, vue.toDisplayString(info.serveInfo.serveTypeName), 1),
+                vue.createElementVNode("view", { class: "serveItem" }, [
+                  vue.createElementVNode("text", null, vue.toDisplayString(info.serveInfo.serveItemName), 1),
+                  vue.createTextVNode(" x "),
+                  vue.createElementVNode("text", null, vue.toDisplayString(info.serveInfo.serveNum), 1),
+                  vue.createTextVNode(" \u5C0F\u65F6 ")
+                ])
+              ])
+            ]),
+            vue.createElementVNode("view", { class: "fee" }, [
+              vue.createTextVNode(" \u670D\u52A1\u8D39\u7528"),
+              vue.createElementVNode("text", { class: "feeText" }, "\uFFE5" + vue.toDisplayString(info.serveInfo.serveFee), 1)
+            ])
+          ]),
+          vue.createCommentVNode(" \u8BA2\u5355\u4FE1\u606F "),
+          vue.createElementVNode("view", { class: "orderInfo card" }, [
+            vue.createElementVNode("view", { class: "title" }, "\u8BA2\u5355\u4FE1\u606F"),
+            vue.createElementVNode("view", { class: "orderNum info first" }, [
+              vue.createElementVNode("text", { class: "label" }, "\u8BA2\u5355\u7F16\u53F7"),
+              vue.createElementVNode("text", { class: "content" }, vue.toDisplayString(info.ordersInfo.serveCode), 1)
+            ]),
+            vue.createElementVNode("view", { class: "orderTime info" }, [
+              vue.createElementVNode("text", { class: "label" }, "\u9884\u7EA6\u65F6\u95F4"),
+              vue.createElementVNode("text", { class: "content" }, vue.toDisplayString(info.ordersInfo.serveStartTime), 1)
+            ])
+          ]),
+          vue.createCommentVNode(" \u53D6\u6D88\u4FE1\u606F "),
+          info.serveStatus === 4 ? (vue.openBlock(), vue.createElementBlock("view", {
+            key: 0,
+            class: "orderInfo card"
+          }, [
+            vue.createElementVNode("view", { class: "title" }, "\u53D6\u6D88\u4FE1\u606F"),
+            vue.createElementVNode("view", { class: "orderNum info first" }, [
+              vue.createElementVNode("text", { class: "label" }, "\u53D6\u6D88\u65F6\u95F4"),
+              vue.createElementVNode("text", { class: "content" }, vue.toDisplayString(info.cancelInfo.cancelTime), 1)
+            ]),
+            vue.createElementVNode("view", { class: "orderTime info" }, [
+              vue.createElementVNode("text", { class: "label" }, "\u53D6\u6D88\u539F\u56E0"),
+              vue.createElementVNode("text", { class: "content" }, vue.toDisplayString(info.cancelInfo.cancelReason), 1)
+            ])
+          ])) : vue.createCommentVNode("v-if", true),
+          vue.createCommentVNode(" \u9000\u6B3E\u4FE1\u606F "),
+          info.serveStatus === 5 ? (vue.openBlock(), vue.createElementBlock("view", {
+            key: 1,
+            class: "orderInfo card"
+          }, [
+            vue.createElementVNode("view", { class: "title" }, "\u9000\u6B3E\u4FE1\u606F"),
+            vue.createElementVNode("view", { class: "orderNum info first" }, [
+              vue.createElementVNode("text", { class: "label" }, "\u9000\u6B3E\u65F6\u95F4"),
+              vue.createElementVNode("text", { class: "content" }, vue.toDisplayString(info.cancelInfo.cancelTime), 1)
+            ]),
+            vue.createElementVNode("view", { class: "orderTime info first" }, [
+              vue.createElementVNode("text", { class: "label" }, "\u9000\u6B3E\u539F\u56E0"),
+              vue.createElementVNode("text", { class: "content" }, vue.toDisplayString(info.cancelInfo.cancelReason), 1)
+            ]),
+            vue.createElementVNode("view", { class: "orderTime info" }, [
+              vue.createElementVNode("text", { class: "label" }, "\u9000\u6B3E\u91D1\u989D"),
+              vue.createElementVNode("text", { class: "content" }, "\uFFE5" + vue.toDisplayString(info.cancelInfo.refundAmount), 1)
+            ])
+          ])) : vue.createCommentVNode("v-if", true),
+          vue.createCommentVNode(" \u670D\u52A1\u8BB0\u5F55 "),
+          [2, 3].includes(info.serveStatus) ? (vue.openBlock(), vue.createElementBlock("view", {
+            key: 2,
+            class: "serveRecord card"
+          }, [
+            vue.createElementVNode("view", { class: "title" }, "\u670D\u52A1\u8BB0\u5F55"),
+            (info.serveStatus === 2 || info.serveStatus === 3) && info.serveInfo.realServeStartTime ? (vue.openBlock(), vue.createElementBlock("view", {
+              key: 0,
+              class: "serveBefore"
+            }, [
+              vue.createElementVNode("view", { class: "subTitle" }, "\u670D\u52A1\u524D"),
+              vue.createElementVNode("view", { class: "imgList" }, [
+                (vue.openBlock(true), vue.createElementBlock(vue.Fragment, null, vue.renderList(info.serveInfo.serveBeforeImgs, (item, index) => {
+                  return vue.openBlock(), vue.createElementBlock("image", {
+                    class: "img",
+                    src: item,
+                    key: index
+                  }, null, 8, ["src"]);
+                }), 128))
+              ]),
+              vue.createElementVNode("view", { class: "tips" }, [
+                vue.createElementVNode("text", null, "\u8865\u5145\u8BF4\u660E\uFF1A"),
+                vue.createElementVNode("text", null, vue.toDisplayString(info.serveInfo.serveBeforeIllustrate), 1)
+              ]),
+              vue.createElementVNode("view", { class: "time" }, vue.toDisplayString(info.serveInfo.realServeStartTime), 1)
+            ])) : vue.createCommentVNode("v-if", true),
+            info.serveStatus === 3 && info.serveInfo.realServeEndTime ? (vue.openBlock(), vue.createElementBlock("view", {
+              key: 1,
+              class: "serveAfter"
+            }, [
+              vue.createElementVNode("view", { class: "subTitle" }, "\u670D\u52A1\u540E"),
+              vue.createElementVNode("view", { class: "imgList" }, [
+                (vue.openBlock(true), vue.createElementBlock(vue.Fragment, null, vue.renderList(info.serveInfo.serveAfterImgs, (item, index) => {
+                  return vue.openBlock(), vue.createElementBlock("image", {
+                    class: "img",
+                    src: item,
+                    key: index
+                  }, null, 8, ["src"]);
+                }), 128))
+              ]),
+              vue.createElementVNode("view", { class: "tips" }, [
+                vue.createElementVNode("text", null, "\u8865\u5145\u8BF4\u660E\uFF1A"),
+                vue.createElementVNode("text", null, vue.toDisplayString(info.serveInfo.serveBeforeIllustrate), 1)
+              ]),
+              vue.createElementVNode("view", { class: "time" }, vue.toDisplayString(info.serveInfo.realServeEndTime), 1)
+            ])) : vue.createCommentVNode("v-if", true)
+          ])) : vue.createCommentVNode("v-if", true),
+          [1, 2].includes(info.serveStatus) ? (vue.openBlock(), vue.createElementBlock("view", {
+            key: 3,
+            class: "footer"
+          }, [
+            [1].includes(info.serveStatus) ? (vue.openBlock(), vue.createElementBlock("view", {
+              key: 0,
+              class: "btn-gray"
+            }, "\u53D6\u6D88\u8BA2\u5355")) : vue.createCommentVNode("v-if", true),
+            [1, 2].includes(info.serveStatus) ? (vue.openBlock(), vue.createElementBlock("view", {
+              key: 1,
+              class: "btn-red"
+            }, vue.toDisplayString(info.serveStatus === 1 ? "\u5F00\u59CB\u670D\u52A1" : "\u5B8C\u6210\u670D\u52A1"), 1)) : vue.createCommentVNode("v-if", true)
+          ])) : vue.createCommentVNode("v-if", true)
+        ]);
+      };
+    }
+  };
+  var PagesOrderInfoIndex = /* @__PURE__ */ _export_sfc(_sfc_main$Q, [["__scopeId", "data-v-2827b336"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/pages/orderInfo/index.vue"]]);
   function validatePhone(rule, value, data, callback) {
     const reg = /^[1][3-9][0-9]{9}$/;
     if (value === "" || value === void 0 || value === null) {
@@ -7977,7 +8746,7 @@ if (uni.restoreGlobal) {
       return true;
     }
   };
-  const _sfc_main$R = {
+  const _sfc_main$P = {
     __name: "index",
     setup(__props) {
       const store2 = useStore();
@@ -8055,7 +8824,7 @@ if (uni.restoreGlobal) {
         });
       };
       return (_ctx, _cache) => {
-        const _component_uni_easyinput = resolveEasycom(vue.resolveDynamicComponent("uni-easyinput"), __easycom_0$7);
+        const _component_uni_easyinput = resolveEasycom(vue.resolveDynamicComponent("uni-easyinput"), __easycom_0$8);
         const _component_uni_forms_item = resolveEasycom(vue.resolveDynamicComponent("uni-forms-item"), __easycom_1);
         const _component_uni_forms = resolveEasycom(vue.resolveDynamicComponent("uni-forms"), __easycom_2);
         return vue.openBlock(), vue.createElementBlock("view", { class: "loginBox" }, [
@@ -8133,7 +8902,7 @@ if (uni.restoreGlobal) {
       };
     }
   };
-  var PagesLoginIndex = /* @__PURE__ */ _export_sfc(_sfc_main$R, [["__scopeId", "data-v-4586967a"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/pages/login/index.vue"]]);
+  var PagesLoginIndex = /* @__PURE__ */ _export_sfc(_sfc_main$P, [["__scopeId", "data-v-4586967a"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/pages/login/index.vue"]]);
   const getDeliveryList = (params) => request({
     url: "/tasks/page",
     method: "get",
@@ -8217,7 +8986,7 @@ if (uni.restoreGlobal) {
     data: params,
     params
   });
-  const _sfc_main$Q = {
+  const _sfc_main$O = {
     __name: "index",
     props: {
       isShowCancel: {
@@ -8255,7 +9024,7 @@ if (uni.restoreGlobal) {
         searchVal
       });
       return (_ctx, _cache) => {
-        const _component_uni_icons = resolveEasycom(vue.resolveDynamicComponent("uni-icons"), __easycom_0$8);
+        const _component_uni_icons = resolveEasycom(vue.resolveDynamicComponent("uni-icons"), __easycom_0$9);
         return vue.openBlock(), vue.createElementBlock(vue.Fragment, null, [
           vue.createCommentVNode(" \u516C\u7528nav "),
           vue.createElementVNode("view", { class: "navBox" }, [
@@ -8304,8 +9073,8 @@ if (uni.restoreGlobal) {
       };
     }
   };
-  var SearchPage = /* @__PURE__ */ _export_sfc(_sfc_main$Q, [["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/components/uni-search/index.vue"]]);
-  const _sfc_main$P = {
+  var SearchPage = /* @__PURE__ */ _export_sfc(_sfc_main$O, [["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/components/uni-search/index.vue"]]);
+  const _sfc_main$N = {
     __name: "index",
     props: {
       emptyInfo: {
@@ -8338,7 +9107,7 @@ if (uni.restoreGlobal) {
       };
     }
   };
-  var EmptyPage = /* @__PURE__ */ _export_sfc(_sfc_main$P, [["__scopeId", "data-v-a750b56c"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/components/uni-empty-page/index.vue"]]);
+  var EmptyPage = /* @__PURE__ */ _export_sfc(_sfc_main$N, [["__scopeId", "data-v-a750b56c"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/components/uni-empty-page/index.vue"]]);
   var popup = {
     data() {
       return {};
@@ -8667,7 +9436,7 @@ if (uni.restoreGlobal) {
     "zh-Hant": zhHant$2
   };
   const { t: t$4 } = initVueI18n(messages$2);
-  const _sfc_main$O = {
+  const _sfc_main$M = {
     name: "uniPopupDialog",
     mixins: [popup],
     emits: ["confirm", "close"],
@@ -8823,8 +9592,8 @@ if (uni.restoreGlobal) {
       ])
     ]);
   }
-  var __easycom_0$3 = /* @__PURE__ */ _export_sfc(_sfc_main$O, [["render", _sfc_render$6], ["__scopeId", "data-v-6f54520a"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/uni_modules/uni-popup/components/uni-popup-dialog/uni-popup-dialog.vue"]]);
-  const _sfc_main$N = {
+  var __easycom_0$3 = /* @__PURE__ */ _export_sfc(_sfc_main$M, [["render", _sfc_render$6], ["__scopeId", "data-v-6f54520a"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/uni_modules/uni-popup/components/uni-popup-dialog/uni-popup-dialog.vue"]]);
+  const _sfc_main$L = {
     __name: "index",
     props: {
       tipInfo: {
@@ -8848,7 +9617,7 @@ if (uni.restoreGlobal) {
       });
       return (_ctx, _cache) => {
         const _component_uni_popup_dialog = resolveEasycom(vue.resolveDynamicComponent("uni-popup-dialog"), __easycom_0$3);
-        const _component_uni_popup = resolveEasycom(vue.resolveDynamicComponent("uni-popup"), __easycom_0$5);
+        const _component_uni_popup = resolveEasycom(vue.resolveDynamicComponent("uni-popup"), __easycom_0$6);
         return vue.openBlock(), vue.createBlock(_component_uni_popup, {
           ref_key: "message",
           ref: message,
@@ -8871,7 +9640,7 @@ if (uni.restoreGlobal) {
       };
     }
   };
-  var UniPopup = /* @__PURE__ */ _export_sfc(_sfc_main$N, [["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/components/uni-popup/index.vue"]]);
+  var UniPopup = /* @__PURE__ */ _export_sfc(_sfc_main$L, [["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/components/uni-popup/index.vue"]]);
   var en$1 = {
     "uni-load-more.contentdown": "Pull up to show more",
     "uni-load-more.contentrefresh": "loading...",
@@ -8899,7 +9668,7 @@ if (uni.restoreGlobal) {
   const {
     t: t$3
   } = initVueI18n(messages$1);
-  const _sfc_main$M = {
+  const _sfc_main$K = {
     name: "UniLoadMore",
     emits: ["clickLoadMore"],
     props: {
@@ -9019,8 +9788,8 @@ if (uni.restoreGlobal) {
       }, vue.toDisplayString($props.status === "more" ? $options.contentdownText : $props.status === "loading" ? $options.contentrefreshText : $options.contentnomoreText), 5)) : vue.createCommentVNode("v-if", true)
     ]);
   }
-  var __easycom_0$2 = /* @__PURE__ */ _export_sfc(_sfc_main$M, [["render", _sfc_render$5], ["__scopeId", "data-v-90d4256a"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/uni_modules/uni-load-more/components/uni-load-more/uni-load-more.vue"]]);
-  const _sfc_main$L = {
+  var __easycom_0$2 = /* @__PURE__ */ _export_sfc(_sfc_main$K, [["render", _sfc_render$5], ["__scopeId", "data-v-90d4256a"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/uni_modules/uni-load-more/components/uni-load-more/uni-load-more.vue"]]);
+  const _sfc_main$J = {
     __name: "index",
     setup(__props, { expose }) {
       let status = vue.ref("noMore");
@@ -9042,7 +9811,7 @@ if (uni.restoreGlobal) {
       };
     }
   };
-  var ReachBottom = /* @__PURE__ */ _export_sfc(_sfc_main$L, [["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/components/reach-bottom/index.vue"]]);
+  var ReachBottom = /* @__PURE__ */ _export_sfc(_sfc_main$J, [["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/components/reach-bottom/index.vue"]]);
   const taskTimeFormat = (val) => {
     const times = getTimeDate(val);
     return times.date;
@@ -9202,7 +9971,7 @@ if (uni.restoreGlobal) {
       }
     });
   };
-  const _sfc_main$K = {
+  const _sfc_main$I = {
     __name: "AlreadyPicUp",
     props: {
       item: {
@@ -9239,8 +10008,8 @@ if (uni.restoreGlobal) {
       };
     }
   };
-  var AlreadyPicUp = /* @__PURE__ */ _export_sfc(_sfc_main$K, [["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/pages/search/components/AlreadyPicUp.vue"]]);
-  const _sfc_main$J = {
+  var AlreadyPicUp = /* @__PURE__ */ _export_sfc(_sfc_main$I, [["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/pages/search/components/AlreadyPicUp.vue"]]);
+  const _sfc_main$H = {
     __name: "Canceled",
     props: {
       item: {
@@ -9266,8 +10035,8 @@ if (uni.restoreGlobal) {
       };
     }
   };
-  var Canceled = /* @__PURE__ */ _export_sfc(_sfc_main$J, [["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/pages/search/components/Canceled.vue"]]);
-  const _sfc_main$I = {
+  var Canceled = /* @__PURE__ */ _export_sfc(_sfc_main$H, [["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/pages/search/components/Canceled.vue"]]);
+  const _sfc_main$G = {
     __name: "SignFor",
     props: {
       item: {
@@ -9304,8 +10073,8 @@ if (uni.restoreGlobal) {
       };
     }
   };
-  var SignFor = /* @__PURE__ */ _export_sfc(_sfc_main$I, [["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/pages/search/components/SignFor.vue"]]);
-  const _sfc_main$H = {
+  var SignFor = /* @__PURE__ */ _export_sfc(_sfc_main$G, [["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/pages/search/components/SignFor.vue"]]);
+  const _sfc_main$F = {
     __name: "Accomplish",
     props: {
       item: {
@@ -9342,8 +10111,8 @@ if (uni.restoreGlobal) {
       };
     }
   };
-  var Accomplish = /* @__PURE__ */ _export_sfc(_sfc_main$H, [["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/pages/search/components/Accomplish.vue"]]);
-  const _sfc_main$G = {
+  var Accomplish = /* @__PURE__ */ _export_sfc(_sfc_main$F, [["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/pages/search/components/Accomplish.vue"]]);
+  const _sfc_main$E = {
     __name: "index",
     setup(__props) {
       const store2 = useStore();
@@ -9671,7 +10440,7 @@ if (uni.restoreGlobal) {
       };
     }
   };
-  var PagesSearchIndex = /* @__PURE__ */ _export_sfc(_sfc_main$G, [["__scopeId", "data-v-482e85b8"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/pages/search/index.vue"]]);
+  var PagesSearchIndex = /* @__PURE__ */ _export_sfc(_sfc_main$E, [["__scopeId", "data-v-482e85b8"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/pages/search/index.vue"]]);
   class Calendar {
     constructor({
       date,
@@ -9967,7 +10736,7 @@ if (uni.restoreGlobal) {
       this.weeks = weeks;
     }
   }
-  const _sfc_main$F = {
+  const _sfc_main$D = {
     props: {
       weeks: {
         type: Object,
@@ -10037,7 +10806,7 @@ if (uni.restoreGlobal) {
       }, null, 2)
     ], 34);
   }
-  var calendarItem = /* @__PURE__ */ _export_sfc(_sfc_main$F, [["render", _sfc_render$4], ["__scopeId", "data-v-39ec3f8e"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/uni_modules/uni-datetime-picker/components/uni-datetime-picker/calendar-item.vue"]]);
+  var calendarItem = /* @__PURE__ */ _export_sfc(_sfc_main$D, [["render", _sfc_render$4], ["__scopeId", "data-v-39ec3f8e"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/uni_modules/uni-datetime-picker/components/uni-datetime-picker/calendar-item.vue"]]);
   var en = {
     "uni-datetime-picker.selectDate": "select date",
     "uni-datetime-picker.selectTime": "select time",
@@ -10101,7 +10870,7 @@ if (uni.restoreGlobal) {
     "zh-Hant": zhHant
   };
   const { t: t$2 } = initVueI18n(messages);
-  const _sfc_main$E = {
+  const _sfc_main$C = {
     name: "UniDatetimePicker",
     components: {},
     data() {
@@ -10780,11 +11549,11 @@ if (uni.restoreGlobal) {
       ], 6)) : vue.createCommentVNode("v-if", true)
     ]);
   }
-  var timePicker = /* @__PURE__ */ _export_sfc(_sfc_main$E, [["render", _sfc_render$3], ["__scopeId", "data-v-60a1244c"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/uni_modules/uni-datetime-picker/components/uni-datetime-picker/time-picker.vue"]]);
+  var timePicker = /* @__PURE__ */ _export_sfc(_sfc_main$C, [["render", _sfc_render$3], ["__scopeId", "data-v-60a1244c"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/uni_modules/uni-datetime-picker/components/uni-datetime-picker/time-picker.vue"]]);
   const {
     t: t$1
   } = initVueI18n(messages);
-  const _sfc_main$D = {
+  const _sfc_main$B = {
     components: {
       calendarItem,
       timePicker
@@ -11185,7 +11954,7 @@ if (uni.restoreGlobal) {
   function _sfc_render$2(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_calendar_item = vue.resolveComponent("calendar-item");
     const _component_time_picker = vue.resolveComponent("time-picker");
-    const _component_uni_icons = resolveEasycom(vue.resolveDynamicComponent("uni-icons"), __easycom_0$8);
+    const _component_uni_icons = resolveEasycom(vue.resolveDynamicComponent("uni-icons"), __easycom_0$9);
     return vue.openBlock(), vue.createElementBlock("view", {
       class: "uni-calendar",
       onMouseleave: _cache[9] || (_cache[9] = (...args) => $options.leaveCale && $options.leaveCale(...args))
@@ -11365,11 +12134,11 @@ if (uni.restoreGlobal) {
       ], 2)) : vue.createCommentVNode("v-if", true)
     ], 32);
   }
-  var calendar = /* @__PURE__ */ _export_sfc(_sfc_main$D, [["render", _sfc_render$2], ["__scopeId", "data-v-94becebc"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/uni_modules/uni-datetime-picker/components/uni-datetime-picker/calendar.vue"]]);
+  var calendar = /* @__PURE__ */ _export_sfc(_sfc_main$B, [["render", _sfc_render$2], ["__scopeId", "data-v-94becebc"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/uni_modules/uni-datetime-picker/components/uni-datetime-picker/calendar.vue"]]);
   const {
     t
   } = initVueI18n(messages);
-  const _sfc_main$C = {
+  const _sfc_main$A = {
     name: "UniDatetimePicker",
     components: {
       calendar,
@@ -11958,7 +12727,7 @@ if (uni.restoreGlobal) {
     }
   };
   function _sfc_render$1(_ctx, _cache, $props, $setup, $data, $options) {
-    const _component_uni_icons = resolveEasycom(vue.resolveDynamicComponent("uni-icons"), __easycom_0$8);
+    const _component_uni_icons = resolveEasycom(vue.resolveDynamicComponent("uni-icons"), __easycom_0$9);
     const _component_time_picker = vue.resolveComponent("time-picker");
     const _component_calendar = vue.resolveComponent("calendar");
     return vue.openBlock(), vue.createElementBlock("view", { class: "uni-date" }, [
@@ -12253,8 +13022,8 @@ if (uni.restoreGlobal) {
       ])
     ]);
   }
-  var __easycom_0$1 = /* @__PURE__ */ _export_sfc(_sfc_main$C, [["render", _sfc_render$1], ["__scopeId", "data-v-6e13d7e2"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/uni_modules/uni-datetime-picker/components/uni-datetime-picker/uni-datetime-picker.vue"]]);
-  const _sfc_main$B = {
+  var __easycom_0$1 = /* @__PURE__ */ _export_sfc(_sfc_main$A, [["render", _sfc_render$1], ["__scopeId", "data-v-6e13d7e2"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/uni_modules/uni-datetime-picker/components/uni-datetime-picker/uni-datetime-picker.vue"]]);
+  const _sfc_main$z = {
     __name: "date",
     setup(__props, { emit }) {
       const store2 = useStore();
@@ -12407,178 +13176,8 @@ if (uni.restoreGlobal) {
       };
     }
   };
-  var TateSelete = /* @__PURE__ */ _export_sfc(_sfc_main$B, [["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/pages/history/commponents/date.vue"]]);
-  const cancelData = [
-    {
-      value: 1,
-      label: "\u7528\u6237\u6076\u610F\u4E0B\u5355"
-    },
-    {
-      value: 2,
-      label: "\u7528\u6237\u53D6\u6D88\u6295\u9012"
-    },
-    {
-      value: 3,
-      label: "\u8FDD\u7981\u54C1"
-    },
-    {
-      value: 4,
-      label: "\u91CD\u590D\u4E0B\u5355"
-    },
-    {
-      value: 5,
-      label: "\u65E0\u6CD5\u8054\u7CFB\u4E0A\u5BA2\u6237\uFF08\u7A7A\u53F7\u3001\u505C\u673A\u7B49\uFF09"
-    },
-    {
-      value: 6,
-      label: "\u865A\u5047\u5730\u5740"
-    },
-    {
-      value: 7,
-      label: "\u5B9E\u9645\u53D1\u8D27\u5730\u5740\u4E0E\u4E0B\u5355\u5730\u5740\u4E0D\u7B26"
-    },
-    {
-      value: 8,
-      label: "\u56E0\u4E2A\u4EBA\u65E0\u6CD5\u53D6\u4EF6\uFF0C\u9000\u56DE\u5230\u7F51\u70B9"
-    }
-  ];
-  const SignData = [
-    {
-      value: 1,
-      label: "\u672C\u4EBA"
-    },
-    {
-      value: 2,
-      label: "\u4EE3\u6536"
-    }
-  ];
-  const PayMethodData = [
-    {
-      value: 1,
-      label: "\u5BC4\u4ED8"
-    },
-    {
-      value: 2,
-      label: "\u5230\u4ED8"
-    }
-  ];
-  const GoodsData = [
-    {
-      value: 1,
-      label: "\u751F\u6D3B\u7528\u54C1"
-    },
-    {
-      value: 2,
-      label: "\u6587\u4EF6"
-    },
-    {
-      value: 3,
-      label: "\u6570\u7801\u4EA7\u54C1"
-    },
-    {
-      value: 4,
-      label: "\u98DF\u54C1"
-    },
-    {
-      value: 5,
-      label: "\u670D\u9970"
-    },
-    {
-      value: 6,
-      label: "\u5176\u4ED6"
-    }
-  ];
-  const PayWayData = [
-    {
-      value: 1,
-      label: "\u5FAE\u4FE1\u652F\u4ED8"
-    },
-    {
-      value: 2,
-      label: "\u652F\u4ED8\u5B9D\u652F\u4ED8"
-    }
-  ];
-  const HistoryTabData = [
-    {
-      value: 1,
-      label: "\u53D6\u4EF6"
-    },
-    {
-      value: 2,
-      label: "\u6D3E\u4EF6"
-    }
-  ];
-  const newItemData = [
-    {
-      id: 1,
-      title: "\u7269\u6D41\u4FDD\u901A\u4FDD\u7545\uFF1A\u6C11\u822A\u4FDD\u969C\u8D27\u8FD0\u822A\u73ED\u73AF\u6BD4\u589E\u957F9.7%",
-      created: "2022-09-15 06:16",
-      isRead: 0,
-      firstContent: "\u6700\u65B0\u6570\u636E\u663E\u793A\uFF0C9\u670814\u65E5\uFF0C\u5168\u56FD\u8D27\u8FD0\u7269\u6D41\u6709\u5E8F\u8FD0\u884C\uFF0C\u6C11\u822A\u4FDD\u969C\u8D27\u8FD0\u822A\u73ED\u73AF\u6BD4\u589E\u957F9.7%\u3002",
-      content: "\u56FD\u52A1\u9662\u7269\u6D41\u4FDD\u901A\u4FDD\u7545\u5DE5\u4F5C\u9886\u5BFC\u5C0F\u7EC4\u529E\u516C\u5BA4\u76D1\u6D4B\u6C47\u603B\u6570\u636E\u663E\u793A\uFF0C9\u670814\u65E5\uFF0C\u56FD\u5BB6\u94C1\u8DEF\u8D27\u8FD0\u7EE7\u7EED\u4FDD\u6301\u9AD8\u4F4D\u8FD0\u884C\uFF0C\u8FD0\u8F93\u8D27\u72691094.7\u4E07\u5428\uFF0C\u73AF\u6BD4\u4E0B\u964D0.23%\uFF1B\u5168\u56FD\u9AD8\u901F\u516C\u8DEF\u8D27\u8F66\u901A\u884C739.05\u4E07\u8F86\uFF0C\u73AF\u6BD4\u589E\u957F1.64%\uFF1B\u76D1\u6D4B\u6E2F\u53E3\u5B8C\u6210\u8D27\u7269\u541E\u5410\u91CF2374.5\u4E07\u5428\uFF0C\u73AF\u6BD4\u4E0B\u964D27.9%\uFF0C\u5B8C\u6210\u96C6\u88C5\u7BB1\u541E\u5410\u91CF53.1\u4E07\u6807\u7BB1\uFF0C\u73AF\u6BD4\u4E0B\u964D33.9%\uFF1B\u6C11\u822A\u4FDD\u969C\u8D27\u8FD0\u822A\u73ED653\u73ED\uFF08\u5176\u4E2D\u56FD\u9645\u8D27\u8FD0\u822A\u73ED452\u73ED\uFF0C\u56FD\u5185\u8D27\u8FD0\u822A\u73ED201\u73ED\uFF09\uFF0C\u73AF\u6BD4\u589E\u957F9.7%\uFF1B\u90AE\u653F\u5FEB\u9012\u63FD\u6536\u91CF\u7EA63.27\u4EBF\u4EF6\uFF0C\u73AF\u6BD4\u589E\u957F0.6%\uFF1B\u6295\u9012\u91CF\u7EA62.97\u4EBF\u4EF6\uFF0C\u73AF\u6BD4\u589E\u957F2.4%\u3002"
-    },
-    {
-      id: 2,
-      title: "\u795E\u9886\u7269\u6D41\u5168\u65B02.0\u7248\u672C\u4E0A\u7EBF\uFF0C\u57FA\u4E8E1.0\u7248\u672C\u5728\u4E1A\u52A1\u53CA\u529F\u80FD\u5C42\u9762\u8FDB\u884C\u4E86\u5347\u7EA7\u8FED\u4EE3",
-      created: "2022-04-02 20:23",
-      isRead: 1,
-      firstContent: null,
-      content: "\u795E\u9886\u7269\u6D412.0\u7248\u672C-\u5FEB\u9012\u5458\u7AEF\u7EC8\u4E8E\u57282022\u5E74\u4E0A\u534A\u5E74\u5B8C\u7F8E\u4E0A\u7EBF\u7EBF\uFF0C\u5176\u4E2D\u53D6\u4EF6/\u6D3E\u4EF6\u6D41\u7A0B\u6A21\u5757\u4F5C\u51FA\u4E86\u5F88\u591A\u65B0\u9896\u7684\u8C03\u6574\uFF0C\u8BF7\u5927\u5BB6\u591A\u591A\u5173\u6CE8\u652F\u6301\uFF01"
-    }
-  ];
-  const _sfc_main$A = {
-    __name: "index",
-    props: {
-      tabBars: {
-        type: Array,
-        default: () => []
-      }
-    },
-    emits: "",
-    setup(__props, { expose, emit }) {
-      const store2 = useStore();
-      const users = store2.state.user;
-      const scrollinto = vue.ref("tab0");
-      let tabIndex = vue.ref(users.tabIndex ? users.tabIndex : 0);
-      const changeTab = (index) => {
-        if (tabIndex.value == index) {
-          return;
-        }
-        tabIndex.value = index;
-        emit("getTabIndex", index);
-        scrollinto.value = "tab" + index;
-      };
-      expose({
-        changeTab
-      });
-      return (_ctx, _cache) => {
-        return vue.openBlock(), vue.createElementBlock("scroll-view", {
-          "scroll-x": "true",
-          class: "tabScroll",
-          "scroll-into-view": scrollinto.value,
-          "scroll-with-animation": true
-        }, [
-          (vue.openBlock(true), vue.createElementBlock(vue.Fragment, null, vue.renderList(__props.tabBars, (item, index) => {
-            return vue.openBlock(), vue.createElementBlock("view", {
-              key: index,
-              id: "tab" + index,
-              class: "scroll-row-item",
-              onClick: ($event) => changeTab(index)
-            }, [
-              vue.createElementVNode("view", {
-                class: vue.normalizeClass(vue.unref(tabIndex) == index ? "scroll-row-item-act" : "")
-              }, [
-                vue.createElementVNode("text", { class: "line" }),
-                vue.createTextVNode(" " + vue.toDisplayString(item.label), 1)
-              ], 2)
-            ], 8, ["id", "onClick"]);
-          }), 128))
-        ], 8, ["scroll-into-view"]);
-      };
-    }
-  };
-  var UniTab = /* @__PURE__ */ _export_sfc(_sfc_main$A, [["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/components/uni-tab/index.vue"]]);
-  const _sfc_main$z = {
+  var TateSelete = /* @__PURE__ */ _export_sfc(_sfc_main$z, [["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/pages/history/commponents/date.vue"]]);
+  const _sfc_main$y = {
     __name: "pickup",
     props: {
       itemData: {
@@ -12692,8 +13291,8 @@ if (uni.restoreGlobal) {
       };
     }
   };
-  var Pickup = /* @__PURE__ */ _export_sfc(_sfc_main$z, [["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/pages/history/commponents/pickup.vue"]]);
-  const _sfc_main$y = {
+  var Pickup = /* @__PURE__ */ _export_sfc(_sfc_main$y, [["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/pages/history/commponents/pickup.vue"]]);
+  const _sfc_main$x = {
     __name: "delivery",
     props: {
       itemData: {
@@ -12814,8 +13413,8 @@ if (uni.restoreGlobal) {
       };
     }
   };
-  var Delivery = /* @__PURE__ */ _export_sfc(_sfc_main$y, [["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/pages/history/commponents/delivery.vue"]]);
-  const _sfc_main$x = {
+  var Delivery = /* @__PURE__ */ _export_sfc(_sfc_main$x, [["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/pages/history/commponents/delivery.vue"]]);
+  const _sfc_main$w = {
     __name: "index",
     props: {
       dateTime: {
@@ -12995,8 +13594,8 @@ if (uni.restoreGlobal) {
       };
     }
   };
-  var TabList = /* @__PURE__ */ _export_sfc(_sfc_main$x, [["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/pages/history/commponents/index.vue"]]);
-  const _sfc_main$w = {
+  var TabList = /* @__PURE__ */ _export_sfc(_sfc_main$w, [["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/pages/history/commponents/index.vue"]]);
+  const _sfc_main$v = {
     __name: "index",
     setup(__props) {
       const store2 = useStore();
@@ -13029,7 +13628,7 @@ if (uni.restoreGlobal) {
         store2.commit("user/setTimeData", null);
       };
       return (_ctx, _cache) => {
-        const _component_uni_icons = resolveEasycom(vue.resolveDynamicComponent("uni-icons"), __easycom_0$8);
+        const _component_uni_icons = resolveEasycom(vue.resolveDynamicComponent("uni-icons"), __easycom_0$9);
         return vue.openBlock(), vue.createElementBlock(vue.Fragment, null, [
           vue.createCommentVNode(" \u81EA\u5B9A\u4E49\u5934\u90E8 "),
           vue.createVNode(UniNav, {
@@ -13084,7 +13683,7 @@ if (uni.restoreGlobal) {
       };
     }
   };
-  var PagesHistoryIndex = /* @__PURE__ */ _export_sfc(_sfc_main$w, [["__scopeId", "data-v-6c15e724"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/pages/history/index.vue"]]);
+  var PagesHistoryIndex = /* @__PURE__ */ _export_sfc(_sfc_main$v, [["__scopeId", "data-v-6c15e724"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/pages/history/index.vue"]]);
   const getNewList = (type) => request({
     url: `/messages/list?bussinessType=3&contentType=${type}`,
     method: "get"
@@ -13108,7 +13707,7 @@ if (uni.restoreGlobal) {
     method: "put",
     params
   });
-  const _sfc_main$v = {
+  const _sfc_main$u = {
     __name: "announcement",
     props: {
       tabIndex: {
@@ -13179,8 +13778,8 @@ if (uni.restoreGlobal) {
       };
     }
   };
-  var Announcement = /* @__PURE__ */ _export_sfc(_sfc_main$v, [["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/pages/news/components/announcement.vue"]]);
-  const _sfc_main$u = {
+  var Announcement = /* @__PURE__ */ _export_sfc(_sfc_main$u, [["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/pages/news/components/announcement.vue"]]);
+  const _sfc_main$t = {
     __name: "notification",
     props: {
       tabIndex: {
@@ -13304,8 +13903,8 @@ if (uni.restoreGlobal) {
       };
     }
   };
-  var Notification = /* @__PURE__ */ _export_sfc(_sfc_main$u, [["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/pages/news/components/notification.vue"]]);
-  const _sfc_main$t = {
+  var Notification = /* @__PURE__ */ _export_sfc(_sfc_main$t, [["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/pages/news/components/notification.vue"]]);
+  const _sfc_main$s = {
     __name: "index",
     setup(__props) {
       const store2 = useStore();
@@ -13397,8 +13996,8 @@ if (uni.restoreGlobal) {
       };
     }
   };
-  var PagesNewsIndex = /* @__PURE__ */ _export_sfc(_sfc_main$t, [["__scopeId", "data-v-452e6662"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/pages/news/index.vue"]]);
-  const _sfc_main$s = {
+  var PagesNewsIndex = /* @__PURE__ */ _export_sfc(_sfc_main$s, [["__scopeId", "data-v-452e6662"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/pages/news/index.vue"]]);
+  const _sfc_main$r = {
     __name: "detail",
     setup(__props) {
       const title = vue.ref("\u8BE6\u60C5");
@@ -13435,8 +14034,8 @@ if (uni.restoreGlobal) {
       };
     }
   };
-  var PagesNewsDetail = /* @__PURE__ */ _export_sfc(_sfc_main$s, [["__scopeId", "data-v-6803dca4"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/pages/news/detail.vue"]]);
-  const _sfc_main$r = {
+  var PagesNewsDetail = /* @__PURE__ */ _export_sfc(_sfc_main$r, [["__scopeId", "data-v-6803dca4"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/pages/news/detail.vue"]]);
+  const _sfc_main$q = {
     __name: "system",
     setup(__props) {
       const store2 = useStore();
@@ -13643,7 +14242,7 @@ if (uni.restoreGlobal) {
       };
     }
   };
-  var PagesNewsSystem = /* @__PURE__ */ _export_sfc(_sfc_main$r, [["__scopeId", "data-v-67cbd0fc"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/pages/news/system.vue"]]);
+  var PagesNewsSystem = /* @__PURE__ */ _export_sfc(_sfc_main$q, [["__scopeId", "data-v-67cbd0fc"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/pages/news/system.vue"]]);
   const calculateFreight = (params) => request({
     url: "/tasks/calculate",
     method: "post",
@@ -13654,7 +14253,7 @@ if (uni.restoreGlobal) {
     method: "get",
     params
   });
-  const _sfc_main$q = {
+  const _sfc_main$p = {
     __name: "index",
     props: {
       type: {
@@ -13740,7 +14339,7 @@ if (uni.restoreGlobal) {
         handleOpen
       });
       return (_ctx, _cache) => {
-        const _component_uni_popup = resolveEasycom(vue.resolveDynamicComponent("uni-popup"), __easycom_0$5);
+        const _component_uni_popup = resolveEasycom(vue.resolveDynamicComponent("uni-popup"), __easycom_0$6);
         return vue.openBlock(), vue.createElementBlock("view", { class: "uniPopup" }, [
           vue.createVNode(_component_uni_popup, {
             ref_key: "popup",
@@ -13812,8 +14411,8 @@ if (uni.restoreGlobal) {
       };
     }
   };
-  var CityPopup = /* @__PURE__ */ _export_sfc(_sfc_main$q, [["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/components/uni-address/index.vue"]]);
-  const _sfc_main$p = {
+  var CityPopup = /* @__PURE__ */ _export_sfc(_sfc_main$p, [["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/components/uni-address/index.vue"]]);
+  const _sfc_main$o = {
     __name: "address",
     setup(__props, { expose, emit }) {
       const city = vue.ref();
@@ -13889,8 +14488,8 @@ if (uni.restoreGlobal) {
       };
     }
   };
-  var UniAddress = /* @__PURE__ */ _export_sfc(_sfc_main$p, [["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/pages/freight/components/address.vue"]]);
-  const _sfc_main$o = {
+  var UniAddress = /* @__PURE__ */ _export_sfc(_sfc_main$o, [["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/pages/freight/components/address.vue"]]);
+  const _sfc_main$n = {
     __name: "index",
     props: {
       detailsData: {
@@ -14202,8 +14801,8 @@ if (uni.restoreGlobal) {
       };
     }
   };
-  var GoodsInfo = /* @__PURE__ */ _export_sfc(_sfc_main$o, [["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/components/uni-goods/index.vue"]]);
-  const _sfc_main$n = {
+  var GoodsInfo = /* @__PURE__ */ _export_sfc(_sfc_main$n, [["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/components/uni-goods/index.vue"]]);
+  const _sfc_main$m = {
     __name: "result",
     props: {
       baseData: {
@@ -14225,8 +14824,8 @@ if (uni.restoreGlobal) {
       };
     }
   };
-  var Result = /* @__PURE__ */ _export_sfc(_sfc_main$n, [["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/pages/freight/components/result.vue"]]);
-  const _sfc_main$m = {
+  var Result = /* @__PURE__ */ _export_sfc(_sfc_main$m, [["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/pages/freight/components/result.vue"]]);
+  const _sfc_main$l = {
     __name: "index",
     setup(__props) {
       const title = vue.ref("\u8FD0\u8D39\u67E5\u8BE2");
@@ -14331,8 +14930,8 @@ if (uni.restoreGlobal) {
       };
     }
   };
-  var PagesFreightIndex = /* @__PURE__ */ _export_sfc(_sfc_main$m, [["__scopeId", "data-v-628b0746"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/pages/freight/index.vue"]]);
-  const _sfc_main$l = {
+  var PagesFreightIndex = /* @__PURE__ */ _export_sfc(_sfc_main$l, [["__scopeId", "data-v-628b0746"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/pages/freight/index.vue"]]);
+  const _sfc_main$k = {
     __name: "index",
     emits: "",
     setup(__props, { emit }) {
@@ -14367,44 +14966,7 @@ if (uni.restoreGlobal) {
       };
     }
   };
-  var PagesDeliveryIndex = /* @__PURE__ */ _export_sfc(_sfc_main$l, [["__scopeId", "data-v-7c6df030"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/pages/delivery/index.vue"]]);
-  const _sfc_main$k = {
-    __name: "index",
-    emits: "",
-    setup(__props, { emit }) {
-      const store2 = useStore();
-      const users = store2.state.user;
-      vue.ref();
-      const list = vue.ref();
-      vue.ref();
-      let tabIndex = vue.ref(0);
-      vue.ref(false);
-      vue.ref(false);
-      vue.reactive(/* @__PURE__ */ new Map());
-      vue.onMounted(() => {
-        if (users.tabIndex) {
-          tabIndex.value = users.tabIndex;
-        }
-        if (users.tabIndex === 0) {
-          list.value.dealPList();
-        } else if (users.tabIndex === 1) {
-          list.value.alreadList();
-        } else {
-          list.value.cancelList();
-        }
-      });
-      return (_ctx, _cache) => {
-        return vue.openBlock(), vue.createElementBlock(vue.Fragment, null, [
-          vue.createElementVNode("view", null, [
-            vue.createTextVNode(" \u8BA2\u5355\u9875\u9762 "),
-            vue.createVNode(UniFooter, { pagePath: "pages/delivery/index" })
-          ]),
-          vue.createCommentVNode(" end ")
-        ], 2112);
-      };
-    }
-  };
-  var PagesPickupIndex = /* @__PURE__ */ _export_sfc(_sfc_main$k, [["__scopeId", "data-v-0e6a68f8"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/pages/pickup/index.vue"]]);
+  var PagesDeliveryIndex = /* @__PURE__ */ _export_sfc(_sfc_main$k, [["__scopeId", "data-v-7c6df030"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/pages/delivery/index.vue"]]);
   const _sfc_main$j = {
     __name: "index",
     setup(__props) {
@@ -14509,7 +15071,7 @@ if (uni.restoreGlobal) {
         store2.commit("user/setSelectTaskData", /* @__PURE__ */ new Map());
       };
       return (_ctx, _cache) => {
-        const _component_uni_icons = resolveEasycom(vue.resolveDynamicComponent("uni-icons"), __easycom_0$8);
+        const _component_uni_icons = resolveEasycom(vue.resolveDynamicComponent("uni-icons"), __easycom_0$9);
         return vue.openBlock(), vue.createElementBlock(vue.Fragment, null, [
           vue.createCommentVNode(" \u641C\u7D22nav "),
           vue.createElementVNode("view", { class: "navBox" }, [
@@ -14884,7 +15446,7 @@ if (uni.restoreGlobal) {
         isValidate
       });
       return (_ctx, _cache) => {
-        const _component_uni_easyinput = resolveEasycom(vue.resolveDynamicComponent("uni-easyinput"), __easycom_0$7);
+        const _component_uni_easyinput = resolveEasycom(vue.resolveDynamicComponent("uni-easyinput"), __easycom_0$8);
         const _component_uni_forms_item = resolveEasycom(vue.resolveDynamicComponent("uni-forms-item"), __easycom_1);
         const _component_uni_forms = resolveEasycom(vue.resolveDynamicComponent("uni-forms"), __easycom_2);
         return vue.openBlock(), vue.createElementBlock("view", { class: "boxBg" }, [
@@ -15062,7 +15624,7 @@ if (uni.restoreGlobal) {
         current
       });
       return (_ctx, _cache) => {
-        const _component_uni_popup = resolveEasycom(vue.resolveDynamicComponent("uni-popup"), __easycom_0$5);
+        const _component_uni_popup = resolveEasycom(vue.resolveDynamicComponent("uni-popup"), __easycom_0$6);
         return vue.openBlock(), vue.createElementBlock("view", { class: "uniPopup detailPopup" }, [
           vue.createVNode(_component_uni_popup, {
             ref_key: "popup",
@@ -17066,7 +17628,7 @@ if (uni.restoreGlobal) {
         dialogOpen
       });
       return (_ctx, _cache) => {
-        const _component_uni_popup = resolveEasycom(vue.resolveDynamicComponent("uni-popup"), __easycom_0$5);
+        const _component_uni_popup = resolveEasycom(vue.resolveDynamicComponent("uni-popup"), __easycom_0$6);
         return vue.openBlock(), vue.createBlock(_component_uni_popup, {
           ref_key: "uppop",
           ref: uppop,
@@ -17519,7 +18081,7 @@ if (uni.restoreGlobal) {
     }
   };
   function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
-    const _component_uni_icons = resolveEasycom(vue.resolveDynamicComponent("uni-icons"), __easycom_0$8);
+    const _component_uni_icons = resolveEasycom(vue.resolveDynamicComponent("uni-icons"), __easycom_0$9);
     return vue.openBlock(), vue.createElementBlock("view", null, [
       vue.createElementVNode("view", {
         ref: "uni-rate",
@@ -17956,6 +18518,8 @@ if (uni.restoreGlobal) {
   __definePage("pages/serviceRange/index", PagesServiceRangeIndex);
   __definePage("pages/city/index", PagesCityIndex);
   __definePage("pages/setting/index", PagesSettingIndex);
+  __definePage("pages/pickup/index", PagesPickupIndex);
+  __definePage("pages/orderInfo/index", PagesOrderInfoIndex);
   __definePage("pages/login/index", PagesLoginIndex);
   __definePage("pages/search/index", PagesSearchIndex);
   __definePage("pages/history/index", PagesHistoryIndex);
@@ -17964,7 +18528,6 @@ if (uni.restoreGlobal) {
   __definePage("pages/news/system", PagesNewsSystem);
   __definePage("pages/freight/index", PagesFreightIndex);
   __definePage("pages/delivery/index", PagesDeliveryIndex);
-  __definePage("pages/pickup/index", PagesPickupIndex);
   __definePage("pages/turnorder/index", PagesTurnorderIndex);
   __definePage("pages/cancel/index", PagesCancelIndex);
   __definePage("pages/cancel/cause", PagesCancelCause);
