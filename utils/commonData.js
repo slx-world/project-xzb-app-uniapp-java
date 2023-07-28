@@ -43,37 +43,28 @@ export const DeliveryData = [
 export const cancelData = [
   {
     value: 1,
-    label: "用户恶意下单",
+    label: "服务地址有误",
   },
   {
     value: 2,
-    label: "用户取消投递",
+    label: "看错地址，无法服务",
   },
   {
     value: 3,
-    label: "违禁品",
+    label: "价格太低，不想服务了",
   },
   {
     value: 4,
-    label: "重复下单",
+    label: "临时有事，无法服务",
   },
   {
     value: 5,
-    label: "无法联系上客户（空号、停机等）",
-  },
-  {
-    value: 6,
-    label: "虚假地址",
-  },
-  {
-    value: 7,
-    label: "实际发货地址与下单地址不符",
-  },
-  {
-    value: 8,
-    label: "因个人无法取件，退回到网点",
+    label: "产品维修复杂，无法服务",
   },
 ];
+
+
+
 // 付款方式数据
 export const SignData = [
   {

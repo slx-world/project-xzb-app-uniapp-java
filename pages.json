@@ -71,6 +71,20 @@
 				"navigationBarTitleText": "订单详情"
 			}
 		},
+    {
+			"path": "pages/cancel/index",
+			"style": {
+				"navigationStyle": "custom",
+				"navigationBarTitleText": "取消原因"
+			}
+		},
+    {
+			"path": "pages/serveRecord/index",
+			"style": {
+				"navigationStyle": "custom",
+				"navigationBarTitleText": "服务记录"
+			}
+		},
 
 
 
@@ -148,15 +162,6 @@
 				"navigationBarTitleText": "转单"
 			}
 		},
-
-		{
-			"path": "pages/cancel/index",
-			"style": {
-				"navigationStyle": "custom",
-				"navigationBarTitleText": "订单取消原因申请"
-			}
-		},
-
 		{
 			"path": "pages/cancel/cause",
 			"style": {

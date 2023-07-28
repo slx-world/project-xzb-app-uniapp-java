@@ -760,7 +760,6 @@
   box-shadow: 0 0 0.375rem 0 #0000001a;
   display: flex;
   font-size: 1rem;
-  align-items: center;
   justify-content: center;
 }
 .order-info .footer .btn-gray[data-v-2827b336] {
@@ -772,6 +771,7 @@
   border-radius: 1.5625rem;
   margin-right: 1rem;
   text-align: center;
+  margin-top: 0.9375rem;
 }
 .order-info .footer .btn-red[data-v-2827b336] {
   height: 2.75rem;
@@ -781,4 +781,5 @@
   border-radius: 1.5625rem;
   text-align: center;
   line-height: 2.75rem;
+  margin-top: 0.9375rem;
 }

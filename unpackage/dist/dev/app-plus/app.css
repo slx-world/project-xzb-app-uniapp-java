@@ -18,10 +18,12 @@
   --color-gray-59:#595959;
   --color-gray-f2:#F2F2F2;
   --color-gray-93:#939393;
+  --color-gray-96:#969696;
   --color-gray-fa:#fafafa;
   --color-gray-eb:#EBEBEB;
   --neutral-color-white:#FFFFFF;
   --color-green-27BA9B:#27BA9B;
+  --neutral-color-background:#F4F4F4;
 
 
 	--essential-color-red:#EF4F3F;
@@ -35,7 +37,7 @@
 	--neutral-color-segmentation:#EEEEEE;
 
 	--neutral-color-placeholder:#C2C1C1;
-	--neutral-color-background:#F4F4F4;
+
 	--font-size-16:1rem;
 	--font-size-14:0.875rem;
 	--font-size-13:0.8125rem;

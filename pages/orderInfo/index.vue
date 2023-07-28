@@ -135,12 +135,18 @@
       </view>
     </view>
     <view class="footer" v-if="[1, 2].includes(info.serveStatus)">
-      <view class="btn-gray" v-if="[1].includes(info.serveStatus)"
+      <view
+        class="btn-gray"
+        @click="handleCancel"
+        v-if="[1].includes(info.serveStatus)"
         >取消订单</view
       >
-      <view class="btn-red" v-if="[1, 2].includes(info.serveStatus)">{{
-        info.serveStatus === 1 ? '开始服务' : '完成服务'
-      }}</view>
+      <view
+        class="btn-red"
+        @click="handleServeRecord"
+        v-if="[1, 2].includes(info.serveStatus)"
+        >{{ info.serveStatus === 1 ? '开始服务' : '完成服务' }}</view
+      >
     </view>
   </view>
 </template>
@@ -217,6 +223,18 @@ const changeTab = (index) => {
   emit('getTabIndex', index);
   // 滑动
   scrollinto.value = 'tab' + index;
+};
+//跳转到开始服务/完成服务页面
+const handleServeRecord = () => {
+  uni.navigateTo({
+    url: '/pages/serveRecord/index',
+  });
+};
+//取消原因
+const handleCancel = () => {
+  uni.navigateTo({
+    url: '/pages/cancel/index',
+  });
 };
 // 返回上一页
 const goBack = () => {

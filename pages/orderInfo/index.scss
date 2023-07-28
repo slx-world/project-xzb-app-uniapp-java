@@ -169,8 +169,6 @@
     box-shadow: 0 0 12rpx 0 #0000001a;
     display: flex;
     font-size: 32rpx;
-    align-items: center;
-    // padding: 0 30rpx;
     justify-content: center;
     .btn-gray{
       line-height: 88rpx;
@@ -181,6 +179,7 @@
       border-radius: 50rpx;
       margin-right: 32rpx;
       text-align: center;
+      margin-top: 30rpx;
     }
     .btn-red{
       height: 88rpx;
@@ -190,6 +189,7 @@
       border-radius: 50rpx;
       text-align: center;
       line-height: 88rpx;
+      margin-top: 30rpx;
     }
   }
 }
