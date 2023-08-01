@@ -49,7 +49,6 @@ if (uni.restoreGlobal) {
   "use strict";
   const ON_SHOW = "onShow";
   const ON_LOAD = "onLoad";
-  const ON_REACH_BOTTOM = "onReachBottom";
   const ON_PULL_DOWN_REFRESH = "onPullDownRefresh";
   function isDebugMode() {
     return typeof __channelId__ === "string" && __channelId__;
@@ -94,8 +93,8 @@ if (uni.restoreGlobal) {
     return msgs.join("---COMMA---") + " " + filename;
   }
   function formatAppLog(type, filename, ...args) {
-    const res2 = normalizeLog(type, filename, args);
-    res2 && console[type](res2);
+    const res = normalizeLog(type, filename, args);
+    res && console[type](res);
   }
   var icons = {
     "id": "2852637",
@@ -1279,7 +1278,7 @@ if (uni.restoreGlobal) {
     const reg = /^[0-9]*$/g;
     return typeof val === "number" || reg.test(val) ? val + "px" : val;
   };
-  const _sfc_main$1g = {
+  const _sfc_main$D = {
     name: "UniIcons",
     emits: ["click"],
     props: {
@@ -1323,14 +1322,14 @@ if (uni.restoreGlobal) {
       }
     }
   };
-  function _sfc_render$i(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$c(_ctx, _cache, $props, $setup, $data, $options) {
     return vue.openBlock(), vue.createElementBlock("text", {
       style: vue.normalizeStyle({ color: $props.color, "font-size": $options.iconSize }),
       class: vue.normalizeClass(["uni-icons", ["uniui-" + $props.type, $props.customPrefix, $props.customPrefix ? $props.type : ""]]),
       onClick: _cache[0] || (_cache[0] = (...args) => $options._onClick && $options._onClick(...args))
     }, null, 6);
   }
-  var __easycom_0$a = /* @__PURE__ */ _export_sfc(_sfc_main$1g, [["render", _sfc_render$i], ["__scopeId", "data-v-a2e81f6e"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/uni_modules/uni-icons/components/uni-icons/uni-icons.vue"]]);
+  var __easycom_0$7 = /* @__PURE__ */ _export_sfc(_sfc_main$D, [["render", _sfc_render$c], ["__scopeId", "data-v-a2e81f6e"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/uni_modules/uni-icons/components/uni-icons/uni-icons.vue"]]);
   function resolveEasycom(component, easycom) {
     return shared.isString(component) ? easycom : component;
   }
@@ -1339,9 +1338,8 @@ if (uni.restoreGlobal) {
   };
   const onShow = /* @__PURE__ */ createHook(ON_SHOW);
   const onLoad = /* @__PURE__ */ createHook(ON_LOAD);
-  const onReachBottom = /* @__PURE__ */ createHook(ON_REACH_BOTTOM);
   const onPullDownRefresh = /* @__PURE__ */ createHook(ON_PULL_DOWN_REFRESH);
-  const _sfc_main$1f = {
+  const _sfc_main$C = {
     name: "uni-easyinput",
     emits: ["click", "iconClick", "update:modelValue", "input", "focus", "blur", "confirm"],
     model: {
@@ -1565,8 +1563,8 @@ if (uni.restoreGlobal) {
       }
     }
   };
-  function _sfc_render$h(_ctx, _cache, $props, $setup, $data, $options) {
-    const _component_uni_icons = resolveEasycom(vue.resolveDynamicComponent("uni-icons"), __easycom_0$a);
+  function _sfc_render$b(_ctx, _cache, $props, $setup, $data, $options) {
+    const _component_uni_icons = resolveEasycom(vue.resolveDynamicComponent("uni-icons"), __easycom_0$7);
     return vue.openBlock(), vue.createElementBlock("view", {
       class: vue.normalizeClass(["uni-easyinput", { "uni-easyinput-error": $options.msg }]),
       style: vue.normalizeStyle({ color: $props.inputBorder && $options.msg ? "#e43d33" : $props.styles.color })
@@ -1652,8 +1650,8 @@ if (uni.restoreGlobal) {
       ], 6)
     ], 6);
   }
-  var __easycom_0$9 = /* @__PURE__ */ _export_sfc(_sfc_main$1f, [["render", _sfc_render$h], ["__scopeId", "data-v-abe12412"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/uni_modules/uni-easyinput/components/uni-easyinput/uni-easyinput.vue"]]);
-  const _sfc_main$1e = {
+  var __easycom_0$6 = /* @__PURE__ */ _export_sfc(_sfc_main$C, [["render", _sfc_render$b], ["__scopeId", "data-v-abe12412"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/uni_modules/uni-easyinput/components/uni-easyinput/uni-easyinput.vue"]]);
+  const _sfc_main$B = {
     name: "uniFormsItem",
     props: {
       custom: {
@@ -1928,8 +1926,8 @@ if (uni.restoreGlobal) {
       }
     }
   };
-  function _sfc_render$g(_ctx, _cache, $props, $setup, $data, $options) {
-    const _component_uni_icons = resolveEasycom(vue.resolveDynamicComponent("uni-icons"), __easycom_0$a);
+  function _sfc_render$a(_ctx, _cache, $props, $setup, $data, $options) {
+    const _component_uni_icons = resolveEasycom(vue.resolveDynamicComponent("uni-icons"), __easycom_0$7);
     return vue.openBlock(), vue.createElementBlock("view", {
       class: vue.normalizeClass(["uni-forms-item", { "uni-forms-item--border": $data.border, "is-first-border": $data.border && $data.isFirstBorder, "uni-forms-item-error": $options.msg }])
     }, [
@@ -1978,7 +1976,7 @@ if (uni.restoreGlobal) {
       ])
     ], 2);
   }
-  var __easycom_1 = /* @__PURE__ */ _export_sfc(_sfc_main$1e, [["render", _sfc_render$g], ["__scopeId", "data-v-61dfc0d0"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/uni_modules/uni-forms/components/uni-forms-item/uni-forms-item.vue"]]);
+  var __easycom_1 = /* @__PURE__ */ _export_sfc(_sfc_main$B, [["render", _sfc_render$a], ["__scopeId", "data-v-61dfc0d0"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/uni_modules/uni-forms/components/uni-forms-item/uni-forms-item.vue"]]);
   var pattern = {
     email: /^\S+?@\S+?\.\S+?$/,
     idcard: /^[1-9]\d{5}(18|19|([23]\d))\d{2}((0[1-9])|(10|11|12))(([0-2][1-9])|10|20|30|31)\d{3}[0-9Xx]$/,
@@ -2144,11 +2142,11 @@ if (uni.restoreGlobal) {
       let result = null;
       try {
         let callbackMessage = null;
-        const res2 = await rule.validateFunction(rule, value, allData || data, (message) => {
+        const res = await rule.validateFunction(rule, value, allData || data, (message) => {
           callbackMessage = message;
         });
-        if (callbackMessage || typeof res2 === "string" && res2 || res2 === false) {
-          result = this._getMessage(rule, callbackMessage || res2, vt2);
+        if (callbackMessage || typeof res === "string" && res || res === false) {
+          result = this._getMessage(rule, callbackMessage || res, vt2);
         }
       } catch (e2) {
         result = this._getMessage(rule, e2.message, vt2);
@@ -2395,7 +2393,7 @@ if (uni.restoreGlobal) {
     };
   }
   SchemaValidator.message = new Message();
-  const _sfc_main$1d = {
+  const _sfc_main$A = {
     name: "uniForms",
     components: {},
     emits: ["input", "reset", "validate", "submit"],
@@ -2646,8 +2644,8 @@ if (uni.restoreGlobal) {
       },
       submit(keepitem, callback, type) {
         for (let i2 in this.dataValue) {
-          const itemData2 = this.childrens.find((v2) => v2.name === i2);
-          if (itemData2) {
+          const itemData = this.childrens.find((v2) => v2.name === i2);
+          if (itemData) {
             if (this.formData[i2] === void 0) {
               this.formData[i2] = this._getValue(i2, this.dataValue[i2]);
             }
@@ -2712,7 +2710,7 @@ if (uni.restoreGlobal) {
       }
     }
   };
-  function _sfc_render$f(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$9(_ctx, _cache, $props, $setup, $data, $options) {
     return vue.openBlock(), vue.createElementBlock("view", {
       class: vue.normalizeClass(["uni-forms", { "uni-forms--top": !$props.border }])
     }, [
@@ -2724,7 +2722,7 @@ if (uni.restoreGlobal) {
       ], 32)
     ], 2);
   }
-  var __easycom_2 = /* @__PURE__ */ _export_sfc(_sfc_main$1d, [["render", _sfc_render$f], ["__scopeId", "data-v-7ae0e404"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/uni_modules/uni-forms/components/uni-forms/uni-forms.vue"]]);
+  var __easycom_2 = /* @__PURE__ */ _export_sfc(_sfc_main$A, [["render", _sfc_render$9], ["__scopeId", "data-v-7ae0e404"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/uni_modules/uni-forms/components/uni-forms/uni-forms.vue"]]);
   class MPAnimation {
     constructor(options, _this) {
       this.options = options;
@@ -2765,7 +2763,7 @@ if (uni.restoreGlobal) {
       return new Promise((resolve, reject) => {
         nvueAnimation.transition(ref, __spreadValues({
           styles
-        }, config), (res2) => {
+        }, config), (res) => {
           resolve();
         });
       });
@@ -2834,7 +2832,7 @@ if (uni.restoreGlobal) {
     clearTimeout(_this.timer);
     return new MPAnimation(option, _this);
   }
-  const _sfc_main$1c = {
+  const _sfc_main$z = {
     name: "uniTransition",
     emits: ["click", "change"],
     props: {
@@ -3059,7 +3057,7 @@ if (uni.restoreGlobal) {
       }
     }
   };
-  function _sfc_render$e(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$8(_ctx, _cache, $props, $setup, $data, $options) {
     return $data.isShow ? (vue.openBlock(), vue.createElementBlock("view", {
       key: 0,
       ref: "ani",
@@ -3071,8 +3069,8 @@ if (uni.restoreGlobal) {
       vue.renderSlot(_ctx.$slots, "default")
     ], 14, ["animation"])) : vue.createCommentVNode("v-if", true);
   }
-  var __easycom_0$8 = /* @__PURE__ */ _export_sfc(_sfc_main$1c, [["render", _sfc_render$e], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/uni_modules/uni-transition/components/uni-transition/uni-transition.vue"]]);
-  const _sfc_main$1b = {
+  var __easycom_0$5 = /* @__PURE__ */ _export_sfc(_sfc_main$z, [["render", _sfc_render$8], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/uni_modules/uni-transition/components/uni-transition/uni-transition.vue"]]);
+  const _sfc_main$y = {
     name: "uniPopup",
     components: {},
     emits: ["change", "maskClick"],
@@ -3369,8 +3367,8 @@ if (uni.restoreGlobal) {
       }
     }
   };
-  function _sfc_render$d(_ctx, _cache, $props, $setup, $data, $options) {
-    const _component_uni_transition = resolveEasycom(vue.resolveDynamicComponent("uni-transition"), __easycom_0$8);
+  function _sfc_render$7(_ctx, _cache, $props, $setup, $data, $options) {
+    const _component_uni_transition = resolveEasycom(vue.resolveDynamicComponent("uni-transition"), __easycom_0$5);
     return $data.showPopup ? (vue.openBlock(), vue.createElementBlock("view", {
       key: 0,
       class: vue.normalizeClass(["uni-popup", [$data.popupstyle, $options.isDesktop ? "fixforpc-z-index" : ""]])
@@ -3410,7 +3408,7 @@ if (uni.restoreGlobal) {
       ], 32)
     ], 2)) : vue.createCommentVNode("v-if", true);
   }
-  var __easycom_0$7 = /* @__PURE__ */ _export_sfc(_sfc_main$1b, [["render", _sfc_render$d], ["__scopeId", "data-v-7c43d41b"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/uni_modules/uni-popup/components/uni-popup/uni-popup.vue"]]);
+  var __easycom_0$4 = /* @__PURE__ */ _export_sfc(_sfc_main$y, [["render", _sfc_render$7], ["__scopeId", "data-v-7c43d41b"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/uni_modules/uni-popup/components/uni-popup/uni-popup.vue"]]);
   var _imports_0 = "/static/new/img_logo@2x.png";
   function getDevtoolsGlobalHook() {
     return getTarget().__VUE_DEVTOOLS_GLOBAL_HOOK__;
@@ -3729,7 +3727,7 @@ if (uni.restoreGlobal) {
   function registerAction(store2, type, handler, local) {
     var entry = store2._actions[type] || (store2._actions[type] = []);
     entry.push(function wrappedActionHandler(payload) {
-      var res2 = handler.call(store2, {
+      var res = handler.call(store2, {
         dispatch: local.dispatch,
         commit: local.commit,
         getters: local.getters,
@@ -3737,16 +3735,16 @@ if (uni.restoreGlobal) {
         rootGetters: store2.getters,
         rootState: store2.state
       }, payload);
-      if (!isPromise(res2)) {
-        res2 = Promise.resolve(res2);
+      if (!isPromise(res)) {
+        res = Promise.resolve(res);
       }
       if (store2._devtoolHook) {
-        return res2.catch(function(err) {
+        return res.catch(function(err) {
           store2._devtoolHook.emit("vuex:error", err);
           throw err;
         });
       } else {
-        return res2;
+        return res;
       }
     });
   }
@@ -4311,7 +4309,7 @@ if (uni.restoreGlobal) {
       return handler(payload);
     })) : entry[0](payload);
     return new Promise(function(resolve, reject) {
-      result.then(function(res2) {
+      result.then(function(res) {
         try {
           this$1$1._actionSubscribers.filter(function(sub) {
             return sub.after;
@@ -4324,7 +4322,7 @@ if (uni.restoreGlobal) {
             console.error(e2);
           }
         }
-        resolve(res2);
+        resolve(res);
       }, function(error) {
         try {
           this$1$1._actionSubscribers.filter(function(sub) {
@@ -4433,10 +4431,10 @@ if (uni.restoreGlobal) {
         data: params,
         header,
         method
-      }).then((res2) => {
-        formatAppLog("log", "at utils/request.js:29", params, url, res2, "header");
-        const { data } = res2;
-        if (res2.statusCode == 401) {
+      }).then((res) => {
+        formatAppLog("log", "at utils/request.js:29", params, url, res, "header");
+        const { data } = res;
+        if (res.statusCode == 401) {
           uni.showToast({
             title: "\u60A8\u7684\u767B\u5F55\u5DF2\u8FC7\u671F\uFF01\u8BF7\u91CD\u65B0\u767B\u5F55\u540E\u64CD\u4F5C\uFF01",
             duration: 2e3,
@@ -4447,7 +4445,7 @@ if (uni.restoreGlobal) {
           });
           return false;
         }
-        if (res2.statusCode == 400) {
+        if (res.statusCode == 400) {
           uni.showToast({
             title: "\u6743\u9650\u4E0D\u8DB3\uFF0C\u65E0\u6CD5\u767B\u5F55\uFF01",
             duration: 2e3,
@@ -4467,9 +4465,9 @@ if (uni.restoreGlobal) {
           return false;
         }
         if (data.code == 0 || data.code == 200) {
-          resolve(res2.data);
+          resolve(res.data);
         } else {
-          reject(res2.data);
+          reject(res.data);
         }
       }).catch((err) => {
         const error = { data: { msg: err.data } };
@@ -4528,7 +4526,7 @@ if (uni.restoreGlobal) {
     method: "put",
     params
   });
-  const _sfc_main$1a = {
+  const _sfc_main$x = {
     __name: "user",
     setup(__props) {
       const store2 = useStore();
@@ -4581,18 +4579,18 @@ if (uni.restoreGlobal) {
               mask: true
             });
           }, 500);
-          await phoneLogins(fromInfo).then(async (res2) => {
-            formatAppLog("log", "at pages/login/user.vue:169", res2, "\u767B\u5F55\u7ED3\u679C\u83B7\u53D6");
-            if (res2.code === 200) {
+          await phoneLogins(fromInfo).then(async (res) => {
+            formatAppLog("log", "at pages/login/user.vue:169", res, "\u767B\u5F55\u7ED3\u679C\u83B7\u53D6");
+            if (res.code === 200) {
               setTimeout(function() {
                 uni.hideLoading();
               }, 500);
               clearTimeout(times);
-              uni.setStorageSync("token", res2.data.token);
-              store2.commit("user/setToken", res2.data.token);
-              await getUserSetting().then((res3) => {
-                formatAppLog("log", "at pages/login/user.vue:182", res3, "getUserSetting");
-                if (Boolean(res3.data.settingsStatus)) {
+              uni.setStorageSync("token", res.data.token);
+              store2.commit("user/setToken", res.data.token);
+              await getUserSetting().then((res2) => {
+                formatAppLog("log", "at pages/login/user.vue:182", res2, "getUserSetting");
+                if (Boolean(res2.data.settingsStatus)) {
                   uni.redirectTo({
                     url: "/pages/index/index"
                   });
@@ -4602,12 +4600,12 @@ if (uni.restoreGlobal) {
                   });
                 }
               });
-            } else if (res2.code === 605) {
+            } else if (res.code === 605) {
               setTimeout(function() {
                 uni.hideLoading();
               }, 500);
               uni.showToast({
-                title: res2.msg,
+                title: res.msg,
                 duration: 1e3,
                 icon: "none"
               });
@@ -4642,7 +4640,7 @@ if (uni.restoreGlobal) {
         getsmsCode({
           bussinessType: 3,
           phone: fromInfo.phone
-        }).then((res2) => {
+        }).then((res) => {
           fromInfo.veriryCode = "123456";
         }).catch((err) => {
           uni.showToast({
@@ -4655,10 +4653,10 @@ if (uni.restoreGlobal) {
       vue.ref(uni.getStorageSync("baseUrl"));
       vue.ref(null);
       return (_ctx, _cache) => {
-        const _component_uni_easyinput = resolveEasycom(vue.resolveDynamicComponent("uni-easyinput"), __easycom_0$9);
+        const _component_uni_easyinput = resolveEasycom(vue.resolveDynamicComponent("uni-easyinput"), __easycom_0$6);
         const _component_uni_forms_item = resolveEasycom(vue.resolveDynamicComponent("uni-forms-item"), __easycom_1);
         const _component_uni_forms = resolveEasycom(vue.resolveDynamicComponent("uni-forms"), __easycom_2);
-        const _component_uni_popup = resolveEasycom(vue.resolveDynamicComponent("uni-popup"), __easycom_0$7);
+        const _component_uni_popup = resolveEasycom(vue.resolveDynamicComponent("uni-popup"), __easycom_0$4);
         return vue.openBlock(), vue.createElementBlock("view", null, [
           vue.createElementVNode("image", {
             src: _imports_0,
@@ -4756,8 +4754,8 @@ if (uni.restoreGlobal) {
       };
     }
   };
-  var PagesLoginUser = /* @__PURE__ */ _export_sfc(_sfc_main$1a, [["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/pages/login/user.vue"]]);
-  const _sfc_main$19 = {
+  var PagesLoginUser = /* @__PURE__ */ _export_sfc(_sfc_main$x, [["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/pages/login/user.vue"]]);
+  const _sfc_main$w = {
     name: "UniStatusBar",
     data() {
       return {
@@ -4768,7 +4766,7 @@ if (uni.restoreGlobal) {
       this.statusBarHeight = uni.getSystemInfoSync().statusBarHeight + "px";
     }
   };
-  function _sfc_render$c(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$6(_ctx, _cache, $props, $setup, $data, $options) {
     return vue.openBlock(), vue.createElementBlock("view", {
       style: vue.normalizeStyle({ height: $data.statusBarHeight }),
       class: "uni-status-bar"
@@ -4776,9 +4774,9 @@ if (uni.restoreGlobal) {
       vue.renderSlot(_ctx.$slots, "default", {}, void 0, true)
     ], 4);
   }
-  var statusBar = /* @__PURE__ */ _export_sfc(_sfc_main$19, [["render", _sfc_render$c], ["__scopeId", "data-v-f9a87a8e"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/uni_modules/uni-nav-bar/components/uni-nav-bar/uni-status-bar.vue"]]);
+  var statusBar = /* @__PURE__ */ _export_sfc(_sfc_main$w, [["render", _sfc_render$6], ["__scopeId", "data-v-f9a87a8e"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/uni_modules/uni-nav-bar/components/uni-nav-bar/uni-status-bar.vue"]]);
   const getVal = (val) => typeof val === "number" ? val + "px" : val;
-  const _sfc_main$18 = {
+  const _sfc_main$v = {
     name: "UniNavBar",
     components: {
       statusBar
@@ -4898,9 +4896,9 @@ if (uni.restoreGlobal) {
       }
     }
   };
-  function _sfc_render$b(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$5(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_status_bar = vue.resolveComponent("status-bar");
-    const _component_uni_icons = resolveEasycom(vue.resolveDynamicComponent("uni-icons"), __easycom_0$a);
+    const _component_uni_icons = resolveEasycom(vue.resolveDynamicComponent("uni-icons"), __easycom_0$7);
     return vue.openBlock(), vue.createElementBlock("view", {
       class: vue.normalizeClass(["uni-navbar", { "uni-dark": $props.dark }])
     }, [
@@ -4993,7 +4991,7 @@ if (uni.restoreGlobal) {
       ])) : vue.createCommentVNode("v-if", true)
     ], 2);
   }
-  var __easycom_0$6 = /* @__PURE__ */ _export_sfc(_sfc_main$18, [["render", _sfc_render$b], ["__scopeId", "data-v-6bda1a90"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/uni_modules/uni-nav-bar/components/uni-nav-bar/uni-nav-bar.vue"]]);
+  var __easycom_0$3 = /* @__PURE__ */ _export_sfc(_sfc_main$v, [["render", _sfc_render$5], ["__scopeId", "data-v-6bda1a90"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/uni_modules/uni-nav-bar/components/uni-nav-bar/uni-nav-bar.vue"]]);
   const getDispatchOrder = (params) => request({
     url: params ? `/orders-dispatch?serveTypeId=${params}` : "/orders-dispatch",
     method: "get"
@@ -5034,7 +5032,7 @@ if (uni.restoreGlobal) {
     method: "post",
     params
   });
-  const _sfc_main$17 = {
+  const _sfc_main$u = {
     __name: "index",
     setup(__props) {
       const baseSetting = vue.reactive([
@@ -5085,8 +5083,8 @@ if (uni.restoreGlobal) {
       };
     }
   };
-  var UniNav$1 = /* @__PURE__ */ _export_sfc(_sfc_main$17, [["__scopeId", "data-v-02b269f0"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/components/uni-home-nav/index.vue"]]);
-  const _sfc_main$16 = {
+  var UniNav$1 = /* @__PURE__ */ _export_sfc(_sfc_main$u, [["__scopeId", "data-v-02b269f0"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/components/uni-home-nav/index.vue"]]);
+  const _sfc_main$t = {
     __name: "index",
     props: {
       pagePath: {
@@ -5198,8 +5196,8 @@ if (uni.restoreGlobal) {
       };
     }
   };
-  var UniFooter = /* @__PURE__ */ _export_sfc(_sfc_main$16, [["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/components/uni-footer/index.vue"]]);
-  const _sfc_main$15 = {
+  var UniFooter = /* @__PURE__ */ _export_sfc(_sfc_main$t, [["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/components/uni-footer/index.vue"]]);
+  const _sfc_main$s = {
     __name: "index",
     props: {},
     setup(__props, { emit }) {
@@ -5212,8 +5210,8 @@ if (uni.restoreGlobal) {
       };
     }
   };
-  var Empty = /* @__PURE__ */ _export_sfc(_sfc_main$15, [["__scopeId", "data-v-70a727a5"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/components/empty/index.vue"]]);
-  const _sfc_main$14 = {
+  var Empty = /* @__PURE__ */ _export_sfc(_sfc_main$s, [["__scopeId", "data-v-70a727a5"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/components/empty/index.vue"]]);
+  const _sfc_main$r = {
     __name: "homeFilter",
     props: {
       fixTop: {
@@ -5308,8 +5306,8 @@ if (uni.restoreGlobal) {
       };
     }
   };
-  var HomeFilter = /* @__PURE__ */ _export_sfc(_sfc_main$14, [["__scopeId", "data-v-1426d0ea"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/pages/index/components/homeFilter.vue"]]);
-  const _sfc_main$13 = {
+  var HomeFilter = /* @__PURE__ */ _export_sfc(_sfc_main$r, [["__scopeId", "data-v-1426d0ea"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/pages/index/components/homeFilter.vue"]]);
+  const _sfc_main$q = {
     __name: "homeList",
     props: {
       data: {
@@ -5334,9 +5332,9 @@ if (uni.restoreGlobal) {
       const handleRob = (id) => {
         robOrder({
           id
-        }).then((res2) => {
-          formatAppLog("log", "at pages/index/components/homeList.vue:70", res2, "\u62A2\u5355");
-          if (res2.code === 200) {
+        }).then((res) => {
+          formatAppLog("log", "at pages/index/components/homeList.vue:70", res, "\u62A2\u5355");
+          if (res.code === 200) {
             isRob.value = true;
           } else {
             isRob.value = false;
@@ -5349,7 +5347,7 @@ if (uni.restoreGlobal) {
         formatAppLog("log", "at pages/index/components/homeList.vue:81", list.data, "++++++++++++++");
       });
       return (_ctx, _cache) => {
-        const _component_uni_popup = resolveEasycom(vue.resolveDynamicComponent("uni-popup"), __easycom_0$7);
+        const _component_uni_popup = resolveEasycom(vue.resolveDynamicComponent("uni-popup"), __easycom_0$4);
         return vue.openBlock(), vue.createElementBlock("view", { class: "homeList" }, [
           (vue.openBlock(true), vue.createElementBlock(vue.Fragment, null, vue.renderList(vue.unref(list).data, (item, index) => {
             return vue.openBlock(), vue.createElementBlock("view", {
@@ -5413,8 +5411,8 @@ if (uni.restoreGlobal) {
       };
     }
   };
-  var HomeList$1 = /* @__PURE__ */ _export_sfc(_sfc_main$13, [["__scopeId", "data-v-62e7a190"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/pages/index/components/homeList.vue"]]);
-  const _sfc_main$12 = {
+  var HomeList$1 = /* @__PURE__ */ _export_sfc(_sfc_main$q, [["__scopeId", "data-v-62e7a190"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/pages/index/components/homeList.vue"]]);
+  const _sfc_main$p = {
     __name: "index",
     setup(__props) {
       const fixTop = vue.ref(false);
@@ -5452,20 +5450,20 @@ if (uni.restoreGlobal) {
         }
       };
       const getDispatchList = (params) => {
-        getDispatchOrder(params).then((res2) => {
-          homeList.data = res2.data.ordersSeizes;
-          formatAppLog("log", "at pages/index/index.vue:109", res2, homeList.data, 1111111);
+        getDispatchOrder(params).then((res) => {
+          homeList.data = res.data.ordersSeizes;
+          formatAppLog("log", "at pages/index/index.vue:109", res, homeList.data, 1111111);
         });
       };
       const getRobOrderList = (params) => {
-        getRobOrder(params).then((res2) => {
-          homeList.data = res2.data.ordersSeizes;
-          formatAppLog("log", "at pages/index/index.vue:116", res2, homeList.data, 1111111);
+        getRobOrder(params).then((res) => {
+          homeList.data = res.data.ordersSeizes;
+          formatAppLog("log", "at pages/index/index.vue:116", res, homeList.data, 1111111);
         });
       };
       const getHomeFilterList = () => {
-        getHomeFilter().then((res2) => {
-          homeFilterList.data = res2.data;
+        getHomeFilter().then((res) => {
+          homeFilterList.data = res.data;
         });
       };
       const handleCanScroll = (val) => {
@@ -5485,7 +5483,7 @@ if (uni.restoreGlobal) {
         });
       };
       return (_ctx, _cache) => {
-        const _component_uni_nav_bar = resolveEasycom(vue.resolveDynamicComponent("uni-nav-bar"), __easycom_0$6);
+        const _component_uni_nav_bar = resolveEasycom(vue.resolveDynamicComponent("uni-nav-bar"), __easycom_0$3);
         return vue.openBlock(), vue.createElementBlock("view", { class: "home" }, [
           vue.createCommentVNode(" \u624B\u673A\u72B6\u6001\u680F "),
           vue.createVNode(_component_uni_nav_bar, {
@@ -5531,8 +5529,8 @@ if (uni.restoreGlobal) {
       };
     }
   };
-  var PagesIndexIndex = /* @__PURE__ */ _export_sfc(_sfc_main$12, [["__scopeId", "data-v-57280228"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/pages/index/index.vue"]]);
-  const _sfc_main$11 = {
+  var PagesIndexIndex = /* @__PURE__ */ _export_sfc(_sfc_main$p, [["__scopeId", "data-v-57280228"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/pages/index/index.vue"]]);
+  const _sfc_main$o = {
     __name: "index",
     props: {
       title: {
@@ -5558,7 +5556,7 @@ if (uni.restoreGlobal) {
         emit("handleAll");
       };
       return (_ctx, _cache) => {
-        const _component_uni_nav_bar = resolveEasycom(vue.resolveDynamicComponent("uni-nav-bar"), __easycom_0$6);
+        const _component_uni_nav_bar = resolveEasycom(vue.resolveDynamicComponent("uni-nav-bar"), __easycom_0$3);
         return __props.isLeftText ? (vue.openBlock(), vue.createBlock(_component_uni_nav_bar, {
           key: 0,
           title: __props.title,
@@ -5578,8 +5576,8 @@ if (uni.restoreGlobal) {
       };
     }
   };
-  var UniNav = /* @__PURE__ */ _export_sfc(_sfc_main$11, [["__scopeId", "data-v-30dede9e"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/components/uni-nav/index.vue"]]);
-  const _sfc_main$10 = {
+  var UniNav = /* @__PURE__ */ _export_sfc(_sfc_main$o, [["__scopeId", "data-v-30dede9e"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/components/uni-nav/index.vue"]]);
+  const _sfc_main$n = {
     __name: "index",
     setup(__props) {
       const activeId = vue.ref(null);
@@ -5595,10 +5593,10 @@ if (uni.restoreGlobal) {
         getServiceSkillAllFunc();
       });
       const getServiceSkillAllFunc = () => {
-        getServiceSkillAll().then((res2) => {
-          if (res2.code == 200) {
-            serviceSkill.data = res2.data;
-            activeId.value = res2.data[0].serveTypeId;
+        getServiceSkillAll().then((res) => {
+          if (res.code == 200) {
+            serviceSkill.data = res.data;
+            activeId.value = res.data[0].serveTypeId;
             rightItem.data = serviceSkill.data[0].serveSkillItemResDTOList;
             formatAppLog("log", "at pages/serviceSkill/index.vue:77", serviceSkill.data, "serviceSkill.data");
           }
@@ -5637,8 +5635,8 @@ if (uni.restoreGlobal) {
           });
         });
         formatAppLog("log", "at pages/serviceSkill/index.vue:120", selectedList, "selectedList");
-        updateServiceSkill(selectedList).then((res2) => {
-          if (res2.code === 200) {
+        updateServiceSkill(selectedList).then((res) => {
+          if (res.code === 200) {
             status.value = "read";
           }
         }).catch((err) => {
@@ -5722,8 +5720,8 @@ if (uni.restoreGlobal) {
       };
     }
   };
-  var PagesServiceSkillIndex = /* @__PURE__ */ _export_sfc(_sfc_main$10, [["__scopeId", "data-v-f34db350"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/pages/serviceSkill/index.vue"]]);
-  const _sfc_main$$ = {
+  var PagesServiceSkillIndex = /* @__PURE__ */ _export_sfc(_sfc_main$n, [["__scopeId", "data-v-f34db350"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/pages/serviceSkill/index.vue"]]);
+  const _sfc_main$m = {
     __name: "index",
     setup(__props) {
       const canPickUp = vue.ref(false);
@@ -5733,8 +5731,8 @@ if (uni.restoreGlobal) {
       const handlePickUpStatus = () => {
         setPickUpStatus({
           canPickUp: canPickUp.value ? 0 : 1
-        }).then((res2) => {
-          if (res2.code == 200) {
+        }).then((res) => {
+          if (res.code == 200) {
             getSetting();
           }
         }).catch((err) => {
@@ -5746,9 +5744,9 @@ if (uni.restoreGlobal) {
         });
       };
       const getSetting = () => {
-        getUserSetting().then((res2) => {
-          if (res2.code == 200) {
-            canPickUp.value = res2.data.canPickUp;
+        getUserSetting().then((res) => {
+          if (res.code == 200) {
+            canPickUp.value = res.data.canPickUp;
           }
         }).catch((err) => {
           uni.showToast({
@@ -5781,8 +5779,8 @@ if (uni.restoreGlobal) {
       };
     }
   };
-  var PagesGetOrderIndex = /* @__PURE__ */ _export_sfc(_sfc_main$$, [["__scopeId", "data-v-6bad7658"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/pages/getOrder/index.vue"]]);
-  const _sfc_main$_ = {
+  var PagesGetOrderIndex = /* @__PURE__ */ _export_sfc(_sfc_main$m, [["__scopeId", "data-v-6bad7658"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/pages/getOrder/index.vue"]]);
+  const _sfc_main$l = {
     __name: "index",
     setup(__props) {
       const cityName = vue.ref("\u8BF7\u9009\u62E9");
@@ -5820,12 +5818,12 @@ if (uni.restoreGlobal) {
         uni.chooseLocation({
           latitude: location2.longitude,
           longitude: location2.latitude,
-          success: function(res2) {
-            address.value = res2.name;
-            location2.latitude = res2.longitude;
-            location2.longitude = res2.latitude;
-            markers.data.latitude = res2.latitude;
-            markers.data.longitude = res2.longitude;
+          success: function(res) {
+            address.value = res.name;
+            location2.latitude = res.longitude;
+            location2.longitude = res.latitude;
+            markers.data.latitude = res.latitude;
+            markers.data.longitude = res.longitude;
             store2.commit("user/setLocation", location2);
             store2.commit("user/setAddress", address.value);
           },
@@ -5839,38 +5837,38 @@ if (uni.restoreGlobal) {
           cityCode: params.cityCode,
           location: String(location2.latitude) + "," + String(location2.longitude),
           intentionScope: users.address
-        }).then((res2) => {
+        }).then((res) => {
           uni.showToast({
             title: "\u4FDD\u5B58\u6210\u529F",
             duration: 1500,
             icon: "none"
           });
-          formatAppLog("log", "at pages/serviceRange/index.vue:117", res2, "\u8BBE\u7F6E\u670D\u52A1\u8303\u56F4");
+          formatAppLog("log", "at pages/serviceRange/index.vue:117", res, "\u8BBE\u7F6E\u670D\u52A1\u8303\u56F4");
         });
       };
       onLoad((option) => {
-        getSettingInfo().then((res2) => {
-          formatAppLog("log", "at pages/serviceRange/index.vue:123", res2, "\u83B7\u53D6\u5F53\u524D\u914D\u7F6E\u7684\u4F4D\u7F6E\u4FE1\u606F");
-          if (!res2.data.location) {
+        getSettingInfo().then((res) => {
+          formatAppLog("log", "at pages/serviceRange/index.vue:123", res, "\u83B7\u53D6\u5F53\u524D\u914D\u7F6E\u7684\u4F4D\u7F6E\u4FE1\u606F");
+          if (!res.data.location) {
             uni.getLocation({
               type: "gcj02",
               geocode: true,
-              success: function(res3) {
-                location2.latitude = res3.longitude;
-                location2.longitude = res3.latitude;
-                markers.data.latitude = res3.latitude;
-                markers.data.longitude = res3.longitude;
-                formatAppLog("log", "at pages/serviceRange/index.vue:134", res3, "\u5F53\u524D\u4F4D\u7F6E1");
+              success: function(res2) {
+                location2.latitude = res2.longitude;
+                location2.longitude = res2.latitude;
+                markers.data.latitude = res2.latitude;
+                markers.data.longitude = res2.longitude;
+                formatAppLog("log", "at pages/serviceRange/index.vue:134", res2, "\u5F53\u524D\u4F4D\u7F6E1");
               }
             });
           } else {
-            params.cityCode = res2.data.cityCode;
-            cityName.value = res2.data.cityName;
-            address.value = res2.data.intentionScope;
-            location2.latitude = res2.data.location.split(",")[0];
-            location2.longitude = res2.data.location.split(",")[1];
-            markers.data.latitude = res2.data.location.split(",")[1];
-            markers.data.longitude = res2.data.location.split(",")[0];
+            params.cityCode = res.data.cityCode;
+            cityName.value = res.data.cityName;
+            address.value = res.data.intentionScope;
+            location2.latitude = res.data.location.split(",")[0];
+            location2.longitude = res.data.location.split(",")[1];
+            markers.data.latitude = res.data.location.split(",")[1];
+            markers.data.longitude = res.data.location.split(",")[0];
           }
           if (option.name) {
             cityName.value = option.name;
@@ -5941,7 +5939,7 @@ if (uni.restoreGlobal) {
       };
     }
   };
-  var PagesServiceRangeIndex = /* @__PURE__ */ _export_sfc(_sfc_main$_, [["__scopeId", "data-v-6cac4378"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/pages/serviceRange/index.vue"]]);
+  var PagesServiceRangeIndex = /* @__PURE__ */ _export_sfc(_sfc_main$l, [["__scopeId", "data-v-6cac4378"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/pages/serviceRange/index.vue"]]);
   const Citys = {
     list: [
       {
@@ -7623,7 +7621,7 @@ if (uni.restoreGlobal) {
       }
     ]
   };
-  const _sfc_main$Z = {
+  const _sfc_main$k = {
     __name: "index",
     setup(__props) {
       const address = vue.ref("");
@@ -7693,9 +7691,9 @@ if (uni.restoreGlobal) {
         letter.value = Citys.index;
         list.value = Citys.list;
         setList();
-        getOpenCity().then((res2) => {
-          list.value = res2.data;
-          formatAppLog("log", "at pages/city/index.vue:188", res2, "getOpenCity");
+        getOpenCity().then((res) => {
+          list.value = res.data;
+          formatAppLog("log", "at pages/city/index.vue:188", res, "getOpenCity");
         });
       });
       const getWarpWeft = () => {
@@ -7703,17 +7701,17 @@ if (uni.restoreGlobal) {
         uni.getLocation({
           type: "gcj02",
           geocode: true,
-          success: function(res2) {
+          success: function(res) {
             currentCity.value = {
-              name: res2.address.city
+              name: res.address.city
             };
-            activeId.value = res2.address.cityCode;
+            activeId.value = res.address.cityCode;
             setTimeout(() => {
               po_tips.value = "\u91CD\u65B0\u5B9A\u4F4D";
             }, 500);
           },
-          fail: function(res2) {
-            formatAppLog("log", "at pages/city/index.vue:212", res2);
+          fail: function(res) {
+            formatAppLog("log", "at pages/city/index.vue:212", res);
             setTimeout(() => {
               po_tips.value = "\u5B9A\u4F4D\u5931\u8D25";
             }, 500);
@@ -7836,8 +7834,8 @@ if (uni.restoreGlobal) {
       };
     }
   };
-  var PagesCityIndex = /* @__PURE__ */ _export_sfc(_sfc_main$Z, [["__scopeId", "data-v-49347d67"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/pages/city/index.vue"]]);
-  const _sfc_main$Y = {
+  var PagesCityIndex = /* @__PURE__ */ _export_sfc(_sfc_main$k, [["__scopeId", "data-v-49347d67"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/pages/city/index.vue"]]);
+  const _sfc_main$j = {
     __name: "index",
     setup(__props) {
       const canPickUp = vue.ref(false);
@@ -7851,13 +7849,13 @@ if (uni.restoreGlobal) {
       vue.onMounted(() => {
       });
       const getSetting = () => {
-        getUserSetting().then((res2) => {
-          if (res2.code == 200) {
-            canPickUp.value = res2.data.canPickUp;
-            settingsStatus.value = res2.data.settingsStatus;
-            serveRangeStatus.value = res2.data.serveScopeSetted;
-            serveSkillStatus.value = res2.data.serveSkillSetted;
-            auth.value = res2.data.authed;
+        getUserSetting().then((res) => {
+          if (res.code == 200) {
+            canPickUp.value = res.data.canPickUp;
+            settingsStatus.value = res.data.settingsStatus;
+            serveRangeStatus.value = res.data.serveScopeSetted;
+            serveSkillStatus.value = res.data.serveSkillSetted;
+            auth.value = res.data.authed;
           }
         }).catch((err) => {
           uni.showToast({
@@ -7870,8 +7868,8 @@ if (uni.restoreGlobal) {
       const handlePickUpStatus = () => {
         setPickUpStatus({
           canPickUp: canPickUp.value ? 0 : 1
-        }).then((res2) => {
-          if (res2.code == 200) {
+        }).then((res) => {
+          if (res.code == 200) {
             getSetting();
           }
         }).catch((err) => {
@@ -7902,7 +7900,7 @@ if (uni.restoreGlobal) {
         }
       };
       return (_ctx, _cache) => {
-        const _component_uni_nav_bar = resolveEasycom(vue.resolveDynamicComponent("uni-nav-bar"), __easycom_0$6);
+        const _component_uni_nav_bar = resolveEasycom(vue.resolveDynamicComponent("uni-nav-bar"), __easycom_0$3);
         return vue.openBlock(), vue.createElementBlock("view", { class: "setting" }, [
           vue.createCommentVNode(" \u624B\u673A\u72B6\u6001\u680F "),
           vue.createVNode(_component_uni_nav_bar, { statusBar: "true" }),
@@ -7976,7 +7974,7 @@ if (uni.restoreGlobal) {
       };
     }
   };
-  var PagesSettingIndex = /* @__PURE__ */ _export_sfc(_sfc_main$Y, [["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/pages/setting/index.vue"]]);
+  var PagesSettingIndex = /* @__PURE__ */ _export_sfc(_sfc_main$j, [["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/pages/setting/index.vue"]]);
   const orderStatus = [
     {
       value: 1,
@@ -8039,91 +8037,7 @@ if (uni.restoreGlobal) {
       label: "\u4EA7\u54C1\u7EF4\u4FEE\u590D\u6742\uFF0C\u65E0\u6CD5\u670D\u52A1"
     }
   ];
-  const SignData = [
-    {
-      value: 1,
-      label: "\u672C\u4EBA"
-    },
-    {
-      value: 2,
-      label: "\u4EE3\u6536"
-    }
-  ];
-  const PayMethodData = [
-    {
-      value: 1,
-      label: "\u5BC4\u4ED8"
-    },
-    {
-      value: 2,
-      label: "\u5230\u4ED8"
-    }
-  ];
-  const GoodsData = [
-    {
-      value: 1,
-      label: "\u751F\u6D3B\u7528\u54C1"
-    },
-    {
-      value: 2,
-      label: "\u6587\u4EF6"
-    },
-    {
-      value: 3,
-      label: "\u6570\u7801\u4EA7\u54C1"
-    },
-    {
-      value: 4,
-      label: "\u98DF\u54C1"
-    },
-    {
-      value: 5,
-      label: "\u670D\u9970"
-    },
-    {
-      value: 6,
-      label: "\u5176\u4ED6"
-    }
-  ];
-  const PayWayData = [
-    {
-      value: 1,
-      label: "\u5FAE\u4FE1\u652F\u4ED8"
-    },
-    {
-      value: 2,
-      label: "\u652F\u4ED8\u5B9D\u652F\u4ED8"
-    }
-  ];
-  const HistoryTabData = [
-    {
-      value: 1,
-      label: "\u53D6\u4EF6"
-    },
-    {
-      value: 2,
-      label: "\u6D3E\u4EF6"
-    }
-  ];
-  const newItemData = [
-    {
-      id: 1,
-      title: "\u7269\u6D41\u4FDD\u901A\u4FDD\u7545\uFF1A\u6C11\u822A\u4FDD\u969C\u8D27\u8FD0\u822A\u73ED\u73AF\u6BD4\u589E\u957F9.7%",
-      created: "2022-09-15 06:16",
-      isRead: 0,
-      firstContent: "\u6700\u65B0\u6570\u636E\u663E\u793A\uFF0C9\u670814\u65E5\uFF0C\u5168\u56FD\u8D27\u8FD0\u7269\u6D41\u6709\u5E8F\u8FD0\u884C\uFF0C\u6C11\u822A\u4FDD\u969C\u8D27\u8FD0\u822A\u73ED\u73AF\u6BD4\u589E\u957F9.7%\u3002",
-      content: "\u56FD\u52A1\u9662\u7269\u6D41\u4FDD\u901A\u4FDD\u7545\u5DE5\u4F5C\u9886\u5BFC\u5C0F\u7EC4\u529E\u516C\u5BA4\u76D1\u6D4B\u6C47\u603B\u6570\u636E\u663E\u793A\uFF0C9\u670814\u65E5\uFF0C\u56FD\u5BB6\u94C1\u8DEF\u8D27\u8FD0\u7EE7\u7EED\u4FDD\u6301\u9AD8\u4F4D\u8FD0\u884C\uFF0C\u8FD0\u8F93\u8D27\u72691094.7\u4E07\u5428\uFF0C\u73AF\u6BD4\u4E0B\u964D0.23%\uFF1B\u5168\u56FD\u9AD8\u901F\u516C\u8DEF\u8D27\u8F66\u901A\u884C739.05\u4E07\u8F86\uFF0C\u73AF\u6BD4\u589E\u957F1.64%\uFF1B\u76D1\u6D4B\u6E2F\u53E3\u5B8C\u6210\u8D27\u7269\u541E\u5410\u91CF2374.5\u4E07\u5428\uFF0C\u73AF\u6BD4\u4E0B\u964D27.9%\uFF0C\u5B8C\u6210\u96C6\u88C5\u7BB1\u541E\u5410\u91CF53.1\u4E07\u6807\u7BB1\uFF0C\u73AF\u6BD4\u4E0B\u964D33.9%\uFF1B\u6C11\u822A\u4FDD\u969C\u8D27\u8FD0\u822A\u73ED653\u73ED\uFF08\u5176\u4E2D\u56FD\u9645\u8D27\u8FD0\u822A\u73ED452\u73ED\uFF0C\u56FD\u5185\u8D27\u8FD0\u822A\u73ED201\u73ED\uFF09\uFF0C\u73AF\u6BD4\u589E\u957F9.7%\uFF1B\u90AE\u653F\u5FEB\u9012\u63FD\u6536\u91CF\u7EA63.27\u4EBF\u4EF6\uFF0C\u73AF\u6BD4\u589E\u957F0.6%\uFF1B\u6295\u9012\u91CF\u7EA62.97\u4EBF\u4EF6\uFF0C\u73AF\u6BD4\u589E\u957F2.4%\u3002"
-    },
-    {
-      id: 2,
-      title: "\u795E\u9886\u7269\u6D41\u5168\u65B02.0\u7248\u672C\u4E0A\u7EBF\uFF0C\u57FA\u4E8E1.0\u7248\u672C\u5728\u4E1A\u52A1\u53CA\u529F\u80FD\u5C42\u9762\u8FDB\u884C\u4E86\u5347\u7EA7\u8FED\u4EE3",
-      created: "2022-04-02 20:23",
-      isRead: 1,
-      firstContent: null,
-      content: "\u795E\u9886\u7269\u6D412.0\u7248\u672C-\u5FEB\u9012\u5458\u7AEF\u7EC8\u4E8E\u57282022\u5E74\u4E0A\u534A\u5E74\u5B8C\u7F8E\u4E0A\u7EBF\u7EBF\uFF0C\u5176\u4E2D\u53D6\u4EF6/\u6D3E\u4EF6\u6D41\u7A0B\u6A21\u5757\u4F5C\u51FA\u4E86\u5F88\u591A\u65B0\u9896\u7684\u8C03\u6574\uFF0C\u8BF7\u5927\u5BB6\u591A\u591A\u5173\u6CE8\u652F\u6301\uFF01"
-    }
-  ];
-  const _sfc_main$X = {
+  const _sfc_main$i = {
     __name: "homeList",
     props: {
       data: {
@@ -8173,7 +8087,7 @@ if (uni.restoreGlobal) {
         formatAppLog("log", "at pages/pickup/components/homeList.vue:136", data, "dddddddddddddddd");
       });
       return (_ctx, _cache) => {
-        const _component_uni_popup = resolveEasycom(vue.resolveDynamicComponent("uni-popup"), __easycom_0$7);
+        const _component_uni_popup = resolveEasycom(vue.resolveDynamicComponent("uni-popup"), __easycom_0$4);
         return vue.openBlock(), vue.createElementBlock("view", { class: "homeList" }, [
           (vue.openBlock(true), vue.createElementBlock(vue.Fragment, null, vue.renderList(vue.unref(data), (item) => {
             return vue.openBlock(), vue.createElementBlock("view", {
@@ -8247,8 +8161,8 @@ if (uni.restoreGlobal) {
       };
     }
   };
-  var HomeList = /* @__PURE__ */ _export_sfc(_sfc_main$X, [["__scopeId", "data-v-58ad869c"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/pages/pickup/components/homeList.vue"]]);
-  const _sfc_main$W = {
+  var HomeList = /* @__PURE__ */ _export_sfc(_sfc_main$i, [["__scopeId", "data-v-58ad869c"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/pages/pickup/components/homeList.vue"]]);
+  const _sfc_main$h = {
     name: "UniBadge",
     emits: ["click"],
     props: {
@@ -8374,7 +8288,7 @@ if (uni.restoreGlobal) {
       }
     }
   };
-  function _sfc_render$a(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$4(_ctx, _cache, $props, $setup, $data, $options) {
     return vue.openBlock(), vue.createElementBlock("view", { class: "uni-badge--x" }, [
       vue.renderSlot(_ctx.$slots, "default", {}, void 0, true),
       $props.text ? (vue.openBlock(), vue.createElementBlock("text", {
@@ -8385,8 +8299,8 @@ if (uni.restoreGlobal) {
       }, vue.toDisplayString($options.displayValue), 7)) : vue.createCommentVNode("v-if", true)
     ]);
   }
-  var __easycom_0$5 = /* @__PURE__ */ _export_sfc(_sfc_main$W, [["render", _sfc_render$a], ["__scopeId", "data-v-7c66581c"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/uni_modules/uni-badge/components/uni-badge/uni-badge.vue"]]);
-  const _sfc_main$V = {
+  var __easycom_0$2 = /* @__PURE__ */ _export_sfc(_sfc_main$h, [["render", _sfc_render$4], ["__scopeId", "data-v-7c66581c"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/uni_modules/uni-badge/components/uni-badge/uni-badge.vue"]]);
+  const _sfc_main$g = {
     __name: "index",
     props: {
       tabBars: {
@@ -8412,7 +8326,7 @@ if (uni.restoreGlobal) {
         changeTab
       });
       return (_ctx, _cache) => {
-        const _component_uni_badge = resolveEasycom(vue.resolveDynamicComponent("uni-badge"), __easycom_0$5);
+        const _component_uni_badge = resolveEasycom(vue.resolveDynamicComponent("uni-badge"), __easycom_0$2);
         return vue.openBlock(), vue.createElementBlock("scroll-view", {
           "scroll-x": "true",
           class: "tabScroll",
@@ -8449,8 +8363,8 @@ if (uni.restoreGlobal) {
       };
     }
   };
-  var UniTab = /* @__PURE__ */ _export_sfc(_sfc_main$V, [["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/components/uni-tab/index.vue"]]);
-  const _sfc_main$U = {
+  var UniTab = /* @__PURE__ */ _export_sfc(_sfc_main$g, [["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/components/uni-tab/index.vue"]]);
+  const _sfc_main$f = {
     __name: "index",
     emits: "",
     setup(__props, { emit }) {
@@ -8474,9 +8388,9 @@ if (uni.restoreGlobal) {
         getTabIndex(users.tabIndex);
       });
       const getListData = (val) => {
-        getOrder(val).then((res2) => {
-          homeList.data = res2.data.ordersServes;
-          formatAppLog("log", "at pages/pickup/index.vue:77", res2, "66666666666");
+        getOrder(val).then((res) => {
+          homeList.data = res.data.ordersServes;
+          formatAppLog("log", "at pages/pickup/index.vue:77", res, "66666666666");
         });
       };
       const getRobOrderList = () => {
@@ -8487,7 +8401,7 @@ if (uni.restoreGlobal) {
         formatAppLog("log", "at pages/pickup/index.vue:86", tabBars[index].value, "index");
       };
       return (_ctx, _cache) => {
-        const _component_uni_nav_bar = resolveEasycom(vue.resolveDynamicComponent("uni-nav-bar"), __easycom_0$6);
+        const _component_uni_nav_bar = resolveEasycom(vue.resolveDynamicComponent("uni-nav-bar"), __easycom_0$3);
         return vue.openBlock(), vue.createElementBlock(vue.Fragment, null, [
           vue.createElementVNode("view", { class: "order" }, [
             vue.createCommentVNode(" \u624B\u673A\u72B6\u6001\u680F "),
@@ -8521,8 +8435,8 @@ if (uni.restoreGlobal) {
       };
     }
   };
-  var PagesPickupIndex = /* @__PURE__ */ _export_sfc(_sfc_main$U, [["__scopeId", "data-v-0e6a68f8"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/pages/pickup/index.vue"]]);
-  const _sfc_main$T = {
+  var PagesPickupIndex = /* @__PURE__ */ _export_sfc(_sfc_main$f, [["__scopeId", "data-v-0e6a68f8"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/pages/pickup/index.vue"]]);
+  const _sfc_main$e = {
     __name: "index",
     props: {
       tabBars: {
@@ -8586,9 +8500,9 @@ if (uni.restoreGlobal) {
         type.value = options.type;
       });
       const getOrderInfoFunc = (id) => {
-        getOrderInfo(id).then((res2) => {
-          info.data = res2.data;
-          formatAppLog("log", "at pages/orderInfo/index.vue:243", res2.data, "\u83B7\u53D6\u8BA2\u5355\u8BE6\u60C5");
+        getOrderInfo(id).then((res) => {
+          info.data = res.data;
+          formatAppLog("log", "at pages/orderInfo/index.vue:243", res.data, "\u83B7\u53D6\u8BA2\u5355\u8BE6\u60C5");
         });
       };
       const changeTab = (index) => {
@@ -8787,89 +8701,7 @@ if (uni.restoreGlobal) {
       };
     }
   };
-  var PagesOrderInfoIndex = /* @__PURE__ */ _export_sfc(_sfc_main$T, [["__scopeId", "data-v-2827b336"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/pages/orderInfo/index.vue"]]);
-  const getDeliveryList = (params) => request({
-    url: "/tasks/page",
-    method: "get",
-    params
-  });
-  const transferBatch = (params) => request({
-    url: "/tasks/transfer/batch",
-    method: "post",
-    params
-  });
-  const taskDelete = (id) => request({
-    url: `/tasks/${id}`,
-    method: "delete"
-  });
-  const getDetail = (id) => request({
-    url: `/tasks/get/${id}`,
-    method: "get"
-  });
-  const idCardCheck = (params) => request({
-    url: `/tasks/idCard/check`,
-    method: "post",
-    params
-  });
-  const getPickup = (params) => request({
-    url: `/tasks/pickup`,
-    method: "put",
-    params
-  });
-  const getSameAgency = (params) => request({
-    url: `/users/sameAgency`,
-    method: "get",
-    params
-  });
-  const rejection = (id) => request({
-    url: `/tasks/reject/${id}`,
-    method: "put"
-  });
-  const tasksSign = (params) => request({
-    url: `/tasks/sign`,
-    method: "put",
-    params
-  });
-  const getQrCode = (params) => request({
-    url: `/pays/qrCode/get`,
-    method: "post",
-    params
-  });
-  const paySucceed = (id) => request({
-    url: `/pays/status/${id}`,
-    method: "get"
-  });
-  const getTracks = (id) => request({
-    url: `/tasks/tracks/${id}`,
-    method: "get"
-  });
-  const getSearch = (params) => request({
-    url: `/tasks/search`,
-    method: "post",
-    params
-  });
-  const getRecentSearch = () => request({
-    url: `/tasks/recentSearch`,
-    method: "get"
-  });
-  const setMarkRecent = (transportOrderId) => request({
-    url: `/tasks/markRecent/${transportOrderId}`,
-    method: "get"
-  });
-  const clearRecentSearch = () => request({
-    url: `/tasks/recentSearch`,
-    method: "delete"
-  });
-  const PositionUpload = (params) => request({
-    url: `/track/upload`,
-    method: "put",
-    data: params,
-    params
-  });
-  const taskTimeFormat = (val) => {
-    const times = getTimeDate(val);
-    return times.date;
-  };
+  var PagesOrderInfoIndex = /* @__PURE__ */ _export_sfc(_sfc_main$e, [["__scopeId", "data-v-2827b336"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/pages/orderInfo/index.vue"]]);
   const overTimeFormat = (val) => {
     const times = getTimeDate(val);
     return times.times;
@@ -8893,139 +8725,7 @@ if (uni.restoreGlobal) {
   function addZero(s2) {
     return s2 < 10 ? "0" + s2 : s2;
   }
-  const getTate = (val) => {
-    let date = new Date(val);
-    const year = date.getFullYear();
-    const month = date.getMonth() + 1;
-    const day = date.getDate();
-    const m2 = addZero(year) + "-" + addZero(month) + "-" + addZero(day) + " 00:00:00";
-    return m2;
-  };
-  const getNow = (val) => {
-    let date = new Date(val);
-    date.getFullYear();
-    let m2 = date.getMonth() + 1;
-    let d2 = date.getDate();
-    return m2 + "\u6708" + d2 + "\u65E5";
-  };
-  const tomorrowDay = (date) => {
-    let odata = new Date(new Date().getTime() + 24 * 60 * 60 * 1e3);
-    return getTate(odata);
-  };
-  const afterTomorrowDay = (date) => {
-    let odata = new Date(new Date().getTime() + 48 * 60 * 60 * 1e3);
-    return getTate(odata);
-  };
-  const getDay = () => {
-    const times = timeList();
-    let arr = [];
-    times.forEach((val) => {
-      const obj = getTate(val);
-      arr.push(obj);
-    });
-    return arr;
-  };
-  const getMonthDay = (val) => {
-    const now = timeList();
-    const timeNow = Date.parse(val);
-    const timeStar = Date.parse(now[0]);
-    const timeEnd = Date.parse(now[now.length - 1]);
-    const times = {
-      timeNow,
-      timeStar,
-      timeEnd
-    };
-    return times;
-  };
-  const validateTextLength = (value) => {
-    if (value != void 0) {
-      let cnReg = /([\u4e00-\u9fa5]|[\u3000-\u303F]|[\uFF00-\uFF60])/g;
-      let mat = value.match(cnReg);
-      let length;
-      if (mat) {
-        length = mat.length + (value.length - mat.length) * 0.5;
-        return length;
-      } else {
-        return value.length * 0.5;
-      }
-    }
-  };
-  const timeList = () => {
-    var thrityMonth = [];
-    for (var i2 = 0; i2 < 30; i2++) {
-      thrityMonth.unshift(new Date(new Date().setDate(new Date().getDate() - i2)).toLocaleDateString());
-    }
-    return thrityMonth;
-  };
-  const positionUploadHandle = (item) => {
-    uni.getLocation({
-      type: "gcj02",
-      isHighAccuracy: true,
-      success: function(positions) {
-        if (positions) {
-          const posit = uni.getStorageSync("positions");
-          if (item) {
-            positionUploadAdmin(positions);
-            uni.setStorageSync("positions", { timer: posit.timer, lastPoint: positions, countTime: 0, countDist: 0 });
-            return;
-          }
-          if (!posit) {
-            const timer = setInterval(() => {
-              positionUploadHandle();
-            }, 1e3 * 60);
-            uni.setStorageSync("positions", { timer, lastPoint: positions, countTime: 0, countDist: 0 });
-            positionUploadAdmin(positions);
-          } else {
-            const dist = getDistance(posit.lastPoint.latitude, posit.lastPoint.longitude, positions.latitude, positions.longitude);
-            uni.setStorageSync("positions", { timer: posit.timer, lastPoint: positions, countTime: posit.countTime + 6e4, countDist: posit.countDist + dist });
-            if (posit.countTime + 6e4 >= 3e5 || posit.countDist + dist >= 100) {
-              positionUploadAdmin(positions);
-              uni.setStorageSync("positions", { timer: posit.timer, lastPoint: positions, countTime: 0, countDist: 0 });
-            }
-          }
-        } else {
-          uni.showToast({
-            title: "\u4F4D\u7F6E\u66F4\u65B0\u5931\u8D25\uFF0C\u8BF7\u68C0\u67E5\u5B9A\u4F4D\u529F\u80FD\u662F\u5426\u5F00\u542F\uFF0C\u6216\u5207\u7F51\u7EDC\u4E86\u91CD\u65B0\u4E0A\u4F20",
-            duration: 3e3,
-            icon: "none"
-          });
-        }
-      },
-      fail: function(err) {
-        uni.showToast({
-          title: "\u4F4D\u7F6E\u83B7\u53D6\u5931\u8D25\uFF0C\u8BF7\u68C0\u67E5\u5B9A\u4F4D\u529F\u80FD\u662F\u5426\u5F00\u542F\uFF0C\u6216\u5207\u7F51\u7EDC\u4E86\u91CD\u65B0\u4E0A\u4F20",
-          duration: 3e3,
-          icon: "none"
-        });
-      }
-    });
-  };
-  const getDistance = (lat1, lng1, lat2, lng2, lenType = 1, decimal = 2) => {
-    const EARTH_RADIUS = 6378.137;
-    const PI = 3.1415926;
-    const radLat1 = lat1 * PI / 180;
-    const radLat2 = lat2 * PI / 180;
-    let a2 = radLat1 - radLat2;
-    let b2 = lng1 * PI / 180 - lng2 * PI / 180;
-    let s2 = 2 * Math.asin(Math.sqrt(Math.pow(Math.sin(a2 / 2), 2) + Math.cos(radLat1) * Math.cos(radLat2) * Math.pow(Math.sin(b2 / 2), 2)));
-    s2 = s2 * EARTH_RADIUS;
-    s2 = lenType == 1 ? Math.round(s2 * 1e3) / 1 : Math.round(s2 * 1e4) / 1e4;
-    return s2;
-  };
-  const positionUploadAdmin = (positions) => {
-    PositionUpload({ lat: positions.latitude.toString(), lng: positions.longitude.toString() }).then((res2) => {
-      if (res2.code == 200)
-        ;
-      else {
-        uni.showToast({
-          title: "\u4F4D\u7F6E\u4E0A\u62A5\u5931\u8D25\uFF0C\u8BF7\u68C0\u67E5\u5B9A\u4F4D\u529F\u80FD\u662F\u5426\u5F00\u542F\uFF0C\u6216\u5207\u7F51\u7EDC\u4E86\u91CD\u65B0\u4E0A\u4F20",
-          duration: 3e3,
-          icon: "none"
-        });
-      }
-    });
-  };
-  const _sfc_main$S = {
+  const _sfc_main$d = {
     __name: "index",
     setup(__props) {
       const title = vue.ref("\u53D6\u6D88\u539F\u56E0");
@@ -9053,8 +8753,8 @@ if (uni.restoreGlobal) {
             id: orderId.value,
             cancelReason: cancelData.filter((item) => item.value === cancel.value)[0].label
           };
-          await cancelOrder(params).then((res2) => {
-            if (res2.code === 200) {
+          await cancelOrder(params).then((res) => {
+            if (res.code === 200) {
               setTimeout(function() {
                 uni.hideLoading();
               }, 500);
@@ -9128,7 +8828,7 @@ if (uni.restoreGlobal) {
       };
     }
   };
-  var PagesCancelIndex = /* @__PURE__ */ _export_sfc(_sfc_main$S, [["__scopeId", "data-v-3ce92776"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/pages/cancel/index.vue"]]);
+  var PagesCancelIndex = /* @__PURE__ */ _export_sfc(_sfc_main$d, [["__scopeId", "data-v-3ce92776"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/pages/cancel/index.vue"]]);
   const isObject = (val) => val !== null && typeof val === "object";
   const defaultDelimiters = ["{", "}"];
   class BaseFormatter {
@@ -9496,94 +9196,10 @@ if (uni.restoreGlobal) {
       }
     },
     {
-      path: "pages/login/index",
-      style: {
-        navigationStyle: "custom",
-        navigationBarTitleText: "\u767B\u5F55"
-      }
-    },
-    {
-      path: "pages/search/index",
-      style: {
-        navigationStyle: "custom",
-        navigationBarTitleText: "\u795E\u9886\u7269\u6D41"
-      }
-    },
-    {
-      path: "pages/history/index",
-      style: {
-        navigationStyle: "custom",
-        navigationBarTitleText: "\u5386\u53F2\u6D3E\u9001"
-      }
-    },
-    {
-      path: "pages/news/index",
-      style: {
-        navigationStyle: "custom",
-        navigationBarTitleText: "\u6D88\u606F"
-      }
-    },
-    {
-      path: "pages/news/detail",
-      style: {
-        navigationStyle: "custom",
-        navigationBarTitleText: "\u8BE6\u60C5"
-      }
-    },
-    {
-      path: "pages/news/system",
-      style: {
-        navigationStyle: "custom",
-        navigationBarTitleText: "\u7CFB\u7EDF\u901A\u77E5"
-      }
-    },
-    {
-      path: "pages/freight/index",
-      style: {
-        navigationStyle: "custom",
-        navigationBarTitleText: "\u8FD0\u8D39\u67E5\u8BE2"
-      }
-    },
-    {
       path: "pages/delivery/index",
       style: {
         navigationStyle: "custom",
-        navigationBarTitleText: "\u53D6\u4EF6"
-      }
-    },
-    {
-      path: "pages/turnorder/index",
-      style: {
-        navigationStyle: "custom",
-        navigationBarTitleText: "\u8F6C\u5355"
-      }
-    },
-    {
-      path: "pages/details/index",
-      style: {
-        navigationStyle: "custom",
-        navigationBarTitleText: "\u53BB\u53D6\u4EF6"
-      }
-    },
-    {
-      path: "pages/details/waybill",
-      style: {
-        navigationStyle: "custom",
-        navigationBarTitleText: "\u8FD0\u5355\u8BE6\u60C5"
-      }
-    },
-    {
-      path: "pages/pay/index",
-      style: {
-        navigationStyle: "custom",
-        navigationBarTitleText: "\u53D6\u4EF6\u6210\u529F"
-      }
-    },
-    {
-      path: "pages/pay/scanPay",
-      style: {
-        navigationStyle: "custom",
-        navigationBarTitleText: "\u626B\u7801\u652F\u4ED8"
+        navigationBarTitleText: "\u6D88\u606F"
       }
     },
     {
@@ -9606,13 +9222,6 @@ if (uni.restoreGlobal) {
         navigationStyle: "custom",
         navigationBarTitleText: "\u4E13\u5C5E\u4E8C\u7EF4\u7801"
       }
-    },
-    {
-      path: "pages/details/orderMap",
-      style: {
-        navigationStyle: "custom",
-        navigationBarTitleText: "\u8BA2\u5355\u8DDF\u8E2A"
-      }
     }
   ];
   const globalStyle = {
@@ -9631,7 +9240,7 @@ if (uni.restoreGlobal) {
       }
     ]
   };
-  var t$5 = {
+  var t = {
     pages,
     globalStyle,
     condition
@@ -11343,8 +10952,8 @@ if (uni.restoreGlobal) {
     const n2 = t2.list, s2 = e2.split("?")[0].replace(/^\//, "");
     return n2.some((e3) => e3.pagePath === s2);
   }
-  const Lt = !!t$5.uniIdRouter;
-  const { loginPage: Dt, routerNeedLogin: Nt, resToLogin: qt, needLoginPage: Ft, notNeedLoginPage: Mt, loginPageInTabBar: $t } = function({ pages: e2 = [], subPackages: n2 = [], uniIdRouter: s2 = {}, tabBar: o2 = {} } = t$5) {
+  const Lt = !!t.uniIdRouter;
+  const { loginPage: Dt, routerNeedLogin: Nt, resToLogin: qt, needLoginPage: Ft, notNeedLoginPage: Mt, loginPageInTabBar: $t } = function({ pages: e2 = [], subPackages: n2 = [], uniIdRouter: s2 = {}, tabBar: o2 = {} } = t) {
     const { loginPage: r2, needLogin: i2 = [], resToLogin: a2 = true } = s2, { needLoginPage: c2, notNeedLoginPage: u2 } = Ut(e2), { needLoginPage: l2, notNeedLoginPage: h2 } = function(e3 = []) {
       const t2 = [], n3 = [];
       return e3.forEach((e4) => {
@@ -11569,7 +11178,7 @@ if (uni.restoreGlobal) {
     };
   }), Qt = n(Gt);
   const Zt = "manual";
-  function en$3(e2) {
+  function en$2(e2) {
     return { props: { localdata: { type: Array, default: () => [] }, options: { type: [Object, Array], default: () => ({}) }, spaceInfo: { type: Object, default: () => ({}) }, collection: { type: [String, Array], default: "" }, action: { type: String, default: "" }, field: { type: String, default: "" }, orderby: { type: String, default: "" }, where: { type: [String, Object], default: "" }, pageData: { type: String, default: "add" }, pageCurrent: { type: Number, default: 1 }, pageSize: { type: Number, default: 20 }, getcount: { type: [Boolean, String], default: false }, gettree: { type: [Boolean, String], default: false }, gettreepath: { type: [Boolean, String], default: false }, startwith: { type: String, default: "" }, limitlevel: { type: Number, default: 10 }, groupby: { type: String, default: "" }, groupField: { type: String, default: "" }, distinct: { type: [Boolean, String], default: false }, foreignKey: { type: String, default: "" }, loadtime: { type: String, default: "auto" }, manual: { type: Boolean, default: false } }, data: () => ({ mixinDatacomLoading: false, mixinDatacomHasMore: false, mixinDatacomResData: [], mixinDatacomErrorMessage: "", mixinDatacomPage: {} }), created() {
       this.mixinDatacomPage = { current: this.pageCurrent, size: this.pageSize, count: 0 }, this.$watch(() => {
         var e3 = [];
@@ -11755,7 +11364,7 @@ if (uni.restoreGlobal) {
         };
       }(t2), It(t2), function(e3) {
         e3.getCurrentUserInfo = Xt, e3.chooseAndUploadFile = Qt.initChooseAndUploadFile(e3), Object.assign(e3, { get mixinDatacom() {
-          return en$3(e3);
+          return en$2(e3);
         } }), e3.importObject = tn(e3);
       }(t2);
       return ["callFunction", "uploadFile", "deleteFile", "getTempFileURL", "downloadFile", "chooseAndUploadFile"].forEach((e3) => {
@@ -11784,7 +11393,7 @@ if (uni.restoreGlobal) {
         });
       }
       Object.assign(on, { get mixinDatacom() {
-        return en$3(on);
+        return en$2(on);
       } }), zt(on), on.addInterceptor = v, on.removeInterceptor = A, g === "web" && (window.uniCloud = on);
     }
   })();
@@ -11804,12 +11413,12 @@ if (uni.restoreGlobal) {
         sizeType,
         sourceType,
         extension,
-        success(res2) {
-          resolve(normalizeChooseAndUploadFileRes(res2, "image"));
+        success(res) {
+          resolve(normalizeChooseAndUploadFileRes(res, "image"));
         },
-        fail(res2) {
+        fail(res) {
           reject({
-            errMsg: res2.errMsg.replace("chooseImage:fail", ERR_MSG_FAIL)
+            errMsg: res.errMsg.replace("chooseImage:fail", ERR_MSG_FAIL)
           });
         }
       });
@@ -11830,23 +11439,23 @@ if (uni.restoreGlobal) {
         maxDuration,
         sourceType,
         extension,
-        success(res2) {
+        success(res) {
           const {
             tempFilePath,
             duration,
             size,
             height,
             width
-          } = res2;
+          } = res;
           resolve(normalizeChooseAndUploadFileRes({
             errMsg: "chooseVideo:ok",
             tempFilePaths: [tempFilePath],
             tempFiles: [
               {
-                name: res2.tempFile && res2.tempFile.name || "",
+                name: res.tempFile && res.tempFile.name || "",
                 path: tempFilePath,
                 size,
-                type: res2.tempFile && res2.tempFile.type || "",
+                type: res.tempFile && res.tempFile.type || "",
                 width,
                 height,
                 duration,
@@ -11856,9 +11465,9 @@ if (uni.restoreGlobal) {
             ]
           }, "video"));
         },
-        fail(res2) {
+        fail(res) {
           reject({
-            errMsg: res2.errMsg.replace("chooseVideo:fail", ERR_MSG_FAIL)
+            errMsg: res.errMsg.replace("chooseVideo:fail", ERR_MSG_FAIL)
           });
         }
       });
@@ -11883,19 +11492,19 @@ if (uni.restoreGlobal) {
         type: "all",
         count,
         extension,
-        success(res2) {
-          resolve(normalizeChooseAndUploadFileRes(res2));
+        success(res) {
+          resolve(normalizeChooseAndUploadFileRes(res));
         },
-        fail(res2) {
+        fail(res) {
           reject({
-            errMsg: res2.errMsg.replace("chooseFile:fail", ERR_MSG_FAIL)
+            errMsg: res.errMsg.replace("chooseFile:fail", ERR_MSG_FAIL)
           });
         }
       });
     });
   }
-  function normalizeChooseAndUploadFileRes(res2, fileType) {
-    res2.tempFiles.forEach((item, index) => {
+  function normalizeChooseAndUploadFileRes(res, fileType) {
+    res.tempFiles.forEach((item, index) => {
       if (!item.name) {
         item.name = item.path.substring(item.path.lastIndexOf("/") + 1);
       }
@@ -11904,10 +11513,10 @@ if (uni.restoreGlobal) {
       }
       item.cloudPath = Date.now() + "_" + index + item.name.substring(item.name.lastIndexOf("."));
     });
-    if (!res2.tempFilePaths) {
-      res2.tempFilePaths = res2.tempFiles.map((file) => file.path);
+    if (!res.tempFilePaths) {
+      res.tempFilePaths = res.tempFiles.map((file) => file.path);
     }
-    return res2;
+    return res;
   }
   function uploadCloudFiles(files, max = 5, onUploadProgress) {
     files = JSON.parse(JSON.stringify(files));
@@ -11932,18 +11541,18 @@ if (uni.restoreGlobal) {
           filePath: fileItem.path,
           cloudPath: fileItem.cloudPath,
           fileType: fileItem.fileType,
-          onUploadProgress: (res2) => {
-            res2.index = index;
-            onUploadProgress && onUploadProgress(res2);
+          onUploadProgress: (res) => {
+            res.index = index;
+            onUploadProgress && onUploadProgress(res);
           }
-        }).then((res2) => {
-          fileItem.url = res2.fileID;
+        }).then((res) => {
+          fileItem.url = res.fileID;
           fileItem.index = index;
           if (cur < len) {
             next();
           }
-        }).catch((res2) => {
-          fileItem.errMsg = res2.errMsg || res2.message;
+        }).catch((res) => {
+          fileItem.errMsg = res.errMsg || res.message;
           fileItem.index = index;
           if (cur < len) {
             next();
@@ -11956,23 +11565,23 @@ if (uni.restoreGlobal) {
     onChooseFile,
     onUploadProgress
   }) {
-    return choosePromise.then((res2) => {
+    return choosePromise.then((res) => {
       if (onChooseFile) {
-        const customChooseRes = onChooseFile(res2);
+        const customChooseRes = onChooseFile(res);
         if (typeof customChooseRes !== "undefined") {
-          return Promise.resolve(customChooseRes).then((chooseRes) => typeof chooseRes === "undefined" ? res2 : chooseRes);
+          return Promise.resolve(customChooseRes).then((chooseRes) => typeof chooseRes === "undefined" ? res : chooseRes);
         }
       }
-      return res2;
-    }).then((res2) => {
-      if (res2 === false) {
+      return res;
+    }).then((res) => {
+      if (res === false) {
         return {
           errMsg: ERR_MSG_OK,
           tempFilePaths: [],
           tempFiles: []
         };
       }
-      return res2;
+      return res;
     });
   }
   function chooseAndUploadFile(opts = {
@@ -12001,7 +11610,7 @@ if (uni.restoreGlobal) {
       return fileExtname;
     }
   };
-  const get_files_and_is_max = (res2, _extname) => {
+  const get_files_and_is_max = (res, _extname) => {
     let filePaths = [];
     let files = [];
     if (!_extname || _extname.length === 0) {
@@ -12010,7 +11619,7 @@ if (uni.restoreGlobal) {
         files
       };
     }
-    res2.tempFiles.forEach((v2) => {
+    res.tempFiles.forEach((v2) => {
       let fileFullName = get_file_ext(v2.name);
       const extname = fileFullName.ext.toLowerCase();
       if (_extname.indexOf(extname) !== -1) {
@@ -12018,9 +11627,9 @@ if (uni.restoreGlobal) {
         filePaths.push(v2.path);
       }
     });
-    if (files.length !== res2.tempFiles.length) {
+    if (files.length !== res.tempFiles.length) {
       uni.showToast({
-        title: `\u5F53\u524D\u9009\u62E9\u4E86${res2.tempFiles.length}\u4E2A\u6587\u4EF6 \uFF0C${res2.tempFiles.length - files.length} \u4E2A\u6587\u4EF6\u683C\u5F0F\u4E0D\u6B63\u786E`,
+        title: `\u5F53\u524D\u9009\u62E9\u4E86${res.tempFiles.length}\u4E2A\u6587\u4EF6 \uFF0C${res.tempFiles.length - files.length} \u4E2A\u6587\u4EF6\u683C\u5F0F\u4E0D\u6B63\u786E`,
         icon: "none",
         duration: 5e3
       });
@@ -12034,8 +11643,8 @@ if (uni.restoreGlobal) {
     return new Promise((resolve, reject) => {
       uni.getImageInfo({
         src: filepath,
-        success(res2) {
-          resolve(res2);
+        success(res) {
+          resolve(res);
         },
         fail(err) {
           reject(err);
@@ -12069,7 +11678,7 @@ if (uni.restoreGlobal) {
     }
     return filedata;
   };
-  const _sfc_main$R = {
+  const _sfc_main$c = {
     name: "uploadImage",
     emits: ["uploadFiles", "choose", "delFile"],
     props: {
@@ -12216,7 +11825,7 @@ if (uni.restoreGlobal) {
       }
     }
   };
-  function _sfc_render$9(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$3(_ctx, _cache, $props, $setup, $data, $options) {
     return vue.openBlock(), vue.createElementBlock("view", { class: "uni-file-picker__container" }, [
       (vue.openBlock(true), vue.createElementBlock(vue.Fragment, null, vue.renderList($props.filesList, (item, index) => {
         return vue.openBlock(), vue.createElementBlock("view", {
@@ -12279,8 +11888,8 @@ if (uni.restoreGlobal) {
       ], 4)) : vue.createCommentVNode("v-if", true)
     ]);
   }
-  var uploadImage = /* @__PURE__ */ _export_sfc(_sfc_main$R, [["render", _sfc_render$9], ["__scopeId", "data-v-4c5c5653"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/uni_modules/uni-file-picker/components/uni-file-picker/upload-image.vue"]]);
-  const _sfc_main$Q = {
+  var uploadImage = /* @__PURE__ */ _export_sfc(_sfc_main$c, [["render", _sfc_render$3], ["__scopeId", "data-v-4c5c5653"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/uni_modules/uni-file-picker/components/uni-file-picker/upload-image.vue"]]);
+  const _sfc_main$b = {
     name: "uploadFile",
     emits: ["uploadFiles", "choose", "delFile"],
     props: {
@@ -12413,7 +12022,7 @@ if (uni.restoreGlobal) {
       }
     }
   };
-  function _sfc_render$8(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$2(_ctx, _cache, $props, $setup, $data, $options) {
     return vue.openBlock(), vue.createElementBlock("view", { class: "uni-file-picker__files" }, [
       !$props.readonly ? (vue.openBlock(), vue.createElementBlock("view", {
         key: 0,
@@ -12471,8 +12080,8 @@ if (uni.restoreGlobal) {
       ], 4)) : vue.createCommentVNode("v-if", true)
     ]);
   }
-  var uploadFile = /* @__PURE__ */ _export_sfc(_sfc_main$Q, [["render", _sfc_render$8], ["__scopeId", "data-v-4f822398"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/uni_modules/uni-file-picker/components/uni-file-picker/upload-file.vue"]]);
-  const _sfc_main$P = {
+  var uploadFile = /* @__PURE__ */ _export_sfc(_sfc_main$b, [["render", _sfc_render$2], ["__scopeId", "data-v-4f822398"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/uni_modules/uni-file-picker/components/uni-file-picker/upload-file.vue"]]);
+  const _sfc_main$a = {
     name: "uniFilePicker",
     components: {
       uploadImage,
@@ -12703,7 +12312,7 @@ if (uni.restoreGlobal) {
           this.setSuccessAndError(result.tempFiles);
         });
       },
-      async chooseFileCallback(res2) {
+      async chooseFileCallback(res) {
         const _extname = get_extname(this.fileExtname);
         const is_one = Number(this.limitLength) === 1 && this.disablePreview && !this.disabled || this.returnType === "object";
         if (is_one) {
@@ -12712,10 +12321,10 @@ if (uni.restoreGlobal) {
         let {
           filePaths,
           files
-        } = get_files_and_is_max(res2, _extname);
+        } = get_files_and_is_max(res, _extname);
         if (!(_extname && _extname.length > 0)) {
-          filePaths = res2.tempFilePaths;
-          files = res2.tempFiles;
+          filePaths = res.tempFilePaths;
+          files = res.tempFiles;
         }
         let currentData = [];
         for (let i2 = 0; i2 < files.length; i2++) {
@@ -12734,27 +12343,27 @@ if (uni.restoreGlobal) {
           tempFiles: currentData,
           tempFilePaths: filePaths
         });
-        res2.tempFiles = files;
+        res.tempFiles = files;
         if (!this.autoUpload || this.noSpace) {
-          res2.tempFiles = [];
+          res.tempFiles = [];
         }
       },
       uploadFiles(files) {
         files = [].concat(files);
-        return uploadCloudFiles.call(this, files, 5, (res2) => {
-          this.setProgress(res2, res2.index, true);
+        return uploadCloudFiles.call(this, files, 5, (res) => {
+          this.setProgress(res, res.index, true);
         }).then((result) => {
           this.setSuccessAndError(result);
           return result;
         });
       },
-      async setSuccessAndError(res2, fn) {
+      async setSuccessAndError(res, fn) {
         let successData = [];
         let errorData = [];
         let tempFilePath = [];
         let errorTempFilePath = [];
-        for (let i2 = 0; i2 < res2.length; i2++) {
-          const item = res2[i2];
+        for (let i2 = 0; i2 < res.length; i2++) {
+          const item = res[i2];
           const index = item.uuid ? this.files.findIndex((p2) => p2.uuid === item.uuid) : item.index;
           if (index === -1 || !this.files)
             break;
@@ -12877,7 +12486,7 @@ if (uni.restoreGlobal) {
       }
     }
   };
-  function _sfc_render$7(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$1(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_upload_image = vue.resolveComponent("upload-image");
     const _component_upload_file = vue.resolveComponent("upload-file");
     return vue.openBlock(), vue.createElementBlock("view", { class: "uni-file-picker" }, [
@@ -12933,8 +12542,8 @@ if (uni.restoreGlobal) {
       }, 8, ["readonly", "list-styles", "files-list", "showType", "delIcon", "onUploadFiles", "onChoose", "onDelFile"])) : vue.createCommentVNode("v-if", true)
     ]);
   }
-  var __easycom_0$4 = /* @__PURE__ */ _export_sfc(_sfc_main$P, [["render", _sfc_render$7], ["__scopeId", "data-v-363ace0e"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/uni_modules/uni-file-picker/components/uni-file-picker/uni-file-picker.vue"]]);
-  const _sfc_main$O = {
+  var __easycom_0$1 = /* @__PURE__ */ _export_sfc(_sfc_main$a, [["render", _sfc_render$1], ["__scopeId", "data-v-363ace0e"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/uni_modules/uni-file-picker/components/uni-file-picker/uni-file-picker.vue"]]);
+  const _sfc_main$9 = {
     __name: "index",
     setup(__props) {
       const title = vue.ref("\u5F00\u59CB\u670D\u52A1");
@@ -13045,8 +12654,8 @@ if (uni.restoreGlobal) {
           });
         };
         if (title.value === "\u5F00\u59CB\u670D\u52A1") {
-          startServe(startParams).then((res2) => {
-            if (res2.code === 200) {
+          startServe(startParams).then((res) => {
+            if (res.code === 200) {
               setTimeout(function() {
                 uni.hideLoading();
               }, 500);
@@ -13055,8 +12664,8 @@ if (uni.restoreGlobal) {
             }
           });
         } else {
-          finishServe(finishParams).then((res2) => {
-            if (res2.code === 200) {
+          finishServe(finishParams).then((res) => {
+            if (res.code === 200) {
               setTimeout(function() {
                 uni.hideLoading();
               }, 500);
@@ -13075,7 +12684,7 @@ if (uni.restoreGlobal) {
         uni.navigateBack();
       };
       return (_ctx, _cache) => {
-        const _component_uni_file_picker = resolveEasycom(vue.resolveDynamicComponent("uni-file-picker"), __easycom_0$4);
+        const _component_uni_file_picker = resolveEasycom(vue.resolveDynamicComponent("uni-file-picker"), __easycom_0$1);
         return vue.openBlock(), vue.createElementBlock("view", { class: "serveRecord" }, [
           vue.createCommentVNode(" nav "),
           vue.createVNode(UniNav, {
@@ -13119,5730 +12728,59 @@ if (uni.restoreGlobal) {
       };
     }
   };
-  var PagesServeRecordIndex = /* @__PURE__ */ _export_sfc(_sfc_main$O, [["__scopeId", "data-v-45744d9a"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/pages/serveRecord/index.vue"]]);
-  function validatePhone(rule, value, data, callback) {
-    const reg = /^[1][3-9][0-9]{9}$/;
-    if (value === "" || value === void 0 || value === null) {
-      if (rule.required) {
-        callback("\u8BF7\u8F93\u5165\u7535\u8BDD\u53F7\u7801");
-      } else {
-        callback();
-      }
-    } else if (!Number.isInteger(value)) {
-      callback("\u7535\u8BDD\u53F7\u7801\u5FC5\u987B\u5168\u4E3A\u6570\u5B57");
-    } else if (value.trim().length < 11) {
-      callback("\u7535\u8BDD\u53F7\u7801\u957F\u5EA6\u5FC5\u987B\u662F11\u4F4D");
-    } else {
-      if (!reg.test(value) && value !== "") {
-        callback("\u8BF7\u8F93\u5165\u6B63\u786E\u7684\u7535\u8BDD\u53F7\u7801");
-      } else {
-        callback();
-      }
-    }
-  }
-  const isPhone = (value) => {
-    const reg = /^[1][3-9][0-9]{9}$/;
-    if (!reg.test(value) || value === "") {
-      return false;
-    } else {
-      return true;
-    }
-  };
-  const timeCountdown = (obj) => {
-    const TIME_COUNT = 60;
-    if (!obj.timer) {
-      obj.times = TIME_COUNT;
-      obj.show = false;
-      obj.timer = setInterval(() => {
-        if (obj.times > 0 && obj.times <= TIME_COUNT) {
-          obj.times--;
-        } else {
-          obj.show = true;
-          clearInterval(obj.timer);
-          obj.timer = null;
-        }
-      }, 1e3);
-    }
-    return {
-      timer: obj.timer,
-      show: obj.show,
-      times: obj.times
-    };
-  };
-  const validateIdentityCard = (value) => {
-    const accountreg = /(^\d{15}$)|(^\d{17}(\d|X|x)$)/g;
-    if (value === void 0 || value === "") {
-      return "\u8BF7\u8F93\u5165\u8EAB\u4EFD\u8BC1\u53F7";
-    } else if (!accountreg.test(value)) {
-      return "\u8EAB\u4EFD\u8BC1\u957F\u5EA6\u6216\u683C\u5F0F\u9519\u8BEF";
-    } else {
-      return true;
-    }
-  };
-  const _sfc_main$N = {
-    __name: "index",
-    setup(__props) {
-      const store2 = useStore();
-      const customForm = vue.ref();
-      let isVerifySuccess = vue.ref(false);
-      let fromInfo = vue.reactive({
-        phone: "",
-        verifyCode: ""
-      });
-      let codeInfo = vue.reactive({
-        show: true,
-        timer: null,
-        times: 60
-      });
-      const customRules = vue.reactive({
-        phone: {
-          rules: [
-            {
-              required: true,
-              validateFunction: validatePhone,
-              errorMessage: "\u8BF7\u8F93\u5165\u624B\u673A\u53F7"
-            }
-          ]
-        },
-        verifyCode: {
-          rules: [
-            {
-              required: true,
-              errorMessage: "\u8BF7\u8F93\u5165\u9A8C\u8BC1\u7801"
-            }
-          ]
-        }
-      });
-      vue.onMounted(() => {
-      });
-      const getCode = async () => {
-        let p2 = fromInfo.phone;
-        isVerifySuccess.value = isPhone(p2);
-        if (isVerifySuccess.value) {
-          timeCountdown(codeInfo);
-          ({
-            phone: phone.value
-          });
-        } else {
-          return uni.showToast({
-            title: "\u624B\u673A\u53F7\u8F93\u5165\u9519\u8BEF\uFF01\u8BF7\u91CD\u65B0\u8F93\u5165",
-            duration: 1e3,
-            icon: "none"
-          });
-        }
-      };
-      const handleSubmit = async () => {
-        const valid = await customForm.value.validate();
-        if (valid) {
-          await phoneLogins(fromInfo).then((res2) => {
-            if (res2.code === 0) {
-              store2.commit("user/setToken", res2.token);
-              store2.dispatch("user/GetUsersInfo");
-              uni.redirectTo({
-                url: "/pages/index/index"
-              });
-            } else {
-              return uni.showToast({
-                title: res2.msg,
-                duration: 1e3,
-                icon: "none"
-              });
-            }
-          });
-        }
-      };
-      const goLogin = () => {
-        uni.redirectTo({
-          url: "/pages/login/user"
-        });
-      };
-      return (_ctx, _cache) => {
-        const _component_uni_easyinput = resolveEasycom(vue.resolveDynamicComponent("uni-easyinput"), __easycom_0$9);
-        const _component_uni_forms_item = resolveEasycom(vue.resolveDynamicComponent("uni-forms-item"), __easycom_1);
-        const _component_uni_forms = resolveEasycom(vue.resolveDynamicComponent("uni-forms"), __easycom_2);
-        return vue.openBlock(), vue.createElementBlock("view", { class: "loginBox" }, [
-          vue.createElementVNode("view", { class: "tit" }, [
-            vue.createElementVNode("text", null, "\u624B\u673A\u53F7\u767B\u5F55"),
-            vue.createElementVNode("text", {
-              class: "text",
-              onClick: goLogin
-            }, [
-              vue.createTextVNode(" \u8D26\u53F7\u767B\u5F55 "),
-              vue.createElementVNode("icon")
-            ])
-          ]),
-          vue.createCommentVNode(" \u767B\u5F55\u8868\u5355 \u624B\u673A\u53F7\u3001\u9A8C\u8BC1\u7801 "),
-          vue.createElementVNode("view", { class: "loginMain" }, [
-            vue.createVNode(_component_uni_forms, {
-              ref_key: "customForm",
-              ref: customForm,
-              rules: customRules,
-              modelValue: vue.unref(fromInfo)
-            }, {
-              default: vue.withCtx(() => [
-                vue.createVNode(_component_uni_forms_item, { name: "phone" }, {
-                  default: vue.withCtx(() => [
-                    vue.createVNode(_component_uni_easyinput, {
-                      class: "item",
-                      modelValue: vue.unref(fromInfo).phone,
-                      "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => vue.unref(fromInfo).phone = $event),
-                      placeholder: "\u8BF7\u8F93\u5165\u624B\u673A\u53F7"
-                    }, null, 8, ["modelValue"])
-                  ]),
-                  _: 1
-                }),
-                vue.createVNode(_component_uni_forms_item, { name: "verifyCode" }, {
-                  default: vue.withCtx(() => [
-                    vue.createVNode(_component_uni_easyinput, {
-                      class: "item inputW",
-                      modelValue: vue.unref(fromInfo).verifyCode,
-                      "onUpdate:modelValue": _cache[1] || (_cache[1] = ($event) => vue.unref(fromInfo).verifyCode = $event),
-                      placeholder: "\u8BF7\u8F93\u5165\u9A8C\u8BC1\u7801"
-                    }, null, 8, ["modelValue"]),
-                    vue.createElementVNode("view", { class: "codeBox" }, [
-                      vue.withDirectives(vue.createElementVNode("text", {
-                        class: "code",
-                        onClick: getCode
-                      }, "\u83B7\u53D6\u9A8C\u8BC1\u7801", 512), [
-                        [vue.vShow, vue.unref(codeInfo).show]
-                      ]),
-                      vue.withDirectives(vue.createElementVNode("text", { class: "code fontCol" }, vue.toDisplayString(vue.unref(codeInfo).times) + "s\u540E\u91CD\u65B0\u83B7\u53D6", 513), [
-                        [vue.vShow, !vue.unref(codeInfo).show]
-                      ])
-                    ])
-                  ]),
-                  _: 1
-                })
-              ]),
-              _: 1
-            }, 8, ["rules", "modelValue"]),
-            vue.createCommentVNode(" \u6309\u94AE "),
-            vue.createElementVNode("view", { class: "btnBox" }, [
-              vue.createElementVNode("button", {
-                class: vue.normalizeClass([
-                  "btn-default",
-                  vue.unref(fromInfo).phone.length === 0 || vue.unref(fromInfo).verifyCode.length === 0 ? "disabled" : ""
-                ]),
-                disabled: vue.unref(fromInfo).phone.length === 0 || vue.unref(fromInfo).verifyCode.length === 0,
-                type: "primary",
-                onClick: handleSubmit
-              }, " \u767B\u5F55 ", 10, ["disabled"])
-            ]),
-            vue.createCommentVNode(" end ")
-          ]),
-          vue.createCommentVNode(" end ")
-        ]);
-      };
-    }
-  };
-  var PagesLoginIndex = /* @__PURE__ */ _export_sfc(_sfc_main$N, [["__scopeId", "data-v-4586967a"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/pages/login/index.vue"]]);
-  const _sfc_main$M = {
-    __name: "index",
-    props: {
-      isShowCancel: {
-        type: Boolean,
-        default: false
-      }
-    },
-    emits: "handleSearch",
-    setup(__props, { expose, emit }) {
-      const store2 = useStore();
-      const users = store2.state.user;
-      const searchVal = vue.ref("");
-      const handleCancel = () => {
-        searchVal.value = "";
-        store2.commit("user/setSearchText", "");
-        if (users.taskStatus === -1) {
-          uni.redirectTo({
-            url: "/pages/my/index"
-          });
-        } else {
-          emit("goBack");
-        }
-      };
-      const handleSearch = () => {
-        emit("handleSearch", searchVal);
-      };
-      const handleBlur = () => {
-        emit("handleBlur");
-      };
-      const handleClear = () => {
-        searchVal.value = "";
-        emit("clearSearchData");
-      };
-      expose({
-        searchVal
-      });
-      return (_ctx, _cache) => {
-        const _component_uni_icons = resolveEasycom(vue.resolveDynamicComponent("uni-icons"), __easycom_0$a);
-        return vue.openBlock(), vue.createElementBlock(vue.Fragment, null, [
-          vue.createCommentVNode(" \u516C\u7528nav "),
-          vue.createElementVNode("view", { class: "navBox" }, [
-            vue.createElementVNode("view", { class: "search" }, [
-              vue.createCommentVNode(" \u5934\u90E8\u81EA\u5B9A\u4E49\u5BFC\u822A "),
-              vue.createCommentVNode(' <uni-nav-bar right-text="\u53D6\u6D88" @clickRight="handleCancel"> '),
-              vue.createElementVNode("view", { class: "uni-navbar" }, [
-                vue.createElementVNode("view", { class: "input-view" }, [
-                  vue.createVNode(_component_uni_icons, {
-                    class: "input-uni-icon",
-                    type: "search",
-                    size: "18",
-                    color: "#999"
-                  }),
-                  vue.withDirectives(vue.createElementVNode("input", {
-                    "confirm-type": "search",
-                    class: "nav-bar-input",
-                    type: "text",
-                    "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => searchVal.value = $event),
-                    clearable: "",
-                    placeholder: "\u8F93\u5165\u56DB\u4F4D\u6216\u5B8C\u6574\u8FD0\u5355\u53F7/\u624B\u673A\u53F7\u3001\u59D3\u540D",
-                    onConfirm: handleBlur,
-                    onInput: handleSearch
-                  }, null, 544), [
-                    [vue.vModelText, searchVal.value]
-                  ]),
-                  searchVal.value ? (vue.openBlock(), vue.createElementBlock("text", {
-                    key: 0,
-                    class: "icon_close",
-                    onClick: handleClear
-                  })) : vue.createCommentVNode("v-if", true),
-                  vue.createCommentVNode(' <view class="scanIcon" @click="handleQr"></view> ')
-                ]),
-                __props.isShowCancel ? (vue.openBlock(), vue.createElementBlock("view", {
-                  key: 0,
-                  class: "concelBox",
-                  onClick: handleCancel
-                }, "\u53D6\u6D88")) : vue.createCommentVNode("v-if", true)
-              ]),
-              vue.createCommentVNode(" </uni-nav-bar> "),
-              vue.createCommentVNode(" end ")
-            ])
-          ]),
-          vue.createCommentVNode(" end ")
-        ], 2112);
-      };
-    }
-  };
-  var SearchPage = /* @__PURE__ */ _export_sfc(_sfc_main$M, [["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/components/uni-search/index.vue"]]);
-  const _sfc_main$L = {
-    __name: "index",
-    props: {
-      emptyInfo: {
-        type: String,
-        default: ""
-      },
-      emptyData: {
-        type: String,
-        default: ""
-      },
-      emptyImage: {
-        type: String,
-        default: ""
-      }
-    },
-    setup(__props) {
-      return (_ctx, _cache) => {
-        return __props.emptyInfo !== "" ? (vue.openBlock(), vue.createElementBlock("view", {
-          key: 0,
-          class: "emptyBox"
-        }, vue.toDisplayString(__props.emptyInfo), 1)) : (vue.openBlock(), vue.createElementBlock("view", {
-          key: 1,
-          class: "empty"
-        }, [
-          vue.createElementVNode("view", {
-            class: vue.normalizeClass(["image", __props.emptyImage])
-          }, null, 2),
-          vue.createTextVNode(vue.toDisplayString(__props.emptyData), 1)
-        ]));
-      };
-    }
-  };
-  var EmptyPage = /* @__PURE__ */ _export_sfc(_sfc_main$L, [["__scopeId", "data-v-a750b56c"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/components/uni-empty-page/index.vue"]]);
-  var popup = {
-    data() {
-      return {};
-    },
-    created() {
-      this.popup = this.getParent();
-    },
-    methods: {
-      getParent(name = "uniPopup") {
-        let parent = this.$parent;
-        let parentName = parent.$options.name;
-        while (parentName !== name) {
-          parent = parent.$parent;
-          if (!parent)
-            return false;
-          parentName = parent.$options.name;
-        }
-        return parent;
-      }
-    }
-  };
-  var en$2 = {
+  var PagesServeRecordIndex = /* @__PURE__ */ _export_sfc(_sfc_main$9, [["__scopeId", "data-v-45744d9a"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/pages/serveRecord/index.vue"]]);
+  var en$1 = {
     "uni-popup.cancel": "cancel",
     "uni-popup.ok": "ok",
     "uni-popup.placeholder": "pleace enter",
     "uni-popup.title": "Hint",
     "uni-popup.shareTitle": "Share to"
   };
-  var zhHans$2 = {
+  var zhHans$1 = {
     "uni-popup.cancel": "\u53D6\u6D88",
     "uni-popup.ok": "\u786E\u5B9A",
     "uni-popup.placeholder": "\u8BF7\u8F93\u5165",
     "uni-popup.title": "\u63D0\u793A",
     "uni-popup.shareTitle": "\u5206\u4EAB\u5230"
   };
-  var zhHant$2 = {
+  var zhHant$1 = {
     "uni-popup.cancel": "\u53D6\u6D88",
     "uni-popup.ok": "\u78BA\u5B9A",
     "uni-popup.placeholder": "\u8ACB\u8F38\u5165",
     "uni-popup.title": "\u63D0\u793A",
     "uni-popup.shareTitle": "\u5206\u4EAB\u5230"
   };
-  var messages$2 = {
-    en: en$2,
-    "zh-Hans": zhHans$2,
-    "zh-Hant": zhHant$2
-  };
-  const { t: t$4 } = initVueI18n(messages$2);
-  const _sfc_main$K = {
-    name: "uniPopupDialog",
-    mixins: [popup],
-    emits: ["confirm", "close"],
-    props: {
-      value: {
-        type: [String, Number],
-        default: ""
-      },
-      placeholder: {
-        type: [String, Number],
-        default: ""
-      },
-      type: {
-        type: String,
-        default: "error"
-      },
-      mode: {
-        type: String,
-        default: "base"
-      },
-      title: {
-        type: String,
-        default: ""
-      },
-      content: {
-        type: String,
-        default: ""
-      },
-      beforeClose: {
-        type: Boolean,
-        default: false
-      },
-      cancelText: {
-        type: String,
-        default: ""
-      },
-      confirmText: {
-        type: String,
-        default: ""
-      }
-    },
-    data() {
-      return {
-        dialogType: "error",
-        focus: false,
-        val: ""
-      };
-    },
-    computed: {
-      okText() {
-        return this.confirmText || t$4("uni-popup.ok");
-      },
-      closeText() {
-        return this.cancelText || t$4("uni-popup.cancel");
-      },
-      placeholderText() {
-        return this.placeholder || t$4("uni-popup.placeholder");
-      },
-      titleText() {
-        return this.title || t$4("uni-popup.title");
-      }
-    },
-    watch: {
-      type(val) {
-        this.dialogType = val;
-      },
-      mode(val) {
-        if (val === "input") {
-          this.dialogType = "info";
-        }
-      },
-      value(val) {
-        this.val = val;
-      }
-    },
-    created() {
-      this.popup.disableMask();
-      if (this.mode === "input") {
-        this.dialogType = "info";
-        this.val = this.value;
-      } else {
-        this.dialogType = this.type;
-      }
-    },
-    mounted() {
-      this.focus = true;
-    },
-    methods: {
-      onOk() {
-        if (this.mode === "input") {
-          this.$emit("confirm", this.val);
-        } else {
-          this.$emit("confirm");
-        }
-        if (this.beforeClose)
-          return;
-        this.popup.close();
-      },
-      closeDialog() {
-        this.$emit("close");
-        if (this.beforeClose)
-          return;
-        this.popup.close();
-      },
-      close() {
-        this.popup.close();
-      }
-    }
-  };
-  function _sfc_render$6(_ctx, _cache, $props, $setup, $data, $options) {
-    return vue.openBlock(), vue.createElementBlock("view", { class: "uni-popup-dialog" }, [
-      vue.createElementVNode("view", { class: "uni-dialog-title" }, [
-        vue.createElementVNode("text", {
-          class: vue.normalizeClass(["uni-dialog-title-text", ["uni-popup__" + $data.dialogType]])
-        }, vue.toDisplayString($options.titleText), 3)
-      ]),
-      $props.mode === "base" ? (vue.openBlock(), vue.createElementBlock("view", {
-        key: 0,
-        class: "uni-dialog-content"
-      }, [
-        vue.renderSlot(_ctx.$slots, "default", {}, () => [
-          vue.createElementVNode("text", { class: "uni-dialog-content-text" }, vue.toDisplayString($props.content), 1)
-        ], true)
-      ])) : (vue.openBlock(), vue.createElementBlock("view", {
-        key: 1,
-        class: "uni-dialog-content"
-      }, [
-        vue.renderSlot(_ctx.$slots, "default", {}, () => [
-          vue.withDirectives(vue.createElementVNode("input", {
-            class: "uni-dialog-input",
-            "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => $data.val = $event),
-            type: "text",
-            placeholder: $options.placeholderText,
-            focus: $data.focus
-          }, null, 8, ["placeholder", "focus"]), [
-            [vue.vModelText, $data.val]
-          ])
-        ], true)
-      ])),
-      vue.createElementVNode("view", { class: "uni-dialog-button-group" }, [
-        vue.createElementVNode("view", {
-          class: "uni-dialog-button",
-          onClick: _cache[1] || (_cache[1] = (...args) => $options.closeDialog && $options.closeDialog(...args))
-        }, [
-          vue.createElementVNode("text", { class: "uni-dialog-button-text" }, vue.toDisplayString($options.closeText), 1)
-        ]),
-        vue.createElementVNode("view", {
-          class: "uni-dialog-button uni-border-left",
-          onClick: _cache[2] || (_cache[2] = (...args) => $options.onOk && $options.onOk(...args))
-        }, [
-          vue.createElementVNode("text", { class: "uni-dialog-button-text uni-button-color" }, vue.toDisplayString($options.okText), 1)
-        ])
-      ])
-    ]);
-  }
-  var __easycom_0$3 = /* @__PURE__ */ _export_sfc(_sfc_main$K, [["render", _sfc_render$6], ["__scopeId", "data-v-6f54520a"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/uni_modules/uni-popup/components/uni-popup-dialog/uni-popup-dialog.vue"]]);
-  const _sfc_main$J = {
-    __name: "index",
-    props: {
-      tipInfo: {
-        type: String,
-        default: ""
-      }
-    },
-    setup(__props, { expose, emit }) {
-      const message = vue.ref();
-      const dialogConfirm = () => {
-        emit("handleClick", true);
-      };
-      const dialogOpen = () => {
-        message.value.open();
-      };
-      const dialogClose = () => {
-        message.value.close();
-      };
-      expose({
-        dialogOpen
-      });
-      return (_ctx, _cache) => {
-        const _component_uni_popup_dialog = resolveEasycom(vue.resolveDynamicComponent("uni-popup-dialog"), __easycom_0$3);
-        const _component_uni_popup = resolveEasycom(vue.resolveDynamicComponent("uni-popup"), __easycom_0$7);
-        return vue.openBlock(), vue.createBlock(_component_uni_popup, {
-          ref_key: "message",
-          ref: message,
-          type: "dialog",
-          class: "commDialog"
-        }, {
-          default: vue.withCtx(() => [
-            vue.createVNode(_component_uni_popup_dialog, {
-              type: _ctx.msgType,
-              cancelText: "\u53D6\u6D88",
-              confirmText: "\u786E\u8BA4",
-              title: " ",
-              content: __props.tipInfo,
-              onConfirm: dialogConfirm,
-              onClose: dialogClose
-            }, null, 8, ["type", "content"])
-          ]),
-          _: 1
-        }, 512);
-      };
-    }
-  };
-  var UniPopup = /* @__PURE__ */ _export_sfc(_sfc_main$J, [["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/components/uni-popup/index.vue"]]);
-  var en$1 = {
-    "uni-load-more.contentdown": "Pull up to show more",
-    "uni-load-more.contentrefresh": "loading...",
-    "uni-load-more.contentnomore": "No more data"
-  };
-  var zhHans$1 = {
-    "uni-load-more.contentdown": "\u4E0A\u62C9\u663E\u793A\u66F4\u591A",
-    "uni-load-more.contentrefresh": "\u6B63\u5728\u52A0\u8F7D...",
-    "uni-load-more.contentnomore": "\u6CA1\u6709\u66F4\u591A\u4E86"
-  };
-  var zhHant$1 = {
-    "uni-load-more.contentdown": "\u4E0A\u62C9\u986F\u793A\u66F4\u591A",
-    "uni-load-more.contentrefresh": "\u6B63\u5728\u52A0\u8F09...",
-    "uni-load-more.contentnomore": "\u6C92\u6709\u66F4\u591A\u6578\u64DA\u4E86"
-  };
   var messages$1 = {
     en: en$1,
     "zh-Hans": zhHans$1,
     "zh-Hant": zhHant$1
   };
-  let platform;
-  setTimeout(() => {
-    platform = uni.getSystemInfoSync().platform;
-  }, 16);
-  const {
-    t: t$3
-  } = initVueI18n(messages$1);
-  const _sfc_main$I = {
-    name: "UniLoadMore",
-    emits: ["clickLoadMore"],
-    props: {
-      status: {
-        type: String,
-        default: "more"
-      },
-      showIcon: {
-        type: Boolean,
-        default: true
-      },
-      iconType: {
-        type: String,
-        default: "auto"
-      },
-      iconSize: {
-        type: Number,
-        default: 24
-      },
-      color: {
-        type: String,
-        default: "#777777"
-      },
-      contentText: {
-        type: Object,
-        default() {
-          return {
-            contentdown: "",
-            contentrefresh: "",
-            contentnomore: ""
-          };
-        }
-      },
-      showText: {
-        type: Boolean,
-        default: true
-      }
-    },
-    data() {
-      return {
-        webviewHide: false,
-        platform,
-        imgBase64: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoV2luZG93cykiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6QzlBMzU3OTlEOUM0MTFFOUI0NTZDNERBQURBQzI4RkUiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6QzlBMzU3OUFEOUM0MTFFOUI0NTZDNERBQURBQzI4RkUiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDpDOUEzNTc5N0Q5QzQxMUU5QjQ1NkM0REFBREFDMjhGRSIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDpDOUEzNTc5OEQ5QzQxMUU5QjQ1NkM0REFBREFDMjhGRSIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/Pt+ALSwAAA6CSURBVHja1FsLkFZVHb98LM+F5bHL8khA1iSeiyQBCRM+YGqKUnnJTDLGI0BGZlKDIU2MMglUiDApEZvSsZnQtBRJtKwQNKQMFYeRDR10WOLd8ljYXdh+v8v5fR3Od+797t1dnOnO/Ofce77z+J//+b/P+ZqtXbs2sJ9MJhNUV1cHJ06cCJo3bx7EPc2aNcvpy7pWrVoF+/fvDyoqKoI2bdoE9fX1F7TjN8a+EXBn/fkfvw942Tf+wYMHg9mzZwfjxo0LDhw4EPa1x2MbFw/fOGfPng1qa2tzcCkILsLDydq2bRsunpOTMM7TD/W/tZDZhPdeKD+yGxHhdu3aBV27dg3OnDlzMVANMheLAO3btw8KCwuDmpoaX5OxbgUIMEq7K8IcPnw4KCsrC/r37x8cP378/4cAXAB3vqSkJMuiDhTkw+XcuXNhOWbMmKBly5YhUT8xArhyFvP0BfwRsAuwxJZJsm/nzp2DTp06he/OU+cZ64K6o0ePBkOHDg2GDx8e6gEbJ5Q/NHNuAJQ1hgBeHUDlR7nVTkY8rQAvAi4z34vR/mPs1FoRsaCgIJThI0eOBC1atEiFGGV+5MiRoS45efJkqFjJFXV1dQuA012m2WcwTw98fy6CqBdsaiIO4CScrGPHjvk4odhavPquRtFWXEC25VgkREKOCh/qDSq+vn37htzD/mZTOmOc5U7zKzBPEedygWshcDyWvs30igAbU+6oyMgJBCFhwQE0fccxN60Ay9iebbjoDh06hMowjQxT4fXq1SskArmHZpkArvixp/kWzHdMeArExSJEaiXIjjRjRJ4DaAGWpibLzXN3Fm1vA5teBgh3j1Rv3bp1YgKwPdmf2p9zcyNYYgPKMfY0T5f5nNYdw158nJ8QawW4CLKwiOBSEgO/hok2eBydR+3dYH+PLxA5J8Vv0KBBwenTp0P2JWAx6+yFEBfs8lMY+y0SWMBNI9E4ThKi58VKTg3FQZS1RQF1cz27eC0QHMu+3E0SkUowjhVt5VdaWhp07949ZHv2Qd1EjDXM2cla1M0nl3GxAs3J9yREzyTdFVKVFOaE9qRA8GM0WebRuo9JGZKA7Mv2SeS/Z8+eoQ9BArMfFrLGo6jvxbhHbJZnKX2Rzz1O7QhJJ9Cs2ZMaWIyq/zhdeqPNfIoHd58clIQD+JSXl4dKlyIAuBdVXZwFVWKspSSoxE++h8x4k3uCnEhE4I5KwRiFWGOU0QWKiCYLbdoRMRKAu2kQ9vkfLU6dOhX06NEjlH+yMRZSinnuyWnYosVcji8CEA/6Cg2JF+IIUBqnGKUTCNwtwBN4f89RiK1R96DEgO2o0NDmtEdvVFdVVYV+P3UAPUEs6GFwV3PHmXkD4vh74iDFJysVI/MlaQhwKeBNTLYX5VuA8T4/gZxA4MRGFxDB6R7OmYPfyykGRJbyie+XnGYnQIC/coH9+vULiYrxrkL9ZA9+0ykaHIfEpM7ge8TiJ2CsHYwyMfafAF1yCGBHYIbCVDjDjKt7BeB51D+LgQa6OkG7IDYEEtvQ7lnXLKLtLdLuJBpE4gPUXcW2+PkZwOex+4cGDhwYDBkyRL7/HFcEwUGPo/8uWRUpYnfxGHco8HkewLHLyYmAawAPuIFZxhOpDfJQ8gbUv41yORAptMWBNr6oqMhWird5+u+iHmBb2nhjDV7HWBNQTgK8y11l5NetWzc5ULscAtSj7nbNI0skhWeUZCc0W4nyH/jO4Vz0u1IeYhbk4AiwM6tjxIWByHsoZ9qcIBPJd/y+DwPfBESOmCa/QF3WiZHucLlEDpNxcNhmheEOPgdQNx6/VZFQzFZ5TN08AHXQt2Ii3EdyFuUsPtTcGPhW5iMiCNELvz+Gdn9huG4HUJaW/w3g0wxV0XaG7arG2WeKiUWYM4Y7GO5ezshTARbbWGw/DvXkpp/ivVvE0JVoMxN4rpGzJMhE5Pl+xlATsDIqikP9F9D2z3h9nOksEUFhK+qO4rcPkoalMQ/HqJLIyb3F3JdjrCcw1yZ8joyJLR5gCo54etlag7qIoeNh1N1BRYj3DTFJ0elotxPlVzkGuYAmL0VSJVGAJA41c4Z6A3BzTLfn0HYwYKEI6CUAMzZEWvLsIcQOo1AmmyyM72nHJCfYsogflGV6jEk9vyQZXSuq6w4c16NsGcGZbwOPr+H1RkOk2LEzjNepxQkihHSCQ4ynAYNRx2zMKV92CQMWqj8J0BRE8EShxRFN6YrfCRhC0x3r/Zm4IbQCcmJoV0kMamllccR6FjHqUC5F2R/wS2dcymOlfAKOS4KmzQb5cpNC2MC7JhVn5wjXoJ44rYhLh8n0eXOCorJxa7POjbSlCGVczr34/RsAmrcvo9s+wGp3tzVhntxiXiJ4nvEYb4FJkf0O8HocAePmLvCxnL0AORraVekJk6TYjDabRVXfRE2lCN1h6ZQRN1+InUbsCpKwoBZHh0dODN9JBCUffItXxEavTQkUtnfTVAplCWL3JISz29h4NjotnuSsQKJCk8dF+kJR6RARjrqFVmfPnj3ZbK8cIJ0msd6jgHPGtfVTQ8VLmlvh4mct9sobRmPic0DyDQQnx/NlfYUgyz59+oScsH379pAwXABD32nTpoUHIToESeI5mnbE/UqDdyLcafEBf2MCqgC7NwxIbMREJQ0g4D4sfJwnD+AmRrII05cfMWJE+L1169bQr+fip06dGp4oJ83lmYd5wj/EmMa4TaHivo4EeCguYZBnkB5g2aWA69OIEnUHOaGysjIYMGBAMGnSpODYsWPZwCpFmm4lNq+4gSLQA7jcX8DwtjEyRC8wjabnXEx9kfWnTJkSJkAo90xpJVV+FmcVNeYAF5zWngS4C4O91MBxmAv8blLEpbjI5sz9MTdAhcgkCT1RO8mZkAjfiYpTEvStAS53Uw1vAiUGgZ3GpuQEYvoiBqlIan7kSDHnTwJQFNiPu0+5VxCVYhcZIjNrdXUDdp+Eq5AZ3Gkg8QAyVZRZIk4Tl4QAbF9cXJxNYZMAtAokgs4BrNxEpCtteXg7DDTMDKYNSuQdKsnJBek7HxewvxaosWxLYXtw+cJp18217wql4aKCfBNoEu0O5VU+PhctJ0YeXD4C6JQpyrlpSLTojpGGGN5YwNziChdIZLk4lvLcFJ9jMX3QdiImY9bmGQU+TRUL5CHITTRlgF8D9ouD1MfmLoEPl5xokIumZ2cfgMpHt47IW9N64Hsh7wQYYjyIugWuF5fCqYncXRd5vPMWyizzvhi/32+nvG0dZc9vR6fZOu0md5e+uC408FvKSIOZwXlGvxPv95izA2Vtvg1xKFWARI+vMX66HUhpQQb643uW1bSjuTWyw2SBvDrBvjFic1eGGlz5esq3ko9uSIlBRqPuFcCv8F4WIcN12nVaBd0SaYwI6PDDImR11JkqgHcPmQssjxIn6bUshygDFJUTxPMpHk+jfjPgupgdnYV2R/g7xSjtpah8RJBewhwf0gGK6XI92u4wXFEU40afJ4DN4h5LcAd+40HI3JgJecuT0c062W0i2hQJUTcxan3/CMW1PF2K6bbA+Daz4xRs1D3Br1Cm0OihKCqizW78/nXAF/G5TXrEcVzaNMH6CyMswqsAHqDyDLEyou8lwOXnKF8DjI6KjV3KzMBiXkDH8ij/H214J5A596ekrZ3F0zXlWeL7+P5eUrNo3/QwC15uxthuzidy7DzKRwEDaAViiDgKbTbz7CJnzo0bN7pIfIiid8SuPwn25o3QCmpnyjlZkyxPP8EomCJzrGb7GJMx7tNsq4MT2xMUYaiErZOluTzKsnz3gwCeCZyVRZJfYplNEokEjwrPtxlxjeYAk+F1F74VAzPxQRNYYdtpOUvWs8J1sGhBJMNsb7igN8plJs1eSmLIhLKE4rvaCX27gOhLpLOsIzJ7qn/i+wZzcvSOZ23/du8TZjwV8zHIXoP4R3ifBxiFz1dcVpa3aPntPE+c6TmIWE9EtcMmAcPdWAhYhAXxcLOQi9L1WhD1Sc8p1d2oL7XGiRKp8F4A2i8K/nfI+y/gsTDJ/YC/8+AD5Uh04KHiGl+cIFPnBDDrPMjwRGkLXyxO4VGbfQWnDH2v0bVWE3C9QOXlepbgjEfIJQI6XDG3z5ahD9cw2pS78ipB85wyScNTvsVzlzzhL8/jRrnmVjfFJK/m3m4nj9vbgQTguT8XZTjsm672R5uJKEaQmBI/c58gyus8ZDagLpEVSJBIyHp4jn++xqPV71OgQgJYEWOtZ/haxRtKmWOBu8xdBLftWltsY84zE6WIEy/eIOWL+BaayMx+KHtL7EAkqdNDLiEXmEMUHniedtJqg9HmZtfvt26vNi0BdG3Ft3g8ZOf7PAu59TxtzivLNIekyi+wD1i8CuUiD9FXAa8C+/xS3JPmZnomyc7H+fb4/Se0bk41Fel621r4cgVxbq91V4jVqwB7HTe2M7jgB+QWHavZkDRPmZcASoZEmBx6i75bGjPcMdL4/VKGFAGWZkGzPG0XAbdL9A81G5LOmUnC9hHKJeO7dcUMjblSl12867ElFTtaGl20xvvLGPdVz/8TVuU7y0x1PG7vtNg24oz9Uo/Z412++VFWI7Fcog9tu9Lm6gvRmIPv9x1xmQAu6RDkXtbOtlGEmpgD5Nvnyc0dcv0EE6cfdi1HmhMf9wDF3k3gtRvEedhxjpgfqPb9PU9iEJHnyOUA7bQUXh6kq/D7l2iTjWv7XOD530BDr8jIrus+srXjt4MzumJMHuTsBa63YKE1+RR5lBjEikCCnWKWiHdzOgKO+nRIBAF88za/IFmJ3eMZov4CYxGBabcpGL8EYx+SeMXJeRwHNsV/h+vdxeuhEpN3ZyNY78Gm2fknJxVGhyjixPiQvVkNzT1elD9Py/aTAL64Hb9vcYmC9zfdXdT/C1LeGbg4rnBaAihDFJH12W5ulfNCNe/xTsP3bp8ikzJs5BF+5PNfAQYAPaseTdsEcaYAAAAASUVORK5CYII="
-      };
-    },
-    computed: {
-      iconSnowWidth() {
-        return (Math.floor(this.iconSize / 24) || 1) * 2;
-      },
-      contentdownText() {
-        return this.contentText.contentdown || t$3("uni-load-more.contentdown");
-      },
-      contentrefreshText() {
-        return this.contentText.contentrefresh || t$3("uni-load-more.contentrefresh");
-      },
-      contentnomoreText() {
-        return this.contentText.contentnomore || t$3("uni-load-more.contentnomore");
-      }
-    },
-    mounted() {
-      var pages2 = getCurrentPages();
-      var page = pages2[pages2.length - 1];
-      var currentWebview = page.$getAppWebview();
-      currentWebview.addEventListener("hide", () => {
-        this.webviewHide = true;
-      });
-      currentWebview.addEventListener("show", () => {
-        this.webviewHide = false;
-      });
-    },
-    methods: {
-      onClick() {
-        this.$emit("clickLoadMore", {
-          detail: {
-            status: this.status
-          }
-        });
-      }
-    }
-  };
-  function _sfc_render$5(_ctx, _cache, $props, $setup, $data, $options) {
-    return vue.openBlock(), vue.createElementBlock("view", {
-      class: "uni-load-more",
-      onClick: _cache[0] || (_cache[0] = (...args) => $options.onClick && $options.onClick(...args))
-    }, [
-      !$data.webviewHide && ($props.iconType === "circle" || $props.iconType === "auto" && $data.platform === "android") && $props.status === "loading" && $props.showIcon ? (vue.openBlock(), vue.createElementBlock("view", {
-        key: 0,
-        style: vue.normalizeStyle({ width: $props.iconSize + "px", height: $props.iconSize + "px" }),
-        class: "uni-load-more__img uni-load-more__img--android-MP"
-      }, [
-        vue.createElementVNode("view", {
-          class: "uni-load-more__img-icon",
-          style: vue.normalizeStyle({ borderTopColor: $props.color, borderTopWidth: $props.iconSize / 12 })
-        }, null, 4),
-        vue.createElementVNode("view", {
-          class: "uni-load-more__img-icon",
-          style: vue.normalizeStyle({ borderTopColor: $props.color, borderTopWidth: $props.iconSize / 12 })
-        }, null, 4),
-        vue.createElementVNode("view", {
-          class: "uni-load-more__img-icon",
-          style: vue.normalizeStyle({ borderTopColor: $props.color, borderTopWidth: $props.iconSize / 12 })
-        }, null, 4)
-      ], 4)) : !$data.webviewHide && $props.status === "loading" && $props.showIcon ? (vue.openBlock(), vue.createElementBlock("view", {
-        key: 1,
-        style: vue.normalizeStyle({ width: $props.iconSize + "px", height: $props.iconSize + "px" }),
-        class: "uni-load-more__img uni-load-more__img--ios-H5"
-      }, [
-        vue.createElementVNode("image", {
-          src: $data.imgBase64,
-          mode: "widthFix"
-        }, null, 8, ["src"])
-      ], 4)) : vue.createCommentVNode("v-if", true),
-      $props.showText ? (vue.openBlock(), vue.createElementBlock("text", {
-        key: 2,
-        class: "uni-load-more__text",
-        style: vue.normalizeStyle({ color: $props.color })
-      }, vue.toDisplayString($props.status === "more" ? $options.contentdownText : $props.status === "loading" ? $options.contentrefreshText : $options.contentnomoreText), 5)) : vue.createCommentVNode("v-if", true)
-    ]);
-  }
-  var __easycom_0$2 = /* @__PURE__ */ _export_sfc(_sfc_main$I, [["render", _sfc_render$5], ["__scopeId", "data-v-90d4256a"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/uni_modules/uni-load-more/components/uni-load-more/uni-load-more.vue"]]);
-  const _sfc_main$H = {
-    __name: "index",
-    setup(__props, { expose }) {
-      let status = vue.ref("noMore");
-      const contentText = vue.ref({
-        contentdown: "\u4E0A\u62C9\u52A0\u8F7D\u66F4\u591A",
-        contentrefresh: "\u52A0\u8F7D\u4E2D...",
-        contentnomore: "- \u6CA1\u6709\u66F4\u591A\u4E86 -"
-      });
-      expose({
-        status,
-        contentText
-      });
-      return (_ctx, _cache) => {
-        const _component_uni_load_more = resolveEasycom(vue.resolveDynamicComponent("uni-load-more"), __easycom_0$2);
-        return vue.openBlock(), vue.createBlock(_component_uni_load_more, {
-          status: vue.unref(status),
-          "content-text": contentText.value
-        }, null, 8, ["status", "content-text"]);
-      };
-    }
-  };
-  var ReachBottom = /* @__PURE__ */ _export_sfc(_sfc_main$H, [["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/components/reach-bottom/index.vue"]]);
-  const _sfc_main$G = {
-    __name: "AlreadyPicUp",
-    props: {
-      item: {
-        type: Object,
-        default: () => ({})
-      }
-    },
-    emits: "",
-    setup(__props, { emit }) {
-      const handleDetails = (e2, item) => {
-        emit("handleDetails", e2, item);
-      };
-      return (_ctx, _cache) => {
-        return __props.item.taskType === 1 && __props.item.status === 2 ? (vue.openBlock(), vue.createElementBlock("view", {
-          key: 0,
-          class: "item"
-        }, [
-          vue.createElementVNode("view", { class: "titInfo" }, "\u8BA2\u5355\u53F7\uFF1ASD" + vue.toDisplayString(__props.item.orderId), 1),
-          vue.createElementVNode("view", { class: "address" }, "\u5BC4\u4EF6\u4EBA\uFF1A" + vue.toDisplayString(__props.item.name), 1),
-          vue.createElementVNode("view", { class: "address" }, "\u53D6\u4EF6\u5730\u5740\uFF1A" + vue.toDisplayString(__props.item.address), 1),
-          vue.createElementVNode("view", { class: "time" }, "\u53D6\u4EF6\u65F6\u95F4\uFF1A" + vue.toDisplayString(__props.item.taskTime), 1),
-          __props.item.amount > 0 && __props.item.status === 2 && __props.item.paymentMethod === 1 ? (vue.openBlock(), vue.createElementBlock("view", {
-            key: 0,
-            class: "time"
-          }, "\u8FD0\u8D39\uFF1A" + vue.toDisplayString(__props.item.amount) + "\u5143", 1)) : vue.createCommentVNode("v-if", true),
-          __props.item.status === 2 && __props.item.paymentStatus === 1 && __props.item.paymentMethod === 1 ? (vue.openBlock(), vue.createElementBlock("text", {
-            key: 1,
-            onClick: _cache[0] || (_cache[0] = vue.withModifiers(($event) => handleDetails($event, __props.item), ["stop"])),
-            class: "delete"
-          }, [
-            vue.createElementVNode("button", { class: "uni-btn btn-default" }, "\u53BB\u6536\u6B3E")
-          ])) : vue.createCommentVNode("v-if", true)
-        ])) : vue.createCommentVNode("v-if", true);
-      };
-    }
-  };
-  var AlreadyPicUp = /* @__PURE__ */ _export_sfc(_sfc_main$G, [["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/pages/search/components/AlreadyPicUp.vue"]]);
-  const _sfc_main$F = {
-    __name: "Canceled",
-    props: {
-      item: {
-        type: Object,
-        default: () => ({})
-      }
-    },
-    setup(__props) {
-      return (_ctx, _cache) => {
-        return __props.item.taskType === 1 && __props.item.status === 3 ? (vue.openBlock(), vue.createElementBlock("view", {
-          key: 0,
-          class: "expressage"
-        }, [
-          vue.createElementVNode("view", { class: "cancelList" }, [
-            vue.createElementVNode("view", { class: "item" }, [
-              vue.createElementVNode("view", null, "\u5BC4\u4EF6\u4EBA\uFF1A" + vue.toDisplayString(__props.item.name), 1),
-              vue.createElementVNode("view", null, "\u53D6\u4EF6\u5730\u5740\uFF1A" + vue.toDisplayString(__props.item.address), 1),
-              vue.createElementVNode("view", null, "\u53D6\u6D88\u539F\u56E0\uFF1A" + vue.toDisplayString(__props.item.cancelReason), 1),
-              vue.createElementVNode("view", null, "\u539F\u56E0\u63CF\u8FF0\uFF1A" + vue.toDisplayString(__props.item.cancelReasonDescription), 1)
-            ])
-          ])
-        ])) : vue.createCommentVNode("v-if", true);
-      };
-    }
-  };
-  var Canceled = /* @__PURE__ */ _export_sfc(_sfc_main$F, [["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/pages/search/components/Canceled.vue"]]);
-  const _sfc_main$E = {
-    __name: "SignFor",
-    props: {
-      item: {
-        type: Object,
-        default: () => ({})
-      }
-    },
-    emits: "",
-    setup(__props, { emit }) {
-      const handleDetails = (e2, item) => {
-        emit("handleDetails", e2, item);
-      };
-      return (_ctx, _cache) => {
-        return __props.item.taskType === 2 && __props.item.status === 5 ? (vue.openBlock(), vue.createElementBlock("view", {
-          key: 0,
-          class: "item"
-        }, [
-          vue.createElementVNode("view", { class: "titInfo" }, "\u8FD0\u5355\u53F7\uFF1A" + vue.toDisplayString(__props.item.transportOrderId), 1),
-          vue.createElementVNode("view", { class: "address" }, "\u6536\u4EF6\u4EBA\uFF1A" + vue.toDisplayString(__props.item.name), 1),
-          vue.createElementVNode("view", { class: "address" }, "\u6D3E\u4EF6\u5730\u5740\uFF1A" + vue.toDisplayString(__props.item.address), 1),
-          vue.createElementVNode("view", { class: "address" }, "\u7B7E\u6536\u65F6\u95F4\uFF1A" + vue.toDisplayString(__props.item.taskTime), 1),
-          __props.item.amount > 0 && __props.item.status === 2 ? (vue.openBlock(), vue.createElementBlock("view", {
-            key: 0,
-            class: "time"
-          }, "\u8FD0\u8D39\uFF1A" + vue.toDisplayString(__props.item.amount) + "\u5143", 1)) : vue.createCommentVNode("v-if", true),
-          __props.item.status === 2 && __props.item.paymentStatus === 1 && __props.item.paymentMethod === 2 ? (vue.openBlock(), vue.createElementBlock("text", {
-            key: 1,
-            onClick: _cache[0] || (_cache[0] = vue.withModifiers(($event) => handleDetails($event, __props.item), ["stop"])),
-            class: "delete"
-          }, [
-            vue.createElementVNode("button", { class: "uni-btn btn-default" }, "\u53BB\u6536\u6B3E")
-          ])) : vue.createCommentVNode("v-if", true)
-        ])) : vue.createCommentVNode("v-if", true);
-      };
-    }
-  };
-  var SignFor = /* @__PURE__ */ _export_sfc(_sfc_main$E, [["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/pages/search/components/SignFor.vue"]]);
-  const _sfc_main$D = {
-    __name: "Accomplish",
-    props: {
-      item: {
-        type: Object,
-        default: () => ({})
-      }
-    },
-    emits: "",
-    setup(__props, { emit }) {
-      const handleDetails = (e2, item) => {
-        emit("handleDetails", e2, item);
-      };
-      return (_ctx, _cache) => {
-        return __props.item.taskType === 2 && __props.item.status === 2 ? (vue.openBlock(), vue.createElementBlock("view", {
-          key: 0,
-          class: "item"
-        }, [
-          vue.createElementVNode("view", { class: "titInfo" }, "\u8FD0\u5355\u53F7\uFF1A" + vue.toDisplayString(__props.item.transportOrderId), 1),
-          vue.createElementVNode("view", { class: "address" }, "\u6536\u4EF6\u4EBA\uFF1A" + vue.toDisplayString(__props.item.name), 1),
-          vue.createElementVNode("view", { class: "address" }, "\u6D3E\u4EF6\u5730\u5740\uFF1A" + vue.toDisplayString(__props.item.address), 1),
-          vue.createElementVNode("view", { class: "address" }, "\u7B7E\u6536\u65F6\u95F4\uFF1A" + vue.toDisplayString(__props.item.taskTime), 1),
-          __props.item.amount > 0 && __props.item.status === 2 ? (vue.openBlock(), vue.createElementBlock("view", {
-            key: 0,
-            class: "time"
-          }, "\u8FD0\u8D39\uFF1A" + vue.toDisplayString(__props.item.amount) + "\u5143", 1)) : vue.createCommentVNode("v-if", true),
-          __props.item.status === 2 && __props.item.paymentStatus === 1 && __props.item.paymentMethod === 2 ? (vue.openBlock(), vue.createElementBlock("text", {
-            key: 1,
-            onClick: _cache[0] || (_cache[0] = vue.withModifiers(($event) => handleDetails($event, __props.item), ["stop"])),
-            class: "delete"
-          }, [
-            vue.createElementVNode("button", { class: "uni-btn btn-default" }, "\u53BB\u6536\u6B3E")
-          ])) : vue.createCommentVNode("v-if", true)
-        ])) : vue.createCommentVNode("v-if", true);
-      };
-    }
-  };
-  var Accomplish = /* @__PURE__ */ _export_sfc(_sfc_main$D, [["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/pages/search/components/Accomplish.vue"]]);
-  const _sfc_main$C = {
-    __name: "index",
-    setup(__props) {
-      const store2 = useStore();
-      const users = store2.state.user;
-      const search = vue.ref();
-      let showDisplay = vue.ref(false);
-      let isClear = vue.ref(false);
-      const tipInfo = vue.ref("\u786E\u5B9A\u8981\u5168\u90E8\u6E05\u7A7A\u5417\uFF1F");
-      let popups = vue.ref();
-      let isShowCancel = vue.ref(true);
-      const loadMore = vue.ref();
-      let reload = vue.ref(false);
-      let pages2 = vue.ref(0);
-      let pageNum = vue.ref(1);
-      const itemData2 = vue.ref([]);
-      const itemDataRecent = vue.reactive([]);
-      const emptyData = vue.ref("\u6CA1\u6709\u627E\u5230\u76F8\u5173\u5185\u5BB9");
-      let keyword = vue.ref("");
-      let isInput = vue.ref(false);
-      let page = vue.reactive({
-        latitude: users.loacation.latitude !== void 0 ? users.loacation.latitude : 40.062595,
-        longitude: users.loacation.longitude !== void 0 ? users.loacation.longitude : 116.372809,
-        page: 1,
-        pageSize: 10
-      });
-      const listDataes = vue.computed(() => {
-        let testList = [];
-        if (showDisplay.value === false) {
-          if (itemDataRecent.length > 10) {
-            for (var i2 = 0; i2 < 10; i2++) {
-              testList.push(itemDataRecent[i2]);
-            }
-          } else {
-            testList = itemDataRecent;
-          }
-          return testList;
-        } else {
-          return itemDataRecent;
-        }
-      });
-      onReachBottom(() => {
-        isInput.value = true;
-        if (pageNum.value >= Number(pages2.value)) {
-          loadMore.value.status = "noMore";
-          return false;
-        } else {
-          loadMore.value.status = "loading";
-          setTimeout(() => {
-            pageNum.value++;
-            getList();
-          }, 1e3);
-        }
-      });
-      vue.onUnmounted(() => {
-        itemData2.value = [];
-        isInput.value = false;
-      });
-      vue.onMounted(() => {
-        init();
-        if (users.searchText !== "") {
-          keyword.value = users.searchText;
-          search.value.searchVal = users.searchText;
-          getList();
-        }
-      });
-      const init = () => {
-        getRecent();
-      };
-      const getList = async () => {
-        reload.value = true;
-        page = __spreadProps(__spreadValues({}, page), {
-          page: pageNum.value,
-          keyword: keyword.value
-        });
-        await getSearch(page).then((res2) => {
-          if (res2.code === 200) {
-            if (res2.data) {
-              reload.value = false;
-              if (!isInput.value) {
-                itemData2.value = res2.data.items;
-              } else {
-                itemData2.value = itemData2.value.concat(res2.data.items);
-              }
-              pages2.value = res2.data.pages;
-              if (Number(res2.data.pages) === pageNum.value) {
-                loadMore.value.status = "noMore";
-              }
-            } else {
-              itemData2.value = [];
-            }
-            if (itemData2.value.length > 0) {
-              isClear.value = true;
-            }
-          }
-        });
-      };
-      const getRecent = async () => {
-        await getRecentSearch().then((res2) => {
-          if (res2.code === 200) {
-            itemDataRecent.value = res2.data;
-            if (itemDataRecent.value.length === 0) {
-              isClear.value = true;
-            }
-          }
-        });
-      };
-      const handleSearch = (val) => {
-        if (val.value.trim().length > 0) {
-          isInput.value = false;
-          keyword = val;
-          getList();
-        }
-      };
-      const handleBlur = () => {
-        isInput.value = true;
-      };
-      const handleClear = () => {
-        popups.value.dialogOpen();
-      };
-      const clearSearchData = () => {
-        itemData2.value = [];
-        isClear.value = false;
-        store2.commit("user/setSearchText", "");
-        getRecent();
-      };
-      const clearData = async (val) => {
-        isClear.value = val;
-        await clearRecentSearch().then(() => {
-          if (res.code === 200) {
-            uni.showToast({
-              title: "\u6E05\u9664\u6210\u529F",
-              icon: "none"
-            });
-          }
-        });
-      };
-      const setRecent = async (id) => {
-        await setMarkRecent(id);
-        itemData2.value = [];
-      };
-      const handleDetails = (e2, item) => {
-        e2.stopPropagation();
-        store2.commit("user/setTaskId", item.id);
-        store2.commit("user/setIsSearch", true);
-        store2.commit("user/setSearchText", search.value.searchVal);
-        if (item.transportOrderId) {
-          setRecent(item.transportOrderId);
-        }
-        if (item.taskType === 1) {
-          if (item.status === 1) {
-            uni.redirectTo({
-              url: "/pages/details/index"
-            });
-            return false;
-          } else if (item.status === 2) {
-            if (item.paymentStatus === 1 && item.paymentMethod === 1) {
-              store2.commit("user/setDetailType", 2);
-              store2.commit("user/setTaskStatus", 3);
-              store2.commit("user/setPayData", {});
-              uni.redirectTo({
-                url: "/pages/pay/scanPay"
-              });
-              return false;
-            } else {
-              store2.commit("user/setTaskStatus", 2);
-            }
-          } else {
-            store2.commit("user/setTaskStatus", 3);
-          }
-          uni.redirectTo({
-            url: "/pages/details/waybill"
-          });
-        } else {
-          if (item.status === 1) {
-            store2.commit("user/setTaskStatus", 4);
-          } else if (item.status === 2) {
-            if (item.paymentStatus === 1 && item.paymentMethod === 2) {
-              store2.commit("user/setPayData", {});
-              uni.redirectTo({
-                url: "/pages/pay/scanPay"
-              });
-              return false;
-            } else {
-              store2.commit("user/setTaskStatus", 5);
-              uni.redirectTo({
-                url: "/pages/details/waybill"
-              });
-            }
-          }
-          uni.redirectTo({
-            url: "/pages/details/waybill"
-          });
-        }
-      };
-      const handleTransportOrderId = (val) => {
-        keyword.value = val;
-        search.value.searchVal = val;
-        getList();
-      };
-      const goBack = () => {
-        uni.redirectTo({
-          url: "/pages/index/index"
-        });
-      };
-      return (_ctx, _cache) => {
-        const _component_StayPicup = vue.resolveComponent("StayPicup");
-        return vue.openBlock(), vue.createElementBlock(vue.Fragment, null, [
-          vue.createCommentVNode(" \u641C\u7D22nav "),
-          vue.createVNode(SearchPage, {
-            ref_key: "search",
-            ref: search,
-            onHandleSearch: handleSearch,
-            onHandleBlur: handleBlur,
-            onClearSearchData: clearSearchData,
-            onGoBack: goBack,
-            isShowCancel: vue.unref(isShowCancel)
-          }, null, 8, ["isShowCancel"]),
-          vue.createCommentVNode(" end "),
-          vue.createElementVNode("view", { class: "searchTop" }, [
-            vue.createElementVNode("view", { class: "pageBox" }, [
-              vue.createCommentVNode(" \u6700\u8FD1\u67E5\u627E "),
-              !vue.unref(isClear) ? (vue.openBlock(), vue.createElementBlock("view", {
-                key: 0,
-                class: "recentBox"
-              }, [
-                vue.createElementVNode("view", { class: "tit" }, [
-                  vue.createElementVNode("text", null, "\u6700\u8FD1\u67E5\u627E"),
-                  vue.createElementVNode("icon", { onClick: handleClear })
-                ]),
-                vue.createElementVNode("view", { class: "recentList" }, [
-                  (vue.openBlock(true), vue.createElementBlock(vue.Fragment, null, vue.renderList(vue.unref(listDataes).value, (item, index) => {
-                    return vue.openBlock(), vue.createElementBlock("view", {
-                      class: "item",
-                      key: index,
-                      onClick: ($event) => handleTransportOrderId(item)
-                    }, vue.toDisplayString(item), 9, ["onClick"]);
-                  }), 128)),
-                  !vue.unref(showDisplay) ? (vue.openBlock(), vue.createElementBlock("view", {
-                    key: 0,
-                    class: "iconUp"
-                  }, [
-                    itemDataRecent.length > 10 ? (vue.openBlock(), vue.createElementBlock("view", {
-                      key: 0,
-                      onClick: _cache[0] || (_cache[0] = ($event) => vue.isRef(showDisplay) ? showDisplay.value = !vue.unref(showDisplay) : showDisplay = !vue.unref(showDisplay))
-                    }, [
-                      vue.createElementVNode("image", {
-                        class: "icon_img",
-                        src: "/static/open.png",
-                        mode: ""
-                      })
-                    ])) : vue.createCommentVNode("v-if", true)
-                  ])) : vue.createCommentVNode("v-if", true)
-                ])
-              ])) : vue.createCommentVNode("v-if", true),
-              vue.createCommentVNode(" end "),
-              vue.createCommentVNode(" \u641C\u7D22\u5217\u8868 "),
-              itemData2.value.length > 0 ? (vue.openBlock(), vue.createElementBlock("scroll-view", {
-                key: 1,
-                "scroll-y": "true",
-                class: "swiperH"
-              }, [
-                vue.createElementVNode("view", { class: "serachList" }, [
-                  vue.createElementVNode("view", { class: "" }, [
-                    vue.createElementVNode("view", { class: "tabList" }, [
-                      (vue.openBlock(true), vue.createElementBlock(vue.Fragment, null, vue.renderList(itemData2.value, (item, index) => {
-                        return vue.openBlock(), vue.createElementBlock("view", {
-                          class: "boxBg",
-                          key: index,
-                          onClick: vue.withModifiers(($event) => handleDetails($event, item), ["stop"])
-                        }, [
-                          vue.createCommentVNode(" \u5F85\u53D6\u4EF6 "),
-                          vue.createVNode(_component_StayPicup, {
-                            item,
-                            onHandleDetails: handleDetails
-                          }, null, 8, ["item"]),
-                          vue.createCommentVNode(" end "),
-                          vue.createCommentVNode(" \u5DF2\u53D6\u4EF6 "),
-                          vue.createVNode(AlreadyPicUp, {
-                            item,
-                            onHandleDetails: handleDetails
-                          }, null, 8, ["item"]),
-                          vue.createCommentVNode(" end "),
-                          vue.createCommentVNode(" \u53D6\u4EF6\u53D6\u6D88 "),
-                          vue.createVNode(Canceled, { item }, null, 8, ["item"]),
-                          vue.createCommentVNode(" end "),
-                          vue.createCommentVNode(" \u5DF2\u7B7E\u6536 "),
-                          vue.createVNode(SignFor, {
-                            item,
-                            onHandleDetails: handleDetails
-                          }, null, 8, ["item"]),
-                          vue.createCommentVNode(" end "),
-                          vue.createCommentVNode(" \u5DF2\u7ECF\u5B8C\u6210\u5230\u4ED8\u672A\u4ED8\u6B3E "),
-                          vue.createVNode(Accomplish, {
-                            item,
-                            onHandleDetails: handleDetails
-                          }, null, 8, ["item"]),
-                          vue.createCommentVNode(" end ")
-                        ], 8, ["onClick"]);
-                      }), 128))
-                    ])
-                  ])
-                ]),
-                vue.createVNode(ReachBottom, {
-                  ref_key: "loadMore",
-                  ref: loadMore
-                }, null, 512)
-              ])) : vue.createCommentVNode("v-if", true),
-              vue.createCommentVNode(" end "),
-              vue.createCommentVNode(" \u65E0\u6570\u636E "),
-              itemData2.value.length === 0 && vue.unref(isClear) ? (vue.openBlock(), vue.createElementBlock("view", { key: 2 }, [
-                vue.createVNode(EmptyPage, { emptyData: emptyData.value }, null, 8, ["emptyData"])
-              ])) : vue.createCommentVNode("v-if", true),
-              vue.createCommentVNode(" end ")
-            ]),
-            vue.createCommentVNode(" \u63D0\u793A\u7A97\u793A\u4F8B "),
-            vue.createVNode(UniPopup, {
-              ref_key: "popups",
-              ref: popups,
-              tipInfo: tipInfo.value,
-              onHandleClick: clearData
-            }, null, 8, ["tipInfo"]),
-            vue.createCommentVNode(" end ")
-          ])
-        ], 64);
-      };
-    }
-  };
-  var PagesSearchIndex = /* @__PURE__ */ _export_sfc(_sfc_main$C, [["__scopeId", "data-v-482e85b8"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/pages/search/index.vue"]]);
-  class Calendar {
-    constructor({
-      date,
-      selected,
-      startDate,
-      endDate,
-      range
-    } = {}) {
-      this.date = this.getDate(new Date());
-      this.selected = selected || [];
-      this.startDate = startDate;
-      this.endDate = endDate;
-      this.range = range;
-      this.cleanMultipleStatus();
-      this.weeks = {};
-      this.lastHover = false;
-    }
-    setDate(date) {
-      this.selectDate = this.getDate(date);
-      this._getWeek(this.selectDate.fullDate);
-    }
-    cleanMultipleStatus() {
-      this.multipleStatus = {
-        before: "",
-        after: "",
-        data: []
-      };
-    }
-    resetSatrtDate(startDate) {
-      this.startDate = startDate;
-    }
-    resetEndDate(endDate) {
-      this.endDate = endDate;
-    }
-    getDate(date, AddDayCount = 0, str = "day") {
-      if (!date) {
-        date = new Date();
-      }
-      if (typeof date !== "object") {
-        date = date.replace(/-/g, "/");
-      }
-      const dd = new Date(date);
-      switch (str) {
-        case "day":
-          dd.setDate(dd.getDate() + AddDayCount);
-          break;
-        case "month":
-          if (dd.getDate() === 31) {
-            dd.setDate(dd.getDate() + AddDayCount);
-          } else {
-            dd.setMonth(dd.getMonth() + AddDayCount);
-          }
-          break;
-        case "year":
-          dd.setFullYear(dd.getFullYear() + AddDayCount);
-          break;
-      }
-      const y = dd.getFullYear();
-      const m2 = dd.getMonth() + 1 < 10 ? "0" + (dd.getMonth() + 1) : dd.getMonth() + 1;
-      const d2 = dd.getDate() < 10 ? "0" + dd.getDate() : dd.getDate();
-      return {
-        fullDate: y + "-" + m2 + "-" + d2,
-        year: y,
-        month: m2,
-        date: d2,
-        day: dd.getDay()
-      };
-    }
-    _getLastMonthDays(firstDay, full) {
-      let dateArr = [];
-      for (let i2 = firstDay; i2 > 0; i2--) {
-        const beforeDate = new Date(full.year, full.month - 1, -i2 + 1).getDate();
-        dateArr.push({
-          date: beforeDate,
-          month: full.month - 1,
-          disable: true
-        });
-      }
-      return dateArr;
-    }
-    _currentMonthDys(dateData, full) {
-      let dateArr = [];
-      let fullDate = this.date.fullDate;
-      for (let i2 = 1; i2 <= dateData; i2++) {
-        let nowDate = full.year + "-" + (full.month < 10 ? full.month : full.month) + "-" + (i2 < 10 ? "0" + i2 : i2);
-        let isDay = fullDate === nowDate;
-        let info = this.selected && this.selected.find((item) => {
-          if (this.dateEqual(nowDate, item.date)) {
-            return item;
-          }
-        });
-        let disableBefore = true;
-        let disableAfter = true;
-        if (this.startDate) {
-          disableBefore = this.dateCompare(this.startDate, nowDate);
-        }
-        if (this.endDate) {
-          disableAfter = this.dateCompare(nowDate, this.endDate);
-        }
-        let multiples = this.multipleStatus.data;
-        let checked = false;
-        let multiplesStatus = -1;
-        if (this.range) {
-          if (multiples) {
-            multiplesStatus = multiples.findIndex((item) => {
-              return this.dateEqual(item, nowDate);
-            });
-          }
-          if (multiplesStatus !== -1) {
-            checked = true;
-          }
-        }
-        let data = {
-          fullDate: nowDate,
-          year: full.year,
-          date: i2,
-          multiple: this.range ? checked : false,
-          beforeMultiple: this.isLogicBefore(nowDate, this.multipleStatus.before, this.multipleStatus.after),
-          afterMultiple: this.isLogicAfter(nowDate, this.multipleStatus.before, this.multipleStatus.after),
-          month: full.month,
-          disable: !(disableBefore && disableAfter),
-          isDay,
-          userChecked: false
-        };
-        if (info) {
-          data.extraInfo = info;
-        }
-        dateArr.push(data);
-      }
-      return dateArr;
-    }
-    _getNextMonthDays(surplus, full) {
-      let dateArr = [];
-      for (let i2 = 1; i2 < surplus + 1; i2++) {
-        dateArr.push({
-          date: i2,
-          month: Number(full.month) + 1,
-          disable: true
-        });
-      }
-      return dateArr;
-    }
-    getInfo(date) {
-      if (!date) {
-        date = new Date();
-      }
-      const dateInfo = this.canlender.find((item) => item.fullDate === this.getDate(date).fullDate);
-      return dateInfo;
-    }
-    dateCompare(startDate, endDate) {
-      startDate = new Date(startDate.replace("-", "/").replace("-", "/"));
-      endDate = new Date(endDate.replace("-", "/").replace("-", "/"));
-      if (startDate <= endDate) {
-        return true;
-      } else {
-        return false;
-      }
-    }
-    dateEqual(before, after) {
-      before = new Date(before.replace("-", "/").replace("-", "/"));
-      after = new Date(after.replace("-", "/").replace("-", "/"));
-      if (before.getTime() - after.getTime() === 0) {
-        return true;
-      } else {
-        return false;
-      }
-    }
-    isLogicBefore(currentDay, before, after) {
-      let logicBefore = before;
-      if (before && after) {
-        logicBefore = this.dateCompare(before, after) ? before : after;
-      }
-      return this.dateEqual(logicBefore, currentDay);
-    }
-    isLogicAfter(currentDay, before, after) {
-      let logicAfter = after;
-      if (before && after) {
-        logicAfter = this.dateCompare(before, after) ? after : before;
-      }
-      return this.dateEqual(logicAfter, currentDay);
-    }
-    geDateAll(begin, end) {
-      var arr = [];
-      var ab = begin.split("-");
-      var ae2 = end.split("-");
-      var db = new Date();
-      db.setFullYear(ab[0], ab[1] - 1, ab[2]);
-      var de2 = new Date();
-      de2.setFullYear(ae2[0], ae2[1] - 1, ae2[2]);
-      var unixDb = db.getTime() - 24 * 60 * 60 * 1e3;
-      var unixDe = de2.getTime() - 24 * 60 * 60 * 1e3;
-      for (var k2 = unixDb; k2 <= unixDe; ) {
-        k2 = k2 + 24 * 60 * 60 * 1e3;
-        arr.push(this.getDate(new Date(parseInt(k2))).fullDate);
-      }
-      return arr;
-    }
-    setMultiple(fullDate) {
-      let {
-        before,
-        after
-      } = this.multipleStatus;
-      if (!this.range)
-        return;
-      if (before && after) {
-        if (!this.lastHover) {
-          this.lastHover = true;
-          return;
-        }
-        this.multipleStatus.before = fullDate;
-        this.multipleStatus.after = "";
-        this.multipleStatus.data = [];
-        this.multipleStatus.fulldate = "";
-        this.lastHover = false;
-      } else {
-        if (!before) {
-          this.multipleStatus.before = fullDate;
-          this.lastHover = false;
-        } else {
-          this.multipleStatus.after = fullDate;
-          if (this.dateCompare(this.multipleStatus.before, this.multipleStatus.after)) {
-            this.multipleStatus.data = this.geDateAll(this.multipleStatus.before, this.multipleStatus.after);
-          } else {
-            this.multipleStatus.data = this.geDateAll(this.multipleStatus.after, this.multipleStatus.before);
-          }
-          this.lastHover = true;
-        }
-      }
-      this._getWeek(fullDate);
-    }
-    setHoverMultiple(fullDate) {
-      let {
-        before,
-        after
-      } = this.multipleStatus;
-      if (!this.range)
-        return;
-      if (this.lastHover)
-        return;
-      if (!before) {
-        this.multipleStatus.before = fullDate;
-      } else {
-        this.multipleStatus.after = fullDate;
-        if (this.dateCompare(this.multipleStatus.before, this.multipleStatus.after)) {
-          this.multipleStatus.data = this.geDateAll(this.multipleStatus.before, this.multipleStatus.after);
-        } else {
-          this.multipleStatus.data = this.geDateAll(this.multipleStatus.after, this.multipleStatus.before);
-        }
-      }
-      this._getWeek(fullDate);
-    }
-    setDefaultMultiple(before, after) {
-      this.multipleStatus.before = before;
-      this.multipleStatus.after = after;
-      if (before && after) {
-        if (this.dateCompare(before, after)) {
-          this.multipleStatus.data = this.geDateAll(before, after);
-          this._getWeek(after);
-        } else {
-          this.multipleStatus.data = this.geDateAll(after, before);
-          this._getWeek(before);
-        }
-      }
-    }
-    _getWeek(dateData) {
-      const {
-        fullDate,
-        year,
-        month,
-        date,
-        day
-      } = this.getDate(dateData);
-      let firstDay = new Date(year, month - 1, 1).getDay();
-      let currentDay = new Date(year, month, 0).getDate();
-      let dates = {
-        lastMonthDays: this._getLastMonthDays(firstDay, this.getDate(dateData)),
-        currentMonthDys: this._currentMonthDys(currentDay, this.getDate(dateData)),
-        nextMonthDays: [],
-        weeks: []
-      };
-      let canlender = [];
-      const surplus = 42 - (dates.lastMonthDays.length + dates.currentMonthDys.length);
-      dates.nextMonthDays = this._getNextMonthDays(surplus, this.getDate(dateData));
-      canlender = canlender.concat(dates.lastMonthDays, dates.currentMonthDys, dates.nextMonthDays);
-      let weeks = {};
-      for (let i2 = 0; i2 < canlender.length; i2++) {
-        if (i2 % 7 === 0) {
-          weeks[parseInt(i2 / 7)] = new Array(7);
-        }
-        weeks[parseInt(i2 / 7)][i2 % 7] = canlender[i2];
-      }
-      this.canlender = canlender;
-      this.weeks = weeks;
-    }
-  }
-  const _sfc_main$B = {
-    props: {
-      weeks: {
-        type: Object,
-        default() {
-          return {};
-        }
-      },
-      calendar: {
-        type: Object,
-        default: () => {
-          return {};
-        }
-      },
-      selected: {
-        type: Array,
-        default: () => {
-          return [];
-        }
-      },
-      lunar: {
-        type: Boolean,
-        default: false
-      },
-      checkHover: {
-        type: Boolean,
-        default: false
-      }
-    },
-    methods: {
-      choiceDate(weeks) {
-        this.$emit("change", weeks);
-      },
-      handleMousemove(weeks) {
-        this.$emit("handleMouse", weeks);
-      }
-    }
-  };
-  function _sfc_render$4(_ctx, _cache, $props, $setup, $data, $options) {
-    return vue.openBlock(), vue.createElementBlock("view", {
-      class: vue.normalizeClass(["uni-calendar-item__weeks-box", {
-        "uni-calendar-item--disable": $props.weeks.disable,
-        "uni-calendar-item--before-checked-x": $props.weeks.beforeMultiple,
-        "uni-calendar-item--multiple": $props.weeks.multiple,
-        "uni-calendar-item--after-checked-x": $props.weeks.afterMultiple
-      }]),
-      onClick: _cache[0] || (_cache[0] = ($event) => $options.choiceDate($props.weeks)),
-      onMouseenter: _cache[1] || (_cache[1] = ($event) => $options.handleMousemove($props.weeks))
-    }, [
-      vue.createElementVNode("view", {
-        class: vue.normalizeClass(["uni-calendar-item__weeks-box-item", {
-          "uni-calendar-item--checked": $props.calendar.fullDate === $props.weeks.fullDate && ($props.calendar.userChecked || !$props.checkHover),
-          "uni-calendar-item--checked-range-text": $props.checkHover,
-          "uni-calendar-item--before-checked": $props.weeks.beforeMultiple,
-          "uni-calendar-item--multiple": $props.weeks.multiple,
-          "uni-calendar-item--after-checked": $props.weeks.afterMultiple,
-          "uni-calendar-item--disable": $props.weeks.disable
-        }])
-      }, [
-        $props.selected && $props.weeks.extraInfo ? (vue.openBlock(), vue.createElementBlock("text", {
-          key: 0,
-          class: "uni-calendar-item__weeks-box-circle"
-        })) : vue.createCommentVNode("v-if", true),
-        vue.createElementVNode("text", { class: "uni-calendar-item__weeks-box-text uni-calendar-item__weeks-box-text-disable uni-calendar-item--checked-text" }, vue.toDisplayString($props.weeks.date), 1)
-      ], 2),
-      vue.createElementVNode("view", {
-        class: vue.normalizeClass({ "uni-calendar-item--isDay": $props.weeks.isDay })
-      }, null, 2)
-    ], 34);
-  }
-  var calendarItem = /* @__PURE__ */ _export_sfc(_sfc_main$B, [["render", _sfc_render$4], ["__scopeId", "data-v-39ec3f8e"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/uni_modules/uni-datetime-picker/components/uni-datetime-picker/calendar-item.vue"]]);
+  initVueI18n(messages$1);
   var en = {
-    "uni-datetime-picker.selectDate": "select date",
-    "uni-datetime-picker.selectTime": "select time",
-    "uni-datetime-picker.selectDateTime": "select datetime",
-    "uni-datetime-picker.startDate": "start date",
-    "uni-datetime-picker.endDate": "end date",
-    "uni-datetime-picker.startTime": "start time",
-    "uni-datetime-picker.endTime": "end time",
-    "uni-datetime-picker.ok": "ok",
-    "uni-datetime-picker.clear": "clear",
-    "uni-datetime-picker.cancel": "cancel",
-    "uni-calender.MON": "MON",
-    "uni-calender.TUE": "TUE",
-    "uni-calender.WED": "WED",
-    "uni-calender.THU": "THU",
-    "uni-calender.FRI": "FRI",
-    "uni-calender.SAT": "SAT",
-    "uni-calender.SUN": "SUN"
+    "uni-load-more.contentdown": "Pull up to show more",
+    "uni-load-more.contentrefresh": "loading...",
+    "uni-load-more.contentnomore": "No more data"
   };
   var zhHans = {
-    "uni-datetime-picker.selectDate": "\u9009\u62E9\u65E5\u671F",
-    "uni-datetime-picker.selectTime": "\u9009\u62E9\u65F6\u95F4",
-    "uni-datetime-picker.selectDateTime": "\u9009\u62E9\u65E5\u671F\u65F6\u95F4",
-    "uni-datetime-picker.startDate": "\u5F00\u59CB\u65E5\u671F",
-    "uni-datetime-picker.endDate": "\u7ED3\u675F\u65E5\u671F",
-    "uni-datetime-picker.startTime": "\u5F00\u59CB\u65F6\u95F4",
-    "uni-datetime-picker.endTime": "\u7ED3\u675F\u65F6\u95F4",
-    "uni-datetime-picker.ok": "\u786E\u5B9A",
-    "uni-datetime-picker.clear": "\u6E05\u9664",
-    "uni-datetime-picker.cancel": "\u53D6\u6D88",
-    "uni-calender.SUN": "\u65E5",
-    "uni-calender.MON": "\u4E00",
-    "uni-calender.TUE": "\u4E8C",
-    "uni-calender.WED": "\u4E09",
-    "uni-calender.THU": "\u56DB",
-    "uni-calender.FRI": "\u4E94",
-    "uni-calender.SAT": "\u516D"
+    "uni-load-more.contentdown": "\u4E0A\u62C9\u663E\u793A\u66F4\u591A",
+    "uni-load-more.contentrefresh": "\u6B63\u5728\u52A0\u8F7D...",
+    "uni-load-more.contentnomore": "\u6CA1\u6709\u66F4\u591A\u4E86"
   };
   var zhHant = {
-    "uni-datetime-picker.selectDate": "\u9078\u64C7\u65E5\u671F",
-    "uni-datetime-picker.selectTime": "\u9078\u64C7\u6642\u9593",
-    "uni-datetime-picker.selectDateTime": "\u9078\u64C7\u65E5\u671F\u6642\u9593",
-    "uni-datetime-picker.startDate": "\u958B\u59CB\u65E5\u671F",
-    "uni-datetime-picker.endDate": "\u7D50\u675F\u65E5\u671F",
-    "uni-datetime-picker.startTime": "\u958B\u59CB\u65F6\u95F4",
-    "uni-datetime-picker.endTime": "\u7D50\u675F\u65F6\u95F4",
-    "uni-datetime-picker.ok": "\u78BA\u5B9A",
-    "uni-datetime-picker.clear": "\u6E05\u9664",
-    "uni-datetime-picker.cancel": "\u53D6\u6D88",
-    "uni-calender.SUN": "\u65E5",
-    "uni-calender.MON": "\u4E00",
-    "uni-calender.TUE": "\u4E8C",
-    "uni-calender.WED": "\u4E09",
-    "uni-calender.THU": "\u56DB",
-    "uni-calender.FRI": "\u4E94",
-    "uni-calender.SAT": "\u516D"
+    "uni-load-more.contentdown": "\u4E0A\u62C9\u986F\u793A\u66F4\u591A",
+    "uni-load-more.contentrefresh": "\u6B63\u5728\u52A0\u8F09...",
+    "uni-load-more.contentnomore": "\u6C92\u6709\u66F4\u591A\u6578\u64DA\u4E86"
   };
   var messages = {
     en,
     "zh-Hans": zhHans,
     "zh-Hant": zhHant
   };
-  const { t: t$2 } = initVueI18n(messages);
-  const _sfc_main$A = {
-    name: "UniDatetimePicker",
-    components: {},
-    data() {
-      return {
-        indicatorStyle: `height: 50px;`,
-        visible: false,
-        fixNvueBug: {},
-        dateShow: true,
-        timeShow: true,
-        title: "\u65E5\u671F\u548C\u65F6\u95F4",
-        time: "",
-        year: 1920,
-        month: 0,
-        day: 0,
-        hour: 0,
-        minute: 0,
-        second: 0,
-        startYear: 1920,
-        startMonth: 1,
-        startDay: 1,
-        startHour: 0,
-        startMinute: 0,
-        startSecond: 0,
-        endYear: 2120,
-        endMonth: 12,
-        endDay: 31,
-        endHour: 23,
-        endMinute: 59,
-        endSecond: 59
-      };
-    },
-    props: {
-      type: {
-        type: String,
-        default: "datetime"
-      },
-      value: {
-        type: [String, Number],
-        default: ""
-      },
-      modelValue: {
-        type: [String, Number],
-        default: ""
-      },
-      start: {
-        type: [Number, String],
-        default: ""
-      },
-      end: {
-        type: [Number, String],
-        default: ""
-      },
-      returnType: {
-        type: String,
-        default: "string"
-      },
-      disabled: {
-        type: [Boolean, String],
-        default: false
-      },
-      border: {
-        type: [Boolean, String],
-        default: true
-      },
-      hideSecond: {
-        type: [Boolean, String],
-        default: false
-      }
-    },
-    watch: {
-      value: {
-        handler(newVal, oldVal) {
-          if (newVal) {
-            this.parseValue(this.fixIosDateFormat(newVal));
-            this.initTime(false);
-          } else {
-            this.time = "";
-            this.parseValue(Date.now());
-          }
-        },
-        immediate: true
-      },
-      type: {
-        handler(newValue) {
-          if (newValue === "date") {
-            this.dateShow = true;
-            this.timeShow = false;
-            this.title = "\u65E5\u671F";
-          } else if (newValue === "time") {
-            this.dateShow = false;
-            this.timeShow = true;
-            this.title = "\u65F6\u95F4";
-          } else {
-            this.dateShow = true;
-            this.timeShow = true;
-            this.title = "\u65E5\u671F\u548C\u65F6\u95F4";
-          }
-        },
-        immediate: true
-      },
-      start: {
-        handler(newVal) {
-          this.parseDatetimeRange(this.fixIosDateFormat(newVal), "start");
-        },
-        immediate: true
-      },
-      end: {
-        handler(newVal) {
-          this.parseDatetimeRange(this.fixIosDateFormat(newVal), "end");
-        },
-        immediate: true
-      },
-      months(newVal) {
-        this.checkValue("month", this.month, newVal);
-      },
-      days(newVal) {
-        this.checkValue("day", this.day, newVal);
-      },
-      hours(newVal) {
-        this.checkValue("hour", this.hour, newVal);
-      },
-      minutes(newVal) {
-        this.checkValue("minute", this.minute, newVal);
-      },
-      seconds(newVal) {
-        this.checkValue("second", this.second, newVal);
-      }
-    },
-    computed: {
-      years() {
-        return this.getCurrentRange("year");
-      },
-      months() {
-        return this.getCurrentRange("month");
-      },
-      days() {
-        return this.getCurrentRange("day");
-      },
-      hours() {
-        return this.getCurrentRange("hour");
-      },
-      minutes() {
-        return this.getCurrentRange("minute");
-      },
-      seconds() {
-        return this.getCurrentRange("second");
-      },
-      ymd() {
-        return [this.year - this.minYear, this.month - this.minMonth, this.day - this.minDay];
-      },
-      hms() {
-        return [this.hour - this.minHour, this.minute - this.minMinute, this.second - this.minSecond];
-      },
-      currentDateIsStart() {
-        return this.year === this.startYear && this.month === this.startMonth && this.day === this.startDay;
-      },
-      currentDateIsEnd() {
-        return this.year === this.endYear && this.month === this.endMonth && this.day === this.endDay;
-      },
-      minYear() {
-        return this.startYear;
-      },
-      maxYear() {
-        return this.endYear;
-      },
-      minMonth() {
-        if (this.year === this.startYear) {
-          return this.startMonth;
-        } else {
-          return 1;
-        }
-      },
-      maxMonth() {
-        if (this.year === this.endYear) {
-          return this.endMonth;
-        } else {
-          return 12;
-        }
-      },
-      minDay() {
-        if (this.year === this.startYear && this.month === this.startMonth) {
-          return this.startDay;
-        } else {
-          return 1;
-        }
-      },
-      maxDay() {
-        if (this.year === this.endYear && this.month === this.endMonth) {
-          return this.endDay;
-        } else {
-          return this.daysInMonth(this.year, this.month);
-        }
-      },
-      minHour() {
-        if (this.type === "datetime") {
-          if (this.currentDateIsStart) {
-            return this.startHour;
-          } else {
-            return 0;
-          }
-        }
-        if (this.type === "time") {
-          return this.startHour;
-        }
-      },
-      maxHour() {
-        if (this.type === "datetime") {
-          if (this.currentDateIsEnd) {
-            return this.endHour;
-          } else {
-            return 23;
-          }
-        }
-        if (this.type === "time") {
-          return this.endHour;
-        }
-      },
-      minMinute() {
-        if (this.type === "datetime") {
-          if (this.currentDateIsStart && this.hour === this.startHour) {
-            return this.startMinute;
-          } else {
-            return 0;
-          }
-        }
-        if (this.type === "time") {
-          if (this.hour === this.startHour) {
-            return this.startMinute;
-          } else {
-            return 0;
-          }
-        }
-      },
-      maxMinute() {
-        if (this.type === "datetime") {
-          if (this.currentDateIsEnd && this.hour === this.endHour) {
-            return this.endMinute;
-          } else {
-            return 59;
-          }
-        }
-        if (this.type === "time") {
-          if (this.hour === this.endHour) {
-            return this.endMinute;
-          } else {
-            return 59;
-          }
-        }
-      },
-      minSecond() {
-        if (this.type === "datetime") {
-          if (this.currentDateIsStart && this.hour === this.startHour && this.minute === this.startMinute) {
-            return this.startSecond;
-          } else {
-            return 0;
-          }
-        }
-        if (this.type === "time") {
-          if (this.hour === this.startHour && this.minute === this.startMinute) {
-            return this.startSecond;
-          } else {
-            return 0;
-          }
-        }
-      },
-      maxSecond() {
-        if (this.type === "datetime") {
-          if (this.currentDateIsEnd && this.hour === this.endHour && this.minute === this.endMinute) {
-            return this.endSecond;
-          } else {
-            return 59;
-          }
-        }
-        if (this.type === "time") {
-          if (this.hour === this.endHour && this.minute === this.endMinute) {
-            return this.endSecond;
-          } else {
-            return 59;
-          }
-        }
-      },
-      selectTimeText() {
-        return t$2("uni-datetime-picker.selectTime");
-      },
-      okText() {
-        return t$2("uni-datetime-picker.ok");
-      },
-      clearText() {
-        return t$2("uni-datetime-picker.clear");
-      },
-      cancelText() {
-        return t$2("uni-datetime-picker.cancel");
-      }
-    },
-    mounted() {
-    },
-    methods: {
-      lessThanTen(item) {
-        return item < 10 ? "0" + item : item;
-      },
-      parseTimeType(timeString) {
-        if (timeString) {
-          let timeArr = timeString.split(":");
-          this.hour = Number(timeArr[0]);
-          this.minute = Number(timeArr[1]);
-          this.second = Number(timeArr[2]);
-        }
-      },
-      initPickerValue(datetime) {
-        let defaultValue = null;
-        if (datetime) {
-          defaultValue = this.compareValueWithStartAndEnd(datetime, this.start, this.end);
-        } else {
-          defaultValue = Date.now();
-          defaultValue = this.compareValueWithStartAndEnd(defaultValue, this.start, this.end);
-        }
-        this.parseValue(defaultValue);
-      },
-      compareValueWithStartAndEnd(value, start, end) {
-        let winner = null;
-        value = this.superTimeStamp(value);
-        start = this.superTimeStamp(start);
-        end = this.superTimeStamp(end);
-        if (start && end) {
-          if (value < start) {
-            winner = new Date(start);
-          } else if (value > end) {
-            winner = new Date(end);
-          } else {
-            winner = new Date(value);
-          }
-        } else if (start && !end) {
-          winner = start <= value ? new Date(value) : new Date(start);
-        } else if (!start && end) {
-          winner = value <= end ? new Date(value) : new Date(end);
-        } else {
-          winner = new Date(value);
-        }
-        return winner;
-      },
-      superTimeStamp(value) {
-        let dateBase = "";
-        if (this.type === "time" && value && typeof value === "string") {
-          const now = new Date();
-          const year = now.getFullYear();
-          const month = now.getMonth() + 1;
-          const day = now.getDate();
-          dateBase = year + "/" + month + "/" + day + " ";
-        }
-        if (Number(value) && typeof value !== NaN) {
-          value = parseInt(value);
-          dateBase = 0;
-        }
-        return this.createTimeStamp(dateBase + value);
-      },
-      parseValue(value) {
-        if (!value) {
-          return;
-        }
-        if (this.type === "time" && typeof value === "string") {
-          this.parseTimeType(value);
-        } else {
-          let defaultDate = null;
-          defaultDate = new Date(value);
-          if (this.type !== "time") {
-            this.year = defaultDate.getFullYear();
-            this.month = defaultDate.getMonth() + 1;
-            this.day = defaultDate.getDate();
-          }
-          if (this.type !== "date") {
-            this.hour = defaultDate.getHours();
-            this.minute = defaultDate.getMinutes();
-            this.second = defaultDate.getSeconds();
-          }
-        }
-        if (this.hideSecond) {
-          this.second = 0;
-        }
-      },
-      parseDatetimeRange(point, pointType) {
-        if (!point) {
-          if (pointType === "start") {
-            this.startYear = 1920;
-            this.startMonth = 1;
-            this.startDay = 1;
-            this.startHour = 0;
-            this.startMinute = 0;
-            this.startSecond = 0;
-          }
-          if (pointType === "end") {
-            this.endYear = 2120;
-            this.endMonth = 12;
-            this.endDay = 31;
-            this.endHour = 23;
-            this.endMinute = 59;
-            this.endSecond = 59;
-          }
-          return;
-        }
-        if (this.type === "time") {
-          const pointArr = point.split(":");
-          this[pointType + "Hour"] = Number(pointArr[0]);
-          this[pointType + "Minute"] = Number(pointArr[1]);
-          this[pointType + "Second"] = Number(pointArr[2]);
-        } else {
-          if (!point) {
-            pointType === "start" ? this.startYear = this.year - 60 : this.endYear = this.year + 60;
-            return;
-          }
-          if (Number(point) && Number(point) !== NaN) {
-            point = parseInt(point);
-          }
-          const hasTime = /[0-9]:[0-9]/;
-          if (this.type === "datetime" && pointType === "end" && typeof point === "string" && !hasTime.test(point)) {
-            point = point + " 23:59:59";
-          }
-          const pointDate = new Date(point);
-          this[pointType + "Year"] = pointDate.getFullYear();
-          this[pointType + "Month"] = pointDate.getMonth() + 1;
-          this[pointType + "Day"] = pointDate.getDate();
-          if (this.type === "datetime") {
-            this[pointType + "Hour"] = pointDate.getHours();
-            this[pointType + "Minute"] = pointDate.getMinutes();
-            this[pointType + "Second"] = pointDate.getSeconds();
-          }
-        }
-      },
-      getCurrentRange(value) {
-        const range = [];
-        for (let i2 = this["min" + this.capitalize(value)]; i2 <= this["max" + this.capitalize(value)]; i2++) {
-          range.push(i2);
-        }
-        return range;
-      },
-      capitalize(str) {
-        return str.charAt(0).toUpperCase() + str.slice(1);
-      },
-      checkValue(name, value, values) {
-        if (values.indexOf(value) === -1) {
-          this[name] = values[0];
-        }
-      },
-      daysInMonth(year, month) {
-        return new Date(year, month, 0).getDate();
-      },
-      fixIosDateFormat(value) {
-        if (typeof value === "string") {
-          value = value.replace(/-/g, "/");
-        }
-        return value;
-      },
-      createTimeStamp(time) {
-        if (!time)
-          return;
-        if (typeof time === "number") {
-          return time;
-        } else {
-          time = time.replace(/-/g, "/");
-          if (this.type === "date") {
-            time = time + " 00:00:00";
-          }
-          return Date.parse(time);
-        }
-      },
-      createDomSting() {
-        const yymmdd = this.year + "-" + this.lessThanTen(this.month) + "-" + this.lessThanTen(this.day);
-        let hhmmss = this.lessThanTen(this.hour) + ":" + this.lessThanTen(this.minute);
-        if (!this.hideSecond) {
-          hhmmss = hhmmss + ":" + this.lessThanTen(this.second);
-        }
-        if (this.type === "date") {
-          return yymmdd;
-        } else if (this.type === "time") {
-          return hhmmss;
-        } else {
-          return yymmdd + " " + hhmmss;
-        }
-      },
-      initTime(emit = true) {
-        this.time = this.createDomSting();
-        if (!emit)
-          return;
-        if (this.returnType === "timestamp" && this.type !== "time") {
-          this.$emit("change", this.createTimeStamp(this.time));
-          this.$emit("input", this.createTimeStamp(this.time));
-          this.$emit("update:modelValue", this.createTimeStamp(this.time));
-        } else {
-          this.$emit("change", this.time);
-          this.$emit("input", this.time);
-          this.$emit("update:modelValue", this.time);
-        }
-      },
-      bindDateChange(e2) {
-        const val = e2.detail.value;
-        this.year = this.years[val[0]];
-        this.month = this.months[val[1]];
-        this.day = this.days[val[2]];
-      },
-      bindTimeChange(e2) {
-        const val = e2.detail.value;
-        this.hour = this.hours[val[0]];
-        this.minute = this.minutes[val[1]];
-        this.second = this.seconds[val[2]];
-      },
-      initTimePicker() {
-        if (this.disabled)
-          return;
-        const value = this.fixIosDateFormat(this.value);
-        this.initPickerValue(value);
-        this.visible = !this.visible;
-      },
-      tiggerTimePicker(e2) {
-        this.visible = !this.visible;
-      },
-      clearTime() {
-        this.time = "";
-        this.$emit("change", this.time);
-        this.$emit("input", this.time);
-        this.$emit("update:modelValue", this.time);
-        this.tiggerTimePicker();
-      },
-      setTime() {
-        this.initTime();
-        this.tiggerTimePicker();
-      }
-    }
-  };
-  function _sfc_render$3(_ctx, _cache, $props, $setup, $data, $options) {
-    return vue.openBlock(), vue.createElementBlock("view", { class: "uni-datetime-picker" }, [
-      vue.createElementVNode("view", {
-        onClick: _cache[0] || (_cache[0] = (...args) => $options.initTimePicker && $options.initTimePicker(...args))
-      }, [
-        vue.renderSlot(_ctx.$slots, "default", {}, () => [
-          vue.createElementVNode("view", {
-            class: vue.normalizeClass(["uni-datetime-picker-timebox-pointer", { "uni-datetime-picker-disabled": $props.disabled, "uni-datetime-picker-timebox": $props.border }])
-          }, [
-            vue.createElementVNode("text", { class: "uni-datetime-picker-text" }, vue.toDisplayString($data.time), 1),
-            !$data.time ? (vue.openBlock(), vue.createElementBlock("view", {
-              key: 0,
-              class: "uni-datetime-picker-time"
-            }, [
-              vue.createElementVNode("text", { class: "uni-datetime-picker-text" }, vue.toDisplayString($options.selectTimeText), 1)
-            ])) : vue.createCommentVNode("v-if", true)
-          ], 2)
-        ], true)
-      ]),
-      $data.visible ? (vue.openBlock(), vue.createElementBlock("view", {
-        key: 0,
-        id: "mask",
-        class: "uni-datetime-picker-mask",
-        onClick: _cache[1] || (_cache[1] = (...args) => $options.tiggerTimePicker && $options.tiggerTimePicker(...args))
-      })) : vue.createCommentVNode("v-if", true),
-      $data.visible ? (vue.openBlock(), vue.createElementBlock("view", {
-        key: 1,
-        class: vue.normalizeClass(["uni-datetime-picker-popup", [$data.dateShow && $data.timeShow ? "" : "fix-nvue-height"]]),
-        style: vue.normalizeStyle($data.fixNvueBug)
-      }, [
-        vue.createElementVNode("view", { class: "uni-title" }, [
-          vue.createElementVNode("text", { class: "uni-datetime-picker-text" }, vue.toDisplayString($options.selectTimeText), 1)
-        ]),
-        $data.dateShow ? (vue.openBlock(), vue.createElementBlock("view", {
-          key: 0,
-          class: "uni-datetime-picker__container-box"
-        }, [
-          vue.createElementVNode("picker-view", {
-            class: "uni-datetime-picker-view",
-            "indicator-style": $data.indicatorStyle,
-            value: $options.ymd,
-            onChange: _cache[2] || (_cache[2] = (...args) => $options.bindDateChange && $options.bindDateChange(...args))
-          }, [
-            vue.createElementVNode("picker-view-column", null, [
-              (vue.openBlock(true), vue.createElementBlock(vue.Fragment, null, vue.renderList($options.years, (item, index) => {
-                return vue.openBlock(), vue.createElementBlock("view", {
-                  class: "uni-datetime-picker-item",
-                  key: index
-                }, [
-                  vue.createElementVNode("text", { class: "uni-datetime-picker-item" }, vue.toDisplayString($options.lessThanTen(item)), 1)
-                ]);
-              }), 128))
-            ]),
-            vue.createElementVNode("picker-view-column", null, [
-              (vue.openBlock(true), vue.createElementBlock(vue.Fragment, null, vue.renderList($options.months, (item, index) => {
-                return vue.openBlock(), vue.createElementBlock("view", {
-                  class: "uni-datetime-picker-item",
-                  key: index
-                }, [
-                  vue.createElementVNode("text", { class: "uni-datetime-picker-item" }, vue.toDisplayString($options.lessThanTen(item)), 1)
-                ]);
-              }), 128))
-            ]),
-            vue.createElementVNode("picker-view-column", null, [
-              (vue.openBlock(true), vue.createElementBlock(vue.Fragment, null, vue.renderList($options.days, (item, index) => {
-                return vue.openBlock(), vue.createElementBlock("view", {
-                  class: "uni-datetime-picker-item",
-                  key: index
-                }, [
-                  vue.createElementVNode("text", { class: "uni-datetime-picker-item" }, vue.toDisplayString($options.lessThanTen(item)), 1)
-                ]);
-              }), 128))
-            ])
-          ], 40, ["indicator-style", "value"]),
-          vue.createCommentVNode(" \u517C\u5BB9 nvue \u4E0D\u652F\u6301\u4F2A\u7C7B "),
-          vue.createElementVNode("text", { class: "uni-datetime-picker-sign sign-left" }, "-"),
-          vue.createElementVNode("text", { class: "uni-datetime-picker-sign sign-right" }, "-")
-        ])) : vue.createCommentVNode("v-if", true),
-        $data.timeShow ? (vue.openBlock(), vue.createElementBlock("view", {
-          key: 1,
-          class: "uni-datetime-picker__container-box"
-        }, [
-          vue.createElementVNode("picker-view", {
-            class: vue.normalizeClass(["uni-datetime-picker-view", [$props.hideSecond ? "time-hide-second" : ""]]),
-            "indicator-style": $data.indicatorStyle,
-            value: $options.hms,
-            onChange: _cache[3] || (_cache[3] = (...args) => $options.bindTimeChange && $options.bindTimeChange(...args))
-          }, [
-            vue.createElementVNode("picker-view-column", null, [
-              (vue.openBlock(true), vue.createElementBlock(vue.Fragment, null, vue.renderList($options.hours, (item, index) => {
-                return vue.openBlock(), vue.createElementBlock("view", {
-                  class: "uni-datetime-picker-item",
-                  key: index
-                }, [
-                  vue.createElementVNode("text", { class: "uni-datetime-picker-item" }, vue.toDisplayString($options.lessThanTen(item)), 1)
-                ]);
-              }), 128))
-            ]),
-            vue.createElementVNode("picker-view-column", null, [
-              (vue.openBlock(true), vue.createElementBlock(vue.Fragment, null, vue.renderList($options.minutes, (item, index) => {
-                return vue.openBlock(), vue.createElementBlock("view", {
-                  class: "uni-datetime-picker-item",
-                  key: index
-                }, [
-                  vue.createElementVNode("text", { class: "uni-datetime-picker-item" }, vue.toDisplayString($options.lessThanTen(item)), 1)
-                ]);
-              }), 128))
-            ]),
-            !$props.hideSecond ? (vue.openBlock(), vue.createElementBlock("picker-view-column", { key: 0 }, [
-              (vue.openBlock(true), vue.createElementBlock(vue.Fragment, null, vue.renderList($options.seconds, (item, index) => {
-                return vue.openBlock(), vue.createElementBlock("view", {
-                  class: "uni-datetime-picker-item",
-                  key: index
-                }, [
-                  vue.createElementVNode("text", { class: "uni-datetime-picker-item" }, vue.toDisplayString($options.lessThanTen(item)), 1)
-                ]);
-              }), 128))
-            ])) : vue.createCommentVNode("v-if", true)
-          ], 42, ["indicator-style", "value"]),
-          vue.createCommentVNode(" \u517C\u5BB9 nvue \u4E0D\u652F\u6301\u4F2A\u7C7B "),
-          vue.createElementVNode("text", {
-            class: vue.normalizeClass(["uni-datetime-picker-sign", [$props.hideSecond ? "sign-center" : "sign-left"]])
-          }, ":", 2),
-          !$props.hideSecond ? (vue.openBlock(), vue.createElementBlock("text", {
-            key: 0,
-            class: "uni-datetime-picker-sign sign-right"
-          }, ":")) : vue.createCommentVNode("v-if", true)
-        ])) : vue.createCommentVNode("v-if", true),
-        vue.createElementVNode("view", { class: "uni-datetime-picker-btn" }, [
-          vue.createElementVNode("view", {
-            onClick: _cache[4] || (_cache[4] = (...args) => $options.clearTime && $options.clearTime(...args))
-          }, [
-            vue.createElementVNode("text", { class: "uni-datetime-picker-btn-text" }, vue.toDisplayString($options.clearText), 1)
-          ]),
-          vue.createElementVNode("view", { class: "uni-datetime-picker-btn-group" }, [
-            vue.createElementVNode("view", {
-              class: "uni-datetime-picker-cancel",
-              onClick: _cache[5] || (_cache[5] = (...args) => $options.tiggerTimePicker && $options.tiggerTimePicker(...args))
-            }, [
-              vue.createElementVNode("text", { class: "uni-datetime-picker-btn-text" }, vue.toDisplayString($options.cancelText), 1)
-            ]),
-            vue.createElementVNode("view", {
-              onClick: _cache[6] || (_cache[6] = (...args) => $options.setTime && $options.setTime(...args))
-            }, [
-              vue.createElementVNode("text", { class: "uni-datetime-picker-btn-text" }, vue.toDisplayString($options.okText), 1)
-            ])
-          ])
-        ])
-      ], 6)) : vue.createCommentVNode("v-if", true)
-    ]);
-  }
-  var timePicker = /* @__PURE__ */ _export_sfc(_sfc_main$A, [["render", _sfc_render$3], ["__scopeId", "data-v-60a1244c"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/uni_modules/uni-datetime-picker/components/uni-datetime-picker/time-picker.vue"]]);
-  const {
-    t: t$1
-  } = initVueI18n(messages);
-  const _sfc_main$z = {
-    components: {
-      calendarItem,
-      timePicker
-    },
-    props: {
-      date: {
-        type: String,
-        default: ""
-      },
-      defTime: {
-        type: [String, Object],
-        default: ""
-      },
-      selectableTimes: {
-        type: [Object],
-        default() {
-          return {};
-        }
-      },
-      selected: {
-        type: Array,
-        default() {
-          return [];
-        }
-      },
-      lunar: {
-        type: Boolean,
-        default: false
-      },
-      startDate: {
-        type: String,
-        default: ""
-      },
-      endDate: {
-        type: String,
-        default: ""
-      },
-      range: {
-        type: Boolean,
-        default: false
-      },
-      typeHasTime: {
-        type: Boolean,
-        default: false
-      },
-      insert: {
-        type: Boolean,
-        default: true
-      },
-      showMonth: {
-        type: Boolean,
-        default: true
-      },
-      clearDate: {
-        type: Boolean,
-        default: true
-      },
-      left: {
-        type: Boolean,
-        default: true
-      },
-      right: {
-        type: Boolean,
-        default: true
-      },
-      checkHover: {
-        type: Boolean,
-        default: true
-      },
-      hideSecond: {
-        type: [Boolean],
-        default: false
-      },
-      pleStatus: {
-        type: Object,
-        default() {
-          return {
-            before: "",
-            after: "",
-            data: [],
-            fulldate: ""
-          };
-        }
-      }
-    },
-    data() {
-      return {
-        show: false,
-        weeks: [],
-        calendar: {},
-        nowDate: "",
-        aniMaskShow: false,
-        firstEnter: true,
-        time: "",
-        timeRange: {
-          startTime: "",
-          endTime: ""
-        },
-        tempSingleDate: "",
-        tempRange: {
-          before: "",
-          after: ""
-        }
-      };
-    },
-    watch: {
-      date: {
-        immediate: true,
-        handler(newVal, oldVal) {
-          if (!this.range) {
-            this.tempSingleDate = newVal;
-            setTimeout(() => {
-              this.init(newVal);
-            }, 100);
-          }
-        }
-      },
-      defTime: {
-        immediate: true,
-        handler(newVal, oldVal) {
-          if (!this.range) {
-            this.time = newVal;
-          } else {
-            this.timeRange.startTime = newVal.start;
-            this.timeRange.endTime = newVal.end;
-          }
-        }
-      },
-      startDate(val) {
-        this.cale.resetSatrtDate(val);
-        this.cale.setDate(this.nowDate.fullDate);
-        this.weeks = this.cale.weeks;
-      },
-      endDate(val) {
-        this.cale.resetEndDate(val);
-        this.cale.setDate(this.nowDate.fullDate);
-        this.weeks = this.cale.weeks;
-      },
-      selected(newVal) {
-        this.cale.setSelectInfo(this.nowDate.fullDate, newVal);
-        this.weeks = this.cale.weeks;
-      },
-      pleStatus: {
-        immediate: true,
-        handler(newVal, oldVal) {
-          const {
-            before,
-            after,
-            fulldate,
-            which
-          } = newVal;
-          this.tempRange.before = before;
-          this.tempRange.after = after;
-          setTimeout(() => {
-            if (fulldate) {
-              this.cale.setHoverMultiple(fulldate);
-              if (before && after) {
-                this.cale.lastHover = true;
-                if (this.rangeWithinMonth(after, before))
-                  return;
-                this.setDate(before);
-              } else {
-                this.cale.setMultiple(fulldate);
-                this.setDate(this.nowDate.fullDate);
-                this.calendar.fullDate = "";
-                this.cale.lastHover = false;
-              }
-            } else {
-              this.cale.setDefaultMultiple(before, after);
-              if (which === "left") {
-                this.setDate(before);
-                this.weeks = this.cale.weeks;
-              } else {
-                this.setDate(after);
-                this.weeks = this.cale.weeks;
-              }
-              this.cale.lastHover = true;
-            }
-          }, 16);
-        }
-      }
-    },
-    computed: {
-      reactStartTime() {
-        const activeDate = this.range ? this.tempRange.before : this.calendar.fullDate;
-        const res2 = activeDate === this.startDate ? this.selectableTimes.start : "";
-        return res2;
-      },
-      reactEndTime() {
-        const activeDate = this.range ? this.tempRange.after : this.calendar.fullDate;
-        const res2 = activeDate === this.endDate ? this.selectableTimes.end : "";
-        return res2;
-      },
-      selectDateText() {
-        return t$1("uni-datetime-picker.selectDate");
-      },
-      startDateText() {
-        return this.startPlaceholder || t$1("uni-datetime-picker.startDate");
-      },
-      endDateText() {
-        return this.endPlaceholder || t$1("uni-datetime-picker.endDate");
-      },
-      okText() {
-        return t$1("uni-datetime-picker.ok");
-      },
-      monText() {
-        return t$1("uni-calender.MON");
-      },
-      TUEText() {
-        return t$1("uni-calender.TUE");
-      },
-      WEDText() {
-        return t$1("uni-calender.WED");
-      },
-      THUText() {
-        return t$1("uni-calender.THU");
-      },
-      FRIText() {
-        return t$1("uni-calender.FRI");
-      },
-      SATText() {
-        return t$1("uni-calender.SAT");
-      },
-      SUNText() {
-        return t$1("uni-calender.SUN");
-      }
-    },
-    created() {
-      this.cale = new Calendar({
-        selected: this.selected,
-        startDate: this.startDate,
-        endDate: this.endDate,
-        range: this.range
-      });
-      this.init(this.date);
-    },
-    methods: {
-      leaveCale() {
-        this.firstEnter = true;
-      },
-      handleMouse(weeks) {
-        if (weeks.disable)
-          return;
-        if (this.cale.lastHover)
-          return;
-        let {
-          before,
-          after
-        } = this.cale.multipleStatus;
-        if (!before)
-          return;
-        this.calendar = weeks;
-        this.cale.setHoverMultiple(this.calendar.fullDate);
-        this.weeks = this.cale.weeks;
-        if (this.firstEnter) {
-          this.$emit("firstEnterCale", this.cale.multipleStatus);
-          this.firstEnter = false;
-        }
-      },
-      rangeWithinMonth(A2, B2) {
-        const [yearA, monthA] = A2.split("-");
-        const [yearB, monthB] = B2.split("-");
-        return yearA === yearB && monthA === monthB;
-      },
-      clean() {
-        this.close();
-      },
-      clearCalender() {
-        if (this.range) {
-          this.timeRange.startTime = "";
-          this.timeRange.endTime = "";
-          this.tempRange.before = "";
-          this.tempRange.after = "";
-          this.cale.multipleStatus.before = "";
-          this.cale.multipleStatus.after = "";
-          this.cale.multipleStatus.data = [];
-          this.cale.lastHover = false;
-        } else {
-          this.time = "";
-          this.tempSingleDate = "";
-        }
-        this.calendar.fullDate = "";
-        this.setDate();
-      },
-      bindDateChange(e2) {
-        const value = e2.detail.value + "-1";
-        this.init(value);
-      },
-      init(date) {
-        this.cale.setDate(date);
-        this.weeks = this.cale.weeks;
-        this.nowDate = this.calendar = this.cale.getInfo(date);
-      },
-      open() {
-        if (this.clearDate && !this.insert) {
-          this.cale.cleanMultipleStatus();
-          this.init(this.date);
-        }
-        this.show = true;
-        this.$nextTick(() => {
-          setTimeout(() => {
-            this.aniMaskShow = true;
-          }, 50);
-        });
-      },
-      close() {
-        this.aniMaskShow = false;
-        this.$nextTick(() => {
-          setTimeout(() => {
-            this.show = false;
-            this.$emit("close");
-          }, 300);
-        });
-      },
-      confirm() {
-        this.setEmit("confirm");
-        this.close();
-      },
-      change() {
-        if (!this.insert)
-          return;
-        this.setEmit("change");
-      },
-      monthSwitch() {
-        let {
-          year,
-          month
-        } = this.nowDate;
-        this.$emit("monthSwitch", {
-          year,
-          month: Number(month)
-        });
-      },
-      setEmit(name) {
-        let {
-          year,
-          month,
-          date,
-          fullDate,
-          lunar,
-          extraInfo
-        } = this.calendar;
-        this.$emit(name, {
-          range: this.cale.multipleStatus,
-          year,
-          month,
-          date,
-          time: this.time,
-          timeRange: this.timeRange,
-          fulldate: fullDate,
-          lunar,
-          extraInfo: extraInfo || {}
-        });
-      },
-      choiceDate(weeks) {
-        if (weeks.disable)
-          return;
-        this.calendar = weeks;
-        this.calendar.userChecked = true;
-        this.cale.setMultiple(this.calendar.fullDate, true);
-        this.weeks = this.cale.weeks;
-        this.tempSingleDate = this.calendar.fullDate;
-        this.tempRange.before = this.cale.multipleStatus.before;
-        this.tempRange.after = this.cale.multipleStatus.after;
-        this.change();
-      },
-      backtoday() {
-        let date = this.cale.getDate(new Date()).fullDate;
-        this.init(date);
-        this.change();
-      },
-      dateCompare(startDate, endDate) {
-        startDate = new Date(startDate.replace("-", "/").replace("-", "/"));
-        endDate = new Date(endDate.replace("-", "/").replace("-", "/"));
-        if (startDate <= endDate) {
-          return true;
-        } else {
-          return false;
-        }
-      },
-      pre() {
-        const preDate = this.cale.getDate(this.nowDate.fullDate, -1, "month").fullDate;
-        this.setDate(preDate);
-        this.monthSwitch();
-      },
-      next() {
-        const nextDate = this.cale.getDate(this.nowDate.fullDate, 1, "month").fullDate;
-        this.setDate(nextDate);
-        this.monthSwitch();
-      },
-      setDate(date) {
-        this.cale.setDate(date);
-        this.weeks = this.cale.weeks;
-        this.nowDate = this.cale.getInfo(date);
-      }
-    }
-  };
-  function _sfc_render$2(_ctx, _cache, $props, $setup, $data, $options) {
-    const _component_calendar_item = vue.resolveComponent("calendar-item");
-    const _component_time_picker = vue.resolveComponent("time-picker");
-    const _component_uni_icons = resolveEasycom(vue.resolveDynamicComponent("uni-icons"), __easycom_0$a);
-    return vue.openBlock(), vue.createElementBlock("view", {
-      class: "uni-calendar",
-      onMouseleave: _cache[9] || (_cache[9] = (...args) => $options.leaveCale && $options.leaveCale(...args))
-    }, [
-      !$props.insert && $data.show ? (vue.openBlock(), vue.createElementBlock("view", {
-        key: 0,
-        class: vue.normalizeClass(["uni-calendar__mask", { "uni-calendar--mask-show": $data.aniMaskShow }]),
-        onClick: _cache[0] || (_cache[0] = (...args) => $options.clean && $options.clean(...args))
-      }, null, 2)) : vue.createCommentVNode("v-if", true),
-      $props.insert || $data.show ? (vue.openBlock(), vue.createElementBlock("view", {
-        key: 1,
-        class: vue.normalizeClass(["uni-calendar__content", { "uni-calendar--fixed": !$props.insert, "uni-calendar--ani-show": $data.aniMaskShow, "uni-calendar__content-mobile": $data.aniMaskShow }])
-      }, [
-        vue.createElementVNode("view", {
-          class: vue.normalizeClass(["uni-calendar__header", { "uni-calendar__header-mobile": !$props.insert }])
-        }, [
-          $props.left ? (vue.openBlock(), vue.createElementBlock("view", {
-            key: 0,
-            class: "uni-calendar__header-btn-box",
-            onClick: _cache[1] || (_cache[1] = vue.withModifiers((...args) => $options.pre && $options.pre(...args), ["stop"]))
-          }, [
-            vue.createElementVNode("view", { class: "uni-calendar__header-btn uni-calendar--left" })
-          ])) : vue.createCommentVNode("v-if", true),
-          vue.createElementVNode("picker", {
-            mode: "date",
-            value: $props.date,
-            fields: "month",
-            onChange: _cache[2] || (_cache[2] = (...args) => $options.bindDateChange && $options.bindDateChange(...args))
-          }, [
-            vue.createElementVNode("text", { class: "uni-calendar__header-text" }, vue.toDisplayString(($data.nowDate.year || "") + " \u5E74 " + ($data.nowDate.month || "") + " \u6708"), 1)
-          ], 40, ["value"]),
-          $props.right ? (vue.openBlock(), vue.createElementBlock("view", {
-            key: 1,
-            class: "uni-calendar__header-btn-box",
-            onClick: _cache[3] || (_cache[3] = vue.withModifiers((...args) => $options.next && $options.next(...args), ["stop"]))
-          }, [
-            vue.createElementVNode("view", { class: "uni-calendar__header-btn uni-calendar--right" })
-          ])) : vue.createCommentVNode("v-if", true),
-          !$props.insert ? (vue.openBlock(), vue.createElementBlock("view", {
-            key: 2,
-            class: "dialog-close",
-            onClick: _cache[4] || (_cache[4] = (...args) => $options.clean && $options.clean(...args))
-          }, [
-            vue.createElementVNode("view", {
-              class: "dialog-close-plus",
-              "data-id": "close"
-            }),
-            vue.createElementVNode("view", {
-              class: "dialog-close-plus dialog-close-rotate",
-              "data-id": "close"
-            })
-          ])) : vue.createCommentVNode("v-if", true),
-          vue.createCommentVNode(' <text class="uni-calendar__backtoday" @click="backtoday">\u56DE\u5230\u4ECA\u5929</text> ')
-        ], 2),
-        vue.createElementVNode("view", { class: "uni-calendar__box" }, [
-          $props.showMonth ? (vue.openBlock(), vue.createElementBlock("view", {
-            key: 0,
-            class: "uni-calendar__box-bg"
-          }, [
-            vue.createElementVNode("text", { class: "uni-calendar__box-bg-text" }, vue.toDisplayString($data.nowDate.month), 1)
-          ])) : vue.createCommentVNode("v-if", true),
-          vue.createElementVNode("view", {
-            class: "uni-calendar__weeks",
-            style: { "padding-bottom": "7px" }
-          }, [
-            vue.createElementVNode("view", { class: "uni-calendar__weeks-day" }, [
-              vue.createElementVNode("text", { class: "uni-calendar__weeks-day-text" }, vue.toDisplayString($options.SUNText), 1)
-            ]),
-            vue.createElementVNode("view", { class: "uni-calendar__weeks-day" }, [
-              vue.createElementVNode("text", { class: "uni-calendar__weeks-day-text" }, vue.toDisplayString($options.monText), 1)
-            ]),
-            vue.createElementVNode("view", { class: "uni-calendar__weeks-day" }, [
-              vue.createElementVNode("text", { class: "uni-calendar__weeks-day-text" }, vue.toDisplayString($options.TUEText), 1)
-            ]),
-            vue.createElementVNode("view", { class: "uni-calendar__weeks-day" }, [
-              vue.createElementVNode("text", { class: "uni-calendar__weeks-day-text" }, vue.toDisplayString($options.WEDText), 1)
-            ]),
-            vue.createElementVNode("view", { class: "uni-calendar__weeks-day" }, [
-              vue.createElementVNode("text", { class: "uni-calendar__weeks-day-text" }, vue.toDisplayString($options.THUText), 1)
-            ]),
-            vue.createElementVNode("view", { class: "uni-calendar__weeks-day" }, [
-              vue.createElementVNode("text", { class: "uni-calendar__weeks-day-text" }, vue.toDisplayString($options.FRIText), 1)
-            ]),
-            vue.createElementVNode("view", { class: "uni-calendar__weeks-day" }, [
-              vue.createElementVNode("text", { class: "uni-calendar__weeks-day-text" }, vue.toDisplayString($options.SATText), 1)
-            ])
-          ]),
-          (vue.openBlock(true), vue.createElementBlock(vue.Fragment, null, vue.renderList($data.weeks, (item, weekIndex) => {
-            return vue.openBlock(), vue.createElementBlock("view", {
-              class: "uni-calendar__weeks",
-              key: weekIndex
-            }, [
-              (vue.openBlock(true), vue.createElementBlock(vue.Fragment, null, vue.renderList(item, (weeks, weeksIndex) => {
-                return vue.openBlock(), vue.createElementBlock("view", {
-                  class: "uni-calendar__weeks-item",
-                  key: weeksIndex
-                }, [
-                  vue.createVNode(_component_calendar_item, {
-                    class: "uni-calendar-item--hook",
-                    weeks,
-                    calendar: $data.calendar,
-                    selected: $props.selected,
-                    lunar: $props.lunar,
-                    checkHover: $props.range,
-                    onChange: $options.choiceDate,
-                    onHandleMouse: $options.handleMouse
-                  }, null, 8, ["weeks", "calendar", "selected", "lunar", "checkHover", "onChange", "onHandleMouse"])
-                ]);
-              }), 128))
-            ]);
-          }), 128))
-        ]),
-        !$props.insert && !$props.range && $props.typeHasTime ? (vue.openBlock(), vue.createElementBlock("view", {
-          key: 0,
-          class: "uni-date-changed uni-calendar--fixed-top",
-          style: { "padding": "0 80px" }
-        }, [
-          vue.createElementVNode("view", { class: "uni-date-changed--time-date" }, vue.toDisplayString($data.tempSingleDate ? $data.tempSingleDate : $options.selectDateText), 1),
-          vue.createVNode(_component_time_picker, {
-            type: "time",
-            start: $options.reactStartTime,
-            end: $options.reactEndTime,
-            modelValue: $data.time,
-            "onUpdate:modelValue": _cache[5] || (_cache[5] = ($event) => $data.time = $event),
-            disabled: !$data.tempSingleDate,
-            border: false,
-            "hide-second": $props.hideSecond,
-            class: "time-picker-style"
-          }, null, 8, ["start", "end", "modelValue", "disabled", "hide-second"])
-        ])) : vue.createCommentVNode("v-if", true),
-        !$props.insert && $props.range && $props.typeHasTime ? (vue.openBlock(), vue.createElementBlock("view", {
-          key: 1,
-          class: "uni-date-changed uni-calendar--fixed-top"
-        }, [
-          vue.createElementVNode("view", { class: "uni-date-changed--time-start" }, [
-            vue.createElementVNode("view", { class: "uni-date-changed--time-date" }, vue.toDisplayString($data.tempRange.before ? $data.tempRange.before : $options.startDateText), 1),
-            vue.createVNode(_component_time_picker, {
-              type: "time",
-              start: $options.reactStartTime,
-              modelValue: $data.timeRange.startTime,
-              "onUpdate:modelValue": _cache[6] || (_cache[6] = ($event) => $data.timeRange.startTime = $event),
-              border: false,
-              "hide-second": $props.hideSecond,
-              disabled: !$data.tempRange.before,
-              class: "time-picker-style"
-            }, null, 8, ["start", "modelValue", "hide-second", "disabled"])
-          ]),
-          vue.createVNode(_component_uni_icons, {
-            type: "arrowthinright",
-            color: "#999",
-            style: { "line-height": "50px" }
-          }),
-          vue.createElementVNode("view", { class: "uni-date-changed--time-end" }, [
-            vue.createElementVNode("view", { class: "uni-date-changed--time-date" }, vue.toDisplayString($data.tempRange.after ? $data.tempRange.after : $options.endDateText), 1),
-            vue.createVNode(_component_time_picker, {
-              type: "time",
-              end: $options.reactEndTime,
-              modelValue: $data.timeRange.endTime,
-              "onUpdate:modelValue": _cache[7] || (_cache[7] = ($event) => $data.timeRange.endTime = $event),
-              border: false,
-              "hide-second": $props.hideSecond,
-              disabled: !$data.tempRange.after,
-              class: "time-picker-style"
-            }, null, 8, ["end", "modelValue", "hide-second", "disabled"])
-          ])
-        ])) : vue.createCommentVNode("v-if", true),
-        !$props.insert ? (vue.openBlock(), vue.createElementBlock("view", {
-          key: 2,
-          class: "uni-date-changed uni-date-btn--ok"
-        }, [
-          vue.createCommentVNode(' <view class="uni-calendar__header-btn-box">\r\n					<text class="uni-calendar__button-text uni-calendar--fixed-width">{{okText}}</text>\r\n				</view> '),
-          vue.createElementVNode("view", {
-            class: "uni-datetime-picker--btn",
-            onClick: _cache[8] || (_cache[8] = (...args) => $options.confirm && $options.confirm(...args))
-          }, "\u786E\u8BA4")
-        ])) : vue.createCommentVNode("v-if", true)
-      ], 2)) : vue.createCommentVNode("v-if", true)
-    ], 32);
-  }
-  var calendar = /* @__PURE__ */ _export_sfc(_sfc_main$z, [["render", _sfc_render$2], ["__scopeId", "data-v-94becebc"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/uni_modules/uni-datetime-picker/components/uni-datetime-picker/calendar.vue"]]);
-  const {
-    t
-  } = initVueI18n(messages);
-  const _sfc_main$y = {
-    name: "UniDatetimePicker",
-    components: {
-      calendar,
-      timePicker
-    },
-    data() {
-      return {
-        isRange: false,
-        hasTime: false,
-        mobileRange: false,
-        singleVal: "",
-        tempSingleDate: "",
-        defSingleDate: "",
-        time: "",
-        caleRange: {
-          startDate: "",
-          startTime: "",
-          endDate: "",
-          endTime: ""
-        },
-        range: {
-          startDate: "",
-          endDate: ""
-        },
-        tempRange: {
-          startDate: "",
-          startTime: "",
-          endDate: "",
-          endTime: ""
-        },
-        startMultipleStatus: {
-          before: "",
-          after: "",
-          data: [],
-          fulldate: ""
-        },
-        endMultipleStatus: {
-          before: "",
-          after: "",
-          data: [],
-          fulldate: ""
-        },
-        visible: false,
-        popup: false,
-        popover: null,
-        isEmitValue: false,
-        isPhone: false,
-        isFirstShow: true
-      };
-    },
-    props: {
-      type: {
-        type: String,
-        default: "datetime"
-      },
-      value: {
-        type: [String, Number, Array, Date],
-        default: ""
-      },
-      modelValue: {
-        type: [String, Number, Array, Date],
-        default: ""
-      },
-      start: {
-        type: [Number, String],
-        default: ""
-      },
-      end: {
-        type: [Number, String],
-        default: ""
-      },
-      returnType: {
-        type: String,
-        default: "string"
-      },
-      placeholder: {
-        type: String,
-        default: ""
-      },
-      startPlaceholder: {
-        type: String,
-        default: ""
-      },
-      endPlaceholder: {
-        type: String,
-        default: ""
-      },
-      rangeSeparator: {
-        type: String,
-        default: "-"
-      },
-      border: {
-        type: [Boolean],
-        default: true
-      },
-      disabled: {
-        type: [Boolean],
-        default: false
-      },
-      clearIcon: {
-        type: [Boolean],
-        default: true
-      },
-      hideSecond: {
-        type: [Boolean],
-        default: false
-      }
-    },
-    watch: {
-      type: {
-        immediate: true,
-        handler(newVal, oldVal) {
-          if (newVal.indexOf("time") !== -1) {
-            this.hasTime = true;
-          } else {
-            this.hasTime = false;
-          }
-          if (newVal.indexOf("range") !== -1) {
-            this.isRange = true;
-          } else {
-            this.isRange = false;
-          }
-        }
-      },
-      modelValue: {
-        immediate: true,
-        handler(newVal, oldVal) {
-          if (this.isEmitValue) {
-            this.isEmitValue = false;
-            return;
-          }
-          this.initPicker(newVal);
-        }
-      },
-      start: {
-        immediate: true,
-        handler(newVal, oldVal) {
-          if (!newVal)
-            return;
-          const {
-            defDate,
-            defTime
-          } = this.parseDate(newVal);
-          this.caleRange.startDate = defDate;
-          if (this.hasTime) {
-            this.caleRange.startTime = defTime;
-          }
-        }
-      },
-      end: {
-        immediate: true,
-        handler(newVal, oldVal) {
-          if (!newVal)
-            return;
-          const {
-            defDate,
-            defTime
-          } = this.parseDate(newVal);
-          this.caleRange.endDate = defDate;
-          if (this.hasTime) {
-            this.caleRange.endTime = defTime;
-          }
-        }
-      }
-    },
-    computed: {
-      reactStartTime() {
-        const activeDate = this.isRange ? this.tempRange.startDate : this.tempSingleDate;
-        const res2 = activeDate === this.caleRange.startDate ? this.caleRange.startTime : "";
-        return res2;
-      },
-      reactEndTime() {
-        const activeDate = this.isRange ? this.tempRange.endDate : this.tempSingleDate;
-        const res2 = activeDate === this.caleRange.endDate ? this.caleRange.endTime : "";
-        return res2;
-      },
-      reactMobDefTime() {
-        const times = {
-          start: this.tempRange.startTime,
-          end: this.tempRange.endTime
-        };
-        return this.isRange ? times : this.time;
-      },
-      mobSelectableTime() {
-        return {
-          start: this.caleRange.startTime,
-          end: this.caleRange.endTime
-        };
-      },
-      datePopupWidth() {
-        return this.isRange ? 653 : 301;
-      },
-      singlePlaceholderText() {
-        return this.placeholder || (this.type === "date" ? this.selectDateText : t("uni-datetime-picker.selectDateTime"));
-      },
-      startPlaceholderText() {
-        return this.startPlaceholder || this.startDateText;
-      },
-      endPlaceholderText() {
-        return this.endPlaceholder || this.endDateText;
-      },
-      selectDateText() {
-        return t("uni-datetime-picker.selectDate");
-      },
-      selectTimeText() {
-        return t("uni-datetime-picker.selectTime");
-      },
-      startDateText() {
-        return this.startPlaceholder || t("uni-datetime-picker.startDate");
-      },
-      startTimeText() {
-        return t("uni-datetime-picker.startTime");
-      },
-      endDateText() {
-        return this.endPlaceholder || t("uni-datetime-picker.endDate");
-      },
-      endTimeText() {
-        return t("uni-datetime-picker.endTime");
-      },
-      okText() {
-        return t("uni-datetime-picker.ok");
-      },
-      clearText() {
-        return t("uni-datetime-picker.clear");
-      },
-      showClearIcon() {
-        const {
-          clearIcon,
-          disabled,
-          singleVal,
-          range
-        } = this;
-        const bool = clearIcon && !disabled && (singleVal || range.startDate && range.endDate);
-        return bool;
-      }
-    },
-    created() {
-      this.form = this.getForm("uniForms");
-      this.formItem = this.getForm("uniFormsItem");
-    },
-    mounted() {
-      this.platform();
-    },
-    methods: {
-      getForm(name = "uniForms") {
-        let parent = this.$parent;
-        let parentName = parent.$options.name;
-        while (parentName !== name) {
-          parent = parent.$parent;
-          if (!parent)
-            return false;
-          parentName = parent.$options.name;
-        }
-        return parent;
-      },
-      initPicker(newVal) {
-        if (!newVal || Array.isArray(newVal) && !newVal.length) {
-          this.$nextTick(() => {
-            this.clear(false);
-          });
-          return;
-        }
-        if (!Array.isArray(newVal) && !this.isRange) {
-          const {
-            defDate,
-            defTime
-          } = this.parseDate(newVal);
-          this.singleVal = defDate;
-          this.tempSingleDate = defDate;
-          this.defSingleDate = defDate;
-          if (this.hasTime) {
-            this.singleVal = defDate + " " + defTime;
-            this.time = defTime;
-          }
-        } else {
-          const [before, after] = newVal;
-          if (!before && !after)
-            return;
-          const defBefore = this.parseDate(before);
-          const defAfter = this.parseDate(after);
-          const startDate = defBefore.defDate;
-          const endDate = defAfter.defDate;
-          this.range.startDate = this.tempRange.startDate = startDate;
-          this.range.endDate = this.tempRange.endDate = endDate;
-          if (this.hasTime) {
-            this.range.startDate = defBefore.defDate + " " + defBefore.defTime;
-            this.range.endDate = defAfter.defDate + " " + defAfter.defTime;
-            this.tempRange.startTime = defBefore.defTime;
-            this.tempRange.endTime = defAfter.defTime;
-          }
-          const defaultRange = {
-            before: defBefore.defDate,
-            after: defAfter.defDate
-          };
-          this.startMultipleStatus = Object.assign({}, this.startMultipleStatus, defaultRange, {
-            which: "right"
-          });
-          this.endMultipleStatus = Object.assign({}, this.endMultipleStatus, defaultRange, {
-            which: "left"
-          });
-        }
-      },
-      updateLeftCale(e2) {
-        const left = this.$refs.left;
-        left.cale.setHoverMultiple(e2.after);
-        left.setDate(this.$refs.left.nowDate.fullDate);
-      },
-      updateRightCale(e2) {
-        const right = this.$refs.right;
-        right.cale.setHoverMultiple(e2.after);
-        right.setDate(this.$refs.right.nowDate.fullDate);
-      },
-      platform() {
-        const systemInfo = uni.getSystemInfoSync();
-        this.isPhone = systemInfo.windowWidth <= 500;
-        this.windowWidth = systemInfo.windowWidth;
-      },
-      show(event) {
-        if (this.disabled) {
-          return;
-        }
-        this.platform();
-        if (this.isPhone) {
-          this.$refs.mobile.open();
-          return;
-        }
-        this.popover = {
-          top: "10px"
-        };
-        const dateEditor = uni.createSelectorQuery().in(this).select(".uni-date-editor");
-        dateEditor.boundingClientRect((rect) => {
-          if (this.windowWidth - rect.left < this.datePopupWidth) {
-            this.popover.right = 0;
-          }
-        }).exec();
-        setTimeout(() => {
-          this.popup = !this.popup;
-          if (!this.isPhone && this.isRange && this.isFirstShow) {
-            this.isFirstShow = false;
-            const {
-              startDate,
-              endDate
-            } = this.range;
-            if (startDate && endDate) {
-              if (this.diffDate(startDate, endDate) < 30) {
-                this.$refs.right.next();
-              }
-            } else {
-              this.$refs.right.next();
-              this.$refs.right.cale.lastHover = false;
-            }
-          }
-        }, 50);
-      },
-      close() {
-        setTimeout(() => {
-          this.popup = false;
-          this.$emit("maskClick", this.value);
-        }, 20);
-      },
-      setEmit(value) {
-        if (this.returnType === "timestamp" || this.returnType === "date") {
-          if (!Array.isArray(value)) {
-            if (!this.hasTime) {
-              value = value + " 00:00:00";
-            }
-            value = this.createTimestamp(value);
-            if (this.returnType === "date") {
-              value = new Date(value);
-            }
-          } else {
-            if (!this.hasTime) {
-              value[0] = value[0] + " 00:00:00";
-              value[1] = value[1] + " 00:00:00";
-            }
-            value[0] = this.createTimestamp(value[0]);
-            value[1] = this.createTimestamp(value[1]);
-            if (this.returnType === "date") {
-              value[0] = new Date(value[0]);
-              value[1] = new Date(value[1]);
-            }
-          }
-        }
-        this.formItem && this.formItem.setValue(value);
-        this.$emit("change", value);
-        this.$emit("input", value);
-        this.$emit("update:modelValue", value);
-        this.isEmitValue = true;
-      },
-      createTimestamp(date) {
-        date = this.fixIosDateFormat(date);
-        return Date.parse(new Date(date));
-      },
-      singleChange(e2) {
-        this.tempSingleDate = e2.fulldate;
-        if (this.hasTime)
-          return;
-        this.confirmSingleChange();
-      },
-      confirmSingleChange() {
-        if (!this.tempSingleDate) {
-          this.popup = false;
-          return;
-        }
-        if (this.hasTime) {
-          this.singleVal = this.tempSingleDate + " " + (this.time ? this.time : "00:00:00");
-        } else {
-          this.singleVal = this.tempSingleDate;
-        }
-        this.setEmit(this.singleVal);
-        this.popup = false;
-      },
-      leftChange(e2) {
-        const {
-          before,
-          after
-        } = e2.range;
-        this.rangeChange(before, after);
-        const obj = {
-          before: e2.range.before,
-          after: e2.range.after,
-          data: e2.range.data,
-          fulldate: e2.fulldate
-        };
-        this.startMultipleStatus = Object.assign({}, this.startMultipleStatus, obj);
-      },
-      rightChange(e2) {
-        const {
-          before,
-          after
-        } = e2.range;
-        this.rangeChange(before, after);
-        const obj = {
-          before: e2.range.before,
-          after: e2.range.after,
-          data: e2.range.data,
-          fulldate: e2.fulldate
-        };
-        this.endMultipleStatus = Object.assign({}, this.endMultipleStatus, obj);
-      },
-      mobileChange(e2) {
-        if (this.isRange) {
-          const {
-            before,
-            after
-          } = e2.range;
-          this.handleStartAndEnd(before, after, true);
-          if (this.hasTime) {
-            const {
-              startTime,
-              endTime
-            } = e2.timeRange;
-            this.tempRange.startTime = startTime;
-            this.tempRange.endTime = endTime;
-          }
-          this.confirmRangeChange();
-        } else {
-          if (this.hasTime) {
-            this.singleVal = e2.fulldate + " " + e2.time;
-          } else {
-            this.singleVal = e2.fulldate;
-          }
-          this.setEmit(this.singleVal);
-        }
-        this.$refs.mobile.close();
-      },
-      rangeChange(before, after) {
-        if (!(before && after))
-          return;
-        this.handleStartAndEnd(before, after, true);
-        if (this.hasTime)
-          return;
-        this.confirmRangeChange();
-      },
-      confirmRangeChange() {
-        if (!this.tempRange.startDate && !this.tempRange.endDate) {
-          this.popup = false;
-          return;
-        }
-        let start, end;
-        if (!this.hasTime) {
-          start = this.range.startDate = this.tempRange.startDate;
-          end = this.range.endDate = this.tempRange.endDate;
-        } else {
-          start = this.range.startDate = this.tempRange.startDate + " " + (this.tempRange.startTime ? this.tempRange.startTime : "00:00:00");
-          end = this.range.endDate = this.tempRange.endDate + " " + (this.tempRange.endTime ? this.tempRange.endTime : "00:00:00");
-        }
-        const displayRange = [start, end];
-        this.setEmit(displayRange);
-        this.popup = false;
-      },
-      handleStartAndEnd(before, after, temp = false) {
-        if (!(before && after))
-          return;
-        const type = temp ? "tempRange" : "range";
-        if (this.dateCompare(before, after)) {
-          this[type].startDate = before;
-          this[type].endDate = after;
-        } else {
-          this[type].startDate = after;
-          this[type].endDate = before;
-        }
-      },
-      dateCompare(startDate, endDate) {
-        startDate = new Date(startDate.replace("-", "/").replace("-", "/"));
-        endDate = new Date(endDate.replace("-", "/").replace("-", "/"));
-        if (startDate <= endDate) {
-          return true;
-        } else {
-          return false;
-        }
-      },
-      diffDate(startDate, endDate) {
-        startDate = new Date(startDate.replace("-", "/").replace("-", "/"));
-        endDate = new Date(endDate.replace("-", "/").replace("-", "/"));
-        const diff = (endDate - startDate) / (24 * 60 * 60 * 1e3);
-        return Math.abs(diff);
-      },
-      clear(needEmit = true) {
-        if (!this.isRange) {
-          this.singleVal = "";
-          this.tempSingleDate = "";
-          this.time = "";
-          if (this.isPhone) {
-            this.$refs.mobile && this.$refs.mobile.clearCalender();
-          } else {
-            this.$refs.pcSingle && this.$refs.pcSingle.clearCalender();
-          }
-          if (needEmit) {
-            this.formItem && this.formItem.setValue("");
-            this.$emit("change", "");
-            this.$emit("input", "");
-            this.$emit("update:modelValue", "");
-          }
-        } else {
-          this.range.startDate = "";
-          this.range.endDate = "";
-          this.tempRange.startDate = "";
-          this.tempRange.startTime = "";
-          this.tempRange.endDate = "";
-          this.tempRange.endTime = "";
-          if (this.isPhone) {
-            this.$refs.mobile && this.$refs.mobile.clearCalender();
-          } else {
-            this.$refs.left && this.$refs.left.clearCalender();
-            this.$refs.right && this.$refs.right.clearCalender();
-            this.$refs.right && this.$refs.right.next();
-          }
-          if (needEmit) {
-            this.formItem && this.formItem.setValue([]);
-            this.$emit("change", []);
-            this.$emit("input", []);
-            this.$emit("update:modelValue", []);
-          }
-        }
-      },
-      parseDate(date) {
-        date = this.fixIosDateFormat(date);
-        const defVal = new Date(date);
-        const year = defVal.getFullYear();
-        const month = defVal.getMonth() + 1;
-        const day = defVal.getDate();
-        const hour = defVal.getHours();
-        const minute = defVal.getMinutes();
-        const second = defVal.getSeconds();
-        const defDate = year + "-" + this.lessTen(month) + "-" + this.lessTen(day);
-        const defTime = this.lessTen(hour) + ":" + this.lessTen(minute) + (this.hideSecond ? "" : ":" + this.lessTen(second));
-        return {
-          defDate,
-          defTime
-        };
-      },
-      lessTen(item) {
-        return item < 10 ? "0" + item : item;
-      },
-      fixIosDateFormat(value) {
-        if (typeof value === "string") {
-          value = value.replace(/-/g, "/");
-        }
-        return value;
-      },
-      leftMonthSwitch(e2) {
-      },
-      rightMonthSwitch(e2) {
-      }
-    }
-  };
-  function _sfc_render$1(_ctx, _cache, $props, $setup, $data, $options) {
-    const _component_uni_icons = resolveEasycom(vue.resolveDynamicComponent("uni-icons"), __easycom_0$a);
-    const _component_time_picker = vue.resolveComponent("time-picker");
-    const _component_calendar = vue.resolveComponent("calendar");
-    return vue.openBlock(), vue.createElementBlock("view", { class: "uni-date" }, [
-      vue.createElementVNode("view", {
-        class: "uni-date-editor",
-        onClick: _cache[4] || (_cache[4] = (...args) => $options.show && $options.show(...args))
-      }, [
-        vue.renderSlot(_ctx.$slots, "default", {}, () => [
-          vue.createElementVNode("view", {
-            class: vue.normalizeClass(["uni-date-editor--x", {
-              "uni-date-editor--x__disabled": $props.disabled,
-              "uni-date-x--border": $props.border
-            }])
-          }, [
-            !$data.isRange ? (vue.openBlock(), vue.createElementBlock("view", {
-              key: 0,
-              class: "uni-date-x uni-date-single"
-            }, [
-              vue.createVNode(_component_uni_icons, {
-                type: "calendar",
-                color: "#e1e1e1",
-                size: "22"
-              }),
-              vue.withDirectives(vue.createElementVNode("input", {
-                class: "uni-date__x-input",
-                type: "text",
-                "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => $data.singleVal = $event),
-                placeholder: $options.singlePlaceholderText,
-                disabled: true
-              }, null, 8, ["placeholder"]), [
-                [vue.vModelText, $data.singleVal]
-              ])
-            ])) : (vue.openBlock(), vue.createElementBlock("view", {
-              key: 1,
-              class: "uni-date-x uni-date-range"
-            }, [
-              vue.createVNode(_component_uni_icons, {
-                type: "calendar",
-                color: "#e1e1e1",
-                size: "22"
-              }),
-              vue.withDirectives(vue.createElementVNode("input", {
-                class: "uni-date__x-input t-c",
-                type: "text",
-                "onUpdate:modelValue": _cache[1] || (_cache[1] = ($event) => $data.range.startDate = $event),
-                placeholder: $options.startPlaceholderText,
-                disabled: true
-              }, null, 8, ["placeholder"]), [
-                [vue.vModelText, $data.range.startDate]
-              ]),
-              vue.renderSlot(_ctx.$slots, "default", {}, () => [
-                vue.createElementVNode("view", { class: "" }, vue.toDisplayString($props.rangeSeparator), 1)
-              ], true),
-              vue.withDirectives(vue.createElementVNode("input", {
-                class: "uni-date__x-input t-c",
-                type: "text",
-                "onUpdate:modelValue": _cache[2] || (_cache[2] = ($event) => $data.range.endDate = $event),
-                placeholder: $options.endPlaceholderText,
-                disabled: true
-              }, null, 8, ["placeholder"]), [
-                [vue.vModelText, $data.range.endDate]
-              ])
-            ])),
-            $options.showClearIcon ? (vue.openBlock(), vue.createElementBlock("view", {
-              key: 2,
-              class: "uni-date__icon-clear",
-              onClick: _cache[3] || (_cache[3] = vue.withModifiers((...args) => $options.clear && $options.clear(...args), ["stop"]))
-            }, [
-              vue.createVNode(_component_uni_icons, {
-                type: "clear",
-                color: "#e1e1e1",
-                size: "18"
-              })
-            ])) : vue.createCommentVNode("v-if", true)
-          ], 2)
-        ], true)
-      ]),
-      vue.withDirectives(vue.createElementVNode("view", {
-        class: "uni-date-mask",
-        onClick: _cache[5] || (_cache[5] = (...args) => $options.close && $options.close(...args))
-      }, null, 512), [
-        [vue.vShow, $data.popup]
-      ]),
-      !$data.isPhone ? vue.withDirectives((vue.openBlock(), vue.createElementBlock("view", {
-        key: 0,
-        ref: "datePicker",
-        class: "uni-date-picker__container"
-      }, [
-        !$data.isRange ? (vue.openBlock(), vue.createElementBlock("view", {
-          key: 0,
-          class: "uni-date-single--x",
-          style: vue.normalizeStyle($data.popover)
-        }, [
-          vue.createElementVNode("view", { class: "uni-popper__arrow" }),
-          $data.hasTime ? (vue.openBlock(), vue.createElementBlock("view", {
-            key: 0,
-            class: "uni-date-changed popup-x-header"
-          }, [
-            vue.withDirectives(vue.createElementVNode("input", {
-              class: "uni-date__input t-c",
-              type: "text",
-              "onUpdate:modelValue": _cache[6] || (_cache[6] = ($event) => $data.tempSingleDate = $event),
-              placeholder: $options.selectDateText
-            }, null, 8, ["placeholder"]), [
-              [vue.vModelText, $data.tempSingleDate]
-            ]),
-            vue.createVNode(_component_time_picker, {
-              type: "time",
-              modelValue: $data.time,
-              "onUpdate:modelValue": _cache[8] || (_cache[8] = ($event) => $data.time = $event),
-              border: false,
-              disabled: !$data.tempSingleDate,
-              start: $options.reactStartTime,
-              end: $options.reactEndTime,
-              hideSecond: $props.hideSecond,
-              style: { "width": "100%" }
-            }, {
-              default: vue.withCtx(() => [
-                vue.withDirectives(vue.createElementVNode("input", {
-                  class: "uni-date__input t-c",
-                  type: "text",
-                  "onUpdate:modelValue": _cache[7] || (_cache[7] = ($event) => $data.time = $event),
-                  placeholder: $options.selectTimeText,
-                  disabled: !$data.tempSingleDate
-                }, null, 8, ["placeholder", "disabled"]), [
-                  [vue.vModelText, $data.time]
-                ])
-              ]),
-              _: 1
-            }, 8, ["modelValue", "disabled", "start", "end", "hideSecond"])
-          ])) : vue.createCommentVNode("v-if", true),
-          vue.createVNode(_component_calendar, {
-            ref: "pcSingle",
-            showMonth: false,
-            "start-date": $data.caleRange.startDate,
-            "end-date": $data.caleRange.endDate,
-            date: $data.defSingleDate,
-            onChange: $options.singleChange,
-            style: { "padding": "0 8px" }
-          }, null, 8, ["start-date", "end-date", "date", "onChange"]),
-          $data.hasTime ? (vue.openBlock(), vue.createElementBlock("view", {
-            key: 1,
-            class: "popup-x-footer"
-          }, [
-            vue.createCommentVNode(' <text class="">\u6B64\u523B</text> '),
-            vue.createElementVNode("text", {
-              class: "confirm",
-              onClick: _cache[9] || (_cache[9] = (...args) => $options.confirmSingleChange && $options.confirmSingleChange(...args))
-            }, vue.toDisplayString($options.okText), 1)
-          ])) : vue.createCommentVNode("v-if", true),
-          vue.createElementVNode("view", { class: "uni-date-popper__arrow" })
-        ], 4)) : (vue.openBlock(), vue.createElementBlock("view", {
-          key: 1,
-          class: "uni-date-range--x",
-          style: vue.normalizeStyle($data.popover)
-        }, [
-          vue.createElementVNode("view", { class: "uni-popper__arrow" }),
-          $data.hasTime ? (vue.openBlock(), vue.createElementBlock("view", {
-            key: 0,
-            class: "popup-x-header uni-date-changed"
-          }, [
-            vue.createElementVNode("view", { class: "popup-x-header--datetime" }, [
-              vue.withDirectives(vue.createElementVNode("input", {
-                class: "uni-date__input uni-date-range__input",
-                type: "text",
-                "onUpdate:modelValue": _cache[10] || (_cache[10] = ($event) => $data.tempRange.startDate = $event),
-                placeholder: $options.startDateText
-              }, null, 8, ["placeholder"]), [
-                [vue.vModelText, $data.tempRange.startDate]
-              ]),
-              vue.createVNode(_component_time_picker, {
-                type: "time",
-                modelValue: $data.tempRange.startTime,
-                "onUpdate:modelValue": _cache[12] || (_cache[12] = ($event) => $data.tempRange.startTime = $event),
-                start: $options.reactStartTime,
-                border: false,
-                disabled: !$data.tempRange.startDate,
-                hideSecond: $props.hideSecond
-              }, {
-                default: vue.withCtx(() => [
-                  vue.withDirectives(vue.createElementVNode("input", {
-                    class: "uni-date__input uni-date-range__input",
-                    type: "text",
-                    "onUpdate:modelValue": _cache[11] || (_cache[11] = ($event) => $data.tempRange.startTime = $event),
-                    placeholder: $options.startTimeText,
-                    disabled: !$data.tempRange.startDate
-                  }, null, 8, ["placeholder", "disabled"]), [
-                    [vue.vModelText, $data.tempRange.startTime]
-                  ])
-                ]),
-                _: 1
-              }, 8, ["modelValue", "start", "disabled", "hideSecond"])
-            ]),
-            vue.createVNode(_component_uni_icons, {
-              type: "arrowthinright",
-              color: "#999",
-              style: { "line-height": "40px" }
-            }),
-            vue.createElementVNode("view", { class: "popup-x-header--datetime" }, [
-              vue.withDirectives(vue.createElementVNode("input", {
-                class: "uni-date__input uni-date-range__input",
-                type: "text",
-                "onUpdate:modelValue": _cache[13] || (_cache[13] = ($event) => $data.tempRange.endDate = $event),
-                placeholder: $options.endDateText
-              }, null, 8, ["placeholder"]), [
-                [vue.vModelText, $data.tempRange.endDate]
-              ]),
-              vue.createVNode(_component_time_picker, {
-                type: "time",
-                modelValue: $data.tempRange.endTime,
-                "onUpdate:modelValue": _cache[15] || (_cache[15] = ($event) => $data.tempRange.endTime = $event),
-                end: $options.reactEndTime,
-                border: false,
-                disabled: !$data.tempRange.endDate,
-                hideSecond: $props.hideSecond
-              }, {
-                default: vue.withCtx(() => [
-                  vue.withDirectives(vue.createElementVNode("input", {
-                    class: "uni-date__input uni-date-range__input",
-                    type: "text",
-                    "onUpdate:modelValue": _cache[14] || (_cache[14] = ($event) => $data.tempRange.endTime = $event),
-                    placeholder: $options.endTimeText,
-                    disabled: !$data.tempRange.endDate
-                  }, null, 8, ["placeholder", "disabled"]), [
-                    [vue.vModelText, $data.tempRange.endTime]
-                  ])
-                ]),
-                _: 1
-              }, 8, ["modelValue", "end", "disabled", "hideSecond"])
-            ])
-          ])) : vue.createCommentVNode("v-if", true),
-          vue.createElementVNode("view", { class: "popup-x-body" }, [
-            vue.createVNode(_component_calendar, {
-              ref: "left",
-              showMonth: false,
-              "start-date": $data.caleRange.startDate,
-              "end-date": $data.caleRange.endDate,
-              range: true,
-              onChange: $options.leftChange,
-              pleStatus: $data.endMultipleStatus,
-              onFirstEnterCale: $options.updateRightCale,
-              onMonthSwitch: $options.leftMonthSwitch,
-              style: { "padding": "0 8px" }
-            }, null, 8, ["start-date", "end-date", "onChange", "pleStatus", "onFirstEnterCale", "onMonthSwitch"]),
-            vue.createVNode(_component_calendar, {
-              ref: "right",
-              showMonth: false,
-              "start-date": $data.caleRange.startDate,
-              "end-date": $data.caleRange.endDate,
-              range: true,
-              onChange: $options.rightChange,
-              pleStatus: $data.startMultipleStatus,
-              onFirstEnterCale: $options.updateLeftCale,
-              onMonthSwitch: $options.rightMonthSwitch,
-              style: { "padding": "0 8px", "border-left": "1px solid #F1F1F1" }
-            }, null, 8, ["start-date", "end-date", "onChange", "pleStatus", "onFirstEnterCale", "onMonthSwitch"])
-          ]),
-          $data.hasTime ? (vue.openBlock(), vue.createElementBlock("view", {
-            key: 1,
-            class: "popup-x-footer"
-          }, [
-            vue.createElementVNode("text", {
-              class: "",
-              onClick: _cache[16] || (_cache[16] = (...args) => $options.clear && $options.clear(...args))
-            }, vue.toDisplayString($options.clearText), 1),
-            vue.createElementVNode("text", {
-              class: "confirm",
-              onClick: _cache[17] || (_cache[17] = (...args) => $options.confirmRangeChange && $options.confirmRangeChange(...args))
-            }, vue.toDisplayString($options.okText), 1)
-          ])) : vue.createCommentVNode("v-if", true)
-        ], 4))
-      ], 512)), [
-        [vue.vShow, $data.popup]
-      ]) : vue.createCommentVNode("v-if", true),
-      vue.withDirectives(vue.createVNode(_component_calendar, {
-        ref: "mobile",
-        clearDate: false,
-        date: $data.defSingleDate,
-        defTime: $options.reactMobDefTime,
-        "start-date": $data.caleRange.startDate,
-        "end-date": $data.caleRange.endDate,
-        selectableTimes: $options.mobSelectableTime,
-        pleStatus: $data.endMultipleStatus,
-        showMonth: false,
-        range: $data.isRange,
-        typeHasTime: $data.hasTime,
-        insert: false,
-        hideSecond: $props.hideSecond,
-        onConfirm: $options.mobileChange
-      }, null, 8, ["date", "defTime", "start-date", "end-date", "selectableTimes", "pleStatus", "range", "typeHasTime", "hideSecond", "onConfirm"]), [
-        [vue.vShow, $data.isPhone]
-      ])
-    ]);
-  }
-  var __easycom_0$1 = /* @__PURE__ */ _export_sfc(_sfc_main$y, [["render", _sfc_render$1], ["__scopeId", "data-v-6e13d7e2"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/uni_modules/uni-datetime-picker/components/uni-datetime-picker/uni-datetime-picker.vue"]]);
-  const _sfc_main$x = {
-    __name: "date",
-    setup(__props, { emit }) {
-      const store2 = useStore();
-      const users = store2.state.user;
-      const popup2 = vue.ref();
-      let dates = vue.ref();
-      let isPreExceed = vue.ref(false);
-      let isNextExceed = vue.ref(false);
-      const monthData = vue.reactive([]);
-      vue.ref(`height: 100rpx;`);
-      let defaultValue = vue.ref([0]);
-      let times = vue.ref(null);
-      vue.ref(null);
-      let isToday = vue.ref(true);
-      let isActive = vue.ref(null);
-      const isTmClick = vue.ref(false);
-      const isAtClick = vue.ref(false);
-      vue.watch(dates, (newValue, oldValue) => {
-        isToday.value = getNow(newValue) === getNow(new Date());
-        const obj = getMonthDay(newValue);
-        if (obj.timeNow === obj.timeStar) {
-          isPreExceed.value = true;
-        }
-        if (obj.timeNow === obj.timeEnd) {
-          isNextExceed.value = true;
-        }
-        monthData.value.map((val, index) => {
-          if (getTate(obj.timeNow) === val) {
-            defaultValue.value = [index];
-          }
-        });
-        if (users.timeData) {
-          emit("getDateTime", getTate(users.timeData));
-          dates.value = users.timeData;
-        } else {
-          emit("getDateTime", getTate(obj.timeNow));
-        }
-      });
-      vue.onMounted(() => {
-        dates.value = getTate(new Date());
-        monthData.value = getDay();
-      });
-      const hanleDay = (index) => {
-        if (isToday.value) {
-          if (index === 0) {
-            isAtClick.value = false;
-            isTmClick.value = !isTmClick.value;
-            store2.commit("user/setTimeData", tomorrowDay());
-            emit("getDateTime", getTate(tomorrowDay()));
-            if (!isTmClick.value) {
-              store2.commit("user/setTimeData", getTate(new Date()));
-              emit("getDateTime", getTate(getTate(new Date())));
-            }
-          } else {
-            isTmClick.value = false;
-            isAtClick.value = !isAtClick.value;
-            store2.commit("user/setTimeData", afterTomorrowDay());
-            emit("getDateTime", getTate(afterTomorrowDay()));
-            if (!isAtClick.value) {
-              store2.commit("user/setTimeData", getTate(new Date()));
-              emit("getDateTime", getTate(getTate(new Date())));
-            }
-          }
-        }
-      };
-      const handleDate = (type) => {
-        times.value = type;
-        handleComplete();
-      };
-      const handleComplete = () => {
-        isActive.value = null;
-        if (times.value === dates.value) {
-          isToday.value = true;
-        } else {
-          isToday.value = false;
-        }
-        if (times.value !== null) {
-          dates.value = times.value;
-          store2.commit("user/setTimeData", times.value);
-          handleCancel();
-        } else {
-          uni.showToast({
-            title: "\u8BF7\u9009\u62E9\u65E5\u671F",
-            icon: "none"
-          });
-        }
-      };
-      const handleCancel = () => {
-        popup2.value.close();
-      };
-      return (_ctx, _cache) => {
-        const _component_uni_datetime_picker = resolveEasycom(vue.resolveDynamicComponent("uni-datetime-picker"), __easycom_0$1);
-        return vue.openBlock(), vue.createElementBlock("view", { class: "dateBox uniPopup" }, [
-          vue.createElementVNode("view", { class: "item" }, [
-            vue.createCommentVNode(" \u7531\u4E8E\u9700\u6C42\u6539\u52A8\uFF0C\u8FD9\u5757\u65E5\u671F\u5C55\u793A\u6548\u679C\u5148\u4E0D\u7528 "),
-            vue.createCommentVNode(' <view class="date" @change="handleDate">\r\n				<icon class="dateIcon"></icon>\r\n				<text>{{ getNow(dates) }}</text>\r\n				<icon class="next"></icon>\r\n			</view> '),
-            vue.createVNode(_component_uni_datetime_picker, {
-              type: "date",
-              "clear-icon": false,
-              onChange: handleDate
-            }, {
-              default: vue.withCtx(() => [
-                vue.createElementVNode("view", { class: "date" }, [
-                  vue.createElementVNode("icon", { class: "dateIcon" }),
-                  vue.createElementVNode("text", null, vue.toDisplayString(vue.unref(dates)), 1),
-                  vue.createElementVNode("icon", { class: "next" })
-                ])
-              ]),
-              _: 1
-            })
-          ]),
-          vue.createElementVNode("view", {
-            class: vue.normalizeClass(["item", isTmClick.value ? "red" : ""]),
-            onClick: _cache[0] || (_cache[0] = ($event) => hanleDay(0))
-          }, [
-            vue.createElementVNode("text", {
-              class: vue.normalizeClass(!vue.unref(isToday) ? "gray" : "")
-            }, "\u660E\u5929", 2)
-          ], 2),
-          vue.createElementVNode("view", {
-            class: vue.normalizeClass(["item", isAtClick.value ? "red" : ""]),
-            onClick: _cache[1] || (_cache[1] = ($event) => hanleDay(1))
-          }, [
-            vue.createElementVNode("text", {
-              class: vue.normalizeClass(!vue.unref(isToday) ? "gray" : "")
-            }, "\u540E\u5929", 2)
-          ], 2),
-          vue.createCommentVNode(" \u7531\u4E8E\u9700\u6C42\u6539\u52A8\uFF0C\u8FD9\u5757\u65E5\u671F\u5C55\u793A\u6548\u679C\u5148\u4E0D\u7528 "),
-          vue.createCommentVNode(` <view class="datePopupBox">\r
-			<uni-popup ref="popup" type="bottom" background-color="#fff">\r
-				<view class="popup-content">\r
-					<view class="tit">\r
-						<view @click="handleCancel('bottom')">\u53D6\u6D88</view>\r
-						<view>\u9009\u62E9\u5F00\u59CB\u65E5\u671F</view>\r
-						<view @click="handleComplete">\u5B8C\u6210</view>\r
-					</view>\r
-					<view class="date-select">\r
-						<picker-view class="picker-view" :value="defaultValue" :indicator-style="indicatorStyle" @change="bindChange">\r
-							<picker-view-column>\r
-								<view class="item" v-for="(item, index) in monthData.value" :key="index">\r
-									<text @click="handleGetNow(index)">{{ getNow(item) }}</text>\r
-								</view>\r
-							</picker-view-column>\r
-						</picker-view>\r
-					</view>\r
-				</view>\r
-			</uni-popup>\r
-		</view> `)
-        ]);
-      };
-    }
-  };
-  var TateSelete = /* @__PURE__ */ _export_sfc(_sfc_main$x, [["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/pages/history/commponents/date.vue"]]);
-  const _sfc_main$w = {
-    __name: "pickup",
-    props: {
-      itemData: {
-        type: Array,
-        default: () => []
-      },
-      tabIndex: {
-        type: Number,
-        default: 0
-      }
-    },
-    emits: "",
-    setup(__props, { emit }) {
-      const store2 = useStore();
-      store2.state.user;
-      vue.onMounted(() => {
-      });
-      const handleOpen = (e2, id) => {
-        e2.stopPropagation();
-        emit("handleOpen", id);
-      };
-      const handleDetails = (e2, item) => {
-        e2.stopPropagation();
-        store2.commit("user/setTaskId", item.id);
-        store2.commit("user/setTaskType", 1);
-        store2.commit("user/setTaskStatus", 6);
-        store2.commit("user/setDetailType", 1);
-        if (item.status === 1) {
-          uni.redirectTo({
-            url: "/pages/details/index"
-          });
-        } else if (item.status === 2 && item.paymentStatus === 1 && item.paymentMethod === 1) {
-          store2.commit("user/setPayData", {});
-          uni.redirectTo({
-            url: "/pages/pay/scanPay"
-          });
-        } else {
-          uni.redirectTo({
-            url: "/pages/details/waybill"
-          });
-        }
-      };
-      return (_ctx, _cache) => {
-        return vue.openBlock(), vue.createElementBlock(vue.Fragment, null, [
-          vue.createCommentVNode(" \u5217\u8868\u5185\u5BB9 "),
-          (vue.openBlock(true), vue.createElementBlock(vue.Fragment, null, vue.renderList(__props.itemData, (item, index) => {
-            return vue.openBlock(), vue.createElementBlock("view", {
-              key: index,
-              class: "expressage"
-            }, [
-              vue.createElementVNode("view", { class: "boxBg" }, [
-                vue.createElementVNode("view", { class: "tabList" }, [
-                  vue.createElementVNode("view", {
-                    class: "item",
-                    onClick: vue.withModifiers(($event) => handleDetails($event, item), ["stop"])
-                  }, [
-                    item.status !== 1 ? (vue.openBlock(), vue.createElementBlock("view", {
-                      key: 0,
-                      class: "history"
-                    }, [
-                      vue.createElementVNode("view", { class: "titInfo" }, "\u8BA2\u5355\u53F7\uFF1ASD" + vue.toDisplayString(item.orderId), 1),
-                      vue.createElementVNode("view", { class: "address" }, "\u5BC4\u4EF6\u4EBA\uFF1A" + vue.toDisplayString(item.name), 1),
-                      vue.createElementVNode("view", { class: "address" }, "\u53D6\u4EF6\u5730\u5740\uFF1A" + vue.toDisplayString(item.address), 1),
-                      vue.createElementVNode("view", { class: "address" }, "\u53D6\u4EF6\u65F6\u95F4\uFF1A" + vue.toDisplayString(item.actualEndTime), 1),
-                      item.status === 2 ? (vue.openBlock(), vue.createElementBlock("view", {
-                        key: 0,
-                        class: "time"
-                      }, "\u8FD0\u8D39\uFF1A" + vue.toDisplayString(item.amount) + "\u5143", 1)) : vue.createCommentVNode("v-if", true)
-                    ])) : (vue.openBlock(), vue.createElementBlock("view", {
-                      key: 1,
-                      class: "history"
-                    }, [
-                      vue.createElementVNode("view", { class: "titInfo" }, [
-                        vue.createElementVNode("view", null, [
-                          vue.createElementVNode("text", { class: "name" }, vue.toDisplayString(item.name), 1),
-                          vue.createTextVNode(" " + vue.toDisplayString(item.phone), 1),
-                          vue.createCommentVNode(" TODO\u62E8\u6253\u7535\u8BDD\u548C\u53D1\u4FE1\u606F\u5C0F\u56FE\u6807\uFF0C\u6682\u65F6\u4FDD\u7559 "),
-                          vue.createCommentVNode(' <icon class="phone" @click.stop="handlePhone($event, item.phone)"></icon>\r\n								<icon class="note" @click.stop="handleNote"></icon> ')
-                        ])
-                      ]),
-                      vue.createElementVNode("view", { class: "address" }, vue.toDisplayString(item.address), 1),
-                      vue.createElementVNode("view", { class: "address" }, vue.toDisplayString(item.distance) + "\u516C\u91CC", 1),
-                      vue.createElementVNode("view", { class: "time" }, "\u9884\u7EA6\u53D6\u4EF6\u65F6\u95F4\uFF1A" + vue.toDisplayString(vue.unref(taskTimeFormat)(item.estimatedStartTime)) + " \u81F3 " + vue.toDisplayString(vue.unref(overTimeFormat)(item.estimatedEndTime)), 1)
-                    ])),
-                    item.status === 1 ? (vue.openBlock(), vue.createElementBlock("text", {
-                      key: 2,
-                      onClick: vue.withModifiers(($event) => handleDetails($event, item), ["stop"]),
-                      class: "delete"
-                    }, [
-                      vue.createElementVNode("button", { class: "uni-btn btn-default" }, "\u53BB\u53D6\u4EF6")
-                    ], 8, ["onClick"])) : item.status === 2 && item.paymentStatus === 1 && item.paymentMethod === 1 ? (vue.openBlock(), vue.createElementBlock("text", {
-                      key: 3,
-                      onClick: vue.withModifiers(($event) => handleDetails($event, item), ["stop"]),
-                      class: "delete"
-                    }, [
-                      vue.createElementVNode("button", { class: "uni-btn btn-default" }, "\u53BB\u6536\u6B3E")
-                    ], 8, ["onClick"])) : (vue.openBlock(), vue.createElementBlock("text", {
-                      key: 4,
-                      onClick: vue.withModifiers(($event) => handleOpen($event, item.id), ["stop"]),
-                      class: "delete"
-                    }, [
-                      vue.createElementVNode("button", { class: "uni-btn concelBtn" }, "\u5220\u9664")
-                    ], 8, ["onClick"]))
-                  ], 8, ["onClick"])
-                ])
-              ])
-            ]);
-          }), 128)),
-          vue.createCommentVNode(" end ")
-        ], 2112);
-      };
-    }
-  };
-  var Pickup = /* @__PURE__ */ _export_sfc(_sfc_main$w, [["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/pages/history/commponents/pickup.vue"]]);
-  const _sfc_main$v = {
-    __name: "delivery",
-    props: {
-      itemData: {
-        type: Array,
-        default: () => []
-      },
-      tabIndex: {
-        type: Number,
-        default: 0
-      }
-    },
-    emits: "",
-    setup(__props, { emit }) {
-      const store2 = useStore();
-      store2.state.user;
-      const handleOpen = (e2, id) => {
-        e2.stopPropagation();
-        emit("handleOpen", id);
-      };
-      const handleDetails = (e2, item) => {
-        e2.stopPropagation();
-        store2.commit("user/setTaskId", item.id);
-        store2.commit("user/setTaskType", 2);
-        store2.commit("user/setDetailType", 2);
-        if (item.status === 1) {
-          store2.commit("user/setTaskStatus", 6);
-          uni.redirectTo({
-            url: "/pages/details/waybill"
-          });
-        } else if (item.status === 2 && item.paymentStatus === 1 && item.paymentMethod === 2 && item.signStatus !== 2) {
-          store2.commit("user/setIsDelivery", true);
-          store2.commit("user/setTaskStatus", 6);
-          store2.commit("user/setPayData", {});
-          uni.redirectTo({
-            url: "/pages/pay/scanPay"
-          });
-        } else {
-          store2.commit("user/setTaskStatus", 6);
-          uni.redirectTo({
-            url: "/pages/details/waybill"
-          });
-        }
-      };
-      return (_ctx, _cache) => {
-        return vue.openBlock(), vue.createElementBlock(vue.Fragment, null, [
-          vue.createCommentVNode(" \u5217\u8868\u5185\u5BB9 "),
-          (vue.openBlock(true), vue.createElementBlock(vue.Fragment, null, vue.renderList(__props.itemData, (item, index) => {
-            return vue.openBlock(), vue.createElementBlock("view", {
-              key: index,
-              class: "expressage"
-            }, [
-              vue.createElementVNode("view", { class: "boxBg" }, [
-                vue.createElementVNode("view", { class: "tabList" }, [
-                  vue.createElementVNode("view", {
-                    class: "item",
-                    onClick: vue.withModifiers(($event) => handleDetails($event, item), ["stop"])
-                  }, [
-                    item.status !== 1 ? (vue.openBlock(), vue.createElementBlock("view", {
-                      key: 0,
-                      class: "history"
-                    }, [
-                      item.transportOrderId !== null ? (vue.openBlock(), vue.createElementBlock("view", {
-                        key: 0,
-                        class: "titInfo"
-                      }, "\u8FD0\u5355\u53F7\uFF1A" + vue.toDisplayString(item.transportOrderId), 1)) : vue.createCommentVNode("v-if", true),
-                      vue.createElementVNode("view", { class: "address" }, "\u6536\u4EF6\u4EBA\uFF1A" + vue.toDisplayString(item.name), 1),
-                      vue.createElementVNode("view", { class: "address" }, "\u6D3E\u4EF6\u5730\u5740\uFF1A" + vue.toDisplayString(item.address), 1),
-                      vue.createElementVNode("view", { class: "address" }, "\u7B7E\u6536\u65F6\u95F4\uFF1A" + vue.toDisplayString(item.actualEndTime), 1),
-                      item.status === 2 ? (vue.openBlock(), vue.createElementBlock("view", {
-                        key: 1,
-                        class: "time"
-                      }, "\u8FD0\u8D39\uFF1A" + vue.toDisplayString(item.amount) + "\u5143", 1)) : vue.createCommentVNode("v-if", true)
-                    ])) : (vue.openBlock(), vue.createElementBlock("view", {
-                      key: 1,
-                      class: "history"
-                    }, [
-                      vue.createElementVNode("view", { class: "titInfo" }, [
-                        vue.createElementVNode("view", null, [
-                          vue.createElementVNode("text", { class: "name" }, vue.toDisplayString(item.name), 1),
-                          vue.createTextVNode(" " + vue.toDisplayString(item.phone), 1),
-                          vue.createCommentVNode(" TODO\u62E8\u6253\u7535\u8BDD\u548C\u53D1\u4FE1\u606F\u5C0F\u56FE\u6807\uFF0C\u6682\u65F6\u4FDD\u7559 "),
-                          vue.createCommentVNode(' <icon class="phone" @click.stop="handlePhone($event, item.phone)"></icon>\r\n										<icon class="note" @click.stop="handleNote"></icon> ')
-                        ])
-                      ]),
-                      vue.createElementVNode("view", { class: "address" }, vue.toDisplayString(item.address), 1),
-                      vue.createElementVNode("view", { class: "address" }, vue.toDisplayString(item.distance) + "\u516C\u91CC", 1),
-                      item.transportOrderId !== null ? (vue.openBlock(), vue.createElementBlock("view", {
-                        key: 0,
-                        class: "time"
-                      }, "\u8FD0\u5355\u53F7\uFF1A" + vue.toDisplayString(item.transportOrderId), 1)) : vue.createCommentVNode("v-if", true)
-                    ])),
-                    item.status === 1 ? (vue.openBlock(), vue.createElementBlock("text", {
-                      key: 2,
-                      onClick: vue.withModifiers(($event) => handleDetails($event, item), ["stop"]),
-                      class: "delete"
-                    }, [
-                      vue.createElementVNode("button", { class: "uni-btn btn-default" }, "\u53BB\u6D3E\u4EF6")
-                    ], 8, ["onClick"])) : item.status === 2 && item.paymentStatus === 1 && item.paymentMethod === 2 && item.signStatus !== 2 ? (vue.openBlock(), vue.createElementBlock("text", {
-                      key: 3,
-                      onClick: vue.withModifiers(($event) => handleDetails($event, item), ["stop"]),
-                      class: "delete"
-                    }, [
-                      vue.createElementVNode("button", { class: "uni-btn btn-default" }, "\u53BB\u6536\u6B3E")
-                    ], 8, ["onClick"])) : (vue.openBlock(), vue.createElementBlock("text", {
-                      key: 4,
-                      onClick: vue.withModifiers(($event) => handleOpen($event, item.id), ["stop"]),
-                      class: "delete"
-                    }, [
-                      vue.createElementVNode("button", { class: "uni-btn concelBtn" }, "\u5220\u9664")
-                    ], 8, ["onClick"]))
-                  ], 8, ["onClick"])
-                ])
-              ])
-            ]);
-          }), 128)),
-          vue.createCommentVNode(" end ")
-        ], 2112);
-      };
-    }
-  };
-  var Delivery = /* @__PURE__ */ _export_sfc(_sfc_main$v, [["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/pages/history/commponents/delivery.vue"]]);
-  const _sfc_main$u = {
-    __name: "index",
-    props: {
-      dateTime: {
-        type: String,
-        default: ""
-      }
-    },
-    emits: "",
-    setup(__props, { expose, emit }) {
-      const props = __props;
-      const store2 = useStore();
-      const users = store2.state.user;
-      let popup2 = vue.ref();
-      const tipInfo = vue.ref("\u786E\u8BA4\u5220\u9664\u8BE5\u8BA2\u5355\u5417\uFF1F");
-      const tabBars = HistoryTabData;
-      let taskId = vue.ref("");
-      let tabIndex = vue.ref(0);
-      const loadMore = vue.ref();
-      let itemData2 = vue.ref([]);
-      let reload = vue.ref(false);
-      let pages2 = vue.ref(0);
-      let pageNum = users.isFiltrate ? 1 : vue.ref(1);
-      const emptyData = vue.ref("\u6682\u65E0\u6570\u636E");
-      let isPullDown = vue.ref(false);
-      let page = vue.reactive({
-        latitude: users.loacation.latitude !== void 0 ? users.loacation.latitude : 40.062595,
-        longitude: users.loacation.longitude !== void 0 ? users.loacation.longitude : 116.372809,
-        page: 1,
-        pageSize: 10,
-        taskType: 1
-      });
-      vue.watch(props, (newValue, oldValue) => {
-        store2.commit("user/setDeliveryData", []);
-        getList(newValue.dateTime);
-      });
-      vue.watch(tabIndex, (newValue, oldValue) => {
-        if (newValue === 0) {
-          page.taskType = 1;
-        } else {
-          page.taskType = 2;
-        }
-        store2.commit("user/setDeliveryData", []);
-        getList(page.dateTime);
-      });
-      vue.onMounted(() => {
-        if (users.tabIndex) {
-          tabIndex.value = users.tabIndex;
-        }
-      });
-      onReachBottom(() => {
-        if (pageNum.value >= Number(pages2.value)) {
-          loadMore.value.status = "noMore";
-          return false;
-        } else {
-          loadMore.value.status = "loading";
-          setTimeout(() => {
-            pageNum.value++;
-            getList(page.dateTime);
-          }, 1e3);
-        }
-      });
-      const getList = async (time) => {
-        reload.value = true;
-        page = __spreadProps(__spreadValues({}, page), {
-          dateTime: getTimeDate(time).veryDayDate,
-          page: pageNum.value
-        });
-        await getDeliveryList(page).then((res2) => {
-          if (res2.code === 200) {
-            if (res2.data) {
-              reload.value = false;
-              if (users.deliveryData.length === 0) {
-                itemData2.value = [];
-              }
-              if (users.istabChange) {
-                itemData2.value = res2.data.items;
-                store2.commit("user/setIstabChange", false);
-              } else {
-                itemData2.value = itemData2.value.concat(res2.data.items);
-              }
-              pages2.value = res2.data.pages;
-              store2.commit("user/setDeliveryData", itemData2.value);
-              if (Number(res2.data.pages) === pageNum.value) {
-                loadMore.value.status = "noMore";
-              }
-            } else {
-              itemData2.value = [];
-            }
-          }
-        });
-      };
-      const getTabIndex = (index) => {
-        store2.commit("user/setTabIndex", 0);
-        store2.commit("user/setIstabChange", true);
-        pageNum.value = 1;
-        pages2.value = 1;
-        tabIndex.value = index;
-        itemData2.value = [];
-        store2.commit("user/setDeliveryData", []);
-      };
-      const handleClick = async () => {
-        await taskDelete(taskId.value).then((res2) => {
-          if (res2.code === 200) {
-            store2.commit("user/setDeliveryData", []);
-            getList(page.dateTime);
-            isPullDown.value = true;
-            return uni.showToast({
-              title: "\u5220\u9664\u6210\u529F!",
-              duration: 1e3,
-              icon: "none"
-            });
-          }
-        });
-      };
-      const handleOpen = (id) => {
-        popup2.value.dialogOpen();
-        taskId.value = id;
-      };
-      expose({
-        getList
-      });
-      return (_ctx, _cache) => {
-        return vue.openBlock(), vue.createElementBlock(vue.Fragment, null, [
-          vue.createElementVNode("view", { class: "pageBox" }, [
-            vue.createCommentVNode(" tab\u5207\u6362 "),
-            vue.createVNode(UniTab, {
-              tabBars: vue.unref(tabBars),
-              ref: "tab",
-              onGetTabIndex: getTabIndex,
-              class: "historyTab"
-            }, null, 8, ["tabBars"]),
-            vue.createCommentVNode(" end "),
-            vue.createElementVNode("view", { class: "homeSwiper historyboxTop" }, [
-              vue.unref(itemData2).length > 0 ? (vue.openBlock(), vue.createElementBlock("view", { key: 0 }, [
-                vue.createElementVNode("scroll-view", { "scroll-y": "true" }, [
-                  vue.createCommentVNode(" \u53D6\u4EF6 "),
-                  vue.unref(tabIndex) === 0 ? (vue.openBlock(), vue.createElementBlock("view", { key: 0 }, [
-                    vue.createVNode(Pickup, {
-                      itemData: vue.unref(itemData2),
-                      onHandleOpen: handleOpen
-                    }, null, 8, ["itemData"])
-                  ])) : (vue.openBlock(), vue.createElementBlock(vue.Fragment, { key: 1 }, [
-                    vue.createCommentVNode(" end "),
-                    vue.createCommentVNode(" \u6D3E\u4EF6 "),
-                    vue.createElementVNode("view", null, [
-                      vue.createVNode(Delivery, {
-                        itemData: vue.unref(itemData2),
-                        onHandleOpen: handleOpen
-                      }, null, 8, ["itemData"])
-                    ])
-                  ], 2112)),
-                  vue.createCommentVNode(" end "),
-                  vue.createCommentVNode(" \u4E0A\u62C9 "),
-                  vue.createVNode(ReachBottom, {
-                    ref_key: "loadMore",
-                    ref: loadMore
-                  }, null, 512),
-                  vue.createCommentVNode(" end ")
-                ]),
-                vue.createCommentVNode(" \u7A7A\u9875\u9762 ")
-              ])) : (vue.openBlock(), vue.createElementBlock("view", { key: 1 }, [
-                vue.createVNode(EmptyPage, { emptyData: emptyData.value }, null, 8, ["emptyData"])
-              ])),
-              vue.createCommentVNode(" end ")
-            ]),
-            vue.createCommentVNode(" end ")
-          ]),
-          vue.createCommentVNode(" \u63D0\u793A\u7A97 "),
-          vue.createVNode(UniPopup, {
-            ref_key: "popup",
-            ref: popup2,
-            tipInfo: tipInfo.value,
-            onHandleClick: handleClick
-          }, null, 8, ["tipInfo"]),
-          vue.createCommentVNode(" end ")
-        ], 64);
-      };
-    }
-  };
-  var TabList = /* @__PURE__ */ _export_sfc(_sfc_main$u, [["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/pages/history/commponents/index.vue"]]);
-  const _sfc_main$t = {
-    __name: "index",
-    setup(__props) {
-      const store2 = useStore();
-      const users = store2.state.user;
-      let list = vue.ref();
-      vue.reactive([]);
-      const title = vue.ref("\u5168\u90E8\u53D6\u6D3E");
-      let dateTime = vue.ref("");
-      const searchVal = vue.ref("");
-      const getDateTime = (val) => {
-        dateTime.value = val;
-      };
-      const handleSearch = (e2) => {
-        uni.redirectTo({
-          url: "/pages/search/index"
-        });
-      };
-      const goBack = () => {
-        if (users.taskStatus === -1) {
-          uni.redirectTo({
-            url: "/pages/my/index"
-          });
-        } else {
-          uni.redirectTo({
-            url: "/pages/index/index"
-          });
-        }
-        store2.commit("user/setTabIndex", 0);
-        store2.commit("user/setTaskStatus", 0);
-        store2.commit("user/setTimeData", null);
-      };
-      return (_ctx, _cache) => {
-        const _component_uni_icons = resolveEasycom(vue.resolveDynamicComponent("uni-icons"), __easycom_0$a);
-        return vue.openBlock(), vue.createElementBlock(vue.Fragment, null, [
-          vue.createCommentVNode(" \u81EA\u5B9A\u4E49\u5934\u90E8 "),
-          vue.createVNode(UniNav, {
-            title: title.value,
-            onGoBack: goBack
-          }, null, 8, ["title"]),
-          vue.createCommentVNode(" end "),
-          vue.createCommentVNode(" \u641C\u7D22nav "),
-          vue.createElementVNode("view", { class: "history" }, [
-            vue.createElementVNode("view", { class: "navBox" }, [
-              vue.createElementVNode("view", { class: "search" }, [
-                vue.createElementVNode("view", { class: "uni-navbar" }, [
-                  vue.createElementVNode("view", { class: "input-view" }, [
-                    vue.createElementVNode("view", { class: "input-view" }, [
-                      vue.createVNode(_component_uni_icons, {
-                        class: "input-uni-icon",
-                        type: "search",
-                        size: "18",
-                        color: "#999"
-                      }),
-                      vue.withDirectives(vue.createElementVNode("input", {
-                        "confirm-type": "search",
-                        class: "nav-bar-input",
-                        type: "text",
-                        "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => searchVal.value = $event),
-                        placeholder: "\u8F93\u5165\u56DB\u4F4D\u6216\u5B8C\u6574\u8FD0\u5355\u53F7/\u624B\u673A\u53F7\u3001\u59D3\u540D",
-                        onConfirm: handleSearch,
-                        onClick: handleSearch
-                      }, null, 544), [
-                        [vue.vModelText, searchVal.value]
-                      ])
-                    ])
-                  ])
-                ])
-              ])
-            ])
-          ]),
-          vue.createCommentVNode(" end "),
-          vue.createElementVNode("view", null, [
-            vue.createCommentVNode(" \u65E5\u671F\u9009\u62E9 "),
-            vue.createVNode(TateSelete, { onGetDateTime: getDateTime }),
-            vue.createCommentVNode(" end "),
-            vue.createCommentVNode(" \u53D6\u4EF6\u6D3E\u4EF6\u5217\u8868 "),
-            vue.createVNode(TabList, {
-              dateTime: vue.unref(dateTime),
-              ref_key: "list",
-              ref: list
-            }, null, 8, ["dateTime"]),
-            vue.createCommentVNode(" end ")
-          ])
-        ], 64);
-      };
-    }
-  };
-  var PagesHistoryIndex = /* @__PURE__ */ _export_sfc(_sfc_main$t, [["__scopeId", "data-v-6c15e724"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/pages/history/index.vue"]]);
-  const getNewList = (type) => request({
-    url: `/messages/list?bussinessType=3&contentType=${type}`,
-    method: "get"
-  });
-  const getMessagesList = (params) => request({
-    url: `/messages/page`,
-    method: "get",
-    params
-  });
-  const getNotice = (params) => request({
-    url: "/messages/notice/new/get",
-    method: "get",
-    params
-  });
-  const msgRead = (id) => request({
-    url: `/messages/${id}`,
-    method: "put"
-  });
-  const msgAllRead = (params) => request({
-    url: `/messages/readAll/${params}`,
-    method: "put",
-    params
-  });
-  const _sfc_main$s = {
-    __name: "announcement",
-    props: {
-      tabIndex: {
-        type: Number,
-        default: 0
-      }
-    },
-    emits: "handleSearch",
-    setup(__props, { expose, emit }) {
-      vue.ref("");
-      vue.ref(false);
-      vue.onMounted(() => {
-      });
-      const getList = async () => {
-        await getNewList("300").then((res2) => {
-          if (res2.code === 200) {
-            itemData.value = res2.data;
-          }
-        }).catch((err) => {
-          return uni.showToast({
-            title: err.msg,
-            duration: 1e3,
-            icon: "none"
-          });
-        });
-      };
-      const handleClick = async (item) => {
-        uni.navigateTo({
-          url: "/pages/news/detail?obj=" + JSON.stringify(item)
-        });
-      };
-      expose({
-        getList
-      });
-      return (_ctx, _cache) => {
-        return __props.tabIndex === 0 ? (vue.openBlock(), vue.createElementBlock("view", { key: 0 }, [
-          vue.createCommentVNode(" \u5782\u76F4\u6EDA\u52A8\u533A\u57DF  scroll\u548Cswiper\u7684\u9AD8\u5EA6\u90FD\u8981\u7ED9\u4E14\u662F\u4E00\u6837\u7684\u9AD8\u5EA6"),
-          vue.createElementVNode("scroll-view", { "scroll-y": "true" }, [
-            vue.unref(newItemData).length > 0 ? (vue.openBlock(), vue.createElementBlock("view", { key: 0 }, [
-              vue.createElementVNode("view", { class: "boxCon" }, [
-                vue.createElementVNode("view", { class: "tabConList" }, [
-                  (vue.openBlock(true), vue.createElementBlock(vue.Fragment, null, vue.renderList(vue.unref(newItemData), (item, index) => {
-                    return vue.openBlock(), vue.createElementBlock("view", {
-                      class: "item",
-                      key: index
-                    }, [
-                      vue.createElementVNode("view", {
-                        onClick: ($event) => handleClick(item)
-                      }, [
-                        vue.createElementVNode("text", { class: "text active" }, vue.toDisplayString(item.title), 1),
-                        vue.createElementVNode("text", { class: "time" }, vue.toDisplayString(vue.unref(taskTimeFormat)(item.created)), 1)
-                      ], 8, ["onClick"])
-                    ]);
-                  }), 128))
-                ])
-              ]),
-              vue.createCommentVNode(" \u6682\u65F6\u5148\u4E0D\u505A\uFF0C\u540E\u671F\u505A "),
-              vue.createCommentVNode(' <ReachBottom v-if="loading" :loadingText="loadingText"></ReachBottom> ')
-            ])) : (vue.openBlock(), vue.createElementBlock(vue.Fragment, { key: 1 }, [
-              vue.createCommentVNode(" \u65E0\u6570\u636E\u663E\u793A "),
-              vue.createElementVNode("view", null, [
-                vue.createVNode(EmptyPage, { emptyData: _ctx.emptyData }, null, 8, ["emptyData"])
-              ])
-            ], 2112)),
-            vue.createCommentVNode(" end ")
-          ])
-        ])) : vue.createCommentVNode("v-if", true);
-      };
-    }
-  };
-  var Announcement = /* @__PURE__ */ _export_sfc(_sfc_main$s, [["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/pages/news/components/announcement.vue"]]);
-  const _sfc_main$r = {
-    __name: "notification",
-    props: {
-      tabIndex: {
-        type: Number,
-        default: 1
-      }
-    },
-    emits: "getTabIndex",
-    setup(__props, { expose, emit }) {
-      let objData = vue.ref({});
-      vue.onMounted(() => {
-        getOjb();
-      });
-      const getOjb = async () => {
-        await getNotice().then((res2) => {
-          if (res2.code === 200) {
-            objData.value = res2.data;
-          }
-        }).catch((err) => {
-          return uni.showToast({
-            title: err.msg,
-            duration: 1e3,
-            icon: "none"
-          });
-        });
-      };
-      expose({
-        getOjb
-      });
-      return (_ctx, _cache) => {
-        return __props.tabIndex === 1 ? (vue.openBlock(), vue.createElementBlock("view", { key: 0 }, [
-          vue.createElementVNode("scroll-view", { "scroll-y": "true" }, [
-            vue.createElementVNode("view", null, [
-              vue.createElementVNode("view", { class: "boxCon" }, [
-                vue.createElementVNode("view", { class: "newConBox" }, [
-                  vue.createElementVNode("view", { class: "item" }, [
-                    vue.createElementVNode("navigator", {
-                      url: "/pages/news/system?title=\u53D6\u4EF6\u76F8\u5173&type=" + 301,
-                      "open-type": "redirect"
-                    }, [
-                      vue.createElementVNode("view", {
-                        class: vue.normalizeClass(["icon send", vue.unref(objData).haveNewSendNotice ? "active" : ""])
-                      }, [
-                        vue.createElementVNode("icon")
-                      ], 2),
-                      vue.createElementVNode("view", { class: "text" }, [
-                        vue.createElementVNode("view", null, "\u53D6\u4EF6\u76F8\u5173"),
-                        vue.createElementVNode("view", null, vue.toDisplayString(vue.unref(objData).newSendNoticeTime ? "\u60A8\u6709\u4E00\u4E2A\u65B0\u7684\u53D6\u4EF6\u8BA2\u5355" : "\u6682\u65E0\u6D88\u606F"), 1)
-                      ]),
-                      vue.unref(objData).newSendNoticeTime ? (vue.openBlock(), vue.createElementBlock("text", {
-                        key: 0,
-                        class: "time"
-                      }, vue.toDisplayString(vue.unref(taskTimeFormat)(vue.unref(objData).newSendNoticeTime)), 1)) : vue.createCommentVNode("v-if", true)
-                    ])
-                  ]),
-                  vue.createElementVNode("view", { class: "item" }, [
-                    vue.createElementVNode("navigator", {
-                      url: "/pages/news/system?title=\u6D3E\u4EF6\u76F8\u5173&type=" + 304,
-                      "open-type": "redirect"
-                    }, [
-                      vue.createElementVNode("view", {
-                        class: vue.normalizeClass(["icon delivery", vue.unref(objData).haveNewDispatchNotice ? "active" : ""])
-                      }, [
-                        vue.createElementVNode("icon")
-                      ], 2),
-                      vue.createElementVNode("view", { class: "text" }, [
-                        vue.createElementVNode("view", null, "\u6D3E\u4EF6\u76F8\u5173"),
-                        vue.createElementVNode("view", null, vue.toDisplayString(vue.unref(objData).newDispatchNoticeTime ? "\u60A8\u6709\u4E00\u4E2A\u65B0\u7684\u6D3E\u4EF6\u8BA2\u5355" : "\u6682\u65E0\u6D88\u606F"), 1)
-                      ]),
-                      vue.unref(objData).newDispatchNoticeTime ? (vue.openBlock(), vue.createElementBlock("text", {
-                        key: 0,
-                        class: "time"
-                      }, vue.toDisplayString(vue.unref(taskTimeFormat)(vue.unref(objData).newDispatchNoticeTime)), 1)) : vue.createCommentVNode("v-if", true)
-                    ])
-                  ]),
-                  vue.createElementVNode("view", { class: "item" }, [
-                    vue.createElementVNode("navigator", {
-                      url: "/pages/news/system?title=\u7B7E\u6536\u63D0\u9192&type=" + 302,
-                      "open-type": "redirect"
-                    }, [
-                      vue.createElementVNode("view", {
-                        class: vue.normalizeClass(["icon income", vue.unref(objData).haveNewReceiveNotice ? "active" : ""])
-                      }, [
-                        vue.createElementVNode("icon")
-                      ], 2),
-                      vue.createElementVNode("view", { class: "text" }, [
-                        vue.createElementVNode("view", null, "\u7B7E\u6536\u63D0\u9192"),
-                        vue.createElementVNode("view", null, vue.toDisplayString(vue.unref(objData).newReceiveNoticeTime ? "\u60A8\u6709\u4E00\u4E2A\u6D3E\u4EF6\u5DF2\u7B7E\u6536" : "\u6682\u65E0\u6D88\u606F"), 1)
-                      ]),
-                      vue.unref(objData).newReceiveNoticeTime ? (vue.openBlock(), vue.createElementBlock("text", {
-                        key: 0,
-                        class: "time"
-                      }, vue.toDisplayString(vue.unref(taskTimeFormat)(vue.unref(objData).newReceiveNoticeTime)), 1)) : vue.createCommentVNode("v-if", true)
-                    ])
-                  ]),
-                  vue.createElementVNode("view", { class: "item" }, [
-                    vue.createElementVNode("navigator", {
-                      url: "/pages/news/system?title=\u5FEB\u4EF6\u53D6\u6D88&type=" + 303,
-                      "open-type": "redirect"
-                    }, [
-                      vue.createElementVNode("view", {
-                        class: vue.normalizeClass(["icon cancel", vue.unref(objData).haveNewCancelNotice ? "active" : ""])
-                      }, [
-                        vue.createElementVNode("icon")
-                      ], 2),
-                      vue.createElementVNode("view", { class: "text" }, [
-                        vue.createElementVNode("view", null, "\u5FEB\u4EF6\u53D6\u6D88"),
-                        vue.createElementVNode("view", null, vue.toDisplayString(vue.unref(objData).newCancelNoticeTime ? "\u60A8\u6709\u4E00\u4E2A\u5FEB\u4EF6\u5DF2\u53D6\u6D88" : "\u6682\u65E0\u6D88\u606F"), 1)
-                      ]),
-                      vue.unref(objData).newCancelNoticeTime ? (vue.openBlock(), vue.createElementBlock("text", {
-                        key: 0,
-                        class: "time"
-                      }, vue.toDisplayString(vue.unref(taskTimeFormat)(vue.unref(objData).newCancelNoticeTime)), 1)) : vue.createCommentVNode("v-if", true)
-                    ])
-                  ])
-                ])
-              ])
-            ])
-          ])
-        ])) : vue.createCommentVNode("v-if", true);
-      };
-    }
-  };
-  var Notification = /* @__PURE__ */ _export_sfc(_sfc_main$r, [["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/pages/news/components/notification.vue"]]);
-  const _sfc_main$q = {
-    __name: "index",
-    setup(__props) {
-      const store2 = useStore();
-      const users = store2.state.user;
-      const announcement = vue.ref();
-      const notificat = vue.ref();
-      const title = vue.ref("\u6D88\u606F");
-      const tabBars = vue.reactive(["\u516C\u544A", "\u7CFB\u7EDF\u901A\u77E5"]);
-      let scrollinto = vue.ref("tab0");
-      let tabIndex = users.tabIndex === 1 ? vue.ref(1) : vue.ref(0);
-      const changeTab = (index) => {
-        if (tabIndex.value == index) {
-          return;
-        }
-        if (index === 0)
-          ;
-        else {
-          notificat.value.getOjb();
-        }
-        tabIndex.value = index;
-        store2.commit("user/setTabIndex", index);
-        scrollinto.value = "tab" + index;
-      };
-      const getTabIndex = (val) => {
-        tabIndex.value = val;
-      };
-      const goBack = () => {
-        uni.redirectTo({
-          url: "/pages/index/index"
-        });
-        store2.commit("user/setNewType", null);
-      };
-      return (_ctx, _cache) => {
-        return vue.openBlock(), vue.createElementBlock(vue.Fragment, null, [
-          vue.createCommentVNode(" \u81EA\u5B9A\u4E49\u5934\u90E8 "),
-          vue.createElementVNode("view", { class: "navHead" }, [
-            vue.createVNode(UniNav, {
-              title: title.value,
-              onGoBack: goBack
-            }, null, 8, ["title"])
-          ]),
-          vue.createCommentVNode(" end "),
-          vue.createCommentVNode(" \u5217\u8868 "),
-          vue.createElementVNode("view", { class: "pageBox newBox" }, [
-            vue.createCommentVNode(" \u641C\u7D22\u5217\u8868 "),
-            vue.createElementVNode("scroll-view", {
-              "scroll-x": "true",
-              class: "tabScroll",
-              "scroll-into-view": vue.unref(scrollinto),
-              "scroll-with-animation": true
-            }, [
-              (vue.openBlock(true), vue.createElementBlock(vue.Fragment, null, vue.renderList(tabBars, (item, index) => {
-                return vue.openBlock(), vue.createElementBlock("view", {
-                  key: index,
-                  id: "tab" + index,
-                  class: "scroll-row-item",
-                  onClick: ($event) => changeTab(index)
-                }, [
-                  vue.createElementVNode("view", {
-                    class: vue.normalizeClass(vue.unref(tabIndex) == index ? "scroll-row-item-act" : "")
-                  }, [
-                    vue.createElementVNode("text", { class: "line" }),
-                    vue.createTextVNode(" " + vue.toDisplayString(item), 1)
-                  ], 2)
-                ], 8, ["id", "onClick"]);
-              }), 128))
-            ], 8, ["scroll-into-view"]),
-            vue.createElementVNode("view", { class: "homeSwiper" }, [
-              vue.createCommentVNode(" \u516C\u544A "),
-              vue.createVNode(Announcement, {
-                ref_key: "announcement",
-                ref: announcement,
-                tabIndex: vue.unref(tabIndex)
-              }, null, 8, ["tabIndex"]),
-              vue.createCommentVNode(" end "),
-              vue.createCommentVNode(" \u7CFB\u7EDF\u901A\u77E5 "),
-              vue.createVNode(Notification, {
-                ref_key: "notificat",
-                ref: notificat,
-                onGetTabIndex: getTabIndex,
-                tabIndex: vue.unref(tabIndex)
-              }, null, 8, ["tabIndex"]),
-              vue.createCommentVNode(" end ")
-            ]),
-            vue.createCommentVNode(" end ")
-          ]),
-          vue.createCommentVNode(" end ")
-        ], 64);
-      };
-    }
-  };
-  var PagesNewsIndex = /* @__PURE__ */ _export_sfc(_sfc_main$q, [["__scopeId", "data-v-452e6662"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/pages/news/index.vue"]]);
-  const _sfc_main$p = {
-    __name: "detail",
-    setup(__props) {
-      const title = vue.ref("\u8BE6\u60C5");
-      const pages2 = getCurrentPages();
-      const currentPage = pages2[pages2.length - 1];
-      let objData = vue.ref(JSON.parse(currentPage.$page.options.obj));
-      const goBack = () => {
-        uni.redirectTo({
-          url: "/pages/news/index"
-        });
-      };
-      return (_ctx, _cache) => {
-        return vue.openBlock(), vue.createElementBlock(vue.Fragment, null, [
-          vue.createCommentVNode(" \u81EA\u5B9A\u4E49\u5934\u90E8 "),
-          vue.createElementVNode("view", { class: "navHead" }, [
-            vue.createVNode(UniNav, {
-              title: title.value,
-              onGoBack: goBack
-            }, null, 8, ["title"])
-          ]),
-          vue.createCommentVNode(" end "),
-          vue.createCommentVNode(" \u5217\u8868 "),
-          vue.createElementVNode("view", { class: "pageBox newDetail" }, [
-            vue.createElementVNode("view", { class: "tit" }, vue.toDisplayString(vue.unref(objData).title), 1),
-            vue.createElementVNode("view", { class: "time" }, vue.toDisplayString(vue.unref(taskTimeFormat)(vue.unref(objData).created)), 1),
-            vue.unref(objData).firstContent ? (vue.openBlock(), vue.createElementBlock("view", {
-              key: 0,
-              class: "first"
-            }, vue.toDisplayString(vue.unref(objData).firstContent), 1)) : vue.createCommentVNode("v-if", true),
-            vue.createElementVNode("view", null, vue.toDisplayString(vue.unref(objData).content), 1)
-          ]),
-          vue.createCommentVNode(" end ")
-        ], 64);
-      };
-    }
-  };
-  var PagesNewsDetail = /* @__PURE__ */ _export_sfc(_sfc_main$p, [["__scopeId", "data-v-6803dca4"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/pages/news/detail.vue"]]);
-  const _sfc_main$o = {
-    __name: "system",
-    setup(__props) {
-      const store2 = useStore();
-      const users = store2.state.user;
-      const pages2 = getCurrentPages();
-      const currentPage = pages2[pages2.length - 1].$page.options;
-      const title = currentPage.title;
-      const type = currentPage.type;
-      const loadMore = vue.ref();
-      const emptyData = vue.ref("\u6682\u65E0\u6D88\u606F");
-      const rithtText = vue.ref("\u5168\u90E8\u5DF2\u8BFB");
-      vue.ref(1);
-      let totals = vue.ref(0);
-      let pageNum = vue.ref(1);
-      let page = vue.reactive({
-        contentType: type,
-        page: 1,
-        pageSize: 10
-      });
-      let reload = vue.ref(false);
-      let scrollH = vue.ref(null);
-      let isReadAll = vue.ref(false);
-      let itemData2 = vue.ref([]);
-      let ids = vue.ref([]);
-      onReachBottom(() => {
-        if (pageNum.value >= Number(totals.value)) {
-          loadMore.value.status = "noMore";
-          return false;
-        } else {
-          loadMore.value.status = "loading";
-          setTimeout(() => {
-            pageNum.value++;
-            getList();
-          }, 1e3);
-        }
-      });
-      vue.onMounted(() => {
-        getList();
-        uni.getSystemInfo({
-          success: (res2) => {
-            scrollH.value = res2.windowHeight - uni.upx2px();
-          }
-        });
-      });
-      const getList = async () => {
-        reload.value = true;
-        page = __spreadProps(__spreadValues({}, page), {
-          page: pageNum.value
-        });
-        await getMessagesList(page).then((res2) => {
-          if (res2.code === 200) {
-            if (res2.data) {
-              reload.value = false;
-              itemData2.value = itemData2.value.concat(res2.data.items);
-              itemData2.value.map((val) => {
-                if (val.isRead === 0) {
-                  ids.value.push(val.id);
-                }
-              });
-              totals.value = res2.data.pages;
-              if (Number(res2.data.pages) === pageNum.value) {
-                loadMore.value.status = "noMore";
-              }
-            } else {
-              itemData2.value = [];
-            }
-          }
-        });
-      };
-      const handleDetail = async (item) => {
-        store2.commit("user/setTaskId", item.relevantId);
-        store2.commit("user/setTabIndex", 0);
-        ids.value = [];
-        ids.value.push(item.id);
-        await msgRead(item.id).then((res2) => {
-        });
-        if (title === "\u53D6\u4EF6\u76F8\u5173") {
-          store2.commit("user/setNewType", 301);
-          if (item.status === 1) {
-            uni.navigateTo({
-              url: "/pages/details/index"
-            });
-          } else {
-            uni.navigateTo({
-              url: "/pages/details/waybill"
-            });
-            store2.commit("user/setIsNew", true);
-          }
-        } else if (title === "\u6D3E\u4EF6\u76F8\u5173") {
-          if (item.status === 2) {
-            store2.commit("user/setTaskStatus", 5);
-            store2.commit("user/setIsNew", true);
-          } else {
-            store2.commit("user/setTaskStatus", 4);
-          }
-          store2.commit("user/setNewType", 304);
-          uni.navigateTo({
-            url: "/pages/details/waybill"
-          });
-        } else if (title === "\u7B7E\u6536\u63D0\u9192") {
-          store2.commit("user/setTaskStatus", 5);
-          store2.commit("user/setNewType", 302);
-          uni.navigateTo({
-            url: "/pages/details/waybill"
-          });
-          store2.commit("user/setIsNew", true);
-        } else {
-          store2.commit("user/setTaskStatus", null);
-          store2.commit("user/setNewType", 303);
-          uni.navigateTo({
-            url: "/pages/details/waybill"
-          });
-        }
-      };
-      const handleAll = async () => {
-        let contentType = null;
-        if (title === "\u53D6\u4EF6\u76F8\u5173") {
-          contentType = 301;
-        } else if (title === "\u6D3E\u4EF6\u76F8\u5173") {
-          contentType = 304;
-        } else if (title === "\u7B7E\u6536\u63D0\u9192") {
-          contentType = 302;
-        } else {
-          contentType = 303;
-        }
-        await msgAllRead(contentType).then((res2) => {
-          itemData2.value = [];
-          pageNum.value = 1;
-          getList();
-        }).catch((err) => {
-          isReadAll.value = true;
-          return uni.showToast({
-            title: err.msg,
-            duration: 1e3,
-            icon: "none"
-          });
-        });
-      };
-      const goBack = () => {
-        store2.commit("user/setTabIndex", 1);
-        if (users.taskStatus === -1) {
-          uni.redirectTo({
-            url: "/pages/index/index"
-          });
-        } else {
-          uni.redirectTo({
-            url: "/pages/news/index"
-          });
-        }
-        store2.commit("user/setTaskStatus", 0);
-      };
-      return (_ctx, _cache) => {
-        return vue.openBlock(), vue.createElementBlock(vue.Fragment, null, [
-          vue.createCommentVNode(" \u81EA\u5B9A\u4E49\u5934\u90E8 "),
-          vue.createElementVNode("view", { class: "navHead" }, [
-            vue.createVNode(UniNav, {
-              title: vue.unref(title),
-              onGoBack: goBack,
-              onHandleAll: handleAll,
-              rithtText: rithtText.value
-            }, null, 8, ["title", "rithtText"])
-          ]),
-          vue.createCommentVNode(" end "),
-          vue.createCommentVNode(" \u5217\u8868 "),
-          vue.createElementVNode("view", { class: "pageBox newBox" }, [
-            vue.unref(itemData2).length > 0 ? (vue.openBlock(), vue.createElementBlock("scroll-view", {
-              key: 0,
-              "scroll-y": "true",
-              style: vue.normalizeStyle({ height: vue.unref(scrollH) + "px" })
-            }, [
-              vue.createElementVNode("view", { class: "systemList" }, [
-                (vue.openBlock(true), vue.createElementBlock(vue.Fragment, null, vue.renderList(vue.unref(itemData2), (item, index) => {
-                  return vue.openBlock(), vue.createElementBlock("view", {
-                    class: "boxBg item",
-                    key: index
-                  }, [
-                    vue.createElementVNode("view", {
-                      class: vue.normalizeClass(["tit", item.isRead === 0 ? "active" : ""])
-                    }, [
-                      vue.createElementVNode("icon"),
-                      vue.unref(title) === "\u53D6\u4EF6\u76F8\u5173" ? (vue.openBlock(), vue.createElementBlock("text", { key: 0 }, "\u60A8\u6709\u4E00\u4E2A\u65B0\u7684\u53D6\u4EF6\u8BA2\u5355")) : vue.unref(title) === "\u6D3E\u4EF6\u76F8\u5173" ? (vue.openBlock(), vue.createElementBlock("text", { key: 1 }, "\u60A8\u6709\u4E00\u4E2A\u65B0\u7684\u6D3E\u4EF6\u8BA2\u5355")) : vue.unref(title) === "\u7B7E\u6536\u63D0\u9192" ? (vue.openBlock(), vue.createElementBlock("text", { key: 2 }, "\u60A8\u6709\u4E00\u4E2A\u6D3E\u4EF6\u5DF2\u7B7E\u6536")) : (vue.openBlock(), vue.createElementBlock("text", { key: 3 }, "\u60A8\u6709\u4E00\u4E2A\u5FEB\u4EF6\u5DF2\u53D6\u6D88"))
-                    ], 2),
-                    vue.createElementVNode("view", { class: "address" }, vue.toDisplayString(item.content), 1),
-                    vue.createElementVNode("view", { class: "time" }, [
-                      vue.createElementVNode("text", null, vue.toDisplayString(vue.unref(taskTimeFormat)(item.created)), 1),
-                      vue.createElementVNode("button", {
-                        class: "uni-btn redBtn",
-                        onClick: ($event) => handleDetail(item)
-                      }, " \u67E5\u770B\u8BE6\u60C5 ", 8, ["onClick"])
-                    ])
-                  ]);
-                }), 128))
-              ]),
-              vue.createVNode(ReachBottom, {
-                ref_key: "loadMore",
-                ref: loadMore
-              }, null, 512)
-            ], 4)) : (vue.openBlock(), vue.createElementBlock("view", { key: 1 }, [
-              vue.createVNode(EmptyPage, { emptyData: emptyData.value }, null, 8, ["emptyData"])
-            ]))
-          ]),
-          vue.createCommentVNode(" end ")
-        ], 64);
-      };
-    }
-  };
-  var PagesNewsSystem = /* @__PURE__ */ _export_sfc(_sfc_main$o, [["__scopeId", "data-v-67cbd0fc"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/pages/news/system.vue"]]);
-  const calculateFreight = (params) => request({
-    url: "/tasks/calculate",
-    method: "post",
-    params
-  });
-  const getProvinces = (params) => request({
-    url: "/areas/children",
-    method: "get",
-    params
-  });
-  const _sfc_main$n = {
-    __name: "index",
-    props: {
-      type: {
-        type: Number,
-        default: null
-      }
-    },
-    emits: "getCity",
-    setup(__props, { expose, emit }) {
-      const popup2 = vue.ref();
-      const indicatorStyle = vue.ref(`height: 100rpx;`);
-      let defaultValue = vue.ref([0, 0, 0]);
-      const provinceData = vue.reactive([]);
-      const cityData = vue.reactive([]);
-      const areaData = vue.reactive([]);
-      let cityBase = vue.ref({});
-      vue.onMounted(() => {
-        getProvincesData();
-      });
-      const getProvincesData = async (e2) => {
-        let res2 = await getProvinces();
-        if (res2.code === 200) {
-          provinceData.value = res2.data;
-          let provincesId = null;
-          if (!e2) {
-            provincesId = provinceData.value[0].id;
-          } else {
-            defaultValue.value = e2.detail.value;
-            provincesId = provinceData.value[e2.detail.value[0]].id;
-          }
-          getCity(provincesId);
-        } else {
-          return uni.showToast({
-            title: res2.msg,
-            duration: 1e3,
-            icon: "none"
-          });
-        }
-      };
-      const getCity = async (id) => {
-        let res2 = await getProvinces({ parentId: id });
-        if (res2.code === 200) {
-          cityData.value = res2.data;
-          const cityId = cityData.value[defaultValue.value[1]].id;
-          getArea(cityId);
-        } else {
-          return uni.showToast({
-            title: res2.msg,
-            duration: 1e3,
-            icon: "none"
-          });
-        }
-      };
-      const getArea = async (id) => {
-        let res2 = await getProvinces({ parentId: id });
-        if (res2.code === 200) {
-          areaData.value = res2.data;
-          cityBase.value = {
-            province: provinceData.value[defaultValue.value[0]].name,
-            city: cityData.value[defaultValue.value[1]].name,
-            area: areaData.value[defaultValue.value[2]].name,
-            areaId: areaData.value[defaultValue.value[2]].id
-          };
-        } else {
-          return uni.showToast({
-            title: res2.msg,
-            duration: 1e3,
-            icon: "none"
-          });
-        }
-      };
-      const handleOpen = () => {
-        popup2.value.open("bottom");
-      };
-      const handleCancel = () => {
-        popup2.value.close("bottom");
-      };
-      const handleComplete = () => {
-        handleCancel();
-        emit("getCity", cityBase.value);
-      };
-      expose({
-        handleOpen
-      });
-      return (_ctx, _cache) => {
-        const _component_uni_popup = resolveEasycom(vue.resolveDynamicComponent("uni-popup"), __easycom_0$7);
-        return vue.openBlock(), vue.createElementBlock("view", { class: "uniPopup" }, [
-          vue.createVNode(_component_uni_popup, {
-            ref_key: "popup",
-            ref: popup2,
-            type: "bottom",
-            "background-color": "#fff"
-          }, {
-            default: vue.withCtx(() => [
-              vue.createElementVNode("view", { class: "popup-content" }, [
-                vue.createElementVNode("view", { class: "tit" }, [
-                  vue.createElementVNode("view", {
-                    onClick: _cache[0] || (_cache[0] = ($event) => handleCancel())
-                  }, "\u53D6\u6D88"),
-                  vue.createElementVNode("view", null, "\u9009\u62E9\u57CE\u5E02"),
-                  vue.createElementVNode("view", { onClick: handleComplete }, "\u5B8C\u6210")
-                ]),
-                vue.createElementVNode("view", { class: "date-select address" }, [
-                  vue.createElementVNode("view", null, [
-                    vue.createElementVNode("picker-view", {
-                      class: "picker-view",
-                      value: vue.unref(defaultValue),
-                      "indicator-style": indicatorStyle.value,
-                      onChange: getProvincesData
-                    }, [
-                      vue.createCommentVNode(" \u7701 "),
-                      vue.createElementVNode("picker-view-column", null, [
-                        (vue.openBlock(true), vue.createElementBlock(vue.Fragment, null, vue.renderList(provinceData.value, (item, index) => {
-                          return vue.openBlock(), vue.createElementBlock("view", {
-                            class: "item",
-                            key: index
-                          }, [
-                            vue.createElementVNode("text", null, vue.toDisplayString(item.name), 1)
-                          ]);
-                        }), 128))
-                      ]),
-                      vue.createCommentVNode(" end "),
-                      vue.createCommentVNode(" \u5E02 "),
-                      vue.createElementVNode("picker-view-column", null, [
-                        (vue.openBlock(true), vue.createElementBlock(vue.Fragment, null, vue.renderList(cityData.value, (item, index) => {
-                          return vue.openBlock(), vue.createElementBlock("view", {
-                            class: "item",
-                            key: index
-                          }, [
-                            vue.createElementVNode("text", null, vue.toDisplayString(item.name), 1)
-                          ]);
-                        }), 128))
-                      ]),
-                      vue.createCommentVNode(" end "),
-                      vue.createCommentVNode(" \u533A "),
-                      vue.createElementVNode("picker-view-column", null, [
-                        (vue.openBlock(true), vue.createElementBlock(vue.Fragment, null, vue.renderList(areaData.value, (item, index) => {
-                          return vue.openBlock(), vue.createElementBlock("view", {
-                            class: "item",
-                            key: index
-                          }, [
-                            vue.createElementVNode("text", null, vue.toDisplayString(item.name), 1)
-                          ]);
-                        }), 128))
-                      ]),
-                      vue.createCommentVNode(" end ")
-                    ], 40, ["value", "indicator-style"])
-                  ])
-                ])
-              ])
-            ]),
-            _: 1
-          }, 512)
-        ]);
-      };
-    }
-  };
-  var CityPopup = /* @__PURE__ */ _export_sfc(_sfc_main$n, [["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/components/uni-address/index.vue"]]);
-  const _sfc_main$m = {
-    __name: "address",
-    setup(__props, { expose, emit }) {
-      const city = vue.ref();
-      let type = vue.ref(null);
-      let mailCity = vue.ref({});
-      let consigneeCity = vue.ref({});
-      const handleDate = (val) => {
-        type.value = val;
-        city.value.handleOpen();
-      };
-      const getCity = (obj) => {
-        if (type.value === 1) {
-          mailCity.value = obj;
-        } else {
-          consigneeCity.value = obj;
-        }
-        if (mailCity.value.areaId && consigneeCity.value.areaId) {
-          emit("handleCity", true);
-        }
-      };
-      expose({
-        mailCity,
-        consigneeCity
-      });
-      return (_ctx, _cache) => {
-        return vue.openBlock(), vue.createElementBlock("view", { class: "boxBg" }, [
-          vue.createElementVNode("view", { class: "addressCon" }, [
-            vue.createElementVNode("view", {
-              class: "item",
-              onClick: _cache[0] || (_cache[0] = ($event) => handleDate(1))
-            }, [
-              vue.createElementVNode("view", { class: "sendIcon" }, "\u5BC4"),
-              vue.createElementVNode("view", { class: "address" }, [
-                vue.createElementVNode("view", {
-                  class: vue.normalizeClass(vue.unref(mailCity).province ? "active" : "")
-                }, [
-                  !vue.unref(mailCity).province ? (vue.openBlock(), vue.createElementBlock("view", { key: 0 }, "\u8BF7\u9009\u62E9\u5BC4\u4EF6\u57CE\u5E02")) : (vue.openBlock(), vue.createElementBlock("view", { key: 1 }, [
-                    vue.createElementVNode("text", null, vue.toDisplayString(vue.unref(mailCity).province), 1),
-                    vue.createElementVNode("text", null, vue.toDisplayString(vue.unref(mailCity).city), 1),
-                    vue.createElementVNode("text", null, vue.toDisplayString(vue.unref(mailCity).area), 1)
-                  ]))
-                ], 2),
-                vue.createElementVNode("icon", { class: "nextIcon" })
-              ]),
-              vue.createElementVNode("view", { class: "line" })
-            ]),
-            vue.createElementVNode("view", {
-              class: "item",
-              onClick: _cache[1] || (_cache[1] = ($event) => handleDate(2))
-            }, [
-              vue.createElementVNode("view", { class: "receiveIcon" }, "\u6536"),
-              vue.createElementVNode("view", { class: "address" }, [
-                vue.createElementVNode("view", {
-                  class: vue.normalizeClass(vue.unref(consigneeCity).province ? "active" : "")
-                }, [
-                  !vue.unref(consigneeCity).province ? (vue.openBlock(), vue.createElementBlock("view", { key: 0 }, "\u8BF7\u9009\u62E9\u6536\u4EF6\u57CE\u5E02")) : (vue.openBlock(), vue.createElementBlock("view", { key: 1 }, [
-                    vue.createElementVNode("text", null, vue.toDisplayString(vue.unref(consigneeCity).province), 1),
-                    vue.createElementVNode("text", null, vue.toDisplayString(vue.unref(consigneeCity).city), 1),
-                    vue.createElementVNode("text", null, vue.toDisplayString(vue.unref(consigneeCity).area), 1)
-                  ]))
-                ], 2),
-                vue.createElementVNode("icon", { class: "nextIcon" })
-              ])
-            ])
-          ]),
-          vue.createVNode(CityPopup, {
-            ref_key: "city",
-            ref: city,
-            type: vue.unref(type),
-            onGetCity: getCity
-          }, null, 8, ["type"])
-        ]);
-      };
-    }
-  };
-  var UniAddress = /* @__PURE__ */ _export_sfc(_sfc_main$m, [["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/pages/freight/components/address.vue"]]);
-  const _sfc_main$l = {
-    __name: "index",
-    props: {
-      detailsData: {
-        type: Object,
-        default: () => ({})
-      }
-    },
-    setup(__props, { expose, emit }) {
-      const props = __props;
-      let weight = vue.ref(1);
-      let volume = vue.ref(0);
-      let measureLong = vue.ref(null);
-      let measureWidth = vue.ref(null);
-      let measureHigh = vue.ref(null);
-      let isLessThan = vue.ref(true);
-      let isExceed = vue.ref(false);
-      let isLessThanVolume = vue.ref(true);
-      let isExceedVolume = vue.ref(false);
-      let freightData = vue.ref(null);
-      expose({
-        weight,
-        volume,
-        measureLong,
-        measureWidth,
-        measureHigh,
-        freightData
-      });
-      vue.watch(weight, (newValue, oldValue) => {
-        const val = Number(newValue);
-        vue.nextTick(() => {
-          if (val < 0.1 && (val > 0 && val < 1)) {
-            weight.value = 1;
-          }
-          if (val > 0.1) {
-            weight.value = parseInt(val * 10) / 10;
-          }
-          if (val <= 1) {
-            isLessThan.value = true;
-          } else {
-            isLessThan.value = false;
-            if (val >= 9999) {
-              weight.value = 9999;
-              isExceed.value = true;
-            } else {
-              isExceed.value = false;
-            }
-          }
-        });
-      });
-      vue.watch(measureLong, (newValue, oldValue) => {
-        const val = Number(newValue);
-        vue.nextTick(() => {
-          measureLong.value = Math.floor(val);
-          if (newValue <= 0) {
-            measureLong.value = null;
-          }
-        });
-      });
-      vue.watch(measureWidth, (newValue, oldValue) => {
-        const val = Number(newValue);
-        vue.nextTick(() => {
-          measureWidth.value = Math.floor(val);
-          if (newValue <= 0) {
-            measureWidth.value = null;
-          }
-        });
-      });
-      vue.watch(measureHigh, (newValue, oldValue) => {
-        const val = Number(newValue);
-        vue.nextTick(() => {
-          measureHigh.value = Math.floor(val);
-          if (newValue <= 0) {
-            measureHigh.value = null;
-          }
-        });
-      });
-      const getfreight = async () => {
-        const details = props.detailsData;
-        let data = {
-          senderCountyId: details.senderCountyId,
-          receiverCountyId: details.receiverCountyId,
-          volume: volume.value === 0 ? 1 : volume.value * 1e6,
-          weight: weight.value
-        };
-        await calculateFreight(data).then((res2) => {
-          emit("getFreight", res2.data.freight);
-        });
-      };
-      const handleSymbol = (e2) => {
-        const value = e2.detail.value;
-        if (value < 0.1) {
-          weight.value = 1;
-          isLessThan.value = true;
-        } else {
-          if (value > 0.1 && value <= 1) {
-            isLessThan.value = true;
-          } else {
-            isLessThan.value = false;
-          }
-          isDetails();
-          if (value >= 9999) {
-            isExceed.value = true;
-            weight.value = 9999;
-          } else {
-            isExceed.value = false;
-            isDetails();
-          }
-        }
-      };
-      const isDetails = () => {
-        if (props.detailsData.id !== void 0) {
-          getfreight();
-        }
-      };
-      const handleMinus = () => {
-        if (weight.value > 1) {
-          weight.value--;
-          isExceed.value = false;
-          weight.value = weight.value.toFixed(1);
-        }
-        if (weight.value <= 0) {
-          weight.value = 1;
-          isLessThan.value = true;
-        }
-        isDetails();
-      };
-      const handleAdd = () => {
-        if (weight.value < 9999) {
-          ++weight.value;
-          isLessThan.value = false;
-        }
-        if (weight.value === 9999) {
-          isExceed.value = true;
-        }
-        isDetails();
-      };
-      const handleVolume = (e2) => {
-        const value = Number(e2.detail.value);
-        if (value < 1e-4) {
-          volume.value = 0;
-        } else {
-          if (value > 99) {
-            volume.value = 99;
-            return uni.showToast({
-              title: "\u4F53\u79EF\u6700\u5927\u53EF\u4E0D\u80FD\u8D85\u8FC799m\xB3",
-              duration: 1e3,
-              icon: "none"
-            });
-          } else {
-            volume.value = Number(e2.detail.value);
-          }
-        }
-        isDetails();
-      };
-      const handleVolumeMinus = () => {
-        if (volume.value > 1) {
-          volume.value--;
-          volume.value = parseInt(volume.value * 1e4) / 1e4;
-        }
-        if (volume.value <= 0 || volume.value === 1) {
-          volume.value = 0;
-        }
-        isDetails();
-      };
-      const handleVolumeAdd = () => {
-        if (volume.value < 99) {
-          ++volume.value;
-          isLessThanVolume.value = false;
-        }
-        if (volume.value === 99) {
-          isExceedVolume.value = true;
-        }
-        isDetails();
-      };
-      const handleCalculate = () => {
-        const long = measureLong.value;
-        const wide = measureWidth.value;
-        const height = measureHigh.value;
-        if (long >= 1 && wide >= 1 && height >= 1) {
-          vue.nextTick(() => {
-            let val = long / 100 * (wide / 100) * (height / 100);
-            if (val < 1e-4) {
-              volume.value = 0;
-            } else if (val > 99) {
-              isExceedVolume.value = true;
-              volume.value = 99;
-              return uni.showToast({
-                title: "\u4F53\u79EF\u6700\u5927\u53EF\u4E0D\u80FD\u8D85\u8FC799m\xB3",
-                duration: 1e3,
-                icon: "none"
-              });
-            } else {
-              volume.value = parseInt(val * 1e4) / 1e4;
-              if (val > 1) {
-                isLessThanVolume.value = false;
-              } else {
-                isLessThanVolume.value = true;
-              }
-              isExceedVolume.value = false;
-            }
-            isDetails();
-          });
-        }
-      };
-      return (_ctx, _cache) => {
-        return vue.openBlock(), vue.createElementBlock("view", { class: "goodsCon" }, [
-          vue.createElementVNode("view", { class: "item" }, [
-            vue.createElementVNode("text", null, "\u9884\u4F30\u91CD\u91CF"),
-            vue.createElementVNode("view", { class: "bg goodInfo" }, [
-              vue.createElementVNode("view", {
-                class: vue.normalizeClass(["symbol", vue.unref(isLessThan) ? "active" : ""]),
-                onClick: handleMinus
-              }, "-", 2),
-              vue.createElementVNode("view", { class: "num" }, [
-                vue.withDirectives(vue.createElementVNode("input", {
-                  class: "uni-input",
-                  type: "number",
-                  maxlength: "6",
-                  "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => vue.isRef(weight) ? weight.value = $event : weight = $event),
-                  onBlur: handleSymbol
-                }, null, 544), [
-                  [vue.vModelText, vue.unref(weight)]
-                ]),
-                vue.createElementVNode("text", null, "kg")
-              ]),
-              vue.createElementVNode("view", {
-                class: vue.normalizeClass(["symbol", vue.unref(isExceed) ? "active" : ""]),
-                onClick: handleAdd
-              }, "+", 2)
-            ])
-          ]),
-          vue.createElementVNode("view", { class: "item" }, [
-            vue.createElementVNode("text", null, "\u603B\u4F53\u79EF"),
-            vue.createElementVNode("view", { class: "bg goodInfo" }, [
-              vue.createCommentVNode(` \u6682\u65F6\u53BB\u9664 :class="isLessThanVolume ? 'active' : ''" `),
-              vue.createElementVNode("view", {
-                class: "symbol",
-                onClick: handleVolumeMinus
-              }, "-"),
-              vue.createElementVNode("view", { class: "num" }, [
-                vue.withDirectives(vue.createElementVNode("input", {
-                  class: "uni-input",
-                  type: "number",
-                  maxlength: "6",
-                  "onUpdate:modelValue": _cache[1] || (_cache[1] = ($event) => vue.isRef(volume) ? volume.value = $event : volume = $event),
-                  onBlur: handleVolume
-                }, null, 544), [
-                  [vue.vModelText, vue.unref(volume)]
-                ]),
-                vue.createElementVNode("text", null, "m\xB3")
-              ]),
-              vue.createCommentVNode(` \u6682\u65F6\u53BB\u9664 :class="isExceedVolume ? 'active' : ''" `),
-              vue.createElementVNode("view", {
-                class: "symbol",
-                onClick: handleVolumeAdd
-              }, "+")
-            ])
-          ]),
-          vue.createElementVNode("view", { class: "item calculate" }, [
-            vue.createElementVNode("view", { class: "bg" }, [
-              vue.withDirectives(vue.createElementVNode("input", {
-                class: "uni-input",
-                type: "number",
-                maxlength: "3",
-                "onUpdate:modelValue": _cache[2] || (_cache[2] = ($event) => vue.isRef(measureLong) ? measureLong.value = $event : measureLong = $event),
-                placeholder: "\u957F",
-                onInput: handleCalculate
-              }, null, 544), [
-                [vue.vModelText, vue.unref(measureLong)]
-              ]),
-              vue.createElementVNode("text", {
-                class: vue.normalizeClass(vue.unref(measureLong) ? "active" : "")
-              }, "cm", 2)
-            ]),
-            vue.createElementVNode("text", null, "*"),
-            vue.createElementVNode("view", { class: "bg" }, [
-              vue.withDirectives(vue.createElementVNode("input", {
-                class: "uni-input",
-                type: "number",
-                maxlength: "3",
-                "onUpdate:modelValue": _cache[3] || (_cache[3] = ($event) => vue.isRef(measureWidth) ? measureWidth.value = $event : measureWidth = $event),
-                placeholder: "\u5BBD",
-                onInput: handleCalculate
-              }, null, 544), [
-                [vue.vModelText, vue.unref(measureWidth)]
-              ]),
-              vue.createElementVNode("text", {
-                class: vue.normalizeClass(vue.unref(measureWidth) ? "active" : "")
-              }, "cm", 2)
-            ]),
-            vue.createElementVNode("text", null, "*"),
-            vue.createElementVNode("view", { class: "bg" }, [
-              vue.withDirectives(vue.createElementVNode("input", {
-                class: "uni-input",
-                type: "number",
-                maxlength: "3",
-                "onUpdate:modelValue": _cache[4] || (_cache[4] = ($event) => vue.isRef(measureHigh) ? measureHigh.value = $event : measureHigh = $event),
-                placeholder: "\u9AD8",
-                onInput: handleCalculate
-              }, null, 544), [
-                [vue.vModelText, vue.unref(measureHigh)]
-              ]),
-              vue.createElementVNode("text", {
-                class: vue.normalizeClass(vue.unref(measureHigh) ? "active" : "")
-              }, "cm", 2)
-            ])
-          ])
-        ]);
-      };
-    }
-  };
-  var GoodsInfo = /* @__PURE__ */ _export_sfc(_sfc_main$l, [["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/components/uni-goods/index.vue"]]);
-  const _sfc_main$k = {
-    __name: "result",
-    props: {
-      baseData: {
-        type: Object,
-        default: () => ({})
-      }
-    },
-    setup(__props) {
-      return (_ctx, _cache) => {
-        return vue.openBlock(), vue.createElementBlock("view", { class: "boxBg result" }, [
-          vue.createElementVNode("view", null, "\u8BA1\u8D39\u91CD\u91CF\uFF1A" + vue.toDisplayString(__props.baseData.weight) + " kg", 1),
-          vue.createElementVNode("view", null, "\u8BA1\u8D39\u4F53\u79EF\uFF1A" + vue.toDisplayString(__props.baseData.volumeValue) + " m\xB3", 1),
-          vue.createElementVNode("view", null, "\u9996\u91CD\uFF081.0kg\uFF09" + vue.toDisplayString(__props.baseData.firstWeight) + "\u5143\uFF0C\u7EED\u91CD" + vue.toDisplayString(__props.baseData.continuousWeight) + "\u5143/kg", 1),
-          vue.createElementVNode("view", { class: "price" }, [
-            vue.createElementVNode("text", null, "\uFFE5"),
-            vue.createTextVNode(vue.toDisplayString(__props.baseData.freight), 1)
-          ])
-        ]);
-      };
-    }
-  };
-  var Result = /* @__PURE__ */ _export_sfc(_sfc_main$k, [["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/pages/freight/components/result.vue"]]);
-  const _sfc_main$j = {
-    __name: "index",
-    setup(__props) {
-      const title = vue.ref("\u8FD0\u8D39\u67E5\u8BE2");
-      const isShow = vue.ref(false);
-      let baseData = vue.reactive({});
-      const goods = vue.ref();
-      const address = vue.ref();
-      const isCityId = vue.ref(false);
-      const handleSubmit = async () => {
-        const senderCountyId = address.value.mailCity.areaId;
-        const receiverCountyId = address.value.consigneeCity.areaId;
-        const goodData = goods.value;
-        if (!senderCountyId) {
-          return uni.showToast({
-            title: "\u8BF7\u9009\u62E9\u5BC4\u4EF6\u57CE\u5E02",
-            duration: 1e3,
-            icon: "none"
-          });
-        }
-        if (!receiverCountyId) {
-          return uni.showToast({
-            title: "\u8BF7\u9009\u62E9\u6536\u4EF6\u57CE\u5E02",
-            duration: 1e3,
-            icon: "none"
-          });
-        }
-        isShow.value = true;
-        let data = {
-          senderCountyId,
-          receiverCountyId,
-          volume: goodData.volume === 0 ? 1 : goodData.volume * 1e6,
-          weight: goodData.weight,
-          measureLong: goodData.measureLong,
-          measureWidth: goodData.measureWidth,
-          measureHigh: goodData.measureHigh
-        };
-        const res2 = await calculateFreight(data);
-        if (res2.code === 200) {
-          baseData.value = __spreadValues({
-            volumeValue: goodData.volume
-          }, res2.data);
-        } else {
-          return uni.showToast({
-            title: res2.msg,
-            duration: 1e3,
-            icon: "none"
-          });
-        }
-      };
-      const handleCity = (val) => {
-        isCityId.value = val;
-      };
-      const goBack = () => {
-        uni.redirectTo({
-          url: "/pages/index/index"
-        });
-      };
-      return (_ctx, _cache) => {
-        return vue.openBlock(), vue.createElementBlock(vue.Fragment, null, [
-          vue.createCommentVNode(" \u81EA\u5B9A\u4E49\u5934\u90E8 "),
-          vue.createElementVNode("view", { class: "navHead" }, [
-            vue.createVNode(UniNav, {
-              title: title.value,
-              onGoBack: goBack
-            }, null, 8, ["title"])
-          ]),
-          vue.createCommentVNode(" end "),
-          vue.createCommentVNode(" \u5217\u8868 "),
-          vue.createElementVNode("view", { class: "pageBox freightBox" }, [
-            vue.createCommentVNode(" \u5730\u5740 "),
-            vue.createVNode(UniAddress, {
-              ref_key: "address",
-              ref: address,
-              onHandleCity: handleCity
-            }, null, 512),
-            vue.createCommentVNode(" end "),
-            vue.createCommentVNode(" \u91CD\u91CF\u3001\u4F53\u79EF\u8BA1\u7B97 "),
-            vue.createElementVNode("view", { class: "boxBg" }, [
-              vue.createVNode(GoodsInfo, {
-                ref_key: "goods",
-                ref: goods
-              }, null, 512)
-            ]),
-            vue.createCommentVNode(" end "),
-            vue.createCommentVNode(" \u67E5\u8BE2\u6309\u94AE "),
-            vue.createElementVNode("view", { class: "btnBox" }, [
-              vue.createElementVNode("button", {
-                class: vue.normalizeClass(["btn-default", isCityId.value ? "" : "btn-forbid"]),
-                onClick: handleSubmit
-              }, " \u7ACB\u5373\u67E5\u8BE2 ", 2)
-            ]),
-            vue.createCommentVNode(" end "),
-            vue.createCommentVNode(" \u67E5\u8BE2\u7ED3\u679C "),
-            isShow.value ? (vue.openBlock(), vue.createBlock(Result, {
-              key: 0,
-              baseData: vue.unref(baseData).value
-            }, null, 8, ["baseData"])) : vue.createCommentVNode("v-if", true),
-            vue.createCommentVNode(" end ")
-          ]),
-          vue.createCommentVNode(" end ")
-        ], 64);
-      };
-    }
-  };
-  var PagesFreightIndex = /* @__PURE__ */ _export_sfc(_sfc_main$j, [["__scopeId", "data-v-628b0746"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/pages/freight/index.vue"]]);
-  const _sfc_main$i = {
+  setTimeout(() => {
+    uni.getSystemInfoSync().platform;
+  }, 16);
+  initVueI18n(messages);
+  const _sfc_main$8 = {
     __name: "index",
     emits: "",
     setup(__props, { emit }) {
@@ -18877,2703 +12815,8 @@ if (uni.restoreGlobal) {
       };
     }
   };
-  var PagesDeliveryIndex = /* @__PURE__ */ _export_sfc(_sfc_main$i, [["__scopeId", "data-v-7c6df030"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/pages/delivery/index.vue"]]);
-  const _sfc_main$h = {
-    __name: "index",
-    setup(__props) {
-      const store2 = useStore();
-      const users = store2.state.user;
-      const loadMore = vue.ref();
-      let popup2 = vue.ref();
-      let isShowCancel = vue.ref(true);
-      const tipInfo = vue.ref("\u786E\u5B9A\u8981\u8F6C\u5355\u5417\uFF1F");
-      let reload = vue.ref(false);
-      let pages2 = vue.ref(0);
-      let pageNum = vue.ref(1);
-      const emptyData = vue.ref("\u6682\u65E0\u6392\u73ED\u5185\u5FEB\u9012\u5458");
-      const anotherCourierId = vue.ref("");
-      const searchVal = vue.ref("");
-      let page = vue.reactive({
-        keyword: "",
-        page: 1,
-        pageSize: 10
-      });
-      let itemData2 = vue.ref([]);
-      onReachBottom(() => {
-        if (pageNum.value >= pages2.value) {
-          loadMore.value.status = "noMore";
-          return false;
-        } else {
-          loadMore.value.status = "loading";
-          setTimeout(() => {
-            pageNum.value++;
-            getList();
-          }, 1e3);
-        }
-      });
-      const getList = async () => {
-        reload.value = true;
-        await getSameAgency(page).then((res2) => {
-          if (res2.code === 200) {
-            if (res2.data) {
-              reload.value = false;
-              if (res2.data.items) {
-                itemData2.value = itemData2.value.concat(res2.data.items);
-                pages2.value = res2.data.pages;
-                if (Number(pages2.value) === pageNum.value) {
-                  loadMore.value.status = "noMore";
-                }
-              }
-            } else {
-              itemData2.value = null;
-            }
-          }
-        });
-      };
-      const handleOpen = (id) => {
-        anotherCourierId.value = id;
-        popup2.value.dialogOpen();
-      };
-      const handleClick = async () => {
-        let ids = [];
-        for (const [key, value] of users.selectTaskData) {
-          ids.push(value);
-        }
-        let params = {
-          anotherCourierId: anotherCourierId.value,
-          idList: ids
-        };
-        await transferBatch(params).then((res2) => {
-          if (res2.code === 200) {
-            uni.navigateTo({
-              url: "/pages/pickup/index"
-            });
-            return uni.showToast({
-              title: "\u8F6C\u5355\u6210\u529F!",
-              duration: 1e3,
-              icon: "none"
-            });
-          }
-        });
-      };
-      const handleSearch = () => {
-        page.keyword = searchVal.value;
-        itemData2.value = [];
-        getList();
-      };
-      const handleCancel = () => {
-        searchVal.value = "";
-        store2.commit("user/setIsDelivery", false);
-        store2.commit("user/setTabIndex", 0);
-        clearData();
-        if (users.isDelivery) {
-          uni.redirectTo({
-            url: "/pages/delivery/index"
-          });
-        } else {
-          uni.redirectTo({
-            url: "/pages/pickup/index"
-          });
-        }
-      };
-      const clearData = () => {
-        store2.commit("user/setDeliveryData", []);
-        store2.commit("user/setPages", 0);
-        store2.commit("user/setSelectTaskData", /* @__PURE__ */ new Map());
-      };
-      return (_ctx, _cache) => {
-        const _component_uni_icons = resolveEasycom(vue.resolveDynamicComponent("uni-icons"), __easycom_0$a);
-        return vue.openBlock(), vue.createElementBlock(vue.Fragment, null, [
-          vue.createCommentVNode(" \u641C\u7D22nav "),
-          vue.createElementVNode("view", { class: "navBox" }, [
-            vue.createElementVNode("view", { class: "search" }, [
-              vue.createCommentVNode(" \u5934\u90E8\u81EA\u5B9A\u4E49\u5BFC\u822A "),
-              vue.createElementVNode("view", { class: "uni-navbar" }, [
-                vue.createElementVNode("view", { class: "input-view" }, [
-                  vue.createVNode(_component_uni_icons, {
-                    class: "input-uni-icon",
-                    type: "search",
-                    size: "18",
-                    color: "#999"
-                  }),
-                  vue.withDirectives(vue.createElementVNode("input", {
-                    "confirm-type": "search",
-                    class: "nav-bar-input",
-                    type: "text",
-                    "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => searchVal.value = $event),
-                    placeholder: "\u8BF7\u8F93\u5165\u5FEB\u9012\u5458\u8D26\u53F7\u67E5\u8BE2",
-                    onInput: handleSearch
-                  }, null, 544), [
-                    [vue.vModelText, searchVal.value]
-                  ]),
-                  vue.createCommentVNode(" \u5148\u4FDD\u7559\uFF0C\u540E\u671F\u53EF\u80FD\u8981\u52A0\u6B21\u529F\u80FD "),
-                  vue.createCommentVNode(' <view class="scanIcon" @click="handleQr"></view> ')
-                ]),
-                vue.unref(isShowCancel) ? (vue.openBlock(), vue.createElementBlock("view", {
-                  key: 0,
-                  class: "concelBox",
-                  onClick: handleCancel
-                }, "\u53D6\u6D88")) : vue.createCommentVNode("v-if", true)
-              ]),
-              vue.createCommentVNode(" end ")
-            ])
-          ]),
-          vue.createCommentVNode(" end "),
-          vue.createElementVNode("view", { class: "boxTop" }, [
-            vue.unref(itemData2).length > 0 ? (vue.openBlock(), vue.createElementBlock("view", {
-              key: 0,
-              class: "btnBox turnBox"
-            }, [
-              vue.createElementVNode("scroll-view", { "scroll-y": "true" }, [
-                (vue.openBlock(true), vue.createElementBlock(vue.Fragment, null, vue.renderList(vue.unref(itemData2), (item, index) => {
-                  return vue.openBlock(), vue.createElementBlock("view", {
-                    class: "boxBg",
-                    key: index,
-                    onClick: ($event) => handleOpen(item.userId)
-                  }, [
-                    vue.createElementVNode("view", { class: "turnItem" }, [
-                      vue.createElementVNode("view", { class: "item" }, [
-                        vue.createElementVNode("view", null, vue.toDisplayString(item.employeeNumber), 1),
-                        vue.createElementVNode("view", null, vue.toDisplayString(item.name), 1)
-                      ])
-                    ])
-                  ], 8, ["onClick"]);
-                }), 128)),
-                vue.createVNode(ReachBottom, {
-                  ref_key: "loadMore",
-                  ref: loadMore
-                }, null, 512)
-              ])
-            ])) : (vue.openBlock(), vue.createElementBlock("view", { key: 1 }, [
-              vue.createVNode(EmptyPage, {
-                emptyData: emptyData.value,
-                emptyImage: "emptyImage"
-              }, null, 8, ["emptyData"])
-            ])),
-            vue.createCommentVNode(" \u63D0\u793A\u7A97\u793A\u4F8B "),
-            vue.createVNode(UniPopup, {
-              ref_key: "popup",
-              ref: popup2,
-              tipInfo: tipInfo.value,
-              onHandleClick: handleClick
-            }, null, 8, ["tipInfo"]),
-            vue.createCommentVNode(" end ")
-          ])
-        ], 64);
-      };
-    }
-  };
-  var PagesTurnorderIndex = /* @__PURE__ */ _export_sfc(_sfc_main$h, [["__scopeId", "data-v-566d70cb"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/pages/turnorder/index.vue"]]);
-  const _sfc_main$g = {
-    __name: "address",
-    props: {
-      detailsData: {
-        type: Object,
-        default: () => ({})
-      }
-    },
-    setup(__props) {
-      const store2 = useStore();
-      const users = store2.state.user;
-      let taskType = users.taskType;
-      return (_ctx, _cache) => {
-        return vue.openBlock(), vue.createElementBlock("view", { class: "boxBg" }, [
-          vue.createElementVNode("view", { class: "addressCon" }, [
-            vue.createElementVNode("view", { class: "item" }, [
-              vue.createElementVNode("view", { class: "sendIcon" }, vue.toDisplayString(vue.unref(taskType) === 1 ? "\u53D6" : "\u6D3E"), 1),
-              vue.createElementVNode("view", { class: "addressInfo" }, [
-                vue.createElementVNode("view", null, [
-                  vue.createElementVNode("text", { class: "name" }, vue.toDisplayString(__props.detailsData.senderName), 1),
-                  vue.createTextVNode(vue.toDisplayString(__props.detailsData.senderPhone), 1)
-                ]),
-                vue.createElementVNode("view", null, vue.toDisplayString(__props.detailsData.senderAddress), 1)
-              ])
-            ]),
-            vue.createElementVNode("view", { class: "item" }, [
-              vue.createElementVNode("view", { class: "receiveIcon" }, vue.toDisplayString(vue.unref(taskType) === 1 ? "\u6D3E" : "\u6536"), 1),
-              vue.createElementVNode("view", { class: "addressInfo" }, [
-                vue.createElementVNode("view", null, [
-                  vue.createElementVNode("text", { class: "name" }, vue.toDisplayString(__props.detailsData.receiverName), 1),
-                  vue.createTextVNode(vue.toDisplayString(__props.detailsData.receiverPhone), 1)
-                ]),
-                vue.createElementVNode("view", null, vue.toDisplayString(__props.detailsData.receiverAddress), 1)
-              ])
-            ]),
-            vue.createElementVNode("view", { class: "line" })
-          ])
-        ]);
-      };
-    }
-  };
-  var Address = /* @__PURE__ */ _export_sfc(_sfc_main$g, [["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/pages/details/components/address.vue"]]);
-  const _sfc_main$f = {
-    __name: "authentication",
-    props: {
-      detailsData: {
-        type: Object,
-        default: () => ({})
-      }
-    },
-    setup(__props, { expose }) {
-      const customForm = vue.ref();
-      const store2 = useStore();
-      const users = store2.state.user;
-      let idCard = vue.ref("");
-      let name = vue.ref("");
-      let isValidate = vue.ref(false);
-      let flag = vue.ref(null);
-      vue.onMounted(() => {
-        if (users.cardData) {
-          name.value = users.cardData.name;
-          name.idCard = users.cardData.idCard;
-          flag.value = true;
-        }
-      });
-      const handleIdcard = () => {
-        const validate = validateIdentityCard(idCard.value);
-        if (validate) {
-          isValidate.value = true;
-        } else {
-          return uni.showToast({
-            title: validate,
-            duration: 1e3,
-            icon: "none"
-          });
-        }
-      };
-      const handleCheck = async () => {
-        const params = {
-          name: name.value,
-          idCard: idCard.value
-        };
-        store2.commit("user/setCardData", params);
-        await idCardCheck(params).then((res2) => {
-          if (res2.code === 200) {
-            flag.value = res2.data.flag;
-            return uni.showToast({
-              title: "\u9A8C\u8BC1\u6210\u529F",
-              duration: 1e3,
-              icon: "none"
-            });
-          }
-        });
-      };
-      expose({
-        customForm,
-        idCard,
-        name,
-        isValidate
-      });
-      return (_ctx, _cache) => {
-        const _component_uni_easyinput = resolveEasycom(vue.resolveDynamicComponent("uni-easyinput"), __easycom_0$9);
-        const _component_uni_forms_item = resolveEasycom(vue.resolveDynamicComponent("uni-forms-item"), __easycom_1);
-        const _component_uni_forms = resolveEasycom(vue.resolveDynamicComponent("uni-forms"), __easycom_2);
-        return vue.openBlock(), vue.createElementBlock("view", { class: "boxBg" }, [
-          vue.createElementVNode("view", { class: "tit" }, [
-            __props.detailsData.idCardNoVerify === 0 && !vue.unref(flag) ? (vue.openBlock(), vue.createElementBlock("text", { key: 0 }, [
-              vue.createTextVNode(" \u8EAB\u4EFD\u9A8C\u8BC1\uFF08\u672A\u9A8C\u8BC1\uFF09 "),
-              vue.createElementVNode("icon", { class: "iconTip" })
-            ])) : __props.detailsData.idCardNoVerify === 1 || vue.unref(flag) ? (vue.openBlock(), vue.createElementBlock("text", { key: 1 }, [
-              vue.createTextVNode(" \u8EAB\u4EFD\u9A8C\u8BC1\uFF08\u9A8C\u8BC1\u901A\u8FC7\uFF09 "),
-              vue.createCommentVNode(" TODO \u5148\u4FDD\u7559"),
-              vue.createCommentVNode(' <icon class="iconTip"></icon> ')
-            ])) : (vue.openBlock(), vue.createElementBlock("text", { key: 2 }, [
-              vue.createTextVNode(" \u8EAB\u4EFD\u9A8C\u8BC1\uFF08\u9A8C\u8BC1\u672A\u901A\u8FC7\uFF09 "),
-              vue.createElementVNode("icon", { class: "iconTip" })
-            ]))
-          ]),
-          __props.detailsData.idCardNoVerify !== 1 && !vue.unref(flag) ? (vue.openBlock(), vue.createElementBlock("view", {
-            key: 0,
-            class: "identityBox"
-          }, [
-            vue.createElementVNode("view", null, [
-              vue.createVNode(_component_uni_forms, {
-                ref_key: "customForm",
-                ref: customForm
-              }, {
-                default: vue.withCtx(() => [
-                  vue.createVNode(_component_uni_forms_item, { name: "name" }, {
-                    default: vue.withCtx(() => [
-                      vue.createVNode(_component_uni_easyinput, {
-                        class: "item",
-                        modelValue: vue.unref(name),
-                        "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => vue.isRef(name) ? name.value = $event : name = $event),
-                        placeholder: "\u8BF7\u8F93\u5165\u771F\u5B9E\u59D3\u540D"
-                      }, null, 8, ["modelValue"])
-                    ]),
-                    _: 1
-                  }),
-                  vue.createVNode(_component_uni_forms_item, { name: "idCard" }, {
-                    default: vue.withCtx(() => [
-                      vue.createVNode(_component_uni_easyinput, {
-                        class: "item",
-                        modelValue: vue.unref(idCard),
-                        "onUpdate:modelValue": _cache[1] || (_cache[1] = ($event) => vue.isRef(idCard) ? idCard.value = $event : idCard = $event),
-                        placeholder: "\u8BF7\u8F93\u5165\u8EAB\u4EFD\u8BC1\u53F7\u7801",
-                        onBlur: handleIdcard
-                      }, null, 8, ["modelValue"])
-                    ]),
-                    _: 1
-                  })
-                ]),
-                _: 1
-              }, 512),
-              vue.createElementVNode("button", {
-                class: "uni-btn concelBtn",
-                onClick: handleCheck
-              }, "\u9A8C\u8BC1")
-            ])
-          ])) : (vue.openBlock(), vue.createElementBlock("view", {
-            key: 1,
-            class: "identitySuccee"
-          }, [
-            vue.unref(name) !== "" ? (vue.openBlock(), vue.createElementBlock("view", {
-              key: 0,
-              class: "text"
-            }, vue.toDisplayString(vue.unref(name)), 1)) : vue.createCommentVNode("v-if", true),
-            vue.createElementVNode("view", { class: "text" }, vue.toDisplayString(vue.unref(idCard) !== "" ? vue.unref(idCard) : __props.detailsData.idCardNo), 1)
-          ]))
-        ]);
-      };
-    }
-  };
-  var Authentication = /* @__PURE__ */ _export_sfc(_sfc_main$f, [["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/pages/details/components/authentication.vue"]]);
-  const _sfc_main$e = {
-    __name: "uppop",
-    props: {
-      detailsData: {
-        type: Object,
-        default: () => ({})
-      },
-      type: {
-        type: Number,
-        default: 0
-      }
-    },
-    setup(__props, { expose, emit }) {
-      const props = __props;
-      vue.watch(props, (newValue, olcValue) => {
-        if (newValue !== void 0) {
-          remark.value = newValue.detailsData.remark;
-          if (newValue.type === 2) {
-            if (newValue.detailsData.paymentMethod === 1) {
-              current.value = 0;
-            } else {
-              current.value = 1;
-            }
-          }
-        }
-      });
-      const popup2 = vue.ref();
-      let current = vue.ref(0);
-      let isActive = vue.ref(0);
-      let otherData = vue.ref("");
-      let goodNumVal = vue.ref(0);
-      let remarkNumVal = vue.ref(0);
-      let remark = vue.ref("");
-      let goodMaxLength = vue.ref(10);
-      let remarkMaxLength = vue.ref(30);
-      let isShowGoodInfo = vue.ref(false);
-      const handleSubmit = () => {
-        if (props.type === 1) {
-          let val = null;
-          if (isShowGoodInfo.value) {
-            if (otherData.value === "") {
-              return uni.showToast({
-                title: "\u8BF7\u8F93\u5165\u7269\u54C1\u4FE1\u606F",
-                duration: 1e3,
-                icon: "none"
-              });
-            }
-            val = otherData.value;
-          } else {
-            val = GoodsData[isActive.value].label;
-          }
-          emit("getGoodType", val);
-        } else if (props.type === 2) {
-          emit("getPayMethod", PayMethodData[current.value].label);
-        } else if (props.type === 3) {
-          emit("getRemark", remark.value);
-        } else {
-          emit("getSignType", SignData[current.value].value);
-        }
-        dialogClose();
-      };
-      const checkbox = (index) => {
-        current.value = index;
-      };
-      const handleActive = (index, item) => {
-        if (item.label === "\u5176\u4ED6") {
-          isShowGoodInfo.value = true;
-        } else {
-          isShowGoodInfo.value = false;
-        }
-        isActive.value = index;
-      };
-      const dialogOpen = () => {
-        popup2.value.open();
-      };
-      const dialogClose = () => {
-        popup2.value.close();
-      };
-      const monitorInput = () => {
-        vue.nextTick(() => {
-          let leng = validateTextLength(otherData.value);
-          if (leng >= 10) {
-            goodMaxLength.value = leng;
-          } else {
-            goodMaxLength.value = 20;
-          }
-          goodNumVal.value = Math.floor(leng);
-        });
-      };
-      const textInput = () => {
-        vue.nextTick(() => {
-          let leng = validateTextLength(remark.value);
-          if (leng >= 30) {
-            remarkMaxLength.value = leng;
-          } else {
-            remarkMaxLength.value = 60;
-          }
-          remarkNumVal.value = Math.floor(leng);
-        });
-      };
-      expose({
-        dialogOpen,
-        current
-      });
-      return (_ctx, _cache) => {
-        const _component_uni_popup = resolveEasycom(vue.resolveDynamicComponent("uni-popup"), __easycom_0$7);
-        return vue.openBlock(), vue.createElementBlock("view", { class: "uniPopup detailPopup" }, [
-          vue.createVNode(_component_uni_popup, {
-            ref_key: "popup",
-            ref: popup2,
-            type: "bottom"
-          }, {
-            default: vue.withCtx(() => [
-              vue.createElementVNode("view", { class: "tit" }, [
-                vue.createElementVNode("text", null, vue.toDisplayString(__props.type === 1 ? "\u7269\u54C1\u540D\u79F0" : __props.type === 2 ? "\u4ED8\u6B3E\u65B9\u5F0F" : __props.type === 3 ? "\u5907\u6CE8" : "\u7B7E\u6536\u4EBA"), 1),
-                vue.createElementVNode("icon", { onClick: dialogClose }, "\u5173\u95ED")
-              ]),
-              vue.createElementVNode("view", { class: "popupContent" }, [
-                vue.createCommentVNode(" \u7269\u54C1\u540D\u79F0 "),
-                __props.type === 1 ? (vue.openBlock(), vue.createElementBlock("view", { key: 0 }, [
-                  vue.createElementVNode("view", { class: "goodBox" }, [
-                    (vue.openBlock(true), vue.createElementBlock(vue.Fragment, null, vue.renderList(vue.unref(GoodsData), (item, index) => {
-                      return vue.openBlock(), vue.createElementBlock("view", {
-                        key: index,
-                        class: vue.normalizeClass(["item", index === vue.unref(isActive) ? "active" : ""]),
-                        onClick: ($event) => handleActive(index, item)
-                      }, [
-                        vue.createElementVNode("text", null, vue.toDisplayString(item.label), 1)
-                      ], 10, ["onClick"]);
-                    }), 128))
-                  ]),
-                  vue.unref(isShowGoodInfo) ? (vue.openBlock(), vue.createElementBlock("view", {
-                    key: 0,
-                    class: "other"
-                  }, [
-                    vue.withDirectives(vue.createElementVNode("textarea", {
-                      "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => vue.isRef(otherData) ? otherData.value = $event : otherData = $event),
-                      placeholder: "\u8BF7\u8F93\u5165\u7269\u54C1\u4FE1\u606F",
-                      onInput: monitorInput,
-                      maxlength: vue.unref(goodMaxLength)
-                    }, null, 40, ["maxlength"]), [
-                      [vue.vModelText, vue.unref(otherData)]
-                    ]),
-                    vue.createElementVNode("text", {
-                      class: vue.normalizeClass(["numText", vue.unref(goodNumVal) === 0 ? "tip" : ""])
-                    }, vue.toDisplayString(vue.unref(goodNumVal)) + "/10", 3)
-                  ])) : vue.createCommentVNode("v-if", true)
-                ])) : __props.type === 2 ? (vue.openBlock(), vue.createElementBlock(vue.Fragment, { key: 1 }, [
-                  vue.createCommentVNode(" end "),
-                  vue.createCommentVNode(" \u4ED8\u6B3E\u65B9\u5F0F "),
-                  vue.createElementVNode("view", null, [
-                    (vue.openBlock(true), vue.createElementBlock(vue.Fragment, null, vue.renderList(vue.unref(PayMethodData), (item, index) => {
-                      return vue.openBlock(), vue.createElementBlock("view", {
-                        class: "typeItem",
-                        key: index,
-                        onClick: ($event) => checkbox(index)
-                      }, [
-                        vue.createElementVNode("text", null, vue.toDisplayString(item.label), 1),
-                        vue.createElementVNode("view", { class: "checkRadio" }, [
-                          vue.createElementVNode("radio", {
-                            value: String(index),
-                            class: vue.normalizeClass(index === vue.unref(current) ? "active" : ""),
-                            checked: index === vue.unref(current)
-                          }, null, 10, ["value", "checked"])
-                        ])
-                      ], 8, ["onClick"]);
-                    }), 128))
-                  ])
-                ], 2112)) : __props.type === 3 ? (vue.openBlock(), vue.createElementBlock(vue.Fragment, { key: 2 }, [
-                  vue.createCommentVNode(" end "),
-                  vue.createCommentVNode(" \u5907\u6CE8 "),
-                  vue.createElementVNode("view", { class: "remark" }, [
-                    vue.withDirectives(vue.createElementVNode("textarea", {
-                      "onUpdate:modelValue": _cache[1] || (_cache[1] = ($event) => vue.isRef(remark) ? remark.value = $event : remark = $event),
-                      placeholder: "\u8865\u5145\u8BF4\u660E",
-                      onInput: textInput,
-                      maxlength: vue.unref(remarkMaxLength)
-                    }, null, 40, ["maxlength"]), [
-                      [vue.vModelText, vue.unref(remark)]
-                    ]),
-                    vue.createElementVNode("text", {
-                      class: vue.normalizeClass(["numText", vue.unref(remarkNumVal) === 0 ? "tip" : ""])
-                    }, vue.toDisplayString(vue.unref(remarkNumVal)) + "/30", 3)
-                  ])
-                ], 2112)) : (vue.openBlock(), vue.createElementBlock(vue.Fragment, { key: 3 }, [
-                  vue.createCommentVNode(" end "),
-                  vue.createCommentVNode(" \u7B7E\u6536\u4EBA "),
-                  vue.createElementVNode("view", null, [
-                    (vue.openBlock(true), vue.createElementBlock(vue.Fragment, null, vue.renderList(vue.unref(SignData), (item, index) => {
-                      return vue.openBlock(), vue.createElementBlock("view", {
-                        class: "typeItem",
-                        key: index,
-                        onClick: ($event) => checkbox(index)
-                      }, [
-                        vue.createElementVNode("text", null, vue.toDisplayString(item.label), 1),
-                        vue.createElementVNode("view", { class: "checkRadio" }, [
-                          vue.createElementVNode("radio", {
-                            value: String(index),
-                            class: vue.normalizeClass(index === vue.unref(current) ? "active" : ""),
-                            checked: index === vue.unref(current)
-                          }, null, 10, ["value", "checked"])
-                        ])
-                      ], 8, ["onClick"]);
-                    }), 128))
-                  ])
-                ], 2112)),
-                vue.createCommentVNode(" end ")
-              ]),
-              vue.createElementVNode("view", { class: "btnBox" }, [
-                vue.createElementVNode("button", {
-                  class: "btn-default uni-mini",
-                  onClick: handleSubmit
-                }, " \u786E\u5B9A ")
-              ])
-            ]),
-            _: 1
-          }, 512)
-        ]);
-      };
-    }
-  };
-  var Uppop$1 = /* @__PURE__ */ _export_sfc(_sfc_main$e, [["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/pages/details/components/uppop.vue"]]);
-  const _sfc_main$d = {
-    __name: "index",
-    emits: "",
-    setup(__props, { emit }) {
-      const store2 = useStore();
-      const users = store2.state.user;
-      const goods = vue.ref();
-      const card = vue.ref();
-      const method = vue.ref();
-      const taskId = store2.state.user.taskId;
-      const title = vue.ref("\u53BB\u53D6\u4EF6");
-      let type = vue.ref(1);
-      const detailsData = vue.ref({});
-      let isFreigthEdit = vue.ref(false);
-      let freight = vue.ref(0);
-      let isPickUp = vue.ref(false);
-      let isCollect = vue.ref(false);
-      const stopClick = vue.ref(true);
-      vue.watch(freight, (newValue, oldValue) => {
-        const val = Number(newValue);
-        vue.nextTick(() => {
-          if (val < 99999 && val > 1) {
-            freight.value = parseInt(val * 100) / 100;
-          }
-          if (val > 99999) {
-            freight.value = 99999;
-          }
-        });
-      });
-      vue.onMounted(() => {
-        getDetails(taskId);
-        if (users.isPickUp) {
-          isPickUp.value = true;
-        } else {
-          isPickUp.value = false;
-        }
-        if (users.isCollect) {
-          isCollect.value = true;
-        } else {
-          isCollect.value = false;
-        }
-      });
-      const getDetails = async (id) => {
-        await getDetail(id).then((res2) => {
-          detailsData.value = res2.data;
-          freight.value = detailsData.value.freight;
-          if (users.paymentMethod) {
-            if (users.paymentMethod === 1) {
-              detailsData.value.paymentMethod = 1;
-            } else {
-              detailsData.value.paymentMethod = 2;
-            }
-          }
-          goods.value.weight = Number(detailsData.value.weight);
-          goods.value.volume = Number(detailsData.value.volume);
-          store2.commit("user/setPaymentMethod", detailsData.value.paymentMethod);
-          store2.commit("user/setDetailsData", res2.data);
-        });
-      };
-      const handleSubmit = async () => {
-        if (stopClick.value) {
-          stopClick.value = false;
-          const cards = card.value;
-          const good = goods.value;
-          if (!cards.isValidate && detailsData.value.idCardNoVerify !== 1) {
-            stopClick.value = true;
-            return uni.showToast({
-              title: "\u8BF7\u8F93\u5165\u6B63\u786E\u7684\u8EAB\u4EFD\u8BC1",
-              duration: 1e3,
-              icon: "none"
-            });
-          } else {
-            let times = setTimeout(() => {
-              uni.showLoading({
-                title: "loading"
-              });
-            }, 500);
-            const details = detailsData.value;
-            if (freight.value !== 0) {
-              details.freight = freight.value;
-            }
-            const params = {
-              amount: good.freightData ? good.freightData : Number(details.freight),
-              id: taskId,
-              goodName: details.goodsType,
-              idCard: details.idCardNoVerify === 1 ? null : cards.idCard,
-              name: details.idCardNoVerify === 1 ? null : cards.name,
-              payMethod: details.paymentMethod,
-              remark: details.remark,
-              volume: Number(good.volume),
-              weight: good.weight
-            };
-            const payData = {
-              memo: details.remark,
-              productOrderNo: details.orderId,
-              tradingAmount: params.amount
-            };
-            store2.commit("user/setPayData", payData);
-            await getPickup(params).then((res2) => {
-              if (res2.code === 200) {
-                setTimeout(function() {
-                  uni.hideLoading();
-                }, 500);
-                clearTimeout(times);
-              }
-              setTimeout(() => {
-                stopClick.value = true;
-              }, 3e3);
-            }).catch((err) => {
-              return uni.showToast({
-                title: err.msg,
-                duration: 1e3,
-                icon: "none"
-              });
-            });
-            const type2 = details.paymentMethod;
-            uni.redirectTo({
-              url: "/pages/pay/index?type=" + type2
-            });
-            store2.commit("user/setIsPickUp", true);
-          }
-        }
-      };
-      const handleCopy = () => {
-        uni.setClipboardData({
-          data: detailsData.value.orderId,
-          success: function() {
-            uni.showToast({
-              title: "\u590D\u5236\u6210\u529F",
-              icon: "none"
-            });
-          }
-        });
-      };
-      const handleFreight = () => {
-        isFreigthEdit.value = true;
-      };
-      const getFreight = (val) => {
-        detailsData.value.freight = val;
-        freight.value = detailsData.value.freight;
-      };
-      const handleAmount = () => {
-        vue.nextTick(() => {
-          if (freight.value < 1) {
-            freight.value = 1;
-          }
-        });
-      };
-      const getGoodType = (val) => {
-        detailsData.value.goodsType = val;
-      };
-      const handleGoods = () => {
-        type.value = 1;
-        handleOpen();
-      };
-      const getPayMethod = (val) => {
-        if (val === "\u5BC4\u4ED8") {
-          detailsData.value.paymentMethod = 1;
-        } else {
-          detailsData.value.paymentMethod = 2;
-        }
-        store2.commit("user/setPaymentMethod", detailsData.value.paymentMethod);
-      };
-      const handlePayMethod = () => {
-        type.value = 2;
-        handleOpen();
-      };
-      const getRemark = (val) => {
-        detailsData.value.remark = val;
-      };
-      const handleRemark = () => {
-        if (users.isBack !== "collect") {
-          type.value = 3;
-          handleOpen();
-        }
-      };
-      const handleOpen = () => {
-        method.value.dialogOpen();
-      };
-      const goBack = () => {
-        store2.commit("user/setPaymentMethod", null);
-        store2.commit("user/setCardData", null);
-        store2.commit("user/setIsPickUp", false);
-        store2.commit("user/setIsCollect", false);
-        if (users.newType === 301) {
-          uni.redirectTo({
-            url: "/pages/news/system?title=\u53D6\u4EF6\u76F8\u5173&type=301"
-          });
-        } else if (users.detailType === 1) {
-          store2.commit("user/setTabIndex", 0);
-          uni.redirectTo({
-            url: "/pages/history/index"
-          });
-        } else if (users.isSearch) {
-          store2.commit("user/setIsSearch", false);
-          uni.redirectTo({
-            url: "/pages/search/index"
-          });
-        } else {
-          store2.commit("user/setTabIndex", 0);
-          uni.redirectTo({
-            url: "/pages/pickup/index"
-          });
-        }
-      };
-      const handleReceipt = () => {
-        store2.commit("user/setPayData", {});
-        uni.redirectTo({
-          url: "/pages/pay/scanPay"
-        });
-      };
-      return (_ctx, _cache) => {
-        return vue.openBlock(), vue.createElementBlock(vue.Fragment, null, [
-          vue.createCommentVNode(" \u81EA\u5B9A\u4E49\u5934\u90E8 "),
-          vue.createVNode(UniNav, {
-            title: title.value,
-            onGoBack: goBack
-          }, null, 8, ["title"]),
-          vue.createCommentVNode(" end "),
-          vue.createElementVNode("view", { class: "detailBox" }, [
-            vue.createCommentVNode(" \u8BA2\u5355\u53F7 "),
-            vue.createElementVNode("view", { class: "boxBg" }, [
-              vue.createElementVNode("view", { class: "tit" }, [
-                vue.createElementVNode("text", null, [
-                  vue.createElementVNode("text", null, "\u8BA2\u5355\u53F7\uFF1ASD" + vue.toDisplayString(detailsData.value.orderId), 1),
-                  vue.createElementVNode("icon", {
-                    onClick: handleCopy,
-                    class: "copy"
-                  })
-                ])
-              ])
-            ]),
-            vue.createCommentVNode(" end "),
-            vue.createCommentVNode(" \u53D6\u4EF6\u4FE1\u606F "),
-            vue.createVNode(Address, {
-              detailsData: detailsData.value,
-              class: "pickupBox"
-            }, null, 8, ["detailsData"]),
-            vue.createCommentVNode(" end "),
-            vue.createCommentVNode(" \u7269\u54C1\u4FE1\u606F "),
-            vue.createElementVNode("view", { class: "boxBg" }, [
-              vue.createElementVNode("view", { class: "tit" }, [
-                vue.createElementVNode("text", null, "\u7269\u54C1\u540D\u79F0"),
-                !vue.unref(isPickUp) || vue.unref(users).paymentMethod === 2 && !vue.unref(isCollect) ? (vue.openBlock(), vue.createElementBlock("view", {
-                  key: 0,
-                  class: "goodsSelect",
-                  onClick: handleGoods
-                }, [
-                  vue.createElementVNode("text", { class: "textInfo" }, vue.toDisplayString(detailsData.value.goodsType), 1),
-                  vue.createElementVNode("icon", { class: "nextIcon" })
-                ])) : (vue.openBlock(), vue.createElementBlock("view", {
-                  key: 1,
-                  class: "goodsSelect"
-                }, [
-                  vue.createElementVNode("text", { class: "textInfo" }, vue.toDisplayString(detailsData.value.goodsType), 1)
-                ]))
-              ])
-            ]),
-            vue.createCommentVNode(" end "),
-            vue.createCommentVNode(" \u8BA1\u7B97\u7269\u54C1\u5FEB\u9012\u8D39 "),
-            vue.createElementVNode("view", { class: "boxBg" }, [
-              vue.createVNode(GoodsInfo, {
-                ref_key: "goods",
-                ref: goods,
-                detailsData: detailsData.value,
-                onGetFreight: getFreight
-              }, null, 8, ["detailsData"]),
-              vue.createElementVNode("view", { class: "freight" }, [
-                vue.createElementVNode("view", null, [
-                  vue.createTextVNode(" \u603B\u8BA1\u91D1\u989D "),
-                  vue.createElementVNode("text", null, [
-                    vue.createElementVNode("text", null, "*"),
-                    vue.createTextVNode(" \u57FA\u7840\u8FD0\u8D39+\u589E\u503C\u670D\u52A1\u8D39 ")
-                  ])
-                ]),
-                vue.createElementVNode("view", null, [
-                  !vue.unref(isPickUp) || vue.unref(users).paymentMethod === 2 && !vue.unref(isCollect) ? (vue.openBlock(), vue.createElementBlock("view", { key: 0 }, [
-                    vue.unref(isFreigthEdit) ? vue.withDirectives((vue.openBlock(), vue.createElementBlock("input", {
-                      key: 0,
-                      type: "number",
-                      "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => vue.isRef(freight) ? freight.value = $event : freight = $event),
-                      onBlur: handleAmount
-                    }, null, 544)), [
-                      [vue.vModelText, vue.unref(freight)]
-                    ]) : (vue.openBlock(), vue.createElementBlock("text", {
-                      key: 1,
-                      onClick: handleFreight
-                    }, vue.toDisplayString(detailsData.value.freight), 1)),
-                    vue.createElementVNode("text", null, "\u5143")
-                  ])) : (vue.openBlock(), vue.createElementBlock("view", { key: 1 }, [
-                    vue.createElementVNode("text", null, vue.toDisplayString(vue.unref(users).payData.tradingAmount), 1),
-                    vue.createElementVNode("text", null, "\u5143")
-                  ]))
-                ])
-              ])
-            ]),
-            vue.createCommentVNode(" end "),
-            vue.createCommentVNode(" \u4ED8\u6B3E\u65B9\u5F0F "),
-            vue.createElementVNode("view", { class: "boxBg" }, [
-              vue.createElementVNode("view", { class: "tit" }, [
-                vue.createElementVNode("text", null, "\u4ED8\u6B3E\u65B9\u5F0F"),
-                !vue.unref(isPickUp) || vue.unref(users).paymentMethod === 2 && !vue.unref(isCollect) ? (vue.openBlock(), vue.createElementBlock("view", {
-                  key: 0,
-                  class: "goodsSelect",
-                  onClick: handlePayMethod
-                }, [
-                  vue.createElementVNode("text", { class: "textInfo" }, vue.toDisplayString(detailsData.value.paymentMethod === 1 ? "\u5BC4\u4ED8" : "\u5230\u4ED8"), 1),
-                  vue.createElementVNode("icon", { class: "nextIcon" })
-                ])) : (vue.openBlock(), vue.createElementBlock("view", {
-                  key: 1,
-                  class: "goodsSelect"
-                }, [
-                  vue.createElementVNode("text", { class: "textInfo" }, vue.toDisplayString(detailsData.value.paymentMethod === 1 ? "\u5BC4\u4ED8" : "\u5230\u4ED8"), 1)
-                ]))
-              ])
-            ]),
-            vue.createCommentVNode(" end "),
-            vue.createCommentVNode(" \u5907\u6CE8 "),
-            vue.createElementVNode("view", { class: "boxBg" }, [
-              vue.createElementVNode("view", { class: "tit" }, [
-                vue.createElementVNode("text", null, "\u5907\u6CE8"),
-                !vue.unref(isPickUp) || vue.unref(users).paymentMethod === 2 && !vue.unref(isCollect) ? (vue.openBlock(), vue.createElementBlock("view", {
-                  key: 0,
-                  class: "goodsSelect",
-                  onClick: handleRemark
-                }, [
-                  vue.createElementVNode("text", { class: "textInfo" }, vue.toDisplayString(detailsData.value.remark), 1),
-                  vue.createElementVNode("icon", { class: "nextIcon" })
-                ])) : (vue.openBlock(), vue.createElementBlock("view", {
-                  key: 1,
-                  class: "goodsSelect"
-                }, [
-                  vue.createElementVNode("text", { class: "textInfo" }, vue.toDisplayString(detailsData.value.remark), 1)
-                ]))
-              ])
-            ]),
-            vue.createCommentVNode(" end "),
-            vue.createCommentVNode(" \u8EAB\u4EFD\u9A8C\u8BC1\uFF08\u672A\u9A8C\u8BC1\uFF09 "),
-            vue.createVNode(Authentication, {
-              ref_key: "card",
-              ref: card,
-              detailsData: detailsData.value
-            }, null, 8, ["detailsData"]),
-            vue.createCommentVNode(" end "),
-            vue.createElementVNode("view", { class: "btnBox" }, [
-              vue.unref(isPickUp) && vue.unref(users).paymentMethod === 1 ? (vue.openBlock(), vue.createElementBlock("button", {
-                key: 0,
-                class: "btn-default uni-mini",
-                onClick: handleReceipt
-              }, "\u53BB\u6536\u6B3E")) : vue.createCommentVNode("v-if", true),
-              vue.unref(isCollect) && vue.unref(isPickUp) && vue.unref(users).paymentMethod === 2 ? (vue.openBlock(), vue.createElementBlock("button", {
-                key: 1,
-                class: "btn-default uni-mini btn-forbid"
-              }, "\u5DF2\u53D6\u4EF6")) : vue.createCommentVNode("v-if", true),
-              !vue.unref(isPickUp) || vue.unref(users).paymentMethod === 2 && !vue.unref(isCollect) ? (vue.openBlock(), vue.createElementBlock("button", {
-                key: 2,
-                class: "btn-default uni-mini",
-                onClick: handleSubmit
-              }, "\u53BB\u53D6\u4EF6")) : vue.createCommentVNode("v-if", true)
-            ]),
-            vue.createCommentVNode(" \u7269\u54C1\u540D\u79F0\u3001\u4ED8\u6B3E\u9009\u62E9\u3001\u5907\u6CE8\u5F39\u5C42 "),
-            vue.createVNode(Uppop$1, {
-              ref_key: "method",
-              ref: method,
-              onGetGoodType: getGoodType,
-              onGetPayMethod: getPayMethod,
-              onGetRemark: getRemark,
-              detailsData: detailsData.value,
-              type: vue.unref(type)
-            }, null, 8, ["detailsData", "type"]),
-            vue.createCommentVNode(" end ")
-          ])
-        ], 64);
-      };
-    }
-  };
-  var PagesDetailsIndex = /* @__PURE__ */ _export_sfc(_sfc_main$d, [["__scopeId", "data-v-54d3589c"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/pages/details/index.vue"]]);
-  const _sfc_main$c = {
-    __name: "waybill",
-    emits: "",
-    setup(__props, { emit }) {
-      const store2 = useStore();
-      const users = store2.state.user;
-      const taskStatus = users.taskStatus;
-      const sign = vue.ref();
-      const taskId = users.taskId;
-      const title = users.taskStatus === 4 || taskStatus === 0 && users.taskType === 2 ? "\u53BB\u6D3E\u4EF6" : "\u8FD0\u5355\u8BE6\u60C5";
-      let detailsData = vue.ref({});
-      let type = vue.ref(0);
-      let isPickUp = vue.ref(false);
-      vue.ref(false);
-      let isSign = vue.ref(false);
-      const stopClick = vue.ref(false);
-      vue.onMounted(() => {
-        getDetails(taskId);
-        if (users.isPickUp) {
-          isPickUp.value = true;
-        } else {
-          isPickUp.value = false;
-        }
-        if (users.isSign) {
-          isSign.value = true;
-        } else {
-          isSign.value = false;
-        }
-      });
-      const getDetails = async (id) => {
-        await getDetail(id).then((res2) => {
-          detailsData.value = res2.data;
-          store2.commit("user/setPaymentMethod", detailsData.value.paymentMethod);
-          store2.commit("user/setDetailsData", res2.data);
-        });
-      };
-      const handleRejection = async (id) => {
-        if (stopClick.value) {
-          return;
-        }
-        stopClick.value = true;
-        let times = setTimeout(() => {
-          uni.showLoading({
-            title: "loading"
-          });
-        }, 500);
-        await rejection(id).then((res2) => {
-          if (res2.code === 200) {
-            positionUploadHandle(true);
-            setTimeout(function() {
-              uni.hideLoading();
-            }, 500);
-            clearTimeout(times);
-            setTimeout(() => {
-              if (taskStatus === 6 && users.detailType === 2) {
-                store2.commit("user/setTabIndex", 1);
-                uni.redirectTo({
-                  url: "/pages/history/index"
-                });
-              } else {
-                store2.commit("user/setTabIndex", 0);
-                uni.redirectTo({
-                  url: "/pages/delivery/index"
-                });
-              }
-            }, 1e3);
-            uni.showToast({
-              title: "\u7528\u6237\u62D2\u6536",
-              icon: "none",
-              duration: "1000"
-            });
-          }
-          stopClick.value = false;
-        }).catch((err) => {
-          uni.showToast({
-            title: err.msg,
-            icon: "none",
-            duration: "1000"
-          });
-        });
-      };
-      const handleSign = async (id) => {
-        if (stopClick.value) {
-          return;
-        }
-        stopClick.value = true;
-        let times = setTimeout(() => {
-          uni.showLoading({
-            title: "loading"
-          });
-        }, 500);
-        const params = {
-          id,
-          signRecipient: detailsData.value.signRecipient
-        };
-        await tasksSign(params).then((res2) => {
-          if (res2.code === 200) {
-            positionUploadHandle(true);
-            setTimeout(function() {
-              uni.hideLoading();
-            }, 500);
-            clearTimeout(times);
-            const type2 = detailsData.value.paymentMethod;
-            uni.redirectTo({
-              url: "/pages/pay/index?type=" + type2
-            });
-            store2.commit("user/setIsPickUp", true);
-            store2.commit("user/setIsDelivery", true);
-          }
-          stopClick.value = false;
-        });
-      };
-      const handleCopy = () => {
-        uni.setClipboardData({
-          data: detailsData.value.orderId,
-          success: function() {
-            uni.showToast({
-              title: "\u590D\u5236\u6210\u529F",
-              icon: "none"
-            });
-          }
-        });
-      };
-      const getSignType = (val) => {
-        detailsData.value.signRecipient = val;
-      };
-      const handleSignOpen = () => {
-        type.value = 4;
-        sign.value.dialogOpen();
-      };
-      const handleOrder = () => {
-        uni.redirectTo({
-          url: "/pages/details/orderMap"
-        });
-      };
-      const goBack = () => {
-        store2.commit("user/setIsPickUp", false);
-        store2.commit("user/setIsSign", false);
-        store2.commit("user/setIsDelivery", false);
-        if (taskStatus === 1 || taskStatus === 2 || taskStatus === 3) {
-          if (taskStatus === 1) {
-            store2.commit("user/setTabIndex", 0);
-          } else if (taskStatus === 2) {
-            store2.commit("user/setTabIndex", 1);
-          } else {
-            store2.commit("user/setTabIndex", 2);
-          }
-          if (users.isSearch) {
-            store2.commit("user/setIsSearch", false);
-            uni.redirectTo({
-              url: "/pages/search/index"
-            });
-          } else {
-            uni.redirectTo({
-              url: "/pages/pickup/index"
-            });
-          }
-        } else if (taskStatus === 5 && users.newType !== 302 && !users.isNew || taskStatus === 4 && users.detailType !== 2 && users.newType !== 304) {
-          if (taskStatus === 4) {
-            store2.commit("user/setTabIndex", 0);
-          } else {
-            store2.commit("user/setTabIndex", 1);
-          }
-          if (users.isSearch) {
-            store2.commit("user/setIsSearch", false);
-            uni.redirectTo({
-              url: "/pages/search/index"
-            });
-          } else {
-            uni.redirectTo({
-              url: "/pages/delivery/index"
-            });
-          }
-        } else if ((taskStatus === 6 || taskStatus === 4) && users.detailType === 2 || users.detailType === 1 && users.newType !== 302 || taskStatus === 6 && users.detailType === 1) {
-          if (taskStatus === 6 && users.detailType === 1) {
-            store2.commit("user/setTabIndex", 0);
-          }
-          if (taskStatus === 6 && users.detailType === 2) {
-            store2.commit("user/setTabIndex", 1);
-          }
-          uni.redirectTo({
-            url: "/pages/history/index"
-          });
-          if (taskStatus === 4 && users.detailType === 2) {
-            store2.commit("user/setTabIndex", 1);
-            if (users.isSearch) {
-              store2.commit("user/setIsSearch", false);
-              uni.redirectTo({
-                url: "/pages/search/index"
-              });
-            } else {
-              uni.redirectTo({
-                url: "/pages/history/index"
-              });
-            }
-          }
-          if (taskStatus === 4 && users.detailType === 1) {
-            store2.commit("user/setTabIndex", 0);
-            uni.redirectTo({
-              url: "/pages/delivery/index"
-            });
-          }
-        } else if (users.newType === 301) {
-          uni.redirectTo({
-            url: "/pages/news/system?title=\u53D6\u4EF6\u76F8\u5173&type=301"
-          });
-        } else if (users.newType === 302) {
-          uni.redirectTo({
-            url: "/pages/news/system?title=\u7B7E\u6536\u63D0\u9192&type=302"
-          });
-        } else if (users.newType === 303) {
-          uni.redirectTo({
-            url: "/pages/news/system?title=\u5FEB\u4EF6\u53D6\u6D88&type=303"
-          });
-        } else if (users.newType === 304) {
-          uni.redirectTo({
-            url: "/pages/news/system?title=\u6D3E\u4EF6\u76F8\u5173&type=304"
-          });
-        } else {
-          store2.commit("user/setTabIndex", 0);
-          uni.redirectTo({
-            url: "/pages/delivery/index"
-          });
-        }
-        store2.commit("user/setIsNew", false);
-      };
-      const handleReceipt = () => {
-        store2.commit("user/setPayData", {});
-        uni.redirectTo({
-          url: "/pages/pay/scanPay"
-        });
-      };
-      return (_ctx, _cache) => {
-        return vue.openBlock(), vue.createElementBlock(vue.Fragment, null, [
-          vue.createCommentVNode(" \u81EA\u5B9A\u4E49\u5934\u90E8 "),
-          vue.createVNode(UniNav, {
-            title: vue.unref(title),
-            onGoBack: goBack
-          }, null, 8, ["title"]),
-          vue.createCommentVNode(" end "),
-          vue.createElementVNode("view", { class: "detailBox" }, [
-            vue.createCommentVNode(" \u8FD0\u5355\u53F7 "),
-            vue.createElementVNode("view", { class: "boxBg" }, [
-              vue.createElementVNode("view", { class: "tit" }, [
-                vue.createElementVNode("text", null, [
-                  vue.createCommentVNode(" \u5F53\u72B6\u6001\u662F\u53BB\u6D3E\u90014\\\u7B7E\u65365\u7684\u65F6\u5019\u663E\u793A\u8FD0\u5355\u53F7 "),
-                  vue.unref(taskStatus) === 4 || vue.unref(taskStatus) === 5 ? (vue.openBlock(), vue.createElementBlock("text", { key: 0 }, "\u8FD0\u5355\u53F7\uFF1A" + vue.toDisplayString(vue.unref(detailsData).transportOrderId), 1)) : (vue.openBlock(), vue.createElementBlock("text", { key: 1 }, "\u8BA2\u5355\u53F7\uFF1ASD" + vue.toDisplayString(vue.unref(detailsData).orderId), 1)),
-                  vue.createCommentVNode(" end "),
-                  vue.createElementVNode("icon", {
-                    onClick: handleCopy,
-                    class: "copy"
-                  })
-                ])
-              ])
-            ]),
-            vue.createCommentVNode(" end "),
-            vue.createCommentVNode(" \u53D6\u4EF6\u4FE1\u606F "),
-            vue.createVNode(Address, {
-              detailsData: vue.unref(detailsData),
-              class: "pickupBox"
-            }, null, 8, ["detailsData"]),
-            vue.createCommentVNode(" end "),
-            vue.createCommentVNode(" \u7269\u54C1\u4FE1\u606F "),
-            vue.createElementVNode("view", { class: "boxBg" }, [
-              vue.createElementVNode("view", { class: "wayCon" }, [
-                vue.createElementVNode("view", { class: "item" }, [
-                  vue.createTextVNode(" \u7269\u54C1\u540D\u79F0 "),
-                  vue.createElementVNode("text", null, vue.toDisplayString(vue.unref(detailsData).goodsType), 1)
-                ]),
-                vue.createElementVNode("view", { class: "item" }, [
-                  vue.createTextVNode(" \u7269\u54C1\u91CD\u91CF "),
-                  vue.createElementVNode("text", null, vue.toDisplayString(vue.unref(detailsData).weight) + "kg", 1)
-                ]),
-                vue.createElementVNode("view", { class: "item" }, [
-                  vue.createTextVNode(" \u7269\u54C1\u4F53\u79EF "),
-                  vue.createElementVNode("text", null, vue.toDisplayString(vue.unref(detailsData).volume) + "m\xB3", 1)
-                ]),
-                vue.createElementVNode("view", { class: "item" }, [
-                  vue.createTextVNode(" \u603B\u8BA1\u91D1\u989D "),
-                  vue.createElementVNode("text", null, vue.toDisplayString(vue.unref(detailsData).freight) + "\u5143", 1)
-                ])
-              ]),
-              vue.createElementVNode("view", { class: "wayCon remark" }, [
-                vue.createElementVNode("view", { class: "item" }, "\u5907\u6CE8"),
-                vue.createElementVNode("view", { class: "item" }, [
-                  vue.createElementVNode("text", null, vue.toDisplayString(vue.unref(detailsData).remark ? vue.unref(detailsData).remark : "\u6682\u65E0"), 1)
-                ])
-              ]),
-              vue.createElementVNode("view", { class: "wayCon" }, [
-                vue.createElementVNode("view", { class: "item" }, [
-                  vue.createTextVNode(" \u4ED8\u6B3E\u65B9\u5F0F "),
-                  vue.createElementVNode("text", null, vue.toDisplayString(vue.unref(detailsData).paymentMethod === 1 ? "\u5BC4\u4ED8" : "\u5230\u4ED8"), 1)
-                ]),
-                vue.createCommentVNode(" \u5F53\u72B6\u6001\u662F\u5DF2\u7B7E\u65365,\u663E\u793A\u7B7E\u6536\u4EBA "),
-                vue.unref(taskStatus) === 5 ? (vue.openBlock(), vue.createElementBlock("view", {
-                  key: 0,
-                  class: "item"
-                }, [
-                  vue.createTextVNode(" \u7B7E\u6536\u4EBA "),
-                  vue.createElementVNode("text", null, vue.toDisplayString(vue.unref(detailsData).paymentMethod === 1 ? "\u672C\u4EBA" : "\u4EE3\u6536"), 1)
-                ])) : vue.createCommentVNode("v-if", true),
-                vue.createCommentVNode(" end ")
-              ])
-            ]),
-            vue.createCommentVNode(" end "),
-            vue.createCommentVNode(" \u5F53\u72B6\u6001\u662F\u53BB\u6D3E\u4EF64\u7684\u65F6\u5019\u663E\u793A\u7B7E\u6536\u4EBA\u9009\u62E9\u3001\u62D2\u6536\u3001\u7B7E\u6536\u6309\u94AE "),
-            vue.unref(detailsData).taskType === 2 && vue.unref(detailsData).status === 1 ? (vue.openBlock(), vue.createElementBlock("view", {
-              key: 0,
-              class: "boxBg"
-            }, [
-              vue.createElementVNode("view", { class: "tit" }, [
-                vue.createElementVNode("text", null, "\u7B7E\u6536\u4EBA"),
-                vue.unref(isSign) && vue.unref(detailsData).paymentMethod == 1 || vue.unref(isPickUp) && vue.unref(detailsData).paymentMethod === 2 ? (vue.openBlock(), vue.createElementBlock("view", {
-                  key: 0,
-                  class: "goodsSelect"
-                }, [
-                  vue.createElementVNode("text", { class: "textInfo" }, vue.toDisplayString(vue.unref(detailsData).signRecipient === 1 ? "\u672C\u4EBA" : "\u4EE3\u6536"), 1)
-                ])) : (vue.openBlock(), vue.createElementBlock("view", {
-                  key: 1,
-                  class: "goodsSelect",
-                  onClick: handleSignOpen
-                }, [
-                  vue.createElementVNode("text", { class: "textInfo" }, vue.toDisplayString(vue.unref(detailsData).signRecipient === 1 ? "\u672C\u4EBA" : "\u4EE3\u6536"), 1),
-                  vue.createElementVNode("icon", { class: "nextIcon" })
-                ]))
-              ])
-            ])) : vue.createCommentVNode("v-if", true),
-            vue.createCommentVNode(" 		{{detailsData.status}}--{{users.isNew}}--{{taskStatus}} "),
-            vue.createCommentVNode(' <view\r\n			class="btnBox subBtnBox"\r\n			v-if="(detailsData.status===1&&!users.isNew)||(taskStatus === 4&&!users.isNew) || (taskStatus === 0 && users.taskType === 2) || (users.detailType === 2 && taskStatus === 4) || (detailsData.status===1&&users.detailType === 2 && taskStatus === 6)"\r\n		>\r\n			<button v-if="(!isSign && !isPickUp) || (isSign && !isPickUp && detailsData.paymentMethod === 2)" class="btn-default uni-sub-btn" @click="handleRejection(detailsData.id)">\r\n				\u62D2\u6536\r\n			</button>\r\n			<button v-if="!isPickUp" class="btn-default" @click="handleSign(detailsData.id)">\u7B7E\u6536</button>\r\n			<button v-if="isPickUp && detailsData.paymentMethod === 2" class="btn-default uni-mini" @click="handleReceipt">\u53BB\u6536\u6B3E</button>\r\n			<button v-if="isSign && detailsData.paymentMethod == 1" class="btn-default uni-mini btn-forbid">\u5DF2\u7B7E\u6536</button>\r\n		</view> '),
-            vue.createCommentVNode(" end "),
-            vue.createCommentVNode(" \u5F53\u72B6\u6001\u662F\u5DF2\u53D6\u4EF62\u6216\u8005\u5DF2\u7B7E\u65365\u663E\u793A\u8DDF\u8E2A\u6309\u94AE ||(taskStatus === 6&&users.taskType===2)"),
-            vue.createCommentVNode(' <view class="btnBox" v-if="(detailsData.status===2&&users.isNew)||(taskStatus === 2&&users.isNew) || taskStatus === 5 || (users.detailType === 2 && taskStatus === 6 &&users.isNew) || (users.detailType === 1 && taskStatus === 6)">\r\n			<button class="btn-default uni-mini" @click="handleOrder">\u8BA2\u5355\u8DDF\u8E2A</button>\r\n		</view> '),
-            vue.createCommentVNode(" end "),
-            vue.createCommentVNode(" \u4ED8\u6B3E\u65B9\u5F0FpaymentMethod\uFF1A1\u5BC4\u4ED8\uFF0C2\u5230\u4ED8 "),
-            vue.createCommentVNode(" \u4ED8\u6B3E\u72B6\u6001paymentStatus\uFF1A1\u672A\u4ED8\uFF0C2\u5DF2\u4ED8 "),
-            vue.createCommentVNode(" \u7B7E\u6536\u72B6\u6001signStatus\uFF1A1\u4E3A\u5DF2\u7B7E\u6536\uFF0C2\u4E3A\u62D2\u6536 "),
-            vue.createCommentVNode(" \u4EFB\u52A1\u7C7B\u578BtaskType\uFF1A1\u4E3A\u53D6\u4EF6\u4EFB\u52A1\uFF0C2\u4E3A\u6D3E\u4EF6\u4EFB\u52A1 "),
-            vue.createCommentVNode(" \u4EFB\u52A1\u72B6\u6001status\uFF1A1\u672A\u53D6\u6D3E\uFF0C2\u5B8C\u6210\uFF0C3\u53D6\u6D88 \u672A\u6D3E\u4EF6\u7684\u60C5\u51B5\u4E0B\u663E\u793A\u7684\u6309\u94AE "),
-            vue.createCommentVNode(" \u6D3E\u4EF6 "),
-            vue.unref(detailsData).taskType === 2 ? (vue.openBlock(), vue.createElementBlock("view", { key: 1 }, [
-              vue.createCommentVNode(" \u672A\u6D3E\u4EF6\u672A\u7B7E\u6536"),
-              vue.unref(detailsData).status === 1 ? (vue.openBlock(), vue.createElementBlock("view", {
-                key: 0,
-                class: "btnBox subBtnBox"
-              }, [
-                vue.unref(detailsData).signStatus !== 1 ? (vue.openBlock(), vue.createElementBlock("button", {
-                  key: 0,
-                  class: "btn-default uni-sub-btn",
-                  onClick: _cache[0] || (_cache[0] = ($event) => handleRejection(vue.unref(detailsData).id))
-                }, "\u62D2\u6536")) : vue.createCommentVNode("v-if", true),
-                vue.unref(detailsData).signStatus !== 1 ? (vue.openBlock(), vue.createElementBlock("button", {
-                  key: 1,
-                  class: "btn-default",
-                  onClick: _cache[1] || (_cache[1] = ($event) => handleSign(vue.unref(detailsData).id))
-                }, "\u7B7E\u6536")) : vue.createCommentVNode("v-if", true)
-              ])) : (vue.openBlock(), vue.createElementBlock(vue.Fragment, { key: 1 }, [
-                vue.createCommentVNode(" end "),
-                vue.createCommentVNode(" \u5DF2\u7ECF\u6D3E\u4EF6\u672A\u4ED8\u6B3E\u6216\u8005\u5DF2\u7ECF\u7B7E\u6536 "),
-                vue.createElementVNode("view", { class: "btnBox subBtnBox" }, [
-                  vue.createCommentVNode(" \u7B7E\u6536\u540E\u672A\u4ED8\u6B3E\uFF0CisPickUp\u4EE3\u8868\u672A\u6536\u6B3E\u8FDB\u5165\u6536\u6B3E\u9875\uFF0C\u8FD4\u56DE\u65F6\u5019\u7684\u663E\u793A\u53BB\u6536\u6B3E\u6309\u94AE "),
-                  vue.createCommentVNode(" \u5DF2\u7B7E\u6536\u5230\u7684\u8BA2\u5355\u4ED8\u4F46\u662F\u672A\u4ED8\u6B3E \u5E94\u8BE5\u663E\u793A\u53BB\u6536\u6B3E"),
-                  vue.unref(isPickUp) && vue.unref(detailsData).paymentStatus === 1 && vue.unref(detailsData).paymentMethod === 2 && vue.unref(detailsData).signStatus === 1 ? (vue.openBlock(), vue.createElementBlock("button", {
-                    key: 0,
-                    class: "btn-default uni-mini",
-                    onClick: handleReceipt
-                  }, " \u53BB\u6536\u6B3E ")) : vue.createCommentVNode("v-if", true),
-                  vue.createCommentVNode(" \u7B7E\u6536\u72B6\u6001\u662F\u5DF2\u7B7E\u6536\uFF0C\u663E\u793A\u5DF2\u7B7E\u6536\u6309\u94AE "),
-                  vue.createCommentVNode(" isSign\u4EE3\u8868\u5DF2\u7ECF\u70B9\u51FB\u4E86\u7B7E\u6536\uFF0C\u8FDB\u5165\u5230\u4E86\u6D3E\u4EF6\u6210\u529F\u9875\uFF0C\u8FD4\u56DE\u7684\u65F6\u5019\u8981\u663E\u793A\u5DF2\u7ECF\u7B7E\u6536 "),
-                  vue.unref(isSign) && vue.unref(detailsData).signStatus === 1 ? (vue.openBlock(), vue.createElementBlock("button", {
-                    key: 1,
-                    class: "btn-default uni-mini btn-forbid"
-                  }, "\u5DF2\u7B7E\u6536")) : vue.createCommentVNode("v-if", true),
-                  vue.createCommentVNode(" \u5F53\u72B6\u6001\u662F\u5DF2\u7B7E\u6536\u663E\u793A\u8DDF\u8E2A\u6309\u94AE"),
-                  vue.createCommentVNode(" \u5DF2\u6D3E\u4EF6 "),
-                  vue.unref(detailsData).status === 2 ? (vue.openBlock(), vue.createElementBlock("view", {
-                    key: 2,
-                    class: "btnBox"
-                  }, [
-                    vue.createCommentVNode(" \u672A\u4ED8\u6B3E\u3001\u4ECE\u6D88\u606F\u7B7E\u6536\u63D0\u9192 "),
-                    !vue.unref(isPickUp) && !vue.unref(isSign) && vue.unref(detailsData).paymentMethod === 1 || vue.unref(users).isNew || !vue.unref(isPickUp) && !vue.unref(isSign) && vue.unref(detailsData).paymentMethod === 2 && vue.unref(detailsData).paymentStatus === 1 || !vue.unref(isPickUp) && !vue.unref(isSign) && vue.unref(detailsData).paymentMethod === 2 && vue.unref(detailsData).paymentStatus === 2 && vue.unref(detailsData).signStatus == 1 ? (vue.openBlock(), vue.createElementBlock("button", {
-                      key: 0,
-                      class: "btn-default uni-mini",
-                      onClick: handleOrder
-                    }, " \u8BA2\u5355\u8DDF\u8E2A ")) : vue.createCommentVNode("v-if", true)
-                  ])) : vue.createCommentVNode("v-if", true)
-                ])
-              ], 2112)),
-              vue.createCommentVNode(" end "),
-              vue.createCommentVNode(" end ")
-            ])) : (vue.openBlock(), vue.createElementBlock(vue.Fragment, { key: 2 }, [
-              vue.createCommentVNode(" \u53D6\u4EF6 "),
-              vue.createElementVNode("view", null, [
-                vue.createCommentVNode(" \u5F53\u72B6\u6001\u662F\u5DF2\u53D6\u4EF6\u663E\u793A\u8DDF\u8E2A\u6309\u94AE"),
-                vue.unref(detailsData).status === 2 ? (vue.openBlock(), vue.createElementBlock("view", {
-                  key: 0,
-                  class: "btnBox"
-                }, [
-                  vue.createElementVNode("button", {
-                    class: "btn-default uni-mini",
-                    onClick: handleOrder
-                  }, "\u8BA2\u5355\u8DDF\u8E2A")
-                ])) : vue.createCommentVNode("v-if", true),
-                vue.createCommentVNode(" end ")
-              ])
-            ], 2112)),
-            vue.createCommentVNode(" \u7269\u54C1\u540D\u79F0\u3001\u4ED8\u6B3E\u9009\u62E9\u3001\u5907\u6CE8\u5F39\u5C42 "),
-            vue.createVNode(Uppop$1, {
-              ref_key: "sign",
-              ref: sign,
-              onGetSignType: getSignType,
-              type: vue.unref(type)
-            }, null, 8, ["type"]),
-            vue.createCommentVNode(" end ")
-          ])
-        ], 64);
-      };
-    }
-  };
-  var PagesDetailsWaybill = /* @__PURE__ */ _export_sfc(_sfc_main$c, [["__scopeId", "data-v-6bc258c0"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/pages/details/waybill.vue"]]);
-  const _sfc_main$b = {
-    __name: "index",
-    setup(__props) {
-      const store2 = useStore();
-      const users = store2.state.user;
-      const pages2 = getCurrentPages();
-      const currentPage = pages2[pages2.length - 1].$page.options;
-      const type = currentPage.type;
-      const handleBack = () => {
-        if (users.isDelivery) {
-          if (users.taskStatus === 6 && users.detailType === 2) {
-            store2.commit("user/setTabIndex", 1);
-            uni.redirectTo({
-              url: "/pages/history/index"
-            });
-          } else {
-            uni.redirectTo({
-              url: "/pages/delivery/index"
-            });
-          }
-        } else {
-          if (users.taskStatus === 6) {
-            uni.redirectTo({
-              url: "/pages/history/index"
-            });
-          } else {
-            uni.redirectTo({
-              url: "/pages/pickup/index"
-            });
-          }
-        }
-        store2.commit("user/setIsPickUp", false);
-        store2.commit("user/setIsSign", false);
-      };
-      const goBack = () => {
-        if (users.isDelivery) {
-          if (users.paymentMethod === 2) {
-            store2.commit("user/setIsCollect", true);
-          } else {
-            store2.commit("user/setIsSign", true);
-          }
-          uni.redirectTo({
-            url: "/pages/details/waybill"
-          });
-        } else {
-          if (users.paymentMethod === 2) {
-            store2.commit("user/setIsCollect", true);
-          }
-          uni.redirectTo({
-            url: "/pages/details/index"
-          });
-        }
-      };
-      return (_ctx, _cache) => {
-        return vue.openBlock(), vue.createElementBlock(vue.Fragment, null, [
-          vue.createCommentVNode(" \u81EA\u5B9A\u4E49\u5934\u90E8 "),
-          vue.createVNode(UniNav, {
-            title: vue.unref(users).isDelivery ? "\u7B7E\u6536\u6210\u529F" : "\u53D6\u4EF6\u6210\u529F",
-            onGoBack: goBack
-          }, null, 8, ["title"]),
-          vue.createCommentVNode(" end "),
-          vue.createElementVNode("view", { class: "pickUp" }, [
-            vue.createElementVNode("icon"),
-            vue.createElementVNode("view", null, vue.toDisplayString(vue.unref(users).isDelivery ? "\u7B7E\u6536\u6210\u529F" : "\u53D6\u4EF6\u6210\u529F"), 1),
-            vue.unref(users).isDelivery ? (vue.openBlock(), vue.createElementBlock("view", {
-              key: 0,
-              class: "btnBox"
-            }, [
-              vue.unref(type) === "2" ? (vue.openBlock(), vue.createElementBlock("navigator", {
-                key: 0,
-                url: "/pages/pay/scanPay?pay=true",
-                "open-type": "redirect"
-              }, "\u53BB\u6536\u6B3E")) : (vue.openBlock(), vue.createElementBlock("view", {
-                key: 1,
-                class: "navigator-wrap",
-                onClick: handleBack
-              }, "\u8FD4\u56DE\u4E3B\u9875"))
-            ])) : (vue.openBlock(), vue.createElementBlock("view", {
-              key: 1,
-              class: "btnBox"
-            }, [
-              vue.unref(type) === "1" ? (vue.openBlock(), vue.createElementBlock("navigator", {
-                key: 0,
-                url: "/pages/pay/scanPay?pay=true",
-                "open-type": "redirect"
-              }, "\u53BB\u6536\u6B3E")) : (vue.openBlock(), vue.createElementBlock("view", {
-                key: 1,
-                class: "navigator-wrap",
-                onClick: handleBack
-              }, "\u8FD4\u56DE\u4E3B\u9875"))
-            ]))
-          ])
-        ], 64);
-      };
-    }
-  };
-  var PagesPayIndex = /* @__PURE__ */ _export_sfc(_sfc_main$b, [["__scopeId", "data-v-32f2f1fc"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/pages/pay/index.vue"]]);
-  let uQRCode = {};
-  (function() {
-    function QR8bitByte(data) {
-      this.mode = QRMode.MODE_8BIT_BYTE;
-      this.data = data;
-    }
-    QR8bitByte.prototype = {
-      getLength: function(buffer) {
-        return this.data.length;
-      },
-      write: function(buffer) {
-        for (var i3 = 0; i3 < this.data.length; i3++) {
-          buffer.put(this.data.charCodeAt(i3), 8);
-        }
-      }
-    };
-    function QRCode(typeNumber, errorCorrectLevel) {
-      this.typeNumber = typeNumber;
-      this.errorCorrectLevel = errorCorrectLevel;
-      this.modules = null;
-      this.moduleCount = 0;
-      this.dataCache = null;
-      this.dataList = new Array();
-    }
-    QRCode.prototype = {
-      addData: function(data) {
-        var newData = new QR8bitByte(data);
-        this.dataList.push(newData);
-        this.dataCache = null;
-      },
-      isDark: function(row, col) {
-        if (row < 0 || this.moduleCount <= row || col < 0 || this.moduleCount <= col) {
-          throw new Error(row + "," + col);
-        }
-        return this.modules[row][col];
-      },
-      getModuleCount: function() {
-        return this.moduleCount;
-      },
-      make: function() {
-        if (this.typeNumber < 1) {
-          var typeNumber = 1;
-          for (typeNumber = 1; typeNumber < 40; typeNumber++) {
-            var rsBlocks = QRRSBlock.getRSBlocks(typeNumber, this.errorCorrectLevel);
-            var buffer = new QRBitBuffer();
-            var totalDataCount = 0;
-            for (var i3 = 0; i3 < rsBlocks.length; i3++) {
-              totalDataCount += rsBlocks[i3].dataCount;
-            }
-            for (var i3 = 0; i3 < this.dataList.length; i3++) {
-              var data = this.dataList[i3];
-              buffer.put(data.mode, 4);
-              buffer.put(data.getLength(), QRUtil.getLengthInBits(data.mode, typeNumber));
-              data.write(buffer);
-            }
-            if (buffer.getLengthInBits() <= totalDataCount * 8)
-              break;
-          }
-          this.typeNumber = typeNumber;
-        }
-        this.makeImpl(false, this.getBestMaskPattern());
-      },
-      makeImpl: function(test, maskPattern) {
-        this.moduleCount = this.typeNumber * 4 + 17;
-        this.modules = new Array(this.moduleCount);
-        for (var row = 0; row < this.moduleCount; row++) {
-          this.modules[row] = new Array(this.moduleCount);
-          for (var col = 0; col < this.moduleCount; col++) {
-            this.modules[row][col] = null;
-          }
-        }
-        this.setupPositionProbePattern(0, 0);
-        this.setupPositionProbePattern(this.moduleCount - 7, 0);
-        this.setupPositionProbePattern(0, this.moduleCount - 7);
-        this.setupPositionAdjustPattern();
-        this.setupTimingPattern();
-        this.setupTypeInfo(test, maskPattern);
-        if (this.typeNumber >= 7) {
-          this.setupTypeNumber(test);
-        }
-        if (this.dataCache == null) {
-          this.dataCache = QRCode.createData(this.typeNumber, this.errorCorrectLevel, this.dataList);
-        }
-        this.mapData(this.dataCache, maskPattern);
-      },
-      setupPositionProbePattern: function(row, col) {
-        for (var r2 = -1; r2 <= 7; r2++) {
-          if (row + r2 <= -1 || this.moduleCount <= row + r2)
-            continue;
-          for (var c2 = -1; c2 <= 7; c2++) {
-            if (col + c2 <= -1 || this.moduleCount <= col + c2)
-              continue;
-            if (0 <= r2 && r2 <= 6 && (c2 == 0 || c2 == 6) || 0 <= c2 && c2 <= 6 && (r2 == 0 || r2 == 6) || 2 <= r2 && r2 <= 4 && 2 <= c2 && c2 <= 4) {
-              this.modules[row + r2][col + c2] = true;
-            } else {
-              this.modules[row + r2][col + c2] = false;
-            }
-          }
-        }
-      },
-      getBestMaskPattern: function() {
-        var minLostPoint = 0;
-        var pattern2 = 0;
-        for (var i3 = 0; i3 < 8; i3++) {
-          this.makeImpl(true, i3);
-          var lostPoint = QRUtil.getLostPoint(this);
-          if (i3 == 0 || minLostPoint > lostPoint) {
-            minLostPoint = lostPoint;
-            pattern2 = i3;
-          }
-        }
-        return pattern2;
-      },
-      createMovieClip: function(target_mc, instance_name, depth) {
-        var qr_mc = target_mc.createEmptyMovieClip(instance_name, depth);
-        var cs = 1;
-        this.make();
-        for (var row = 0; row < this.modules.length; row++) {
-          var y = row * cs;
-          for (var col = 0; col < this.modules[row].length; col++) {
-            var x2 = col * cs;
-            var dark = this.modules[row][col];
-            if (dark) {
-              qr_mc.beginFill(0, 100);
-              qr_mc.moveTo(x2, y);
-              qr_mc.lineTo(x2 + cs, y);
-              qr_mc.lineTo(x2 + cs, y + cs);
-              qr_mc.lineTo(x2, y + cs);
-              qr_mc.endFill();
-            }
-          }
-        }
-        return qr_mc;
-      },
-      setupTimingPattern: function() {
-        for (var r2 = 8; r2 < this.moduleCount - 8; r2++) {
-          if (this.modules[r2][6] != null) {
-            continue;
-          }
-          this.modules[r2][6] = r2 % 2 == 0;
-        }
-        for (var c2 = 8; c2 < this.moduleCount - 8; c2++) {
-          if (this.modules[6][c2] != null) {
-            continue;
-          }
-          this.modules[6][c2] = c2 % 2 == 0;
-        }
-      },
-      setupPositionAdjustPattern: function() {
-        var pos = QRUtil.getPatternPosition(this.typeNumber);
-        for (var i3 = 0; i3 < pos.length; i3++) {
-          for (var j2 = 0; j2 < pos.length; j2++) {
-            var row = pos[i3];
-            var col = pos[j2];
-            if (this.modules[row][col] != null) {
-              continue;
-            }
-            for (var r2 = -2; r2 <= 2; r2++) {
-              for (var c2 = -2; c2 <= 2; c2++) {
-                if (r2 == -2 || r2 == 2 || c2 == -2 || c2 == 2 || r2 == 0 && c2 == 0) {
-                  this.modules[row + r2][col + c2] = true;
-                } else {
-                  this.modules[row + r2][col + c2] = false;
-                }
-              }
-            }
-          }
-        }
-      },
-      setupTypeNumber: function(test) {
-        var bits = QRUtil.getBCHTypeNumber(this.typeNumber);
-        for (var i3 = 0; i3 < 18; i3++) {
-          var mod = !test && (bits >> i3 & 1) == 1;
-          this.modules[Math.floor(i3 / 3)][i3 % 3 + this.moduleCount - 8 - 3] = mod;
-        }
-        for (var i3 = 0; i3 < 18; i3++) {
-          var mod = !test && (bits >> i3 & 1) == 1;
-          this.modules[i3 % 3 + this.moduleCount - 8 - 3][Math.floor(i3 / 3)] = mod;
-        }
-      },
-      setupTypeInfo: function(test, maskPattern) {
-        var data = this.errorCorrectLevel << 3 | maskPattern;
-        var bits = QRUtil.getBCHTypeInfo(data);
-        for (var i3 = 0; i3 < 15; i3++) {
-          var mod = !test && (bits >> i3 & 1) == 1;
-          if (i3 < 6) {
-            this.modules[i3][8] = mod;
-          } else if (i3 < 8) {
-            this.modules[i3 + 1][8] = mod;
-          } else {
-            this.modules[this.moduleCount - 15 + i3][8] = mod;
-          }
-        }
-        for (var i3 = 0; i3 < 15; i3++) {
-          var mod = !test && (bits >> i3 & 1) == 1;
-          if (i3 < 8) {
-            this.modules[8][this.moduleCount - i3 - 1] = mod;
-          } else if (i3 < 9) {
-            this.modules[8][15 - i3 - 1 + 1] = mod;
-          } else {
-            this.modules[8][15 - i3 - 1] = mod;
-          }
-        }
-        this.modules[this.moduleCount - 8][8] = !test;
-      },
-      mapData: function(data, maskPattern) {
-        var inc = -1;
-        var row = this.moduleCount - 1;
-        var bitIndex = 7;
-        var byteIndex = 0;
-        for (var col = this.moduleCount - 1; col > 0; col -= 2) {
-          if (col == 6)
-            col--;
-          while (true) {
-            for (var c2 = 0; c2 < 2; c2++) {
-              if (this.modules[row][col - c2] == null) {
-                var dark = false;
-                if (byteIndex < data.length) {
-                  dark = (data[byteIndex] >>> bitIndex & 1) == 1;
-                }
-                var mask = QRUtil.getMask(maskPattern, row, col - c2);
-                if (mask) {
-                  dark = !dark;
-                }
-                this.modules[row][col - c2] = dark;
-                bitIndex--;
-                if (bitIndex == -1) {
-                  byteIndex++;
-                  bitIndex = 7;
-                }
-              }
-            }
-            row += inc;
-            if (row < 0 || this.moduleCount <= row) {
-              row -= inc;
-              inc = -inc;
-              break;
-            }
-          }
-        }
-      }
-    };
-    QRCode.PAD0 = 236;
-    QRCode.PAD1 = 17;
-    QRCode.createData = function(typeNumber, errorCorrectLevel, dataList) {
-      var rsBlocks = QRRSBlock.getRSBlocks(typeNumber, errorCorrectLevel);
-      var buffer = new QRBitBuffer();
-      for (var i3 = 0; i3 < dataList.length; i3++) {
-        var data = dataList[i3];
-        buffer.put(data.mode, 4);
-        buffer.put(data.getLength(), QRUtil.getLengthInBits(data.mode, typeNumber));
-        data.write(buffer);
-      }
-      var totalDataCount = 0;
-      for (var i3 = 0; i3 < rsBlocks.length; i3++) {
-        totalDataCount += rsBlocks[i3].dataCount;
-      }
-      if (buffer.getLengthInBits() > totalDataCount * 8) {
-        throw new Error("code length overflow. (" + buffer.getLengthInBits() + ">" + totalDataCount * 8 + ")");
-      }
-      if (buffer.getLengthInBits() + 4 <= totalDataCount * 8) {
-        buffer.put(0, 4);
-      }
-      while (buffer.getLengthInBits() % 8 != 0) {
-        buffer.putBit(false);
-      }
-      while (true) {
-        if (buffer.getLengthInBits() >= totalDataCount * 8) {
-          break;
-        }
-        buffer.put(QRCode.PAD0, 8);
-        if (buffer.getLengthInBits() >= totalDataCount * 8) {
-          break;
-        }
-        buffer.put(QRCode.PAD1, 8);
-      }
-      return QRCode.createBytes(buffer, rsBlocks);
-    };
-    QRCode.createBytes = function(buffer, rsBlocks) {
-      var offset = 0;
-      var maxDcCount = 0;
-      var maxEcCount = 0;
-      var dcdata = new Array(rsBlocks.length);
-      var ecdata = new Array(rsBlocks.length);
-      for (var r2 = 0; r2 < rsBlocks.length; r2++) {
-        var dcCount = rsBlocks[r2].dataCount;
-        var ecCount = rsBlocks[r2].totalCount - dcCount;
-        maxDcCount = Math.max(maxDcCount, dcCount);
-        maxEcCount = Math.max(maxEcCount, ecCount);
-        dcdata[r2] = new Array(dcCount);
-        for (var i3 = 0; i3 < dcdata[r2].length; i3++) {
-          dcdata[r2][i3] = 255 & buffer.buffer[i3 + offset];
-        }
-        offset += dcCount;
-        var rsPoly = QRUtil.getErrorCorrectPolynomial(ecCount);
-        var rawPoly = new QRPolynomial(dcdata[r2], rsPoly.getLength() - 1);
-        var modPoly = rawPoly.mod(rsPoly);
-        ecdata[r2] = new Array(rsPoly.getLength() - 1);
-        for (var i3 = 0; i3 < ecdata[r2].length; i3++) {
-          var modIndex = i3 + modPoly.getLength() - ecdata[r2].length;
-          ecdata[r2][i3] = modIndex >= 0 ? modPoly.get(modIndex) : 0;
-        }
-      }
-      var totalCodeCount = 0;
-      for (var i3 = 0; i3 < rsBlocks.length; i3++) {
-        totalCodeCount += rsBlocks[i3].totalCount;
-      }
-      var data = new Array(totalCodeCount);
-      var index = 0;
-      for (var i3 = 0; i3 < maxDcCount; i3++) {
-        for (var r2 = 0; r2 < rsBlocks.length; r2++) {
-          if (i3 < dcdata[r2].length) {
-            data[index++] = dcdata[r2][i3];
-          }
-        }
-      }
-      for (var i3 = 0; i3 < maxEcCount; i3++) {
-        for (var r2 = 0; r2 < rsBlocks.length; r2++) {
-          if (i3 < ecdata[r2].length) {
-            data[index++] = ecdata[r2][i3];
-          }
-        }
-      }
-      return data;
-    };
-    var QRMode = {
-      MODE_NUMBER: 1 << 0,
-      MODE_ALPHA_NUM: 1 << 1,
-      MODE_8BIT_BYTE: 1 << 2,
-      MODE_KANJI: 1 << 3
-    };
-    var QRErrorCorrectLevel = {
-      L: 1,
-      M: 0,
-      Q: 3,
-      H: 2
-    };
-    var QRMaskPattern = {
-      PATTERN000: 0,
-      PATTERN001: 1,
-      PATTERN010: 2,
-      PATTERN011: 3,
-      PATTERN100: 4,
-      PATTERN101: 5,
-      PATTERN110: 6,
-      PATTERN111: 7
-    };
-    var QRUtil = {
-      PATTERN_POSITION_TABLE: [
-        [],
-        [6, 18],
-        [6, 22],
-        [6, 26],
-        [6, 30],
-        [6, 34],
-        [6, 22, 38],
-        [6, 24, 42],
-        [6, 26, 46],
-        [6, 28, 50],
-        [6, 30, 54],
-        [6, 32, 58],
-        [6, 34, 62],
-        [6, 26, 46, 66],
-        [6, 26, 48, 70],
-        [6, 26, 50, 74],
-        [6, 30, 54, 78],
-        [6, 30, 56, 82],
-        [6, 30, 58, 86],
-        [6, 34, 62, 90],
-        [6, 28, 50, 72, 94],
-        [6, 26, 50, 74, 98],
-        [6, 30, 54, 78, 102],
-        [6, 28, 54, 80, 106],
-        [6, 32, 58, 84, 110],
-        [6, 30, 58, 86, 114],
-        [6, 34, 62, 90, 118],
-        [6, 26, 50, 74, 98, 122],
-        [6, 30, 54, 78, 102, 126],
-        [6, 26, 52, 78, 104, 130],
-        [6, 30, 56, 82, 108, 134],
-        [6, 34, 60, 86, 112, 138],
-        [6, 30, 58, 86, 114, 142],
-        [6, 34, 62, 90, 118, 146],
-        [6, 30, 54, 78, 102, 126, 150],
-        [6, 24, 50, 76, 102, 128, 154],
-        [6, 28, 54, 80, 106, 132, 158],
-        [6, 32, 58, 84, 110, 136, 162],
-        [6, 26, 54, 82, 110, 138, 166],
-        [6, 30, 58, 86, 114, 142, 170]
-      ],
-      G15: 1 << 10 | 1 << 8 | 1 << 5 | 1 << 4 | 1 << 2 | 1 << 1 | 1 << 0,
-      G18: 1 << 12 | 1 << 11 | 1 << 10 | 1 << 9 | 1 << 8 | 1 << 5 | 1 << 2 | 1 << 0,
-      G15_MASK: 1 << 14 | 1 << 12 | 1 << 10 | 1 << 4 | 1 << 1,
-      getBCHTypeInfo: function(data) {
-        var d2 = data << 10;
-        while (QRUtil.getBCHDigit(d2) - QRUtil.getBCHDigit(QRUtil.G15) >= 0) {
-          d2 ^= QRUtil.G15 << QRUtil.getBCHDigit(d2) - QRUtil.getBCHDigit(QRUtil.G15);
-        }
-        return (data << 10 | d2) ^ QRUtil.G15_MASK;
-      },
-      getBCHTypeNumber: function(data) {
-        var d2 = data << 12;
-        while (QRUtil.getBCHDigit(d2) - QRUtil.getBCHDigit(QRUtil.G18) >= 0) {
-          d2 ^= QRUtil.G18 << QRUtil.getBCHDigit(d2) - QRUtil.getBCHDigit(QRUtil.G18);
-        }
-        return data << 12 | d2;
-      },
-      getBCHDigit: function(data) {
-        var digit = 0;
-        while (data != 0) {
-          digit++;
-          data >>>= 1;
-        }
-        return digit;
-      },
-      getPatternPosition: function(typeNumber) {
-        return QRUtil.PATTERN_POSITION_TABLE[typeNumber - 1];
-      },
-      getMask: function(maskPattern, i3, j2) {
-        switch (maskPattern) {
-          case QRMaskPattern.PATTERN000:
-            return (i3 + j2) % 2 == 0;
-          case QRMaskPattern.PATTERN001:
-            return i3 % 2 == 0;
-          case QRMaskPattern.PATTERN010:
-            return j2 % 3 == 0;
-          case QRMaskPattern.PATTERN011:
-            return (i3 + j2) % 3 == 0;
-          case QRMaskPattern.PATTERN100:
-            return (Math.floor(i3 / 2) + Math.floor(j2 / 3)) % 2 == 0;
-          case QRMaskPattern.PATTERN101:
-            return i3 * j2 % 2 + i3 * j2 % 3 == 0;
-          case QRMaskPattern.PATTERN110:
-            return (i3 * j2 % 2 + i3 * j2 % 3) % 2 == 0;
-          case QRMaskPattern.PATTERN111:
-            return (i3 * j2 % 3 + (i3 + j2) % 2) % 2 == 0;
-          default:
-            throw new Error("bad maskPattern:" + maskPattern);
-        }
-      },
-      getErrorCorrectPolynomial: function(errorCorrectLength) {
-        var a2 = new QRPolynomial([1], 0);
-        for (var i3 = 0; i3 < errorCorrectLength; i3++) {
-          a2 = a2.multiply(new QRPolynomial([1, QRMath.gexp(i3)], 0));
-        }
-        return a2;
-      },
-      getLengthInBits: function(mode, type) {
-        if (1 <= type && type < 10) {
-          switch (mode) {
-            case QRMode.MODE_NUMBER:
-              return 10;
-            case QRMode.MODE_ALPHA_NUM:
-              return 9;
-            case QRMode.MODE_8BIT_BYTE:
-              return 8;
-            case QRMode.MODE_KANJI:
-              return 8;
-            default:
-              throw new Error("mode:" + mode);
-          }
-        } else if (type < 27) {
-          switch (mode) {
-            case QRMode.MODE_NUMBER:
-              return 12;
-            case QRMode.MODE_ALPHA_NUM:
-              return 11;
-            case QRMode.MODE_8BIT_BYTE:
-              return 16;
-            case QRMode.MODE_KANJI:
-              return 10;
-            default:
-              throw new Error("mode:" + mode);
-          }
-        } else if (type < 41) {
-          switch (mode) {
-            case QRMode.MODE_NUMBER:
-              return 14;
-            case QRMode.MODE_ALPHA_NUM:
-              return 13;
-            case QRMode.MODE_8BIT_BYTE:
-              return 16;
-            case QRMode.MODE_KANJI:
-              return 12;
-            default:
-              throw new Error("mode:" + mode);
-          }
-        } else {
-          throw new Error("type:" + type);
-        }
-      },
-      getLostPoint: function(qrCode) {
-        var moduleCount = qrCode.getModuleCount();
-        var lostPoint = 0;
-        for (var row = 0; row < moduleCount; row++) {
-          for (var col = 0; col < moduleCount; col++) {
-            var sameCount = 0;
-            var dark = qrCode.isDark(row, col);
-            for (var r2 = -1; r2 <= 1; r2++) {
-              if (row + r2 < 0 || moduleCount <= row + r2) {
-                continue;
-              }
-              for (var c2 = -1; c2 <= 1; c2++) {
-                if (col + c2 < 0 || moduleCount <= col + c2) {
-                  continue;
-                }
-                if (r2 == 0 && c2 == 0) {
-                  continue;
-                }
-                if (dark == qrCode.isDark(row + r2, col + c2)) {
-                  sameCount++;
-                }
-              }
-            }
-            if (sameCount > 5) {
-              lostPoint += 3 + sameCount - 5;
-            }
-          }
-        }
-        for (var row = 0; row < moduleCount - 1; row++) {
-          for (var col = 0; col < moduleCount - 1; col++) {
-            var count = 0;
-            if (qrCode.isDark(row, col))
-              count++;
-            if (qrCode.isDark(row + 1, col))
-              count++;
-            if (qrCode.isDark(row, col + 1))
-              count++;
-            if (qrCode.isDark(row + 1, col + 1))
-              count++;
-            if (count == 0 || count == 4) {
-              lostPoint += 3;
-            }
-          }
-        }
-        for (var row = 0; row < moduleCount; row++) {
-          for (var col = 0; col < moduleCount - 6; col++) {
-            if (qrCode.isDark(row, col) && !qrCode.isDark(row, col + 1) && qrCode.isDark(row, col + 2) && qrCode.isDark(row, col + 3) && qrCode.isDark(row, col + 4) && !qrCode.isDark(row, col + 5) && qrCode.isDark(row, col + 6)) {
-              lostPoint += 40;
-            }
-          }
-        }
-        for (var col = 0; col < moduleCount; col++) {
-          for (var row = 0; row < moduleCount - 6; row++) {
-            if (qrCode.isDark(row, col) && !qrCode.isDark(row + 1, col) && qrCode.isDark(row + 2, col) && qrCode.isDark(row + 3, col) && qrCode.isDark(row + 4, col) && !qrCode.isDark(row + 5, col) && qrCode.isDark(row + 6, col)) {
-              lostPoint += 40;
-            }
-          }
-        }
-        var darkCount = 0;
-        for (var col = 0; col < moduleCount; col++) {
-          for (var row = 0; row < moduleCount; row++) {
-            if (qrCode.isDark(row, col)) {
-              darkCount++;
-            }
-          }
-        }
-        var ratio = Math.abs(100 * darkCount / moduleCount / moduleCount - 50) / 5;
-        lostPoint += ratio * 10;
-        return lostPoint;
-      }
-    };
-    var QRMath = {
-      glog: function(n2) {
-        if (n2 < 1) {
-          throw new Error("glog(" + n2 + ")");
-        }
-        return QRMath.LOG_TABLE[n2];
-      },
-      gexp: function(n2) {
-        while (n2 < 0) {
-          n2 += 255;
-        }
-        while (n2 >= 256) {
-          n2 -= 255;
-        }
-        return QRMath.EXP_TABLE[n2];
-      },
-      EXP_TABLE: new Array(256),
-      LOG_TABLE: new Array(256)
-    };
-    for (var i2 = 0; i2 < 8; i2++) {
-      QRMath.EXP_TABLE[i2] = 1 << i2;
-    }
-    for (var i2 = 8; i2 < 256; i2++) {
-      QRMath.EXP_TABLE[i2] = QRMath.EXP_TABLE[i2 - 4] ^ QRMath.EXP_TABLE[i2 - 5] ^ QRMath.EXP_TABLE[i2 - 6] ^ QRMath.EXP_TABLE[i2 - 8];
-    }
-    for (var i2 = 0; i2 < 255; i2++) {
-      QRMath.LOG_TABLE[QRMath.EXP_TABLE[i2]] = i2;
-    }
-    function QRPolynomial(num, shift) {
-      if (num.length == void 0) {
-        throw new Error(num.length + "/" + shift);
-      }
-      var offset = 0;
-      while (offset < num.length && num[offset] == 0) {
-        offset++;
-      }
-      this.num = new Array(num.length - offset + shift);
-      for (var i3 = 0; i3 < num.length - offset; i3++) {
-        this.num[i3] = num[i3 + offset];
-      }
-    }
-    QRPolynomial.prototype = {
-      get: function(index) {
-        return this.num[index];
-      },
-      getLength: function() {
-        return this.num.length;
-      },
-      multiply: function(e2) {
-        var num = new Array(this.getLength() + e2.getLength() - 1);
-        for (var i3 = 0; i3 < this.getLength(); i3++) {
-          for (var j2 = 0; j2 < e2.getLength(); j2++) {
-            num[i3 + j2] ^= QRMath.gexp(QRMath.glog(this.get(i3)) + QRMath.glog(e2.get(j2)));
-          }
-        }
-        return new QRPolynomial(num, 0);
-      },
-      mod: function(e2) {
-        if (this.getLength() - e2.getLength() < 0) {
-          return this;
-        }
-        var ratio = QRMath.glog(this.get(0)) - QRMath.glog(e2.get(0));
-        var num = new Array(this.getLength());
-        for (var i3 = 0; i3 < this.getLength(); i3++) {
-          num[i3] = this.get(i3);
-        }
-        for (var i3 = 0; i3 < e2.getLength(); i3++) {
-          num[i3] ^= QRMath.gexp(QRMath.glog(e2.get(i3)) + ratio);
-        }
-        return new QRPolynomial(num, 0).mod(e2);
-      }
-    };
-    function QRRSBlock(totalCount, dataCount) {
-      this.totalCount = totalCount;
-      this.dataCount = dataCount;
-    }
-    QRRSBlock.RS_BLOCK_TABLE = [
-      [1, 26, 19],
-      [1, 26, 16],
-      [1, 26, 13],
-      [1, 26, 9],
-      [1, 44, 34],
-      [1, 44, 28],
-      [1, 44, 22],
-      [1, 44, 16],
-      [1, 70, 55],
-      [1, 70, 44],
-      [2, 35, 17],
-      [2, 35, 13],
-      [1, 100, 80],
-      [2, 50, 32],
-      [2, 50, 24],
-      [4, 25, 9],
-      [1, 134, 108],
-      [2, 67, 43],
-      [2, 33, 15, 2, 34, 16],
-      [2, 33, 11, 2, 34, 12],
-      [2, 86, 68],
-      [4, 43, 27],
-      [4, 43, 19],
-      [4, 43, 15],
-      [2, 98, 78],
-      [4, 49, 31],
-      [2, 32, 14, 4, 33, 15],
-      [4, 39, 13, 1, 40, 14],
-      [2, 121, 97],
-      [2, 60, 38, 2, 61, 39],
-      [4, 40, 18, 2, 41, 19],
-      [4, 40, 14, 2, 41, 15],
-      [2, 146, 116],
-      [3, 58, 36, 2, 59, 37],
-      [4, 36, 16, 4, 37, 17],
-      [4, 36, 12, 4, 37, 13],
-      [2, 86, 68, 2, 87, 69],
-      [4, 69, 43, 1, 70, 44],
-      [6, 43, 19, 2, 44, 20],
-      [6, 43, 15, 2, 44, 16],
-      [4, 101, 81],
-      [1, 80, 50, 4, 81, 51],
-      [4, 50, 22, 4, 51, 23],
-      [3, 36, 12, 8, 37, 13],
-      [2, 116, 92, 2, 117, 93],
-      [6, 58, 36, 2, 59, 37],
-      [4, 46, 20, 6, 47, 21],
-      [7, 42, 14, 4, 43, 15],
-      [4, 133, 107],
-      [8, 59, 37, 1, 60, 38],
-      [8, 44, 20, 4, 45, 21],
-      [12, 33, 11, 4, 34, 12],
-      [3, 145, 115, 1, 146, 116],
-      [4, 64, 40, 5, 65, 41],
-      [11, 36, 16, 5, 37, 17],
-      [11, 36, 12, 5, 37, 13],
-      [5, 109, 87, 1, 110, 88],
-      [5, 65, 41, 5, 66, 42],
-      [5, 54, 24, 7, 55, 25],
-      [11, 36, 12],
-      [5, 122, 98, 1, 123, 99],
-      [7, 73, 45, 3, 74, 46],
-      [15, 43, 19, 2, 44, 20],
-      [3, 45, 15, 13, 46, 16],
-      [1, 135, 107, 5, 136, 108],
-      [10, 74, 46, 1, 75, 47],
-      [1, 50, 22, 15, 51, 23],
-      [2, 42, 14, 17, 43, 15],
-      [5, 150, 120, 1, 151, 121],
-      [9, 69, 43, 4, 70, 44],
-      [17, 50, 22, 1, 51, 23],
-      [2, 42, 14, 19, 43, 15],
-      [3, 141, 113, 4, 142, 114],
-      [3, 70, 44, 11, 71, 45],
-      [17, 47, 21, 4, 48, 22],
-      [9, 39, 13, 16, 40, 14],
-      [3, 135, 107, 5, 136, 108],
-      [3, 67, 41, 13, 68, 42],
-      [15, 54, 24, 5, 55, 25],
-      [15, 43, 15, 10, 44, 16],
-      [4, 144, 116, 4, 145, 117],
-      [17, 68, 42],
-      [17, 50, 22, 6, 51, 23],
-      [19, 46, 16, 6, 47, 17],
-      [2, 139, 111, 7, 140, 112],
-      [17, 74, 46],
-      [7, 54, 24, 16, 55, 25],
-      [34, 37, 13],
-      [4, 151, 121, 5, 152, 122],
-      [4, 75, 47, 14, 76, 48],
-      [11, 54, 24, 14, 55, 25],
-      [16, 45, 15, 14, 46, 16],
-      [6, 147, 117, 4, 148, 118],
-      [6, 73, 45, 14, 74, 46],
-      [11, 54, 24, 16, 55, 25],
-      [30, 46, 16, 2, 47, 17],
-      [8, 132, 106, 4, 133, 107],
-      [8, 75, 47, 13, 76, 48],
-      [7, 54, 24, 22, 55, 25],
-      [22, 45, 15, 13, 46, 16],
-      [10, 142, 114, 2, 143, 115],
-      [19, 74, 46, 4, 75, 47],
-      [28, 50, 22, 6, 51, 23],
-      [33, 46, 16, 4, 47, 17],
-      [8, 152, 122, 4, 153, 123],
-      [22, 73, 45, 3, 74, 46],
-      [8, 53, 23, 26, 54, 24],
-      [12, 45, 15, 28, 46, 16],
-      [3, 147, 117, 10, 148, 118],
-      [3, 73, 45, 23, 74, 46],
-      [4, 54, 24, 31, 55, 25],
-      [11, 45, 15, 31, 46, 16],
-      [7, 146, 116, 7, 147, 117],
-      [21, 73, 45, 7, 74, 46],
-      [1, 53, 23, 37, 54, 24],
-      [19, 45, 15, 26, 46, 16],
-      [5, 145, 115, 10, 146, 116],
-      [19, 75, 47, 10, 76, 48],
-      [15, 54, 24, 25, 55, 25],
-      [23, 45, 15, 25, 46, 16],
-      [13, 145, 115, 3, 146, 116],
-      [2, 74, 46, 29, 75, 47],
-      [42, 54, 24, 1, 55, 25],
-      [23, 45, 15, 28, 46, 16],
-      [17, 145, 115],
-      [10, 74, 46, 23, 75, 47],
-      [10, 54, 24, 35, 55, 25],
-      [19, 45, 15, 35, 46, 16],
-      [17, 145, 115, 1, 146, 116],
-      [14, 74, 46, 21, 75, 47],
-      [29, 54, 24, 19, 55, 25],
-      [11, 45, 15, 46, 46, 16],
-      [13, 145, 115, 6, 146, 116],
-      [14, 74, 46, 23, 75, 47],
-      [44, 54, 24, 7, 55, 25],
-      [59, 46, 16, 1, 47, 17],
-      [12, 151, 121, 7, 152, 122],
-      [12, 75, 47, 26, 76, 48],
-      [39, 54, 24, 14, 55, 25],
-      [22, 45, 15, 41, 46, 16],
-      [6, 151, 121, 14, 152, 122],
-      [6, 75, 47, 34, 76, 48],
-      [46, 54, 24, 10, 55, 25],
-      [2, 45, 15, 64, 46, 16],
-      [17, 152, 122, 4, 153, 123],
-      [29, 74, 46, 14, 75, 47],
-      [49, 54, 24, 10, 55, 25],
-      [24, 45, 15, 46, 46, 16],
-      [4, 152, 122, 18, 153, 123],
-      [13, 74, 46, 32, 75, 47],
-      [48, 54, 24, 14, 55, 25],
-      [42, 45, 15, 32, 46, 16],
-      [20, 147, 117, 4, 148, 118],
-      [40, 75, 47, 7, 76, 48],
-      [43, 54, 24, 22, 55, 25],
-      [10, 45, 15, 67, 46, 16],
-      [19, 148, 118, 6, 149, 119],
-      [18, 75, 47, 31, 76, 48],
-      [34, 54, 24, 34, 55, 25],
-      [20, 45, 15, 61, 46, 16]
-    ];
-    QRRSBlock.getRSBlocks = function(typeNumber, errorCorrectLevel) {
-      var rsBlock = QRRSBlock.getRsBlockTable(typeNumber, errorCorrectLevel);
-      if (rsBlock == void 0) {
-        throw new Error("bad rs block @ typeNumber:" + typeNumber + "/errorCorrectLevel:" + errorCorrectLevel);
-      }
-      var length = rsBlock.length / 3;
-      var list = new Array();
-      for (var i3 = 0; i3 < length; i3++) {
-        var count = rsBlock[i3 * 3 + 0];
-        var totalCount = rsBlock[i3 * 3 + 1];
-        var dataCount = rsBlock[i3 * 3 + 2];
-        for (var j2 = 0; j2 < count; j2++) {
-          list.push(new QRRSBlock(totalCount, dataCount));
-        }
-      }
-      return list;
-    };
-    QRRSBlock.getRsBlockTable = function(typeNumber, errorCorrectLevel) {
-      switch (errorCorrectLevel) {
-        case QRErrorCorrectLevel.L:
-          return QRRSBlock.RS_BLOCK_TABLE[(typeNumber - 1) * 4 + 0];
-        case QRErrorCorrectLevel.M:
-          return QRRSBlock.RS_BLOCK_TABLE[(typeNumber - 1) * 4 + 1];
-        case QRErrorCorrectLevel.Q:
-          return QRRSBlock.RS_BLOCK_TABLE[(typeNumber - 1) * 4 + 2];
-        case QRErrorCorrectLevel.H:
-          return QRRSBlock.RS_BLOCK_TABLE[(typeNumber - 1) * 4 + 3];
-        default:
-          return void 0;
-      }
-    };
-    function QRBitBuffer() {
-      this.buffer = new Array();
-      this.length = 0;
-    }
-    QRBitBuffer.prototype = {
-      get: function(index) {
-        var bufIndex = Math.floor(index / 8);
-        return (this.buffer[bufIndex] >>> 7 - index % 8 & 1) == 1;
-      },
-      put: function(num, length) {
-        for (var i3 = 0; i3 < length; i3++) {
-          this.putBit((num >>> length - i3 - 1 & 1) == 1);
-        }
-      },
-      getLengthInBits: function() {
-        return this.length;
-      },
-      putBit: function(bit) {
-        var bufIndex = Math.floor(this.length / 8);
-        if (this.buffer.length <= bufIndex) {
-          this.buffer.push(0);
-        }
-        if (bit) {
-          this.buffer[bufIndex] |= 128 >>> this.length % 8;
-        }
-        this.length++;
-      }
-    };
-    function utf16To8(text) {
-      var result = "";
-      var c2;
-      for (var i3 = 0; i3 < text.length; i3++) {
-        c2 = text.charCodeAt(i3);
-        if (c2 >= 1 && c2 <= 127) {
-          result += text.charAt(i3);
-        } else if (c2 > 2047) {
-          result += String.fromCharCode(224 | c2 >> 12 & 15);
-          result += String.fromCharCode(128 | c2 >> 6 & 63);
-          result += String.fromCharCode(128 | c2 >> 0 & 63);
-        } else {
-          result += String.fromCharCode(192 | c2 >> 6 & 31);
-          result += String.fromCharCode(128 | c2 >> 0 & 63);
-        }
-      }
-      return result;
-    }
-    uQRCode = {
-      errorCorrectLevel: QRErrorCorrectLevel,
-      defaults: {
-        size: 354,
-        margin: 0,
-        backgroundColor: "#ffffff",
-        foregroundColor: "#000000",
-        fileType: "png",
-        errorCorrectLevel: QRErrorCorrectLevel.H,
-        typeNumber: -1
-      },
-      make: function(options) {
-        return new Promise((reslove, reject) => {
-          var defaultOptions = {
-            canvasId: options.canvasId,
-            componentInstance: options.componentInstance,
-            text: options.text,
-            size: this.defaults.size,
-            margin: this.defaults.margin,
-            backgroundColor: this.defaults.backgroundColor,
-            foregroundColor: this.defaults.foregroundColor,
-            fileType: this.defaults.fileType,
-            errorCorrectLevel: this.defaults.errorCorrectLevel,
-            typeNumber: this.defaults.typeNumber
-          };
-          if (options) {
-            for (var i3 in options) {
-              defaultOptions[i3] = options[i3];
-            }
-          }
-          options = defaultOptions;
-          if (!options.canvasId) {
-            formatAppLog("error", "at utils/uqrcode.js:1296", "uQRCode: Please set canvasId!");
-            return;
-          }
-          function createCanvas() {
-            var qrcode = new QRCode(options.typeNumber, options.errorCorrectLevel);
-            qrcode.addData(utf16To8(options.text));
-            qrcode.make();
-            var ctx = uni.createCanvasContext(options.canvasId, options.componentInstance);
-            ctx.setFillStyle(options.backgroundColor);
-            ctx.fillRect(0, 0, options.size, options.size);
-            var tileW = (options.size - options.margin * 2) / qrcode.getModuleCount();
-            var tileH = tileW;
-            for (var row = 0; row < qrcode.getModuleCount(); row++) {
-              for (var col = 0; col < qrcode.getModuleCount(); col++) {
-                var style = qrcode.isDark(row, col) ? options.foregroundColor : options.backgroundColor;
-                ctx.setFillStyle(style);
-                var x2 = Math.round(col * tileW) + options.margin;
-                var y = Math.round(row * tileH) + options.margin;
-                var w2 = Math.ceil((col + 1) * tileW) - Math.floor(col * tileW);
-                var h2 = Math.ceil((row + 1) * tileW) - Math.floor(row * tileW);
-                ctx.fillRect(x2, y, w2, h2);
-              }
-            }
-            setTimeout(function() {
-              ctx.draw(false, function() {
-                setTimeout(function() {
-                  uni.canvasToTempFilePath({
-                    canvasId: options.canvasId,
-                    fileType: options.fileType,
-                    width: options.size,
-                    height: options.size,
-                    destWidth: options.size,
-                    destHeight: options.size,
-                    success: function(res2) {
-                      let resData;
-                      let tempFilePath = res2.tempFilePath;
-                      const path = plus.io.convertLocalFileSystemURL(tempFilePath);
-                      let fileReader = new plus.io.FileReader();
-                      fileReader.readAsDataURL(path);
-                      fileReader.onloadend = (res3) => {
-                        resData = res3.target.result;
-                        options.success && options.success(resData);
-                        reslove(resData);
-                      };
-                    },
-                    fail: function(error) {
-                      options.fail && options.fail(error);
-                      reject(error);
-                    },
-                    complete: function(res2) {
-                      options.complete && options.complete(res2);
-                    }
-                  }, options.componentInstance);
-                }, options.text.length + 100);
-              }());
-            }, 150);
-          }
-          createCanvas();
-        });
-      }
-    };
-  })();
-  var uQRCode$1 = uQRCode;
-  const _sfc_main$a = {
-    __name: "uppop",
-    props: {
-      tipInfo: {
-        type: String,
-        default: ""
-      }
-    },
-    setup(__props, { expose, emit }) {
-      const uppop = vue.ref();
-      const dialogOpen = () => {
-        uppop.value.open();
-      };
-      const goList = () => {
-        uni.navigateTo({
-          url: "/pages/pickup/index"
-        });
-      };
-      expose({
-        dialogOpen
-      });
-      return (_ctx, _cache) => {
-        const _component_uni_popup = resolveEasycom(vue.resolveDynamicComponent("uni-popup"), __easycom_0$7);
-        return vue.openBlock(), vue.createBlock(_component_uni_popup, {
-          ref_key: "uppop",
-          ref: uppop,
-          type: "center",
-          animation: false,
-          class: "comPop",
-          "mask-click": false
-        }, {
-          default: vue.withCtx(() => [
-            vue.createElementVNode("view", { class: "con" }, "\u7528\u6237\u5DF2\u652F\u4ED8\uFF01"),
-            vue.createElementVNode("view", null, [
-              vue.createElementVNode("button", { onClick: goList }, "\u8FD4\u56DE\u4E3B\u9875")
-            ])
-          ]),
-          _: 1
-        }, 512);
-      };
-    }
-  };
-  var Uppop = /* @__PURE__ */ _export_sfc(_sfc_main$a, [["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/pages/pay/components/uppop.vue"]]);
-  const _sfc_main$9 = {
-    __name: "scanPay",
-    setup(__props) {
-      const store2 = useStore();
-      const users = store2.state.user;
-      const uppop = vue.ref();
-      const title = vue.ref("\u626B\u7801\u652F\u4ED8");
-      const pages2 = getCurrentPages();
-      const currentPage = pages2[pages2.length - 1];
-      currentPage.$page.options.type;
-      const pay = currentPage.$page.options.pay;
-      let current = vue.ref(0);
-      let qrCodeImg = vue.ref("");
-      let times = vue.ref(null);
-      let detailsData = vue.ref({});
-      let qrShow = vue.ref(false);
-      vue.onMounted(() => {
-        getDetails();
-        times.value = setInterval(() => {
-          getPaySucceed();
-        }, 1e4);
-      });
-      const getPaySucceed = async () => {
-        await paySucceed(users.detailsData.orderId).then((res2) => {
-          if (res2.code === 200) {
-            if (res2.data) {
-              clearInterval(times.value);
-              uppop.value.dialogOpen();
-            }
-          }
-        });
-      };
-      const getDetails = async () => {
-        await getDetail(users.taskId).then((res2) => {
-          detailsData.value = res2.data;
-          store2.commit("user/setDetailsData", detailsData.value);
-          getCode(res2.data);
-        });
-      };
-      const getCode = async (obj) => {
-        let data = users.payData;
-        let params = {};
-        if (data.tradingAmount) {
-          params = {
-            memo: data.memo ? data.memo : "\u5907\u6CE8",
-            payMethod: current.value === 0 ? 2 : 1,
-            productOrderNo: data.productOrderNo,
-            tradingAmount: data.tradingAmount
-          };
-        } else {
-          params = {
-            memo: obj.remark ? obj.remark : "\u5907\u6CE8",
-            payMethod: current.value === 0 ? 2 : 1,
-            productOrderNo: obj.orderId,
-            tradingAmount: obj.freight
-          };
-        }
-        let times2 = setTimeout(() => {
-          uni.showLoading({
-            title: "loading"
-          });
-        }, 500);
-        await getQrCode(params).then((res2) => {
-          uni.hideLoading();
-          clearTimeout(times2);
-          const data2 = res2.data;
-          const str = data2.qrCode.slice(0, 10);
-          if (str === "data:image") {
-            qrCodeImg.value = data2.qrCode.replace(/[\r\n]/g, "");
-          } else {
-            qrCodeFun(data2.qrCode);
-          }
-        });
-      };
-      const qrCodeFun = (valUrl) => {
-        qrShow.value = true;
-        uQRCode$1.make({
-          canvasId: "qrcode",
-          componentInstance: this,
-          text: valUrl,
-          size: 200,
-          margin: 0,
-          backgroundColor: "#ffffff",
-          foregroundColor: "#000000",
-          fileType: "jpg",
-          errorCorrectLevel: uQRCode$1.errorCorrectLevel.H,
-          success: (res2) => {
-          }
-        });
-      };
-      const checkbox = (index) => {
-        current.value = index;
-        getCode(detailsData.value);
-      };
-      const goBack = () => {
-        clearInterval(times.value);
-        if (users.isDelivery) {
-          if (users.detailType === 2 && users.taskStatus === 6) {
-            store2.commit("user/setTabIndex", 1);
-            uni.redirectTo({
-              url: "/pages/history/index"
-            });
-          } else if (users.detailType === 0 && users.taskStatus === 5) {
-            store2.commit("user/setTabIndex", 1);
-            uni.redirectTo({
-              url: "/pages/delivery/index"
-            });
-          } else if (users.isPickUp && users.paymentMethod === 2 && !pay) {
-            uni.redirectTo({
-              url: "/pages/details/waybill"
-            });
-          } else {
-            uni.redirectTo({
-              url: "/pages/pay/index?type=" + users.paymentMethod
-            });
-            pay = false;
-          }
-        } else {
-          if (users.detailType === 1 && users.taskStatus === 6) {
-            store2.commit("user/setTabIndex", 0);
-            uni.redirectTo({
-              url: "/pages/history/index"
-            });
-          } else if (users.detailType === 2 && users.taskStatus === 3 && !users.isSearch) {
-            store2.commit("user/setTabIndex", 1);
-            uni.redirectTo({
-              url: "/pages/pickup/index"
-            });
-          } else if (users.isPickUp && users.paymentMethod === 1 && !pay) {
-            uni.redirectTo({
-              url: "/pages/details/index"
-            });
-          } else if (users.isSearch) {
-            store2.commit("user/setIsSearch", false);
-            uni.redirectTo({
-              url: "/pages/search/index"
-            });
-          } else {
-            uni.redirectTo({
-              url: "/pages/pay/index?type=" + users.paymentMethod
-            });
-            pay = false;
-          }
-        }
-      };
-      return (_ctx, _cache) => {
-        return vue.openBlock(), vue.createElementBlock(vue.Fragment, null, [
-          vue.createCommentVNode(" \u81EA\u5B9A\u4E49\u5934\u90E8 "),
-          vue.createVNode(UniNav, {
-            title: title.value,
-            onGoBack: goBack
-          }, null, 8, ["title"]),
-          vue.createCommentVNode(" end "),
-          vue.createElementVNode("view", { class: "pageBox scanPay" }, [
-            vue.createElementVNode("view", { class: "boxBg srCan" }, [
-              vue.unref(qrShow) ? (vue.openBlock(), vue.createElementBlock("view", {
-                key: 0,
-                class: "qr-box"
-              }, [
-                vue.createElementVNode("canvas", { "canvas-id": "qrcode" })
-              ])) : (vue.openBlock(), vue.createElementBlock("image", {
-                key: 1,
-                src: vue.unref(qrCodeImg)
-              }, null, 8, ["src"])),
-              vue.createElementVNode("view", { class: "text" }, [
-                vue.createElementVNode("text", null, "\xA5"),
-                vue.createTextVNode(" " + vue.toDisplayString(vue.unref(detailsData).freight), 1)
-              ]),
-              vue.createElementVNode("view", null, "\u652F\u4ED8\u8FD0\u8D39")
-            ]),
-            (vue.openBlock(true), vue.createElementBlock(vue.Fragment, null, vue.renderList(vue.unref(PayWayData), (item, index) => {
-              return vue.openBlock(), vue.createElementBlock("view", {
-                class: "boxBg payBox",
-                key: index
-              }, [
-                vue.createElementVNode("view", { class: "item" }, [
-                  vue.createElementVNode("view", null, [
-                    vue.createElementVNode("icon"),
-                    vue.createTextVNode(" " + vue.toDisplayString(item.label), 1)
-                  ]),
-                  vue.createElementVNode("view", null, [
-                    vue.createElementVNode("view", { class: "checkRadio" }, [
-                      vue.createElementVNode("radio", {
-                        value: String(index),
-                        class: vue.normalizeClass(index === vue.unref(current) ? "active" : ""),
-                        checked: index === vue.unref(current),
-                        onClick: ($event) => checkbox(index)
-                      }, null, 10, ["value", "checked", "onClick"])
-                    ])
-                  ])
-                ])
-              ]);
-            }), 128))
-          ]),
-          vue.createCommentVNode(" \u652F\u4ED8\u6210\u529F\u5F39\u5C42 "),
-          vue.createVNode(Uppop, {
-            ref_key: "uppop",
-            ref: uppop
-          }, null, 512),
-          vue.createCommentVNode(" end ")
-        ], 64);
-      };
-    }
-  };
-  var PagesPayScanPay = /* @__PURE__ */ _export_sfc(_sfc_main$9, [["__scopeId", "data-v-a4052eca"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/pages/pay/scanPay.vue"]]);
-  const _sfc_main$8 = {
+  var PagesDeliveryIndex = /* @__PURE__ */ _export_sfc(_sfc_main$8, [["__scopeId", "data-v-7c6df030"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/pages/delivery/index.vue"]]);
+  const _sfc_main$7 = {
     __name: "BaseInfo",
     props: {
       baseData: {
@@ -21620,8 +12863,8 @@ if (uni.restoreGlobal) {
       };
     }
   };
-  var BaseInfo = /* @__PURE__ */ _export_sfc(_sfc_main$8, [["__scopeId", "data-v-1c1ce0bd"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/pages/my/commponents/BaseInfo.vue"]]);
-  const _sfc_main$7 = {
+  var BaseInfo = /* @__PURE__ */ _export_sfc(_sfc_main$7, [["__scopeId", "data-v-1c1ce0bd"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/pages/my/commponents/BaseInfo.vue"]]);
+  const _sfc_main$6 = {
     name: "UniRate",
     props: {
       isFill: {
@@ -21800,7 +13043,7 @@ if (uni.restoreGlobal) {
     }
   };
   function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
-    const _component_uni_icons = resolveEasycom(vue.resolveDynamicComponent("uni-icons"), __easycom_0$a);
+    const _component_uni_icons = resolveEasycom(vue.resolveDynamicComponent("uni-icons"), __easycom_0$7);
     return vue.openBlock(), vue.createElementBlock("view", null, [
       vue.createElementVNode("view", {
         ref: "uni-rate",
@@ -21837,8 +13080,8 @@ if (uni.restoreGlobal) {
       ], 512)
     ]);
   }
-  var __easycom_0 = /* @__PURE__ */ _export_sfc(_sfc_main$7, [["render", _sfc_render], ["__scopeId", "data-v-978a5ada"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/uni_modules/uni-rate/components/uni-rate/uni-rate.vue"]]);
-  const _sfc_main$6 = {
+  var __easycom_0 = /* @__PURE__ */ _export_sfc(_sfc_main$6, [["render", _sfc_render], ["__scopeId", "data-v-978a5ada"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/uni_modules/uni-rate/components/uni-rate/uni-rate.vue"]]);
+  const _sfc_main$5 = {
     __name: "Evaluate",
     props: {
       baseData: {
@@ -21873,8 +13116,8 @@ if (uni.restoreGlobal) {
       };
     }
   };
-  var Evaluate = /* @__PURE__ */ _export_sfc(_sfc_main$6, [["__scopeId", "data-v-e5f99d92"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/pages/my/commponents/Evaluate.vue"]]);
-  const _sfc_main$5 = {
+  var Evaluate = /* @__PURE__ */ _export_sfc(_sfc_main$5, [["__scopeId", "data-v-e5f99d92"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/pages/my/commponents/Evaluate.vue"]]);
+  const _sfc_main$4 = {
     __name: "HistoryScope",
     setup(__props) {
       const store2 = useStore();
@@ -21913,8 +13156,8 @@ if (uni.restoreGlobal) {
       };
     }
   };
-  var HistoryScope = /* @__PURE__ */ _export_sfc(_sfc_main$5, [["__scopeId", "data-v-f05c4784"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/pages/my/commponents/HistoryScope.vue"]]);
-  const _sfc_main$4 = {
+  var HistoryScope = /* @__PURE__ */ _export_sfc(_sfc_main$4, [["__scopeId", "data-v-f05c4784"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/pages/my/commponents/HistoryScope.vue"]]);
+  const _sfc_main$3 = {
     __name: "index",
     setup(__props) {
       const store2 = useStore();
@@ -21956,13 +13199,13 @@ if (uni.restoreGlobal) {
       };
     }
   };
-  var PagesMyIndex = /* @__PURE__ */ _export_sfc(_sfc_main$4, [["__scopeId", "data-v-4dcceeb0"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/pages/my/index.vue"]]);
+  var PagesMyIndex = /* @__PURE__ */ _export_sfc(_sfc_main$3, [["__scopeId", "data-v-4dcceeb0"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/pages/my/index.vue"]]);
   const getUserScope = (params) => request({
     url: `/users/scope`,
     method: "get",
     params
   });
-  const _sfc_main$3 = {
+  const _sfc_main$2 = {
     __name: "map",
     setup(__props) {
       const title = vue.ref("\u4F5C\u4E1A\u8303\u56F4");
@@ -22007,8 +13250,8 @@ if (uni.restoreGlobal) {
         getUserPolygon();
       });
       const getUserPolygon = async () => {
-        await getUserScope().then((res2) => {
-          if (res2.code === 200)
+        await getUserScope().then((res) => {
+          if (res.code === 200)
             ;
         });
       };
@@ -22038,8 +13281,8 @@ if (uni.restoreGlobal) {
       };
     }
   };
-  var PagesMyMap = /* @__PURE__ */ _export_sfc(_sfc_main$3, [["__scopeId", "data-v-4adb27b2"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/pages/my/map.vue"]]);
-  const _sfc_main$2 = {
+  var PagesMyMap = /* @__PURE__ */ _export_sfc(_sfc_main$2, [["__scopeId", "data-v-4adb27b2"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/pages/my/map.vue"]]);
+  const _sfc_main$1 = {
     __name: "qrCode",
     setup(__props) {
       const title = vue.ref("\u4E13\u5C5E\u4E8C\u7EF4\u7801");
@@ -22087,149 +13330,7 @@ if (uni.restoreGlobal) {
       };
     }
   };
-  var PagesMyQrCode = /* @__PURE__ */ _export_sfc(_sfc_main$2, [["__scopeId", "data-v-699c7670"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/pages/my/qrCode.vue"]]);
-  const _sfc_main$1 = {
-    __name: "orderMap",
-    setup(__props) {
-      const store2 = useStore();
-      const users = store2.state.user;
-      const title = vue.ref("\u8BA2\u5355\u8DDF\u8E2A");
-      vue.ref(39.91667);
-      vue.ref(116.41667);
-      const markers = vue.reactive([]);
-      const polyline = vue.reactive([
-        {
-          points: [
-            { longitude: 116.41667, latitude: 39.91667 },
-            { longitude: 118.78333, latitude: 32.05 }
-          ],
-          color: "#EF4F3F",
-          width: 12
-        }
-      ]);
-      vue.onMounted(() => {
-        getTrack();
-      });
-      const strInit = (value) => {
-        let strText = value;
-        let replaceText = [];
-        for (let i2 = 0; i2 <= 10; i2++) {
-          replaceText.push("" + i2);
-        }
-        value.split("\u3010")[1];
-        for (let i2 = 0; i2 < replaceText.length; i2++) {
-          var replaceString = `<span class='red'>` + replaceText[i2] + `</span>`;
-          strText = strText.replace(RegExp(replaceText[i2], "g"), replaceString);
-        }
-        strText = strText.replace(RegExp("red", "g"), "red");
-        return strText;
-      };
-      const getTrack = async () => {
-        await getTracks(users.detailsData.transportOrderId).then((res2) => {
-          if (res2.code === 200) {
-            markers.value = res2.data.reverse();
-            polyline[0].points = res2.data.data;
-          }
-        });
-      };
-      const goBack = () => {
-        uni.redirectTo({
-          url: "/pages/details/waybill"
-        });
-      };
-      return (_ctx, _cache) => {
-        return vue.openBlock(), vue.createElementBlock(vue.Fragment, null, [
-          vue.createCommentVNode(" \u81EA\u5B9A\u4E49\u5934\u90E8 "),
-          vue.createVNode(UniNav, {
-            title: title.value,
-            onGoBack: goBack
-          }, null, 8, ["title"]),
-          vue.createCommentVNode(" end "),
-          vue.createElementVNode("view", { class: "content" }, [
-            vue.createElementVNode("view", { class: "bottmBox" }, [
-              vue.createElementVNode("view", { class: "orderList" }, [
-                (vue.openBlock(true), vue.createElementBlock(vue.Fragment, null, vue.renderList(markers.value, (item, index) => {
-                  return vue.openBlock(), vue.createElementBlock("view", {
-                    class: vue.normalizeClass(["logistics-orderInfo logistics-orderInfo-item", [index === 0 ? "active" : ""]]),
-                    key: index
-                  }, [
-                    vue.createElementVNode("view", { class: "logistics-orderInfo-left" }, [
-                      ["\u5DF2\u62D2\u6536", "\u5DF2\u7B7E\u6536", "\u5DF2\u53D6\u4EF6"].includes(item.status) ? (vue.openBlock(), vue.createElementBlock("view", {
-                        key: 0,
-                        class: "circle gray"
-                      }, vue.toDisplayString(item.status === "\u5DF2\u62D2\u6536" ? "\u62D2" : item.status === "\u5DF2\u7B7E\u6536" ? "\u7B7E" : "\u53D6"), 1)) : index === 0 && ["\u8FD0\u9001\u4E2D", "\u6D3E\u9001\u4E2D"].includes(item.status) || index > 0 && markers.value[index - 1].status !== "\u8FD0\u9001\u4E2D" ? (vue.openBlock(), vue.createElementBlock("view", {
-                        key: 1,
-                        class: "circle gray"
-                      }, [
-                        vue.createElementVNode("image", {
-                          class: vue.normalizeClass(item.status === "\u6D3E\u9001\u4E2D" ? "ys" : "ps")
-                        }, null, 2)
-                      ])) : index > 0 && markers.value[index - 1].status === "\u8FD0\u9001\u4E2D" ? (vue.openBlock(), vue.createElementBlock("view", {
-                        key: 2,
-                        class: "point"
-                      })) : vue.createCommentVNode("v-if", true),
-                      !(index === markers.value.length - 1) ? (vue.openBlock(), vue.createElementBlock("view", {
-                        key: 3,
-                        class: vue.normalizeClass(["line", item.status === "\u8FD0\u9001\u4E2D" ? "short" : ""])
-                      }, null, 2)) : vue.createCommentVNode("v-if", true)
-                    ]),
-                    vue.createElementVNode("view", { class: "logistics-orderInfo-right" }, [
-                      !(index > 0 && markers.value[index - 1].status === "\u8FD0\u9001\u4E2D" && item.status === "\u8FD0\u9001\u4E2D") ? (vue.openBlock(), vue.createElementBlock("view", {
-                        key: 0,
-                        class: "status"
-                      }, vue.toDisplayString(item.status), 1)) : vue.createCommentVNode("v-if", true),
-                      vue.createElementVNode("view", { class: "time" }, vue.toDisplayString(item.created), 1),
-                      vue.createElementVNode("view", {
-                        class: "desc",
-                        innerHTML: strInit(item.info)
-                      }, null, 8, ["innerHTML"])
-                    ])
-                  ], 2);
-                }), 128))
-              ])
-            ]),
-            vue.createCommentVNode(" TODO\u6B64\u5904\u4EE3\u7801\u4FDD\u7559 "),
-            vue.createCommentVNode(` <map class="mapBox" :latitude="latitude" :longitude="longitude" scale="6">\r
-			<cover-view class="bottmBox" v-if="markers.value">\r
-				<cover-view class="orderList" scroll-top='0'>\r
-					<cover-view class="logistics-orderInfo logistics-orderInfo-item" :class="[index===0?'active':'']" :key="index"\r
-										v-for='(item,index) in markers.value'>\r
-										<cover-view class="logistics-orderInfo-left">\r
-											<cover-view class="circle" v-if="['\u5DF2\u62D2\u6536','\u5DF2\u7B7E\u6536','\u5DF2\u53D6\u4EF6'].includes(item.status)">\r
-												<cover-view class="iconBg" ><cover-view class="fontPostion">{{item.status==='\u5DF2\u62D2\u6536'?'\u62D2':item.status==='\u5DF2\u7B7E\u6536'?'\u7B7E':'\u53D6'}}</cover-view></cover-view>\r
-											</cover-view>\r
-					\r
-											<cover-view class="circle"\r
-												v-else-if="index ===0 &&['\u8FD0\u9001\u4E2D','\u6D3E\u9001\u4E2D'].includes(item.status) || index>0 && markers.value[index-1].status !=='\u8FD0\u9001\u4E2D'">\r
-												<cover-view class="iconBg" ><cover-image :src="item.status==='\u6D3E\u9001\u4E2D'?'../../static/yunshuzhong.png':'../../static/paisong.png'"></cover-image></cover-view>\r
-											</cover-view>\r
-					\r
-											<cover-view class="point" v-else-if="index>0 && markers.value[index-1].status==='\u8FD0\u9001\u4E2D'"></cover-view>\r
-					\r
-											<cover-view class="line" v-if='!(index === markers.value.length - 1)'\r
-												:class="item.status==='\u8FD0\u9001\u4E2D'?'short':''"></cover-view>\r
-										</cover-view>\r
-										<cover-view class="logistics-orderInfo-right">\r
-											<cover-view class="status"\r
-												v-if='!(index>0 && markers.value[index-1].status==="\u8FD0\u9001\u4E2D" &&item.status==="\u8FD0\u9001\u4E2D")'>\r
-												{{item.status}}\r
-											</cover-view>\r
-											<cover-view class="time">{{item.created}}</cover-view>\r
-											<cover-view class="desc"\r
-												:class="index === 0|| item.status === 23010?'active':''"\r
-												>{{item.info}}\r
-											</cover-view>\r
-										</cover-view>\r
-									</cover-view>\r
-				</cover-view>\r
-			</cover-view>\r
-		</map> `)
-          ])
-        ], 64);
-      };
-    }
-  };
-  var PagesDetailsOrderMap = /* @__PURE__ */ _export_sfc(_sfc_main$1, [["__scopeId", "data-v-d6902958"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/pages/details/orderMap.vue"]]);
+  var PagesMyQrCode = /* @__PURE__ */ _export_sfc(_sfc_main$1, [["__scopeId", "data-v-699c7670"], ["__file", "E:/project/\u5C0F\u667A\u5E2E/project-xzb-app-uniapp-java\uFF08\u670D\u52A1\u7AEF\uFF09/pages/my/qrCode.vue"]]);
   __definePage("pages/login/user", PagesLoginUser);
   __definePage("pages/index/index", PagesIndexIndex);
   __definePage("pages/serviceSkill/index", PagesServiceSkillIndex);
@@ -22241,23 +13342,10 @@ if (uni.restoreGlobal) {
   __definePage("pages/orderInfo/index", PagesOrderInfoIndex);
   __definePage("pages/cancel/index", PagesCancelIndex);
   __definePage("pages/serveRecord/index", PagesServeRecordIndex);
-  __definePage("pages/login/index", PagesLoginIndex);
-  __definePage("pages/search/index", PagesSearchIndex);
-  __definePage("pages/history/index", PagesHistoryIndex);
-  __definePage("pages/news/index", PagesNewsIndex);
-  __definePage("pages/news/detail", PagesNewsDetail);
-  __definePage("pages/news/system", PagesNewsSystem);
-  __definePage("pages/freight/index", PagesFreightIndex);
   __definePage("pages/delivery/index", PagesDeliveryIndex);
-  __definePage("pages/turnorder/index", PagesTurnorderIndex);
-  __definePage("pages/details/index", PagesDetailsIndex);
-  __definePage("pages/details/waybill", PagesDetailsWaybill);
-  __definePage("pages/pay/index", PagesPayIndex);
-  __definePage("pages/pay/scanPay", PagesPayScanPay);
   __definePage("pages/my/index", PagesMyIndex);
   __definePage("pages/my/map", PagesMyMap);
   __definePage("pages/my/qrCode", PagesMyQrCode);
-  __definePage("pages/details/orderMap", PagesDetailsOrderMap);
   const _sfc_main = {
     __name: "App",
     setup(__props) {
@@ -22266,10 +13354,10 @@ if (uni.restoreGlobal) {
       onShow(() => {
         uni.getLocation({
           type: "gcj02",
-          success: (res2) => {
+          success: (res) => {
             locationData.value = {
-              longitude: res2.longitude,
-              latitude: res2.latitude
+              longitude: res.longitude,
+              latitude: res.latitude
             };
             store2.commit("user/setlLacation", locationData.value);
           },
@@ -22277,7 +13365,7 @@ if (uni.restoreGlobal) {
           }
         });
         uni.getNetworkType({
-          success: function(res2) {
+          success: function(res) {
           }
         });
       });
@@ -22479,9 +13567,9 @@ if (uni.restoreGlobal) {
     actions: {
       async GetUsersInfo({ state, commit }, payload) {
         if (state.token !== "") {
-          await getUserInfo().then((res2) => {
-            uni.setStorageSync("userInfo", res2.data);
-            commit("setUserInfo", res2.data);
+          await getUserInfo().then((res) => {
+            uni.setStorageSync("userInfo", res.data);
+            commit("setUserInfo", res.data);
           });
         }
       }

@@ -85,116 +85,14 @@
 				"navigationBarTitleText": "服务记录"
 			}
 		},
-
-
-
-
-
-
 		{
-			"path": "pages/login/index",
-			"style": {
-				"navigationStyle": "custom",
-				"navigationBarTitleText": "登录"
-			}
-		},
-
-		{
-			"path": "pages/search/index",
-			"style": {
-				"navigationStyle": "custom",
-				"navigationBarTitleText": "神领物流"
-			}
-		},
-		{
-			"path": "pages/history/index",
-			"style": {
-				"navigationStyle": "custom",
-				"navigationBarTitleText": "历史派送"
-			}
-		},
-		{
-			"path": "pages/news/index",
+			"path": "pages/delivery/index",
 			"style": {
 				"navigationStyle": "custom",
 				"navigationBarTitleText": "消息"
 			}
 		},
 
-		{
-			"path": "pages/news/detail",
-			"style": {
-				"navigationStyle": "custom",
-				"navigationBarTitleText": "详情"
-			}
-		},
-
-		{
-			"path": "pages/news/system",
-			"style": {
-				"navigationStyle": "custom",
-				"navigationBarTitleText": "系统通知"
-			}
-		},
-
-		{
-			"path": "pages/freight/index",
-			"style": {
-				"navigationStyle": "custom",
-				"navigationBarTitleText": "运费查询"
-			}
-		},
-
-		{
-			"path": "pages/delivery/index",
-			"style": {
-				"navigationStyle": "custom",
-				"navigationBarTitleText": "取件"
-			}
-		},
-
-
-
-		{
-			"path": "pages/turnorder/index",
-			"style": {
-				"navigationStyle": "custom",
-				"navigationBarTitleText": "转单"
-			}
-		},
-
-
-		{
-			"path": "pages/details/index",
-			"style": {
-				"navigationStyle": "custom",
-				"navigationBarTitleText": "去取件"
-			}
-		},
-
-		{
-			"path": "pages/details/waybill",
-			"style": {
-				"navigationStyle": "custom",
-				"navigationBarTitleText": "运单详情"
-			}
-		},
-
-		{
-			"path": "pages/pay/index",
-			"style": {
-				"navigationStyle": "custom",
-				"navigationBarTitleText": "取件成功"
-			}
-		},
-
-		{
-			"path": "pages/pay/scanPay",
-			"style": {
-				"navigationStyle": "custom",
-				"navigationBarTitleText": "扫码支付"
-			}
-		},
 
 		{
 			"path": "pages/my/index",
@@ -218,15 +116,8 @@
 				"navigationStyle": "custom",
 				"navigationBarTitleText": "专属二维码"
 			}
-		},
-
-		{
-			"path": "pages/details/orderMap",
-			"style": {
-				"navigationStyle": "custom",
-				"navigationBarTitleText": "订单跟踪"
-			}
 		}
+
 	],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
