@@ -85,7 +85,7 @@ const alertDialog = ref(null);
 const reason = ref('');
 // 表单数据
 let fromInfo = reactive({
-  phone: '', //账号
+  phone: '15066699132', //账号
   veriryCode: '', // 密码
   userType: 2,
 });

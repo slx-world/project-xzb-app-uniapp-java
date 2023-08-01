@@ -31,7 +31,8 @@
 
 <script setup>
 import { ref, onMounted, nextTick } from 'vue';
-import { useStore } from 'vuex';
+import { cancelOrder } from '../api/order';
+import { onLoad } from '@dcloudio/uni-app';
 // 设置字符串的长度
 import { validateTextLength } from '@/utils/index.js';
 import { cancelData } from '@/utils/commonData.js';
@@ -42,9 +43,15 @@ import UniNav from '@/components/uni-nav/index.vue';
 const title = ref('取消原因'); //nav标题
 const cancelReason = ref('');
 let cancel = ref(null); //原因描述
+const orderId = ref('');
+const from = ref('');
 
 // ------生命周期------
-onMounted(() => {});
+onLoad((options) => {
+  orderId.value = options.id;
+  from.value = options.type;
+  console.log(options, '取消订单');
+});
 // ------定义方法------
 // 取消订单原因选择
 const handleCause = (value) => {
@@ -53,44 +60,50 @@ const handleCause = (value) => {
 };
 // 提交原因申请
 const handleSubmit = async () => {
-  // if (reason !== '') {
-  //   // 网络慢的时候添加按钮loading
-  //   let times = setTimeout(() => {
-  //     uni.showLoading({
-  //       title: 'loading',
-  //     });
-  //   }, 500);
-  //   const params = {
-  //     id: taskId,
-  //     // reason: users.reasonVal.value,
-  //     reasonDesc: reasonDesc.value,
-  //   };
-  //   await taskCancel(params).then((res) => {
-  //     store.commit('user/setTabIndex', 0);
-  //     uni.redirectTo({
-  //       url: '/pages/pickup/index',
-  //     });
-  //     if (res.code === 200) {
-  //       // 操作成功后清除loading
-  //       setTimeout(function () {
-  //         uni.hideLoading();
-  //       }, 500);
-  //       clearTimeout(times);
-  //       goBack();
-  //       return uni.showToast({
-  //         title: '申请成功!',
-  //         duration: 1000,
-  //         icon: 'none',
-  //       });
-  //     }
-  //   });
-  // } else {
-  //   return uni.showToast({
-  //     title: '请选择取消原因!',
-  //     duration: 1000,
-  //     icon: 'none',
-  //   });
-  // }
+  if (cancel.value) {
+    // 网络慢的时候添加按钮loading
+    let times = setTimeout(() => {
+      uni.showLoading({
+        title: 'loading',
+      });
+    }, 500);
+    const params = {
+      id: orderId.value,
+      cancelReason: cancelData.filter((item) => item.value === cancel.value)[0]
+        .label,
+    };
+    await cancelOrder(params).then((res) => {
+      if (res.code === 200) {
+        // 操作成功后清除loading
+        setTimeout(function () {
+          uni.hideLoading();
+        }, 500);
+        clearTimeout(times);
+        if (from.value === 'list') {
+          goBack();
+        } else {
+          uni.navigateTo({
+            url:
+              '/pages/orderInfo/index?id=' + orderId.value + '&type=' + 'info',
+          });
+        }
+        cancel.value = '';
+        orderId.value = '';
+
+        return uni.showToast({
+          title: '操作成功!',
+          duration: 1000,
+          icon: 'none',
+        });
+      }
+    });
+  } else {
+    return uni.showToast({
+      title: '请选择取消原因!',
+      duration: 1000,
+      icon: 'none',
+    });
+  }
 };
 
 // 返回上一页

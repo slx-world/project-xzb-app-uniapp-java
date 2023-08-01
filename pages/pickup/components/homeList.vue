@@ -3,9 +3,9 @@
   <view class="homeList">
     <view
       class="card"
-      v-for="(item, index) in data"
-      :key="index"
-      @click="handleToInfo"
+      v-for="item in data"
+      :key="item.id"
+      @click="handleToInfo(item)"
     >
       <view class="card-content">
         <image
@@ -18,10 +18,25 @@
           </view>
           <view class="serviceTime">
             <text>服务时间</text>
-            <text>{{ item.serveStartTime }}</text>
+            <text class="content">{{
+              item.serveStatus === 1
+                ? item.serveStartTime
+                : item.serveStatus === 2
+                ? item.realServeStartTime
+                : item.realServeEndTime
+            }}</text>
           </view>
         </view>
-        <view class="orderStatus">待上门</view>
+        <view
+          class="orderStatus"
+          :class="[3, 4, 5].includes(item.serveStatus) ? 'gray' : ''"
+          >{{
+            orderStatus.filter((item1) => item1.value === item.serveStatus)
+              .length &&
+            orderStatus.filter((item1) => item1.value === item.serveStatus)[0]
+              .label
+          }}</view
+        >
       </view>
       <view class="serviceAddress">
         <!-- <view>服务地址</view> -->
@@ -29,12 +44,23 @@
           <view class="addressContent">{{ item.serveAddress }}</view>
         </view>
       </view>
-      <view class="cardFooter">
-        <view class="price">
+      <view class="cardFooter" v-if="[1, 2].includes(item.serveStatus)">
+        <!-- <view class="price">
           <text class="price-label">服务费用</text>
           ￥{{ item.serveFee }}
-        </view>
-        <view class="robBtn btn-red" @click="handleRob(item.id)">立即抢单</view>
+        </view> -->
+        <view
+          v-if="[1].includes(item.serveStatus)"
+          class="robBtn btn-gray"
+          @click.stop="handleCancel(item.id)"
+          >取消订单</view
+        >
+        <view
+          v-if="[1, 2].includes(item.serveStatus)"
+          class="robBtn btn-red"
+          @click.stop="handleServeRecord(item.id, item.serveStatus)"
+          >{{ item.serveStatus === 1 ? '开始服务' : '完成服务' }}</view
+        >
       </view>
     </view>
     <view class="footer">- 已 经 到 底 了 -</view>
@@ -54,6 +80,8 @@
 <script setup>
 import { ref, reactive, onMounted, watch } from 'vue';
 import { robOrder } from '../../api/order.js';
+// 基本数据(订单状态)
+import { orderStatus } from '@/utils/commonData.js';
 const emit = defineEmits(['refresh']); //子组件向父组件事件传递
 // 获取父组件值、方法
 const props = defineProps({
@@ -68,7 +96,7 @@ let data = reactive([
   {
     serveTypeName: '保洁服务',
     serveItemName: '空调清洗',
-    serveStartTime: '2023-7-28 11:48',
+    serveStartTime: '2023-7-28 11:48:00',
     serveAddress: '金燕龙',
     serveFee: '666',
   },
@@ -78,22 +106,27 @@ const handleClose = () => {
   alertDialog.value.close();
   emit('refresh');
 };
-const handleToInfo = () => {
+const handleToInfo = (item) => {
+  console.log(item, '进入详情');
   uni.navigateTo({
-    url: '/pages/orderInfo/index',
+    url: '/pages/orderInfo/index?id=' + item.id,
   });
 };
-const handleRob = (id) => {
-  robOrder({
-    id: id,
-  }).then((res) => {
-    console.log(res, '抢单');
-    if (res.code === 200) {
-      isRob.value = true;
-    } else {
-      isRob.value = false;
-    }
-    alertDialog.value.open();
+const handleCancel = (id) => {
+  console.log('fff');
+  uni.navigateTo({
+    url: '/pages/cancel/index?id=' + id + '&type=' + 'list',
+  });
+};
+const handleServeRecord = (id, status) => {
+  uni.navigateTo({
+    url:
+      '/pages/serveRecord/index?status=' +
+      status +
+      '&id=' +
+      id +
+      '&type=' +
+      'list',
   });
 };
 watch(

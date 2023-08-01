@@ -5,26 +5,31 @@
     <view
       class="serveStatus"
       :class="
-        [1, 2, 3].includes(info.serveStatus) ? 'successStatus' : 'failStatus'
+        [1, 2, 3].includes(info.data.serveStatus)
+          ? 'successStatus'
+          : 'failStatus'
       "
     >
       <view class="status">{{
-        orderStatus.filter((item) => item.value === info.serveStatus)[0].label
+        orderStatus.filter((item) => item.value === info.data.serveStatus)[0]
+          .label
       }}</view>
-      <view class="serveTime" v-if="info.serveStatus === 1">
-        请在{{ info.ordersInfo.serveStartTime }}前上门服务
+      <view class="serveTime" v-if="info.data.serveStatus === 1">
+        请在{{ info.data.ordersInfo.serveStartTime }}前上门服务
       </view>
     </view>
     <!-- 客户信息 -->
     <view class="customerInfo card">
       <view class="title">客户信息</view>
       <view class="nameAndPhone">
-        <text class="name">{{ info.customerInfo.contactsName }}</text>
-        <text class="phone">{{ info.customerInfo.contactsPhone }}</text>
+        <text class="name">{{ info.data.customerInfo.contactsName }}</text>
+        <text class="phone">{{ info.data.customerInfo.contactsPhone }}</text>
       </view>
       <view class="address">
         <view class="location"></view>
-        <view class="addressInfo">{{ info.customerInfo.serveAddress }}</view>
+        <view class="addressInfo">{{
+          info.data.customerInfo.serveAddress
+        }}</view>
       </view>
     </view>
     <!-- 服务信息 -->
@@ -36,17 +41,19 @@
           src="../../static/new/img_success@2x.png"
         ></image>
         <view class="serveTypeBox">
-          <view class="serveType">{{ info.serveInfo.serveTypeName }}</view>
+          <view class="serveType">{{ info.data.serveInfo.serveTypeName }}</view>
           <view class="serveItem">
-            <text>{{ info.serveInfo.serveItemName }}</text>
+            <text>{{ info.data.serveInfo.serveItemName }}</text>
             x
-            <text>{{ info.serveInfo.serveNum }}</text>
+            <text>{{ info.data.serveInfo.serveNum }}</text>
             小时
           </view>
         </view>
       </view>
       <view class="fee">
-        服务费用<text class="feeText">￥{{ info.serveInfo.serveFee }}</text>
+        服务费用<text class="feeText"
+          >￥{{ info.data.serveInfo.serveFee }}</text
+        >
       </view>
     </view>
     <!-- 订单信息 -->
@@ -54,49 +61,52 @@
       <view class="title">订单信息</view>
       <view class="orderNum info first">
         <text class="label">订单编号</text>
-        <text class="content">{{ info.ordersInfo.serveCode }}</text>
+        <text class="content">{{ info.data.ordersInfo.serveCode }}</text>
       </view>
       <view class="orderTime info">
         <text class="label">预约时间</text>
-        <text class="content">{{ info.ordersInfo.serveStartTime }}</text>
+        <text class="content">{{ info.data.ordersInfo.serveStartTime }}</text>
       </view>
     </view>
     <!-- 取消信息 -->
-    <view class="orderInfo card" v-if="info.serveStatus === 4">
+    <view class="orderInfo card" v-if="info.data.serveStatus === 4">
       <view class="title">取消信息</view>
       <view class="orderNum info first">
         <text class="label">取消时间</text>
-        <text class="content">{{ info.cancelInfo.cancelTime }}</text>
+        <text class="content">{{ info.data.cancelInfo.cancelTime }}</text>
       </view>
       <view class="orderTime info">
         <text class="label">取消原因</text>
-        <text class="content">{{ info.cancelInfo.cancelReason }}</text>
+        <text class="content">{{ info.data.cancelInfo.cancelReason }}</text>
       </view>
     </view>
     <!-- 退款信息 -->
-    <view class="orderInfo card" v-if="info.serveStatus === 5">
+    <view class="orderInfo card" v-if="info.data.serveStatus === 5">
       <view class="title">退款信息</view>
       <view class="orderNum info first">
         <text class="label">退款时间</text>
-        <text class="content">{{ info.cancelInfo.cancelTime }}</text>
+        <text class="content">{{ info.data.cancelInfo.cancelTime }}</text>
       </view>
       <view class="orderTime info first">
         <text class="label">退款原因</text>
-        <text class="content">{{ info.cancelInfo.cancelReason }}</text>
+        <text class="content">{{ info.data.cancelInfo.cancelReason }}</text>
       </view>
       <view class="orderTime info">
         <text class="label">退款金额</text>
-        <text class="content">￥{{ info.cancelInfo.refundAmount }}</text>
+        <text class="content">￥{{ info.data.cancelInfo.refundAmount }}</text>
       </view>
     </view>
     <!-- 服务记录 -->
-    <view class="serveRecord card" v-if="[2, 3].includes(info.serveStatus)">
+    <view
+      class="serveRecord card"
+      v-if="[2, 3].includes(info.data.serveStatus)"
+    >
       <view class="title">服务记录</view>
       <view
         class="serveBefore"
         v-if="
-          (info.serveStatus === 2 || info.serveStatus === 3) &&
-          info.serveInfo.realServeStartTime
+          (info.data.serveStatus === 2 || info.data.serveStatus === 3) &&
+          info.data.serveInfo.realServeStartTime
         "
       >
         <view class="subTitle">服务前</view>
@@ -105,18 +115,20 @@
             class="img"
             :src="item"
             :key="index"
-            v-for="(item, index) in info.serveInfo.serveBeforeImgs"
+            v-for="(item, index) in info.data.serveInfo.serveBeforeImgs"
           ></image>
         </view>
         <view class="tips">
           <text>补充说明：</text>
-          <text>{{ info.serveInfo.serveBeforeIllustrate }}</text>
+          <text>{{ info.data.serveInfo.serveBeforeIllustrate }}</text>
         </view>
-        <view class="time">{{ info.serveInfo.realServeStartTime }}</view>
+        <view class="time">{{ info.data.serveInfo.realServeStartTime }}</view>
       </view>
       <view
         class="serveAfter"
-        v-if="info.serveStatus === 3 && info.serveInfo.realServeEndTime"
+        v-if="
+          info.data.serveStatus === 3 && info.data.serveInfo.realServeEndTime
+        "
       >
         <view class="subTitle">服务后</view>
         <view class="imgList">
@@ -124,36 +136,39 @@
             class="img"
             :src="item"
             :key="index"
-            v-for="(item, index) in info.serveInfo.serveAfterImgs"
+            v-for="(item, index) in info.data.serveInfo.serveAfterImgs"
           ></image>
         </view>
         <view class="tips">
           <text>补充说明：</text>
-          <text>{{ info.serveInfo.serveBeforeIllustrate }}</text>
+          <text>{{ info.data.serveInfo.serveBeforeIllustrate }}</text>
         </view>
-        <view class="time">{{ info.serveInfo.realServeEndTime }}</view>
+        <view class="time">{{ info.data.serveInfo.realServeEndTime }}</view>
       </view>
     </view>
-    <view class="footer" v-if="[1, 2].includes(info.serveStatus)">
+    <view class="footer" v-if="[1, 2].includes(info.data.serveStatus)">
       <view
         class="btn-gray"
-        @click="handleCancel"
-        v-if="[1].includes(info.serveStatus)"
+        @click="handleCancel(info.data.id)"
+        v-if="[1].includes(info.data.serveStatus)"
         >取消订单</view
       >
       <view
         class="btn-red"
-        @click="handleServeRecord"
-        v-if="[1, 2].includes(info.serveStatus)"
-        >{{ info.serveStatus === 1 ? '开始服务' : '完成服务' }}</view
+        @click="handleServeRecord(info.data.id, info.data.serveStatus)"
+        v-if="[1, 2].includes(info.data.serveStatus)"
+        >{{ info.data.serveStatus === 1 ? '开始服务' : '完成服务' }}</view
       >
     </view>
   </view>
 </template>
 <script setup>
 import { ref, reactive, onMounted } from 'vue';
+import { onLoad } from '@dcloudio/uni-app';
 // 导航组件
 import UniNav from '@/components/uni-nav/index.vue';
+//接口
+import { getOrderInfo } from '@/pages/api/order.js';
 import { useStore } from 'vuex';
 // 基本数据(订单状态)
 import { orderStatus } from '@/utils/commonData.js';
@@ -169,50 +184,65 @@ const store = useStore();
 const users = store.state.user;
 const emit = defineEmits(''); //子组件向父组件事件传递
 const scrollinto = ref('tab0'); //tab切换
-const info = reactive({
-  serveStatus: 1,
-  customerInfo: {
-    serveAddress:
-      '北京市昌平区红旗大街124号五星大厦19层109室4号五星大厦19层109室',
-    contactsName: '柯胜伦',
-    contactsPhone: '17788884444',
-  },
-  ordersInfo: {
-    serveCode: '7364734677776',
-    serveStartTime: '2026.5.26 12:30',
-  },
-  refundInfo: {
-    refundReason: '未上门服务',
-    refundTime: '2026.5.26 12:30',
-    refundAmount: '198',
-  },
-  cancelInfo: {
-    cancelReason: '未上门服务',
-    cancelTime: '2026.5.26 12:30',
-  },
-  serveInfo: {
-    serveTypeName: '保洁清洗',
-    serveItemName: '日常保洁',
-    serveNum: '1',
-    serveFee: '198',
-    serveBeforeIllustrate: '服务开始说明',
-    realServeStartTime: '2022-12-03  12:00',
-    serveBeforeImgs: [
-      'https://yjy-slwl-oss.oss-cn-hangzhou.aliyuncs.com/61032c27-43eb-49cc-86df-ba8cbeb2c27d.png',
-      'https://yjy-slwl-oss.oss-cn-hangzhou.aliyuncs.com/61032c27-43eb-49cc-86df-ba8cbeb2c27d.png',
-      'https://yjy-slwl-oss.oss-cn-hangzhou.aliyuncs.com/61032c27-43eb-49cc-86df-ba8cbeb2c27d.png',
-    ], //服务开始前照片列表
-    serveAfterIllustrate: '服务结束说明',
-    realServeEndTime: '2022-12-03  12:00',
-    serveAfterImgs: [
-      'https://yjy-slwl-oss.oss-cn-hangzhou.aliyuncs.com/61032c27-43eb-49cc-86df-ba8cbeb2c27d.png',
-      'https://yjy-slwl-oss.oss-cn-hangzhou.aliyuncs.com/61032c27-43eb-49cc-86df-ba8cbeb2c27d.png',
-      'https://yjy-slwl-oss.oss-cn-hangzhou.aliyuncs.com/61032c27-43eb-49cc-86df-ba8cbeb2c27d.png',
-    ], //服务结束照片列表
+const type = ref(''); //从哪个页面来
+let info = reactive({
+  data: {
+    serveStatus: 1,
+    customerInfo: {
+      serveAddress:
+        '北京市昌平区红旗大街124号五星大厦19层109室4号五星大厦19层109室',
+      contactsName: '柯胜伦',
+      contactsPhone: '17788884444',
+    },
+    ordersInfo: {
+      serveCode: '7364734677776',
+      serveStartTime: '2026.5.26 12:30',
+    },
+    refundInfo: {
+      refundReason: '未上门服务',
+      refundTime: '2026.5.26 12:30',
+      refundAmount: '198',
+    },
+    cancelInfo: {
+      cancelReason: '未上门服务',
+      cancelTime: '2026.5.26 12:30',
+    },
+    serveInfo: {
+      serveTypeName: '保洁清洗',
+      serveItemName: '日常保洁',
+      serveNum: '1',
+      serveFee: '198',
+      serveBeforeIllustrate: '服务开始说明',
+      realServeStartTime: '2022-12-03  12:00',
+      serveBeforeImgs: [
+        'https://yjy-slwl-oss.oss-cn-hangzhou.aliyuncs.com/61032c27-43eb-49cc-86df-ba8cbeb2c27d.png',
+        'https://yjy-slwl-oss.oss-cn-hangzhou.aliyuncs.com/61032c27-43eb-49cc-86df-ba8cbeb2c27d.png',
+        'https://yjy-slwl-oss.oss-cn-hangzhou.aliyuncs.com/61032c27-43eb-49cc-86df-ba8cbeb2c27d.png',
+      ], //服务开始前照片列表
+      serveAfterIllustrate: '服务结束说明',
+      realServeEndTime: '2022-12-03  12:00',
+      serveAfterImgs: [
+        'https://yjy-slwl-oss.oss-cn-hangzhou.aliyuncs.com/61032c27-43eb-49cc-86df-ba8cbeb2c27d.png',
+        'https://yjy-slwl-oss.oss-cn-hangzhou.aliyuncs.com/61032c27-43eb-49cc-86df-ba8cbeb2c27d.png',
+        'https://yjy-slwl-oss.oss-cn-hangzhou.aliyuncs.com/61032c27-43eb-49cc-86df-ba8cbeb2c27d.png',
+      ], //服务结束照片列表
+    },
   },
 });
 let tabIndex = ref(users.tabIndex ? users.tabIndex : 0); //当前tab
 // ------定义方法------
+onLoad((options) => {
+  console.log(options, 'options');
+  getOrderInfoFunc(options.id);
+  type.value = options.type;
+});
+//获取订单详情
+const getOrderInfoFunc = (id) => {
+  getOrderInfo(id).then((res) => {
+    info.data = res.data;
+    console.log(res.data, '获取订单详情');
+  });
+};
 // tab选项卡切换轮播
 const changeTab = (index) => {
   // 点击的还是当前数据的时候直接return
@@ -225,20 +255,32 @@ const changeTab = (index) => {
   scrollinto.value = 'tab' + index;
 };
 //跳转到开始服务/完成服务页面
-const handleServeRecord = () => {
+const handleServeRecord = (id, status) => {
   uni.navigateTo({
-    url: '/pages/serveRecord/index',
+    url:
+      '/pages/serveRecord/index?id=' +
+      id +
+      '&type=' +
+      'info' +
+      '&status' +
+      status,
   });
 };
 //取消原因
-const handleCancel = () => {
+const handleCancel = (id) => {
   uni.navigateTo({
-    url: '/pages/cancel/index',
+    url: '/pages/cancel/index?id=' + id + '&type=' + 'info',
   });
 };
 // 返回上一页
 const goBack = () => {
-  uni.navigateBack();
+  if (type.value === 'info') {
+    uni.redirectTo({
+      url: '/pages/pickup/index',
+    });
+  } else {
+    uni.navigateBack();
+  }
 };
 //把数据、方法暴漏给父组件
 defineExpose({

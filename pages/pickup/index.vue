@@ -9,7 +9,7 @@
     ></uni-nav-bar>
     <!-- nav -->
     <!-- 状态筛选 -->
-    <UniTab :tabBars="tabBars"></UniTab>
+    <UniTab :tabBars="tabBars" @getTabIndex="getTabIndex"></UniTab>
     <!-- 订单列表 -->
     <scroll-view
       :scroll-y="icCanScroll"
@@ -30,10 +30,14 @@
 
 <script setup>
 import { ref, reactive, onMounted } from 'vue';
+import { onShow } from '@dcloudio/uni-app';
 import { useStore } from 'vuex';
 
 // 基本数据
 import { DeliveryData } from '@/utils/commonData.js';
+//接口
+import { getOrder } from '@/pages/api/order.js';
+
 // 导入组件
 //订单列表
 import HomeList from './components/homeList';
@@ -44,7 +48,7 @@ import UniTab from '@/components/uni-tab/index.vue';
 // ------定义变量------
 const store = useStore();
 const emit = defineEmits(''); //子组件向父组件事件传递
-const tab = ref();
+const users = store.state.user;
 const tabBars = DeliveryData;
 let tabIndex = ref(0); //当前tab
 const icCanScroll = ref(true);
@@ -60,12 +64,27 @@ const homeList = reactive({
   ],
 });
 // ------生命周期------
-onMounted(() => {});
+onShow(() => {
+  // if (users.tabIndex) {
+  //   tabIndex.value = users.tabIndex;
+  // }
+  getTabIndex(users.tabIndex);
+});
 
+const getListData = (val) => {
+  getOrder(val).then((res) => {
+    homeList.data = res.data.ordersServes;
+    console.log(res, '66666666666');
+  });
+};
 // ------定义方法------
 const getRobOrderList = () => {};
 // 获取tab切换当前的index
-const getTabIndex = (index) => {};
+const getTabIndex = (index) => {
+  store.commit('user/setTabIndex', index);
+  getListData(tabBars[index].value);
+  console.log(tabBars[index].value, 'index');
+};
 // 触发选项卡事件
 const onChangeSwiperTab = (e) => {};
 

@@ -173,7 +173,7 @@
                     "<uses-permission android:name=\"android.permission.BLUETOOTH\"/>",
                     "<uses-permission android:name=\"android.permission.BLUETOOTH_ADMIN\"/>"
                 ],
-                "abiFilters" : [ "armeabi-v7a", "x86" ],
+                "abiFilters" : [ "armeabi-v7a", "arm64-v8a", "x86" ],
                 "autoSdkPermissions" : true,
                 "minSdkVersion" : 21
             },

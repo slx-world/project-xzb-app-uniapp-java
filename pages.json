@@ -162,13 +162,7 @@
 				"navigationBarTitleText": "转单"
 			}
 		},
-		{
-			"path": "pages/cancel/cause",
-			"style": {
-				"navigationStyle": "custom",
-				"navigationBarTitleText": "订单取消原因申请"
-			}
-		},
+
 
 		{
 			"path": "pages/details/index",

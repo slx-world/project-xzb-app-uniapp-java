@@ -1,7 +1,7 @@
 <!-- 列表 -->
 <template>
   <view class="homeList">
-    <view class="card" v-for="(item, index) in data" :key="index">
+    <view class="card" v-for="(item, index) in list.data" :key="index">
       <view class="card-content">
         <image class="leftCardContent" :src="item.serveItemImg"></image>
         <view class="rightCardContent">
@@ -43,7 +43,7 @@
 </template>
 
 <script setup>
-import { ref, reactive, onMounted, watch } from 'vue';
+import { ref, reactive, onMounted, watch, watchEffect } from 'vue';
 import { robOrder } from '../../api/order.js';
 const emit = defineEmits(['refresh']); //子组件向父组件事件传递
 // 获取父组件值、方法
@@ -55,7 +55,9 @@ const props = defineProps({
 });
 onMounted(() => {});
 const isRob = ref(true);
-let data = reactive([]);
+let list = reactive({
+  data: [],
+});
 const alertDialog = ref(null);
 const handleClose = () => {
   alertDialog.value.close();
@@ -74,12 +76,16 @@ const handleRob = (id) => {
     alertDialog.value.open();
   });
 };
-watch(
-  () => props.data,
-  () => {
-    data = props.data;
-    // console.log(serviceType.data, props.homeFilterList, '-fffffffffff');
-  }
-);
+watchEffect(() => {
+  list.data = props.data;
+  console.log(list.data, '++++++++++++++');
+});
+// watch(
+//   () => props.data,
+//   () => {
+//     list.data = props.data;
+//     console.log(list.data, '=================');
+//   }
+// );
 </script>
 <style src="../index.scss" lang="scss"></style>

@@ -18,6 +18,7 @@
         @handleCanScroll="handleCanScroll"
         :homeFilterList="homeFilterList.data"
         @getList="getList"
+        @tabChange="tabChange"
       >
       </HomeFilter>
       <!-- 吸顶筛选 -->
@@ -47,7 +48,7 @@
 import { ref, reactive, onMounted } from 'vue';
 import { onPullDownRefresh } from '@dcloudio/uni-app';
 // 导入接口
-import { getRobOrder, getHomeFilter } from '../api/order.js';
+import { getRobOrder, getHomeFilter, getDispatchOrder } from '../api/order.js';
 // 导入组件
 // 导航
 import UniNav from '@/components/uni-home-nav/index.vue';
@@ -60,6 +61,8 @@ import HomeList from './components/homeList';
 // ------定义变量------
 const fixTop = ref(false);
 const icCanScroll = ref(true);
+const orderType = ref(0); //0：抢单,1:派单
+const serveId = ref('');
 let homeFilterList = reactive({
   data: [],
 });
@@ -74,19 +77,43 @@ onMounted(() => {
 // ------定义方法------
 //下拉刷新
 onPullDownRefresh(() => {
+  getList();
   setTimeout(function () {
     uni.stopPullDownRefresh();
   }, 1000);
   console.log('refresh');
 });
-const getList = (params) => {
-  getRobOrderList(params);
+const tabChange = (val, id) => {
+  console.log(val, id, 'val, id');
+  orderType.value = val;
+  serveId.value = id;
+  getList();
+  // if(val){
+  //   //抢单
+
+  // }else{
+  //   //派单
+  // }
+};
+const getList = () => {
+  if (!orderType.value) {
+    getRobOrderList(serveId.value);
+  } else {
+    getDispatchList(serveId.value);
+  }
+};
+//派单列表
+const getDispatchList = (params) => {
+  getDispatchOrder(params).then((res) => {
+    homeList.data = res.data.ordersSeizes;
+    console.log(res, homeList.data, 1111111);
+  });
 };
 //获取抢单列表
 const getRobOrderList = (params) => {
   getRobOrder(params).then((res) => {
-    console.log(res, 1111111);
-    homeList.data = res.data.ordersSeizes || [];
+    homeList.data = res.data.ordersSeizes;
+    console.log(res, homeList.data, 1111111);
   });
 };
 //获取首页顶部筛选服务项数据
@@ -98,6 +125,7 @@ const getHomeFilterList = () => {
 };
 //点击服务类型展开时不可滚动
 const handleCanScroll = (val) => {
+  console.log(val, '是否可滑动');
   icCanScroll.value = !val;
 };
 // 监听滚动

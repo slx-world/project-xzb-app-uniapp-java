@@ -625,9 +625,8 @@
 .order .homeList .card[data-v-58ad869c] {
   border-radius: 0.5rem;
   background-color: var(--neutral-color-white);
-  min-height: 8.4375rem;
   margin: 0.9375rem;
-  padding: 0.9375rem 0.9375rem 0 0.9375rem;
+  padding: 0.9375rem 0.9375rem 0.1875rem 0.9375rem;
 }
 .order .homeList .card .card-content[data-v-58ad869c] {
   display: flex;
@@ -654,12 +653,20 @@
   margin-right: 0.5rem;
   white-space: nowrap;
 }
+.order .homeList .card .card-content .rightCardContent .serviceTime[data-v-58ad869c] {
+  white-space: nowrap;
+}
 .order .homeList .card .card-content .rightCardContent .serviceTime uni-text[data-v-58ad869c]:last-child {
   color: var(--color-black-19);
+  white-space: nowrap;
 }
 .order .homeList .card .card-content .orderStatus[data-v-58ad869c] {
+  white-space: nowrap;
   font-size: 0.875rem;
   color: var(--color-red-bg);
+}
+.order .homeList .card .card-content .gray[data-v-58ad869c] {
+  color: var(--color-gray-59);
 }
 .order .homeList .card .serviceAddress[data-v-58ad869c] {
   display: flex;
@@ -676,7 +683,7 @@
 .order .homeList .card .cardFooter[data-v-58ad869c] {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-end;
   border-top: 0.0625rem solid var(--color-gray-e8);
   height: 2.96875rem;
 }
@@ -698,6 +705,9 @@
   width: 4.5625rem;
   height: 1.75rem;
   border-radius: 1rem;
+}
+.order .homeList .card .cardFooter .robBtn[data-v-58ad869c]:last-child {
+  margin-left: 0.65625rem;
 }
 .order .homeList .footer[data-v-58ad869c] {
   font-size: 0.75rem;
@@ -1005,9 +1015,8 @@ uni-page-head[data-v-0e6a68f8],
 .order .homeList .card[data-v-0e6a68f8] {
   border-radius: 0.5rem;
   background-color: var(--neutral-color-white);
-  min-height: 8.4375rem;
   margin: 0.9375rem;
-  padding: 0.9375rem 0.9375rem 0 0.9375rem;
+  padding: 0.9375rem 0.9375rem 0.1875rem 0.9375rem;
 }
 .order .homeList .card .card-content[data-v-0e6a68f8] {
   display: flex;
@@ -1034,12 +1043,20 @@ uni-page-head[data-v-0e6a68f8],
   margin-right: 0.5rem;
   white-space: nowrap;
 }
+.order .homeList .card .card-content .rightCardContent .serviceTime[data-v-0e6a68f8] {
+  white-space: nowrap;
+}
 .order .homeList .card .card-content .rightCardContent .serviceTime uni-text[data-v-0e6a68f8]:last-child {
   color: var(--color-black-19);
+  white-space: nowrap;
 }
 .order .homeList .card .card-content .orderStatus[data-v-0e6a68f8] {
+  white-space: nowrap;
   font-size: 0.875rem;
   color: var(--color-red-bg);
+}
+.order .homeList .card .card-content .gray[data-v-0e6a68f8] {
+  color: var(--color-gray-59);
 }
 .order .homeList .card .serviceAddress[data-v-0e6a68f8] {
   display: flex;
@@ -1056,7 +1073,7 @@ uni-page-head[data-v-0e6a68f8],
 .order .homeList .card .cardFooter[data-v-0e6a68f8] {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-end;
   border-top: 0.0625rem solid var(--color-gray-e8);
   height: 2.96875rem;
 }
@@ -1078,6 +1095,9 @@ uni-page-head[data-v-0e6a68f8],
   width: 4.5625rem;
   height: 1.75rem;
   border-radius: 1rem;
+}
+.order .homeList .card .cardFooter .robBtn[data-v-0e6a68f8]:last-child {
+  margin-left: 0.65625rem;
 }
 .order .homeList .footer[data-v-0e6a68f8] {
   font-size: 0.75rem;

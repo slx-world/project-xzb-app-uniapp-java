@@ -3,9 +3,9 @@
     .card{
       border-radius: 16rpx;
       background-color: var(--neutral-color-white);
-      min-height: 270rpx;
+      // min-height: 270rpx;
       margin: 30rpx;
-      padding: 30rpx 30rpx 0rpx 30rpx;
+      padding: 30rpx 30rpx 6rpx 30rpx;
       .card-content{
         display: flex;
         margin-bottom: 23rpx;
@@ -32,15 +32,21 @@
             }
           }
           .serviceTime{
+            white-space: nowrap;
             text:last-child{
               color: var(--color-black-19);
+              white-space: nowrap;
             }
           }
   
         }
         .orderStatus{
+          white-space: nowrap;
           font-size: 28rpx;
           color: var(--color-red-bg);
+        }
+        .gray{
+          color: var(--color-gray-59);
         }
       }
       .serviceAddress{
@@ -62,7 +68,7 @@
       .cardFooter{
         display: flex;
         align-items: center;
-        justify-content: space-between;
+        justify-content: flex-end;
         border-top: 2rpx solid var(--color-gray-e8);
         height: 95rpx;
         .price{
@@ -83,6 +89,9 @@
           width: 146rpx;
           height: 56rpx;
           border-radius: 32rpx;
+        }
+        .robBtn:last-child{
+          margin-left: 21rpx;
         }
       }
     }

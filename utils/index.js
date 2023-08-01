@@ -51,7 +51,7 @@ export const getTimeDate = (val) => {
   return time;
 };
 
-function addZero(s) {
+function addZero (s) {
   return s < 10 ? "0" + s : s;
 }
 // 获取处理当前日期，时分秒以00:00:00显示
@@ -168,10 +168,10 @@ export const timeList = () => {
 export const call = (val) => {
   uni.makePhoneCall({
     phoneNumber: val,
-    success(e) {
+    success (e) {
       // console(e)
     },
-    fail(e) {
+    fail (e) {
       // console(e)
     },
   });
@@ -181,31 +181,31 @@ let getAuth = null
 
 // 初始上报位置
 export const positionsUploadInit = () => {
-	// 获取用户的定位配置
-	// let appAuthorizeSetting = uni.getAppAuthorizeSetting().locationAuthorized
-	// // 清除 定位检查的定时器
-	// getAuth != null ? clearInterval(getAuth) : null
-	// // 如果用户拒绝使用定位 提示无法上报位置
-	// if (appAuthorizeSetting == 'denied'){
-	// 	uni.showToast({
-	// 		title: '您拒绝提供定位服务，系统将无法使用位置上报功能',
-	// 		duration: 3000,
-	// 		icon: 'none'
-	// 	});
-	// 	return false
-	// }
-	// //如果没有开启定位 持续检查 直到开启定位
-	// if(appAuthorizeSetting != 'authorized' && appAuthorizeSetting != 'denied'){
-	// 	getAuth = setInterval(() => {
-	// 		positionsUploadInit()
-	// 	}, 30000)
-	// 	return false
-	// } 
-	// const posit = uni.getStorageSync('positions')
-	// // 位置上报
-	// if (!posit){
-	// 	positionUploadHandle()
-	// }
+  // 获取用户的定位配置
+  // let appAuthorizeSetting = uni.getAppAuthorizeSetting().locationAuthorized
+  // // 清除 定位检查的定时器
+  // getAuth != null ? clearInterval(getAuth) : null
+  // // 如果用户拒绝使用定位 提示无法上报位置
+  // if (appAuthorizeSetting == 'denied'){
+  // 	uni.showToast({
+  // 		title: '您拒绝提供定位服务，系统将无法使用位置上报功能',
+  // 		duration: 3000,
+  // 		icon: 'none'
+  // 	});
+  // 	return false
+  // }
+  // //如果没有开启定位 持续检查 直到开启定位
+  // if(appAuthorizeSetting != 'authorized' && appAuthorizeSetting != 'denied'){
+  // 	getAuth = setInterval(() => {
+  // 		positionsUploadInit()
+  // 	}, 30000)
+  // 	return false
+  // } 
+  // const posit = uni.getStorageSync('positions')
+  // // 位置上报
+  // if (!posit){
+  // 	positionUploadHandle()
+  // }
 }
 /** 
 * 
@@ -225,89 +225,89 @@ export const positionsUploadInit = () => {
 
 // 位置获取 item 如果存在 则直接执行上报 清空所有时间和距离条件 重新计算
 export const positionUploadHandle = item => {
-	uni.getLocation({
-		type: 'gcj02',
-		isHighAccuracy: true,
-		success: function(positions) {
-			if (positions){
-				// 首次进入 上传位置 并记录相关数据
-				const posit = uni.getStorageSync('positions')
-				// 点击按钮直接上报
-				if(item){
-					positionUploadAdmin(positions)
-					uni.setStorageSync('positions', {timer:posit.timer, lastPoint: positions, countTime: 0, countDist: 0 })
-					return 
-				}
-				// 非直接上报 按条件执行 每分钟执行定位并计算距离 首次执行
-				if (!posit) {
-					const timer = setInterval(() => {
-						positionUploadHandle()
-					}, 1000 * 60)
-					uni.setStorageSync('positions', {timer, lastPoint: positions, countTime: 0, countDist: 0 })
-					// 上报位置
-					positionUploadAdmin(positions)
-				} else {
-					const dist = getDistance(posit.lastPoint.latitude, posit.lastPoint.longitude, positions.latitude,  positions.longitude)
-					uni.setStorageSync('positions', {timer:posit.timer, lastPoint: positions, countTime: posit.countTime + 60000, countDist: posit.countDist + dist })
-					// console.log('距离和时间',posit.lastPoint.latitude, posit.lastPoint.longitude, positions.latitude,positions.longitude, posit.countTime, dist)
-					// 之后进入根据条件决定是否上报位置
-					if(posit.countTime + 60000 >= 300000 || posit.countDist + dist >= 100){
-						// uni.showToast({
-						// 	title: `满足条件：${posit.countTime + 60000 >= 10000 ? '时间大于了 5分钟' :'距离大于了100米'} 上报位置， 时间: ${posit.countTime + 10000} 距离：${posit.countDist}`,
-						// 	duration: 5000,
-						// 	icon: 'none'
-						// });
-						positionUploadAdmin(positions)
-						uni.setStorageSync('positions', {timer:posit.timer, lastPoint: positions, countTime: 0, countDist: 0 })
-					}
-				}	
-			} else {
-				uni.showToast({
-					title: '位置更新失败，请检查定位功能是否开启，或切网络了重新上传',
-					duration: 3000,
-					icon: 'none'
-				});
-			}
-		}, 
-		fail: function(err){
-			uni.showToast({
-				title: '位置获取失败，请检查定位功能是否开启，或切网络了重新上传',
-				duration: 3000,
-				icon: 'none'
-			});
-		}
-	});
-} 
+  uni.getLocation({
+    type: 'gcj02',
+    isHighAccuracy: true,
+    success: function (positions) {
+      if (positions) {
+        // 首次进入 上传位置 并记录相关数据
+        const posit = uni.getStorageSync('positions')
+        // 点击按钮直接上报
+        if (item) {
+          positionUploadAdmin(positions)
+          uni.setStorageSync('positions', { timer: posit.timer, lastPoint: positions, countTime: 0, countDist: 0 })
+          return
+        }
+        // 非直接上报 按条件执行 每分钟执行定位并计算距离 首次执行
+        if (!posit) {
+          const timer = setInterval(() => {
+            positionUploadHandle()
+          }, 1000 * 60)
+          uni.setStorageSync('positions', { timer, lastPoint: positions, countTime: 0, countDist: 0 })
+          // 上报位置
+          positionUploadAdmin(positions)
+        } else {
+          const dist = getDistance(posit.lastPoint.latitude, posit.lastPoint.longitude, positions.latitude, positions.longitude)
+          uni.setStorageSync('positions', { timer: posit.timer, lastPoint: positions, countTime: posit.countTime + 60000, countDist: posit.countDist + dist })
+          // console.log('距离和时间',posit.lastPoint.latitude, posit.lastPoint.longitude, positions.latitude,positions.longitude, posit.countTime, dist)
+          // 之后进入根据条件决定是否上报位置
+          if (posit.countTime + 60000 >= 300000 || posit.countDist + dist >= 100) {
+            // uni.showToast({
+            // 	title: `满足条件：${posit.countTime + 60000 >= 10000 ? '时间大于了 5分钟' :'距离大于了100米'} 上报位置， 时间: ${posit.countTime + 10000} 距离：${posit.countDist}`,
+            // 	duration: 5000,
+            // 	icon: 'none'
+            // });
+            positionUploadAdmin(positions)
+            uni.setStorageSync('positions', { timer: posit.timer, lastPoint: positions, countTime: 0, countDist: 0 })
+          }
+        }
+      } else {
+        uni.showToast({
+          title: '位置更新失败，请检查定位功能是否开启，或切网络了重新上传',
+          duration: 3000,
+          icon: 'none'
+        });
+      }
+    },
+    fail: function (err) {
+      uni.showToast({
+        title: '位置获取失败，请检查定位功能是否开启，或切网络了重新上传',
+        duration: 3000,
+        icon: 'none'
+      });
+    }
+  });
+}
 // 计算距离
 // params ：lat1 纬度1； lng1 经度1； lat2 纬度2； lng2 经度2； len_type （1:m or 2:km);
 const getDistance = (lat1, lng1, lat2, lng2, lenType = 1, decimal = 2) => {
-	const EARTH_RADIUS = 6378.137 //地球半径
-	const PI = 3.1415926
-	const radLat1 = lat1 * PI / 180.0;
-	const radLat2 = lat2 * PI / 180.0;
-	let a = radLat1 - radLat2;
-	let b = (lng1 * PI / 180.0) - (lng2 * PI / 180.0);
-	let s = 2 * Math.asin(Math.sqrt(Math.pow(Math.sin(a / 2), 2) + Math.cos(radLat1) * Math.cos(radLat2) * Math.pow(Math.sin(b / 2), 2)));
-	s = s * EARTH_RADIUS;
-	//s = round(s * 10000) / 10000; //输出为公里
-	//s = round(s * 1000) / 1; //单位修改为米,取整
-	s = lenType == 1 ? Math.round(s * 1000)/1 : Math.round(s * 10000) / 10000;
-	return s
+  const EARTH_RADIUS = 6378.137 //地球半径
+  const PI = 3.1415926
+  const radLat1 = lat1 * PI / 180.0;
+  const radLat2 = lat2 * PI / 180.0;
+  let a = radLat1 - radLat2;
+  let b = (lng1 * PI / 180.0) - (lng2 * PI / 180.0);
+  let s = 2 * Math.asin(Math.sqrt(Math.pow(Math.sin(a / 2), 2) + Math.cos(radLat1) * Math.cos(radLat2) * Math.pow(Math.sin(b / 2), 2)));
+  s = s * EARTH_RADIUS;
+  //s = round(s * 10000) / 10000; //输出为公里
+  //s = round(s * 1000) / 1; //单位修改为米,取整
+  s = lenType == 1 ? Math.round(s * 1000) / 1 : Math.round(s * 10000) / 10000;
+  return s
 }
 
 // 位置上报到后台
 const positionUploadAdmin = (positions) => {
-	PositionUpload({lat: positions.latitude.toString(), lng: positions.longitude.toString()}).then(res => {
-		// 上报成功不做处理,
-		if(res.code == 200){
-			// console.log('位置上报成功了')
-		} else {
-			uni.showToast({
-				title: '位置上报失败，请检查定位功能是否开启，或切网络了重新上传',
-				duration: 3000,
-				icon: 'none'
-			});
-		}
-		
-	})
+  PositionUpload({ lat: positions.latitude.toString(), lng: positions.longitude.toString() }).then(res => {
+    // 上报成功不做处理,
+    if (res.code == 200) {
+      // console.log('位置上报成功了')
+    } else {
+      uni.showToast({
+        title: '位置上报失败，请检查定位功能是否开启，或切网络了重新上传',
+        duration: 3000,
+        icon: 'none'
+      });
+    }
+
+  })
 }

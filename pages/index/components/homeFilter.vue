@@ -42,7 +42,7 @@
 <script setup>
 import { useStore } from 'vuex';
 import { ref, reactive, watch } from 'vue';
-const emit = defineEmits(['handleCanScroll', 'getList']); //子组件向父组件事件传递
+const emit = defineEmits(['handleCanScroll', 'getList', 'tabChange']); //子组件向父组件事件传递
 // 获取父组件值、方法
 const props = defineProps({
   fixTop: {
@@ -63,16 +63,22 @@ const activeType = ref('');
 // ------定义方法------
 const handleClick = (val) => {
   status.value = val;
+  emit('tabChange', status.value, activeType.value);
 };
 const handleOpen = () => {
   isOpen.value = !isOpen.value;
+  console.log(isOpen.value, 'isOpen.value');
+  // if (!isOpen.value) {
+  //   activeType.value = '';
+  // }
   emit('handleCanScroll', isOpen.value);
 };
 
 const handleReset = () => {
   activeType.value = '';
   isOpen.value = false;
-  emit('getList', '');
+  emit('handleCanScroll', isOpen.value);
+  emit('tabChange', status.value, activeType.value);
 };
 
 const handleService = (val) => {
@@ -80,7 +86,8 @@ const handleService = (val) => {
 };
 const handleSubmit = () => {
   isOpen.value = false;
-  emit('getList', activeType.value);
+  emit('handleCanScroll', isOpen.value);
+  emit('tabChange', status.value, activeType.value);
 };
 watch(
   () => props.homeFilterList,
