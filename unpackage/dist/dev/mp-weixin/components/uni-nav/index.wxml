@@ -1,1 +1,0 @@
-<uni-nav-bar wx:if="{{a}}" class="data-v-30dede9e" u-i="30dede9e-0" bind:__l="__l" u-p="{{b}}"></uni-nav-bar><uni-nav-bar wx:else class="data-v-30dede9e" bindclickLeft="{{c}}" bindclickRight="{{d}}" u-i="30dede9e-1" bind:__l="__l" u-p="{{e||''}}"></uni-nav-bar>

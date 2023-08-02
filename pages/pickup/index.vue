@@ -9,7 +9,11 @@
     ></uni-nav-bar>
     <!-- nav -->
     <!-- 状态筛选 -->
-    <UniTab :tabBars="tabBars" @getTabIndex="getTabIndex"></UniTab>
+    <UniTab
+      :tabBars="tabBars"
+      @getTabIndex="getTabIndex"
+      :statusNum="statusNum"
+    ></UniTab>
     <!-- 订单列表 -->
     <scroll-view
       :scroll-y="icCanScroll"
@@ -36,7 +40,7 @@ import { useStore } from 'vuex';
 // 基本数据
 import { DeliveryData } from '@/utils/commonData.js';
 //接口
-import { getOrder } from '@/pages/api/order.js';
+import { getOrder, getOrderStatusNum } from '@/pages/api/order.js';
 
 // 导入组件
 //订单列表
@@ -49,6 +53,9 @@ import UniTab from '@/components/uni-tab/index.vue';
 const store = useStore();
 const emit = defineEmits(''); //子组件向父组件事件传递
 const users = store.state.user;
+const statusNum = reactive({
+  data: [],
+});
 const tabBars = DeliveryData;
 let tabIndex = ref(0); //当前tab
 const icCanScroll = ref(true);
@@ -69,8 +76,16 @@ onShow(() => {
   //   tabIndex.value = users.tabIndex;
   // }
   getTabIndex(users.tabIndex);
+  getOrderStatusNumFunc();
 });
-
+//获取各个状态下的订单数量
+const getOrderStatusNumFunc = () => {
+  getOrderStatusNum().then((res) => {
+    statusNum.data = [res.data.noServed, res.data.serving];
+    console.log(res, '获取各个状态下的订单数量');
+  });
+};
+//获取订单列表数据
 const getListData = (val) => {
   getOrder(val).then((res) => {
     homeList.data = res.data.ordersServes;

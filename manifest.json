@@ -11,8 +11,8 @@
         "nvueCompiler" : "uni-app",
         "nvueStyleCompiler" : "uni-app",
         "modules" : {
-            "Maps" : {},
-            "Geolocation" : {}
+            "Geolocation" : {},
+            "Maps" : {}
         },
         /* 模块配置 */
         "distribute" : {

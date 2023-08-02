@@ -1,6 +1,0 @@
-{
-  "component": true,
-  "usingComponents": {
-    "uni-popup": "../uni-popup/index"
-  }
-}

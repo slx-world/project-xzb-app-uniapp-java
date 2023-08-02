@@ -4,7 +4,7 @@
     <!-- nav -->
     <UniNav title="请选择工作地点" @goBack="goBack"></UniNav>
 
-    <map
+   <map
       class="map"
       :markers="[markers.data]"
       :latitude="location.latitude"
@@ -93,7 +93,6 @@ const handleChooseRange = () => {
       location.longitude = res.latitude;
       markers.data.latitude = res.latitude;
       markers.data.longitude = res.longitude;
-
       store.commit('user/setLocation', location);
       store.commit('user/setAddress', address.value);
       // console.log(res, location, '选择具体服务范围');

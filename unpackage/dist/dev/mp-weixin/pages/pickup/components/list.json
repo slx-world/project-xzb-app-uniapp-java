@@ -1,9 +1,0 @@
-{
-  "component": true,
-  "usingComponents": {
-    "deal-parcel": "./components/dealParcel",
-    "already-parcel": "./components/alreadyParcel",
-    "cancel-parcel": "./components/cancelParcel",
-    "uni-popup": "../../../components/uni-popup/index"
-  }
-}

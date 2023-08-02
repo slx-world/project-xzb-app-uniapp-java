@@ -1,7 +1,0 @@
-{
-  "navigationStyle": "custom",
-  "navigationBarTitleText": "订单跟踪",
-  "usingComponents": {
-    "uni-nav": "../../components/uni-nav/index"
-  }
-}

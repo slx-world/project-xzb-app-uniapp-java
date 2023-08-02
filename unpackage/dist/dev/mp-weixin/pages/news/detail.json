@@ -1,7 +1,0 @@
-{
-  "navigationStyle": "custom",
-  "navigationBarTitleText": "详情",
-  "usingComponents": {
-    "uni-nav": "../../components/uni-nav/index"
-  }
-}

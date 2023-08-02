@@ -17,10 +17,10 @@
     "url": ""
   },
   "permissions": {
+    "Geolocation": {},
     "Maps": {
       "coordType": "gcj02"
     },
-    "Geolocation": {},
     "UniNView": {
       "description": "UniNView原生渲染"
     }

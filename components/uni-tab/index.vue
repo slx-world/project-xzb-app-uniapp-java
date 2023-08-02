@@ -14,7 +14,7 @@
     >
       <uni-badge
         class="uni-badge-left-margin"
-        :text="100"
+        :text="statusNum.data[index]"
         absolute="rightTop"
         :offset="[-8, 3]"
         size="small"
@@ -28,7 +28,7 @@
   </scroll-view>
 </template>
 <script setup>
-import { ref, reactive, onMounted } from 'vue';
+import { ref, reactive, onMounted, watchEffect } from 'vue';
 import { useStore } from 'vuex';
 // 获取父组件数据
 const props = defineProps({
@@ -36,9 +36,16 @@ const props = defineProps({
     type: Array,
     default: () => [],
   },
+  statusNum: {
+    type: Array,
+    default: () => [],
+  },
 });
 // ------定义变量------
 const store = useStore();
+const statusNum = reactive({
+  data: [],
+});
 const users = store.state.user;
 const emit = defineEmits(''); //子组件向父组件事件传递
 const scrollinto = ref('tab0'); //tab切换
@@ -55,6 +62,10 @@ const changeTab = (index) => {
   // 滑动
   scrollinto.value = 'tab' + index;
 };
+watchEffect(() => {
+  statusNum.data = props.statusNum.data;
+  console.log(list.data, '++++++++++++++');
+});
 //把数据、方法暴漏给父组件
 defineExpose({
   changeTab,

@@ -1,1 +1,0 @@
-<view wx:if="{{a}}" class="item"><view class="titInfo">{{b}} <text>{{c}}</text></view><view class="address">{{d}}</view><view class="distance">{{e}}公里</view><view wx:if="{{f}}" class="time">预约取件时间：{{g}} 至 {{h}}</view><view wx:else class="time">运单号：{{i}}</view><text wx:if="{{j}}" catchtap="{{k}}" class="delete"><button class="uni-btn btn-default">去收款</button></text></view>

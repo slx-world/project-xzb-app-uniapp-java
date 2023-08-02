@@ -1,7 +1,0 @@
-{
-  "navigationStyle": "custom",
-  "navigationBarTitleText": "订单取消原因申请",
-  "usingComponents": {
-    "uni-nav": "../../components/uni-nav/index"
-  }
-}

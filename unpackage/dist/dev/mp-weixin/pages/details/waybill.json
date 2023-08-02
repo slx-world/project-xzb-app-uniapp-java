@@ -1,9 +1,0 @@
-{
-  "navigationStyle": "custom",
-  "navigationBarTitleText": "运单详情",
-  "usingComponents": {
-    "uni-nav": "../../components/uni-nav/index",
-    "address": "./components/address",
-    "uppop": "./components/uppop"
-  }
-}

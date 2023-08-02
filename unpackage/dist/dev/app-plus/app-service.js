@@ -2190,20 +2190,20 @@ if (uni.restoreGlobal) {
         range,
         errorMessage
       } = rule;
-      let list = new Array(range.length);
+      let list2 = new Array(range.length);
       for (let i2 = 0; i2 < range.length; i2++) {
         const item = range[i2];
         if (types.object(item) && item.value !== void 0) {
-          list[i2] = item.value;
+          list2[i2] = item.value;
         } else {
-          list[i2] = item;
+          list2[i2] = item;
         }
       }
       let result = false;
       if (Array.isArray(value)) {
-        result = new Set(value.concat(list)).size === list.length;
+        result = new Set(value.concat(list2)).size === list2.length;
       } else {
-        if (list.indexOf(value) > -1) {
+        if (list2.indexOf(value) > -1) {
           result = true;
         }
       }
@@ -3520,8 +3520,8 @@ if (uni.restoreGlobal) {
       hook.emit(HOOK_SETUP, pluginDescriptor, setupFn);
     } else {
       const proxy = enableProxy ? new ApiProxy(pluginDescriptor, hook) : null;
-      const list = target.__VUE_DEVTOOLS_PLUGINS__ = target.__VUE_DEVTOOLS_PLUGINS__ || [];
-      list.push({
+      const list2 = target.__VUE_DEVTOOLS_PLUGINS__ = target.__VUE_DEVTOOLS_PLUGINS__ || [];
+      list2.push({
         pluginDescriptor,
         setupFn,
         proxy
@@ -5032,6 +5032,10 @@ if (uni.restoreGlobal) {
     method: "post",
     params
   });
+  const getOrderStatusNum = (params) => request({
+    url: `/orders-serve/status/num`,
+    method: "get"
+  });
   const _sfc_main$u = {
     __name: "index",
     setup(__props) {
@@ -5321,7 +5325,7 @@ if (uni.restoreGlobal) {
       vue.onMounted(() => {
       });
       const isRob = vue.ref(true);
-      let list = vue.reactive({
+      let list2 = vue.reactive({
         data: []
       });
       const alertDialog = vue.ref(null);
@@ -5343,13 +5347,13 @@ if (uni.restoreGlobal) {
         });
       };
       vue.watchEffect(() => {
-        list.data = props.data;
-        formatAppLog("log", "at pages/index/components/homeList.vue:81", list.data, "++++++++++++++");
+        list2.data = props.data;
+        formatAppLog("log", "at pages/index/components/homeList.vue:81", list2.data, "++++++++++++++");
       });
       return (_ctx, _cache) => {
         const _component_uni_popup = resolveEasycom(vue.resolveDynamicComponent("uni-popup"), __easycom_0$4);
         return vue.openBlock(), vue.createElementBlock("view", { class: "homeList" }, [
-          (vue.openBlock(true), vue.createElementBlock(vue.Fragment, null, vue.renderList(vue.unref(list).data, (item, index) => {
+          (vue.openBlock(true), vue.createElementBlock(vue.Fragment, null, vue.renderList(vue.unref(list2).data, (item, index) => {
             return vue.openBlock(), vue.createElementBlock("view", {
               class: "card",
               key: index
@@ -5362,7 +5366,7 @@ if (uni.restoreGlobal) {
                 vue.createElementVNode("view", { class: "rightCardContent" }, [
                   vue.createElementVNode("view", { class: "title" }, vue.toDisplayString(item.serveTypeName) + "-" + vue.toDisplayString(item.serveItemName), 1),
                   vue.createElementVNode("view", { class: "serviceTime" }, [
-                    vue.createElementVNode("text", null, "\u670D\u52A1\u65F6\u95F4"),
+                    vue.createElementVNode("text", null, "\u9884\u7EA6\u65F6\u95F4"),
                     vue.createElementVNode("text", null, vue.toDisplayString(item.serveStartTime), 1)
                   ])
                 ])
@@ -5828,7 +5832,7 @@ if (uni.restoreGlobal) {
             store2.commit("user/setAddress", address.value);
           },
           fail: function(err) {
-            formatAppLog("log", "at pages/serviceRange/index.vue:102", err, "err");
+            formatAppLog("log", "at pages/serviceRange/index.vue:101", err, "err");
           }
         });
       };
@@ -5843,12 +5847,12 @@ if (uni.restoreGlobal) {
             duration: 1500,
             icon: "none"
           });
-          formatAppLog("log", "at pages/serviceRange/index.vue:117", res, "\u8BBE\u7F6E\u670D\u52A1\u8303\u56F4");
+          formatAppLog("log", "at pages/serviceRange/index.vue:116", res, "\u8BBE\u7F6E\u670D\u52A1\u8303\u56F4");
         });
       };
       onLoad((option) => {
         getSettingInfo().then((res) => {
-          formatAppLog("log", "at pages/serviceRange/index.vue:123", res, "\u83B7\u53D6\u5F53\u524D\u914D\u7F6E\u7684\u4F4D\u7F6E\u4FE1\u606F");
+          formatAppLog("log", "at pages/serviceRange/index.vue:122", res, "\u83B7\u53D6\u5F53\u524D\u914D\u7F6E\u7684\u4F4D\u7F6E\u4FE1\u606F");
           if (!res.data.location) {
             uni.getLocation({
               type: "gcj02",
@@ -5858,7 +5862,7 @@ if (uni.restoreGlobal) {
                 location2.longitude = res2.latitude;
                 markers.data.latitude = res2.latitude;
                 markers.data.longitude = res2.longitude;
-                formatAppLog("log", "at pages/serviceRange/index.vue:134", res2, "\u5F53\u524D\u4F4D\u7F6E1");
+                formatAppLog("log", "at pages/serviceRange/index.vue:133", res2, "\u5F53\u524D\u4F4D\u7F6E1");
               }
             });
           } else {
@@ -7634,7 +7638,7 @@ if (uni.restoreGlobal) {
       const letter = vue.ref([]);
       vue.ref("");
       const scrollIntoId = vue.ref("");
-      const list = vue.ref([]);
+      const list2 = vue.ref([]);
       const activeId = vue.ref(1);
       const disPosition = vue.ref(true);
       const currentCity = vue.ref();
@@ -7651,7 +7655,7 @@ if (uni.restoreGlobal) {
         uni.createSelectorQuery().in(instance).select("#list").boundingClientRect().exec((ret) => {
           winOffsetY.value = ret[0].top;
           winHeight.value = ret[0].height;
-          itemHeight.value = winHeight.value / list.value.length;
+          itemHeight.value = winHeight.value / list2.value.length;
         });
       };
       onLoad((option) => {
@@ -7664,18 +7668,18 @@ if (uni.restoreGlobal) {
         touchmove.value = true;
         let pageY = e2.touches[0].pageY;
         let index = Math.floor((pageY - winOffsetY.value) / itemHeight.value);
-        if (list.value[index]) {
-          scrollIntoId.value = list.value[index].idx;
+        if (list2.value[index]) {
+          scrollIntoId.value = list2.value[index].idx;
         }
       };
       const touchMove = (e2) => {
         let pageY = e2.touches[0].pageY;
         let index = Math.floor((pageY - winOffsetY.value) / itemHeight.value);
-        if (list.value[index] && list.value[index].idx === scrollIntoId.value) {
+        if (list2.value[index] && list2.value[index].idx === scrollIntoId.value) {
           return false;
         }
-        if (list.value[index]) {
-          scrollIntoId.value = list.value[index].idx;
+        if (list2.value[index]) {
+          scrollIntoId.value = list2.value[index].idx;
         }
       };
       const touchEnd = () => {
@@ -7689,10 +7693,10 @@ if (uni.restoreGlobal) {
         getWarpWeft();
         scrollHeight.value = uni.getSystemInfoSync().windowHeight - parseInt(customBar.value) + "px";
         letter.value = Citys.index;
-        list.value = Citys.list;
+        list2.value = Citys.list;
         setList();
         getOpenCity().then((res) => {
-          list.value = res.data;
+          list2.value = res.data;
           formatAppLog("log", "at pages/city/index.vue:188", res, "getOpenCity");
         });
       });
@@ -7727,7 +7731,7 @@ if (uni.restoreGlobal) {
         });
         uni.setStorageSync("city", city);
       };
-      vue.watch(list, () => {
+      vue.watch(list2, () => {
         setTimeout(() => {
           setList();
         }, 100);
@@ -7788,7 +7792,7 @@ if (uni.restoreGlobal) {
               vue.createElementVNode("view", { class: "grey" }, " \u5C0F\u667A\u5E2E\u5DF2\u5F00\u901A\u7684\u57CE\u5E02 ")
             ])) : vue.createCommentVNode("v-if", true),
             vue.createCommentVNode(" \u57CE\u5E02\u5217\u8868 "),
-            (vue.openBlock(true), vue.createElementBlock(vue.Fragment, null, vue.renderList(list.value, (item, index) => {
+            (vue.openBlock(true), vue.createElementBlock(vue.Fragment, null, vue.renderList(list2.value, (item, index) => {
               return vue.openBlock(), vue.createElementBlock("view", {
                 id: item.id,
                 key: index,
@@ -8103,7 +8107,7 @@ if (uni.restoreGlobal) {
                 vue.createElementVNode("view", { class: "rightCardContent" }, [
                   vue.createElementVNode("view", { class: "title" }, vue.toDisplayString(item.serveTypeName) + "-" + vue.toDisplayString(item.serveItemName), 1),
                   vue.createElementVNode("view", { class: "serviceTime" }, [
-                    vue.createElementVNode("text", null, "\u670D\u52A1\u65F6\u95F4"),
+                    vue.createElementVNode("text", null, "\u9884\u7EA6\u65F6\u95F4"),
                     vue.createElementVNode("text", { class: "content" }, vue.toDisplayString(item.serveStatus === 1 ? item.serveStartTime : item.serveStatus === 2 ? item.realServeStartTime : item.realServeEndTime), 1)
                   ])
                 ]),
@@ -8306,11 +8310,19 @@ if (uni.restoreGlobal) {
       tabBars: {
         type: Array,
         default: () => []
+      },
+      statusNum: {
+        type: Array,
+        default: () => []
       }
     },
     emits: "",
     setup(__props, { expose, emit }) {
+      const props = __props;
       const store2 = useStore();
+      const statusNum = vue.reactive({
+        data: []
+      });
       const users = store2.state.user;
       const scrollinto = vue.ref("tab0");
       let tabIndex = vue.ref(users.tabIndex ? users.tabIndex : 0);
@@ -8322,6 +8334,10 @@ if (uni.restoreGlobal) {
         emit("getTabIndex", index);
         scrollinto.value = "tab" + index;
       };
+      vue.watchEffect(() => {
+        statusNum.data = props.statusNum.data;
+        formatAppLog("log", "at components/uni-tab/index.vue:67", list.data, "++++++++++++++");
+      });
       expose({
         changeTab
       });
@@ -8342,7 +8358,7 @@ if (uni.restoreGlobal) {
             }, [
               vue.createVNode(_component_uni_badge, {
                 class: "uni-badge-left-margin",
-                text: 100,
+                text: statusNum.data[index],
                 absolute: "rightTop",
                 offset: [-8, 3],
                 size: "small"
@@ -8356,7 +8372,7 @@ if (uni.restoreGlobal) {
                   ], 2)
                 ]),
                 _: 2
-              }, 1024)
+              }, 1032, ["text"])
             ], 8, ["id", "onClick"]);
           }), 128))
         ], 8, ["scroll-into-view"]);
@@ -8370,6 +8386,9 @@ if (uni.restoreGlobal) {
     setup(__props, { emit }) {
       const store2 = useStore();
       const users = store2.state.user;
+      const statusNum = vue.reactive({
+        data: []
+      });
       const tabBars = DeliveryData;
       vue.ref(0);
       const icCanScroll = vue.ref(true);
@@ -8386,11 +8405,18 @@ if (uni.restoreGlobal) {
       });
       onShow(() => {
         getTabIndex(users.tabIndex);
+        getOrderStatusNumFunc();
       });
+      const getOrderStatusNumFunc = () => {
+        getOrderStatusNum().then((res) => {
+          statusNum.data = [res.data.noServed, res.data.serving];
+          formatAppLog("log", "at pages/pickup/index.vue:85", res, "\u83B7\u53D6\u5404\u4E2A\u72B6\u6001\u4E0B\u7684\u8BA2\u5355\u6570\u91CF");
+        });
+      };
       const getListData = (val) => {
         getOrder(val).then((res) => {
           homeList.data = res.data.ordersServes;
-          formatAppLog("log", "at pages/pickup/index.vue:77", res, "66666666666");
+          formatAppLog("log", "at pages/pickup/index.vue:92", res, "66666666666");
         });
       };
       const getRobOrderList = () => {
@@ -8398,7 +8424,7 @@ if (uni.restoreGlobal) {
       const getTabIndex = (index) => {
         store2.commit("user/setTabIndex", index);
         getListData(tabBars[index].value);
-        formatAppLog("log", "at pages/pickup/index.vue:86", tabBars[index].value, "index");
+        formatAppLog("log", "at pages/pickup/index.vue:101", tabBars[index].value, "index");
       };
       return (_ctx, _cache) => {
         const _component_uni_nav_bar = resolveEasycom(vue.resolveDynamicComponent("uni-nav-bar"), __easycom_0$3);
@@ -8414,8 +8440,9 @@ if (uni.restoreGlobal) {
             vue.createCommentVNode(" \u72B6\u6001\u7B5B\u9009 "),
             vue.createVNode(UniTab, {
               tabBars: vue.unref(tabBars),
-              onGetTabIndex: getTabIndex
-            }, null, 8, ["tabBars"]),
+              onGetTabIndex: getTabIndex,
+              statusNum
+            }, null, 8, ["tabBars", "statusNum"]),
             vue.createCommentVNode(" \u8BA2\u5355\u5217\u8868 "),
             vue.createElementVNode("scroll-view", {
               "scroll-y": icCanScroll.value,
@@ -12787,7 +12814,7 @@ if (uni.restoreGlobal) {
       const store2 = useStore();
       const users = store2.state.user;
       vue.ref();
-      const list = vue.ref();
+      const list2 = vue.ref();
       vue.ref();
       vue.ref();
       let tabIndex = vue.ref(0);
@@ -12799,9 +12826,9 @@ if (uni.restoreGlobal) {
           tabIndex.value = users.tabIndex;
         }
         if (users.tabIndex === 0) {
-          list.value.dealPList();
+          list2.value.dealPList();
         } else {
-          list.value.alreadList();
+          list2.value.alreadList();
         }
       });
       return (_ctx, _cache) => {

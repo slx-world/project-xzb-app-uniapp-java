@@ -60,6 +60,13 @@ export const finishServe = (params) =>
     method: 'post',
     params
   })
+//获取各个状态下的订单数量
+export const getOrderStatusNum = (params) =>
+  request({
+    url: `/orders-serve/status/num`,
+    method: 'get',
+  })
+
 // //文件上传
 // export const uploadFile = (params) =>
 //   request({

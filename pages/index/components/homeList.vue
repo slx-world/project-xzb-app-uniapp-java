@@ -9,7 +9,7 @@
             {{ item.serveTypeName }}-{{ item.serveItemName }}
           </view>
           <view class="serviceTime">
-            <text>服务时间</text>
+            <text>预约时间</text>
             <text>{{ item.serveStartTime }}</text>
           </view>
         </view>

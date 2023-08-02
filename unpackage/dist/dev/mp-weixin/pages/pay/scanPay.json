@@ -1,8 +1,0 @@
-{
-  "navigationStyle": "custom",
-  "navigationBarTitleText": "扫码支付",
-  "usingComponents": {
-    "uni-nav": "../../components/uni-nav/index",
-    "uppop": "./components/uppop"
-  }
-}

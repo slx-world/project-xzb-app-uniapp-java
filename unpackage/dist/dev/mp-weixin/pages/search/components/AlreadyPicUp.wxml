@@ -1,1 +1,0 @@
-<view wx:if="{{a}}" class="item"><view class="titInfo">订单号：SD{{b}}</view><view class="address">寄件人：{{c}}</view><view class="address">取件地址：{{d}}</view><view class="time">取件时间：{{e}}</view><view wx:if="{{f}}" class="time">运费：{{g}}元</view><text wx:if="{{h}}" catchtap="{{i}}" class="delete"><button class="uni-btn btn-default">去收款</button></text></view>

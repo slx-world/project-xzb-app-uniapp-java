@@ -1,1 +1,0 @@
-<view class="serviceSkill data-v-6bad7658"><uni-nav wx:if="{{b}}" class="data-v-6bad7658" bindgoBack="{{a}}" u-i="6bad7658-0" bind:__l="__l" u-p="{{b}}"></uni-nav><view class="switchBox data-v-6bad7658"><text class="data-v-6bad7658">开启接单</text><switch class="data-v-6bad7658" color="#F74347" style="transform:scale(0.7)" bindchange="{{c}}" checked="{{d}}"></switch></view></view>
