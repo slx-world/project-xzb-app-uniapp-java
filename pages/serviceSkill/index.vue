@@ -56,10 +56,10 @@ const activeIndex = ref(0); //左侧当前选中索引
 
 const serviceSkill = reactive({
   data: [],
-});
+}); //左侧服类型
 const rightItem = reactive({
   data: [],
-});
+}); //右侧服务项
 
 const status = ref('read');
 
@@ -136,6 +136,7 @@ const handleSubmit = () => {
 //点击取消
 const handleCancel = () => {
   status.value = 'read';
+  getServiceSkillAllFunc();
 };
 //点击编辑
 const handleEdit = () => {

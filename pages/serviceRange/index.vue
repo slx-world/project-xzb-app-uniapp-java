@@ -4,7 +4,7 @@
     <!-- nav -->
     <UniNav title="请选择工作地点" @goBack="goBack"></UniNav>
 
-   <map
+    <map
       class="map"
       :markers="[markers.data]"
       :latitude="location.latitude"
@@ -58,11 +58,6 @@ const location = reactive({
   latitude: '',
   longitude: '',
 });
-const params = reactive({
-  cityCode: '',
-  location: '',
-  intentionScope: '',
-});
 const markers = reactive({
   data: {
     id: 1,
@@ -103,9 +98,23 @@ const handleChooseRange = () => {
   });
 };
 const handleSubmit = () => {
+  if (!users.cityCode) {
+    return uni.showToast({
+      title: '请选择服务城市',
+      duration: 1500,
+      icon: 'none',
+    });
+  } else if (!users.address || users.address === '请选择') {
+    return uni.showToast({
+      title: '请设置意向接单范围',
+      duration: 1500,
+      icon: 'none',
+    });
+  }
   setServiceSetting({
-    cityCode: params.cityCode,
-    location: String(location.latitude) + ',' + String(location.longitude),
+    cityCode: users.cityCode,
+    location:
+      String(users.location.latitude) + ',' + String(users.location.longitude),
     intentionScope: users.address,
   }).then((res) => {
     uni.showToast({
@@ -113,15 +122,17 @@ const handleSubmit = () => {
       duration: 1500,
       icon: 'none',
     });
+    // goBack();
     console.log(res, '设置服务范围');
   });
 };
-onLoad((option) => {
+onShow(() => {
+  // cityName.value = users.cityName;
   getSettingInfo()
     .then((res) => {
       console.log(res, '获取当前配置的位置信息');
       //没有设置位置则获取当前位置
-      if (!res.data.location) {
+      if (!res.data.cityCode) {
         uni.getLocation({
           type: 'gcj02',
           geocode: true,
@@ -130,24 +141,23 @@ onLoad((option) => {
             location.longitude = res.latitude;
             markers.data.latitude = res.latitude;
             markers.data.longitude = res.longitude;
+            cityName.value = users.cityName;
             console.log(res, '当前位置1');
           },
         });
       } else {
+        console.log(users.cityName, users.cityCode, '?????');
+        store.commit('user/setCityCode', users.cityCode || res.data.cityCode);
         //有位置信息则进行赋值
-        params.cityCode = res.data.cityCode;
-        cityName.value = res.data.cityName;
+        cityName.value =
+          users.cityName === '请选择' ? res.data.cityName : users.cityName;
         address.value = res.data.intentionScope;
         location.latitude = res.data.location.split(',')[0];
         location.longitude = res.data.location.split(',')[1];
         markers.data.latitude = res.data.location.split(',')[1];
         markers.data.longitude = res.data.location.split(',')[0];
-      }
-      if (option.name) {
-        cityName.value = option.name;
-        address.value = option.address;
-        params.cityCode = option.cityCode;
-        params.intentionScope = option.name;
+        store.commit('user/setLocation', location);
+        store.commit('user/setAddress', address.value);
       }
     })
     .catch((err) => {
@@ -158,15 +168,21 @@ onLoad((option) => {
       });
     });
 });
-onMounted(() => {
-  //获取选择城市的页面参数
-  // console.log('onMounted');
-});
+onMounted(() => {});
+const clearStore = () => {
+  store.commit('user/setLocation', {});
+  store.commit('user/setAddress', '');
+  store.commit('user/setCityCode', '');
+  store.commit('user/setCityName', '请选择');
+};
 // 返回上一页
 const goBack = () => {
-  uni.redirectTo({
-    url: '/pages/index/index',
-  });
+  // uni.redirectTo({
+  //   url: '/pages/index/index',
+  // })
+  // store.commit('user/setCityName', '请选择');
+  uni.navigateBack();
+  clearStore();
 };
 </script>
 <style src="./index.scss" lang="scss" scoped></style>

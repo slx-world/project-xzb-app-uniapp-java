@@ -105,14 +105,14 @@ const getList = () => {
 //派单列表
 const getDispatchList = (params) => {
   getDispatchOrder(params).then((res) => {
-    homeList.data = res.data.ordersSeizes;
+    homeList.data = res.data.ordersSeizes || [];
     console.log(res, homeList.data, 1111111);
   });
 };
 //获取抢单列表
 const getRobOrderList = (params) => {
   getRobOrder(params).then((res) => {
-    homeList.data = res.data.ordersSeizes;
+    homeList.data = res.data.ordersSeizes || [];
     console.log(res, homeList.data, 1111111);
   });
 };

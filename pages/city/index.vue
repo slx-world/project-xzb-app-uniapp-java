@@ -88,11 +88,13 @@
 <script setup>
 // 导航组件
 import UniNav from '@/components/uni-nav/index.vue';
+import { useStore } from 'vuex';
 import { getOpenCity } from '../api/setting.js';
 import { Citys } from '@/pages/city/city.js';
 import { ref, reactive, onMounted, watch, getCurrentInstance } from 'vue';
 import { onLoad } from '@dcloudio/uni-app';
 // import { getAddress } from '../api/address';
+const store = useStore(); //vuex获取、储存数据
 const address = ref('');
 const customBar = ref('87px'); //导航栏高度
 const winHeight = ref(0); //屏幕高度
@@ -234,16 +236,9 @@ const getCity = (position) => {
 const selectCity = (city) => {
   console.log(city, 'city');
   currentCity.value = city;
-  uni.redirectTo({
-    url:
-      '/pages/serviceRange/index?cityCode=' +
-      city.cityCode +
-      '&name=' +
-      city.name +
-      '&address=' +
-      address.value,
-  });
-  uni.setStorageSync('city', city);
+  store.commit('user/setCityCode', city.cityCode);
+  store.commit('user/setCityName', city.name);
+  uni.navigateBack();
 };
 watch(list, () => {
   setTimeout(() => {

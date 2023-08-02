@@ -66,15 +66,21 @@ const handleClose = () => {
 const handleRob = (id) => {
   robOrder({
     id: id,
-  }).then((res) => {
-    console.log(res, '抢单');
-    if (res.code === 200) {
-      isRob.value = true;
-    } else {
+  })
+    .then((res) => {
+      console.log(res, '抢单');
+      if (res.code === 200) {
+        isRob.value = true;
+      } else {
+        isRob.value = false;
+      }
+      alertDialog.value.open();
+    })
+    .catch((err) => {
       isRob.value = false;
-    }
-    alertDialog.value.open();
-  });
+      alertDialog.value.open();
+      console.log(err, 'errrrr');
+    });
 };
 watchEffect(() => {
   list.data = props.data;

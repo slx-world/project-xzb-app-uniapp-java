@@ -6,8 +6,10 @@ export default {
   namespaced: true, // 开启命名空间
   state () {
     return {
-      location: {},
-      address: '请选择',
+      location: {},//服务范围坐标
+      address: '请选择',//服务范围详细地址
+      cityCode: '',//服务范围城市编码
+      cityName: '请选择',//服务范围城市名称
 
       userBase: {}, // 用户信息
       pages: 0,//总页数
@@ -53,10 +55,16 @@ export default {
   mutations: {
     // 定义mutations，用于同步修改状态
     setLocation (state, provider) {
-      state.loacation = provider
+      state.location = provider
     },
     setAddress (state, provider) {
       state.address = provider
+    },
+    setCityCode (state, provider) {
+      state.cityCode = provider
+    },
+    setCityName (state, provider) {
+      state.cityName = provider
     },
     // 设置token
     setToken (state, provider) {

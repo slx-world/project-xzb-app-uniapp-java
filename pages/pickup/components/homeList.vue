@@ -3,7 +3,7 @@
   <view class="homeList">
     <view
       class="card"
-      v-for="item in data"
+      v-for="item in list.data"
       :key="item.id"
       @click="handleToInfo(item)"
     >
@@ -78,7 +78,7 @@
 </template>
 
 <script setup>
-import { ref, reactive, onMounted, watch } from 'vue';
+import { ref, reactive, onMounted, watch, watchEffect } from 'vue';
 import { robOrder } from '../../api/order.js';
 // 基本数据(订单状态)
 import { orderStatus } from '@/utils/commonData.js';
@@ -92,15 +92,17 @@ const props = defineProps({
 });
 onMounted(() => {});
 const isRob = ref(true);
-let data = reactive([
-  {
-    serveTypeName: '保洁服务',
-    serveItemName: '空调清洗',
-    serveStartTime: '2023-7-28 11:48:00',
-    serveAddress: '金燕龙',
-    serveFee: '666',
-  },
-]);
+let list = reactive({
+  data: [
+    {
+      serveTypeName: '保洁服务',
+      serveItemName: '空调清洗',
+      serveStartTime: '2023-7-28 11:48:00',
+      serveAddress: '金燕龙',
+      serveFee: '666',
+    },
+  ],
+});
 const alertDialog = ref(null);
 const handleClose = () => {
   alertDialog.value.close();
@@ -129,13 +131,8 @@ const handleServeRecord = (id, status) => {
       'list',
   });
 };
-watch(
-  () => props.data,
-  () => {
-    data = props.data;
-    console.log(data, 'dddddddddddddddd');
-    // console.log(serviceType.data, props.homeFilterList, '-fffffffffff');
-  }
-);
+watchEffect(() => {
+  list.data = props.data;
+});
 </script>
 <style src="../index.scss" lang="scss"></style>

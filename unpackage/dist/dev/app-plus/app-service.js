@@ -2190,20 +2190,20 @@ if (uni.restoreGlobal) {
         range,
         errorMessage
       } = rule;
-      let list2 = new Array(range.length);
+      let list = new Array(range.length);
       for (let i2 = 0; i2 < range.length; i2++) {
         const item = range[i2];
         if (types.object(item) && item.value !== void 0) {
-          list2[i2] = item.value;
+          list[i2] = item.value;
         } else {
-          list2[i2] = item;
+          list[i2] = item;
         }
       }
       let result = false;
       if (Array.isArray(value)) {
-        result = new Set(value.concat(list2)).size === list2.length;
+        result = new Set(value.concat(list)).size === list.length;
       } else {
-        if (list2.indexOf(value) > -1) {
+        if (list.indexOf(value) > -1) {
           result = true;
         }
       }
@@ -3520,8 +3520,8 @@ if (uni.restoreGlobal) {
       hook.emit(HOOK_SETUP, pluginDescriptor, setupFn);
     } else {
       const proxy = enableProxy ? new ApiProxy(pluginDescriptor, hook) : null;
-      const list2 = target.__VUE_DEVTOOLS_PLUGINS__ = target.__VUE_DEVTOOLS_PLUGINS__ || [];
-      list2.push({
+      const list = target.__VUE_DEVTOOLS_PLUGINS__ = target.__VUE_DEVTOOLS_PLUGINS__ || [];
+      list.push({
         pluginDescriptor,
         setupFn,
         proxy
@@ -5325,7 +5325,7 @@ if (uni.restoreGlobal) {
       vue.onMounted(() => {
       });
       const isRob = vue.ref(true);
-      let list2 = vue.reactive({
+      let list = vue.reactive({
         data: []
       });
       const alertDialog = vue.ref(null);
@@ -5337,23 +5337,27 @@ if (uni.restoreGlobal) {
         robOrder({
           id
         }).then((res) => {
-          formatAppLog("log", "at pages/index/components/homeList.vue:70", res, "\u62A2\u5355");
+          formatAppLog("log", "at pages/index/components/homeList.vue:71", res, "\u62A2\u5355");
           if (res.code === 200) {
             isRob.value = true;
           } else {
             isRob.value = false;
           }
           alertDialog.value.open();
+        }).catch((err) => {
+          isRob.value = false;
+          alertDialog.value.open();
+          formatAppLog("log", "at pages/index/components/homeList.vue:82", err, "errrrr");
         });
       };
       vue.watchEffect(() => {
-        list2.data = props.data;
-        formatAppLog("log", "at pages/index/components/homeList.vue:81", list2.data, "++++++++++++++");
+        list.data = props.data;
+        formatAppLog("log", "at pages/index/components/homeList.vue:87", list.data, "++++++++++++++");
       });
       return (_ctx, _cache) => {
         const _component_uni_popup = resolveEasycom(vue.resolveDynamicComponent("uni-popup"), __easycom_0$4);
         return vue.openBlock(), vue.createElementBlock("view", { class: "homeList" }, [
-          (vue.openBlock(true), vue.createElementBlock(vue.Fragment, null, vue.renderList(vue.unref(list2).data, (item, index) => {
+          (vue.openBlock(true), vue.createElementBlock(vue.Fragment, null, vue.renderList(vue.unref(list).data, (item, index) => {
             return vue.openBlock(), vue.createElementBlock("view", {
               class: "card",
               key: index
@@ -5455,13 +5459,13 @@ if (uni.restoreGlobal) {
       };
       const getDispatchList = (params) => {
         getDispatchOrder(params).then((res) => {
-          homeList.data = res.data.ordersSeizes;
+          homeList.data = res.data.ordersSeizes || [];
           formatAppLog("log", "at pages/index/index.vue:109", res, homeList.data, 1111111);
         });
       };
       const getRobOrderList = (params) => {
         getRobOrder(params).then((res) => {
-          homeList.data = res.data.ordersSeizes;
+          homeList.data = res.data.ordersSeizes || [];
           formatAppLog("log", "at pages/index/index.vue:116", res, homeList.data, 1111111);
         });
       };
@@ -5653,10 +5657,11 @@ if (uni.restoreGlobal) {
       };
       const handleCancel = () => {
         status.value = "read";
+        getServiceSkillAllFunc();
       };
       const handleEdit = () => {
         status.value = "edit";
-        formatAppLog("log", "at pages/serviceSkill/index.vue:143", "\u7F16\u8F91\u72B6\u6001");
+        formatAppLog("log", "at pages/serviceSkill/index.vue:144", "\u7F16\u8F91\u72B6\u6001");
       };
       const tabChange = (id, index) => {
         activeId.value = id;
@@ -5795,11 +5800,6 @@ if (uni.restoreGlobal) {
         latitude: "",
         longitude: ""
       });
-      const params = vue.reactive({
-        cityCode: "",
-        location: "",
-        intentionScope: ""
-      });
       const markers = vue.reactive({
         data: {
           id: 1,
@@ -5811,7 +5811,7 @@ if (uni.restoreGlobal) {
         }
       });
       const markerTap = () => {
-        formatAppLog("log", "at pages/serviceRange/index.vue:77", "111");
+        formatAppLog("log", "at pages/serviceRange/index.vue:72", "111");
       };
       const handleSelectCity = () => {
         uni.navigateTo({
@@ -5832,14 +5832,27 @@ if (uni.restoreGlobal) {
             store2.commit("user/setAddress", address.value);
           },
           fail: function(err) {
-            formatAppLog("log", "at pages/serviceRange/index.vue:101", err, "err");
+            formatAppLog("log", "at pages/serviceRange/index.vue:96", err, "err");
           }
         });
       };
       const handleSubmit = () => {
+        if (!users.cityCode) {
+          return uni.showToast({
+            title: "\u8BF7\u9009\u62E9\u670D\u52A1\u57CE\u5E02",
+            duration: 1500,
+            icon: "none"
+          });
+        } else if (!users.address || users.address === "\u8BF7\u9009\u62E9") {
+          return uni.showToast({
+            title: "\u8BF7\u8BBE\u7F6E\u610F\u5411\u63A5\u5355\u8303\u56F4",
+            duration: 1500,
+            icon: "none"
+          });
+        }
         setServiceSetting({
-          cityCode: params.cityCode,
-          location: String(location2.latitude) + "," + String(location2.longitude),
+          cityCode: users.cityCode,
+          location: String(users.location.latitude) + "," + String(users.location.longitude),
           intentionScope: users.address
         }).then((res) => {
           uni.showToast({
@@ -5847,13 +5860,13 @@ if (uni.restoreGlobal) {
             duration: 1500,
             icon: "none"
           });
-          formatAppLog("log", "at pages/serviceRange/index.vue:116", res, "\u8BBE\u7F6E\u670D\u52A1\u8303\u56F4");
+          formatAppLog("log", "at pages/serviceRange/index.vue:126", res, "\u8BBE\u7F6E\u670D\u52A1\u8303\u56F4");
         });
       };
-      onLoad((option) => {
+      onShow(() => {
         getSettingInfo().then((res) => {
-          formatAppLog("log", "at pages/serviceRange/index.vue:122", res, "\u83B7\u53D6\u5F53\u524D\u914D\u7F6E\u7684\u4F4D\u7F6E\u4FE1\u606F");
-          if (!res.data.location) {
+          formatAppLog("log", "at pages/serviceRange/index.vue:133", res, "\u83B7\u53D6\u5F53\u524D\u914D\u7F6E\u7684\u4F4D\u7F6E\u4FE1\u606F");
+          if (!res.data.cityCode) {
             uni.getLocation({
               type: "gcj02",
               geocode: true,
@@ -5862,23 +5875,21 @@ if (uni.restoreGlobal) {
                 location2.longitude = res2.latitude;
                 markers.data.latitude = res2.latitude;
                 markers.data.longitude = res2.longitude;
-                formatAppLog("log", "at pages/serviceRange/index.vue:133", res2, "\u5F53\u524D\u4F4D\u7F6E1");
+                cityName.value = users.cityName;
+                formatAppLog("log", "at pages/serviceRange/index.vue:145", res2, "\u5F53\u524D\u4F4D\u7F6E1");
               }
             });
           } else {
-            params.cityCode = res.data.cityCode;
-            cityName.value = res.data.cityName;
+            formatAppLog("log", "at pages/serviceRange/index.vue:149", users.cityName, users.cityCode, "?????");
+            store2.commit("user/setCityCode", users.cityCode || res.data.cityCode);
+            cityName.value = users.cityName === "\u8BF7\u9009\u62E9" ? res.data.cityName : users.cityName;
             address.value = res.data.intentionScope;
             location2.latitude = res.data.location.split(",")[0];
             location2.longitude = res.data.location.split(",")[1];
             markers.data.latitude = res.data.location.split(",")[1];
             markers.data.longitude = res.data.location.split(",")[0];
-          }
-          if (option.name) {
-            cityName.value = option.name;
-            address.value = option.address;
-            params.cityCode = option.cityCode;
-            params.intentionScope = option.name;
+            store2.commit("user/setLocation", location2);
+            store2.commit("user/setAddress", address.value);
           }
         }).catch((err) => {
           uni.showToast({
@@ -5890,10 +5901,15 @@ if (uni.restoreGlobal) {
       });
       vue.onMounted(() => {
       });
+      const clearStore = () => {
+        store2.commit("user/setLocation", {});
+        store2.commit("user/setAddress", "");
+        store2.commit("user/setCityCode", "");
+        store2.commit("user/setCityName", "\u8BF7\u9009\u62E9");
+      };
       const goBack = () => {
-        uni.redirectTo({
-          url: "/pages/index/index"
-        });
+        uni.navigateBack();
+        clearStore();
       };
       return (_ctx, _cache) => {
         return vue.openBlock(), vue.createElementBlock("view", { class: "serviceRange" }, [
@@ -7628,6 +7644,7 @@ if (uni.restoreGlobal) {
   const _sfc_main$k = {
     __name: "index",
     setup(__props) {
+      const store2 = useStore();
       const address = vue.ref("");
       const customBar = vue.ref("87px");
       const winHeight = vue.ref(0);
@@ -7638,7 +7655,7 @@ if (uni.restoreGlobal) {
       const letter = vue.ref([]);
       vue.ref("");
       const scrollIntoId = vue.ref("");
-      const list2 = vue.ref([]);
+      const list = vue.ref([]);
       const activeId = vue.ref(1);
       const disPosition = vue.ref(true);
       const currentCity = vue.ref();
@@ -7655,7 +7672,7 @@ if (uni.restoreGlobal) {
         uni.createSelectorQuery().in(instance).select("#list").boundingClientRect().exec((ret) => {
           winOffsetY.value = ret[0].top;
           winHeight.value = ret[0].height;
-          itemHeight.value = winHeight.value / list2.value.length;
+          itemHeight.value = winHeight.value / list.value.length;
         });
       };
       onLoad((option) => {
@@ -7668,18 +7685,18 @@ if (uni.restoreGlobal) {
         touchmove.value = true;
         let pageY = e2.touches[0].pageY;
         let index = Math.floor((pageY - winOffsetY.value) / itemHeight.value);
-        if (list2.value[index]) {
-          scrollIntoId.value = list2.value[index].idx;
+        if (list.value[index]) {
+          scrollIntoId.value = list.value[index].idx;
         }
       };
       const touchMove = (e2) => {
         let pageY = e2.touches[0].pageY;
         let index = Math.floor((pageY - winOffsetY.value) / itemHeight.value);
-        if (list2.value[index] && list2.value[index].idx === scrollIntoId.value) {
+        if (list.value[index] && list.value[index].idx === scrollIntoId.value) {
           return false;
         }
-        if (list2.value[index]) {
-          scrollIntoId.value = list2.value[index].idx;
+        if (list.value[index]) {
+          scrollIntoId.value = list.value[index].idx;
         }
       };
       const touchEnd = () => {
@@ -7693,11 +7710,11 @@ if (uni.restoreGlobal) {
         getWarpWeft();
         scrollHeight.value = uni.getSystemInfoSync().windowHeight - parseInt(customBar.value) + "px";
         letter.value = Citys.index;
-        list2.value = Citys.list;
+        list.value = Citys.list;
         setList();
         getOpenCity().then((res) => {
-          list2.value = res.data;
-          formatAppLog("log", "at pages/city/index.vue:188", res, "getOpenCity");
+          list.value = res.data;
+          formatAppLog("log", "at pages/city/index.vue:190", res, "getOpenCity");
         });
       });
       const getWarpWeft = () => {
@@ -7715,7 +7732,7 @@ if (uni.restoreGlobal) {
             }, 500);
           },
           fail: function(res) {
-            formatAppLog("log", "at pages/city/index.vue:212", res);
+            formatAppLog("log", "at pages/city/index.vue:214", res);
             setTimeout(() => {
               po_tips.value = "\u5B9A\u4F4D\u5931\u8D25";
             }, 500);
@@ -7724,14 +7741,13 @@ if (uni.restoreGlobal) {
         });
       };
       const selectCity = (city) => {
-        formatAppLog("log", "at pages/city/index.vue:235", city, "city");
+        formatAppLog("log", "at pages/city/index.vue:237", city, "city");
         currentCity.value = city;
-        uni.redirectTo({
-          url: "/pages/serviceRange/index?cityCode=" + city.cityCode + "&name=" + city.name + "&address=" + address.value
-        });
-        uni.setStorageSync("city", city);
+        store2.commit("user/setCityCode", city.cityCode);
+        store2.commit("user/setCityName", city.name);
+        uni.navigateBack();
       };
-      vue.watch(list2, () => {
+      vue.watch(list, () => {
         setTimeout(() => {
           setList();
         }, 100);
@@ -7792,7 +7808,7 @@ if (uni.restoreGlobal) {
               vue.createElementVNode("view", { class: "grey" }, " \u5C0F\u667A\u5E2E\u5DF2\u5F00\u901A\u7684\u57CE\u5E02 ")
             ])) : vue.createCommentVNode("v-if", true),
             vue.createCommentVNode(" \u57CE\u5E02\u5217\u8868 "),
-            (vue.openBlock(true), vue.createElementBlock(vue.Fragment, null, vue.renderList(list2.value, (item, index) => {
+            (vue.openBlock(true), vue.createElementBlock(vue.Fragment, null, vue.renderList(list.value, (item, index) => {
               return vue.openBlock(), vue.createElementBlock("view", {
                 id: item.id,
                 key: index,
@@ -8055,28 +8071,30 @@ if (uni.restoreGlobal) {
       vue.onMounted(() => {
       });
       const isRob = vue.ref(true);
-      let data = vue.reactive([
-        {
-          serveTypeName: "\u4FDD\u6D01\u670D\u52A1",
-          serveItemName: "\u7A7A\u8C03\u6E05\u6D17",
-          serveStartTime: "2023-7-28 11:48:00",
-          serveAddress: "\u91D1\u71D5\u9F99",
-          serveFee: "666"
-        }
-      ]);
+      let list = vue.reactive({
+        data: [
+          {
+            serveTypeName: "\u4FDD\u6D01\u670D\u52A1",
+            serveItemName: "\u7A7A\u8C03\u6E05\u6D17",
+            serveStartTime: "2023-7-28 11:48:00",
+            serveAddress: "\u91D1\u71D5\u9F99",
+            serveFee: "666"
+          }
+        ]
+      });
       const alertDialog = vue.ref(null);
       const handleClose = () => {
         alertDialog.value.close();
         emit("refresh");
       };
       const handleToInfo = (item) => {
-        formatAppLog("log", "at pages/pickup/components/homeList.vue:110", item, "\u8FDB\u5165\u8BE6\u60C5");
+        formatAppLog("log", "at pages/pickup/components/homeList.vue:112", item, "\u8FDB\u5165\u8BE6\u60C5");
         uni.navigateTo({
           url: "/pages/orderInfo/index?id=" + item.id
         });
       };
       const handleCancel = (id) => {
-        formatAppLog("log", "at pages/pickup/components/homeList.vue:116", "fff");
+        formatAppLog("log", "at pages/pickup/components/homeList.vue:118", "fff");
         uni.navigateTo({
           url: "/pages/cancel/index?id=" + id + "&type=list"
         });
@@ -8086,14 +8104,13 @@ if (uni.restoreGlobal) {
           url: "/pages/serveRecord/index?status=" + status + "&id=" + id + "&type=list"
         });
       };
-      vue.watch(() => props.data, () => {
-        data = props.data;
-        formatAppLog("log", "at pages/pickup/components/homeList.vue:136", data, "dddddddddddddddd");
+      vue.watchEffect(() => {
+        list.data = props.data;
       });
       return (_ctx, _cache) => {
         const _component_uni_popup = resolveEasycom(vue.resolveDynamicComponent("uni-popup"), __easycom_0$4);
         return vue.openBlock(), vue.createElementBlock("view", { class: "homeList" }, [
-          (vue.openBlock(true), vue.createElementBlock(vue.Fragment, null, vue.renderList(vue.unref(data), (item) => {
+          (vue.openBlock(true), vue.createElementBlock(vue.Fragment, null, vue.renderList(vue.unref(list).data, (item) => {
             return vue.openBlock(), vue.createElementBlock("view", {
               class: "card",
               key: item.id,
@@ -8336,7 +8353,6 @@ if (uni.restoreGlobal) {
       };
       vue.watchEffect(() => {
         statusNum.data = props.statusNum.data;
-        formatAppLog("log", "at components/uni-tab/index.vue:67", list.data, "++++++++++++++");
       });
       expose({
         changeTab
@@ -8356,7 +8372,8 @@ if (uni.restoreGlobal) {
               class: "scroll-row-item",
               onClick: ($event) => changeTab(index)
             }, [
-              vue.createVNode(_component_uni_badge, {
+              statusNum.data[index] != "0" ? (vue.openBlock(), vue.createBlock(_component_uni_badge, {
+                key: 0,
                 class: "uni-badge-left-margin",
                 text: statusNum.data[index],
                 absolute: "rightTop",
@@ -8372,7 +8389,13 @@ if (uni.restoreGlobal) {
                   ], 2)
                 ]),
                 _: 2
-              }, 1032, ["text"])
+              }, 1032, ["text"])) : (vue.openBlock(), vue.createElementBlock("view", {
+                key: 1,
+                class: vue.normalizeClass(vue.unref(tabIndex) == index ? "scroll-row-item-act" : "")
+              }, [
+                vue.createElementVNode("text", { class: "line" }),
+                vue.createTextVNode(" " + vue.toDisplayString(item.label), 1)
+              ], 2))
             ], 8, ["id", "onClick"]);
           }), 128))
         ], 8, ["scroll-into-view"]);
@@ -12814,7 +12837,7 @@ if (uni.restoreGlobal) {
       const store2 = useStore();
       const users = store2.state.user;
       vue.ref();
-      const list2 = vue.ref();
+      const list = vue.ref();
       vue.ref();
       vue.ref();
       let tabIndex = vue.ref(0);
@@ -12826,9 +12849,9 @@ if (uni.restoreGlobal) {
           tabIndex.value = users.tabIndex;
         }
         if (users.tabIndex === 0) {
-          list2.value.dealPList();
+          list.value.dealPList();
         } else {
-          list2.value.alreadList();
+          list.value.alreadList();
         }
       });
       return (_ctx, _cache) => {
@@ -13425,6 +13448,8 @@ if (uni.restoreGlobal) {
       return {
         location: {},
         address: "\u8BF7\u9009\u62E9",
+        cityCode: "",
+        cityName: "\u8BF7\u9009\u62E9",
         userBase: {},
         pages: 0,
         page: 1,
@@ -13468,10 +13493,16 @@ if (uni.restoreGlobal) {
     },
     mutations: {
       setLocation(state, provider) {
-        state.loacation = provider;
+        state.location = provider;
       },
       setAddress(state, provider) {
         state.address = provider;
+      },
+      setCityCode(state, provider) {
+        state.cityCode = provider;
+      },
+      setCityName(state, provider) {
+        state.cityName = provider;
       },
       setToken(state, provider) {
         state.token = provider;

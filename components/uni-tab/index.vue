@@ -13,6 +13,7 @@
       @click="changeTab(index)"
     >
       <uni-badge
+        v-if="statusNum.data[index] != '0'"
         class="uni-badge-left-margin"
         :text="statusNum.data[index]"
         absolute="rightTop"
@@ -24,6 +25,10 @@
           {{ item.label }}
         </view></uni-badge
       >
+      <view v-else :class="tabIndex == index ? 'scroll-row-item-act' : ''">
+        <text class="line"></text>
+        {{ item.label }}
+      </view>
     </view>
   </scroll-view>
 </template>
@@ -64,7 +69,7 @@ const changeTab = (index) => {
 };
 watchEffect(() => {
   statusNum.data = props.statusNum.data;
-  console.log(list.data, '++++++++++++++');
+  // console.log(list.data, '++++++++++++++');
 });
 //把数据、方法暴漏给父组件
 defineExpose({
