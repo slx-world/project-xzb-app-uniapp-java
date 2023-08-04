@@ -21,6 +21,15 @@
         display: inline-block;
         float: right;
         white-space: nowrap;
+        position: relative;
+        z-index: 9999;
+        .rangeName{
+          width: 350rpx;
+          text-align: right;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
         .cityName,.rangeName{
           font-size: 32rpx;
           color: var(--color-black-19);

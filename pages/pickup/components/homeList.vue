@@ -14,16 +14,24 @@
         ></image>
         <view class="rightCardContent">
           <view class="title">
-            {{ item.serveTypeName }}-{{ item.serveItemName }}
+            {{ item.serveItemName }}
           </view>
           <view class="serviceTime">
-            <text>预约时间</text>
-            <text class="content">{{
+            <text>{{
               item.serveStatus === 1
-                ? item.serveStartTime
+                ? '预约时间'
                 : item.serveStatus === 2
-                ? item.realServeStartTime
-                : item.realServeEndTime
+                ? '服务开始时间'
+                : '服务完成时间'
+            }}</text>
+            <text class="content">{{
+              handleTime(
+                item.serveStatus === 1
+                  ? item.serveStartTime
+                  : item.serveStatus === 2
+                  ? item.realServeStartTime
+                  : item.realServeEndTime
+              )
             }}</text>
           </view>
         </view>
@@ -39,16 +47,11 @@
         >
       </view>
       <view class="serviceAddress">
-        <!-- <view>服务地址</view> -->
         <view class="address">
           <view class="addressContent">{{ item.serveAddress }}</view>
         </view>
       </view>
       <view class="cardFooter" v-if="[1, 2].includes(item.serveStatus)">
-        <!-- <view class="price">
-          <text class="price-label">服务费用</text>
-          ￥{{ item.serveFee }}
-        </view> -->
         <view
           v-if="[1].includes(item.serveStatus)"
           class="robBtn btn-gray"
@@ -63,23 +66,14 @@
         >
       </view>
     </view>
+    <!-- 加载底部 -->
+    <!-- <uni-load-more :status="status" v-if="!isShowMore && isLogin && allOrderList.data.length" /> -->
     <view class="footer">- 已 经 到 底 了 -</view>
-    <!-- 提示窗示例 -->
-    <uni-popup ref="alertDialog" type="dialog" :is-mask-click="false">
-      <view class="dialog">
-        <view class="img" :class="isRob ? 'success' : 'fail'"></view>
-        <view class="content">{{
-          isRob ? '抢单成功' : '很遗憾，抢单失败'
-        }}</view>
-        <view class="footer" @click="handleClose">确定</view>
-      </view>
-    </uni-popup>
   </view>
 </template>
 
 <script setup>
 import { ref, reactive, onMounted, watch, watchEffect } from 'vue';
-import { robOrder } from '../../api/order.js';
 // 基本数据(订单状态)
 import { orderStatus } from '@/utils/commonData.js';
 const emit = defineEmits(['refresh']); //子组件向父组件事件传递
@@ -103,11 +97,10 @@ let list = reactive({
     },
   ],
 });
-const alertDialog = ref(null);
-const handleClose = () => {
-  alertDialog.value.close();
-  emit('refresh');
+const handleTime = (val) => {
+  return val ? val.replace(/:\d{2}$/, '') : '';
 };
+
 const handleToInfo = (item) => {
   console.log(item, '进入详情');
   uni.navigateTo({

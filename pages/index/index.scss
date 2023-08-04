@@ -91,7 +91,7 @@ uni-page-head,
       display: flex;
       background-color: var(--neutral-color-white);
       border-top: 2rpx solid var(--color-gray-e8);
-      justify-content: space-between;
+      // justify-content: space-between;
       padding: 0 29rpx;
       flex-wrap: wrap;
       padding-top: 41rpx;
@@ -103,6 +103,7 @@ uni-page-head,
         border-radius: 32rpx;
         background-color: var(--color-gray-f2);
         margin-bottom: 41rpx;
+        margin-left: 20rpx;
         &.active{
           height: 60rpx;
           width: 212rpx;
@@ -112,6 +113,10 @@ uni-page-head,
           color: var(--color-red-bg);
           background-color: var(--color-red-ffeaea);
         }
+     
+      }
+      .serviceItem:nth-child(3n+1){
+        margin-left: 0rpx;
       }
     }
     .footer{
@@ -269,44 +274,48 @@ uni-page-head,
     text-align: center;
     padding-bottom: 130rpx;
   }
-  .dialog{
-    width:442rpx ;
-    height: 326rpx;
-    background-color: var(--neutral-color-white);
-    border-radius: 24rpx;
-    position: relative;
-    .content{
-      // height: 225rpx;
-      text-align: center;
-      font-size: 36rpx;
-      color: var(--color-black-19);
-      padding-top: 136rpx;
-      padding-bottom: 38rpx;
-    }
-    .footer{
-      font-size: 32rpx ;
-      color: var(--color-red-bg);
-      text-align: center;
-      border-top: 2rpx solid var(--color-gray-e8);
-      line-height: 99rpx;
-    }
-    .img{
-      background-position: center;
-      background-repeat: no-repeat;
-      background-size: cover;
-      width: 220rpx;
-      height: 220rpx;
-      position: absolute;
-      top: -110rpx;
-      left: 110rpx;
-    }
-    .success{
-      background-image: url('../../static/new/img_success@2x.png');
-    }
-    .fail{
-      background-image: url('../../static/new/img_fail@2x.png');
-    }
+  .dialogImg{
+    width: 504rpx;
+    height:504rpx ;
   }
+  // .dialog{
+  //   width:442rpx ;
+  //   height: 326rpx;
+  //   background-color: var(--neutral-color-white);
+  //   border-radius: 24rpx;
+  //   position: relative;
+  //   .content{
+  //     // height: 225rpx;
+  //     text-align: center;
+  //     font-size: 36rpx;
+  //     color: var(--color-black-19);
+  //     padding-top: 136rpx;
+  //     padding-bottom: 38rpx;
+  //   }
+  //   .footer{
+  //     font-size: 32rpx ;
+  //     color: var(--color-red-bg);
+  //     text-align: center;
+  //     border-top: 2rpx solid var(--color-gray-e8);
+  //     line-height: 99rpx;
+  //   }
+  //   .img{
+  //     background-position: center;
+  //     background-repeat: no-repeat;
+  //     background-size: cover;
+  //     width: 220rpx;
+  //     height: 220rpx;
+  //     position: absolute;
+  //     top: -110rpx;
+  //     left: 110rpx;
+  //   }
+  //   .success{
+  //     background-image: url('../../static/new/img_success@2x.png');
+  //   }
+  //   .fail{
+  //     background-image: url('../../static/new/img_fail@2x.png');
+  //   }
+  // }
 }
 
 

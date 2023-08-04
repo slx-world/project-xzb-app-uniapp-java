@@ -1,4 +1,12 @@
 .order {
+  .tabScroll{
+    position: fixed;
+    top: 0rpx;
+    width: 100%!important;
+    z-index: 99;
+    // height: 140rpx;
+    padding-top: 44rpx;
+  }
   .homeList{
     .card{
       border-radius: 16rpx;
@@ -17,6 +25,7 @@
           margin-right: 28rpx;
         }
         .rightCardContent{
+          width: 350rpx;
           .title{
             font-size: 32rpx;
             font-weight: bold;
@@ -139,5 +148,9 @@
         background-image: url('../../static/new/img_fail@2x.png');
       }
     }
+  }
+  .scrollList{
+    margin-top: 88rpx;
+    height: calc(100vh - 150rpx);
   }
 }

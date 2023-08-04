@@ -3,7 +3,6 @@
   <view class="serviceRange">
     <!-- nav -->
     <UniNav title="请选择工作地点" @goBack="goBack"></UniNav>
-
     <map
       class="map"
       :markers="[markers.data]"
@@ -16,7 +15,9 @@
       <cover-view class="city">
         <cover-view class="label">服务城市</cover-view>
         <cover-view class="content">
-          <cover-view class="cityName">{{ cityName }}</cover-view>
+          <cover-view class="cityName" @click="handleSelectCity">{{
+            cityName
+          }}</cover-view>
           <cover-image
             @click="handleSelectCity"
             class="icon"
@@ -27,7 +28,9 @@
       <cover-view class="range">
         <cover-view class="label">意向接单范围</cover-view>
         <cover-view class="content">
-          <cover-view class="rangeName">{{ address }}</cover-view>
+          <cover-view class="rangeName" @click="handleChooseRange">{{
+            address
+          }}</cover-view>
           <cover-image
             @click="handleChooseRange"
             class="icon"
@@ -80,20 +83,20 @@ const handleSelectCity = () => {
 //选择具体服务范围
 const handleChooseRange = () => {
   uni.chooseLocation({
-    latitude: location.longitude,
-    longitude: location.latitude,
+    latitude: location.latitude,
+    longitude: location.longitude,
     success: function (res) {
       address.value = res.name;
-      location.latitude = res.longitude;
-      location.longitude = res.latitude;
+      location.latitude = res.latitude;
+      location.longitude = res.longitude;
       markers.data.latitude = res.latitude;
       markers.data.longitude = res.longitude;
       store.commit('user/setLocation', location);
       store.commit('user/setAddress', address.value);
-      // console.log(res, location, '选择具体服务范围');
+      console.log(res, '选择具体服务范围成功');
     },
     fail: function (err) {
-      console.log(err, 'err');
+      console.log(err, '选择具体服务范围失败');
     },
   });
 };
@@ -111,23 +114,28 @@ const handleSubmit = () => {
       icon: 'none',
     });
   }
+  uni.showLoading({
+    title: 'loading',
+    mask: true,
+  });
   setServiceSetting({
     cityCode: users.cityCode,
     location:
-      String(users.location.latitude) + ',' + String(users.location.longitude),
+      String(users.location.longitude) + ',' + String(users.location.latitude),
     intentionScope: users.address,
   }).then((res) => {
     uni.showToast({
       title: '保存成功',
       duration: 1500,
       icon: 'none',
+      success: () => {
+        uni.hideLoading();
+        goBack();
+      },
     });
-    // goBack();
-    console.log(res, '设置服务范围');
   });
 };
 onShow(() => {
-  // cityName.value = users.cityName;
   getSettingInfo()
     .then((res) => {
       console.log(res, '获取当前配置的位置信息');
@@ -137,23 +145,31 @@ onShow(() => {
           type: 'gcj02',
           geocode: true,
           success: function (res) {
-            location.latitude = res.longitude;
-            location.longitude = res.latitude;
+            location.latitude = res.latitude;
+            location.longitude = res.longitude;
             markers.data.latitude = res.latitude;
             markers.data.longitude = res.longitude;
-            cityName.value = users.cityName;
-            console.log(res, '当前位置1');
+
+            console.log(res, '获取当前位置成功');
+          },
+          fail: (err) => {
+            location.latitude = 39.909187;
+            location.longitude = 116.397455;
+            markers.data.latitude = 39.909187;
+            markers.data.longitude = 116.397455;
+            console.log(err, '获取当前位置失败');
           },
         });
+        cityName.value = users.cityName;
       } else {
-        console.log(users.cityName, users.cityCode, '?????');
+        // console.log(users.cityName, users.cityCode, '???');
         store.commit('user/setCityCode', users.cityCode || res.data.cityCode);
         //有位置信息则进行赋值
         cityName.value =
           users.cityName === '请选择' ? res.data.cityName : users.cityName;
         address.value = res.data.intentionScope;
-        location.latitude = res.data.location.split(',')[0];
-        location.longitude = res.data.location.split(',')[1];
+        location.latitude = res.data.location.split(',')[1];
+        location.longitude = res.data.location.split(',')[0];
         markers.data.latitude = res.data.location.split(',')[1];
         markers.data.longitude = res.data.location.split(',')[0];
         store.commit('user/setLocation', location);
@@ -177,10 +193,6 @@ const clearStore = () => {
 };
 // 返回上一页
 const goBack = () => {
-  // uni.redirectTo({
-  //   url: '/pages/index/index',
-  // })
-  // store.commit('user/setCityName', '请选择');
   uni.navigateBack();
   clearStore();
 };

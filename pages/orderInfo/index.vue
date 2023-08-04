@@ -15,7 +15,11 @@
           .label
       }}</view>
       <view class="serveTime" v-if="info.data.serveStatus === 1">
-        请在{{ info.data.ordersInfo.serveStartTime }}前上门服务
+        请在{{
+          info.data.ordersInfo.serveStartTime
+            ? info.data.ordersInfo.serveStartTime.replace(/:\d{2}$/, '')
+            : ''
+        }}前上门服务
       </view>
     </view>
     <!-- 客户信息 -->
@@ -38,7 +42,9 @@
       <view class="content">
         <image
           class="serveImg"
-          src="../../static/new/img_success@2x.png"
+          :src="
+            info.data.serveInfo.serveItemImg || '../../static/new/empty.png'
+          "
         ></image>
         <view class="serveTypeBox">
           <view class="serveType">{{ info.data.serveInfo.serveTypeName }}</view>
@@ -65,7 +71,11 @@
       </view>
       <view class="orderTime info">
         <text class="label">预约时间</text>
-        <text class="content">{{ info.data.ordersInfo.serveStartTime }}</text>
+        <text class="content">{{
+          info.data.ordersInfo.serveStartTime
+            ? info.data.ordersInfo.serveStartTime.replace(/:\d{2}$/, '')
+            : ''
+        }}</text>
       </view>
     </view>
     <!-- 取消信息 -->
@@ -115,6 +125,7 @@
             class="img"
             :src="item"
             :key="index"
+            @tap="previewImage(item, info.data.serveInfo.serveBeforeImgs)"
             v-for="(item, index) in info.data.serveInfo.serveBeforeImgs"
           ></image>
         </view>
@@ -122,7 +133,11 @@
           <text>补充说明：</text>
           <text>{{ info.data.serveInfo.serveBeforeIllustrate }}</text>
         </view>
-        <view class="time">{{ info.data.serveInfo.realServeStartTime }}</view>
+        <view class="time">{{
+          info.data.serveInfo.realServeStartTime
+            ? info.data.serveInfo.realServeStartTime.replace(/:\d{2}$/, '')
+            : ''
+        }}</view>
       </view>
       <view
         class="serveAfter"
@@ -136,14 +151,19 @@
             class="img"
             :src="item"
             :key="index"
+            @tap="previewImage(item, info.data.serveInfo.serveAfterImgs)"
             v-for="(item, index) in info.data.serveInfo.serveAfterImgs"
           ></image>
         </view>
         <view class="tips">
           <text>补充说明：</text>
-          <text>{{ info.data.serveInfo.serveBeforeIllustrate }}</text>
+          <text>{{ info.data.serveInfo.serveAfterIllustrate }}</text>
         </view>
-        <view class="time">{{ info.data.serveInfo.realServeEndTime }}</view>
+        <view class="time">{{
+          info.data.serveInfo.realServeEndTime
+            ? info.data.serveInfo.realServeEndTime.replace(/:\d{2}$/, '')
+            : ''
+        }}</view>
       </view>
     </view>
     <view class="footer" v-if="[1, 2].includes(info.data.serveStatus)">
@@ -236,6 +256,13 @@ onLoad((options) => {
   getOrderInfoFunc(options.id);
   type.value = options.type;
 });
+//预览图片
+const previewImage = (url, imgList) => {
+  uni.previewImage({
+    current: url, // 当前显示的图片链接
+    urls: imgList, // 需要预览的图片链接列表，一般是一个数组
+  });
+};
 //获取订单详情
 const getOrderInfoFunc = (id) => {
   getOrderInfo(id).then((res) => {

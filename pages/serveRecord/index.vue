@@ -68,7 +68,7 @@ const uploadImage = async () => {
   const promises = fileList.value.map((item) => {
     return new Promise((resolve, reject) => {
       uni.uploadFile({
-        url: 'http://172.17.2.58/api/storage/upload',
+        url: 'http://xzb-api-test.itheima.net/storage/upload',
         files: [
           {
             name: 'file',
@@ -124,11 +124,10 @@ const handleSubmit = async () => {
     });
   }
   // 网络慢的时候添加按钮loading;
-  let times = setTimeout(() => {
-    uni.showLoading({
-      title: 'loading',
-    });
-  }, 500);
+  uni.showLoading({
+    title: 'loading',
+  });
+
   let startParams = {
     id: orderId.value,
     serveBeforeImgs: uploadedImages,
@@ -150,32 +149,33 @@ const handleSubmit = async () => {
     remark.value = '';
     orderId.value = '';
     fileList.value = [];
-    return uni.showToast({
-      title: '操作成功!',
-      duration: 1000,
-      icon: 'none',
-    });
   };
   if (title.value === '开始服务') {
     startServe(startParams).then((res) => {
+      uni.hideLoading();
       if (res.code === 200) {
         // 操作成功后清除loading
-        setTimeout(function () {
-          uni.hideLoading();
-        }, 500);
-        clearTimeout(times);
         sameFunc();
+      } else {
+        uni.showToast({
+          title: '接口提交失败!',
+          duration: 1000,
+          icon: 'none',
+        });
       }
     });
   } else {
     finishServe(finishParams).then((res) => {
       if (res.code === 200) {
         // 操作成功后清除loading
-        setTimeout(function () {
-          uni.hideLoading();
-        }, 500);
-        clearTimeout(times);
+        uni.hideLoading();
         sameFunc();
+      } else {
+        uni.showToast({
+          title: '接口提交失败!',
+          duration: 1000,
+          icon: 'none',
+        });
       }
     });
   }

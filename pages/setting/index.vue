@@ -5,8 +5,8 @@
     <uni-nav-bar statusBar="true"></uni-nav-bar>
     <!-- 引导词 -->
     <view class="guide">
-      <image src="../../static/new/img_logo@2x.png"></image>
-      <view class="content">亲，完成以下4步设置，方可接单哦～</view>
+      <image src="../../static/new/img_tishi@2x.png"></image>
+      <!-- <view class="content">亲，完成以下4步设置，方可接单哦～</view> -->
     </view>
     <!-- 具体步骤 -->
     <view class="step">

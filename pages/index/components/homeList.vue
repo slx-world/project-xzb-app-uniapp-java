@@ -6,11 +6,11 @@
         <image class="leftCardContent" :src="item.serveItemImg"></image>
         <view class="rightCardContent">
           <view class="title">
-            {{ item.serveTypeName }}-{{ item.serveItemName }}
+            {{ item.serveItemName }}
           </view>
           <view class="serviceTime">
             <text>预约时间</text>
-            <text>{{ item.serveStartTime }}</text>
+            <text>{{ handleTime(item.serveStartTime) }}</text>
           </view>
         </view>
       </view>
@@ -31,19 +31,29 @@
     <view class="footer">- 已 经 到 底 了 -</view>
     <!-- 提示窗示例 -->
     <uni-popup ref="alertDialog" type="dialog" :is-mask-click="false">
-      <view class="dialog">
+      <!-- <view class="dialog">
         <view class="img" :class="isRob ? 'success' : 'fail'"></view>
         <view class="content">{{
           isRob ? '抢单成功' : '很遗憾，抢单失败'
         }}</view>
         <view class="footer" @click="handleClose">确定</view>
-      </view>
+      </view> -->
+      <image
+        class="dialogImg"
+        :src="
+          isRob
+            ? '../../../static/new/img_chenggong@2x.png'
+            : '../../../static/new/img_shibai@2x.png'
+        "
+        @click="handleClose"
+      ></image>
     </uni-popup>
   </view>
 </template>
 
 <script setup>
 import { ref, reactive, onMounted, watch, watchEffect } from 'vue';
+import { onShow } from '@dcloudio/uni-app';
 import { robOrder } from '../../api/order.js';
 const emit = defineEmits(['refresh']); //子组件向父组件事件传递
 // 获取父组件值、方法
@@ -53,15 +63,18 @@ const props = defineProps({
     default: () => [],
   },
 });
-onMounted(() => {});
 const isRob = ref(true);
 let list = reactive({
   data: [],
 });
+
 const alertDialog = ref(null);
 const handleClose = () => {
   alertDialog.value.close();
   emit('refresh');
+};
+const handleTime = (val) => {
+  return val ? val.replace(/:\d{2}$/, '') : '';
 };
 const handleRob = (id) => {
   robOrder({

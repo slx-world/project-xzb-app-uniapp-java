@@ -12,19 +12,22 @@
     <UniTab
       :tabBars="tabBars"
       @getTabIndex="getTabIndex"
-      :statusNum="statusNum"
+      :statusNum="statusNum.data"
     ></UniTab>
     <!-- 订单列表 -->
     <scroll-view
       :scroll-y="icCanScroll"
       class="scrollList"
       @scroll="handleScroll"
+      @scrolltolower="handleLoad"
+      :upper-threshold="100"
     >
       <HomeList
         v-if="homeList.data.length"
         :data="homeList.data"
         @refresh="getRobOrderList"
       ></HomeList>
+      <Empty v-else></Empty>
     </scroll-view>
     <UniFooter :pagePath="'pages/pickup/index'"></UniFooter>
   </view>
@@ -43,6 +46,8 @@ import { DeliveryData } from '@/utils/commonData.js';
 import { getOrder, getOrderStatusNum } from '@/pages/api/order.js';
 
 // 导入组件
+//空数据
+import Empty from '@/components/empty/index.vue';
 //订单列表
 import HomeList from './components/homeList';
 // 底部导航
@@ -57,7 +62,6 @@ const statusNum = reactive({
   data: [],
 });
 const tabBars = DeliveryData;
-let tabIndex = ref(0); //当前tab
 const icCanScroll = ref(true);
 const homeList = reactive({
   data: [
@@ -78,6 +82,10 @@ onShow(() => {
   getTabIndex(users.tabIndex);
   getOrderStatusNumFunc();
 });
+//上拉加载
+const handleLoad = () => {
+  console.log('上拉加载');
+};
 //获取各个状态下的订单数量
 const getOrderStatusNumFunc = () => {
   getOrderStatusNum().then((res) => {

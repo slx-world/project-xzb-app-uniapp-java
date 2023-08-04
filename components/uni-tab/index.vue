@@ -68,8 +68,7 @@ const changeTab = (index) => {
   scrollinto.value = 'tab' + index;
 };
 watchEffect(() => {
-  statusNum.data = props.statusNum.data;
-  // console.log(list.data, '++++++++++++++');
+  statusNum.data = props.statusNum;
 });
 //把数据、方法暴漏给父组件
 defineExpose({

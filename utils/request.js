@@ -1,16 +1,13 @@
-// import { baseUrl } from "./env";
+
 // 参数： url:请求地址  param：请求参数  method：请求方式 callBack：回调函数
 export function request ({ url = "", params = {}, method = "GET" }) {
-  // baseUrl改为可配置地址
-  if (!uni.getStorageSync('baseUrl')) {
-    uni.setStorageSync('baseUrl', 'http://172.17.2.58')
-  }
-  let baseUrl = 'http://172.17.2.58/api'
+  // let baseUrl = '/api'//用于浏览器联调测试环境
+  let baseUrl = 'http://xzb-api-test.itheima.net'//用于模拟器和真机联调测试环境
+  // let baseUrl = 'http://172.17.2.58/api'//用于联调开发环境
 
   // 获取token
   const token = uni.getStorageSync("token");
   let header = {
-    // 'Accept': 'application/json',
     "Access-Control-Allow-Origin": "*",
     "Content-Type": "application/json;charset=UTF-8",
     Authorization: token,
@@ -19,12 +16,13 @@ export function request ({ url = "", params = {}, method = "GET" }) {
     header['Content-Type'] = 'application/x-www-form-urlencoded'
   }
   const requestRes = new Promise((resolve, reject) => {
-    // console.log(params, baseUrl + url, '进来了么')
+    console.log(params, baseUrl + url, '进来了么')
     uni.request({
       url: baseUrl + url,
       data: params,
       header: header,
       method: method,
+      sslVerify: false
     }).then((res) => {
       console.log(params, url, res, 'header')
       const { data } = res
@@ -65,6 +63,7 @@ export function request ({ url = "", params = {}, method = "GET" }) {
         reject(res.data);
       }
     }).catch((err) => {
+      console.log(err, 'err')
       const error = { data: { msg: err.data } };
       reject(error);
     });

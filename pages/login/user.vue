@@ -167,14 +167,14 @@ const handleSubmit = async () => {
     await phoneLogins(fromInfo)
       .then(async (res) => {
         console.log(res, '登录结果获取');
+        // 操作成功后清除loading
+        setTimeout(function () {
+          uni.hideLoading();
+        }, 500);
         // 清除定时器
+        clearTimeout(times);
         // clearInterval(t);
         if (res.code === 200) {
-          // 操作成功后清除loading
-          setTimeout(function () {
-            uni.hideLoading();
-          }, 500);
-          clearTimeout(times);
           // 存储token
           uni.setStorageSync('token', res.data.token);
           store.commit('user/setToken', res.data.token);
@@ -193,9 +193,6 @@ const handleSubmit = async () => {
             }
           });
         } else if (res.code === 605) {
-          setTimeout(function () {
-            uni.hideLoading();
-          }, 500);
           uni.showToast({
             title: res.msg,
             duration: 1000,
@@ -221,13 +218,7 @@ const handleSubmit = async () => {
       });
   }
 };
-// 去手机登录页面
-const goLogin = () => {
-  uni.redirectTo({
-    url: '/pages/login/index',
-  });
-};
-// 设置密码
+// 获取验证码
 const handlePwd = async () => {
   const reg = /^1[3-9]\d{9}$/;
   if (!reg.test(fromInfo.phone)) {

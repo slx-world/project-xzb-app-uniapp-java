@@ -122,7 +122,7 @@ const handleSubmit = () => {
     .then((res) => {
       if (res.code === 200) {
         status.value = 'read';
-        // getServiceClassifyFunc();
+        getServiceSkillAllFunc();
       }
     })
     .catch((err) => {

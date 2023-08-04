@@ -142,12 +142,12 @@
       }
       .imgList{
         display: flex;
-        justify-content: space-between;
+        // justify-content: space-between;
         .img{
           width: 206rpx;
           height: 206rpx;
           border-radius: 6rpx;
-          
+          margin-right: 30rpx;
         }
       }
       .tips{
