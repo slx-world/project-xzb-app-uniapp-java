@@ -1,7 +1,12 @@
 <!-- 列表 -->
 <template>
   <view class="homeList">
-    <view class="card" v-for="(item, index) in list.data" :key="index">
+    <view
+      class="card"
+      v-for="(item, index) in list.data"
+      :key="index"
+      @click="handleToInfo(item)"
+    >
       <view class="card-content">
         <image class="leftCardContent" :src="item.serveItemImg"></image>
         <view class="rightCardContent">
@@ -25,7 +30,20 @@
           <text class="price-label">服务费用</text>
           ￥{{ item.serveFee }}
         </view>
-        <view class="robBtn btn-red" @click="handleRob(item.id)">立即抢单</view>
+        <view
+          class="robBtn btn-red"
+          @click="handleRob(item.id)"
+          v-if="!orderType"
+          >立即抢单</view
+        >
+        <view class="btn-box" v-else>
+          <view class="btn-gray" @click.stop="handleRejectOrder(item.id)"
+            >拒单</view
+          >
+          <view class="btn-red" @click.stop="handleReceiveOrder(item.id)"
+            >接单</view
+          >
+        </view>
       </view>
     </view>
     <view class="footer">- 已 经 到 底 了 -</view>
@@ -54,7 +72,7 @@
 <script setup>
 import { ref, reactive, onMounted, watch, watchEffect } from 'vue';
 import { onShow } from '@dcloudio/uni-app';
-import { robOrder } from '../../api/order.js';
+import { robOrder, receiveOrder } from '../../api/order.js';
 const emit = defineEmits(['refresh']); //子组件向父组件事件传递
 // 获取父组件值、方法
 const props = defineProps({
@@ -62,13 +80,61 @@ const props = defineProps({
     type: Array,
     default: () => [],
   },
+  type: {
+    type: Number,
+  },
 });
 const isRob = ref(true);
 let list = reactive({
   data: [],
 });
-
+const orderType = ref(null);
 const alertDialog = ref(null);
+//进入派单详情
+const handleToInfo = (item) => {
+  console.log(item, '进入详情');
+  uni.navigateTo({
+    url: '/pages/orderInfo/index?id=' + item.id + '&type=dispatch',
+  });
+};
+//拒单
+const handleRejectOrder = (id) => {
+  console.log('点击了拒单');
+  uni.navigateTo({
+    url: '/pages/cancel/index?id=' + id + '&type=dispatch',
+  });
+};
+//接单
+const handleReceiveOrder = (id) => {
+  receiveOrder({
+    id: id,
+  })
+    .then((res) => {
+      console.log(res, '接单');
+      if (res.code === 200) {
+        uni.showToast({
+          title: '接单成功!',
+          duration: 1000,
+          icon: 'none',
+        });
+        emit('refresh');
+      } else {
+        uni.showToast({
+          title: '接单失败!',
+          duration: 1000,
+          icon: 'none',
+        });
+      }
+    })
+    .catch((err) => {
+      uni.showToast({
+        title: err.msg || '接单失败!',
+        duration: 1000,
+        icon: 'none',
+      });
+      console.log(err, '接单失败');
+    });
+};
 const handleClose = () => {
   alertDialog.value.close();
   emit('refresh');
@@ -97,14 +163,15 @@ const handleRob = (id) => {
 };
 watchEffect(() => {
   list.data = props.data;
-  console.log(list.data, '++++++++++++++');
+  orderType.value = props.type;
+  console.log(list.data, props, '++++++++++++++');
 });
-// watch(
-//   () => props.data,
-//   () => {
-//     list.data = props.data;
-//     console.log(list.data, '=================');
-//   }
-// );
+watch(
+  () => props.type,
+  () => {
+    // list.data = props.data;
+    console.log(props.type, '=================');
+  }
+);
 </script>
 <style src="../index.scss" lang="scss"></style>

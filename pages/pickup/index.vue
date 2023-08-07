@@ -20,7 +20,7 @@
       class="scrollList"
       @scroll="handleScroll"
       @scrolltolower="handleLoad"
-      :upper-threshold="100"
+      :upper-threshold="50"
     >
       <HomeList
         v-if="homeList.data.length"
@@ -61,18 +61,11 @@ const users = store.state.user;
 const statusNum = reactive({
   data: [],
 });
+const isHaveMore = ref(false);
 const tabBars = DeliveryData;
 const icCanScroll = ref(true);
 const homeList = reactive({
-  data: [
-    {
-      serveTypeName: '保洁服务',
-      serveItemName: '空调清洗',
-      serveStartTime: '2023-7-28 11:48',
-      serveAddress: '金燕龙',
-      serveFee: '666',
-    },
-  ],
+  data: [],
 });
 // ------生命周期------
 onShow(() => {
@@ -84,7 +77,15 @@ onShow(() => {
 });
 //上拉加载
 const handleLoad = () => {
-  console.log('上拉加载');
+  console.log(users.tabIndex, '上拉加载');
+  if (isHaveMore.value) {
+    getListData(
+      tabBars[users.tabIndex].value,
+      homeList.data[homeList.data.length - 1].id
+    );
+  }
+
+  // console.log(homeList.data[homeList.data.length - 1].id, '上拉加载');
 };
 //获取各个状态下的订单数量
 const getOrderStatusNumFunc = () => {
@@ -94,9 +95,14 @@ const getOrderStatusNumFunc = () => {
   });
 };
 //获取订单列表数据
-const getListData = (val) => {
-  getOrder(val).then((res) => {
-    homeList.data = res.data.ordersServes;
+const getListData = (val, id) => {
+  getOrder(val, id).then((res) => {
+    if (res.data.ordersServes.length === 10) {
+      isHaveMore.value = true;
+    } else {
+      isHaveMore.value = false;
+    }
+    homeList.data = homeList.data.concat(res.data.ordersServes);
     console.log(res, '66666666666');
   });
 };
@@ -104,15 +110,12 @@ const getListData = (val) => {
 const getRobOrderList = () => {};
 // 获取tab切换当前的index
 const getTabIndex = (index) => {
+  console.log(index, 'indexxxxxx');
   store.commit('user/setTabIndex', index);
-  getListData(tabBars[index].value);
+  homeList.data = [];
+  getListData(tabBars[index].value, '');
   console.log(tabBars[index].value, 'index');
 };
-// 触发选项卡事件
-const onChangeSwiperTab = (e) => {};
-
-// 给筛选组件传递，刷新列表
-const getList = () => {};
 </script>
 <style src="../../styles/expressage.scss" lang="scss" scoped></style>
 <style src="./index.scss" lang="scss" scoped></style>

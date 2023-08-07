@@ -245,17 +245,33 @@ uni-page-head,
       display: flex;
       align-items: center;
       justify-content: space-between;
+      // white-space: nowrap;
       border-top: 2rpx solid var(--color-gray-e8);
       height: 95rpx;
       .price{
         font-size: 36rpx;
         font-weight: bold;
         color: var(--color-red-bg);
+        // white-space: nowrap;
         .price-label{
           font-size: 28rpx;
           font-weight: normal;
           color: var(--color-gray-59);
           margin-right: 22rpx;
+        }
+      }
+      .btn-box{
+        display: flex;
+        .btn-gray,.btn-red{
+          height: 56rpx;
+          width:146rpx ;
+          line-height: 56rpx;
+          text-align: center;
+          font-size: 24rpx;
+          border-radius: 32rpx;
+        }
+        .btn-gray{
+          // margin-right: 20rpx;
         }
       }
       .robBtn{

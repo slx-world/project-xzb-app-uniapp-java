@@ -10,6 +10,7 @@ export default {
       address: '请选择',//服务范围详细地址
       cityCode: '',//服务范围城市编码
       cityName: '请选择',//服务范围城市名称
+      tabIndex: 0, //储存当前触发的tab值
 
       userBase: {}, // 用户信息
       pages: 0,//总页数
@@ -20,7 +21,7 @@ export default {
       taskType: 1, //当前进入的是取件详情还是派件详情  1取件，2派件
       taskStatus: 0,//已取件\已取消\去派件\已签收状态
       detailType: 0,//历史订单或者已经取件的详情页
-      tabIndex: 0, //储存当前触发的tab值
+
       reasonVal: '',//取消订单原因选择内容
       reasonDesc: '',//取消订单描述
       orderDistance: null, //距离筛选值

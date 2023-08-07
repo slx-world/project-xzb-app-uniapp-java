@@ -902,6 +902,17 @@ uni-page-head[data-v-538110be],
   color: var(--color-gray-59);
   margin-right: 0.6875rem;
 }
+.homeList .card .cardFooter .btn-box[data-v-538110be] {
+  display: flex;
+}
+.homeList .card .cardFooter .btn-box .btn-gray[data-v-538110be], .homeList .card .cardFooter .btn-box .btn-red[data-v-538110be] {
+  height: 1.75rem;
+  width: 4.5625rem;
+  line-height: 1.75rem;
+  text-align: center;
+  font-size: 0.75rem;
+  border-radius: 1rem;
+}
 .homeList .card .cardFooter .robBtn[data-v-538110be] {
   font-size: 0.75rem;
   text-align: center;
@@ -1162,6 +1173,17 @@ uni-page-head[data-v-5d962223],
   color: var(--color-gray-59);
   margin-right: 0.6875rem;
 }
+.homeList .card .cardFooter .btn-box[data-v-5d962223] {
+  display: flex;
+}
+.homeList .card .cardFooter .btn-box .btn-gray[data-v-5d962223], .homeList .card .cardFooter .btn-box .btn-red[data-v-5d962223] {
+  height: 1.75rem;
+  width: 4.5625rem;
+  line-height: 1.75rem;
+  text-align: center;
+  font-size: 0.75rem;
+  border-radius: 1rem;
+}
 .homeList .card .cardFooter .robBtn[data-v-5d962223] {
   font-size: 0.75rem;
   text-align: center;
@@ -1397,6 +1419,17 @@ uni-page-head[data-v-1cf27b2a],
   font-weight: normal;
   color: var(--color-gray-59);
   margin-right: 0.6875rem;
+}
+.homeList .card .cardFooter .btn-box[data-v-1cf27b2a] {
+  display: flex;
+}
+.homeList .card .cardFooter .btn-box .btn-gray[data-v-1cf27b2a], .homeList .card .cardFooter .btn-box .btn-red[data-v-1cf27b2a] {
+  height: 1.75rem;
+  width: 4.5625rem;
+  line-height: 1.75rem;
+  text-align: center;
+  font-size: 0.75rem;
+  border-radius: 1rem;
 }
 .homeList .card .cardFooter .robBtn[data-v-1cf27b2a] {
   font-size: 0.75rem;

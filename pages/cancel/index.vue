@@ -31,7 +31,7 @@
 
 <script setup>
 import { ref, onMounted, nextTick } from 'vue';
-import { cancelOrder } from '../api/order';
+import { cancelOrder, rejectOrder } from '../api/order';
 import { onLoad } from '@dcloudio/uni-app';
 // 设置字符串的长度
 import { validateTextLength } from '@/utils/index.js';
@@ -50,6 +50,7 @@ const from = ref('');
 onLoad((options) => {
   orderId.value = options.id;
   from.value = options.type;
+  title.value = from.value === 'dispatch' ? '拒单原因' : '取消原因';
   console.log(options, '取消订单');
 });
 // ------定义方法------
@@ -58,8 +59,16 @@ const handleCause = (value) => {
   cancel.value = value;
   console.log(value, '----------');
 };
-// 提交原因申请
-const handleSubmit = async () => {
+//确认提交
+const handleSubmit = () => {
+  if (from.value === 'dispatch') {
+    handleRejectSubmit();
+  } else {
+    handleCancelSubmit();
+  }
+};
+// 提交取消原因申请
+const handleCancelSubmit = async () => {
   if (cancel.value) {
     // 网络慢的时候添加按钮loading
     let times = setTimeout(() => {
@@ -91,7 +100,7 @@ const handleSubmit = async () => {
         orderId.value = '';
 
         return uni.showToast({
-          title: '操作成功!',
+          title: '取消成功!',
           duration: 1000,
           icon: 'none',
         });
@@ -100,6 +109,53 @@ const handleSubmit = async () => {
   } else {
     return uni.showToast({
       title: '请选择取消原因!',
+      duration: 1000,
+      icon: 'none',
+    });
+  }
+};
+//提交拒单
+const handleRejectSubmit = async () => {
+  if (cancel.value) {
+    // 网络慢的时候添加按钮loading
+    let times = setTimeout(() => {
+      uni.showLoading({
+        title: 'loading',
+      });
+    }, 500);
+    const params = {
+      id: orderId.value,
+      rejectReason: cancelData.filter((item) => item.value === cancel.value)[0]
+        .label,
+    };
+    await rejectOrder(params).then((res) => {
+      if (res.code === 200) {
+        // 操作成功后清除loading
+        setTimeout(function () {
+          uni.hideLoading();
+        }, 500);
+        clearTimeout(times);
+        if (from.value === 'list' || from.value === 'dispatch') {
+          goBack();
+        } else {
+          uni.navigateTo({
+            url:
+              '/pages/orderInfo/index?id=' + orderId.value + '&type=' + 'info',
+          });
+        }
+        cancel.value = '';
+        orderId.value = '';
+
+        return uni.showToast({
+          title: '拒单成功!',
+          duration: 1000,
+          icon: 'none',
+        });
+      }
+    });
+  } else {
+    return uni.showToast({
+      title: '请选择拒绝原因!',
       duration: 1000,
       icon: 'none',
     });

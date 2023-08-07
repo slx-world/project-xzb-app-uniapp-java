@@ -5,7 +5,27 @@ import {
 //获取派单列表
 export const getDispatchOrder = (params) =>
   request({
-    url: params ? `/orders-dispatch?serveTypeId=${params}` : '/orders-dispatch',
+    url: `/orders-dispatch/queryForList?serveTypeId=${params}`,
+    method: 'get',
+  })
+//拒单
+export const rejectOrder = (params) =>
+  request({
+    url: `/orders-dispatch/reject`,
+    method: 'post',
+    params
+  })
+//接单
+export const receiveOrder = (params) =>
+  request({
+    url: `/orders-dispatch/receive`,
+    method: 'post',
+    params
+  })
+//获取派单详细信息
+export const getDispatchOrderInfo = (params) =>
+  request({
+    url: `/orders-dispatch/${params}`,
     method: 'get',
   })
 //获取抢单列表
@@ -28,9 +48,9 @@ export const robOrder = (params) =>
     params
   })
 //获取订单列表
-export const getOrder = (params) =>
+export const getOrder = (params, id) =>
   request({
-    url: params ? `/orders-serve/queryForList?serveStatus=${params}` : '/orders-serve/queryForList',
+    url: params ? `/orders-serve/queryForList?serveStatus=${params}&id=` + (id ? id : '') : `/orders-serve/queryForList?id=${id}`,
     method: 'get',
   })
 //获取订单详情

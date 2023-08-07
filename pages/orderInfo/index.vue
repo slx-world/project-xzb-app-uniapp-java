@@ -5,16 +5,22 @@
     <view
       class="serveStatus"
       :class="
-        [1, 2, 3].includes(info.data.serveStatus)
+        [1, 2, 3].includes(info.data.serveStatus) || !info.data.serveStatus
           ? 'successStatus'
           : 'failStatus'
       "
     >
       <view class="status">{{
-        orderStatus.filter((item) => item.value === info.data.serveStatus)[0]
-          .label
+        info.data.serveStatus
+          ? orderStatus.filter(
+              (item) => item.value === info.data.serveStatus
+            )[0].label
+          : '派单中'
       }}</view>
-      <view class="serveTime" v-if="info.data.serveStatus === 1">
+      <view
+        class="serveTime"
+        v-if="info.data.serveStatus === 1 || !info.data.serveStatus"
+      >
         请在{{
           info.data.ordersInfo.serveStartTime
             ? info.data.ordersInfo.serveStartTime.replace(/:\d{2}$/, '')
@@ -188,7 +194,7 @@ import { onLoad } from '@dcloudio/uni-app';
 // 导航组件
 import UniNav from '@/components/uni-nav/index.vue';
 //接口
-import { getOrderInfo } from '@/pages/api/order.js';
+import { getOrderInfo, getDispatchOrderInfo } from '@/pages/api/order.js';
 import { useStore } from 'vuex';
 // 基本数据(订单状态)
 import { orderStatus } from '@/utils/commonData.js';
@@ -253,8 +259,8 @@ let tabIndex = ref(users.tabIndex ? users.tabIndex : 0); //当前tab
 // ------定义方法------
 onLoad((options) => {
   console.log(options, 'options');
-  getOrderInfoFunc(options.id);
   type.value = options.type;
+  getOrderInfoFunc(options.id);
 });
 //预览图片
 const previewImage = (url, imgList) => {
@@ -265,10 +271,15 @@ const previewImage = (url, imgList) => {
 };
 //获取订单详情
 const getOrderInfoFunc = (id) => {
-  getOrderInfo(id).then((res) => {
-    info.data = res.data;
-    console.log(res.data, '获取订单详情');
-  });
+  type.value === 'dispatch'
+    ? getDispatchOrderInfo(id).then((res) => {
+        info.data = res.data;
+        console.log(res.data, '获取派单订单详情');
+      })
+    : getOrderInfo(id).then((res) => {
+        info.data = res.data;
+        console.log(res.data, '获取订单详情');
+      });
 };
 // tab选项卡切换轮播
 const changeTab = (index) => {

@@ -33,7 +33,8 @@
       <HomeList
         v-if="homeList.data.length"
         :data="homeList.data"
-        @refresh="getRobOrderList"
+        :type="orderType"
+        @refresh="getList"
       ></HomeList>
       <Empty v-else></Empty>
     </scroll-view>
@@ -46,7 +47,7 @@
 
 <script setup>
 import { ref, reactive, onMounted } from 'vue';
-import { onPullDownRefresh } from '@dcloudio/uni-app';
+import { onPullDownRefresh, onShow } from '@dcloudio/uni-app';
 // 导入接口
 import { getRobOrder, getHomeFilter, getDispatchOrder } from '../api/order.js';
 // 导入组件
@@ -71,8 +72,11 @@ let homeList = reactive({
 });
 // ------生命周期------
 onMounted(() => {
-  getRobOrderList();
+  getList();
   getHomeFilterList();
+});
+onShow(() => {
+  getList();
 });
 // ------定义方法------
 //下拉刷新
@@ -84,16 +88,9 @@ onPullDownRefresh(() => {
   console.log('refresh');
 });
 const tabChange = (val, id) => {
-  console.log(val, id, 'val, id');
   orderType.value = val;
   serveId.value = id;
   getList();
-  // if(val){
-  //   //抢单
-
-  // }else{
-  //   //派单
-  // }
 };
 const getList = () => {
   if (!orderType.value) {
@@ -105,15 +102,15 @@ const getList = () => {
 //派单列表
 const getDispatchList = (params) => {
   getDispatchOrder(params).then((res) => {
-    homeList.data = res.data.ordersSeizes || [];
-    console.log(res, homeList.data, 1111111);
+    homeList.data = res.data || [];
+    console.log(res, homeList.data, '派单');
   });
 };
 //获取抢单列表
 const getRobOrderList = (params) => {
   getRobOrder(params).then((res) => {
     homeList.data = res.data.ordersSeizes || [];
-    console.log(res, homeList.data, 1111111);
+    console.log(res, homeList.data, '抢单');
   });
 };
 //获取首页顶部筛选服务项数据

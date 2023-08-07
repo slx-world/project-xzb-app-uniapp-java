@@ -14,7 +14,8 @@
         ></image>
         <view class="rightCardContent">
           <view class="title">
-            {{ item.serveItemName }}
+            <!-- {{ item.serveItemName }} -->
+            {{ item.id }}
           </view>
           <view class="serviceTime">
             <text>{{
@@ -110,7 +111,7 @@ const handleToInfo = (item) => {
 const handleCancel = (id) => {
   console.log('fff');
   uni.navigateTo({
-    url: '/pages/cancel/index?id=' + id + '&type=' + 'list',
+    url: '/pages/cancel/index?id=' + id + '&type=list',
   });
 };
 const handleServeRecord = (id, status) => {
