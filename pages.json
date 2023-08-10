@@ -100,22 +100,6 @@
 				"navigationStyle": "custom",
 				"navigationBarTitleText": "我的"
 			}
-		},
-
-		{
-			"path": "pages/my/map",
-			"style": {
-				"navigationStyle": "custom",
-				"navigationBarTitleText": "作业范围"
-			}
-		},
-
-		{
-			"path": "pages/my/qrCode",
-			"style": {
-				"navigationStyle": "custom",
-				"navigationBarTitleText": "专属二维码"
-			}
 		}
 
 	],

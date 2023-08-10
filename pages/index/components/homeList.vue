@@ -32,7 +32,7 @@
         </view>
         <view
           class="robBtn btn-red"
-          @click="handleRob(item.id)"
+          @click.stop="handleRob(item.id)"
           v-if="!orderType"
           >立即抢单</view
         >

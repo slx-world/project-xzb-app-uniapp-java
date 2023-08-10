@@ -1002,7 +1002,7 @@ body[data-v-10597487] {
   border-radius: 0 0 12% 12%;
   height: 9.75rem;
   position: relative;
-  z-index: -1;
+  z-index: 1;
 }
 .headBg[data-v-10597487] {
   background: url(../../static/headBg.png) no-repeat 0 0;
@@ -1180,14 +1180,6 @@ body[data-v-10597487] {
 }
 .footBox .tabbar-item.active .uni-tabbar__label[data-v-10597487] {
   color: var(--essential-color-red);
-}
-.footBox .qrCode[data-v-10597487] {
-  margin-top: -0.9375rem;
-}
-.footBox .qrCode img[data-v-10597487] {
-  width: 4.1875rem;
-  height: 4.1875rem;
-  display: block;
 }
 .uni-error-message-text[data-v-10597487] {
   color: var(--essential-color-red) !important;

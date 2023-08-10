@@ -2460,7 +2460,7 @@ body {
   border-radius: 0 0 12% 12%;
   height: 9.75rem;
   position: relative;
-  z-index: -1;
+  z-index: 1;
 }
 .headBg {
   background: url(static/headBg.png) no-repeat 0 0;
@@ -2638,14 +2638,6 @@ body {
 }
 .footBox .tabbar-item.active .uni-tabbar__label {
   color: var(--essential-color-red);
-}
-.footBox .qrCode {
-  margin-top: -0.9375rem;
-}
-.footBox .qrCode img {
-  width: 4.1875rem;
-  height: 4.1875rem;
-  display: block;
 }
 .uni-error-message-text {
   color: var(--essential-color-red) !important;

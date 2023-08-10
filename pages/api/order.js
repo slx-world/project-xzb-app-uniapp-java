@@ -50,8 +50,14 @@ export const robOrder = (params) =>
 //获取订单列表
 export const getOrder = (params, id) =>
   request({
-    url: params ? `/orders-serve/queryForList?serveStatus=${params}&id=` + (id ? id : '') : `/orders-serve/queryForList?id=${id}`,
+    url: params ? `/orders-serve/queryForList?serveStatus=${params}&id=` + (id ? id : '') : `/orders-serve/queryForList?id=${id ? id : ''}`,
     method: 'get',
+  })
+//删除订单
+export const deleteOrder = (params) =>
+  request({
+    url: `/orders-serve/serve/${params}`,
+    method: 'delete',
   })
 //获取订单详情
 export const getOrderInfo = (params) =>

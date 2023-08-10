@@ -1,26 +1,22 @@
 <template>
-    <view class="nav-bg mnav-bg">
-      <view class="headBg"></view>
-      <view class="header">
-        <view class="headBox">
-          <view class="head"
-            ><icon v-if="baseData.avatar === ''"></icon
-            ><image :src="baseData.avatar" v-else></image
-          ></view>
-          <view class="info">
-            <view class="tit">{{ baseData.name }}</view>
-            <view>{{ baseData.account }}</view>
-            <view class="address">
-              <icon></icon>
-              {{ baseData.agencyName ? baseData.agencyName : "暂无" }}
-            </view>
-          </view>
-        </view>
-        <view class="QR" @click="handleQr"
-          ><image src="../../../static/qr.png"></image
+  <view class="nav-bg mnav-bg">
+    <view class="headBg"></view>
+    <view class="header">
+      <view class="headBox">
+        <view class="head"
+          ><icon v-if="baseData.avatar === ''"></icon
+          ><image
+            :src="baseData.avatar || '../../../static/new/empty.png'"
+            v-else
+          ></image
         ></view>
+        <view class="info">
+          <view class="tit">{{ baseData.name || '吴彦祖' }}</view>
+          <view class="account">{{ baseData.account || '177 9987 8876' }}</view>
+        </view>
       </view>
     </view>
+  </view>
 </template>
 <script setup>
 // 获取父组件数据
@@ -38,9 +34,9 @@ const handleQr = () => {
   // 	url:'/pages/my/qrCode'
   // })
   uni.showToast({
-    title: "程序员哥哥正在实现中",
+    title: '程序员哥哥正在实现中',
     duration: 1000,
-    icon: "none",
+    icon: 'none',
   });
 };
 </script>

@@ -172,7 +172,11 @@
         }}</view>
       </view>
     </view>
-    <view class="footer" v-if="[1, 2].includes(info.data.serveStatus)">
+    <view
+      class="footer"
+      :class="[4, 5].includes(info.data.serveStatus) ? 'end' : ''"
+      v-if="[1, 2, 4, 5].includes(info.data.serveStatus)"
+    >
       <view
         class="btn-gray"
         @click="handleCancel(info.data.id)"
@@ -185,6 +189,12 @@
         v-if="[1, 2].includes(info.data.serveStatus)"
         >{{ info.data.serveStatus === 1 ? '开始服务' : '完成服务' }}</view
       >
+      <view
+        class="btn-gray"
+        v-if="[4, 5].includes(info.data.serveStatus)"
+        @click="handleDelete(info.data.id)"
+        >删除订单</view
+      >
     </view>
   </view>
 </template>
@@ -194,7 +204,11 @@ import { onLoad } from '@dcloudio/uni-app';
 // 导航组件
 import UniNav from '@/components/uni-nav/index.vue';
 //接口
-import { getOrderInfo, getDispatchOrderInfo } from '@/pages/api/order.js';
+import {
+  getOrderInfo,
+  getDispatchOrderInfo,
+  deleteOrder,
+} from '@/pages/api/order.js';
 import { useStore } from 'vuex';
 // 基本数据(订单状态)
 import { orderStatus } from '@/utils/commonData.js';
@@ -303,6 +317,25 @@ const handleServeRecord = (id, status) => {
       '&status' +
       status,
   });
+};
+//删除订单
+const handleDelete = (id) => {
+  deleteOrder(id)
+    .then((res) => {
+      uni.showToast({
+        title: res.msg || '删除订单成功',
+        duration: 1500,
+        icon: 'none',
+      });
+      uni.navigateBack();
+    })
+    .catch((err) => {
+      uni.showToast({
+        title: err.msg || '删除订单失败',
+        duration: 1500,
+        icon: 'none',
+      });
+    });
 };
 //取消原因
 const handleCancel = (id) => {

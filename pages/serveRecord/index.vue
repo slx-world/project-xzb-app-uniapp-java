@@ -68,7 +68,7 @@ const uploadImage = async () => {
   const promises = fileList.value.map((item) => {
     return new Promise((resolve, reject) => {
       uni.uploadFile({
-        url: 'http://xzb-api-test.itheima.net/storage/upload',
+        url: 'http://172.17.2.58/api',
         files: [
           {
             name: 'file',

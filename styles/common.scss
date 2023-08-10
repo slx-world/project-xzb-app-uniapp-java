@@ -102,7 +102,7 @@ body {
 	border-radius: 0 0 12% 12%;
 	height: 312rpx;
 	position: relative;
-	z-index: -1;
+	z-index: 1;
 }
 .headBg{
 	background: url(@/static/headBg.png) no-repeat 0 0;
@@ -298,16 +298,6 @@ body {
 			.uni-tabbar__label {
 				color: var(--essential-color-red);
 			}
-		}
-	}
-	.qrCode {
-		margin-top: -30rpx;
-		// width: 120rpx;
-		// height: 120rpx;
-		img {
-			width: 134rpx;
-			height: 134rpx;
-			display: block;
 		}
 	}
 }

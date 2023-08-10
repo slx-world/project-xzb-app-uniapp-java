@@ -14,8 +14,8 @@
         ></image>
         <view class="rightCardContent">
           <view class="title">
-            <!-- {{ item.serveItemName }} -->
-            {{ item.id }}
+            {{ item.serveItemName }}
+            <!-- {{ item.id }} -->
           </view>
           <view class="serviceTime">
             <text>{{

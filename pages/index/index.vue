@@ -29,6 +29,15 @@
         @getList="getList"
       >
       </HomeFilter>
+      <!-- <view class="uni-form-item uni-column">
+        <view class="title">控制键盘的input</view>
+        <input
+          class="uni-input"
+          ref="input1"
+          @input="hideKeyboard"
+          placeholder="输入123自动收起键盘"
+        />
+      </view> -->
       <!-- end -->
       <HomeList
         v-if="homeList.data.length"

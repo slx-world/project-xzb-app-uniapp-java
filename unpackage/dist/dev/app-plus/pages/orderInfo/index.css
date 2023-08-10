@@ -784,3 +784,6 @@
   line-height: 2.75rem;
   margin-top: 0.9375rem;
 }
+.order-info .end[data-v-c0232ef0] {
+  justify-content: flex-end;
+}

@@ -1,40 +1,38 @@
 <template>
-    <view class="boxBg headTop">
-      <view class="headItem">
-        <view class="item">
-          <text>我的评价</text>
-          <view class="star">
-            <uni-rate
-              :readonly="true"
-              allow-half
-              :value="4.5"
-              active-color="#EF4F3F"
-              color="#F4F4F4"
-            />
-            <text>{{ 4.5 }}</text>
+  <view class="boxBg headTop">
+    <view class="headItem score">
+      <view class="leftBox">
+        <view class="scoreContent">4.7分</view>
+        <view class="label">综合评分</view>
+      </view>
+      <view class="rightBox">
+        <view class="commit">
+          <view class="label">差评率</view>
+          <view class="greyLine">
+            <view
+              class="redLine"
+              :style="{ width: `${200 * 0.333}rpx` }"
+            ></view>
           </view>
+          <view class="num">33.3%</view>
         </view>
-        <view class="item">
-          <text>排班时间</text>
-          <text
-            v-if="
-              (!baseData.startTime || baseData.startTime === '') &&
-              (!baseData.endTime || baseData.endTime === '')
-            "
-            >无</text
-          >
-          <text v-else
-            >{{ overTimeFormat(baseData.startTime) }}-{{
-              overTimeFormat(baseData.endTime)
-            }}</text
-          >
+        <view class="commit">
+          <view class="label">好评率</view>
+          <view class="greyLine">
+            <view
+              class="redLine"
+              :style="{ width: `${200 * 0.333}rpx` }"
+            ></view>
+          </view>
+          <view class="num">33.3%</view>
         </view>
       </view>
     </view>
+  </view>
 </template>
 <script setup>
 // 时间处理
-import { overTimeFormat } from "@/utils/index.js";
+import { overTimeFormat } from '@/utils/index.js';
 // 获取父组件数据
 const props = defineProps({
   baseData: {

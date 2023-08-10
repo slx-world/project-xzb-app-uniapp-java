@@ -1,5 +1,9 @@
 .mnav-bg{
 	height: 370rpx;
+  background-image: url('../../static/new/img_bgwode@2x.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 .header {
 	padding: 122rpx 86rpx 102rpx 64rpx;
@@ -45,18 +49,74 @@
 		.info {
 			flex: 1;
 			font-size: var(--font-size-16);
-		}
-	}
-	.QR {
-		image {
-			width: 48rpx;
-			height: 48rpx;
-			margin-top: 16rpx;
+      .tit{
+        color: var(--color-black-19);
+        font-size: 32rpx;
+        font-weight: bold;
+      }
+      .account{
+        color: var(--color-gray-59);
+        font-size: 28rpx;
+      }
 		}
 	}
 }
 .headTop {
 	margin-top: -80rpx;
+}
+.score{
+  height: 200rpx;
+  overflow: hidden;
+  display: flex;
+  .leftBox{
+    margin-top: 44rpx;
+    margin-right: 41rpx;
+    .scoreContent{
+      font-size: 40rpx;
+      color: var(--color-red-bg);
+      margin-bottom: 12rpx;
+      font-weight: 600;
+    }
+    .label{
+      font-size: 28rpx;
+      color: #19232B;
+    }
+  }
+  .rightBox{
+    margin-top: 52rpx;
+    margin-bottom: 52rpx;
+    border-left: 2rpx solid var(--color-gray-e8);
+    padding-left: 40rpx;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    .commit{
+      display: flex;
+      align-items: center;
+      .label,.num{
+        font-size: 28rpx;
+        color: #19232B;
+      }
+      .label{
+        margin-right: 25rpx;
+      }
+      .greyLine{
+        width: 200rpx;
+        height: 24rpx;
+        border-radius: 12rpx;
+        background-color: var(--color-gray-e8);
+        margin-right: 26rpx;
+        position: relative;
+        .redLine{
+          position: absolute;
+          left: 0;
+          height: 24rpx;
+          border-radius: 12rpx;
+          background-color: var(--color-red-bg);
+        }
+      }
+    }
+  }
 }
 .headItem {
 	padding: 0 34rpx;
@@ -67,9 +127,6 @@
 		border-bottom: 1px solid var(--neutral-color-background);
 		display: flex;
 		align-items: center;
-		// &:last-child {
-		// 	border: 0 none;
-		// }
 		text {
 			&:first-child {
 				flex: 1;
@@ -86,30 +143,11 @@
 	::v-deep .uni-rate__icon {
 		margin-right: 6rpx !important;
 	}
-	// icon {
-	// 	background: url(@/static/star.png) no-repeat;
-	// 	background-size: contain;
-	// 	width: 32rpx;
-	// 	height: 32rpx;
-	// 	margin-left: 16rpx;
-	// }
 }
 .boxBg {
 	margin-bottom: 32rpx;
-}
-.qrCode {
-	.boxBg {
-		margin-top: 32rpx;
-		text-align: center;
-		padding: 52rpx 60rpx 68rpx;
-	}
-	.img {
-		padding: 30rpx 0;
-		image {
-			width: 416rpx;
-			height: 410rpx;
-		}
-	}
+  z-index: 3;
+  position: relative;
 }
 .qrHead {
 	display: flex;
