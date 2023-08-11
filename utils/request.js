@@ -37,17 +37,14 @@ export function request ({ url = "", params = {}, method = "GET" }) {
         });
         return false
       }
-      if (res.statusCode == 400) {
-        uni.showToast({
-          title: '权限不足，无法登录！',
-          duration: 2000,
-          icon: 'none',
-
-        });
-        uni.redirectTo({
+      //如果账号被冻结则跳转到登录页面，并清除token
+      let routes = getCurrentPages()
+      if (data.code == 605 && routes[routes.length - 1].route !== 'pages/login/user') {
+        // 移除指定 token
+        uni.removeStorageSync('token');
+        uni.navigateTo({
           url: '/pages/login/user'
         });
-        return false
       }
       if (data.code == 0 || data.code == 200) {
         resolve(res.data);
@@ -55,7 +52,7 @@ export function request ({ url = "", params = {}, method = "GET" }) {
         reject(res.data);
       }
     }).catch((err) => {
-      console.log(err, 'err')
+      console.log(err, 'errr')
       const error = { data: { msg: err.data } };
       reject(error);
     });

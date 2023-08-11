@@ -16,9 +16,9 @@ const store = useStore(); //vuex获取储存数据
 const handleHistory = () => {
   // store.commit('user/setTabIndex', 0);
   // store.commit('user/setTaskStatus', -1);
-  // uni.navigateTo({
-  //   url: '/pages/history/index',
-  // });
+  uni.navigateTo({
+    url: '/pages/evaluate/index',
+  });
 };
 </script>
 <style src="./../index.scss" lang="scss" scoped></style>

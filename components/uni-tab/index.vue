@@ -10,6 +10,7 @@
       :key="index"
       :id="'tab' + index"
       class="scroll-row-item"
+      :class="tabIndex == index ? 'badge-act' : ''"
       @click="changeTab(index)"
     >
       <uni-badge
