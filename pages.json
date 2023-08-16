@@ -105,6 +105,20 @@
 				"navigationStyle": "custom",
 				"navigationBarTitleText": "我的评价"
 			}
+		},
+    {
+			"path": "pages/auth/index",
+			"style": {
+				"navigationStyle": "custom",
+				"navigationBarTitleText": "实名认证"
+			}
+		},
+    {
+			"path": "pages/authFail/index",
+			"style": {
+				"navigationStyle": "custom",
+				"navigationBarTitleText": "实名认证"
+			}
 		}
 
 	],

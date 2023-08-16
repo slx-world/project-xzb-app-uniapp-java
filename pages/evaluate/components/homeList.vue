@@ -16,6 +16,7 @@
           <view class="right">
             <!-- 设置星星间隔 -->
             <uni-rate
+              readonly
               :value="item.score"
               :margin="5"
               color="#D2DBE7"
