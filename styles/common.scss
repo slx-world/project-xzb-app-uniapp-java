@@ -666,11 +666,11 @@ body {
 .uni-textarea-placeholder {
 	font-size: var(--font-size-14) !important;
 }
-::v-deep uni-textarea {
-	height: 250rpx !important;
-	width: auto !important;
-	text-align: justify;
-}
+// ::v-deep uni-textarea {
+// 	height: 250rpx !important;
+// 	width: auto !important;
+// 	text-align: justify;
+// }
 // 地址选择
 ::v-deep .addressCon {
 	position: relative;

@@ -8769,6 +8769,40 @@ if (uni.restoreGlobal) {
       label: "差评"
     }
   ];
+  const ImgList = [
+    "😀",
+    "😃",
+    "😄",
+    "😁",
+    "😅",
+    "🙂",
+    "😉",
+    "😍",
+    "😙",
+    "😘",
+    "🤑",
+    "😋",
+    "😝",
+    "🤪",
+    "😜",
+    "🤐",
+    "😑",
+    "🙄",
+    "😪",
+    "😴",
+    "🤢",
+    "😫",
+    "🙁",
+    "😮",
+    "😥",
+    "😱",
+    "😨",
+    "😤",
+    "😈",
+    "😠",
+    "🤞",
+    "😫"
+  ];
   const _sfc_main$i = {
     __name: "homeList",
     props: {
@@ -14824,12 +14858,41 @@ if (uni.restoreGlobal) {
     emits: ["refresh"],
     setup(__props, { emit }) {
       const alertDialog = vue.ref(null);
+      const store2 = useStore();
+      const user2 = store2.state.user;
+      const emojiShow = vue.ref(false);
+      const input = vue.ref(null);
+      const focus = vue.ref(true);
+      const inputValue = vue.ref("");
       vue.onMounted(() => {
       });
       const keyBoardHeight = vue.ref("");
-      vue.ref(true);
       let list = vue.reactive({
         data: [
+          {
+            reply: {
+              content: "感谢你的肯定，您的满意就是我们的追求",
+              time: "2022.07.12  18:08"
+            },
+            orderInfo: {
+              id: "7364734677776",
+              time: "2026.5.26 12:30",
+              address: "北京市昌平区红旗大街124号五星大厦19层109室4号五星大厦19层109室",
+              imgUrl: "https://yjy-slwl-oss.oss-cn-hangzhou.aliyuncs.com/3b59ab0c-59fc-4c96-a645-eda33696204b.png"
+            },
+            imgUrl: [
+              "https://yjy-slwl-oss.oss-cn-hangzhou.aliyuncs.com/3b59ab0c-59fc-4c96-a645-eda33696204b.png",
+              "https://yjy-slwl-oss.oss-cn-hangzhou.aliyuncs.com/3b59ab0c-59fc-4c96-a645-eda33696204b.png"
+            ],
+            headUrl: "https://yjy-slwl-oss.oss-cn-hangzhou.aliyuncs.com/3b59ab0c-59fc-4c96-a645-eda33696204b.png",
+            nickName: "戴龙",
+            score: 4,
+            content: "按时上门,打扫非常干净,态度极佳,技能专业,效果超出预期。师傅清洗得非常千净，动作麻利。",
+            time: "2022.07.12  18:08"
+            // serveStartTime: '2023-7-28 11:48:00',
+            // serveAddress: '金燕龙',
+            // serveFee: '666',
+          },
           {
             reply: {
               content: "感谢你的肯定，您的满意就是我们的追求",
@@ -14856,17 +14919,43 @@ if (uni.restoreGlobal) {
           }
         ]
       });
+      const handleHideKeyBoard = () => {
+        if (!emojiShow.value) {
+          uni.hideKeyboard();
+          focus.value = false;
+        } else {
+          focus.value = true;
+        }
+        emojiShow.value = !emojiShow.value;
+      };
+      const handleSubmit = () => {
+        formatAppLog("log", "at pages/evaluate/components/homeList.vue:216", "提交了");
+        if (!inputValue.value.length) {
+          return;
+        } else {
+          alertDialog.value.close();
+        }
+      };
+      const handleClickEmoji = (item) => {
+        inputValue.value = inputValue.value + item;
+      };
+      const handleBlur = () => {
+        formatAppLog("log", "at pages/evaluate/components/homeList.vue:229", input.value, "----------");
+      };
+      const handleFocus = () => {
+        emojiShow.value = false;
+      };
       const handleReply = () => {
         alertDialog.value.open();
+        focus.value = true;
         uni.onKeyboardHeightChange((res) => {
-          keyBoardHeight.value = res.height;
-          if (!res.height)
-            alertDialog.value.close();
-          formatAppLog("log", "at pages/evaluate/components/homeList.vue:138", "键盘高度变化：", keyBoardHeight.value, res.height);
+          formatAppLog("log", "at pages/evaluate/components/homeList.vue:241", "键盘高度变化12：", user2.keyBoardHeight, res.height);
+          keyBoardHeight.value = user2.keyBoardHeight || res.height;
+          store2.commit("user/setKeyBoardHeight", user2.keyBoardHeight || res.height);
         });
       };
       const handleToInfo = (item) => {
-        formatAppLog("log", "at pages/evaluate/components/homeList.vue:144", item, "进入详情");
+        formatAppLog("log", "at pages/evaluate/components/homeList.vue:251", item, "进入详情");
         uni.navigateTo({
           url: "/pages/orderInfo/index?id=" + item.id
         });
@@ -15035,12 +15124,64 @@ if (uni.restoreGlobal) {
                     style: vue.normalizeStyle({ bottom: `${keyBoardHeight.value}px` })
                   },
                   [
-                    vue.createElementVNode("input", {
+                    vue.withDirectives(vue.createElementVNode("textarea", {
+                      ref_key: "input",
+                      ref: input,
                       class: "uni-input",
                       "adjust-position": false,
-                      focus: "",
-                      placeholder: "自动获得焦点"
-                    })
+                      focus: focus.value,
+                      onFocus: handleFocus,
+                      placeholder: "请输入你的回复（80字以内）",
+                      "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => inputValue.value = $event),
+                      onBlur: handleBlur,
+                      "auto-height": "",
+                      "placeholder-class": "placeholder"
+                    }, null, 40, ["focus"]), [
+                      [vue.vModelText, inputValue.value]
+                    ]),
+                    vue.createElementVNode("view", { class: "right" }, [
+                      vue.createElementVNode("image", {
+                        src: `${emojiShow.value ? "../../../static/new/btn_wenzi@2x.png" : "../../../static/new/btn_biaoqing@2x.png"}`,
+                        onClick: vue.withModifiers(handleHideKeyBoard, ["stop"])
+                      }, null, 8, ["src", "onClick"]),
+                      vue.createElementVNode("button", {
+                        class: vue.normalizeClass(["submitBtn", !inputValue.value.length ? "disabled" : ""]),
+                        disabled: !inputValue.value.length,
+                        onTouchend: vue.withModifiers(handleSubmit, ["prevent"])
+                      }, " 提交 ", 42, ["disabled", "onTouchend"])
+                    ])
+                  ],
+                  4
+                  /* STYLE */
+                ),
+                vue.createElementVNode(
+                  "view",
+                  {
+                    class: "emoji-picker",
+                    style: vue.normalizeStyle({ height: `${keyBoardHeight.value}px` })
+                  },
+                  [
+                    (vue.openBlock(true), vue.createElementBlock(
+                      vue.Fragment,
+                      null,
+                      vue.renderList(vue.unref(ImgList), (item, key) => {
+                        return vue.openBlock(), vue.createElementBlock("view", {
+                          key,
+                          class: "emoji-picker-item",
+                          onClick: ($event) => handleClickEmoji(item)
+                        }, [
+                          vue.createTextVNode(
+                            vue.toDisplayString(item) + " ",
+                            1
+                            /* TEXT */
+                          ),
+                          vue.createCommentVNode(' <image :src="item.src" class="emoji-icon"></image\r\n        > '),
+                          vue.createCommentVNode(" <view></view> ")
+                        ], 8, ["onClick"]);
+                      }),
+                      128
+                      /* KEYED_FRAGMENT */
+                    ))
                   ],
                   4
                   /* STYLE */
@@ -15081,6 +15222,7 @@ if (uni.restoreGlobal) {
         getOrderStatusNumFunc();
       });
       const handleLoad = () => {
+        formatAppLog("log", "at pages/evaluate/index.vue:83", "上拉加载");
         if (isHaveMore.value) {
           getListData(
             tabBars[users.tabIndex].value,
@@ -15243,6 +15385,8 @@ if (uni.restoreGlobal) {
         //服务范围城市名称
         tabIndex: 0,
         //储存当前触发的tab值
+        keyBoardHeight: 0,
+        //记录键盘高度
         userBase: {},
         // 用户信息
         pages: 0,
@@ -15320,6 +15464,9 @@ if (uni.restoreGlobal) {
       };
     },
     mutations: {
+      setKeyBoardHeight(state, provider) {
+        state.keyBoardHeight = provider;
+      },
       // 定义mutations，用于同步修改状态
       setLocation(state, provider) {
         state.location = provider;

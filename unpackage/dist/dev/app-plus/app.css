@@ -2955,11 +2955,6 @@ body {
 .uni-textarea-placeholder {
   font-size: var(--font-size-14) !important;
 }
- uni-textarea {
-  height: 7.8125rem !important;
-  width: auto !important;
-  text-align: justify;
-}
  .addressCon {
   position: relative;
 }

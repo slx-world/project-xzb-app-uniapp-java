@@ -1497,11 +1497,6 @@ body[data-v-10597487] {
 .uni-textarea-placeholder[data-v-10597487] {
   font-size: var(--font-size-14) !important;
 }
-[data-v-10597487] uni-textarea {
-  height: 7.8125rem !important;
-  width: auto !important;
-  text-align: justify;
-}
 [data-v-10597487] .addressCon {
   position: relative;
 }

@@ -80,7 +80,7 @@ onShow(() => {
 });
 //上拉加载
 const handleLoad = () => {
-  // console.log(users.tabIndex, '上拉加载');
+  console.log('上拉加载');
   if (isHaveMore.value) {
     getListData(
       tabBars[users.tabIndex].value,

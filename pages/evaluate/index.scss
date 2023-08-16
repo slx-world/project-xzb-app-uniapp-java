@@ -140,19 +140,66 @@
         // height: 100%;
         .content{
           background-color: var(--neutral-color-white);
-          height: 132rpx;
+          // height: 132rpx;
+          padding: 26rpx;
           display: flex;
           align-items: center;
           margin-bottom: 0rpx;
           position: fixed;
           bottom: 0rpx;
           width: 100%;
+          .placeholder{
+            color: red;
+          }
           .uni-input{
             background-color:var(--color-gray-f8) ;
             border-radius: 18rpx;
-            height: 80rpx;
             width: 466rpx;
-            margin-left: 30rpx;
+            padding-left: 20rpx;
+            padding-top: 14rpx;
+            padding-bottom: 14rpx;
+          }
+          .right{
+            display: flex;
+            image{
+              height:72rpx ;
+              width: 72rpx;
+              margin-left: 10rpx;
+            }
+            .disabled{
+              background-color:#FFDBDC ;
+            }
+            .submitBtn{
+              margin-left: 10rpx;
+              width: 132rpx;
+              height: 80rpx;
+              background: #F74346;
+              border-radius: 44rpx;
+              line-height: 80rpx;
+              text-align: center;
+              font-size: 28rpx;
+              color: var(--neutral-color-white);
+            }
+          }
+   
+        }
+        .emoji-picker{
+          position: fixed;
+          bottom: 0rpx;
+          display: flex;
+          flex-wrap: wrap;
+          width: 100%;
+          z-index: 999;
+          background-color: #D0D2D6;
+          .emoji-picker-item {
+            margin: 4px;
+            font-size: 60rpx;
+            cursor: pointer;
+            // .emoji-icon {
+            //   width: 64rpx;
+            //   height: 64rpx;
+            //   user-select: none;
+            // }
           }
         }
       }
@@ -160,6 +207,6 @@
   }
   .scrollList{
     // margin-top: 88rpx;
-    height: calc(100vh - 150rpx);
+    height: calc(100vh - 250rpx);
   }
 }

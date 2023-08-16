@@ -11,6 +11,7 @@ export default {
       cityCode: '',//服务范围城市编码
       cityName: '请选择',//服务范围城市名称
       tabIndex: 0, //储存当前触发的tab值
+      keyBoardHeight: 0,//记录键盘高度
 
       userBase: {}, // 用户信息
       pages: 0,//总页数
@@ -51,9 +52,13 @@ export default {
       searchText: '',//储存需要搜索的文本
       isSearchClear: false,//是否清空搜索内容
       isNew: false,//是否从消息页的取件、派件进的详情
+
     }
   },
   mutations: {
+    setKeyBoardHeight (state, provider) {
+      state.keyBoardHeight = provider;
+    },
     // 定义mutations，用于同步修改状态
     setLocation (state, provider) {
       state.location = provider
