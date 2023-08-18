@@ -262,8 +262,8 @@
                     "target" : "http://xzb-api-test.itheima.net",
                     "changeOrigin" : true,
                     "secure" : false,
-                    "pathRewrite": {
-                      "^/api": ""
+                    "pathRewrite" : {
+                        "^/api" : ""
                     }
                 }
             },

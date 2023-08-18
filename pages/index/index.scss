@@ -58,6 +58,10 @@ uni-page-head,
   .rightBox{
     display: flex;
     align-items: center;
+    .serviceType,.distance{
+      display: flex;
+      align-items: center;
+    }
     .label{
       font-size: 28rpx;
       color: var(--color-gray-59);

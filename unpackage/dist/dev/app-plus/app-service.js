@@ -5635,6 +5635,7 @@ if (uni.restoreGlobal) {
     emits: ["handleCanScroll", "getList", "tabChange"],
     setup(__props, { emit }) {
       const props = __props;
+      const type = vue.ref("");
       const status = vue.ref(0);
       const isOpen = vue.ref(false);
       let serviceType = vue.reactive({
@@ -5645,9 +5646,40 @@ if (uni.restoreGlobal) {
         status.value = val;
         emit("tabChange", status.value, activeType.value);
       };
-      const handleOpen = () => {
+      const handleOpen = (val) => {
         isOpen.value = !isOpen.value;
-        formatAppLog("log", "at pages/index/components/homeFilter.vue:70", isOpen.value, "isOpen.value");
+        type.value = val;
+        if (val === "distance") {
+          serviceType.data = [
+            {
+              id: "1",
+              name: "全部"
+            },
+            {
+              id: "2",
+              name: "3公里内"
+            },
+            {
+              id: "3",
+              name: "5公里内"
+            },
+            {
+              id: "4",
+              name: "10公里内"
+            },
+            {
+              id: "5",
+              name: "20公里内"
+            },
+            {
+              id: "6",
+              name: "50公里内"
+            }
+          ];
+        } else {
+          serviceType.data = [{ id: "", name: "全部" }].concat(props.homeFilterList);
+        }
+        formatAppLog("log", "at pages/index/components/homeFilter.vue:112", isOpen.value, "isOpen.value");
         emit("handleCanScroll", isOpen.value);
       };
       const handleReset = () => {
@@ -5700,17 +5732,32 @@ if (uni.restoreGlobal) {
               )
             ]),
             vue.createElementVNode("view", { class: "rightBox" }, [
-              vue.createElementVNode("view", { class: "label" }, "服务类型"),
-              vue.createElementVNode(
-                "view",
-                {
-                  class: vue.normalizeClass(["icon", isOpen.value ? "up" : "down"]),
-                  onClick: handleOpen
-                },
-                null,
-                2
-                /* CLASS */
-              )
+              vue.createElementVNode("view", { class: "distance" }, [
+                vue.createElementVNode("view", { class: "label" }, "距离筛选"),
+                vue.createElementVNode(
+                  "view",
+                  {
+                    class: vue.normalizeClass(["icon", isOpen.value && type.value === "distance" ? "up" : "down"]),
+                    onClick: _cache[2] || (_cache[2] = ($event) => handleOpen("distance"))
+                  },
+                  null,
+                  2
+                  /* CLASS */
+                )
+              ]),
+              vue.createElementVNode("view", { class: "serviceType" }, [
+                vue.createElementVNode("view", { class: "label" }, "服务类型"),
+                vue.createElementVNode(
+                  "view",
+                  {
+                    class: vue.normalizeClass(["icon", isOpen.value && type.value === "serviceType" ? "up" : "down"]),
+                    onClick: _cache[3] || (_cache[3] = ($event) => handleOpen("serviceType"))
+                  },
+                  null,
+                  2
+                  /* CLASS */
+                )
+              ])
             ]),
             vue.withDirectives(vue.createElementVNode(
               "view",

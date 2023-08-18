@@ -12,11 +12,21 @@
       >
     </view>
     <view class="rightBox">
-      <view class="label">服务类型</view>
-      <view
-        class="icon"
-        :class="isOpen ? 'up' : 'down'"
-        @click="handleOpen"
+      <view class="distance">
+        <view class="label">距离筛选</view>
+        <view
+          class="icon"
+          :class="isOpen && type === 'distance' ? 'up' : 'down'"
+          @click="handleOpen('distance')"
+        ></view>
+      </view>
+      <view class="serviceType">
+        <view class="label">服务类型</view>
+        <view
+          class="icon"
+          :class="isOpen && type === 'serviceType' ? 'up' : 'down'"
+          @click="handleOpen('serviceType')"
+        ></view
       ></view>
     </view>
     <view class="filterPopup" v-show="isOpen">
@@ -54,6 +64,7 @@ const props = defineProps({
     default: () => [],
   },
 });
+const type = ref('');
 const status = ref(0);
 const isOpen = ref(false);
 let serviceType = reactive({
@@ -65,8 +76,39 @@ const handleClick = (val) => {
   status.value = val;
   emit('tabChange', status.value, activeType.value);
 };
-const handleOpen = () => {
+const handleOpen = (val) => {
   isOpen.value = !isOpen.value;
+  type.value = val;
+  if (val === 'distance') {
+    serviceType.data = [
+      {
+        id: '1',
+        name: '全部',
+      },
+      {
+        id: '2',
+        name: '3公里内',
+      },
+      {
+        id: '3',
+        name: '5公里内',
+      },
+      {
+        id: '4',
+        name: '10公里内',
+      },
+      {
+        id: '5',
+        name: '20公里内',
+      },
+      {
+        id: '6',
+        name: '50公里内',
+      },
+    ];
+  } else {
+    serviceType.data = [{ id: '', name: '全部' }].concat(props.homeFilterList);
+  }
   console.log(isOpen.value, 'isOpen.value');
   // if (!isOpen.value) {
   //   activeType.value = '';
