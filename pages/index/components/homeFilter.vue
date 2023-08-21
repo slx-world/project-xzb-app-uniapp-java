@@ -11,7 +11,7 @@
         >派单</view
       >
     </view>
-    <view class="rightBox">
+    <view class="rightBox" v-if="!status">
       <view class="distance">
         <view class="label">距离筛选</view>
         <view

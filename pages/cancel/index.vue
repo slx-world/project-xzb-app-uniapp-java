@@ -71,41 +71,59 @@ const handleSubmit = () => {
 const handleCancelSubmit = async () => {
   if (cancel.value) {
     // 网络慢的时候添加按钮loading
-    let times = setTimeout(() => {
-      uni.showLoading({
-        title: 'loading',
-      });
-    }, 500);
+    uni.showLoading({
+      title: 'loading',
+    });
+
     const params = {
       id: orderId.value,
       cancelReason: cancelData.filter((item) => item.value === cancel.value)[0]
         .label,
     };
-    await cancelOrder(params).then((res) => {
-      if (res.code === 200) {
-        // 操作成功后清除loading
-        setTimeout(function () {
-          uni.hideLoading();
-        }, 500);
-        clearTimeout(times);
-        if (from.value === 'list') {
-          goBack();
+    await cancelOrder(params)
+      .then((res) => {
+        if (res.code === 200) {
+          // 操作成功后清除loading
+          setTimeout(function () {
+            uni.hideLoading();
+          }, 500);
+          clearTimeout(times);
+          if (from.value === 'list') {
+            goBack();
+          } else {
+            uni.navigateTo({
+              url:
+                '/pages/orderInfo/index?id=' +
+                orderId.value +
+                '&type=' +
+                'info',
+            });
+          }
+          cancel.value = '';
+          orderId.value = '';
+
+          return uni.showToast({
+            title: '取消成功!',
+            duration: 1000,
+            icon: 'none',
+          });
         } else {
-          uni.navigateTo({
-            url:
-              '/pages/orderInfo/index?id=' + orderId.value + '&type=' + 'info',
+          uni.hideLoading();
+          return uni.showToast({
+            title: res.msg || '请求失败',
+            duration: 1000,
+            icon: 'none',
           });
         }
-        cancel.value = '';
-        orderId.value = '';
-
+      })
+      .catch((err) => {
+        uni.hideLoading();
         return uni.showToast({
-          title: '取消成功!',
+          title: err.msg || '请求失败',
           duration: 1000,
           icon: 'none',
         });
-      }
-    });
+      });
   } else {
     return uni.showToast({
       title: '请选择取消原因!',

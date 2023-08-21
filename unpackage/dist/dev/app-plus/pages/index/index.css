@@ -598,6 +598,30 @@
 }
 /* 水平间距 */
 /* 水平间距 */
+.uni-popup[data-v-4dd3c44b] {
+  position: fixed;
+  z-index: 99;
+}
+.uni-popup.top[data-v-4dd3c44b], .uni-popup.left[data-v-4dd3c44b], .uni-popup.right[data-v-4dd3c44b] {
+  top: 0;
+}
+.uni-popup .uni-popup__wrapper[data-v-4dd3c44b] {
+  display: block;
+  position: relative;
+  /* iphonex 等安全区设置，底部安全区适配 */
+}
+.uni-popup .uni-popup__wrapper.left[data-v-4dd3c44b], .uni-popup .uni-popup__wrapper.right[data-v-4dd3c44b] {
+  padding-top: 0;
+  flex: 1;
+}
+.fixforpc-z-index[data-v-4dd3c44b] {
+  z-index: 999;
+}
+.fixforpc-top[data-v-4dd3c44b] {
+  top: 0;
+}
+/* 水平间距 */
+/* 水平间距 */
 [data-v-5f714409]:root {
   --color-gray-8:#888888;
 	--color-gray-9:#999999;
@@ -641,6 +665,41 @@
   background-image: linear-gradient(0deg, #f8f8f8 0%, #f74346 50%);
   height: 10rem;
 }
+.navBox .dialog[data-v-5f714409] {
+  width: 17.375rem;
+  background-color: var(--neutral-color-white);
+  border-radius: 0.75rem;
+  position: relative;
+}
+.navBox .dialog .content[data-v-5f714409] {
+  text-align: center;
+  font-size: 0.875rem;
+  color: var(--color-black-19);
+  padding-top: 1.75rem;
+  padding-bottom: 1.1875rem;
+  padding-left: 1.03125rem;
+  padding-right: 1.03125rem;
+}
+.navBox .dialog .footer[data-v-5f714409] {
+  width: 100%;
+  font-size: 1rem;
+  color: var(--color-red-bg);
+  display: flex;
+  align-items: center;
+  height: 3.125rem;
+  border-top: 0.0625rem solid var(--color-gray-e8);
+}
+.navBox .dialog .footer .cancel[data-v-5f714409],
+.navBox .dialog .footer .toSet[data-v-5f714409] {
+  flex: 1;
+  text-align: center;
+  height: 100%;
+  line-height: 3.125rem;
+}
+.navBox .dialog .footer .cancel[data-v-5f714409] {
+  color: var(--color-black-19);
+  border-right: 0.0625rem solid var(--color-gray-e8);
+}
 .navBox .bg[data-v-5f714409] {
   background-image: url("../../static/new/img_baanner@2x.png");
   background-position: center;
@@ -655,6 +714,24 @@
   display: flex;
   justify-content: space-between;
   padding: 0 2.3125rem;
+  padding-left: 0.9375rem;
+}
+.navBox .baseSetting .location[data-v-5f714409] {
+  padding: 0.46875rem 0.625rem;
+  max-width: 5.625rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: center;
+  border-radius: 1.0625rem;
+  margin-top: 1.96875rem;
+  background-color: var(--neutral-color-white);
+}
+.navBox .baseSetting .location uni-image[data-v-5f714409] {
+  width: 1rem;
+  height: 1.125rem;
+  vertical-align: sub;
+  margin-right: 0.1875rem;
 }
 .navBox .baseSetting .item[data-v-5f714409] {
   text-align: center;
@@ -917,6 +994,9 @@ uni-page-head[data-v-538110be],
   font-size: 0.75rem;
   border-radius: 1rem;
 }
+.homeList .card .cardFooter .btn-box .btn-gray[data-v-538110be] {
+  margin-right: 0.625rem;
+}
 .homeList .card .cardFooter .robBtn[data-v-538110be] {
   font-size: 0.75rem;
   text-align: center;
@@ -934,30 +1014,6 @@ uni-page-head[data-v-538110be],
 .homeList .dialogImg[data-v-538110be] {
   width: 15.75rem;
   height: 15.75rem;
-}
-/* 水平间距 */
-/* 水平间距 */
-.uni-popup[data-v-4dd3c44b] {
-  position: fixed;
-  z-index: 99;
-}
-.uni-popup.top[data-v-4dd3c44b], .uni-popup.left[data-v-4dd3c44b], .uni-popup.right[data-v-4dd3c44b] {
-  top: 0;
-}
-.uni-popup .uni-popup__wrapper[data-v-4dd3c44b] {
-  display: block;
-  position: relative;
-  /* iphonex 等安全区设置，底部安全区适配 */
-}
-.uni-popup .uni-popup__wrapper.left[data-v-4dd3c44b], .uni-popup .uni-popup__wrapper.right[data-v-4dd3c44b] {
-  padding-top: 0;
-  flex: 1;
-}
-.fixforpc-z-index[data-v-4dd3c44b] {
-  z-index: 999;
-}
-.fixforpc-top[data-v-4dd3c44b] {
-  top: 0;
 }
 /* 水平间距 */
 /* 水平间距 */
@@ -1191,6 +1247,9 @@ uni-page-head[data-v-5d962223],
   text-align: center;
   font-size: 0.75rem;
   border-radius: 1rem;
+}
+.homeList .card .cardFooter .btn-box .btn-gray[data-v-5d962223] {
+  margin-right: 0.625rem;
 }
 .homeList .card .cardFooter .robBtn[data-v-5d962223] {
   font-size: 0.75rem;
@@ -1442,6 +1501,9 @@ uni-page-head[data-v-1cf27b2a],
   text-align: center;
   font-size: 0.75rem;
   border-radius: 1rem;
+}
+.homeList .card .cardFooter .btn-box .btn-gray[data-v-1cf27b2a] {
+  margin-right: 0.625rem;
 }
 .homeList .card .cardFooter .robBtn[data-v-1cf27b2a] {
   font-size: 0.75rem;

@@ -13,10 +13,7 @@ export const orderStatus = [
   },
   {
     value: 4,
-    label: '已取消'
-  }, {
-    value: 5,
-    label: '被退单'
+    label: '已关闭'
   },
 ]
 // 订单筛选状态

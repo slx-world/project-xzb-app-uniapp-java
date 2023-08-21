@@ -18,7 +18,8 @@
         color: var(--color-gray-59);
       }
       .content{
-        display: inline-block;
+        align-items: center;
+        display: flex;
         float: right;
         white-space: nowrap;
         position: relative;

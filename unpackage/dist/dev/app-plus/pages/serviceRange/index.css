@@ -620,7 +620,8 @@
   color: var(--color-gray-59);
 }
 .serviceRange .address .city .content[data-v-a953d043], .serviceRange .address .range .content[data-v-a953d043] {
-  display: inline-block;
+  align-items: center;
+  display: flex;
   float: right;
   white-space: nowrap;
   position: relative;

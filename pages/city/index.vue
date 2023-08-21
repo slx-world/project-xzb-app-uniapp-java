@@ -24,10 +24,10 @@
             </view>
           </view>
         </view>
-        <view class="hot grey"> 热门城市 </view>
+        <view class="hot grey" v-if="hotCity.length"> 热门城市 </view>
         <!-- 最近模块 -->
         <!-- 热门 -->
-        <view class="position" v-if="hotCity">
+        <view class="position hotCity" v-if="hotCity.length">
           <view class="position_city position_city_hot">
             <view
               :class="
@@ -43,7 +43,7 @@
             </view>
           </view>
         </view>
-        <view class="grey"> 小智帮已开通的城市 </view>
+        <view class="grey"> 已开通的城市 </view>
       </view>
 
       <!-- 城市列表 -->
@@ -188,6 +188,16 @@ onMounted(() => {
   getOpenCity().then((res) => {
     list.value = res.data;
     console.log(res, 'getOpenCity');
+    let arr = [];
+    hotCity.value.map((item) => {
+      list.value.map((item1) => {
+        if (item1.cityCode === item.cityCode) {
+          arr.push(item);
+        }
+      });
+    });
+    hotCity.value = arr;
+    console.log(arr, 'arr');
   });
 });
 // 定位

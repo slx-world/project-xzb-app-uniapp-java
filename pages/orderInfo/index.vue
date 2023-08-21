@@ -64,7 +64,7 @@
       </view>
       <view class="fee">
         服务费用<text class="feeText"
-          >￥{{ info.data.serveInfo.serveFee }}</text
+          >￥{{ (info.data.serveInfo.serveFee * 0.997 * 0.3).toFixed(2) }}</text
         >
       </view>
     </view>
@@ -97,7 +97,7 @@
       </view>
     </view>
     <!-- 退款信息 -->
-    <view class="orderInfo card" v-if="info.data.serveStatus === 5">
+    <view class="orderInfo card" v-if="info.data.serveStatus === 4">
       <view class="title">退款信息</view>
       <view class="orderNum info first">
         <text class="label">退款时间</text>
@@ -107,10 +107,10 @@
         <text class="label">退款原因</text>
         <text class="content">{{ info.data.cancelInfo.cancelReason }}</text>
       </view>
-      <view class="orderTime info">
+      <!-- <view class="orderTime info">
         <text class="label">退款金额</text>
         <text class="content">￥{{ info.data.cancelInfo.refundAmount }}</text>
-      </view>
+      </view> -->
     </view>
     <!-- 服务记录 -->
     <view
@@ -174,8 +174,8 @@
     </view>
     <view
       class="footer"
-      :class="[4, 5].includes(info.data.serveStatus) ? 'end' : ''"
-      v-if="[1, 2, 4, 5].includes(info.data.serveStatus)"
+      :class="[4].includes(info.data.serveStatus) ? 'end' : ''"
+      v-if="[1, 2, 4].includes(info.data.serveStatus)"
     >
       <view
         class="btn-gray"
@@ -191,7 +191,7 @@
       >
       <view
         class="btn-gray"
-        v-if="[4, 5].includes(info.data.serveStatus)"
+        v-if="[4].includes(info.data.serveStatus)"
         @click="handleDelete(info.data.id)"
         >删除订单</view
       >

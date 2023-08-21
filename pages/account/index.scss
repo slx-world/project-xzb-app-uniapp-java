@@ -1,26 +1,43 @@
-.auth{
+.account{
   background-color: var(--neutral-color-white);
   min-height: 100vh;
   // padding: 0 30rpx;
   // padding-bottom: 1a6rpx;
   .idCard{
-    margin-top: 50rpx;
+    margin-top: 20rpx;
+  }
+  .bankAccount{
+    .label{
+      margin-right: 40rpx!important;
+    }
   }
   .name,.idCard,.idCardPhoto,.data{
     display: flex;
     align-items: center;
     border-bottom: 2rpx solid var(--color-gray-e8);
-    padding-bottom: 30rpx;
+    padding-bottom: 10rpx;
     // margin: 0 30rpx;
     margin-left: 30rpx;
-    margin-right: 30rpx;
+    padding-right: 30rpx;
     ::v-deep .uni-easyinput__content{
       border:none
     }
+    .citySelect{
+      width: 100%;
+      height: 72rpx;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      image{
+        width: 34rpx;
+        height: 32rpx;
+      }
+    }
     .label{
-      margin-right: 40rpx;
+      margin-right: 100rpx;
       font-size: 32rpx;
       color: var(--color-black-19);
+      white-space: nowrap;
     }
     .label::before{
       content: '*';
@@ -51,7 +68,7 @@
       // width: 100%;
       .photoItem{
         flex: 1;
-        margin-left: 69rpx;
+        margin-left: 19rpx;
         ::v-deep .uni-file-picker{
           .icon-add{
             background-color: var(--color-gray-96);
@@ -69,6 +86,7 @@
           height: 200rpx;
           width: 200rpx;
           margin: 0px;
+          border-radius: 8rpx!important;
         }
         ::v-deep .file-count{
           display: none;
@@ -98,6 +116,9 @@
   }
   .data{
     padding-bottom: 44rpx;
+    .label{
+      margin-bottom: 32rpx;
+    }
     .content{
       .photoLabel{
         text-align: left!important;
@@ -107,8 +128,8 @@
   }
   .footer {
     width: 100%;
-    // position: fixed;
-    // bottom: 0;
+    position: fixed;
+    bottom: 0;
     height: 186rpx;
     background: #ffffff;
     box-shadow: 0 0 12rpx 0 #0000001a;

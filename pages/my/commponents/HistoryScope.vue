@@ -5,6 +5,10 @@
         <text>我的评价</text>
         <text><icon class="nextIcon"></icon></text>
       </view>
+      <view class="item" @click="handleAccount">
+        <text>账户设置</text>
+        <text><icon class="nextIcon"></icon></text>
+      </view>
     </view>
   </view>
 </template>
@@ -12,7 +16,13 @@
 import { useStore } from 'vuex';
 const store = useStore(); //vuex获取储存数据
 // ------定义方法------
-// 历史派件
+// 账户设置
+const handleAccount = () => {
+  uni.navigateTo({
+    url: '/pages/account/index',
+  });
+};
+// 我的评价
 const handleHistory = () => {
   // store.commit('user/setTabIndex', 0);
   // store.commit('user/setTaskStatus', -1);
