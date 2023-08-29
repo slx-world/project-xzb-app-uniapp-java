@@ -64,7 +64,9 @@
       </view>
       <view class="fee">
         服务费用<text class="feeText"
-          >￥{{ (info.data.serveInfo.serveFee * 0.997 * 0.3).toFixed(2) }}</text
+          >￥{{
+            (Number(info.data.ordersInfo.ordersAmount) * 0.997 * 0.3).toFixed(2)
+          }}</text
         >
       </view>
     </view>
@@ -73,7 +75,7 @@
       <view class="title">订单信息</view>
       <view class="orderNum info first">
         <text class="label">订单编号</text>
-        <text class="content">{{ info.data.ordersInfo.serveCode }}</text>
+        <text class="content">{{ info.data.ordersInfo.ordersId }}</text>
       </view>
       <view class="orderTime info">
         <text class="label">预约时间</text>

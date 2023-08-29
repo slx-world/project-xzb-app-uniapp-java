@@ -1,6 +1,3 @@
-import {
-  getUserInfo
-} from '@/pages/api/user.js';
 // 用户信息模块(局部模块)
 export default {
   namespaced: true, // 开启命名空间
@@ -229,17 +226,6 @@ export default {
     }
   },
   actions: {
-    // 获取用户信息
-    async GetUsersInfo ({ state, commit }, payload) {
-      if (state.token !== '') {
-        await getUserInfo().then((res) => {
-          // 存储用户信息
-          uni.setStorageSync('userInfo', res.data)
-          commit('setUserInfo', res.data)
-        })
-
-      }
-    }
 
   },
   getters: {

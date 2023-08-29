@@ -259,19 +259,19 @@
         "sdkConfigs" : {
             "maps" : {}
         },
-        "devServer" : {
-            "proxy" : {
-                "/api" : {
-                    "target" : "http://xzb-api-test.itheima.net",
-                    "changeOrigin" : true,
-                    "secure" : false,
-                    "pathRewrite" : {
-                        "^/api" : ""
-                    }
-                }
-            },
-            "https" : false,
-            "port" : 8080
-        }
+        // "devServer" : {
+        //     "proxy" : {
+        //         "/api" : {
+        //             "target" : "http://xzb-api-test.itheima.net",
+        //             "changeOrigin" : true,
+        //             "secure" : false,
+        //             "pathRewrite" : {
+        //                 "^/api" : ""
+        //             }
+        //         }
+        //     },
+        //     "https" : false,
+        //     "port" : 8080
+        // }
     }
 }

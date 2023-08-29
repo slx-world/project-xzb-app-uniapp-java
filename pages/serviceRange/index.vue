@@ -123,6 +123,7 @@ const handleSubmit = () => {
     location:
       String(users.location.longitude) + ',' + String(users.location.latitude),
     intentionScope: users.address,
+    cityName: users.cityName,
   }).then((res) => {
     uni.showToast({
       title: '保存成功',

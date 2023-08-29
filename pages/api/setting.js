@@ -6,7 +6,7 @@ import {
 //获取配置状态
 export const getUserSetting = (params) =>
   request({
-    url: `/serve-settings/status`,
+    url: `/customer/worker/serve-settings/status`,
     method: 'get',
     params
   })
@@ -14,7 +14,7 @@ export const getUserSetting = (params) =>
 //修改接单设置
 export const setPickUpStatus = (params) =>
   request({
-    url: `/serve-settings/pick-up`,
+    url: `/customer/worker/serve-settings/pick-up`,
     method: 'put',
     params
   })
@@ -22,49 +22,49 @@ export const setPickUpStatus = (params) =>
 //获取服务分类
 export const getServiceClassify = (params) =>
   request({
-    url: `/serve-skill/listServeType`,
+    url: `/customer/worker/serve-skill/listServeType`,
     method: 'get',
     params
   })
 //获取服务分类下的服务技能
 export const getServiceSkillByClassify = (params) =>
   request({
-    url: `/serve-skill/listByServeType`,
+    url: `/customer/worker/serve-skill/listByServeType`,
     method: 'get',
     params
   })
 //获取服务技能及其下的服务技能所有数据
 export const getServiceSkillAll = (params) =>
   request({
-    url: `/serve-skill/category`,
+    url: `/customer/worker/serve-skill/category`,
     method: 'get',
     params
   })
 //修改服务技能
 export const updateServiceSkill = (params) =>
   request({
-    url: `/serve-skill/batchUpsert`,
+    url: `/customer/worker/serve-skill/batchUpsert`,
     method: 'post',
     params
   })
 //获取配置详细信息
 export const getSettingInfo = (params) =>
   request({
-    url: `/serve-settings`,
+    url: `/customer/worker/serve-settings`,
     method: 'get',
     params
   })
 //获取开通城市列表
 export const getOpenCity = (params) =>
   request({
-    url: `/region/listSimple`,
+    url: `/foundations/worker/region/activeRegionList`,
     method: 'get',
     params
   })
 //修改服务范围
 export const setServiceSetting = (params) =>
   request({
-    url: `/serve-settings/serve-scope`,
+    url: `/customer/worker/serve-settings/serve-scope`,
     method: 'put',
     params
   })

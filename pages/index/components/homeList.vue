@@ -28,7 +28,7 @@
       <view class="cardFooter">
         <view class="price">
           <text class="price-label">服务费用</text>
-          ￥{{ (item.serveFee * 0.997 * 0.3).toFixed(2) }}
+          ￥{{ (Number(item.ordersAmount) * 0.997 * 0.3).toFixed(2) }}
         </view>
         <view
           class="robBtn btn-red"

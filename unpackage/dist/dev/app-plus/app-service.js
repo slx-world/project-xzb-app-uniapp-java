@@ -4704,7 +4704,7 @@ if (uni.restoreGlobal) {
   };
   Object.defineProperties(Store.prototype, prototypeAccessors);
   function request({ url = "", params = {}, method = "GET" }) {
-    let baseUrl = "http://xzb-api-test.itheima.net";
+    let baseUrl = "http://172.17.2.58/api";
     const token = uni.getStorageSync("token");
     let header = {
       "Access-Control-Allow-Origin": "*",
@@ -4757,52 +4757,47 @@ if (uni.restoreGlobal) {
     return requestRes;
   }
   const phoneLogins = (params) => request({
-    url: `/login/worker`,
+    url: `/customer/open/login/worker`,
     method: "post",
     params
   });
   const getsmsCode = (params) => request({
-    url: `/sms-code/send`,
+    url: `/customer/open/sms-code/send`,
     method: "post",
     params
   });
-  const getUserInfo = (params) => request({
-    url: `/users/get`,
-    method: "get",
-    params
-  });
   const getUserSetting = (params) => request({
-    url: `/serve-settings/status`,
+    url: `/customer/worker/serve-settings/status`,
     method: "get",
     params
   });
   const setPickUpStatus = (params) => request({
-    url: `/serve-settings/pick-up`,
+    url: `/customer/worker/serve-settings/pick-up`,
     method: "put",
     params
   });
   const getServiceSkillAll = (params) => request({
-    url: `/serve-skill/category`,
+    url: `/customer/worker/serve-skill/category`,
     method: "get",
     params
   });
   const updateServiceSkill = (params) => request({
-    url: `/serve-skill/batchUpsert`,
+    url: `/customer/worker/serve-skill/batchUpsert`,
     method: "post",
     params
   });
   const getSettingInfo = (params) => request({
-    url: `/serve-settings`,
+    url: `/customer/worker/serve-settings`,
     method: "get",
     params
   });
   const getOpenCity = (params) => request({
-    url: `/region/listSimple`,
+    url: `/foundations/worker/region/activeRegionList`,
     method: "get",
     params
   });
   const setServiceSetting = (params) => request({
-    url: `/serve-settings/serve-scope`,
+    url: `/customer/worker/serve-settings/serve-scope`,
     method: "put",
     params
   });
@@ -5354,65 +5349,65 @@ if (uni.restoreGlobal) {
   }
   const __easycom_0$2 = /* @__PURE__ */ _export_sfc(_sfc_main$z, [["render", _sfc_render$5], ["__scopeId", "data-v-26544265"], ["__file", "E:/project/小智帮/project-xzb-app-uniapp-java（服务端）/uni_modules/uni-nav-bar/components/uni-nav-bar/uni-nav-bar.vue"]]);
   const getDispatchOrder = (params) => request({
-    url: `/orders-dispatch/queryForList?serveTypeId=${params}`,
+    url: `/orders-dispatch/worker/queryForList?serveTypeId=${params}`,
     method: "get"
   });
   const rejectOrder = (params) => request({
-    url: `/orders-dispatch/reject`,
+    url: `/orders-dispatch/worker/reject`,
     method: "post",
     params
   });
   const receiveOrder = (params) => request({
-    url: `/orders-dispatch/receive`,
+    url: `/orders-dispatch/worker/receive`,
     method: "post",
     params
   });
   const getDispatchOrderInfo = (params) => request({
-    url: `/orders-dispatch/${params}`,
+    url: `/orders-dispatch/worker/${params}`,
     method: "get"
   });
   const getRobOrder = (params) => request({
-    url: params ? `/orders-seize/?serveTypeId=${params}` : "/orders-seize/",
+    url: params ? `/orders-seize/worker?serveTypeId=${params}` : "/orders-seize/worker",
     method: "get"
   });
   const getHomeFilter = () => request({
-    url: `/serve-type/simpleList`,
+    url: `/foundations/operation/serve-type/queryServeTypeListByActiveStatus`,
     method: "get"
   });
   const robOrder = (params) => request({
-    url: `/orders-seize/`,
+    url: `/orders-seize/worker`,
     method: "post",
     params
   });
   const getOrder = (params, id) => request({
-    url: params ? `/orders-serve/queryForList?serveStatus=${params}&id=` + (id ? id : "") : `/orders-serve/queryForList?id=${id ? id : ""}`,
+    url: params ? `/orders-manager/worker/queryForList?serveStatus=${params}&id=` + (id ? id : "") : `/orders-manager/worker/queryForList?id=${id ? id : ""}`,
     method: "get"
   });
   const deleteOrder = (params) => request({
-    url: `/orders-serve/serve/${params}`,
+    url: `/orders-manager/worker/serve/${params}`,
     method: "delete"
   });
   const getOrderInfo = (params) => request({
-    url: `/orders-serve/${params}`,
+    url: `/orders-manager/worker/${params}`,
     method: "get"
   });
   const cancelOrder = (params) => request({
-    url: `/orders-serve/cancel`,
+    url: `/orders-manager/worker/cancel`,
     method: "post",
     params
   });
   const startServe = (params) => request({
-    url: `/orders-serve/start`,
+    url: `/orders-manager/worker/start`,
     method: "post",
     params
   });
   const finishServe = (params) => request({
-    url: `/orders-serve/finish`,
+    url: `/orders-manager/worker/finish`,
     method: "post",
     params
   });
   const getOrderStatusNum = (params) => request({
-    url: `/orders-serve/status/num`,
+    url: `/orders-manager/worker/status/num`,
     method: "get"
   });
   const _sfc_main$y = {
@@ -6061,7 +6056,7 @@ if (uni.restoreGlobal) {
                   vue.createElementVNode("view", { class: "price" }, [
                     vue.createElementVNode("text", { class: "price-label" }, "服务费用"),
                     vue.createTextVNode(
-                      " ￥" + vue.toDisplayString((item.serveFee * 0.997 * 0.3).toFixed(2)),
+                      " ￥" + vue.toDisplayString((Number(item.ordersAmount) * 0.997 * 0.3).toFixed(2)),
                       1
                       /* TEXT */
                     )
@@ -6598,7 +6593,8 @@ if (uni.restoreGlobal) {
         setServiceSetting({
           cityCode: users.cityCode,
           location: String(users.location.longitude) + "," + String(users.location.latitude),
-          intentionScope: users.address
+          intentionScope: users.address,
+          cityName: users.cityName
         }).then((res) => {
           uni.showToast({
             title: "保存成功",
@@ -9526,7 +9522,7 @@ if (uni.restoreGlobal) {
       });
       let tabIndex = vue.ref(users.tabIndex ? users.tabIndex : 0);
       onLoad((options) => {
-        formatAppLog("log", "at pages/orderInfo/index.vue:275", options, "options");
+        formatAppLog("log", "at pages/orderInfo/index.vue:277", options, "options");
         type.value = options.type;
         getOrderInfoFunc(options.id);
       });
@@ -9541,10 +9537,10 @@ if (uni.restoreGlobal) {
       const getOrderInfoFunc = (id) => {
         type.value === "dispatch" ? getDispatchOrderInfo(id).then((res) => {
           info.data = res.data;
-          formatAppLog("log", "at pages/orderInfo/index.vue:291", res.data, "获取派单订单详情");
+          formatAppLog("log", "at pages/orderInfo/index.vue:293", res.data, "获取派单订单详情");
         }) : getOrderInfo(id).then((res) => {
           info.data = res.data;
-          formatAppLog("log", "at pages/orderInfo/index.vue:295", res.data, "获取订单详情");
+          formatAppLog("log", "at pages/orderInfo/index.vue:297", res.data, "获取订单详情");
         });
       };
       const changeTab = (index) => {
@@ -9703,7 +9699,7 @@ if (uni.restoreGlobal) {
               vue.createElementVNode(
                 "text",
                 { class: "feeText" },
-                "￥" + vue.toDisplayString((vue.unref(info).data.serveInfo.serveFee * 0.997 * 0.3).toFixed(2)),
+                "￥" + vue.toDisplayString((Number(vue.unref(info).data.ordersInfo.ordersAmount) * 0.997 * 0.3).toFixed(2)),
                 1
                 /* TEXT */
               )
@@ -9717,7 +9713,7 @@ if (uni.restoreGlobal) {
               vue.createElementVNode(
                 "text",
                 { class: "content" },
-                vue.toDisplayString(vue.unref(info).data.ordersInfo.serveCode),
+                vue.toDisplayString(vue.unref(info).data.ordersInfo.ordersId),
                 1
                 /* TEXT */
               )
@@ -9945,6 +9941,7 @@ if (uni.restoreGlobal) {
             cancelReason: cancelData.filter((item) => item.value === cancel.value)[0].label
           };
           await cancelOrder(params).then((res) => {
+            formatAppLog("log", "at pages/cancel/index.vue:85", res, "fuckkkkkk");
             if (res.code === 200) {
               setTimeout(function() {
                 uni.hideLoading();
@@ -14335,7 +14332,7 @@ if (uni.restoreGlobal) {
         const promises = fileList.value.map((item) => {
           return new Promise((resolve, reject) => {
             uni.uploadFile({
-              url: "http://172.17.2.58/api",
+              url: "http://172.17.2.58/api/publics/storage/upload",
               files: [
                 {
                   name: "file",
@@ -14425,6 +14422,13 @@ if (uni.restoreGlobal) {
                 icon: "none"
               });
             }
+          }).catch((err) => {
+            uni.hideLoading();
+            uni.showToast({
+              title: "接口提交失败!",
+              duration: 1e3,
+              icon: "none"
+            });
           });
         } else {
           finishServe(finishParams).then((res) => {
@@ -14440,11 +14444,11 @@ if (uni.restoreGlobal) {
             }
           });
         }
-        formatAppLog("log", "at pages/serveRecord/index.vue:183", uploadedImages, "上传后的图片链接数组");
+        formatAppLog("log", "at pages/serveRecord/index.vue:192", uploadedImages, "上传后的图片链接数组");
       };
       const handleInput = (e2) => {
         remark.value = e2.detail.value;
-        formatAppLog("log", "at pages/serveRecord/index.vue:187", e2.detail.value, "-----");
+        formatAppLog("log", "at pages/serveRecord/index.vue:196", e2.detail.value, "-----");
       };
       const goBack = () => {
         uni.navigateBack();
@@ -31043,17 +31047,7 @@ if (uni.restoreGlobal) {
         state.isNew = provider;
       }
     },
-    actions: {
-      // 获取用户信息
-      async GetUsersInfo({ state, commit }, payload) {
-        if (state.token !== "") {
-          await getUserInfo().then((res) => {
-            uni.setStorageSync("userInfo", res.data);
-            commit("setUserInfo", res.data);
-          });
-        }
-      }
-    },
+    actions: {},
     getters: {}
   };
   const store = createStore({

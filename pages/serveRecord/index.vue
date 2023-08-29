@@ -68,7 +68,7 @@ const uploadImage = async () => {
   const promises = fileList.value.map((item) => {
     return new Promise((resolve, reject) => {
       uni.uploadFile({
-        url: 'http://172.17.2.58/api',
+        url: 'http://172.17.2.58/api/publics/storage/upload',
         files: [
           {
             name: 'file',
@@ -151,19 +151,28 @@ const handleSubmit = async () => {
     fileList.value = [];
   };
   if (title.value === '开始服务') {
-    startServe(startParams).then((res) => {
-      uni.hideLoading();
-      if (res.code === 200) {
-        // 操作成功后清除loading
-        sameFunc();
-      } else {
+    startServe(startParams)
+      .then((res) => {
+        uni.hideLoading();
+        if (res.code === 200) {
+          // 操作成功后清除loading
+          sameFunc();
+        } else {
+          uni.showToast({
+            title: '接口提交失败!',
+            duration: 1000,
+            icon: 'none',
+          });
+        }
+      })
+      .catch((err) => {
+        uni.hideLoading();
         uni.showToast({
           title: '接口提交失败!',
           duration: 1000,
           icon: 'none',
         });
-      }
-    });
+      });
   } else {
     finishServe(finishParams).then((res) => {
       if (res.code === 200) {

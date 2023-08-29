@@ -82,6 +82,7 @@ const handleCancelSubmit = async () => {
     };
     await cancelOrder(params)
       .then((res) => {
+        console.log(res, 'fuckkkkkk');
         if (res.code === 200) {
           // 操作成功后清除loading
           setTimeout(function () {
