@@ -86,23 +86,23 @@ const handleOpen = (val) => {
         name: '全部',
       },
       {
-        id: '2',
+        id: '3',
         name: '3公里内',
       },
       {
-        id: '3',
+        id: '5',
         name: '5公里内',
       },
       {
-        id: '4',
+        id: '10',
         name: '10公里内',
       },
       {
-        id: '5',
+        id: '20',
         name: '20公里内',
       },
       {
-        id: '6',
+        id: '50',
         name: '50公里内',
       },
     ];
@@ -135,7 +135,7 @@ watch(
   () => props.homeFilterList,
   () => {
     serviceType.data = [{ id: '', name: '全部' }].concat(props.homeFilterList);
-    // console.log(serviceType.data, props.homeFilterList, '-fffffffffff');
+    // console.log (serviceType.data, props.homeFilterList, '-fffffffffff');
   }
 );
 </script>
