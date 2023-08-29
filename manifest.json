@@ -258,7 +258,7 @@
     "h5" : {
         "sdkConfigs" : {
             "maps" : {}
-        },
+        }
         // "devServer" : {
         //     "proxy" : {
         //         "/api" : {
