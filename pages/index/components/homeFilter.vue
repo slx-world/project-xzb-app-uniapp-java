@@ -82,27 +82,27 @@ const handleOpen = (val) => {
   if (val === 'distance') {
     serviceType.data = [
       {
-        id: '1',
+        id: 0,
         name: '全部',
       },
       {
-        id: '3',
+        id: 3,
         name: '3公里内',
       },
       {
-        id: '5',
+        id: 5,
         name: '5公里内',
       },
       {
-        id: '10',
+        id: 10,
         name: '10公里内',
       },
       {
-        id: '20',
+        id: 20,
         name: '20公里内',
       },
       {
-        id: '50',
+        id: 50,
         name: '50公里内',
       },
     ];

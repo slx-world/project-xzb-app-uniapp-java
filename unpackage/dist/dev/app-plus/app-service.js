@@ -5367,7 +5367,7 @@ if (uni.restoreGlobal) {
     method: "get"
   });
   const getRobOrder = (params) => request({
-    url: params ? `/orders-seize/worker?serveTypeId=${params}` : "/orders-seize/worker",
+    url: params ? `/orders-seize/worker?${typeof params === "number" ? "serveDistance" : "serveTypeId"}=${params}` : "/orders-seize/worker",
     method: "get"
   });
   const getHomeFilter = () => request({
@@ -5380,7 +5380,7 @@ if (uni.restoreGlobal) {
     params
   });
   const getOrder = (params, id) => request({
-    url: params ? `/orders-manager/worker/queryForList?serveStatus=${params}&id=` + (id ? id : "") : `/orders-manager/worker/queryForList?id=${id ? id : ""}`,
+    url: params ? `/orders-manager/worker/queryForList?serveStatus=${params}&sortBy=` + (id ? id : "") : `/orders-manager/worker/queryForList?sortBy=${id ? id : ""}`,
     method: "get"
   });
   const deleteOrder = (params) => request({
@@ -5755,27 +5755,27 @@ if (uni.restoreGlobal) {
         if (val === "distance") {
           serviceType.data = [
             {
-              id: "1",
+              id: 0,
               name: "全部"
             },
             {
-              id: "3",
+              id: 3,
               name: "3公里内"
             },
             {
-              id: "5",
+              id: 5,
               name: "5公里内"
             },
             {
-              id: "10",
+              id: 10,
               name: "10公里内"
             },
             {
-              id: "20",
+              id: 20,
               name: "20公里内"
             },
             {
-              id: "50",
+              id: 50,
               name: "50公里内"
             }
           ];
@@ -6145,7 +6145,7 @@ if (uni.restoreGlobal) {
         setTimeout(function() {
           uni.stopPullDownRefresh();
         }, 1e3);
-        formatAppLog("log", "at pages/index/index.vue:97", "refresh");
+        formatAppLog("log", "at pages/index/index.vue:98", "refresh");
       });
       const tabChange = (val, id) => {
         orderType.value = val;
@@ -6161,14 +6161,14 @@ if (uni.restoreGlobal) {
       };
       const getDispatchList = (params) => {
         getDispatchOrder(params).then((res) => {
-          homeList.data = res.data || [];
-          formatAppLog("log", "at pages/index/index.vue:115", res, homeList.data, "派单");
+          homeList.data = res.data.list || [];
+          formatAppLog("log", "at pages/index/index.vue:117", res, homeList.data, "派单");
         });
       };
       const getRobOrderList = (params) => {
         getRobOrder(params).then((res) => {
           homeList.data = res.data.ordersSeizes || [];
-          formatAppLog("log", "at pages/index/index.vue:122", res, homeList.data, "抢单");
+          formatAppLog("log", "at pages/index/index.vue:124", res, homeList.data, "抢单");
         });
       };
       const getHomeFilterList = () => {
@@ -6177,7 +6177,7 @@ if (uni.restoreGlobal) {
         });
       };
       const handleCanScroll = (val) => {
-        formatAppLog("log", "at pages/index/index.vue:134", val, "是否可滑动");
+        formatAppLog("log", "at pages/index/index.vue:136", val, "是否可滑动");
         icCanScroll.value = !val;
       };
       const handleScroll = (e2) => {
@@ -6215,24 +6215,24 @@ if (uni.restoreGlobal) {
               onHandleCanScroll: handleCanScroll,
               homeFilterList: vue.unref(homeFilterList).data,
               onGetList: getList,
-              onTabChange: tabChange
-            }, null, 8, ["homeFilterList"]),
+              onTabChange: tabChange,
+              fixTop: fixTop.value
+            }, null, 8, ["homeFilterList", "fixTop"]),
             vue.createCommentVNode(" 吸顶筛选 "),
-            vue.withDirectives(vue.createVNode(vue.unref(HomeFilter), {
-              fixTop: fixTop.value,
+            fixTop.value ? (vue.openBlock(), vue.createBlock(vue.unref(HomeFilter), {
+              key: 0,
               homeFilterList: vue.unref(homeFilterList).data,
-              onGetList: getList
-            }, null, 8, ["fixTop", "homeFilterList"]), [
-              [vue.vShow, fixTop.value]
-            ]),
+              onGetList: getList,
+              onTabChange: tabChange
+            }, null, 8, ["homeFilterList"])) : vue.createCommentVNode("v-if", true),
             vue.createCommentVNode(' <view class="uni-form-item uni-column">\r\n        <view class="title">控制键盘的input</view>\r\n        <input\r\n          class="uni-input"\r\n          ref="input1"\r\n          @input="hideKeyboard"\r\n          placeholder="输入123自动收起键盘"\r\n        />\r\n      </view> '),
             vue.createCommentVNode(" end "),
             vue.unref(homeList).data.length ? (vue.openBlock(), vue.createBlock(vue.unref(HomeList$2), {
-              key: 0,
+              key: 1,
               data: vue.unref(homeList).data,
               type: orderType.value,
               onRefresh: getList
-            }, null, 8, ["data", "type"])) : (vue.openBlock(), vue.createBlock(Empty, { key: 1 }))
+            }, null, 8, ["data", "type"])) : (vue.openBlock(), vue.createBlock(Empty, { key: 2 }))
           ], 40, ["scroll-y"]),
           vue.createCommentVNode(" footer "),
           vue.createVNode(UniFooter, { pagePath: "pages/index/index" }),
@@ -9382,7 +9382,7 @@ if (uni.restoreGlobal) {
         if (isHaveMore.value) {
           getListData(
             tabBars[users.tabIndex].value,
-            homeList.data[homeList.data.length - 1].id
+            homeList.data[homeList.data.length - 1].sortBy
           );
         }
       };
@@ -9987,11 +9987,9 @@ if (uni.restoreGlobal) {
       };
       const handleRejectSubmit = async () => {
         if (cancel.value) {
-          let times2 = setTimeout(() => {
-            uni.showLoading({
-              title: "loading"
-            });
-          }, 500);
+          uni.showLoading({
+            title: "loading"
+          });
           const params = {
             id: orderId.value,
             rejectReason: cancelData.filter((item) => item.value === cancel.value)[0].label
@@ -10001,7 +9999,7 @@ if (uni.restoreGlobal) {
               setTimeout(function() {
                 uni.hideLoading();
               }, 500);
-              clearTimeout(times2);
+              clearTimeout(times);
               if (from.value === "list" || from.value === "dispatch") {
                 goBack();
               } else {
@@ -10017,6 +10015,13 @@ if (uni.restoreGlobal) {
                 icon: "none"
               });
             }
+          }).catch((err) => {
+            uni.hideLoading();
+            return uni.showToast({
+              title: err.msg || "请求失败",
+              duration: 1e3,
+              icon: "none"
+            });
           });
         } else {
           return uni.showToast({
@@ -30188,6 +30193,7 @@ if (uni.restoreGlobal) {
         chooseType.value = "select";
       };
       const bindChange = (event) => {
+        formatAppLog("log", "at pages/account/components/selectArea.vue:158", event, "event");
         if (chooseType.value === "click")
           return;
         if (areaIndex.data[0] !== event.detail.value[0]) {

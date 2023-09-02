@@ -155,6 +155,7 @@ const handlePickStart = () => {
 
 //选择省市区
 const bindChange = (event) => {
+  console.log(event, 'event');
   if (chooseType.value === 'click') return;
   //二级地址获取
   if (areaIndex.data[0] !== event.detail.value[0]) {

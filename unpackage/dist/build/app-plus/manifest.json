@@ -78,6 +78,9 @@
           }
         }
       },
+      "splashscreen": {
+        "androidStyle": "common"
+      },
       "google": {
         "permissions": [
           "<uses-permission android:name=\"android.permission.ACCESS_CHECKIN_PROPERTIES\"/>",

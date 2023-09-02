@@ -31,7 +31,7 @@ export const getDispatchOrderInfo = (params) =>
 //获取抢单列表
 export const getRobOrder = (params) =>
   request({
-    url: params ? `/orders-seize/worker?serveTypeId=${params}` : '/orders-seize/worker',
+    url: params ? `/orders-seize/worker?${typeof params === 'number' ? 'serveDistance' : 'serveTypeId'}=${params}` : '/orders-seize/worker',
     method: 'get',
   })
 //获取首页服务类型筛选数据
@@ -50,7 +50,7 @@ export const robOrder = (params) =>
 //获取订单列表
 export const getOrder = (params, id) =>
   request({
-    url: params ? `/orders-manager/worker/queryForList?serveStatus=${params}&id=` + (id ? id : '') : `/orders-manager/worker/queryForList?id=${id ? id : ''}`,
+    url: params ? `/orders-manager/worker/queryForList?serveStatus=${params}&sortBy=` + (id ? id : '') : `/orders-manager/worker/queryForList?sortBy=${id ? id : ''}`,
     method: 'get',
   })
 //删除订单

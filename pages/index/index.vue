@@ -19,14 +19,15 @@
         :homeFilterList="homeFilterList.data"
         @getList="getList"
         @tabChange="tabChange"
+        :fixTop="fixTop"
       >
       </HomeFilter>
       <!-- 吸顶筛选 -->
       <HomeFilter
-        :fixTop="fixTop"
-        v-show="fixTop"
+        v-if="fixTop"
         :homeFilterList="homeFilterList.data"
         @getList="getList"
+        @tabChange="tabChange"
       >
       </HomeFilter>
       <!-- <view class="uni-form-item uni-column">
@@ -97,6 +98,7 @@ onPullDownRefresh(() => {
   console.log('refresh');
 });
 const tabChange = (val, id) => {
+  //val（0抢单，1派单）
   orderType.value = val;
   serveId.value = id;
   getList();
@@ -111,7 +113,7 @@ const getList = () => {
 //派单列表
 const getDispatchList = (params) => {
   getDispatchOrder(params).then((res) => {
-    homeList.data = res.data || [];
+    homeList.data = res.data.list || [];
     console.log(res, homeList.data, '派单');
   });
 };

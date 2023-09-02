@@ -85,7 +85,7 @@ const handleLoad = () => {
   if (isHaveMore.value) {
     getListData(
       tabBars[users.tabIndex].value,
-      homeList.data[homeList.data.length - 1].id
+      homeList.data[homeList.data.length - 1].sortBy
     );
   }
 
