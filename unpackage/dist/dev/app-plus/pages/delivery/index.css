@@ -1321,13 +1321,28 @@ body[data-v-10597487] {
   background: var(--neutral-color-white);
 }
 .tabScroll .uni-scroll-view-content[data-v-10597487] {
-  display: flex;
   line-height: 1.5625rem;
   font-weight: 600;
   font-size: 1rem;
   color: var(--color-black-19);
   letter-spacing: 0.36px;
+}
+.tabScroll .uni-scroll-view-content .order[data-v-10597487] {
+  display: flex;
   justify-content: space-between;
+}
+.tabScroll .uni-scroll-view-content .history[data-v-10597487] {
+  position: relative;
+  margin-right: 1.4375rem;
+}
+.tabScroll .uni-scroll-view-content .history .title[data-v-10597487] {
+  text-align: center;
+  font-size: 1.125rem;
+}
+.tabScroll .uni-scroll-view-content .history .toHistory[data-v-10597487] {
+  position: absolute;
+  right: 0;
+  bottom: 0;
 }
 .tabScroll .scroll-row-item[data-v-10597487] {
   margin-right: 1.4375rem;

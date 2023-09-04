@@ -5,32 +5,38 @@
     :scroll-into-view="scrollinto"
     :scroll-with-animation="true"
   >
-    <view
-      v-for="(item, index) in tabBars"
-      :key="index"
-      :id="'tab' + index"
-      class="scroll-row-item"
-      :class="tabIndex == index ? 'badge-act' : ''"
-      @click="changeTab(index)"
-    >
-      <uni-badge
-        v-if="statusNum.data[index] != '0'"
-        class="uni-badge-left-margin"
-        :text="statusNum.data[index]"
-        absolute="rightTop"
-        :offset="[-8, 3]"
-        size="small"
+    <view class="history">
+      <view class="title">订单</view>
+      <view class="toHistory" @click="handleToHistory">历史订单</view>
+    </view>
+    <view class="order">
+      <view
+        v-for="(item, index) in tabBars"
+        :key="index"
+        :id="'tab' + index"
+        class="scroll-row-item"
+        :class="tabIndex == index ? 'badge-act' : ''"
+        @click="changeTab(index)"
       >
-        <view :class="tabIndex == index ? 'scroll-row-item-act' : ''">
+        <uni-badge
+          v-if="statusNum.data[index] != '0'"
+          class="uni-badge-left-margin"
+          :text="statusNum.data[index]"
+          absolute="rightTop"
+          :offset="[-8, 3]"
+          size="small"
+        >
+          <view :class="tabIndex == index ? 'scroll-row-item-act' : ''">
+            <text class="line"></text>
+            {{ item.label }}
+          </view></uni-badge
+        >
+        <view v-else :class="tabIndex == index ? 'scroll-row-item-act' : ''">
           <text class="line"></text>
           {{ item.label }}
-        </view></uni-badge
-      >
-      <view v-else :class="tabIndex == index ? 'scroll-row-item-act' : ''">
-        <text class="line"></text>
-        {{ item.label }}
-      </view>
-    </view>
+        </view>
+      </view></view
+    >
   </scroll-view>
 </template>
 <script setup>
@@ -67,6 +73,11 @@ const changeTab = (index) => {
   emit('getTabIndex', index);
   // 滑动
   scrollinto.value = 'tab' + index;
+};
+const handleToHistory = () => {
+  uni.navigateTo({
+    url: '/pages/history/index',
+  });
 };
 watchEffect(() => {
   statusNum.data = props.statusNum;

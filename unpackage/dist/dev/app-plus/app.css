@@ -2779,13 +2779,28 @@ body {
   background: var(--neutral-color-white);
 }
 .tabScroll .uni-scroll-view-content {
-  display: flex;
   line-height: 1.5625rem;
   font-weight: 600;
   font-size: 1rem;
   color: var(--color-black-19);
   letter-spacing: 0.36px;
+}
+.tabScroll .uni-scroll-view-content .order {
+  display: flex;
   justify-content: space-between;
+}
+.tabScroll .uni-scroll-view-content .history {
+  position: relative;
+  margin-right: 1.4375rem;
+}
+.tabScroll .uni-scroll-view-content .history .title {
+  text-align: center;
+  font-size: 1.125rem;
+}
+.tabScroll .uni-scroll-view-content .history .toHistory {
+  position: absolute;
+  right: 0;
+  bottom: 0;
 }
 .tabScroll .scroll-row-item {
   margin-right: 1.4375rem;

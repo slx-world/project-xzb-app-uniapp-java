@@ -1,17 +1,17 @@
 <!-- 订单页面 -->
 <template>
-  <view class="order">
-    <!-- 状态筛选 -->
-    <UniTab
-      :tabBars="tabBars"
-      @getTabIndex="getTabIndex"
-      :statusNum="statusNum.data"
-    ></UniTab>
+  <view class="historyOrder">
+    <!-- nav -->
+    <UniNav
+      title="历史订单"
+      @goBack="goBack"
+      rithtText="筛选"
+      @handleAll="handleEdit"
+    ></UniNav>
     <!-- 订单列表 -->
     <scroll-view
       :scroll-y="icCanScroll"
       class="scrollList"
-      :class="homeList.data.length ? '' : 'noData'"
       @scroll="handleScroll"
       @scrolltolower="handleLoad"
       :upper-threshold="50"
@@ -75,6 +75,10 @@ onShow(() => {
   getTabIndex(users.tabIndex);
   getOrderStatusNumFunc();
 });
+// 返回上一页
+const goBack = () => {
+  uni.navigateBack();
+};
 //上拉加载
 const handleLoad = () => {
   // console.log(users.tabIndex, '上拉加载');

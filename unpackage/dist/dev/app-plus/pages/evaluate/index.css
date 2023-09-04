@@ -614,7 +614,7 @@
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  margin-top: 3.5625rem !important;
+  padding-top: 3.5625rem !important;
   margin-bottom: 1.34375rem !important;
 }
 /* 水平间距 */

@@ -462,13 +462,28 @@ body {
 	width: auto !important;
 	background: var(--neutral-color-white);
 	.uni-scroll-view-content {
-		display: flex;
 		line-height: 50rpx;
 		font-weight: 600;
 		font-size: 32rpx;
 		color: var(--color-black-19);
 		letter-spacing: 0.36px;
-    justify-content: space-between;
+    .order{
+      display: flex;
+      justify-content: space-between;
+    }
+    .history{
+      position: relative;
+      margin-right: 46rpx;
+      .title{
+        text-align: center;
+        font-size: 36rpx;
+      }
+      .toHistory{
+        position: absolute;
+        right: 0;
+        bottom: 0;
+      }
+    }
 	}
 	.scroll-row-item {
 		margin-right: 46rpx;
