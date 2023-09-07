@@ -1015,6 +1015,43 @@ uni-page-head[data-v-538110be],
   width: 15.75rem;
   height: 15.75rem;
 }
+.homeList .dialog[data-v-538110be] {
+  width: 13.8125rem;
+  height: 10.1875rem;
+  background-color: var(--neutral-color-white);
+  border-radius: 0.75rem;
+  position: relative;
+}
+.homeList .dialog .content[data-v-538110be] {
+  text-align: center;
+  font-size: 1.125rem;
+  color: var(--color-black-19);
+  padding-top: 4.25rem;
+  padding-bottom: 1.1875rem;
+}
+.homeList .dialog .footer[data-v-538110be] {
+  font-size: 1rem;
+  color: var(--color-red-bg);
+  text-align: center;
+  border-top: 0.0625rem solid var(--color-gray-e8);
+  line-height: 3.09375rem;
+}
+.homeList .dialog .img[data-v-538110be] {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 6.875rem;
+  height: 6.875rem;
+  position: absolute;
+  top: -3.4375rem;
+  left: 3.4375rem;
+}
+.homeList .dialog .success[data-v-538110be] {
+  background-image: url("../../static/new/img_success@2x.png");
+}
+.homeList .dialog .fail[data-v-538110be] {
+  background-image: url("../../static/new/img_fail@2x.png");
+}
 /* 水平间距 */
 /* 水平间距 */
 body[data-v-5d962223],
@@ -1268,6 +1305,43 @@ uni-page-head[data-v-5d962223],
 .homeList .dialogImg[data-v-5d962223] {
   width: 15.75rem;
   height: 15.75rem;
+}
+.homeList .dialog[data-v-5d962223] {
+  width: 13.8125rem;
+  height: 10.1875rem;
+  background-color: var(--neutral-color-white);
+  border-radius: 0.75rem;
+  position: relative;
+}
+.homeList .dialog .content[data-v-5d962223] {
+  text-align: center;
+  font-size: 1.125rem;
+  color: var(--color-black-19);
+  padding-top: 4.25rem;
+  padding-bottom: 1.1875rem;
+}
+.homeList .dialog .footer[data-v-5d962223] {
+  font-size: 1rem;
+  color: var(--color-red-bg);
+  text-align: center;
+  border-top: 0.0625rem solid var(--color-gray-e8);
+  line-height: 3.09375rem;
+}
+.homeList .dialog .img[data-v-5d962223] {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 6.875rem;
+  height: 6.875rem;
+  position: absolute;
+  top: -3.4375rem;
+  left: 3.4375rem;
+}
+.homeList .dialog .success[data-v-5d962223] {
+  background-image: url("../../static/new/img_success@2x.png");
+}
+.homeList .dialog .fail[data-v-5d962223] {
+  background-image: url("../../static/new/img_fail@2x.png");
 }
 /* 水平间距 */
 /* 水平间距 */
@@ -1523,6 +1597,43 @@ uni-page-head[data-v-1cf27b2a],
   width: 15.75rem;
   height: 15.75rem;
 }
+.homeList .dialog[data-v-1cf27b2a] {
+  width: 13.8125rem;
+  height: 10.1875rem;
+  background-color: var(--neutral-color-white);
+  border-radius: 0.75rem;
+  position: relative;
+}
+.homeList .dialog .content[data-v-1cf27b2a] {
+  text-align: center;
+  font-size: 1.125rem;
+  color: var(--color-black-19);
+  padding-top: 4.25rem;
+  padding-bottom: 1.1875rem;
+}
+.homeList .dialog .footer[data-v-1cf27b2a] {
+  font-size: 1rem;
+  color: var(--color-red-bg);
+  text-align: center;
+  border-top: 0.0625rem solid var(--color-gray-e8);
+  line-height: 3.09375rem;
+}
+.homeList .dialog .img[data-v-1cf27b2a] {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 6.875rem;
+  height: 6.875rem;
+  position: absolute;
+  top: -3.4375rem;
+  left: 3.4375rem;
+}
+.homeList .dialog .success[data-v-1cf27b2a] {
+  background-image: url("../../static/new/img_success@2x.png");
+}
+.homeList .dialog .fail[data-v-1cf27b2a] {
+  background-image: url("../../static/new/img_fail@2x.png");
+}
 /* 水平间距 */
 /* 水平间距 */
 body {
@@ -1530,4 +1641,7 @@ body {
 }
  .uni-navbar__header {
   height: 0 !important;
+}
+ .home .empty .image {
+  margin-top: 2.5rem !important;
 }

@@ -49,14 +49,14 @@
     <view class="footer">- 已 经 到 底 了 -</view>
     <!-- 提示窗示例 -->
     <uni-popup ref="alertDialog" type="dialog" :is-mask-click="false">
-      <!-- <view class="dialog">
+      <view class="dialog">
         <view class="img" :class="isRob ? 'success' : 'fail'"></view>
         <view class="content">{{
-          isRob ? '抢单成功' : '很遗憾，抢单失败'
+          isRob ? '抢单成功' : msg ? msg : '很遗憾，抢单失败'
         }}</view>
         <view class="footer" @click="handleClose">确定</view>
-      </view> -->
-      <image
+      </view>
+      <!-- <image
         class="dialogImg"
         :src="
           isRob
@@ -64,7 +64,7 @@
             : '../../../static/new/img_shibai@2x.png'
         "
         @click="handleClose"
-      ></image>
+      ></image> -->
     </uni-popup>
   </view>
 </template>
@@ -90,6 +90,7 @@ let list = reactive({
 });
 const orderType = ref(null);
 const alertDialog = ref(null);
+const msg = ref('');
 //进入派单详情
 const handleToInfo = (item) => {
   console.log(item, '进入详情');
@@ -156,8 +157,17 @@ const handleRob = (id) => {
       alertDialog.value.open();
     })
     .catch((err) => {
-      isRob.value = false;
-      alertDialog.value.open();
+      if (err.code === 608) {
+        isRob.value = false;
+        msg.value = err.msg;
+        alertDialog.value.open();
+      } else {
+        uni.showToast({
+          title: err.msg || '接单失败!',
+          duration: 1000,
+          icon: 'none',
+        });
+      }
       console.log(err, 'errrrr');
     });
 };

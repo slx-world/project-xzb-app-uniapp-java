@@ -161,4 +161,11 @@ body {
 ::v-deep .uni-navbar__header {
   height: 0rpx !important;
 }
+::v-deep .home {
+  .empty {
+    .image {
+      margin-top: 80rpx !important;
+    }
+  }
+}
 </style>

@@ -14,7 +14,7 @@
           v-for="(item, index) in serviceSkill.data"
           :key="index"
           :class="activeId === item.serveTypeId ? 'active tagBox' : 'tagBox'"
-          @click="tabChange(item.serveTypeId, index)"
+          @click="tabChange(item, index)"
         >
           <view class="tag"
             >{{ item.serveTypeName }}
@@ -107,17 +107,21 @@ const handleSelect = (active) => {
 //点击保存
 const handleSubmit = () => {
   const selectedList = [];
+  const arr = [];
   serviceSkill.data.forEach((item, index) => {
     item.serveSkillItemResDTOList.forEach((item1, index1) => {
       if (item1.isSelected) {
         selectedList.push({
           serveItemId: item1.serveItemId,
+          serveItemName: item1.serveItemName,
           serveTypeId: item.serveTypeId,
+          serveTypeName: item.serveTypeName,
         });
+        arr.push(item1);
       }
     });
   });
-  console.log(selectedList, 'selectedList');
+  // console.log(selectedList, arr, serviceSkill.data, 'selectedList');
   updateServiceSkill(selectedList)
     .then((res) => {
       if (res.code === 200) {
@@ -144,8 +148,8 @@ const handleEdit = () => {
   console.log('编辑状态');
 };
 // 切换侧边栏
-const tabChange = (id, index) => {
-  activeId.value = id;
+const tabChange = (item, index) => {
+  activeId.value = item.serveTypeId;
   activeIndex.value = index;
   rightItem.data =
     serviceSkill.data[activeIndex.value].serveSkillItemResDTOList;

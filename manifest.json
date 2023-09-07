@@ -256,23 +256,21 @@
     },
     "vueVersion" : "3",
     "h5" : {
-        "sdkConfigs" : {
-            "maps" : {}
+        "devServer" : {
+          "proxy" : {
+              "/api" : {
+                  "target" : "http://172.17.2.58/",
+                  "changeOrigin" : true,
+                  "secure" : false,
+                  "pathRewrite" : {
+                      "^/api" : ""
+                  }
+              }
+          },
+          "https" : false,
+          "port" : 8080
         }
     }
 }
-// "devServer" : {
-//     "proxy" : {
-//         "/api" : {
-//             "target" : "http://xzb-api-test.itheima.net",
-//             "changeOrigin" : true,
-//             "secure" : false,
-//             "pathRewrite" : {
-//                 "^/api" : ""
-//             }
-//         }
-//     },
-//     "https" : false,
-//     "port" : 8080
-// }
+
 

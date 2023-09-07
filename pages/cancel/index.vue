@@ -26,6 +26,33 @@
     <view class="footer">
       <view class="btn-red" @click="handleSubmit">确认提交</view>
     </view>
+    <!-- 提示窗示例 -->
+    <uni-popup ref="alertDialog" type="bottom" :is-mask-click="false">
+      <button class="phone-button" @click="makePhoneCall">
+        呼叫 400-000-4000
+      </button>
+      <button class="phone-button" @click="handleClose">取消</button>
+    </uni-popup>
+    <!-- 提示窗提示无法取消 -->
+    <uni-popup ref="noCancelDialog" :is-mask-click="false" class="freeze">
+      <uni-popup-dialog
+        mode="base"
+        content="当前不可自行取消订单，如需取消需拨打客服热线400-000-4000"
+        title=" "
+        :animation="false"
+        :before-close="true"
+        confirmText="联系客服"
+        cancelText="我知道了"
+        @close="close"
+        @confirm="openPhone"
+      >
+        <template #default>
+          <view class="cancelDialog">
+            {{ content }}
+          </view>
+        </template>
+      </uni-popup-dialog>
+    </uni-popup>
   </view>
 </template>
 
@@ -41,7 +68,9 @@ import { cancelData } from '@/utils/commonData.js';
 import UniNav from '@/components/uni-nav/index.vue';
 // ------定义变量------
 const title = ref('取消原因'); //nav标题
-const cancelReason = ref('');
+const alertDialog = ref(null); //提示窗
+const noCancelDialog = ref(null); //不可取消提示框
+const content = ref(''); //取消失败弹窗提示语
 let cancel = ref(null); //原因描述
 const orderId = ref('');
 const from = ref('');
@@ -58,6 +87,24 @@ onLoad((options) => {
 const handleCause = (value) => {
   cancel.value = value;
   console.log(value, '----------');
+};
+//打开拨打电话弹窗
+const openPhone = () => {
+  alertDialog.value.open();
+  close();
+};
+//关闭删除确认提示框
+const close = () => {
+  noCancelDialog.value.close();
+};
+const handleClose = () => {
+  alertDialog.value.close();
+};
+// 拨打电话
+const makePhoneCall = () => {
+  uni.makePhoneCall({
+    phoneNumber: '400-000-4000', //仅为示例，并非真实的电话号码
+  });
 };
 //确认提交
 const handleSubmit = () => {
@@ -119,11 +166,16 @@ const handleCancelSubmit = async () => {
       })
       .catch((err) => {
         uni.hideLoading();
-        return uni.showToast({
-          title: err.msg || '请求失败',
-          duration: 1000,
-          icon: 'none',
-        });
+        if (err.code == 607) {
+          noCancelDialog.value.open();
+          content.value = err.msg || '取消失败';
+        } else {
+          uni.showToast({
+            title: err.msg || '请求失败',
+            duration: 1000,
+            icon: 'none',
+          });
+        }
       });
   } else {
     return uni.showToast({
@@ -147,12 +199,10 @@ const handleRejectSubmit = async () => {
     };
     await rejectOrder(params)
       .then((res) => {
+        console.log(res, 'res');
         if (res.code === 200) {
           // 操作成功后清除loading
-          setTimeout(function () {
-            uni.hideLoading();
-          }, 500);
-          clearTimeout(times);
+          uni.hideLoading();
           if (from.value === 'list' || from.value === 'dispatch') {
             goBack();
           } else {
@@ -217,6 +267,37 @@ const goBack = () => {
     text-align: center;
     line-height: 88rpx;
     margin-top: 30rpx;
+  }
+}
+.phone-button {
+  width: 720rpx;
+  height: 112rpx;
+  margin: 0 auto;
+  background-color: #fff;
+  border-radius: 24rpx;
+  font-size: 36rpx;
+  font-weight: 500;
+  margin-bottom: 20rpx;
+  color: #f74c50;
+  line-height: 112rpx;
+  &:last-child {
+    color: #151515;
+  }
+}
+:deep(.uni-popup-dialog) {
+  font-weight: 400;
+  font-size: 32rpx;
+  color: #151515;
+  letter-spacing: 0.36rpx;
+  width: 556rpx;
+  .uni-dialog-title {
+    display: none;
+  }
+  .cancelDialog {
+    text-align: center;
+  }
+  .uni-dialog-content {
+    padding: 49rpx 83rpx;
   }
 }
 </style>

@@ -23,6 +23,9 @@
   z-index: 99;
   padding-top: 1.375rem;
 }
+.order .homeList[data-v-c2937e80] {
+  padding-top: 3.125rem;
+}
 .order .homeList .card[data-v-c2937e80] {
   border-radius: 0.5rem;
   background-color: var(--neutral-color-white);
@@ -1033,6 +1036,9 @@ uni-page-head[data-v-003520e8],
   width: 100% !important;
   z-index: 99;
   padding-top: 1.375rem;
+}
+.order .homeList[data-v-003520e8] {
+  padding-top: 3.125rem;
 }
 .order .homeList .card[data-v-003520e8] {
   border-radius: 0.5rem;
