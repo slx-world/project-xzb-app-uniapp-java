@@ -17,7 +17,7 @@
 			"path": "pages/index/index",
 			"style": {
 				"navigationStyle": "custom",
-				"navigationBarTitleText": "小智帮",
+				"navigationBarTitleText": "云岚到家",
         "app-plus": {
           "pullToRefresh": {
               "support": true,
@@ -144,7 +144,7 @@
 	],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
-		"navigationBarTitleText": "小智帮",
+		"navigationBarTitleText": "云岚到家",
 		"backgroundColor": "#F8F8F8",
 		"onReachBottomDistance": 50
 	},

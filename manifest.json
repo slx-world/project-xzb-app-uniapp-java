@@ -1,5 +1,5 @@
 {
-    "name" : "小智帮-服务端",
+    "name" : "云岚到家-服务端",
     "appid" : "__UNI__E9AF589",
     "description" : "",
     "versionName" : "1.0.1",
@@ -256,21 +256,8 @@
     },
     "vueVersion" : "3",
     "h5" : {
-        "devServer" : {
-          "proxy" : {
-              "/api" : {
-                  "target" : "http://172.17.2.58/",
-                  "changeOrigin" : true,
-                  "secure" : false,
-                  "pathRewrite" : {
-                      "^/api" : ""
-                  }
-              }
-          },
-          "https" : false,
-          "port" : 8080
+        "sdkConfigs" : {
+            "maps" : {}
         }
     }
 }
-
-

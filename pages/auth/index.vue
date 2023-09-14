@@ -25,7 +25,7 @@
     </view>
     <!-- 身份证正面 -->
     <view class="idCardPhoto">
-      <view class="label">上传身份证正反面（仅用于小智帮系统认证）</view>
+      <view class="label">上传身份证正反面（仅用于云岚到家系统认证）</view>
       <view class="content">
         <view class="photoItem">
           <uni-file-picker
