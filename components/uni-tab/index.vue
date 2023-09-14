@@ -5,7 +5,7 @@
     :scroll-into-view="scrollinto"
     :scroll-with-animation="true"
   >
-    <view class="history">
+    <view class="history" v-if="isShowHistory">
       <view class="title">订单</view>
       <view class="toHistory" @click="handleToHistory">历史订单</view>
     </view>
@@ -51,6 +51,10 @@ const props = defineProps({
   statusNum: {
     type: Array,
     default: () => [],
+  },
+  isShowHistory: {
+    type: Boolean,
+    default: false,
   },
 });
 // ------定义变量------

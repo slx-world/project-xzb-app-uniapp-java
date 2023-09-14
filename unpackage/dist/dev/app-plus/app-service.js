@@ -4704,7 +4704,7 @@ if (uni.restoreGlobal) {
   };
   Object.defineProperties(Store.prototype, prototypeAccessors);
   function request({ url = "", params = {}, method = "GET" }) {
-    let baseUrl = "http://172.17.2.58/api";
+    let baseUrl = "/api";
     const token = uni.getStorageSync("token");
     let header = {
       "Access-Control-Allow-Origin": "*",
@@ -4800,6 +4800,15 @@ if (uni.restoreGlobal) {
     url: `/customer/worker/serve-settings/serve-scope`,
     method: "put",
     params
+  });
+  const postAuth = (params) => request({
+    url: `/customer/worker/worker-certification-audit`,
+    method: "post",
+    params
+  });
+  const getAuthFail = () => request({
+    url: `/customer/worker//worker-certification-audit/rejectReason`,
+    method: "get"
   });
   const _sfc_main$E = {
     __name: "user",
@@ -8726,7 +8735,7 @@ if (uni.restoreGlobal) {
       const settingsStatus = vue.ref(false);
       const serveRangeStatus = vue.ref(false);
       const serveSkillStatus = vue.ref(false);
-      const auth = vue.ref(false);
+      const certificationStatus = vue.ref(false);
       onShow(() => {
         getSetting();
       });
@@ -8739,7 +8748,7 @@ if (uni.restoreGlobal) {
             settingsStatus.value = res.data.settingsStatus;
             serveRangeStatus.value = res.data.serveScopeSetted;
             serveSkillStatus.value = res.data.serveSkillSetted;
-            auth.value = res.data.authed;
+            certificationStatus.value = res.data.certificationStatus;
           }
         }).catch((err) => {
           uni.showToast({
@@ -8763,6 +8772,17 @@ if (uni.restoreGlobal) {
             icon: "none"
           });
         });
+      };
+      const handleToAuth = () => {
+        if (certificationStatus.value === 0) {
+          uni.navigateTo({
+            url: "/pages/auth/index"
+          });
+        } else if (certificationStatus.value === 3) {
+          uni.navigateTo({
+            url: "/pages/authFail/index"
+          });
+        }
       };
       const toServiceSikll = () => {
         uni.navigateTo({
@@ -8805,9 +8825,13 @@ if (uni.restoreGlobal) {
                 vue.createElementVNode(
                   "view",
                   {
-                    class: vue.normalizeClass(["btn", auth.value ? "btn-successGreen" : "btn-red"])
+                    class: vue.normalizeClass([
+                      "btn",
+                      certificationStatus.value === 2 ? "btn-successGreen" : certificationStatus.value === 1 ? "btn-ing" : certificationStatus.value === 3 ? "btn-fail" : "btn-red"
+                    ]),
+                    onClick: handleToAuth
                   },
-                  vue.toDisplayString(auth.value ? "已完成" : "去认证"),
+                  vue.toDisplayString(certificationStatus.value === 2 ? "已完成" : certificationStatus.value === 1 ? "认证中" : certificationStatus.value === 3 ? "认证失败" : "去认证"),
                   3
                   /* TEXT, CLASS */
                 )
@@ -9288,6 +9312,10 @@ if (uni.restoreGlobal) {
       statusNum: {
         type: Array,
         default: () => []
+      },
+      isShowHistory: {
+        type: Boolean,
+        default: false
       }
     },
     emits: "",
@@ -9327,13 +9355,16 @@ if (uni.restoreGlobal) {
           "scroll-into-view": scrollinto.value,
           "scroll-with-animation": true
         }, [
-          vue.createElementVNode("view", { class: "history" }, [
+          __props.isShowHistory ? (vue.openBlock(), vue.createElementBlock("view", {
+            key: 0,
+            class: "history"
+          }, [
             vue.createElementVNode("view", { class: "title" }, "订单"),
             vue.createElementVNode("view", {
               class: "toHistory",
               onClick: handleToHistory
             }, "历史订单")
-          ]),
+          ])) : vue.createCommentVNode("v-if", true),
           vue.createElementVNode("view", { class: "order" }, [
             (vue.openBlock(true), vue.createElementBlock(
               vue.Fragment,
@@ -9407,6 +9438,7 @@ if (uni.restoreGlobal) {
     setup(__props, { emit }) {
       const store2 = useStore();
       const users = store2.state.user;
+      const popup2 = vue.ref("");
       const statusNum = vue.reactive({
         data: []
       });
@@ -9422,8 +9454,15 @@ if (uni.restoreGlobal) {
         getTabIndex(users.tabIndex);
         getOrderStatusNumFunc();
       });
+      const bindStartDateChange = () => {
+      };
+      const bindEndDateChange = () => {
+      };
       const goBack = () => {
         uni.navigateBack();
+      };
+      const handletTime = () => {
+        popup2.value.open();
       };
       const handleLoad = () => {
         if (isHaveMore.value) {
@@ -9446,7 +9485,7 @@ if (uni.restoreGlobal) {
             isHaveMore.value = false;
           }
           homeList.data = homeList.data.concat(res.data.ordersServes);
-          formatAppLog("log", "at pages/history/index.vue:111", res, homeList.data, "66666666666");
+          formatAppLog("log", "at pages/history/index.vue:147", res, homeList.data, "66666666666");
         });
       };
       const getRobOrderList = () => {
@@ -9461,6 +9500,7 @@ if (uni.restoreGlobal) {
         getListData(tabBars[index].value, "");
       };
       return (_ctx, _cache) => {
+        const _component_uni_popup = resolveEasycom(vue.resolveDynamicComponent("uni-popup"), __easycom_0$4);
         return vue.openBlock(), vue.createElementBlock(
           vue.Fragment,
           null,
@@ -9471,8 +9511,8 @@ if (uni.restoreGlobal) {
                 title: "历史订单",
                 onGoBack: goBack,
                 rithtText: "筛选",
-                onHandleAll: _ctx.handleEdit
-              }, null, 8, ["onHandleAll"]),
+                onHandleAll: handletTime
+              }),
               vue.createCommentVNode(" 订单列表 "),
               vue.createElementVNode("scroll-view", {
                 "scroll-y": icCanScroll.value,
@@ -9488,7 +9528,60 @@ if (uni.restoreGlobal) {
                   key: 0,
                   data: homeList.data,
                   onRefresh: getRobOrderList
-                }, null, 8, ["data"])) : (vue.openBlock(), vue.createBlock(Empty, { key: 1 }))
+                }, null, 8, ["data"])) : (vue.openBlock(), vue.createBlock(Empty, { key: 1 })),
+                vue.createCommentVNode(" 普通弹窗 "),
+                vue.createVNode(_component_uni_popup, {
+                  ref_key: "popup",
+                  ref: popup2,
+                  "background-color": "#fff",
+                  onChange: _ctx.change,
+                  type: "bottom"
+                }, {
+                  default: vue.withCtx(() => [
+                    vue.createElementVNode("view", { class: "popup-content" }, [
+                      vue.createElementVNode("view", { class: "header" }, [
+                        vue.createElementVNode("view", { class: "tips" }, "选择时间"),
+                        vue.createElementVNode("image", {
+                          class: "close",
+                          src: "/static/new/btn_nav_close@2x.png"
+                        })
+                      ]),
+                      vue.createElementVNode("view", { class: "time" }, [
+                        vue.createElementVNode(
+                          "picker",
+                          {
+                            mode: "date",
+                            onChange: bindStartDateChange
+                          },
+                          [
+                            vue.createElementVNode("view", { class: "startTime" }, "开始时间")
+                          ],
+                          32
+                          /* HYDRATE_EVENTS */
+                        ),
+                        vue.createElementVNode("view", { class: "zhi" }, "至"),
+                        vue.createElementVNode(
+                          "picker",
+                          {
+                            mode: "date",
+                            onChange: bindEndDateChange
+                          },
+                          [
+                            vue.createElementVNode("view", { class: "endTime" }, "结束时间")
+                          ],
+                          32
+                          /* HYDRATE_EVENTS */
+                        )
+                      ]),
+                      vue.createElementVNode("view", { class: "footer" }, [
+                        vue.createElementVNode("view", { class: "reset" }, "重置"),
+                        vue.createElementVNode("view", { class: "confirm" }, "确定")
+                      ])
+                    ])
+                  ]),
+                  _: 1
+                  /* STABLE */
+                }, 8, ["onChange"])
               ], 40, ["scroll-y", "scroll-top"]),
               vue.createVNode(UniFooter, { pagePath: "pages/pickup/index" })
             ]),
@@ -9684,7 +9777,7 @@ if (uni.restoreGlobal) {
             isHaveMore.value = false;
           }
           homeList.data = homeList.data.concat(res.data.ordersServes);
-          formatAppLog("log", "at pages/pickup/index.vue:107", res, homeList.data, "66666666666");
+          formatAppLog("log", "at pages/pickup/index.vue:108", res, homeList.data, "66666666666");
         });
       };
       const getRobOrderList = () => {
@@ -9708,7 +9801,8 @@ if (uni.restoreGlobal) {
               vue.createVNode(UniTab, {
                 tabBars: vue.unref(tabBars),
                 onGetTabIndex: getTabIndex,
-                statusNum: statusNum.data
+                statusNum: statusNum.data,
+                isShowHistory: ""
               }, null, 8, ["tabBars", "statusNum"]),
               vue.createCommentVNode(" 订单列表 "),
               vue.createElementVNode("scroll-view", {
@@ -10996,7 +11090,7 @@ if (uni.restoreGlobal) {
       path: "pages/index/index",
       style: {
         navigationStyle: "custom",
-        navigationBarTitleText: "小智帮",
+        navigationBarTitleText: "云岚到家",
         "app-plus": {
           pullToRefresh: {
             support: true,
@@ -11122,7 +11216,7 @@ if (uni.restoreGlobal) {
   ];
   const globalStyle = {
     navigationBarTextStyle: "black",
-    navigationBarTitleText: "小智帮",
+    navigationBarTitleText: "云岚到家",
     backgroundColor: "#F8F8F8",
     onReachBottomDistance: 50
   };
@@ -31140,16 +31234,96 @@ if (uni.restoreGlobal) {
     __name: "index",
     setup(__props) {
       const title = vue.ref("实名认证");
-      const focusType = vue.ref("");
+      const formData = vue.ref({
+        certificationMaterial: "",
+        idCardNo: "",
+        backImg: "",
+        frontImg: "",
+        name: ""
+      });
       const goBack = () => {
         uni.navigateBack();
       };
       const handleBlur = () => {
-        focusType.value = "";
       };
       const handleFocus = (val) => {
-        formatAppLog("log", "at pages/auth/index.vue:107", val, "--------");
-        focusType.value = val;
+        formatAppLog("log", "at pages/auth/index.vue:108", val, "--------");
+      };
+      const handleSelect = (e2, type) => {
+        const item = e2.tempFiles[0];
+        uni.uploadFile({
+          url: "/api/publics/storage/upload",
+          files: [
+            {
+              name: "file",
+              uri: item.url,
+              file: item
+            }
+          ],
+          header: {
+            Authorization: uni.getStorageSync("token")
+          },
+          success: (uploadFileRes) => {
+            formData.value[type] = JSON.parse(uploadFileRes.data).data.url;
+            formatAppLog("log", "at pages/auth/index.vue:129", JSON.parse(uploadFileRes.data).data.url, "-----");
+          },
+          fail: (err) => {
+            uni.showToast({
+              title: "图片上传失败",
+              duration: 1e3,
+              icon: "none"
+            });
+          }
+        });
+        formatAppLog("log", "at pages/auth/index.vue:140", e2, type, "eeeeeeeee");
+      };
+      const handleSubmit = () => {
+        formatAppLog("log", "at pages/auth/index.vue:144", formData.value, "formData.value");
+        if (!formData.value.name) {
+          return uni.showToast({
+            title: "请填写真实姓名",
+            duration: 1e3,
+            icon: "none"
+          });
+        } else if (!formData.value.idCardNo) {
+          return uni.showToast({
+            title: "请填写身份证号",
+            duration: 1e3,
+            icon: "none"
+          });
+        } else if (!formData.value.frontImg) {
+          return uni.showToast({
+            title: "请上传人像面照片",
+            duration: 1e3,
+            icon: "none"
+          });
+        } else if (!formData.value.backImg) {
+          return uni.showToast({
+            title: "请上传国徽面照片",
+            duration: 1e3,
+            icon: "none"
+          });
+        } else if (!formData.value.certificationMaterial) {
+          return uni.showToast({
+            title: "请上传证明资料",
+            duration: 1e3,
+            icon: "none"
+          });
+        }
+        postAuth(formData.value).then((res) => {
+          formatAppLog("log", "at pages/auth/index.vue:178", res, "ress");
+          if (res.code === 200) {
+            uni.navigateTo({
+              url: "/pages/setting/index"
+            });
+          }
+        }).catch((err) => {
+          uni.showToast({
+            title: err.msg || "提交失败!",
+            duration: 1e3,
+            icon: "none"
+          });
+        });
       };
       return (_ctx, _cache) => {
         const _component_uni_easyinput = resolveEasycom(vue.resolveDynamicComponent("uni-easyinput"), __easycom_0$6);
@@ -31161,54 +31335,40 @@ if (uni.restoreGlobal) {
             onGoBack: goBack
           }, null, 8, ["title"]),
           vue.createCommentVNode(" 姓名 "),
-          vue.createElementVNode(
-            "view",
-            {
-              class: vue.normalizeClass(["name", focusType.value === "name" ? "active" : ""])
-            },
-            [
-              vue.createElementVNode("text", { class: "label" }, "真实姓名"),
-              vue.createVNode(_component_uni_easyinput, {
-                placeholder: "请输入",
-                placeholderStyle: { fontSize: "16px" },
-                onFocus: _cache[0] || (_cache[0] = ($event) => handleFocus("name")),
-                onBlur: handleBlur
-              })
-            ],
-            2
-            /* CLASS */
-          ),
+          vue.createElementVNode("view", { class: "name" }, [
+            vue.createElementVNode("text", { class: "label" }, "真实姓名"),
+            vue.createVNode(_component_uni_easyinput, {
+              modelValue: formData.value.name,
+              "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => formData.value.name = $event),
+              placeholder: "请输入",
+              placeholderStyle: { fontSize: "16px" },
+              onFocus: _cache[1] || (_cache[1] = ($event) => handleFocus("name")),
+              onBlur: handleBlur
+            }, null, 8, ["modelValue"])
+          ]),
           vue.createCommentVNode(" 身份证号 "),
-          vue.createElementVNode(
-            "view",
-            {
-              class: vue.normalizeClass(["idCard", focusType.value === "idCard" ? "active" : ""])
-            },
-            [
-              vue.createElementVNode("text", { class: "label" }, "身份证号"),
-              vue.createVNode(_component_uni_easyinput, {
-                placeholder: "请输入",
-                placeholderStyle: { fontSize: "16px" },
-                onFocus: _cache[1] || (_cache[1] = ($event) => handleFocus("idCard")),
-                onBlur: handleBlur
-              })
-            ],
-            2
-            /* CLASS */
-          ),
+          vue.createElementVNode("view", { class: "idCard" }, [
+            vue.createElementVNode("text", { class: "label" }, "身份证号"),
+            vue.createVNode(_component_uni_easyinput, {
+              modelValue: formData.value.idCardNo,
+              "onUpdate:modelValue": _cache[2] || (_cache[2] = ($event) => formData.value.idCardNo = $event),
+              placeholder: "请输入",
+              placeholderStyle: { fontSize: "16px" },
+              onFocus: _cache[3] || (_cache[3] = ($event) => handleFocus("idCard")),
+              onBlur: handleBlur
+            }, null, 8, ["modelValue"])
+          ]),
           vue.createCommentVNode(" 身份证正面 "),
           vue.createElementVNode("view", { class: "idCardPhoto" }, [
-            vue.createElementVNode("view", { class: "label" }, "上传身份证正反面（仅用于小智帮系统认证）"),
+            vue.createElementVNode("view", { class: "label" }, "上传身份证正反面（仅用于云岚到家系统认证）"),
             vue.createElementVNode("view", { class: "content" }, [
               vue.createElementVNode("view", { class: "photoItem" }, [
                 vue.createVNode(_component_uni_file_picker, {
                   limit: "1",
                   title: "",
-                  onSuccess: _ctx.handleSuccess,
-                  onSelect: _ctx.handleSelect,
-                  onFail: _ctx.handleFail,
+                  onSelect: _cache[4] || (_cache[4] = (e2) => handleSelect(e2, "frontImg")),
                   onDelete: _ctx.handleDelete
-                }, null, 8, ["onSuccess", "onSelect", "onFail", "onDelete"]),
+                }, null, 8, ["onDelete"]),
                 vue.createElementVNode("view", { class: "photoLabel" }, "人像面照片")
               ]),
               vue.createElementVNode("view", { class: "photoItem" }, [
@@ -31227,11 +31387,9 @@ if (uni.restoreGlobal) {
                 vue.createVNode(_component_uni_file_picker, {
                   limit: "1",
                   title: "",
-                  onSuccess: _ctx.handleSuccess,
-                  onSelect: _ctx.handleSelect,
-                  onFail: _ctx.handleFail,
+                  onSelect: _cache[5] || (_cache[5] = (e2) => handleSelect(e2, "backImg")),
                   onDelete: _ctx.handleDelete
-                }, null, 8, ["onSuccess", "onSelect", "onFail", "onDelete"]),
+                }, null, 8, ["onDelete"]),
                 vue.createElementVNode("view", { class: "photoLabel" }, "国徽面照片 ")
               ]),
               vue.createElementVNode("view", { class: "photoItem" }, [
@@ -31250,11 +31408,9 @@ if (uni.restoreGlobal) {
                 vue.createVNode(_component_uni_file_picker, {
                   limit: "1",
                   title: "",
-                  onSuccess: _ctx.handleSuccess,
-                  onSelect: _ctx.handleSelect,
-                  onFail: _ctx.handleFail,
+                  onSelect: _cache[6] || (_cache[6] = (e2) => handleSelect(e2, "certificationMaterial")),
                   onDelete: _ctx.handleDelete
-                }, null, 8, ["onSuccess", "onSelect", "onFail", "onDelete"]),
+                }, null, 8, ["onDelete"]),
                 vue.createElementVNode("view", { class: "photoLabel" }, "资料上传 ")
               ])
             ])
@@ -31263,7 +31419,7 @@ if (uni.restoreGlobal) {
           vue.createElementVNode("view", { class: "footer" }, [
             vue.createElementVNode("view", {
               class: "btn-red",
-              onClick: _cache[2] || (_cache[2] = (...args) => _ctx.handleSubmit && _ctx.handleSubmit(...args))
+              onClick: handleSubmit
             }, "确认提交")
           ])
         ]);
@@ -31275,6 +31431,12 @@ if (uni.restoreGlobal) {
     __name: "index",
     setup(__props) {
       const title = vue.ref("实名认证");
+      const reason = vue.ref("");
+      vue.onMounted(() => {
+        getAuthFail().then((res) => {
+          reason.value = res.data.rejectReason;
+        });
+      });
       const goBack = () => {
         uni.navigateBack();
       };
@@ -31295,7 +31457,13 @@ if (uni.restoreGlobal) {
             src: "/static/new/img_weitongguo@2x.png"
           }),
           vue.createElementVNode("view", { class: "content" }, "提交的认证审核末通过"),
-          vue.createElementVNode("view", { class: "content" }, "原因：提交内容重复"),
+          vue.createElementVNode(
+            "view",
+            { class: "content" },
+            "原因：" + vue.toDisplayString(reason.value),
+            1
+            /* TEXT */
+          ),
           vue.createElementVNode("view", {
             class: "btn-red",
             onClick: toAuth

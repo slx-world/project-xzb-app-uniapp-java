@@ -68,3 +68,16 @@ export const setServiceSetting = (params) =>
     method: 'put',
     params
   })
+//提交实名认证
+export const postAuth = (params) =>
+  request({
+    url: `/customer/worker/worker-certification-audit`,
+    method: 'post',
+    params
+  })
+//获取实名认证驳回原因
+export const getAuthFail = () =>
+  request({
+    url: `/customer/worker//worker-certification-audit/rejectReason`,
+    method: 'get',
+  })

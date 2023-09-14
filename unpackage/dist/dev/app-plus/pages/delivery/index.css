@@ -924,6 +924,15 @@ uni-app[data-v-10597487] {
   max-width: 46.875rem;
   margin: 0 auto;
 }
+.btn-fail[data-v-10597487] {
+  background-color: var(--neutral-color-white);
+  color: #E34D59;
+  border: 1px solid #E34D59;
+}
+.btn-ing[data-v-10597487] {
+  background-color: #FFDBDC;
+  color: var(--neutral-color-white);
+}
 .btn-successGreen[data-v-10597487] {
   background-color: var(--neutral-color-white);
   color: var(--color-green-27BA9B);

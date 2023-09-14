@@ -6,6 +6,7 @@
       :tabBars="tabBars"
       @getTabIndex="getTabIndex"
       :statusNum="statusNum.data"
+      isShowHistory
     ></UniTab>
     <!-- 订单列表 -->
     <scroll-view

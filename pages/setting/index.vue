@@ -17,9 +17,28 @@
             <view class="setpTitle">实名认证</view>
             <view class="setpIntroduce">平台会保护你的个人信息</view>
           </view>
-          <view class="btn" :class="auth ? 'btn-successGreen' : 'btn-red'">{{
-            auth ? '已完成' : '去认证'
-          }}</view></view
+          <view
+            class="btn"
+            @click="handleToAuth"
+            :class="
+              certificationStatus === 2
+                ? 'btn-successGreen'
+                : certificationStatus === 1
+                ? 'btn-ing'
+                : certificationStatus === 3
+                ? 'btn-fail'
+                : 'btn-red'
+            "
+            >{{
+              certificationStatus === 2
+                ? '已完成'
+                : certificationStatus === 1
+                ? '认证中'
+                : certificationStatus === 3
+                ? '认证失败'
+                : '去认证'
+            }}</view
+          ></view
         >
       </view>
       <view class="stepTwo stepItem">
@@ -86,7 +105,7 @@ const canPickUp = ref(false); //是否开启接单
 const settingsStatus = ref(false); //是否配置完成
 const serveRangeStatus = ref(false); //是否配置服务范围
 const serveSkillStatus = ref(false); //是否配置服务技能
-const auth = ref(false); //是否实名认证
+const certificationStatus = ref(false); //是否实名认证
 onShow(() => {
   getSetting();
 });
@@ -100,7 +119,7 @@ const getSetting = () => {
         settingsStatus.value = res.data.settingsStatus;
         serveRangeStatus.value = res.data.serveScopeSetted;
         serveSkillStatus.value = res.data.serveSkillSetted;
-        auth.value = res.data.authed;
+        certificationStatus.value = res.data.certificationStatus;
       }
     })
     .catch((err) => {
@@ -128,6 +147,18 @@ const handlePickUpStatus = () => {
         icon: 'none',
       });
     });
+};
+//实名认证
+const handleToAuth = () => {
+  if (certificationStatus.value === 0) {
+    uni.navigateTo({
+      url: '/pages/auth/index',
+    });
+  } else if (certificationStatus.value === 3) {
+    uni.navigateTo({
+      url: '/pages/authFail/index',
+    });
+  }
 };
 //设置服务技能
 const toServiceSikll = () => {

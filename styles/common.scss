@@ -10,6 +10,17 @@ uni-app {
 	max-width: 1500rpx;
 	margin: 0 auto;
 }
+//失败按钮
+.btn-fail{
+  background-color: var(--neutral-color-white);
+  color: #E34D59;
+  border: 1px solid #E34D59;
+}
+//模糊白底按钮
+.btn-ing{
+  background-color: #FFDBDC;
+  color: var(--neutral-color-white);
+}
 //绿色成功按钮
 .btn-successGreen{
   background-color: var(--neutral-color-white);

@@ -6,7 +6,7 @@
       title="历史订单"
       @goBack="goBack"
       rithtText="筛选"
-      @handleAll="handleEdit"
+      @handleAll="handletTime"
     ></UniNav>
     <!-- 订单列表 -->
     <scroll-view
@@ -24,6 +24,34 @@
         @refresh="getRobOrderList"
       ></HomeList>
       <Empty v-else></Empty>
+      <!-- 普通弹窗 -->
+      <uni-popup
+        ref="popup"
+        background-color="#fff"
+        @change="change"
+        type="bottom"
+      >
+        <view class="popup-content">
+          <view class="header">
+            <view class="tips">选择时间</view>
+            <image class="close" src="../../static/new/btn_nav_close@2x.png" />
+          </view>
+          <view class="time">
+            <picker mode="date" @change="bindStartDateChange"
+              ><view class="startTime">开始时间</view></picker
+            >
+
+            <view class="zhi">至</view>
+            <picker mode="date" @change="bindEndDateChange"
+              ><view class="endTime">结束时间</view></picker
+            >
+          </view>
+          <view class="footer">
+            <view class="reset">重置</view>
+            <view class="confirm">确定</view>
+          </view>
+        </view>
+      </uni-popup>
     </scroll-view>
     <UniFooter :pagePath="'pages/pickup/index'"></UniFooter>
   </view>
@@ -56,6 +84,7 @@ import UniNav from '@/components/uni-nav/index.vue';
 const store = useStore();
 const emit = defineEmits(''); //子组件向父组件事件传递
 const users = store.state.user;
+const popup = ref('');
 const statusNum = reactive({
   data: [],
 });
@@ -75,9 +104,16 @@ onShow(() => {
   getTabIndex(users.tabIndex);
   getOrderStatusNumFunc();
 });
+//开始时间
+const bindStartDateChange = () => {};
+//结束时间
+const bindEndDateChange = () => {};
 // 返回上一页
 const goBack = () => {
   uni.navigateBack();
+};
+const handletTime = () => {
+  popup.value.open();
 };
 //上拉加载
 const handleLoad = () => {

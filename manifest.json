@@ -256,8 +256,19 @@
     },
     "vueVersion" : "3",
     "h5" : {
-        "sdkConfigs" : {
-            "maps" : {}
-        }
+      "devServer" : {
+        "proxy" : {
+            "/api" : {
+                "target" : "http://172.17.2.58/",
+                "changeOrigin" : true,
+                "secure" : false,
+                "pathRewrite" : {
+                    "^/api" : ""
+                }
+            }
+        },
+        "https" : false,
+        "port" : 8080
+      }
     }
 }
