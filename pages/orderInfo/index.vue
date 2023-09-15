@@ -210,6 +210,7 @@ import {
   getOrderInfo,
   getDispatchOrderInfo,
   deleteOrder,
+  getHistoryOrderInfo,
 } from '@/pages/api/order.js';
 import { useStore } from 'vuex';
 // 基本数据(订单状态)
@@ -225,7 +226,6 @@ const props = defineProps({
 const store = useStore();
 const users = store.state.user;
 const emit = defineEmits(''); //子组件向父组件事件传递
-const scrollinto = ref('tab0'); //tab切换
 const type = ref(''); //从哪个页面来
 let info = reactive({
   data: {
@@ -287,26 +287,22 @@ const previewImage = (url, imgList) => {
 };
 //获取订单详情
 const getOrderInfoFunc = (id) => {
-  type.value === 'dispatch'
-    ? getDispatchOrderInfo(id).then((res) => {
-        info.data = res.data;
-        console.log(res.data, '获取派单订单详情');
-      })
-    : getOrderInfo(id).then((res) => {
-        info.data = res.data;
-        console.log(res.data, '获取订单详情');
-      });
-};
-// tab选项卡切换轮播
-const changeTab = (index) => {
-  // 点击的还是当前数据的时候直接return
-  if (tabIndex.value == index) {
-    return;
+  if (type.value === 'dispatch') {
+    getDispatchOrderInfo(id).then((res) => {
+      info.data = res.data;
+      console.log(res.data, '获取派单订单详情');
+    });
+  } else if (type.value === 'history') {
+    getHistoryOrderInfo(id).then((res) => {
+      info.data = res.data;
+      console.log(res.data, '获取历史订单订单详情');
+    });
+  } else {
+    getOrderInfo(id).then((res) => {
+      info.data = res.data;
+      console.log(res.data, '获取订单详情');
+    });
   }
-  tabIndex.value = index;
-  emit('getTabIndex', index);
-  // 滑动
-  scrollinto.value = 'tab' + index;
 };
 //跳转到开始服务/完成服务页面
 const handleServeRecord = (id, status) => {
@@ -355,9 +351,5 @@ const goBack = () => {
     uni.navigateBack();
   }
 };
-//把数据、方法暴漏给父组件
-defineExpose({
-  changeTab,
-});
 </script>
 <style src="./index.scss" lang="scss" scoped></style>

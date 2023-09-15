@@ -190,7 +190,11 @@
         border-radius: 8px;
         font-size: 28rpx;
         color: var(--color-gray-9);
-        padding:20rpx 80rpx ;
+        // padding:20rpx 80rpx ;
+        height: 80rpx;
+        line-height: 80rpx;
+        width: 274rpx;
+        text-align: center;
       }
     }
     .footer{

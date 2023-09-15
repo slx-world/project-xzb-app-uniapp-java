@@ -220,7 +220,10 @@
   border-radius: 8px;
   font-size: 0.875rem;
   color: var(--color-gray-9);
-  padding: 0.625rem 2.5rem;
+  height: 2.5rem;
+  line-height: 2.5rem;
+  width: 8.5625rem;
+  text-align: center;
 }
 .historyOrder .popup-content .footer[data-v-dee59258] {
   display: flex;
@@ -1285,7 +1288,10 @@ uni-page-head[data-v-b37acf1c],
   border-radius: 8px;
   font-size: 0.875rem;
   color: var(--color-gray-9);
-  padding: 0.625rem 2.5rem;
+  height: 2.5rem;
+  line-height: 2.5rem;
+  width: 8.5625rem;
+  text-align: center;
 }
 .historyOrder .popup-content .footer[data-v-b37acf1c] {
   display: flex;

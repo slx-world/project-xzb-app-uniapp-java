@@ -4,55 +4,73 @@
     <!-- 导航 -->
     <UniNav :title="title" @goBack="goBack"></UniNav>
     <!-- 姓名 -->
-    <view class="name" :class="focusType === 'name' ? 'active' : ''">
+    <view class="name">
       <text class="label">户名</text>
       <uni-easyinput
+        v-model="formData.name"
         placeholder="请输入户名"
         :placeholderStyle="{ fontSize: '16px' }"
-        @focus="handleFocus('name')"
-        @blur="handleBlur"
       ></uni-easyinput>
     </view>
     <!-- 银行 -->
-    <view class="idCard" :class="focusType === 'idCard' ? 'active' : ''">
+    <view class="idCard">
       <text class="label">银行</text>
       <picker
+        mode="selector"
         class="citySelect bankSelect"
+        :value="bankIndex"
         @change="handleBank"
         :range="bankArray"
         range-key="label"
       >
+        <text
+          class="bankName"
+          :class="!formData.bankName ? 'placeholder' : ''"
+          >{{ formData.bankName ? formData.bankName : '请选择银行' }}</text
+        >
         <image src="../../static/new/icon_more@2x.png"></image>
       </picker>
     </view>
     <!-- 开户行 -->
-    <view class="idCard" :class="focusType === 'idCard' ? 'active' : ''">
+    <view class="idCard">
       <text class="label">开户行</text>
       <view class="citySelect" @click="handleOpenLocation">
+        <view
+          class="area"
+          :class="
+            !(formData.province && formData.city && formData.district)
+              ? 'placeholder'
+              : ''
+          "
+          >{{
+            formData.province && formData.city && formData.district
+              ? formData.province +
+                '-' +
+                formData.city +
+                '-' +
+                formData.district
+              : '请选择开户行'
+          }}</view
+        >
         <image src="../../static/new/icon_more@2x.png"></image>
       </view>
     </view>
     <!-- 网点 -->
-    <view class="idCard" :class="focusType === 'idCard' ? 'active' : ''">
+    <view class="idCard">
       <text class="label">网点</text>
       <uni-easyinput
         placeholder="请输入网点名称"
         :placeholderStyle="{ fontSize: '16px' }"
-        @focus="handleFocus('idCard')"
-        @blur="handleBlur"
+        v-model="formData.branch"
       ></uni-easyinput>
     </view>
     <!-- 银行账号 -->
-    <view
-      class="idCard bankAccount"
-      :class="focusType === 'idCard' ? 'active' : ''"
-    >
+    <view class="idCard bankAccount">
       <text class="label">银行账号</text>
       <uni-easyinput
         placeholder="请输入银行账号"
         :placeholderStyle="{ fontSize: '16px' }"
-        @focus="handleFocus('idCard')"
-        @blur="handleBlur"
+        v-model="formData.account"
       ></uni-easyinput>
     </view>
     <!-- 开户证明 -->
@@ -63,11 +81,23 @@
           <uni-file-picker
             limit="1"
             title=""
-            @success="handleSuccess"
             @select="handleSelect"
-            @fail="handleFail"
             @delete="handleDelete"
-          ></uni-file-picker>
+            :value="[
+              {
+                url: formData.accountCertification,
+                name: 'file.txt',
+                extname: 'txt',
+              },
+            ]"
+          >
+            <image
+              class="image"
+              v-if="formData.accountCertification"
+              :src="formData.accountCertification"
+            />
+          </uni-file-picker>
+
           <view class="photoLabel">资料上传 </view>
         </view>
       </view>
@@ -80,70 +110,202 @@
     <SelectArea
       ref="selectArea"
       @getAreaData="getAreaData"
-      :provinceName="provinceName"
-      :cityName="cityName"
-      :countyName="countyName"
+      :provinceName="formData.province"
+      :cityName="formData.city"
+      :countyName="formData.district"
     ></SelectArea>
   </view>
 </template>
 
 <script setup>
 import { ref, reactive, onMounted } from 'vue';
-
+import { postAccount, getAccountInfo } from '../api/setting.js';
 // 导入组件
 // 导航组件
 import SelectArea from './components/selectArea.vue';
 import UniNav from '@/components/uni-nav/index.vue';
 const title = ref('账户设置');
-const focusType = ref('');
 let provinceName = ref('');
 let cityName = ref('');
 let countyName = ref('');
+let bankIndex = ref(3);
 const selectArea = ref();
+const formData = ref({
+  name: '',
+  bankName: '',
+  province: '',
+  city: '',
+  district: '',
+  branch: '',
+  account: '',
+  accountCertification: '',
+  type: 2,
+});
 const bankArray = ref([
   {
     label: '中国工商银行',
-    value: '1',
+    value: 1,
   },
   {
     label: '中国建设银行',
-    value: '2',
+    value: 2,
   },
   {
     label: '中国邮政储蓄银行',
-    value: '3',
+    value: 3,
   },
   {
     label: '中国农业银行',
-    value: '4',
+    value: 4,
   },
   {
     label: '北京农商银行',
-    value: '5',
+    value: 5,
   },
   {
     label: '招商银行',
-    value: '6',
+    value: 6,
   },
 ]);
 onMounted(() => {
-  selectArea.value.getList();
+  getAccountInfoFunc();
 });
+const handleDelete = () => {
+  formData.value.accountCertification = '';
+};
+//获取账户设置信息
+const getAccountInfoFunc = () => {
+  getAccountInfo()
+    .then((res) => {
+      formData.value.name = res.data.name;
+      formData.value.bankName = res.data.bankName;
+
+      formData.value.province = res.data.province;
+      formData.value.city = res.data.city;
+      formData.value.district = res.data.district;
+
+      formData.value.branch = res.data.branch;
+      formData.value.account = res.data.account;
+      formData.value.accountCertification = res.data.accountCertification;
+      // selectArea.value.getList();
+      console.log(res, 'resssssss');
+    })
+    .catch((err) => {
+      uni.showToast({
+        title: err.msg || '账户信息获取失败!',
+        duration: 1000,
+        icon: 'none',
+      });
+    });
+};
+//上传图片
+const handleSelect = (e) => {
+  const item = e.tempFiles[0];
+  uni.uploadFile({
+    url: '/api/publics/storage/upload',
+    files: [
+      {
+        name: 'file',
+        uri: item.url,
+        file: item,
+      },
+    ],
+    header: {
+      Authorization: uni.getStorageSync('token'),
+    },
+    success: (uploadFileRes) => {
+      formData.value.accountCertification = JSON.parse(
+        uploadFileRes.data
+      ).data.url;
+    },
+    fail: (err) => {
+      // reject(err); // 上传失败时将错误信息传给 Promise 的 reject
+      uni.showToast({
+        title: '图片上传失败',
+        duration: 1000,
+        icon: 'none',
+      });
+    },
+  });
+};
+//提交账户设置
+const handleSubmit = () => {
+  if (!formData.value.name) {
+    return uni.showToast({
+      title: '请填写户名',
+      duration: 1000,
+      icon: 'none',
+    });
+  } else if (!formData.value.bankName) {
+    return uni.showToast({
+      title: '请选择银行',
+      duration: 1000,
+      icon: 'none',
+    });
+  } else if (
+    !formData.value.province ||
+    !formData.value.city ||
+    !formData.value.district
+  ) {
+    return uni.showToast({
+      title: '请选择开户行',
+      duration: 1000,
+      icon: 'none',
+    });
+  } else if (!formData.value.branch) {
+    return uni.showToast({
+      title: '请填写网点',
+      duration: 1000,
+      icon: 'none',
+    });
+  } else if (!formData.value.account) {
+    return uni.showToast({
+      title: '请填写银行账号',
+      duration: 1000,
+      icon: 'none',
+    });
+  } else if (!formData.value.accountCertification) {
+    return uni.showToast({
+      title: '请上传开户证明',
+      duration: 1000,
+      icon: 'none',
+    });
+  }
+  postAccount(formData.value)
+    .then((res) => {
+      console.log(res, 'ress');
+      if (res.code === 200) {
+        uni.showToast({
+          title: '提交成功!',
+          duration: 1000,
+          icon: 'none',
+        });
+      }
+    })
+    .catch((err) => {
+      uni.showToast({
+        title: err.msg || '提交失败!',
+        duration: 1000,
+        icon: 'none',
+      });
+    });
+};
+//选择开户行（省市区）
+const getAreaData = (e) => {
+  formData.value.province = e.province.label;
+  formData.value.city = e.city.label;
+  formData.value.district = e.area.label;
+  console.log(e, '省市区');
+};
+//选择银行
 const handleBank = (e) => {
-  console.log(e.detail.value, '数组下标');
+  bankIndex.value = e.detail.value;
+  formData.value.bankName = bankArray.value[e.detail.value].label;
+  console.log(e.detail.value, bankIndex.value, '数组下标');
 };
 // 返回上一页
 const goBack = () => {
   uni.navigateBack();
-};
-//失焦
-const handleBlur = () => {
-  focusType.value = '';
-};
-//聚焦
-const handleFocus = (val) => {
-  console.log(val, '--------');
-  focusType.value = val;
 };
 const handleOpenLocation = () => {
   selectArea.value.handleOpen();

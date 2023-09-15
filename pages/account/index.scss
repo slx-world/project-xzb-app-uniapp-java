@@ -8,7 +8,7 @@
   }
   .bankAccount{
     .label{
-      margin-right: 40rpx!important;
+      margin-right: 35rpx!important;
     }
   }
   .name,.idCard,.idCardPhoto,.data{
@@ -28,11 +28,26 @@
       display: flex;
       align-items: center;
       justify-content: flex-end;
+      position: relative;
       image{
         width: 34rpx;
         height: 32rpx;
       }
+      .bankName{
+        position: absolute;
+        left: 20rpx;
+      }
+      .area{
+        position: absolute;
+        left: -13rpx;
+      }
     }
+    .placeholder{
+      font-size: 16px;
+      color: var(--color-gray-9);
+      font-weight: 200;
+    }
+
     .label{
       margin-right: 100rpx;
       font-size: 32rpx;
@@ -69,6 +84,12 @@
       .photoItem{
         flex: 1;
         margin-left: 19rpx;
+        .image{
+          height: 198rpx;
+          width: 200rpx;
+          position: relative;
+          bottom: 2rpx;
+        }
         ::v-deep .uni-file-picker{
           .icon-add{
             background-color: var(--color-gray-96);

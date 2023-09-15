@@ -10,8 +10,6 @@
         v-model="formData.name"
         placeholder="请输入"
         :placeholderStyle="{ fontSize: '16px' }"
-        @focus="handleFocus('name')"
-        @blur="handleBlur"
       ></uni-easyinput>
     </view>
     <!-- 身份证号 -->
@@ -21,8 +19,6 @@
         v-model="formData.idCardNo"
         placeholder="请输入"
         :placeholderStyle="{ fontSize: '16px' }"
-        @focus="handleFocus('idCard')"
-        @blur="handleBlur"
       ></uni-easyinput>
     </view>
     <!-- 身份证正面 -->
@@ -100,12 +96,6 @@ const formData = ref({
 // 返回上一页
 const goBack = () => {
   uni.navigateBack();
-};
-//失焦
-const handleBlur = () => {};
-//聚焦
-const handleFocus = (val) => {
-  console.log(val, '--------');
 };
 //上传图片
 const handleSelect = (e, type) => {

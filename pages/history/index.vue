@@ -37,18 +37,30 @@
             <image class="close" src="../../static/new/btn_nav_close@2x.png" />
           </view>
           <view class="time">
-            <picker mode="date" @change="bindStartDateChange"
-              ><view class="startTime">开始时间</view></picker
+            <picker
+              mode="date"
+              :start="startTime"
+              :end="endTime"
+              :value="startTime"
+              @change="bindStartDateChange"
+              ><view class="startTime">{{
+                startTime || '开始时间'
+              }}</view></picker
             >
 
             <view class="zhi">至</view>
-            <picker mode="date" @change="bindEndDateChange"
-              ><view class="endTime">结束时间</view></picker
+            <picker
+              mode="date"
+              :start="startTime"
+              :end="endTime"
+              :value="endTime"
+              @change="bindEndDateChange"
+              ><view class="endTime">{{ endTime || '结束时间' }}</view></picker
             >
           </view>
           <view class="footer">
-            <view class="reset">重置</view>
-            <view class="confirm">确定</view>
+            <view class="reset" @click="handleReset">重置</view>
+            <view class="confirm" @click="searchDataByTime">确定</view>
           </view>
         </view>
       </uni-popup>
@@ -63,11 +75,12 @@
 import { ref, reactive, nextTick } from 'vue';
 import { onShow } from '@dcloudio/uni-app';
 import { useStore } from 'vuex';
+import { subYears, startOfYear, endOfYear, format } from 'date-fns';
 
 // 基本数据
 import { DeliveryData } from '@/utils/commonData.js';
 //接口
-import { getOrder, getOrderStatusNum } from '@/pages/api/order.js';
+import { getHistoryOrder } from '@/pages/api/order.js';
 
 // 导入组件
 //空数据
@@ -83,17 +96,16 @@ import UniNav from '@/components/uni-nav/index.vue';
 // ------定义变量------
 const store = useStore();
 const emit = defineEmits(''); //子组件向父组件事件传递
-const users = store.state.user;
 const popup = ref('');
-const statusNum = reactive({
-  data: [],
-});
 const isHaveMore = ref(false);
-const tabBars = DeliveryData;
 const icCanScroll = ref(true);
 const homeList = reactive({
   data: [],
 });
+const startTime = ref(
+  format(startOfYear(subYears(new Date(), 1)), 'yyyy-MM-dd')
+);
+const endTime = ref(format(endOfYear(subYears(new Date(), 1)), 'yyyy-MM-dd'));
 const scrollTop = ref(0);
 const scrollView = ref(null);
 // ------生命周期------
@@ -101,13 +113,36 @@ onShow(() => {
   // if (users.tabIndex) {
   //   tabIndex.value = users.tabIndex;
   // }
-  getTabIndex(users.tabIndex);
-  getOrderStatusNumFunc();
+  // getTabIndex(users.tabIndex);
+  getListData();
 });
+//重置时间
+const handleReset = () => {
+  startTime.value = '开始时间';
+  endTime.value = '结束时间';
+};
+//按照起始时间查询数据
+const searchDataByTime = () => {
+  if (startTime.value === '开始时间' || endTime.value === '结束时间') {
+    return uni.showToast({
+      title: '请选择时间',
+      duration: 1000,
+      icon: 'none',
+    });
+  }
+  homeList.data = [];
+  getListData();
+  popup.value.close();
+};
 //开始时间
-const bindStartDateChange = () => {};
+const bindStartDateChange = (e) => {
+  console.log(e, 'eeee');
+  startTime.value = e.detail.value;
+};
 //结束时间
-const bindEndDateChange = () => {};
+const bindEndDateChange = (e) => {
+  endTime.value = e.detail.value;
+};
 // 返回上一页
 const goBack = () => {
   uni.navigateBack();
@@ -119,32 +154,28 @@ const handletTime = () => {
 const handleLoad = () => {
   // console.log(users.tabIndex, '上拉加载');
   if (isHaveMore.value) {
-    getListData(
-      tabBars[users.tabIndex].value,
-      homeList.data[homeList.data.length - 1].sortBy
-    );
+    getListData(homeList.data[homeList.data.length - 1].sortTime);
   }
 
   // console.log(homeList.data[homeList.data.length - 1].id, '上拉加载');
 };
-//获取各个状态下的订单数量
-const getOrderStatusNumFunc = () => {
-  getOrderStatusNum().then((res) => {
-    statusNum.data = [res.data.noServed, res.data.serving];
-    // console.log(res, '获取各个状态下的订单数量');
-  });
-};
 //获取订单列表数据
-const getListData = (val, id) => {
+const getListData = (time) => {
   // console.log(val, id, 'val, id');
-  getOrder(val, id).then((res) => {
-    if (res.data.ordersServes.length === 10) {
+  const params = {
+    minSortTime: startTime.value + ' 00:00:00',
+    maxSortTime: endTime.value + ' 23:59:59',
+    lastSortTime: time,
+  };
+  if (!time) delete params.lastSortTime;
+  getHistoryOrder(params).then((res) => {
+    console.log(res, homeList.data, '66666666666');
+    if (res.data.length === 10) {
       isHaveMore.value = true;
     } else {
       isHaveMore.value = false;
     }
-    homeList.data = homeList.data.concat(res.data.ordersServes);
-    console.log(res, homeList.data, '66666666666');
+    homeList.data = homeList.data.concat(res.data);
   });
 };
 // ------定义方法------
@@ -152,15 +183,6 @@ const getRobOrderList = () => {};
 //回到顶部
 const scrollToTop = () => {
   scrollTop.value = scrollTop.value === 0 ? 1 : 0;
-};
-// 获取tab切换当前的index
-const getTabIndex = (index) => {
-  // console.log(index, 'indexxxxxx');
-  scrollToTop();
-  store.commit('user/setTabIndex', index);
-  homeList.data = [];
-  getListData(tabBars[index].value, '');
-  // console.log(tabBars[index].value, 'index');
 };
 </script>
 <style src="../../styles/expressage.scss" lang="scss" scoped></style>

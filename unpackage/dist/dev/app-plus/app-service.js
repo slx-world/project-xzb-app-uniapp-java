@@ -2341,9 +2341,9 @@ if (uni.restoreGlobal) {
     },
     format(rule, value, message) {
       var customTypes = Object.keys(types);
-      var format = FORMAT_MAPPING[rule.format] ? FORMAT_MAPPING[rule.format] : rule.format || rule.arrayType;
-      if (customTypes.indexOf(format) > -1) {
-        if (!types[format](value)) {
+      var format2 = FORMAT_MAPPING[rule.format] ? FORMAT_MAPPING[rule.format] : rule.format || rule.arrayType;
+      if (customTypes.indexOf(format2) > -1) {
+        if (!types[format2](value)) {
           return formatMessage(rule, rule.errorMessage || message.typeError);
         }
       }
@@ -2856,8 +2856,8 @@ if (uni.restoreGlobal) {
        * 过滤数字类型
        * @param {Object} format
        */
-      type_filter(format) {
-        return format === "int" || format === "double" || format === "number" || format === "timestamp";
+      type_filter(format2) {
+        return format2 === "int" || format2 === "double" || format2 === "number" || format2 === "timestamp";
       }
     }
   };
@@ -4807,7 +4807,16 @@ if (uni.restoreGlobal) {
     params
   });
   const getAuthFail = () => request({
-    url: `/customer/worker//worker-certification-audit/rejectReason`,
+    url: `/customer/worker/worker-certification-audit/rejectReason`,
+    method: "get"
+  });
+  const postAccount = (params) => request({
+    url: `/customer/worker/bank-account`,
+    method: "post",
+    params
+  });
+  const getAccountInfo = () => request({
+    url: `/customer/worker/bank-account/currentUserBankAccount`,
     method: "get"
   });
   const _sfc_main$E = {
@@ -5417,6 +5426,15 @@ if (uni.restoreGlobal) {
   });
   const getOrderStatusNum = (params) => request({
     url: `/orders-manager/worker/status/num`,
+    method: "get"
+  });
+  const getHistoryOrder = (params) => request({
+    url: `/orders-history/worker/orders/list`,
+    method: "get",
+    params
+  });
+  const getHistoryOrderInfo = (params) => request({
+    url: `/orders-history/worker/orders/${params}`,
     method: "get"
   });
   const _sfc_main$B = {
@@ -8907,6 +8925,1570 @@ if (uni.restoreGlobal) {
     }
   };
   const PagesSettingIndex = /* @__PURE__ */ _export_sfc(_sfc_main$q, [["__file", "E:/project/小智帮/project-xzb-app-uniapp-java（服务端）/pages/setting/index.vue"]]);
+  function _typeof(o2) {
+    "@babel/helpers - typeof";
+    return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function(o3) {
+      return typeof o3;
+    } : function(o3) {
+      return o3 && "function" == typeof Symbol && o3.constructor === Symbol && o3 !== Symbol.prototype ? "symbol" : typeof o3;
+    }, _typeof(o2);
+  }
+  function toInteger(dirtyNumber) {
+    if (dirtyNumber === null || dirtyNumber === true || dirtyNumber === false) {
+      return NaN;
+    }
+    var number = Number(dirtyNumber);
+    if (isNaN(number)) {
+      return number;
+    }
+    return number < 0 ? Math.ceil(number) : Math.floor(number);
+  }
+  function requiredArgs(required, args) {
+    if (args.length < required) {
+      throw new TypeError(required + " argument" + (required > 1 ? "s" : "") + " required, but only " + args.length + " present");
+    }
+  }
+  function toDate(argument) {
+    requiredArgs(1, arguments);
+    var argStr = Object.prototype.toString.call(argument);
+    if (argument instanceof Date || _typeof(argument) === "object" && argStr === "[object Date]") {
+      return new Date(argument.getTime());
+    } else if (typeof argument === "number" || argStr === "[object Number]") {
+      return new Date(argument);
+    } else {
+      if ((typeof argument === "string" || argStr === "[object String]") && typeof console !== "undefined") {
+        formatAppLog("warn", "at node_modules/_date-fns@2.30.0@date-fns/esm/toDate/index.js:46", "Starting with v2.0.0-beta.1 date-fns doesn't accept strings as date arguments. Please use `parseISO` to parse strings. See: https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#string-arguments");
+        formatAppLog("warn", "at node_modules/_date-fns@2.30.0@date-fns/esm/toDate/index.js:48", new Error().stack);
+      }
+      return /* @__PURE__ */ new Date(NaN);
+    }
+  }
+  function addMonths(dirtyDate, dirtyAmount) {
+    requiredArgs(2, arguments);
+    var date = toDate(dirtyDate);
+    var amount = toInteger(dirtyAmount);
+    if (isNaN(amount)) {
+      return /* @__PURE__ */ new Date(NaN);
+    }
+    if (!amount) {
+      return date;
+    }
+    var dayOfMonth = date.getDate();
+    var endOfDesiredMonth = new Date(date.getTime());
+    endOfDesiredMonth.setMonth(date.getMonth() + amount + 1, 0);
+    var daysInMonth = endOfDesiredMonth.getDate();
+    if (dayOfMonth >= daysInMonth) {
+      return endOfDesiredMonth;
+    } else {
+      date.setFullYear(endOfDesiredMonth.getFullYear(), endOfDesiredMonth.getMonth(), dayOfMonth);
+      return date;
+    }
+  }
+  function addMilliseconds(dirtyDate, dirtyAmount) {
+    requiredArgs(2, arguments);
+    var timestamp = toDate(dirtyDate).getTime();
+    var amount = toInteger(dirtyAmount);
+    return new Date(timestamp + amount);
+  }
+  var defaultOptions = {};
+  function getDefaultOptions() {
+    return defaultOptions;
+  }
+  function getTimezoneOffsetInMilliseconds(date) {
+    var utcDate = new Date(Date.UTC(date.getFullYear(), date.getMonth(), date.getDate(), date.getHours(), date.getMinutes(), date.getSeconds(), date.getMilliseconds()));
+    utcDate.setUTCFullYear(date.getFullYear());
+    return date.getTime() - utcDate.getTime();
+  }
+  function addYears(dirtyDate, dirtyAmount) {
+    requiredArgs(2, arguments);
+    var amount = toInteger(dirtyAmount);
+    return addMonths(dirtyDate, amount * 12);
+  }
+  function isDate(value) {
+    requiredArgs(1, arguments);
+    return value instanceof Date || _typeof(value) === "object" && Object.prototype.toString.call(value) === "[object Date]";
+  }
+  function isValid(dirtyDate) {
+    requiredArgs(1, arguments);
+    if (!isDate(dirtyDate) && typeof dirtyDate !== "number") {
+      return false;
+    }
+    var date = toDate(dirtyDate);
+    return !isNaN(Number(date));
+  }
+  function endOfYear(dirtyDate) {
+    requiredArgs(1, arguments);
+    var date = toDate(dirtyDate);
+    var year = date.getFullYear();
+    date.setFullYear(year + 1, 0, 0);
+    date.setHours(23, 59, 59, 999);
+    return date;
+  }
+  function startOfYear(dirtyDate) {
+    requiredArgs(1, arguments);
+    var cleanDate = toDate(dirtyDate);
+    var date = /* @__PURE__ */ new Date(0);
+    date.setFullYear(cleanDate.getFullYear(), 0, 1);
+    date.setHours(0, 0, 0, 0);
+    return date;
+  }
+  function subMilliseconds(dirtyDate, dirtyAmount) {
+    requiredArgs(2, arguments);
+    var amount = toInteger(dirtyAmount);
+    return addMilliseconds(dirtyDate, -amount);
+  }
+  var MILLISECONDS_IN_DAY = 864e5;
+  function getUTCDayOfYear(dirtyDate) {
+    requiredArgs(1, arguments);
+    var date = toDate(dirtyDate);
+    var timestamp = date.getTime();
+    date.setUTCMonth(0, 1);
+    date.setUTCHours(0, 0, 0, 0);
+    var startOfYearTimestamp = date.getTime();
+    var difference = timestamp - startOfYearTimestamp;
+    return Math.floor(difference / MILLISECONDS_IN_DAY) + 1;
+  }
+  function startOfUTCISOWeek(dirtyDate) {
+    requiredArgs(1, arguments);
+    var weekStartsOn = 1;
+    var date = toDate(dirtyDate);
+    var day = date.getUTCDay();
+    var diff = (day < weekStartsOn ? 7 : 0) + day - weekStartsOn;
+    date.setUTCDate(date.getUTCDate() - diff);
+    date.setUTCHours(0, 0, 0, 0);
+    return date;
+  }
+  function getUTCISOWeekYear(dirtyDate) {
+    requiredArgs(1, arguments);
+    var date = toDate(dirtyDate);
+    var year = date.getUTCFullYear();
+    var fourthOfJanuaryOfNextYear = /* @__PURE__ */ new Date(0);
+    fourthOfJanuaryOfNextYear.setUTCFullYear(year + 1, 0, 4);
+    fourthOfJanuaryOfNextYear.setUTCHours(0, 0, 0, 0);
+    var startOfNextYear = startOfUTCISOWeek(fourthOfJanuaryOfNextYear);
+    var fourthOfJanuaryOfThisYear = /* @__PURE__ */ new Date(0);
+    fourthOfJanuaryOfThisYear.setUTCFullYear(year, 0, 4);
+    fourthOfJanuaryOfThisYear.setUTCHours(0, 0, 0, 0);
+    var startOfThisYear = startOfUTCISOWeek(fourthOfJanuaryOfThisYear);
+    if (date.getTime() >= startOfNextYear.getTime()) {
+      return year + 1;
+    } else if (date.getTime() >= startOfThisYear.getTime()) {
+      return year;
+    } else {
+      return year - 1;
+    }
+  }
+  function startOfUTCISOWeekYear(dirtyDate) {
+    requiredArgs(1, arguments);
+    var year = getUTCISOWeekYear(dirtyDate);
+    var fourthOfJanuary = /* @__PURE__ */ new Date(0);
+    fourthOfJanuary.setUTCFullYear(year, 0, 4);
+    fourthOfJanuary.setUTCHours(0, 0, 0, 0);
+    var date = startOfUTCISOWeek(fourthOfJanuary);
+    return date;
+  }
+  var MILLISECONDS_IN_WEEK$1 = 6048e5;
+  function getUTCISOWeek(dirtyDate) {
+    requiredArgs(1, arguments);
+    var date = toDate(dirtyDate);
+    var diff = startOfUTCISOWeek(date).getTime() - startOfUTCISOWeekYear(date).getTime();
+    return Math.round(diff / MILLISECONDS_IN_WEEK$1) + 1;
+  }
+  function startOfUTCWeek(dirtyDate, options) {
+    var _ref, _ref2, _ref3, _options$weekStartsOn, _options$locale, _options$locale$optio, _defaultOptions$local, _defaultOptions$local2;
+    requiredArgs(1, arguments);
+    var defaultOptions2 = getDefaultOptions();
+    var weekStartsOn = toInteger((_ref = (_ref2 = (_ref3 = (_options$weekStartsOn = options === null || options === void 0 ? void 0 : options.weekStartsOn) !== null && _options$weekStartsOn !== void 0 ? _options$weekStartsOn : options === null || options === void 0 ? void 0 : (_options$locale = options.locale) === null || _options$locale === void 0 ? void 0 : (_options$locale$optio = _options$locale.options) === null || _options$locale$optio === void 0 ? void 0 : _options$locale$optio.weekStartsOn) !== null && _ref3 !== void 0 ? _ref3 : defaultOptions2.weekStartsOn) !== null && _ref2 !== void 0 ? _ref2 : (_defaultOptions$local = defaultOptions2.locale) === null || _defaultOptions$local === void 0 ? void 0 : (_defaultOptions$local2 = _defaultOptions$local.options) === null || _defaultOptions$local2 === void 0 ? void 0 : _defaultOptions$local2.weekStartsOn) !== null && _ref !== void 0 ? _ref : 0);
+    if (!(weekStartsOn >= 0 && weekStartsOn <= 6)) {
+      throw new RangeError("weekStartsOn must be between 0 and 6 inclusively");
+    }
+    var date = toDate(dirtyDate);
+    var day = date.getUTCDay();
+    var diff = (day < weekStartsOn ? 7 : 0) + day - weekStartsOn;
+    date.setUTCDate(date.getUTCDate() - diff);
+    date.setUTCHours(0, 0, 0, 0);
+    return date;
+  }
+  function getUTCWeekYear(dirtyDate, options) {
+    var _ref, _ref2, _ref3, _options$firstWeekCon, _options$locale, _options$locale$optio, _defaultOptions$local, _defaultOptions$local2;
+    requiredArgs(1, arguments);
+    var date = toDate(dirtyDate);
+    var year = date.getUTCFullYear();
+    var defaultOptions2 = getDefaultOptions();
+    var firstWeekContainsDate = toInteger((_ref = (_ref2 = (_ref3 = (_options$firstWeekCon = options === null || options === void 0 ? void 0 : options.firstWeekContainsDate) !== null && _options$firstWeekCon !== void 0 ? _options$firstWeekCon : options === null || options === void 0 ? void 0 : (_options$locale = options.locale) === null || _options$locale === void 0 ? void 0 : (_options$locale$optio = _options$locale.options) === null || _options$locale$optio === void 0 ? void 0 : _options$locale$optio.firstWeekContainsDate) !== null && _ref3 !== void 0 ? _ref3 : defaultOptions2.firstWeekContainsDate) !== null && _ref2 !== void 0 ? _ref2 : (_defaultOptions$local = defaultOptions2.locale) === null || _defaultOptions$local === void 0 ? void 0 : (_defaultOptions$local2 = _defaultOptions$local.options) === null || _defaultOptions$local2 === void 0 ? void 0 : _defaultOptions$local2.firstWeekContainsDate) !== null && _ref !== void 0 ? _ref : 1);
+    if (!(firstWeekContainsDate >= 1 && firstWeekContainsDate <= 7)) {
+      throw new RangeError("firstWeekContainsDate must be between 1 and 7 inclusively");
+    }
+    var firstWeekOfNextYear = /* @__PURE__ */ new Date(0);
+    firstWeekOfNextYear.setUTCFullYear(year + 1, 0, firstWeekContainsDate);
+    firstWeekOfNextYear.setUTCHours(0, 0, 0, 0);
+    var startOfNextYear = startOfUTCWeek(firstWeekOfNextYear, options);
+    var firstWeekOfThisYear = /* @__PURE__ */ new Date(0);
+    firstWeekOfThisYear.setUTCFullYear(year, 0, firstWeekContainsDate);
+    firstWeekOfThisYear.setUTCHours(0, 0, 0, 0);
+    var startOfThisYear = startOfUTCWeek(firstWeekOfThisYear, options);
+    if (date.getTime() >= startOfNextYear.getTime()) {
+      return year + 1;
+    } else if (date.getTime() >= startOfThisYear.getTime()) {
+      return year;
+    } else {
+      return year - 1;
+    }
+  }
+  function startOfUTCWeekYear(dirtyDate, options) {
+    var _ref, _ref2, _ref3, _options$firstWeekCon, _options$locale, _options$locale$optio, _defaultOptions$local, _defaultOptions$local2;
+    requiredArgs(1, arguments);
+    var defaultOptions2 = getDefaultOptions();
+    var firstWeekContainsDate = toInteger((_ref = (_ref2 = (_ref3 = (_options$firstWeekCon = options === null || options === void 0 ? void 0 : options.firstWeekContainsDate) !== null && _options$firstWeekCon !== void 0 ? _options$firstWeekCon : options === null || options === void 0 ? void 0 : (_options$locale = options.locale) === null || _options$locale === void 0 ? void 0 : (_options$locale$optio = _options$locale.options) === null || _options$locale$optio === void 0 ? void 0 : _options$locale$optio.firstWeekContainsDate) !== null && _ref3 !== void 0 ? _ref3 : defaultOptions2.firstWeekContainsDate) !== null && _ref2 !== void 0 ? _ref2 : (_defaultOptions$local = defaultOptions2.locale) === null || _defaultOptions$local === void 0 ? void 0 : (_defaultOptions$local2 = _defaultOptions$local.options) === null || _defaultOptions$local2 === void 0 ? void 0 : _defaultOptions$local2.firstWeekContainsDate) !== null && _ref !== void 0 ? _ref : 1);
+    var year = getUTCWeekYear(dirtyDate, options);
+    var firstWeek = /* @__PURE__ */ new Date(0);
+    firstWeek.setUTCFullYear(year, 0, firstWeekContainsDate);
+    firstWeek.setUTCHours(0, 0, 0, 0);
+    var date = startOfUTCWeek(firstWeek, options);
+    return date;
+  }
+  var MILLISECONDS_IN_WEEK = 6048e5;
+  function getUTCWeek(dirtyDate, options) {
+    requiredArgs(1, arguments);
+    var date = toDate(dirtyDate);
+    var diff = startOfUTCWeek(date, options).getTime() - startOfUTCWeekYear(date, options).getTime();
+    return Math.round(diff / MILLISECONDS_IN_WEEK) + 1;
+  }
+  function addLeadingZeros(number, targetLength) {
+    var sign = number < 0 ? "-" : "";
+    var output = Math.abs(number).toString();
+    while (output.length < targetLength) {
+      output = "0" + output;
+    }
+    return sign + output;
+  }
+  var formatters$2 = {
+    // Year
+    y: function y2(date, token) {
+      var signedYear = date.getUTCFullYear();
+      var year = signedYear > 0 ? signedYear : 1 - signedYear;
+      return addLeadingZeros(token === "yy" ? year % 100 : year, token.length);
+    },
+    // Month
+    M: function M2(date, token) {
+      var month = date.getUTCMonth();
+      return token === "M" ? String(month + 1) : addLeadingZeros(month + 1, 2);
+    },
+    // Day of the month
+    d: function d2(date, token) {
+      return addLeadingZeros(date.getUTCDate(), token.length);
+    },
+    // AM or PM
+    a: function a2(date, token) {
+      var dayPeriodEnumValue = date.getUTCHours() / 12 >= 1 ? "pm" : "am";
+      switch (token) {
+        case "a":
+        case "aa":
+          return dayPeriodEnumValue.toUpperCase();
+        case "aaa":
+          return dayPeriodEnumValue;
+        case "aaaaa":
+          return dayPeriodEnumValue[0];
+        case "aaaa":
+        default:
+          return dayPeriodEnumValue === "am" ? "a.m." : "p.m.";
+      }
+    },
+    // Hour [1-12]
+    h: function h2(date, token) {
+      return addLeadingZeros(date.getUTCHours() % 12 || 12, token.length);
+    },
+    // Hour [0-23]
+    H: function H2(date, token) {
+      return addLeadingZeros(date.getUTCHours(), token.length);
+    },
+    // Minute
+    m: function m2(date, token) {
+      return addLeadingZeros(date.getUTCMinutes(), token.length);
+    },
+    // Second
+    s: function s2(date, token) {
+      return addLeadingZeros(date.getUTCSeconds(), token.length);
+    },
+    // Fraction of second
+    S: function S2(date, token) {
+      var numberOfDigits = token.length;
+      var milliseconds = date.getUTCMilliseconds();
+      var fractionalSeconds = Math.floor(milliseconds * Math.pow(10, numberOfDigits - 3));
+      return addLeadingZeros(fractionalSeconds, token.length);
+    }
+  };
+  const formatters$3 = formatters$2;
+  var dayPeriodEnum = {
+    am: "am",
+    pm: "pm",
+    midnight: "midnight",
+    noon: "noon",
+    morning: "morning",
+    afternoon: "afternoon",
+    evening: "evening",
+    night: "night"
+  };
+  var formatters = {
+    // Era
+    G: function G2(date, token, localize2) {
+      var era = date.getUTCFullYear() > 0 ? 1 : 0;
+      switch (token) {
+        case "G":
+        case "GG":
+        case "GGG":
+          return localize2.era(era, {
+            width: "abbreviated"
+          });
+        case "GGGGG":
+          return localize2.era(era, {
+            width: "narrow"
+          });
+        case "GGGG":
+        default:
+          return localize2.era(era, {
+            width: "wide"
+          });
+      }
+    },
+    // Year
+    y: function y2(date, token, localize2) {
+      if (token === "yo") {
+        var signedYear = date.getUTCFullYear();
+        var year = signedYear > 0 ? signedYear : 1 - signedYear;
+        return localize2.ordinalNumber(year, {
+          unit: "year"
+        });
+      }
+      return formatters$3.y(date, token);
+    },
+    // Local week-numbering year
+    Y: function Y2(date, token, localize2, options) {
+      var signedWeekYear = getUTCWeekYear(date, options);
+      var weekYear = signedWeekYear > 0 ? signedWeekYear : 1 - signedWeekYear;
+      if (token === "YY") {
+        var twoDigitYear = weekYear % 100;
+        return addLeadingZeros(twoDigitYear, 2);
+      }
+      if (token === "Yo") {
+        return localize2.ordinalNumber(weekYear, {
+          unit: "year"
+        });
+      }
+      return addLeadingZeros(weekYear, token.length);
+    },
+    // ISO week-numbering year
+    R: function R2(date, token) {
+      var isoWeekYear = getUTCISOWeekYear(date);
+      return addLeadingZeros(isoWeekYear, token.length);
+    },
+    // Extended year. This is a single number designating the year of this calendar system.
+    // The main difference between `y` and `u` localizers are B.C. years:
+    // | Year | `y` | `u` |
+    // |------|-----|-----|
+    // | AC 1 |   1 |   1 |
+    // | BC 1 |   1 |   0 |
+    // | BC 2 |   2 |  -1 |
+    // Also `yy` always returns the last two digits of a year,
+    // while `uu` pads single digit years to 2 characters and returns other years unchanged.
+    u: function u2(date, token) {
+      var year = date.getUTCFullYear();
+      return addLeadingZeros(year, token.length);
+    },
+    // Quarter
+    Q: function Q2(date, token, localize2) {
+      var quarter = Math.ceil((date.getUTCMonth() + 1) / 3);
+      switch (token) {
+        case "Q":
+          return String(quarter);
+        case "QQ":
+          return addLeadingZeros(quarter, 2);
+        case "Qo":
+          return localize2.ordinalNumber(quarter, {
+            unit: "quarter"
+          });
+        case "QQQ":
+          return localize2.quarter(quarter, {
+            width: "abbreviated",
+            context: "formatting"
+          });
+        case "QQQQQ":
+          return localize2.quarter(quarter, {
+            width: "narrow",
+            context: "formatting"
+          });
+        case "QQQQ":
+        default:
+          return localize2.quarter(quarter, {
+            width: "wide",
+            context: "formatting"
+          });
+      }
+    },
+    // Stand-alone quarter
+    q: function q2(date, token, localize2) {
+      var quarter = Math.ceil((date.getUTCMonth() + 1) / 3);
+      switch (token) {
+        case "q":
+          return String(quarter);
+        case "qq":
+          return addLeadingZeros(quarter, 2);
+        case "qo":
+          return localize2.ordinalNumber(quarter, {
+            unit: "quarter"
+          });
+        case "qqq":
+          return localize2.quarter(quarter, {
+            width: "abbreviated",
+            context: "standalone"
+          });
+        case "qqqqq":
+          return localize2.quarter(quarter, {
+            width: "narrow",
+            context: "standalone"
+          });
+        case "qqqq":
+        default:
+          return localize2.quarter(quarter, {
+            width: "wide",
+            context: "standalone"
+          });
+      }
+    },
+    // Month
+    M: function M2(date, token, localize2) {
+      var month = date.getUTCMonth();
+      switch (token) {
+        case "M":
+        case "MM":
+          return formatters$3.M(date, token);
+        case "Mo":
+          return localize2.ordinalNumber(month + 1, {
+            unit: "month"
+          });
+        case "MMM":
+          return localize2.month(month, {
+            width: "abbreviated",
+            context: "formatting"
+          });
+        case "MMMMM":
+          return localize2.month(month, {
+            width: "narrow",
+            context: "formatting"
+          });
+        case "MMMM":
+        default:
+          return localize2.month(month, {
+            width: "wide",
+            context: "formatting"
+          });
+      }
+    },
+    // Stand-alone month
+    L: function L2(date, token, localize2) {
+      var month = date.getUTCMonth();
+      switch (token) {
+        case "L":
+          return String(month + 1);
+        case "LL":
+          return addLeadingZeros(month + 1, 2);
+        case "Lo":
+          return localize2.ordinalNumber(month + 1, {
+            unit: "month"
+          });
+        case "LLL":
+          return localize2.month(month, {
+            width: "abbreviated",
+            context: "standalone"
+          });
+        case "LLLLL":
+          return localize2.month(month, {
+            width: "narrow",
+            context: "standalone"
+          });
+        case "LLLL":
+        default:
+          return localize2.month(month, {
+            width: "wide",
+            context: "standalone"
+          });
+      }
+    },
+    // Local week of year
+    w: function w2(date, token, localize2, options) {
+      var week = getUTCWeek(date, options);
+      if (token === "wo") {
+        return localize2.ordinalNumber(week, {
+          unit: "week"
+        });
+      }
+      return addLeadingZeros(week, token.length);
+    },
+    // ISO week of year
+    I: function I2(date, token, localize2) {
+      var isoWeek = getUTCISOWeek(date);
+      if (token === "Io") {
+        return localize2.ordinalNumber(isoWeek, {
+          unit: "week"
+        });
+      }
+      return addLeadingZeros(isoWeek, token.length);
+    },
+    // Day of the month
+    d: function d2(date, token, localize2) {
+      if (token === "do") {
+        return localize2.ordinalNumber(date.getUTCDate(), {
+          unit: "date"
+        });
+      }
+      return formatters$3.d(date, token);
+    },
+    // Day of year
+    D: function D2(date, token, localize2) {
+      var dayOfYear = getUTCDayOfYear(date);
+      if (token === "Do") {
+        return localize2.ordinalNumber(dayOfYear, {
+          unit: "dayOfYear"
+        });
+      }
+      return addLeadingZeros(dayOfYear, token.length);
+    },
+    // Day of week
+    E: function E2(date, token, localize2) {
+      var dayOfWeek = date.getUTCDay();
+      switch (token) {
+        case "E":
+        case "EE":
+        case "EEE":
+          return localize2.day(dayOfWeek, {
+            width: "abbreviated",
+            context: "formatting"
+          });
+        case "EEEEE":
+          return localize2.day(dayOfWeek, {
+            width: "narrow",
+            context: "formatting"
+          });
+        case "EEEEEE":
+          return localize2.day(dayOfWeek, {
+            width: "short",
+            context: "formatting"
+          });
+        case "EEEE":
+        default:
+          return localize2.day(dayOfWeek, {
+            width: "wide",
+            context: "formatting"
+          });
+      }
+    },
+    // Local day of week
+    e: function e2(date, token, localize2, options) {
+      var dayOfWeek = date.getUTCDay();
+      var localDayOfWeek = (dayOfWeek - options.weekStartsOn + 8) % 7 || 7;
+      switch (token) {
+        case "e":
+          return String(localDayOfWeek);
+        case "ee":
+          return addLeadingZeros(localDayOfWeek, 2);
+        case "eo":
+          return localize2.ordinalNumber(localDayOfWeek, {
+            unit: "day"
+          });
+        case "eee":
+          return localize2.day(dayOfWeek, {
+            width: "abbreviated",
+            context: "formatting"
+          });
+        case "eeeee":
+          return localize2.day(dayOfWeek, {
+            width: "narrow",
+            context: "formatting"
+          });
+        case "eeeeee":
+          return localize2.day(dayOfWeek, {
+            width: "short",
+            context: "formatting"
+          });
+        case "eeee":
+        default:
+          return localize2.day(dayOfWeek, {
+            width: "wide",
+            context: "formatting"
+          });
+      }
+    },
+    // Stand-alone local day of week
+    c: function c2(date, token, localize2, options) {
+      var dayOfWeek = date.getUTCDay();
+      var localDayOfWeek = (dayOfWeek - options.weekStartsOn + 8) % 7 || 7;
+      switch (token) {
+        case "c":
+          return String(localDayOfWeek);
+        case "cc":
+          return addLeadingZeros(localDayOfWeek, token.length);
+        case "co":
+          return localize2.ordinalNumber(localDayOfWeek, {
+            unit: "day"
+          });
+        case "ccc":
+          return localize2.day(dayOfWeek, {
+            width: "abbreviated",
+            context: "standalone"
+          });
+        case "ccccc":
+          return localize2.day(dayOfWeek, {
+            width: "narrow",
+            context: "standalone"
+          });
+        case "cccccc":
+          return localize2.day(dayOfWeek, {
+            width: "short",
+            context: "standalone"
+          });
+        case "cccc":
+        default:
+          return localize2.day(dayOfWeek, {
+            width: "wide",
+            context: "standalone"
+          });
+      }
+    },
+    // ISO day of week
+    i: function i2(date, token, localize2) {
+      var dayOfWeek = date.getUTCDay();
+      var isoDayOfWeek = dayOfWeek === 0 ? 7 : dayOfWeek;
+      switch (token) {
+        case "i":
+          return String(isoDayOfWeek);
+        case "ii":
+          return addLeadingZeros(isoDayOfWeek, token.length);
+        case "io":
+          return localize2.ordinalNumber(isoDayOfWeek, {
+            unit: "day"
+          });
+        case "iii":
+          return localize2.day(dayOfWeek, {
+            width: "abbreviated",
+            context: "formatting"
+          });
+        case "iiiii":
+          return localize2.day(dayOfWeek, {
+            width: "narrow",
+            context: "formatting"
+          });
+        case "iiiiii":
+          return localize2.day(dayOfWeek, {
+            width: "short",
+            context: "formatting"
+          });
+        case "iiii":
+        default:
+          return localize2.day(dayOfWeek, {
+            width: "wide",
+            context: "formatting"
+          });
+      }
+    },
+    // AM or PM
+    a: function a2(date, token, localize2) {
+      var hours = date.getUTCHours();
+      var dayPeriodEnumValue = hours / 12 >= 1 ? "pm" : "am";
+      switch (token) {
+        case "a":
+        case "aa":
+          return localize2.dayPeriod(dayPeriodEnumValue, {
+            width: "abbreviated",
+            context: "formatting"
+          });
+        case "aaa":
+          return localize2.dayPeriod(dayPeriodEnumValue, {
+            width: "abbreviated",
+            context: "formatting"
+          }).toLowerCase();
+        case "aaaaa":
+          return localize2.dayPeriod(dayPeriodEnumValue, {
+            width: "narrow",
+            context: "formatting"
+          });
+        case "aaaa":
+        default:
+          return localize2.dayPeriod(dayPeriodEnumValue, {
+            width: "wide",
+            context: "formatting"
+          });
+      }
+    },
+    // AM, PM, midnight, noon
+    b: function b2(date, token, localize2) {
+      var hours = date.getUTCHours();
+      var dayPeriodEnumValue;
+      if (hours === 12) {
+        dayPeriodEnumValue = dayPeriodEnum.noon;
+      } else if (hours === 0) {
+        dayPeriodEnumValue = dayPeriodEnum.midnight;
+      } else {
+        dayPeriodEnumValue = hours / 12 >= 1 ? "pm" : "am";
+      }
+      switch (token) {
+        case "b":
+        case "bb":
+          return localize2.dayPeriod(dayPeriodEnumValue, {
+            width: "abbreviated",
+            context: "formatting"
+          });
+        case "bbb":
+          return localize2.dayPeriod(dayPeriodEnumValue, {
+            width: "abbreviated",
+            context: "formatting"
+          }).toLowerCase();
+        case "bbbbb":
+          return localize2.dayPeriod(dayPeriodEnumValue, {
+            width: "narrow",
+            context: "formatting"
+          });
+        case "bbbb":
+        default:
+          return localize2.dayPeriod(dayPeriodEnumValue, {
+            width: "wide",
+            context: "formatting"
+          });
+      }
+    },
+    // in the morning, in the afternoon, in the evening, at night
+    B: function B2(date, token, localize2) {
+      var hours = date.getUTCHours();
+      var dayPeriodEnumValue;
+      if (hours >= 17) {
+        dayPeriodEnumValue = dayPeriodEnum.evening;
+      } else if (hours >= 12) {
+        dayPeriodEnumValue = dayPeriodEnum.afternoon;
+      } else if (hours >= 4) {
+        dayPeriodEnumValue = dayPeriodEnum.morning;
+      } else {
+        dayPeriodEnumValue = dayPeriodEnum.night;
+      }
+      switch (token) {
+        case "B":
+        case "BB":
+        case "BBB":
+          return localize2.dayPeriod(dayPeriodEnumValue, {
+            width: "abbreviated",
+            context: "formatting"
+          });
+        case "BBBBB":
+          return localize2.dayPeriod(dayPeriodEnumValue, {
+            width: "narrow",
+            context: "formatting"
+          });
+        case "BBBB":
+        default:
+          return localize2.dayPeriod(dayPeriodEnumValue, {
+            width: "wide",
+            context: "formatting"
+          });
+      }
+    },
+    // Hour [1-12]
+    h: function h2(date, token, localize2) {
+      if (token === "ho") {
+        var hours = date.getUTCHours() % 12;
+        if (hours === 0)
+          hours = 12;
+        return localize2.ordinalNumber(hours, {
+          unit: "hour"
+        });
+      }
+      return formatters$3.h(date, token);
+    },
+    // Hour [0-23]
+    H: function H2(date, token, localize2) {
+      if (token === "Ho") {
+        return localize2.ordinalNumber(date.getUTCHours(), {
+          unit: "hour"
+        });
+      }
+      return formatters$3.H(date, token);
+    },
+    // Hour [0-11]
+    K: function K2(date, token, localize2) {
+      var hours = date.getUTCHours() % 12;
+      if (token === "Ko") {
+        return localize2.ordinalNumber(hours, {
+          unit: "hour"
+        });
+      }
+      return addLeadingZeros(hours, token.length);
+    },
+    // Hour [1-24]
+    k: function k2(date, token, localize2) {
+      var hours = date.getUTCHours();
+      if (hours === 0)
+        hours = 24;
+      if (token === "ko") {
+        return localize2.ordinalNumber(hours, {
+          unit: "hour"
+        });
+      }
+      return addLeadingZeros(hours, token.length);
+    },
+    // Minute
+    m: function m2(date, token, localize2) {
+      if (token === "mo") {
+        return localize2.ordinalNumber(date.getUTCMinutes(), {
+          unit: "minute"
+        });
+      }
+      return formatters$3.m(date, token);
+    },
+    // Second
+    s: function s2(date, token, localize2) {
+      if (token === "so") {
+        return localize2.ordinalNumber(date.getUTCSeconds(), {
+          unit: "second"
+        });
+      }
+      return formatters$3.s(date, token);
+    },
+    // Fraction of second
+    S: function S2(date, token) {
+      return formatters$3.S(date, token);
+    },
+    // Timezone (ISO-8601. If offset is 0, output is always `'Z'`)
+    X: function X2(date, token, _localize, options) {
+      var originalDate = options._originalDate || date;
+      var timezoneOffset = originalDate.getTimezoneOffset();
+      if (timezoneOffset === 0) {
+        return "Z";
+      }
+      switch (token) {
+        case "X":
+          return formatTimezoneWithOptionalMinutes(timezoneOffset);
+        case "XXXX":
+        case "XX":
+          return formatTimezone(timezoneOffset);
+        case "XXXXX":
+        case "XXX":
+        default:
+          return formatTimezone(timezoneOffset, ":");
+      }
+    },
+    // Timezone (ISO-8601. If offset is 0, output is `'+00:00'` or equivalent)
+    x: function x2(date, token, _localize, options) {
+      var originalDate = options._originalDate || date;
+      var timezoneOffset = originalDate.getTimezoneOffset();
+      switch (token) {
+        case "x":
+          return formatTimezoneWithOptionalMinutes(timezoneOffset);
+        case "xxxx":
+        case "xx":
+          return formatTimezone(timezoneOffset);
+        case "xxxxx":
+        case "xxx":
+        default:
+          return formatTimezone(timezoneOffset, ":");
+      }
+    },
+    // Timezone (GMT)
+    O: function O(date, token, _localize, options) {
+      var originalDate = options._originalDate || date;
+      var timezoneOffset = originalDate.getTimezoneOffset();
+      switch (token) {
+        case "O":
+        case "OO":
+        case "OOO":
+          return "GMT" + formatTimezoneShort(timezoneOffset, ":");
+        case "OOOO":
+        default:
+          return "GMT" + formatTimezone(timezoneOffset, ":");
+      }
+    },
+    // Timezone (specific non-location)
+    z: function z2(date, token, _localize, options) {
+      var originalDate = options._originalDate || date;
+      var timezoneOffset = originalDate.getTimezoneOffset();
+      switch (token) {
+        case "z":
+        case "zz":
+        case "zzz":
+          return "GMT" + formatTimezoneShort(timezoneOffset, ":");
+        case "zzzz":
+        default:
+          return "GMT" + formatTimezone(timezoneOffset, ":");
+      }
+    },
+    // Seconds timestamp
+    t: function t2(date, token, _localize, options) {
+      var originalDate = options._originalDate || date;
+      var timestamp = Math.floor(originalDate.getTime() / 1e3);
+      return addLeadingZeros(timestamp, token.length);
+    },
+    // Milliseconds timestamp
+    T: function T2(date, token, _localize, options) {
+      var originalDate = options._originalDate || date;
+      var timestamp = originalDate.getTime();
+      return addLeadingZeros(timestamp, token.length);
+    }
+  };
+  function formatTimezoneShort(offset, dirtyDelimiter) {
+    var sign = offset > 0 ? "-" : "+";
+    var absOffset = Math.abs(offset);
+    var hours = Math.floor(absOffset / 60);
+    var minutes = absOffset % 60;
+    if (minutes === 0) {
+      return sign + String(hours);
+    }
+    var delimiter = dirtyDelimiter || "";
+    return sign + String(hours) + delimiter + addLeadingZeros(minutes, 2);
+  }
+  function formatTimezoneWithOptionalMinutes(offset, dirtyDelimiter) {
+    if (offset % 60 === 0) {
+      var sign = offset > 0 ? "-" : "+";
+      return sign + addLeadingZeros(Math.abs(offset) / 60, 2);
+    }
+    return formatTimezone(offset, dirtyDelimiter);
+  }
+  function formatTimezone(offset, dirtyDelimiter) {
+    var delimiter = dirtyDelimiter || "";
+    var sign = offset > 0 ? "-" : "+";
+    var absOffset = Math.abs(offset);
+    var hours = addLeadingZeros(Math.floor(absOffset / 60), 2);
+    var minutes = addLeadingZeros(absOffset % 60, 2);
+    return sign + hours + delimiter + minutes;
+  }
+  const formatters$1 = formatters;
+  var dateLongFormatter = function dateLongFormatter2(pattern2, formatLong2) {
+    switch (pattern2) {
+      case "P":
+        return formatLong2.date({
+          width: "short"
+        });
+      case "PP":
+        return formatLong2.date({
+          width: "medium"
+        });
+      case "PPP":
+        return formatLong2.date({
+          width: "long"
+        });
+      case "PPPP":
+      default:
+        return formatLong2.date({
+          width: "full"
+        });
+    }
+  };
+  var timeLongFormatter = function timeLongFormatter2(pattern2, formatLong2) {
+    switch (pattern2) {
+      case "p":
+        return formatLong2.time({
+          width: "short"
+        });
+      case "pp":
+        return formatLong2.time({
+          width: "medium"
+        });
+      case "ppp":
+        return formatLong2.time({
+          width: "long"
+        });
+      case "pppp":
+      default:
+        return formatLong2.time({
+          width: "full"
+        });
+    }
+  };
+  var dateTimeLongFormatter = function dateTimeLongFormatter2(pattern2, formatLong2) {
+    var matchResult = pattern2.match(/(P+)(p+)?/) || [];
+    var datePattern = matchResult[1];
+    var timePattern = matchResult[2];
+    if (!timePattern) {
+      return dateLongFormatter(pattern2, formatLong2);
+    }
+    var dateTimeFormat;
+    switch (datePattern) {
+      case "P":
+        dateTimeFormat = formatLong2.dateTime({
+          width: "short"
+        });
+        break;
+      case "PP":
+        dateTimeFormat = formatLong2.dateTime({
+          width: "medium"
+        });
+        break;
+      case "PPP":
+        dateTimeFormat = formatLong2.dateTime({
+          width: "long"
+        });
+        break;
+      case "PPPP":
+      default:
+        dateTimeFormat = formatLong2.dateTime({
+          width: "full"
+        });
+        break;
+    }
+    return dateTimeFormat.replace("{{date}}", dateLongFormatter(datePattern, formatLong2)).replace("{{time}}", timeLongFormatter(timePattern, formatLong2));
+  };
+  var longFormatters = {
+    p: timeLongFormatter,
+    P: dateTimeLongFormatter
+  };
+  const longFormatters$1 = longFormatters;
+  var protectedDayOfYearTokens = ["D", "DD"];
+  var protectedWeekYearTokens = ["YY", "YYYY"];
+  function isProtectedDayOfYearToken(token) {
+    return protectedDayOfYearTokens.indexOf(token) !== -1;
+  }
+  function isProtectedWeekYearToken(token) {
+    return protectedWeekYearTokens.indexOf(token) !== -1;
+  }
+  function throwProtectedError(token, format2, input) {
+    if (token === "YYYY") {
+      throw new RangeError("Use `yyyy` instead of `YYYY` (in `".concat(format2, "`) for formatting years to the input `").concat(input, "`; see: https://github.com/date-fns/date-fns/blob/master/docs/unicodeTokens.md"));
+    } else if (token === "YY") {
+      throw new RangeError("Use `yy` instead of `YY` (in `".concat(format2, "`) for formatting years to the input `").concat(input, "`; see: https://github.com/date-fns/date-fns/blob/master/docs/unicodeTokens.md"));
+    } else if (token === "D") {
+      throw new RangeError("Use `d` instead of `D` (in `".concat(format2, "`) for formatting days of the month to the input `").concat(input, "`; see: https://github.com/date-fns/date-fns/blob/master/docs/unicodeTokens.md"));
+    } else if (token === "DD") {
+      throw new RangeError("Use `dd` instead of `DD` (in `".concat(format2, "`) for formatting days of the month to the input `").concat(input, "`; see: https://github.com/date-fns/date-fns/blob/master/docs/unicodeTokens.md"));
+    }
+  }
+  var formatDistanceLocale = {
+    lessThanXSeconds: {
+      one: "less than a second",
+      other: "less than {{count}} seconds"
+    },
+    xSeconds: {
+      one: "1 second",
+      other: "{{count}} seconds"
+    },
+    halfAMinute: "half a minute",
+    lessThanXMinutes: {
+      one: "less than a minute",
+      other: "less than {{count}} minutes"
+    },
+    xMinutes: {
+      one: "1 minute",
+      other: "{{count}} minutes"
+    },
+    aboutXHours: {
+      one: "about 1 hour",
+      other: "about {{count}} hours"
+    },
+    xHours: {
+      one: "1 hour",
+      other: "{{count}} hours"
+    },
+    xDays: {
+      one: "1 day",
+      other: "{{count}} days"
+    },
+    aboutXWeeks: {
+      one: "about 1 week",
+      other: "about {{count}} weeks"
+    },
+    xWeeks: {
+      one: "1 week",
+      other: "{{count}} weeks"
+    },
+    aboutXMonths: {
+      one: "about 1 month",
+      other: "about {{count}} months"
+    },
+    xMonths: {
+      one: "1 month",
+      other: "{{count}} months"
+    },
+    aboutXYears: {
+      one: "about 1 year",
+      other: "about {{count}} years"
+    },
+    xYears: {
+      one: "1 year",
+      other: "{{count}} years"
+    },
+    overXYears: {
+      one: "over 1 year",
+      other: "over {{count}} years"
+    },
+    almostXYears: {
+      one: "almost 1 year",
+      other: "almost {{count}} years"
+    }
+  };
+  var formatDistance = function formatDistance2(token, count, options) {
+    var result;
+    var tokenValue = formatDistanceLocale[token];
+    if (typeof tokenValue === "string") {
+      result = tokenValue;
+    } else if (count === 1) {
+      result = tokenValue.one;
+    } else {
+      result = tokenValue.other.replace("{{count}}", count.toString());
+    }
+    if (options !== null && options !== void 0 && options.addSuffix) {
+      if (options.comparison && options.comparison > 0) {
+        return "in " + result;
+      } else {
+        return result + " ago";
+      }
+    }
+    return result;
+  };
+  const formatDistance$1 = formatDistance;
+  function buildFormatLongFn(args) {
+    return function() {
+      var options = arguments.length > 0 && arguments[0] !== void 0 ? arguments[0] : {};
+      var width = options.width ? String(options.width) : args.defaultWidth;
+      var format2 = args.formats[width] || args.formats[args.defaultWidth];
+      return format2;
+    };
+  }
+  var dateFormats = {
+    full: "EEEE, MMMM do, y",
+    long: "MMMM do, y",
+    medium: "MMM d, y",
+    short: "MM/dd/yyyy"
+  };
+  var timeFormats = {
+    full: "h:mm:ss a zzzz",
+    long: "h:mm:ss a z",
+    medium: "h:mm:ss a",
+    short: "h:mm a"
+  };
+  var dateTimeFormats = {
+    full: "{{date}} 'at' {{time}}",
+    long: "{{date}} 'at' {{time}}",
+    medium: "{{date}}, {{time}}",
+    short: "{{date}}, {{time}}"
+  };
+  var formatLong = {
+    date: buildFormatLongFn({
+      formats: dateFormats,
+      defaultWidth: "full"
+    }),
+    time: buildFormatLongFn({
+      formats: timeFormats,
+      defaultWidth: "full"
+    }),
+    dateTime: buildFormatLongFn({
+      formats: dateTimeFormats,
+      defaultWidth: "full"
+    })
+  };
+  const formatLong$1 = formatLong;
+  var formatRelativeLocale = {
+    lastWeek: "'last' eeee 'at' p",
+    yesterday: "'yesterday at' p",
+    today: "'today at' p",
+    tomorrow: "'tomorrow at' p",
+    nextWeek: "eeee 'at' p",
+    other: "P"
+  };
+  var formatRelative = function formatRelative2(token, _date, _baseDate, _options) {
+    return formatRelativeLocale[token];
+  };
+  const formatRelative$1 = formatRelative;
+  function buildLocalizeFn(args) {
+    return function(dirtyIndex, options) {
+      var context = options !== null && options !== void 0 && options.context ? String(options.context) : "standalone";
+      var valuesArray;
+      if (context === "formatting" && args.formattingValues) {
+        var defaultWidth = args.defaultFormattingWidth || args.defaultWidth;
+        var width = options !== null && options !== void 0 && options.width ? String(options.width) : defaultWidth;
+        valuesArray = args.formattingValues[width] || args.formattingValues[defaultWidth];
+      } else {
+        var _defaultWidth = args.defaultWidth;
+        var _width = options !== null && options !== void 0 && options.width ? String(options.width) : args.defaultWidth;
+        valuesArray = args.values[_width] || args.values[_defaultWidth];
+      }
+      var index = args.argumentCallback ? args.argumentCallback(dirtyIndex) : dirtyIndex;
+      return valuesArray[index];
+    };
+  }
+  var eraValues = {
+    narrow: ["B", "A"],
+    abbreviated: ["BC", "AD"],
+    wide: ["Before Christ", "Anno Domini"]
+  };
+  var quarterValues = {
+    narrow: ["1", "2", "3", "4"],
+    abbreviated: ["Q1", "Q2", "Q3", "Q4"],
+    wide: ["1st quarter", "2nd quarter", "3rd quarter", "4th quarter"]
+  };
+  var monthValues = {
+    narrow: ["J", "F", "M", "A", "M", "J", "J", "A", "S", "O", "N", "D"],
+    abbreviated: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+    wide: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
+  };
+  var dayValues = {
+    narrow: ["S", "M", "T", "W", "T", "F", "S"],
+    short: ["Su", "Mo", "Tu", "We", "Th", "Fr", "Sa"],
+    abbreviated: ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"],
+    wide: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
+  };
+  var dayPeriodValues = {
+    narrow: {
+      am: "a",
+      pm: "p",
+      midnight: "mi",
+      noon: "n",
+      morning: "morning",
+      afternoon: "afternoon",
+      evening: "evening",
+      night: "night"
+    },
+    abbreviated: {
+      am: "AM",
+      pm: "PM",
+      midnight: "midnight",
+      noon: "noon",
+      morning: "morning",
+      afternoon: "afternoon",
+      evening: "evening",
+      night: "night"
+    },
+    wide: {
+      am: "a.m.",
+      pm: "p.m.",
+      midnight: "midnight",
+      noon: "noon",
+      morning: "morning",
+      afternoon: "afternoon",
+      evening: "evening",
+      night: "night"
+    }
+  };
+  var formattingDayPeriodValues = {
+    narrow: {
+      am: "a",
+      pm: "p",
+      midnight: "mi",
+      noon: "n",
+      morning: "in the morning",
+      afternoon: "in the afternoon",
+      evening: "in the evening",
+      night: "at night"
+    },
+    abbreviated: {
+      am: "AM",
+      pm: "PM",
+      midnight: "midnight",
+      noon: "noon",
+      morning: "in the morning",
+      afternoon: "in the afternoon",
+      evening: "in the evening",
+      night: "at night"
+    },
+    wide: {
+      am: "a.m.",
+      pm: "p.m.",
+      midnight: "midnight",
+      noon: "noon",
+      morning: "in the morning",
+      afternoon: "in the afternoon",
+      evening: "in the evening",
+      night: "at night"
+    }
+  };
+  var ordinalNumber = function ordinalNumber2(dirtyNumber, _options) {
+    var number = Number(dirtyNumber);
+    var rem100 = number % 100;
+    if (rem100 > 20 || rem100 < 10) {
+      switch (rem100 % 10) {
+        case 1:
+          return number + "st";
+        case 2:
+          return number + "nd";
+        case 3:
+          return number + "rd";
+      }
+    }
+    return number + "th";
+  };
+  var localize = {
+    ordinalNumber,
+    era: buildLocalizeFn({
+      values: eraValues,
+      defaultWidth: "wide"
+    }),
+    quarter: buildLocalizeFn({
+      values: quarterValues,
+      defaultWidth: "wide",
+      argumentCallback: function argumentCallback(quarter) {
+        return quarter - 1;
+      }
+    }),
+    month: buildLocalizeFn({
+      values: monthValues,
+      defaultWidth: "wide"
+    }),
+    day: buildLocalizeFn({
+      values: dayValues,
+      defaultWidth: "wide"
+    }),
+    dayPeriod: buildLocalizeFn({
+      values: dayPeriodValues,
+      defaultWidth: "wide",
+      formattingValues: formattingDayPeriodValues,
+      defaultFormattingWidth: "wide"
+    })
+  };
+  const localize$1 = localize;
+  function buildMatchFn(args) {
+    return function(string) {
+      var options = arguments.length > 1 && arguments[1] !== void 0 ? arguments[1] : {};
+      var width = options.width;
+      var matchPattern = width && args.matchPatterns[width] || args.matchPatterns[args.defaultMatchWidth];
+      var matchResult = string.match(matchPattern);
+      if (!matchResult) {
+        return null;
+      }
+      var matchedString = matchResult[0];
+      var parsePatterns = width && args.parsePatterns[width] || args.parsePatterns[args.defaultParseWidth];
+      var key = Array.isArray(parsePatterns) ? findIndex(parsePatterns, function(pattern2) {
+        return pattern2.test(matchedString);
+      }) : findKey(parsePatterns, function(pattern2) {
+        return pattern2.test(matchedString);
+      });
+      var value;
+      value = args.valueCallback ? args.valueCallback(key) : key;
+      value = options.valueCallback ? options.valueCallback(value) : value;
+      var rest = string.slice(matchedString.length);
+      return {
+        value,
+        rest
+      };
+    };
+  }
+  function findKey(object, predicate) {
+    for (var key in object) {
+      if (object.hasOwnProperty(key) && predicate(object[key])) {
+        return key;
+      }
+    }
+    return void 0;
+  }
+  function findIndex(array, predicate) {
+    for (var key = 0; key < array.length; key++) {
+      if (predicate(array[key])) {
+        return key;
+      }
+    }
+    return void 0;
+  }
+  function buildMatchPatternFn(args) {
+    return function(string) {
+      var options = arguments.length > 1 && arguments[1] !== void 0 ? arguments[1] : {};
+      var matchResult = string.match(args.matchPattern);
+      if (!matchResult)
+        return null;
+      var matchedString = matchResult[0];
+      var parseResult = string.match(args.parsePattern);
+      if (!parseResult)
+        return null;
+      var value = args.valueCallback ? args.valueCallback(parseResult[0]) : parseResult[0];
+      value = options.valueCallback ? options.valueCallback(value) : value;
+      var rest = string.slice(matchedString.length);
+      return {
+        value,
+        rest
+      };
+    };
+  }
+  var matchOrdinalNumberPattern = /^(\d+)(th|st|nd|rd)?/i;
+  var parseOrdinalNumberPattern = /\d+/i;
+  var matchEraPatterns = {
+    narrow: /^(b|a)/i,
+    abbreviated: /^(b\.?\s?c\.?|b\.?\s?c\.?\s?e\.?|a\.?\s?d\.?|c\.?\s?e\.?)/i,
+    wide: /^(before christ|before common era|anno domini|common era)/i
+  };
+  var parseEraPatterns = {
+    any: [/^b/i, /^(a|c)/i]
+  };
+  var matchQuarterPatterns = {
+    narrow: /^[1234]/i,
+    abbreviated: /^q[1234]/i,
+    wide: /^[1234](th|st|nd|rd)? quarter/i
+  };
+  var parseQuarterPatterns = {
+    any: [/1/i, /2/i, /3/i, /4/i]
+  };
+  var matchMonthPatterns = {
+    narrow: /^[jfmasond]/i,
+    abbreviated: /^(jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec)/i,
+    wide: /^(january|february|march|april|may|june|july|august|september|october|november|december)/i
+  };
+  var parseMonthPatterns = {
+    narrow: [/^j/i, /^f/i, /^m/i, /^a/i, /^m/i, /^j/i, /^j/i, /^a/i, /^s/i, /^o/i, /^n/i, /^d/i],
+    any: [/^ja/i, /^f/i, /^mar/i, /^ap/i, /^may/i, /^jun/i, /^jul/i, /^au/i, /^s/i, /^o/i, /^n/i, /^d/i]
+  };
+  var matchDayPatterns = {
+    narrow: /^[smtwf]/i,
+    short: /^(su|mo|tu|we|th|fr|sa)/i,
+    abbreviated: /^(sun|mon|tue|wed|thu|fri|sat)/i,
+    wide: /^(sunday|monday|tuesday|wednesday|thursday|friday|saturday)/i
+  };
+  var parseDayPatterns = {
+    narrow: [/^s/i, /^m/i, /^t/i, /^w/i, /^t/i, /^f/i, /^s/i],
+    any: [/^su/i, /^m/i, /^tu/i, /^w/i, /^th/i, /^f/i, /^sa/i]
+  };
+  var matchDayPeriodPatterns = {
+    narrow: /^(a|p|mi|n|(in the|at) (morning|afternoon|evening|night))/i,
+    any: /^([ap]\.?\s?m\.?|midnight|noon|(in the|at) (morning|afternoon|evening|night))/i
+  };
+  var parseDayPeriodPatterns = {
+    any: {
+      am: /^a/i,
+      pm: /^p/i,
+      midnight: /^mi/i,
+      noon: /^no/i,
+      morning: /morning/i,
+      afternoon: /afternoon/i,
+      evening: /evening/i,
+      night: /night/i
+    }
+  };
+  var match = {
+    ordinalNumber: buildMatchPatternFn({
+      matchPattern: matchOrdinalNumberPattern,
+      parsePattern: parseOrdinalNumberPattern,
+      valueCallback: function valueCallback(value) {
+        return parseInt(value, 10);
+      }
+    }),
+    era: buildMatchFn({
+      matchPatterns: matchEraPatterns,
+      defaultMatchWidth: "wide",
+      parsePatterns: parseEraPatterns,
+      defaultParseWidth: "any"
+    }),
+    quarter: buildMatchFn({
+      matchPatterns: matchQuarterPatterns,
+      defaultMatchWidth: "wide",
+      parsePatterns: parseQuarterPatterns,
+      defaultParseWidth: "any",
+      valueCallback: function valueCallback(index) {
+        return index + 1;
+      }
+    }),
+    month: buildMatchFn({
+      matchPatterns: matchMonthPatterns,
+      defaultMatchWidth: "wide",
+      parsePatterns: parseMonthPatterns,
+      defaultParseWidth: "any"
+    }),
+    day: buildMatchFn({
+      matchPatterns: matchDayPatterns,
+      defaultMatchWidth: "wide",
+      parsePatterns: parseDayPatterns,
+      defaultParseWidth: "any"
+    }),
+    dayPeriod: buildMatchFn({
+      matchPatterns: matchDayPeriodPatterns,
+      defaultMatchWidth: "any",
+      parsePatterns: parseDayPeriodPatterns,
+      defaultParseWidth: "any"
+    })
+  };
+  const match$1 = match;
+  var locale = {
+    code: "en-US",
+    formatDistance: formatDistance$1,
+    formatLong: formatLong$1,
+    formatRelative: formatRelative$1,
+    localize: localize$1,
+    match: match$1,
+    options: {
+      weekStartsOn: 0,
+      firstWeekContainsDate: 1
+    }
+  };
+  const defaultLocale = locale;
+  var formattingTokensRegExp = /[yYQqMLwIdDecihHKkms]o|(\w)\1*|''|'(''|[^'])+('|$)|./g;
+  var longFormattingTokensRegExp = /P+p+|P+|p+|''|'(''|[^'])+('|$)|./g;
+  var escapedStringRegExp = /^'([^]*?)'?$/;
+  var doubleQuoteRegExp = /''/g;
+  var unescapedLatinCharacterRegExp = /[a-zA-Z]/;
+  function format(dirtyDate, dirtyFormatStr, options) {
+    var _ref, _options$locale, _ref2, _ref3, _ref4, _options$firstWeekCon, _options$locale2, _options$locale2$opti, _defaultOptions$local, _defaultOptions$local2, _ref5, _ref6, _ref7, _options$weekStartsOn, _options$locale3, _options$locale3$opti, _defaultOptions$local3, _defaultOptions$local4;
+    requiredArgs(2, arguments);
+    var formatStr = String(dirtyFormatStr);
+    var defaultOptions2 = getDefaultOptions();
+    var locale2 = (_ref = (_options$locale = options === null || options === void 0 ? void 0 : options.locale) !== null && _options$locale !== void 0 ? _options$locale : defaultOptions2.locale) !== null && _ref !== void 0 ? _ref : defaultLocale;
+    var firstWeekContainsDate = toInteger((_ref2 = (_ref3 = (_ref4 = (_options$firstWeekCon = options === null || options === void 0 ? void 0 : options.firstWeekContainsDate) !== null && _options$firstWeekCon !== void 0 ? _options$firstWeekCon : options === null || options === void 0 ? void 0 : (_options$locale2 = options.locale) === null || _options$locale2 === void 0 ? void 0 : (_options$locale2$opti = _options$locale2.options) === null || _options$locale2$opti === void 0 ? void 0 : _options$locale2$opti.firstWeekContainsDate) !== null && _ref4 !== void 0 ? _ref4 : defaultOptions2.firstWeekContainsDate) !== null && _ref3 !== void 0 ? _ref3 : (_defaultOptions$local = defaultOptions2.locale) === null || _defaultOptions$local === void 0 ? void 0 : (_defaultOptions$local2 = _defaultOptions$local.options) === null || _defaultOptions$local2 === void 0 ? void 0 : _defaultOptions$local2.firstWeekContainsDate) !== null && _ref2 !== void 0 ? _ref2 : 1);
+    if (!(firstWeekContainsDate >= 1 && firstWeekContainsDate <= 7)) {
+      throw new RangeError("firstWeekContainsDate must be between 1 and 7 inclusively");
+    }
+    var weekStartsOn = toInteger((_ref5 = (_ref6 = (_ref7 = (_options$weekStartsOn = options === null || options === void 0 ? void 0 : options.weekStartsOn) !== null && _options$weekStartsOn !== void 0 ? _options$weekStartsOn : options === null || options === void 0 ? void 0 : (_options$locale3 = options.locale) === null || _options$locale3 === void 0 ? void 0 : (_options$locale3$opti = _options$locale3.options) === null || _options$locale3$opti === void 0 ? void 0 : _options$locale3$opti.weekStartsOn) !== null && _ref7 !== void 0 ? _ref7 : defaultOptions2.weekStartsOn) !== null && _ref6 !== void 0 ? _ref6 : (_defaultOptions$local3 = defaultOptions2.locale) === null || _defaultOptions$local3 === void 0 ? void 0 : (_defaultOptions$local4 = _defaultOptions$local3.options) === null || _defaultOptions$local4 === void 0 ? void 0 : _defaultOptions$local4.weekStartsOn) !== null && _ref5 !== void 0 ? _ref5 : 0);
+    if (!(weekStartsOn >= 0 && weekStartsOn <= 6)) {
+      throw new RangeError("weekStartsOn must be between 0 and 6 inclusively");
+    }
+    if (!locale2.localize) {
+      throw new RangeError("locale must contain localize property");
+    }
+    if (!locale2.formatLong) {
+      throw new RangeError("locale must contain formatLong property");
+    }
+    var originalDate = toDate(dirtyDate);
+    if (!isValid(originalDate)) {
+      throw new RangeError("Invalid time value");
+    }
+    var timezoneOffset = getTimezoneOffsetInMilliseconds(originalDate);
+    var utcDate = subMilliseconds(originalDate, timezoneOffset);
+    var formatterOptions = {
+      firstWeekContainsDate,
+      weekStartsOn,
+      locale: locale2,
+      _originalDate: originalDate
+    };
+    var result = formatStr.match(longFormattingTokensRegExp).map(function(substring) {
+      var firstCharacter = substring[0];
+      if (firstCharacter === "p" || firstCharacter === "P") {
+        var longFormatter = longFormatters$1[firstCharacter];
+        return longFormatter(substring, locale2.formatLong);
+      }
+      return substring;
+    }).join("").match(formattingTokensRegExp).map(function(substring) {
+      if (substring === "''") {
+        return "'";
+      }
+      var firstCharacter = substring[0];
+      if (firstCharacter === "'") {
+        return cleanEscapedString(substring);
+      }
+      var formatter = formatters$1[firstCharacter];
+      if (formatter) {
+        if (!(options !== null && options !== void 0 && options.useAdditionalWeekYearTokens) && isProtectedWeekYearToken(substring)) {
+          throwProtectedError(substring, dirtyFormatStr, String(dirtyDate));
+        }
+        if (!(options !== null && options !== void 0 && options.useAdditionalDayOfYearTokens) && isProtectedDayOfYearToken(substring)) {
+          throwProtectedError(substring, dirtyFormatStr, String(dirtyDate));
+        }
+        return formatter(utcDate, substring, locale2.localize, formatterOptions);
+      }
+      if (firstCharacter.match(unescapedLatinCharacterRegExp)) {
+        throw new RangeError("Format string contains an unescaped latin alphabet character `" + firstCharacter + "`");
+      }
+      return substring;
+    }).join("");
+    return result;
+  }
+  function cleanEscapedString(input) {
+    var matched = input.match(escapedStringRegExp);
+    if (!matched) {
+      return input;
+    }
+    return matched[1].replace(doubleQuoteRegExp, "'");
+  }
+  function subYears(dirtyDate, dirtyAmount) {
+    requiredArgs(2, arguments);
+    var amount = toInteger(dirtyAmount);
+    return addYears(dirtyDate, -amount);
+  }
   const orderStatus = [
     {
       value: 1,
@@ -9048,7 +10630,7 @@ if (uni.restoreGlobal) {
       const handleToInfo = (item) => {
         formatAppLog("log", "at pages/history/components/homeList.vue:106", item, "进入详情");
         uni.navigateTo({
-          url: "/pages/orderInfo/index?id=" + item.id
+          url: "/pages/orderInfo/index?id=" + item.id + "&type=history"
         });
       };
       const handleCancel = (id) => {
@@ -9252,8 +10834,8 @@ if (uni.restoreGlobal) {
             top: y2
           }
         };
-        const match = whiteList[this.absolute];
-        return match ? match : whiteList["rightTop"];
+        const match2 = whiteList[this.absolute];
+        return match2 ? match2 : whiteList["rightTop"];
       },
       badgeWidth() {
         return {
@@ -9436,27 +11018,44 @@ if (uni.restoreGlobal) {
     __name: "index",
     emits: "",
     setup(__props, { emit }) {
-      const store2 = useStore();
-      const users = store2.state.user;
+      useStore();
       const popup2 = vue.ref("");
-      const statusNum = vue.reactive({
-        data: []
-      });
       const isHaveMore = vue.ref(false);
-      const tabBars = DeliveryData;
       const icCanScroll = vue.ref(true);
       const homeList = vue.reactive({
         data: []
       });
+      const startTime = vue.ref(
+        format(startOfYear(subYears(/* @__PURE__ */ new Date(), 1)), "yyyy-MM-dd")
+      );
+      const endTime = vue.ref(format(endOfYear(subYears(/* @__PURE__ */ new Date(), 1)), "yyyy-MM-dd"));
       const scrollTop = vue.ref(0);
       const scrollView = vue.ref(null);
       onShow(() => {
-        getTabIndex(users.tabIndex);
-        getOrderStatusNumFunc();
+        getListData();
       });
-      const bindStartDateChange = () => {
+      const handleReset = () => {
+        startTime.value = "开始时间";
+        endTime.value = "结束时间";
       };
-      const bindEndDateChange = () => {
+      const searchDataByTime = () => {
+        if (startTime.value === "开始时间" || endTime.value === "结束时间") {
+          return uni.showToast({
+            title: "请选择时间",
+            duration: 1e3,
+            icon: "none"
+          });
+        }
+        homeList.data = [];
+        getListData();
+        popup2.value.close();
+      };
+      const bindStartDateChange = (e2) => {
+        formatAppLog("log", "at pages/history/index.vue:139", e2, "eeee");
+        startTime.value = e2.detail.value;
+      };
+      const bindEndDateChange = (e2) => {
+        endTime.value = e2.detail.value;
       };
       const goBack = () => {
         uni.navigateBack();
@@ -9466,38 +11065,28 @@ if (uni.restoreGlobal) {
       };
       const handleLoad = () => {
         if (isHaveMore.value) {
-          getListData(
-            tabBars[users.tabIndex].value,
-            homeList.data[homeList.data.length - 1].sortBy
-          );
+          getListData(homeList.data[homeList.data.length - 1].sortTime);
         }
       };
-      const getOrderStatusNumFunc = () => {
-        getOrderStatusNum().then((res) => {
-          statusNum.data = [res.data.noServed, res.data.serving];
-        });
-      };
-      const getListData = (val, id) => {
-        getOrder(val, id).then((res) => {
-          if (res.data.ordersServes.length === 10) {
+      const getListData = (time) => {
+        const params = {
+          minSortTime: startTime.value + " 00:00:00",
+          maxSortTime: endTime.value + " 23:59:59",
+          lastSortTime: time
+        };
+        if (!time)
+          delete params.lastSortTime;
+        getHistoryOrder(params).then((res) => {
+          formatAppLog("log", "at pages/history/index.vue:172", res, homeList.data, "66666666666");
+          if (res.data.length === 10) {
             isHaveMore.value = true;
           } else {
             isHaveMore.value = false;
           }
-          homeList.data = homeList.data.concat(res.data.ordersServes);
-          formatAppLog("log", "at pages/history/index.vue:147", res, homeList.data, "66666666666");
+          homeList.data = homeList.data.concat(res.data);
         });
       };
       const getRobOrderList = () => {
-      };
-      const scrollToTop = () => {
-        scrollTop.value = scrollTop.value === 0 ? 1 : 0;
-      };
-      const getTabIndex = (index) => {
-        scrollToTop();
-        store2.commit("user/setTabIndex", index);
-        homeList.data = [];
-        getListData(tabBars[index].value, "");
       };
       return (_ctx, _cache) => {
         const _component_uni_popup = resolveEasycom(vue.resolveDynamicComponent("uni-popup"), __easycom_0$4);
@@ -9547,35 +11136,47 @@ if (uni.restoreGlobal) {
                         })
                       ]),
                       vue.createElementVNode("view", { class: "time" }, [
-                        vue.createElementVNode(
-                          "picker",
-                          {
-                            mode: "date",
-                            onChange: bindStartDateChange
-                          },
-                          [
-                            vue.createElementVNode("view", { class: "startTime" }, "开始时间")
-                          ],
-                          32
-                          /* HYDRATE_EVENTS */
-                        ),
+                        vue.createElementVNode("picker", {
+                          mode: "date",
+                          start: startTime.value,
+                          end: endTime.value,
+                          value: startTime.value,
+                          onChange: bindStartDateChange
+                        }, [
+                          vue.createElementVNode(
+                            "view",
+                            { class: "startTime" },
+                            vue.toDisplayString(startTime.value || "开始时间"),
+                            1
+                            /* TEXT */
+                          )
+                        ], 40, ["start", "end", "value"]),
                         vue.createElementVNode("view", { class: "zhi" }, "至"),
-                        vue.createElementVNode(
-                          "picker",
-                          {
-                            mode: "date",
-                            onChange: bindEndDateChange
-                          },
-                          [
-                            vue.createElementVNode("view", { class: "endTime" }, "结束时间")
-                          ],
-                          32
-                          /* HYDRATE_EVENTS */
-                        )
+                        vue.createElementVNode("picker", {
+                          mode: "date",
+                          start: startTime.value,
+                          end: endTime.value,
+                          value: endTime.value,
+                          onChange: bindEndDateChange
+                        }, [
+                          vue.createElementVNode(
+                            "view",
+                            { class: "endTime" },
+                            vue.toDisplayString(endTime.value || "结束时间"),
+                            1
+                            /* TEXT */
+                          )
+                        ], 40, ["start", "end", "value"])
                       ]),
                       vue.createElementVNode("view", { class: "footer" }, [
-                        vue.createElementVNode("view", { class: "reset" }, "重置"),
-                        vue.createElementVNode("view", { class: "confirm" }, "确定")
+                        vue.createElementVNode("view", {
+                          class: "reset",
+                          onClick: handleReset
+                        }, "重置"),
+                        vue.createElementVNode("view", {
+                          class: "confirm",
+                          onClick: searchDataByTime
+                        }, "确定")
                       ])
                     ])
                   ]),
@@ -9841,10 +11442,9 @@ if (uni.restoreGlobal) {
       }
     },
     emits: "",
-    setup(__props, { expose, emit }) {
+    setup(__props, { emit }) {
       const store2 = useStore();
       const users = store2.state.user;
-      const scrollinto = vue.ref("tab0");
       const type = vue.ref("");
       let info = vue.reactive({
         data: {
@@ -9891,7 +11491,7 @@ if (uni.restoreGlobal) {
           }
         }
       });
-      let tabIndex = vue.ref(users.tabIndex ? users.tabIndex : 0);
+      vue.ref(users.tabIndex ? users.tabIndex : 0);
       onLoad((options) => {
         formatAppLog("log", "at pages/orderInfo/index.vue:277", options, "options");
         type.value = options.type;
@@ -9906,21 +11506,22 @@ if (uni.restoreGlobal) {
         });
       };
       const getOrderInfoFunc = (id) => {
-        type.value === "dispatch" ? getDispatchOrderInfo(id).then((res) => {
-          info.data = res.data;
-          formatAppLog("log", "at pages/orderInfo/index.vue:293", res.data, "获取派单订单详情");
-        }) : getOrderInfo(id).then((res) => {
-          info.data = res.data;
-          formatAppLog("log", "at pages/orderInfo/index.vue:297", res.data, "获取订单详情");
-        });
-      };
-      const changeTab = (index) => {
-        if (tabIndex.value == index) {
-          return;
+        if (type.value === "dispatch") {
+          getDispatchOrderInfo(id).then((res) => {
+            info.data = res.data;
+            formatAppLog("log", "at pages/orderInfo/index.vue:293", res.data, "获取派单订单详情");
+          });
+        } else if (type.value === "history") {
+          getHistoryOrderInfo(id).then((res) => {
+            info.data = res.data;
+            formatAppLog("log", "at pages/orderInfo/index.vue:298", res.data, "获取历史订单订单详情");
+          });
+        } else {
+          getOrderInfo(id).then((res) => {
+            info.data = res.data;
+            formatAppLog("log", "at pages/orderInfo/index.vue:303", res.data, "获取订单详情");
+          });
         }
-        tabIndex.value = index;
-        emit("getTabIndex", index);
-        scrollinto.value = "tab" + index;
       };
       const handleServeRecord = (id, status) => {
         uni.navigateTo({
@@ -9957,9 +11558,6 @@ if (uni.restoreGlobal) {
           uni.navigateBack();
         }
       };
-      expose({
-        changeTab
-      });
       return (_ctx, _cache) => {
         return vue.openBlock(), vue.createElementBlock("view", { class: "order-info" }, [
           vue.createVNode(UniNav, {
@@ -10321,22 +11919,22 @@ if (uni.restoreGlobal) {
   }
   const RE_TOKEN_LIST_VALUE = /^(?:\d)+/;
   const RE_TOKEN_NAMED_VALUE = /^(?:\w)+/;
-  function parse(format, [startDelimiter, endDelimiter]) {
+  function parse(format2, [startDelimiter, endDelimiter]) {
     const tokens = [];
     let position = 0;
     let text = "";
-    while (position < format.length) {
-      let char = format[position++];
+    while (position < format2.length) {
+      let char = format2[position++];
       if (char === startDelimiter) {
         if (text) {
           tokens.push({ type: "text", value: text });
         }
         text = "";
         let sub = "";
-        char = format[position++];
+        char = format2[position++];
         while (char !== void 0 && char !== endDelimiter) {
           sub += char;
-          char = format[position++];
+          char = format2[position++];
         }
         const isClosed = char === endDelimiter;
         const type = RE_TOKEN_LIST_VALUE.test(sub) ? "list" : isClosed && RE_TOKEN_NAMED_VALUE.test(sub) ? "named" : "unknown";
@@ -10397,26 +11995,26 @@ if (uni.restoreGlobal) {
   function startsWith(str, parts) {
     return parts.find((part) => str.indexOf(part) === 0);
   }
-  function normalizeLocale(locale, messages2) {
-    if (!locale) {
+  function normalizeLocale(locale2, messages2) {
+    if (!locale2) {
       return;
     }
-    locale = locale.trim().replace(/_/g, "-");
-    if (messages2 && messages2[locale]) {
-      return locale;
+    locale2 = locale2.trim().replace(/_/g, "-");
+    if (messages2 && messages2[locale2]) {
+      return locale2;
     }
-    locale = locale.toLowerCase();
-    if (locale === "chinese") {
+    locale2 = locale2.toLowerCase();
+    if (locale2 === "chinese") {
       return LOCALE_ZH_HANS;
     }
-    if (locale.indexOf("zh") === 0) {
-      if (locale.indexOf("-hans") > -1) {
+    if (locale2.indexOf("zh") === 0) {
+      if (locale2.indexOf("-hans") > -1) {
         return LOCALE_ZH_HANS;
       }
-      if (locale.indexOf("-hant") > -1) {
+      if (locale2.indexOf("-hant") > -1) {
         return LOCALE_ZH_HANT;
       }
-      if (include(locale, ["-tw", "-hk", "-mo", "-cht"])) {
+      if (include(locale2, ["-tw", "-hk", "-mo", "-cht"])) {
         return LOCALE_ZH_HANT;
       }
       return LOCALE_ZH_HANS;
@@ -10425,13 +12023,13 @@ if (uni.restoreGlobal) {
     if (messages2 && Object.keys(messages2).length > 0) {
       locales = Object.keys(messages2);
     }
-    const lang = startsWith(locale, locales);
+    const lang = startsWith(locale2, locales);
     if (lang) {
       return lang;
     }
   }
   class I18n {
-    constructor({ locale, fallbackLocale, messages: messages2, watcher, formater }) {
+    constructor({ locale: locale2, fallbackLocale, messages: messages2, watcher, formater }) {
       this.locale = LOCALE_EN;
       this.fallbackLocale = LOCALE_EN;
       this.message = {};
@@ -10442,14 +12040,14 @@ if (uni.restoreGlobal) {
       }
       this.formater = formater || defaultFormatter;
       this.messages = messages2 || {};
-      this.setLocale(locale || LOCALE_EN);
+      this.setLocale(locale2 || LOCALE_EN);
       if (watcher) {
         this.watchLocale(watcher);
       }
     }
-    setLocale(locale) {
+    setLocale(locale2) {
       const oldLocale = this.locale;
-      this.locale = normalizeLocale(locale, this.messages) || this.fallbackLocale;
+      this.locale = normalizeLocale(locale2, this.messages) || this.fallbackLocale;
       if (!this.messages[this.locale]) {
         this.messages[this.locale] = {};
       }
@@ -10469,8 +12067,8 @@ if (uni.restoreGlobal) {
         this.watchers.splice(index, 1);
       };
     }
-    add(locale, message, override = true) {
-      const curMessages = this.messages[locale];
+    add(locale2, message, override = true) {
+      const curMessages = this.messages[locale2];
       if (curMessages) {
         if (override) {
           Object.assign(curMessages, message);
@@ -10482,19 +12080,19 @@ if (uni.restoreGlobal) {
           });
         }
       } else {
-        this.messages[locale] = message;
+        this.messages[locale2] = message;
       }
     }
     f(message, values, delimiters) {
       return this.formater.interpolate(message, values, delimiters).join("");
     }
-    t(key, locale, values) {
+    t(key, locale2, values) {
       let message = this.message;
-      if (typeof locale === "string") {
-        locale = normalizeLocale(locale, this.messages);
-        locale && (message = this.messages[locale]);
+      if (typeof locale2 === "string") {
+        locale2 = normalizeLocale(locale2, this.messages);
+        locale2 && (message = this.messages[locale2]);
       } else {
-        values = locale;
+        values = locale2;
       }
       if (!hasOwn(message, key)) {
         console.warn(`Cannot translate the value of keypath ${key}. Use the value of keypath as default.`);
@@ -10523,21 +12121,21 @@ if (uni.restoreGlobal) {
     }
     return LOCALE_EN;
   }
-  function initVueI18n(locale, messages2 = {}, fallbackLocale, watcher) {
-    if (typeof locale !== "string") {
-      [locale, messages2] = [
+  function initVueI18n(locale2, messages2 = {}, fallbackLocale, watcher) {
+    if (typeof locale2 !== "string") {
+      [locale2, messages2] = [
         messages2,
-        locale
+        locale2
       ];
     }
-    if (typeof locale !== "string") {
-      locale = getDefaultLocale();
+    if (typeof locale2 !== "string") {
+      locale2 = getDefaultLocale();
     }
     if (typeof fallbackLocale !== "string") {
       fallbackLocale = typeof __uniConfig !== "undefined" && __uniConfig.fallbackLocale || LOCALE_EN;
     }
     const i18n = new I18n({
-      locale,
+      locale: locale2,
       fallbackLocale,
       messages: messages2,
       watcher
@@ -10571,8 +12169,8 @@ if (uni.restoreGlobal) {
       t(key, values) {
         return t2(key, values);
       },
-      add(locale2, message, override = true) {
-        return i18n.add(locale2, message, override);
+      add(locale3, message, override = true) {
+        return i18n.add(locale3, message, override);
       },
       watch(fn) {
         return i18n.watchLocale(fn);
@@ -30849,34 +32447,37 @@ if (uni.restoreGlobal) {
         data: [0, 0, 0]
       });
       let chooseType = vue.ref("select");
-      vue.watch(props, (newValue, oldValue) => {
-        var _a, _b;
-        areaIndex.data[0] = provinceData == null ? void 0 : provinceData.findIndex((item) => {
-          return item.label === newValue.provinceName;
-        });
-        areaIndex.data[1] = (_a = cityData[areaIndex.data[0]]) == null ? void 0 : _a.findIndex((item) => {
-          return item.label === newValue.cityName;
-        });
-        areaIndex.data[2] = (_b = areaData[areaIndex.data[0]][areaIndex.data[1]]) == null ? void 0 : _b.findIndex(
-          (item) => {
-            return item.label === newValue.countyName;
-          }
-        );
-        formatAppLog("log", "at pages/account/components/selectArea.vue:142", areaIndex.data);
-      });
       const getList = () => {
         city.data = cityData[areaIndex.data[0]];
         area.data = areaData[areaIndex.data[0]][areaIndex.data[1]];
       };
+      vue.watch(
+        () => props.cityName,
+        () => {
+          var _a, _b;
+          if (props.provinceName)
+            areaIndex.data[0] = provinceData == null ? void 0 : provinceData.findIndex((item) => {
+              return item.label === props.provinceName;
+            });
+          if (props.cityName)
+            areaIndex.data[1] = (_a = cityData[areaIndex.data[0]]) == null ? void 0 : _a.findIndex((item) => {
+              return item.label === props.cityName;
+            });
+          if (props.countyName)
+            areaIndex.data[2] = (_b = areaData[areaIndex.data[0]][areaIndex.data[1]]) == null ? void 0 : _b.findIndex((item) => {
+              return item.label === props.countyName;
+            });
+          getList();
+        }
+      );
       const handlePickStart = () => {
         chooseType.value = "select";
       };
       const bindChange = (event) => {
-        formatAppLog("log", "at pages/account/components/selectArea.vue:158", event, "event");
         if (chooseType.value === "click")
           return;
         if (areaIndex.data[0] !== event.detail.value[0]) {
-          city.data = cityData[event.detail.value[0]];
+          city.data = cityData[event.detail.value[1]];
           area.data = areaData[event.detail.value[0]][event.detail.value[1]];
           selectedProvince.data = province.data[event.detail.value[0]];
           event.detail.value[1] = 0;
@@ -30888,10 +32489,22 @@ if (uni.restoreGlobal) {
           event.detail.value[2] = 0;
           selectedCity.data = city.data[event.detail.value[1]];
           selectedArea.data = area.data[event.detail.value[2]];
+          selectedProvince.data = province.data[event.detail.value[0]];
         } else {
           selectedArea.data = area.data[event.detail.value[2]];
+          selectedCity.data = city.data[event.detail.value[1]];
+          selectedProvince.data = province.data[event.detail.value[0]];
         }
         areaIndex.data = event.detail.value;
+        formatAppLog(
+          "log",
+          "at pages/account/components/selectArea.vue:195",
+          event,
+          selectedCity.data,
+          selectedArea.data,
+          selectedProvince.data,
+          "event"
+        );
       };
       const handleOpen = () => {
         popup2.value.open("bottom");
@@ -31041,52 +32654,169 @@ if (uni.restoreGlobal) {
     __name: "index",
     setup(__props) {
       const title = vue.ref("账户设置");
-      const focusType = vue.ref("");
-      let provinceName = vue.ref("");
-      let cityName = vue.ref("");
-      let countyName = vue.ref("");
+      vue.ref("");
+      vue.ref("");
+      vue.ref("");
+      let bankIndex = vue.ref(3);
       const selectArea = vue.ref();
+      const formData = vue.ref({
+        name: "",
+        bankName: "",
+        province: "",
+        city: "",
+        district: "",
+        branch: "",
+        account: "",
+        accountCertification: "",
+        type: 2
+      });
       const bankArray = vue.ref([
         {
           label: "中国工商银行",
-          value: "1"
+          value: 1
         },
         {
           label: "中国建设银行",
-          value: "2"
+          value: 2
         },
         {
           label: "中国邮政储蓄银行",
-          value: "3"
+          value: 3
         },
         {
           label: "中国农业银行",
-          value: "4"
+          value: 4
         },
         {
           label: "北京农商银行",
-          value: "5"
+          value: 5
         },
         {
           label: "招商银行",
-          value: "6"
+          value: 6
         }
       ]);
       vue.onMounted(() => {
-        selectArea.value.getList();
+        getAccountInfoFunc();
       });
+      const handleDelete = () => {
+        formData.value.accountCertification = "";
+      };
+      const getAccountInfoFunc = () => {
+        getAccountInfo().then((res) => {
+          formData.value.name = res.data.name;
+          formData.value.bankName = res.data.bankName;
+          formData.value.province = res.data.province;
+          formData.value.city = res.data.city;
+          formData.value.district = res.data.district;
+          formData.value.branch = res.data.branch;
+          formData.value.account = res.data.account;
+          formData.value.accountCertification = res.data.accountCertification;
+          formatAppLog("log", "at pages/account/index.vue:191", res, "resssssss");
+        }).catch((err) => {
+          uni.showToast({
+            title: err.msg || "账户信息获取失败!",
+            duration: 1e3,
+            icon: "none"
+          });
+        });
+      };
+      const handleSelect = (e2) => {
+        const item = e2.tempFiles[0];
+        uni.uploadFile({
+          url: "/api/publics/storage/upload",
+          files: [
+            {
+              name: "file",
+              uri: item.url,
+              file: item
+            }
+          ],
+          header: {
+            Authorization: uni.getStorageSync("token")
+          },
+          success: (uploadFileRes) => {
+            formData.value.accountCertification = JSON.parse(
+              uploadFileRes.data
+            ).data.url;
+          },
+          fail: (err) => {
+            uni.showToast({
+              title: "图片上传失败",
+              duration: 1e3,
+              icon: "none"
+            });
+          }
+        });
+      };
+      const handleSubmit = () => {
+        if (!formData.value.name) {
+          return uni.showToast({
+            title: "请填写户名",
+            duration: 1e3,
+            icon: "none"
+          });
+        } else if (!formData.value.bankName) {
+          return uni.showToast({
+            title: "请选择银行",
+            duration: 1e3,
+            icon: "none"
+          });
+        } else if (!formData.value.province || !formData.value.city || !formData.value.district) {
+          return uni.showToast({
+            title: "请选择开户行",
+            duration: 1e3,
+            icon: "none"
+          });
+        } else if (!formData.value.branch) {
+          return uni.showToast({
+            title: "请填写网点",
+            duration: 1e3,
+            icon: "none"
+          });
+        } else if (!formData.value.account) {
+          return uni.showToast({
+            title: "请填写银行账号",
+            duration: 1e3,
+            icon: "none"
+          });
+        } else if (!formData.value.accountCertification) {
+          return uni.showToast({
+            title: "请上传开户证明",
+            duration: 1e3,
+            icon: "none"
+          });
+        }
+        postAccount(formData.value).then((res) => {
+          formatAppLog("log", "at pages/account/index.vue:276", res, "ress");
+          if (res.code === 200) {
+            uni.showToast({
+              title: "提交成功!",
+              duration: 1e3,
+              icon: "none"
+            });
+          }
+        }).catch((err) => {
+          uni.showToast({
+            title: err.msg || "提交失败!",
+            duration: 1e3,
+            icon: "none"
+          });
+        });
+      };
+      const getAreaData = (e2) => {
+        formData.value.province = e2.province.label;
+        formData.value.city = e2.city.label;
+        formData.value.district = e2.area.label;
+        formatAppLog("log", "at pages/account/index.vue:298", e2, "省市区");
+      };
       const handleBank = (e2) => {
-        formatAppLog("log", "at pages/account/index.vue:133", e2.detail.value, "数组下标");
+        bankIndex.value = e2.detail.value;
+        formData.value.bankName = bankArray.value[e2.detail.value].label;
+        formatAppLog("log", "at pages/account/index.vue:304", e2.detail.value, bankIndex.value, "数组下标");
       };
       const goBack = () => {
         uni.navigateBack();
-      };
-      const handleBlur = () => {
-        focusType.value = "";
-      };
-      const handleFocus = (val) => {
-        formatAppLog("log", "at pages/account/index.vue:145", val, "--------");
-        focusType.value = val;
       };
       const handleOpenLocation = () => {
         selectArea.value.handleOpen();
@@ -31101,97 +32831,80 @@ if (uni.restoreGlobal) {
             onGoBack: goBack
           }, null, 8, ["title"]),
           vue.createCommentVNode(" 姓名 "),
-          vue.createElementVNode(
-            "view",
-            {
-              class: vue.normalizeClass(["name", focusType.value === "name" ? "active" : ""])
-            },
-            [
-              vue.createElementVNode("text", { class: "label" }, "户名"),
-              vue.createVNode(_component_uni_easyinput, {
-                placeholder: "请输入户名",
-                placeholderStyle: { fontSize: "16px" },
-                onFocus: _cache[0] || (_cache[0] = ($event) => handleFocus("name")),
-                onBlur: handleBlur
-              })
-            ],
-            2
-            /* CLASS */
-          ),
+          vue.createElementVNode("view", { class: "name" }, [
+            vue.createElementVNode("text", { class: "label" }, "户名"),
+            vue.createVNode(_component_uni_easyinput, {
+              modelValue: formData.value.name,
+              "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => formData.value.name = $event),
+              placeholder: "请输入户名",
+              placeholderStyle: { fontSize: "16px" }
+            }, null, 8, ["modelValue"])
+          ]),
           vue.createCommentVNode(" 银行 "),
-          vue.createElementVNode(
-            "view",
-            {
-              class: vue.normalizeClass(["idCard", focusType.value === "idCard" ? "active" : ""])
-            },
-            [
-              vue.createElementVNode("text", { class: "label" }, "银行"),
-              vue.createElementVNode("picker", {
-                class: "citySelect bankSelect",
-                onChange: handleBank,
-                range: bankArray.value,
-                "range-key": "label"
-              }, [
-                vue.createElementVNode("image", { src: "/static/new/icon_more@2x.png" })
-              ], 40, ["range"])
-            ],
-            2
-            /* CLASS */
-          ),
+          vue.createElementVNode("view", { class: "idCard" }, [
+            vue.createElementVNode("text", { class: "label" }, "银行"),
+            vue.createElementVNode("picker", {
+              mode: "selector",
+              class: "citySelect bankSelect",
+              value: vue.unref(bankIndex),
+              onChange: handleBank,
+              range: bankArray.value,
+              "range-key": "label"
+            }, [
+              vue.createElementVNode(
+                "text",
+                {
+                  class: vue.normalizeClass(["bankName", !formData.value.bankName ? "placeholder" : ""])
+                },
+                vue.toDisplayString(formData.value.bankName ? formData.value.bankName : "请选择银行"),
+                3
+                /* TEXT, CLASS */
+              ),
+              vue.createElementVNode("image", { src: "/static/new/icon_more@2x.png" })
+            ], 40, ["value", "range"])
+          ]),
           vue.createCommentVNode(" 开户行 "),
-          vue.createElementVNode(
-            "view",
-            {
-              class: vue.normalizeClass(["idCard", focusType.value === "idCard" ? "active" : ""])
-            },
-            [
-              vue.createElementVNode("text", { class: "label" }, "开户行"),
-              vue.createElementVNode("view", {
-                class: "citySelect",
-                onClick: handleOpenLocation
-              }, [
-                vue.createElementVNode("image", { src: "/static/new/icon_more@2x.png" })
-              ])
-            ],
-            2
-            /* CLASS */
-          ),
+          vue.createElementVNode("view", { class: "idCard" }, [
+            vue.createElementVNode("text", { class: "label" }, "开户行"),
+            vue.createElementVNode("view", {
+              class: "citySelect",
+              onClick: handleOpenLocation
+            }, [
+              vue.createElementVNode(
+                "view",
+                {
+                  class: vue.normalizeClass([
+                    "area",
+                    !(formData.value.province && formData.value.city && formData.value.district) ? "placeholder" : ""
+                  ])
+                },
+                vue.toDisplayString(formData.value.province && formData.value.city && formData.value.district ? formData.value.province + "-" + formData.value.city + "-" + formData.value.district : "请选择开户行"),
+                3
+                /* TEXT, CLASS */
+              ),
+              vue.createElementVNode("image", { src: "/static/new/icon_more@2x.png" })
+            ])
+          ]),
           vue.createCommentVNode(" 网点 "),
-          vue.createElementVNode(
-            "view",
-            {
-              class: vue.normalizeClass(["idCard", focusType.value === "idCard" ? "active" : ""])
-            },
-            [
-              vue.createElementVNode("text", { class: "label" }, "网点"),
-              vue.createVNode(_component_uni_easyinput, {
-                placeholder: "请输入网点名称",
-                placeholderStyle: { fontSize: "16px" },
-                onFocus: _cache[1] || (_cache[1] = ($event) => handleFocus("idCard")),
-                onBlur: handleBlur
-              })
-            ],
-            2
-            /* CLASS */
-          ),
+          vue.createElementVNode("view", { class: "idCard" }, [
+            vue.createElementVNode("text", { class: "label" }, "网点"),
+            vue.createVNode(_component_uni_easyinput, {
+              placeholder: "请输入网点名称",
+              placeholderStyle: { fontSize: "16px" },
+              modelValue: formData.value.branch,
+              "onUpdate:modelValue": _cache[1] || (_cache[1] = ($event) => formData.value.branch = $event)
+            }, null, 8, ["modelValue"])
+          ]),
           vue.createCommentVNode(" 银行账号 "),
-          vue.createElementVNode(
-            "view",
-            {
-              class: vue.normalizeClass(["idCard bankAccount", focusType.value === "idCard" ? "active" : ""])
-            },
-            [
-              vue.createElementVNode("text", { class: "label" }, "银行账号"),
-              vue.createVNode(_component_uni_easyinput, {
-                placeholder: "请输入银行账号",
-                placeholderStyle: { fontSize: "16px" },
-                onFocus: _cache[2] || (_cache[2] = ($event) => handleFocus("idCard")),
-                onBlur: handleBlur
-              })
-            ],
-            2
-            /* CLASS */
-          ),
+          vue.createElementVNode("view", { class: "idCard bankAccount" }, [
+            vue.createElementVNode("text", { class: "label" }, "银行账号"),
+            vue.createVNode(_component_uni_easyinput, {
+              placeholder: "请输入银行账号",
+              placeholderStyle: { fontSize: "16px" },
+              modelValue: formData.value.account,
+              "onUpdate:modelValue": _cache[2] || (_cache[2] = ($event) => formData.value.account = $event)
+            }, null, 8, ["modelValue"])
+          ]),
           vue.createCommentVNode(" 开户证明 "),
           vue.createElementVNode("view", { class: "data" }, [
             vue.createElementVNode("view", { class: "label" }, "开户证明"),
@@ -31200,11 +32913,26 @@ if (uni.restoreGlobal) {
                 vue.createVNode(_component_uni_file_picker, {
                   limit: "1",
                   title: "",
-                  onSuccess: _ctx.handleSuccess,
-                  onSelect: _ctx.handleSelect,
-                  onFail: _ctx.handleFail,
-                  onDelete: _ctx.handleDelete
-                }, null, 8, ["onSuccess", "onSelect", "onFail", "onDelete"]),
+                  onSelect: handleSelect,
+                  onDelete: handleDelete,
+                  value: [
+                    {
+                      url: formData.value.accountCertification,
+                      name: "file.txt",
+                      extname: "txt"
+                    }
+                  ]
+                }, {
+                  default: vue.withCtx(() => [
+                    formData.value.accountCertification ? (vue.openBlock(), vue.createElementBlock("image", {
+                      key: 0,
+                      class: "image",
+                      src: formData.value.accountCertification
+                    }, null, 8, ["src"])) : vue.createCommentVNode("v-if", true)
+                  ]),
+                  _: 1
+                  /* STABLE */
+                }, 8, ["value"]),
                 vue.createElementVNode("view", { class: "photoLabel" }, "资料上传 ")
               ])
             ])
@@ -31213,18 +32941,18 @@ if (uni.restoreGlobal) {
           vue.createElementVNode("view", { class: "footer" }, [
             vue.createElementVNode("view", {
               class: "btn-red",
-              onClick: _cache[3] || (_cache[3] = (...args) => _ctx.handleSubmit && _ctx.handleSubmit(...args))
+              onClick: handleSubmit
             }, "确认提交")
           ]),
           vue.createCommentVNode(" 选择省市区弹窗 "),
           vue.createVNode(SelectArea, {
             ref_key: "selectArea",
             ref: selectArea,
-            onGetAreaData: _ctx.getAreaData,
-            provinceName: vue.unref(provinceName),
-            cityName: vue.unref(cityName),
-            countyName: vue.unref(countyName)
-          }, null, 8, ["onGetAreaData", "provinceName", "cityName", "countyName"])
+            onGetAreaData: getAreaData,
+            provinceName: formData.value.province,
+            cityName: formData.value.city,
+            countyName: formData.value.district
+          }, null, 8, ["provinceName", "cityName", "countyName"])
         ]);
       };
     }
@@ -31244,11 +32972,6 @@ if (uni.restoreGlobal) {
       const goBack = () => {
         uni.navigateBack();
       };
-      const handleBlur = () => {
-      };
-      const handleFocus = (val) => {
-        formatAppLog("log", "at pages/auth/index.vue:108", val, "--------");
-      };
       const handleSelect = (e2, type) => {
         const item = e2.tempFiles[0];
         uni.uploadFile({
@@ -31265,7 +32988,7 @@ if (uni.restoreGlobal) {
           },
           success: (uploadFileRes) => {
             formData.value[type] = JSON.parse(uploadFileRes.data).data.url;
-            formatAppLog("log", "at pages/auth/index.vue:129", JSON.parse(uploadFileRes.data).data.url, "-----");
+            formatAppLog("log", "at pages/auth/index.vue:119", JSON.parse(uploadFileRes.data).data.url, "-----");
           },
           fail: (err) => {
             uni.showToast({
@@ -31275,10 +32998,10 @@ if (uni.restoreGlobal) {
             });
           }
         });
-        formatAppLog("log", "at pages/auth/index.vue:140", e2, type, "eeeeeeeee");
+        formatAppLog("log", "at pages/auth/index.vue:130", e2, type, "eeeeeeeee");
       };
       const handleSubmit = () => {
-        formatAppLog("log", "at pages/auth/index.vue:144", formData.value, "formData.value");
+        formatAppLog("log", "at pages/auth/index.vue:134", formData.value, "formData.value");
         if (!formData.value.name) {
           return uni.showToast({
             title: "请填写真实姓名",
@@ -31311,7 +33034,7 @@ if (uni.restoreGlobal) {
           });
         }
         postAuth(formData.value).then((res) => {
-          formatAppLog("log", "at pages/auth/index.vue:178", res, "ress");
+          formatAppLog("log", "at pages/auth/index.vue:168", res, "ress");
           if (res.code === 200) {
             uni.navigateTo({
               url: "/pages/setting/index"
@@ -31341,9 +33064,7 @@ if (uni.restoreGlobal) {
               modelValue: formData.value.name,
               "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => formData.value.name = $event),
               placeholder: "请输入",
-              placeholderStyle: { fontSize: "16px" },
-              onFocus: _cache[1] || (_cache[1] = ($event) => handleFocus("name")),
-              onBlur: handleBlur
+              placeholderStyle: { fontSize: "16px" }
             }, null, 8, ["modelValue"])
           ]),
           vue.createCommentVNode(" 身份证号 "),
@@ -31351,11 +33072,9 @@ if (uni.restoreGlobal) {
             vue.createElementVNode("text", { class: "label" }, "身份证号"),
             vue.createVNode(_component_uni_easyinput, {
               modelValue: formData.value.idCardNo,
-              "onUpdate:modelValue": _cache[2] || (_cache[2] = ($event) => formData.value.idCardNo = $event),
+              "onUpdate:modelValue": _cache[1] || (_cache[1] = ($event) => formData.value.idCardNo = $event),
               placeholder: "请输入",
-              placeholderStyle: { fontSize: "16px" },
-              onFocus: _cache[3] || (_cache[3] = ($event) => handleFocus("idCard")),
-              onBlur: handleBlur
+              placeholderStyle: { fontSize: "16px" }
             }, null, 8, ["modelValue"])
           ]),
           vue.createCommentVNode(" 身份证正面 "),
@@ -31366,7 +33085,7 @@ if (uni.restoreGlobal) {
                 vue.createVNode(_component_uni_file_picker, {
                   limit: "1",
                   title: "",
-                  onSelect: _cache[4] || (_cache[4] = (e2) => handleSelect(e2, "frontImg")),
+                  onSelect: _cache[2] || (_cache[2] = (e2) => handleSelect(e2, "frontImg")),
                   onDelete: _ctx.handleDelete
                 }, null, 8, ["onDelete"]),
                 vue.createElementVNode("view", { class: "photoLabel" }, "人像面照片")
@@ -31387,7 +33106,7 @@ if (uni.restoreGlobal) {
                 vue.createVNode(_component_uni_file_picker, {
                   limit: "1",
                   title: "",
-                  onSelect: _cache[5] || (_cache[5] = (e2) => handleSelect(e2, "backImg")),
+                  onSelect: _cache[3] || (_cache[3] = (e2) => handleSelect(e2, "backImg")),
                   onDelete: _ctx.handleDelete
                 }, null, 8, ["onDelete"]),
                 vue.createElementVNode("view", { class: "photoLabel" }, "国徽面照片 ")
@@ -31408,7 +33127,7 @@ if (uni.restoreGlobal) {
                 vue.createVNode(_component_uni_file_picker, {
                   limit: "1",
                   title: "",
-                  onSelect: _cache[6] || (_cache[6] = (e2) => handleSelect(e2, "certificationMaterial")),
+                  onSelect: _cache[4] || (_cache[4] = (e2) => handleSelect(e2, "certificationMaterial")),
                   onDelete: _ctx.handleDelete
                 }, null, 8, ["onDelete"]),
                 vue.createElementVNode("view", { class: "photoLabel" }, "资料上传 ")

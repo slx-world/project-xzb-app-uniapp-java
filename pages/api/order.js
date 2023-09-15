@@ -92,7 +92,19 @@ export const getOrderStatusNum = (params) =>
     url: `/orders-manager/worker/status/num`,
     method: 'get',
   })
-
+//获取历史订单列表
+export const getHistoryOrder = (params) =>
+  request({
+    url: `/orders-history/worker/orders/list`,
+    method: 'get',
+    params
+  })
+//获取历史订单详情
+export const getHistoryOrderInfo = (params) =>
+  request({
+    url: `/orders-history/worker/orders/${params}`,
+    method: 'get',
+  })
 // //文件上传
 // export const uploadFile = (params) =>
 //   request({

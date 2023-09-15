@@ -1154,7 +1154,7 @@
   margin-top: 0.625rem;
 }
 .account .bankAccount .label[data-v-3c1b446f] {
-  margin-right: 1.25rem !important;
+  margin-right: 1.09375rem !important;
 }
 .account .name[data-v-3c1b446f], .account .idCard[data-v-3c1b446f], .account .idCardPhoto[data-v-3c1b446f], .account .data[data-v-3c1b446f] {
   display: flex;
@@ -1173,10 +1173,24 @@
   display: flex;
   align-items: center;
   justify-content: flex-end;
+  position: relative;
 }
 .account .name .citySelect uni-image[data-v-3c1b446f], .account .idCard .citySelect uni-image[data-v-3c1b446f], .account .idCardPhoto .citySelect uni-image[data-v-3c1b446f], .account .data .citySelect uni-image[data-v-3c1b446f] {
   width: 1.0625rem;
   height: 1rem;
+}
+.account .name .citySelect .bankName[data-v-3c1b446f], .account .idCard .citySelect .bankName[data-v-3c1b446f], .account .idCardPhoto .citySelect .bankName[data-v-3c1b446f], .account .data .citySelect .bankName[data-v-3c1b446f] {
+  position: absolute;
+  left: 0.625rem;
+}
+.account .name .citySelect .area[data-v-3c1b446f], .account .idCard .citySelect .area[data-v-3c1b446f], .account .idCardPhoto .citySelect .area[data-v-3c1b446f], .account .data .citySelect .area[data-v-3c1b446f] {
+  position: absolute;
+  left: -0.40625rem;
+}
+.account .name .placeholder[data-v-3c1b446f], .account .idCard .placeholder[data-v-3c1b446f], .account .idCardPhoto .placeholder[data-v-3c1b446f], .account .data .placeholder[data-v-3c1b446f] {
+  font-size: 16px;
+  color: var(--color-gray-9);
+  font-weight: 200;
 }
 .account .name .label[data-v-3c1b446f], .account .idCard .label[data-v-3c1b446f], .account .idCardPhoto .label[data-v-3c1b446f], .account .data .label[data-v-3c1b446f] {
   margin-right: 3.125rem;
@@ -1214,6 +1228,12 @@
 .account .idCardPhoto .content .photoItem[data-v-3c1b446f], .account .countryPhoto .content .photoItem[data-v-3c1b446f], .account .data .content .photoItem[data-v-3c1b446f] {
   flex: 1;
   margin-left: 0.59375rem;
+}
+.account .idCardPhoto .content .photoItem .image[data-v-3c1b446f], .account .countryPhoto .content .photoItem .image[data-v-3c1b446f], .account .data .content .photoItem .image[data-v-3c1b446f] {
+  height: 6.1875rem;
+  width: 6.25rem;
+  position: relative;
+  bottom: 0.0625rem;
 }
 .account .idCardPhoto .content .photoItem[data-v-3c1b446f] .uni-file-picker .icon-add, .account .countryPhoto .content .photoItem[data-v-3c1b446f] .uni-file-picker .icon-add, .account .data .content .photoItem[data-v-3c1b446f] .uni-file-picker .icon-add {
   background-color: var(--color-gray-96);

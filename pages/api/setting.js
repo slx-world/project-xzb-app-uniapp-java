@@ -78,6 +78,19 @@ export const postAuth = (params) =>
 //获取实名认证驳回原因
 export const getAuthFail = () =>
   request({
-    url: `/customer/worker//worker-certification-audit/rejectReason`,
+    url: `/customer/worker/worker-certification-audit/rejectReason`,
+    method: 'get',
+  })
+//提交账户设置
+export const postAccount = (params) =>
+  request({
+    url: `/customer/worker/bank-account`,
+    method: 'post',
+    params
+  })
+//获取账户设置信息
+export const getAccountInfo = () =>
+  request({
+    url: `/customer/worker/bank-account/currentUserBankAccount`,
     method: 'get',
   })

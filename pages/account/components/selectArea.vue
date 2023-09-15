@@ -66,7 +66,15 @@
 </template>
 
 <script setup>
-import { ref, reactive, onMounted, nextTick, computed, watch } from 'vue';
+import {
+  ref,
+  reactive,
+  onMounted,
+  nextTick,
+  computed,
+  watch,
+  watchEffect,
+} from 'vue';
 import { provinceData } from '../../../utils/address/province';
 import { cityData } from '../../../utils/address/city.js';
 import { areaData } from '../../../utils/address/area.js';
@@ -124,28 +132,35 @@ let areaIndex = reactive({
 
 //区分热门城市点击还是滑动三级组件
 let chooseType = ref('select');
-
-// 监听后台获取的详情
-watch(props, (newValue, oldValue) => {
-  // 获取符合条件的省市区的index，下标
-  areaIndex.data[0] = provinceData?.findIndex((item) => {
-    return item.label === newValue.provinceName;
-  });
-  areaIndex.data[1] = cityData[areaIndex.data[0]]?.findIndex((item) => {
-    return item.label === newValue.cityName;
-  });
-  areaIndex.data[2] = areaData[areaIndex.data[0]][areaIndex.data[1]]?.findIndex(
-    (item) => {
-      return item.label === newValue.countyName;
-    }
-  );
-  console.log(areaIndex.data);
-});
-
 const getList = () => {
   city.data = cityData[areaIndex.data[0]];
   area.data = areaData[areaIndex.data[0]][areaIndex.data[1]];
 };
+
+// 监听后台获取的详情
+watch(
+  () => props.cityName,
+  () => {
+    // // 获取符合条件的省市区的index，下标
+    if (props.provinceName)
+      areaIndex.data[0] = provinceData?.findIndex((item) => {
+        return item.label === props.provinceName;
+      });
+
+    if (props.cityName)
+      areaIndex.data[1] = cityData[areaIndex.data[0]]?.findIndex((item) => {
+        return item.label === props.cityName;
+      });
+    if (props.countyName)
+      areaIndex.data[2] = areaData[areaIndex.data[0]][
+        areaIndex.data[1]
+      ]?.findIndex((item) => {
+        return item.label === props.countyName;
+      });
+    getList();
+    // console.log(props, areaIndex.data, cityData[areaIndex.data[0]], 'props');
+  }
+);
 
 //获取省市区
 
@@ -155,12 +170,10 @@ const handlePickStart = () => {
 
 //选择省市区
 const bindChange = (event) => {
-  console.log(event, 'event');
   if (chooseType.value === 'click') return;
   //二级地址获取
   if (areaIndex.data[0] !== event.detail.value[0]) {
-    // console.log(province.data[event.detail.value[0]]);
-    city.data = cityData[event.detail.value[0]];
+    city.data = cityData[event.detail.value[1]];
     area.data = areaData[event.detail.value[0]][event.detail.value[1]];
     selectedProvince.data = province.data[event.detail.value[0]];
     event.detail.value[1] = 0;
@@ -172,10 +185,20 @@ const bindChange = (event) => {
     event.detail.value[2] = 0;
     selectedCity.data = city.data[event.detail.value[1]];
     selectedArea.data = area.data[event.detail.value[2]];
+    selectedProvince.data = province.data[event.detail.value[0]];
   } else {
     selectedArea.data = area.data[event.detail.value[2]];
+    selectedCity.data = city.data[event.detail.value[1]];
+    selectedProvince.data = province.data[event.detail.value[0]];
   }
   areaIndex.data = event.detail.value;
+  console.log(
+    event,
+    selectedCity.data,
+    selectedArea.data,
+    selectedProvince.data,
+    'event'
+  );
 };
 
 // 打开弹层
