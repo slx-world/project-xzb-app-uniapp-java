@@ -10,56 +10,56 @@
       <view class="evaluate">
         <view class="header">
           <view class="left">
-            <image :src="item.headUrl"></image>
-            <text class="nickName">{{ item.nickName }}</text>
+            <image :src="item.evaluatorInfo?.avatar"></image>
+            <text class="nickName">{{ item.evaluatorInfo?.nickName }}</text>
           </view>
           <view class="right">
             <!-- 设置星星间隔 -->
             <uni-rate
               readonly
-              :value="item.score"
+              :value="item.totalScore"
               :margin="5"
               color="#D2DBE7"
               active-color="#F74347"
             />
-            <text>{{ item.score }}分</text>
+            <text>{{ item.totalScore }}分</text>
           </view>
         </view>
         <view class="content">{{ item.content }}</view>
         <view class="time">
-          <text>{{ item.time }}</text>
-          <text class="replys" @click.stop="handleReply">回复</text>
+          <text>{{ item.createTime }}</text>
+          <!-- <text class="replys" @click.stop="handleReply">回复</text> -->
         </view>
-        <view class="img" v-if="item.imgUrl.length">
+        <view class="img" v-if="item.pictureArray">
           <image
             :src="item1"
             :key="index"
-            v-for="(item1, index) in item.imgUrl"
+            v-for="(item1, index) in item.pictureArray"
           ></image>
         </view>
         <view class="order">
           <view class="left">
-            <image :src="item.orderInfo.imgUrl"></image>
+            <image :src="item.serveItemImg"></image>
           </view>
           <view class="right">
             <view class="num">
               <text>订单编号 </text>
-              <text>{{ item.orderInfo.id }}</text>
+              <text>{{ item.relationId }}</text>
             </view>
             <view class="time">
               <text>预约时间 </text>
-              <text>{{ item.orderInfo.time }}</text>
+              <text>{{ item.updateTime }}</text>
             </view>
-            <view class="address">{{ item.orderInfo.address }}</view>
+            <view class="address">{{ item.serveAddress }}</view>
           </view>
         </view>
-        <view class="reply">
+        <!-- <view class="reply">
           <view class="content">{{ item.reply.content }}</view>
           <view class="foot">
             <text>{{ item.reply.time }}</text>
             <text>删除</text>
           </view>
-        </view>
+        </view> -->
       </view>
     </view>
     <!-- 加载底部 -->
@@ -141,64 +141,7 @@ onMounted(() => {});
 const keyBoardHeight = ref('');
 
 let list = reactive({
-  data: [
-    {
-      reply: {
-        content: '感谢你的肯定，您的满意就是我们的追求',
-        time: '2022.07.12  18:08',
-      },
-      orderInfo: {
-        id: '7364734677776',
-        time: '2026.5.26 12:30',
-        address:
-          '北京市昌平区红旗大街124号五星大厦19层109室4号五星大厦19层109室',
-        imgUrl:
-          'https://yjy-slwl-oss.oss-cn-hangzhou.aliyuncs.com/3b59ab0c-59fc-4c96-a645-eda33696204b.png',
-      },
-      imgUrl: [
-        'https://yjy-slwl-oss.oss-cn-hangzhou.aliyuncs.com/3b59ab0c-59fc-4c96-a645-eda33696204b.png',
-        'https://yjy-slwl-oss.oss-cn-hangzhou.aliyuncs.com/3b59ab0c-59fc-4c96-a645-eda33696204b.png',
-      ],
-      headUrl:
-        'https://yjy-slwl-oss.oss-cn-hangzhou.aliyuncs.com/3b59ab0c-59fc-4c96-a645-eda33696204b.png',
-      nickName: '戴龙',
-      score: 4,
-      content:
-        '按时上门,打扫非常干净,态度极佳,技能专业,效果超出预期。师傅清洗得非常千净，动作麻利。',
-      time: '2022.07.12  18:08',
-      // serveStartTime: '2023-7-28 11:48:00',
-      // serveAddress: '金燕龙',
-      // serveFee: '666',
-    },
-    {
-      reply: {
-        content: '感谢你的肯定，您的满意就是我们的追求',
-        time: '2022.07.12  18:08',
-      },
-      orderInfo: {
-        id: '7364734677776',
-        time: '2026.5.26 12:30',
-        address:
-          '北京市昌平区红旗大街124号五星大厦19层109室4号五星大厦19层109室',
-        imgUrl:
-          'https://yjy-slwl-oss.oss-cn-hangzhou.aliyuncs.com/3b59ab0c-59fc-4c96-a645-eda33696204b.png',
-      },
-      imgUrl: [
-        'https://yjy-slwl-oss.oss-cn-hangzhou.aliyuncs.com/3b59ab0c-59fc-4c96-a645-eda33696204b.png',
-        'https://yjy-slwl-oss.oss-cn-hangzhou.aliyuncs.com/3b59ab0c-59fc-4c96-a645-eda33696204b.png',
-      ],
-      headUrl:
-        'https://yjy-slwl-oss.oss-cn-hangzhou.aliyuncs.com/3b59ab0c-59fc-4c96-a645-eda33696204b.png',
-      nickName: '戴龙',
-      score: 4,
-      content:
-        '按时上门,打扫非常干净,态度极佳,技能专业,效果超出预期。师傅清洗得非常千净，动作麻利。',
-      time: '2022.07.12  18:08',
-      // serveStartTime: '2023-7-28 11:48:00',
-      // serveAddress: '金燕龙',
-      // serveFee: '666',
-    },
-  ],
+  data: [],
 });
 //弹出或者收起键盘
 const handleHideKeyBoard = () => {
@@ -272,7 +215,7 @@ const handleServeRecord = (id, status) => {
   });
 };
 watchEffect(() => {
-  // list.data = props.data;
+  list.data = props.data;
 });
 </script>
 <style src="../index.scss" lang="scss"></style>
