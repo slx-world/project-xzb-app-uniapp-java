@@ -4704,7 +4704,7 @@ if (uni.restoreGlobal) {
   };
   Object.defineProperties(Store.prototype, prototypeAccessors);
   function request({ url = "", params = {}, method = "GET" }) {
-    let baseUrl = "/api";
+    let baseUrl = "http://172.17.2.58/api";
     const token = uni.getStorageSync("token");
     let header = {
       "Access-Control-Allow-Origin": "*",
@@ -4764,6 +4764,11 @@ if (uni.restoreGlobal) {
   const getsmsCode = (params) => request({
     url: `/customer/open/sms-code/send`,
     method: "post",
+    params
+  });
+  const getUserInfo = (params) => request({
+    url: `/customer/worker/serve-provider/currentUserInfo`,
+    method: "get",
     params
   });
   const getUserSetting = (params) => request({
@@ -16931,7 +16936,7 @@ if (uni.restoreGlobal) {
                 vue.createElementVNode(
                   "view",
                   { class: "account" },
-                  vue.toDisplayString(__props.baseData.account || "177 9987 8876"),
+                  vue.toDisplayString(__props.baseData.phone || "177 9987 8876"),
                   1
                   /* TEXT */
                 )
@@ -16956,42 +16961,24 @@ if (uni.restoreGlobal) {
         return vue.openBlock(), vue.createElementBlock("view", { class: "boxBg headTop" }, [
           vue.createElementVNode("view", { class: "headItem score" }, [
             vue.createElementVNode("view", { class: "leftBox" }, [
-              vue.createElementVNode("view", { class: "scoreContent" }, "4.7分"),
+              vue.createElementVNode(
+                "view",
+                { class: "scoreContent" },
+                vue.toDisplayString(__props.baseData.score) + "分",
+                1
+                /* TEXT */
+              ),
               vue.createElementVNode("view", { class: "label" }, "综合评分")
             ]),
             vue.createElementVNode("view", { class: "rightBox" }, [
-              vue.createElementVNode("view", { class: "commit" }, [
-                vue.createElementVNode("view", { class: "label" }, "差评率"),
-                vue.createElementVNode("view", { class: "greyLine" }, [
-                  vue.createElementVNode(
-                    "view",
-                    {
-                      class: "redLine",
-                      style: vue.normalizeStyle({ width: `${200 * 0.333}rpx` })
-                    },
-                    null,
-                    4
-                    /* STYLE */
-                  )
-                ]),
-                vue.createElementVNode("view", { class: "num" }, "33.3%")
-              ]),
-              vue.createElementVNode("view", { class: "commit" }, [
-                vue.createElementVNode("view", { class: "label" }, "好评率"),
-                vue.createElementVNode("view", { class: "greyLine" }, [
-                  vue.createElementVNode(
-                    "view",
-                    {
-                      class: "redLine",
-                      style: vue.normalizeStyle({ width: `${200 * 0.333}rpx` })
-                    },
-                    null,
-                    4
-                    /* STYLE */
-                  )
-                ]),
-                vue.createElementVNode("view", { class: "num" }, "33.3%")
-              ])
+              vue.createElementVNode(
+                "view",
+                { class: "scoreContent" },
+                vue.toDisplayString(__props.baseData.goodLevelRate),
+                1
+                /* TEXT */
+              ),
+              vue.createElementVNode("view", { class: "label" }, "综合评分")
             ])
           ])
         ]);
@@ -17044,7 +17031,19 @@ if (uni.restoreGlobal) {
     __name: "index",
     setup(__props) {
       const store2 = useStore();
-      let baseData = uni.getStorageSync("userInfo");
+      const baseData = vue.ref(uni.getStorageSync("userInfo"));
+      vue.onMounted(() => {
+        getUser();
+      });
+      const getUser = async () => {
+        await getUserInfo().then((res) => {
+          if (res.code === 200) {
+            formatAppLog("log", "at pages/my/index.vue:55", res.data, "用户信息");
+            baseData.value = res.data;
+            uni.setStorageSync("userInfo", res.data);
+          }
+        });
+      };
       const handleOut = () => {
         uni.removeStorageSync("token");
         store2.commit("setFootStatus", 0);
@@ -17056,10 +17055,10 @@ if (uni.restoreGlobal) {
         return vue.openBlock(), vue.createElementBlock("view", null, [
           vue.createElementVNode("view", { class: "navFrame" }, [
             vue.createCommentVNode(" 我的基本信息 "),
-            vue.createVNode(BaseInfo, { baseData: vue.unref(baseData) }, null, 8, ["baseData"]),
+            vue.createVNode(BaseInfo, { baseData: baseData.value }, null, 8, ["baseData"]),
             vue.createCommentVNode(" end "),
             vue.createCommentVNode(" 我的评价详情 "),
-            vue.createVNode(Evaluate, { baseData: vue.unref(baseData) }, null, 8, ["baseData"]),
+            vue.createVNode(Evaluate, { baseData: baseData.value }, null, 8, ["baseData"]),
             vue.createCommentVNode(" end "),
             vue.createCommentVNode(" 我的评价 "),
             vue.createVNode(HistoryScope),
@@ -17402,7 +17401,7 @@ if (uni.restoreGlobal) {
       const handleToInfo = (item) => {
         formatAppLog("log", "at pages/evaluate/components/homeList.vue:195", item, "进入详情");
         uni.navigateTo({
-          url: "/pages/orderInfo/index?id=" + item.id
+          url: "/pages/orderInfo/index?id=" + item.relationId
         });
       };
       vue.watchEffect(() => {

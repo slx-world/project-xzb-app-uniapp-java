@@ -12,7 +12,7 @@
         ></view>
         <view class="info">
           <view class="tit">{{ baseData.name || '吴彦祖' }}</view>
-          <view class="account">{{ baseData.account || '177 9987 8876' }}</view>
+          <view class="account">{{ baseData.phone || '177 9987 8876' }}</view>
         </view>
       </view>
     </view>

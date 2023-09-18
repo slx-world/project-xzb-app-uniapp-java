@@ -194,7 +194,7 @@ const handleReply = () => {
 const handleToInfo = (item) => {
   console.log(item, '进入详情');
   uni.navigateTo({
-    url: '/pages/orderInfo/index?id=' + item.id,
+    url: '/pages/orderInfo/index?id=' + item.relationId,
   });
 };
 const handleCancel = (id) => {

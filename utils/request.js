@@ -1,9 +1,9 @@
 
 // 参数： url:请求地址  param：请求参数  method：请求方式 callBack：回调函数
 export function request ({ url = "", params = {}, method = "GET" }) {
-  let baseUrl = '/api'//用于浏览器联调测试环境
+  // let baseUrl = '/api'//用于浏览器联调测试环境
   // let baseUrl = 'https://jzo2o-api-test.itheima.net'//用于模拟器和真机联调测试环境
-  // let baseUrl = 'http://172.17.2.58/api'//用于联调开发环境
+  let baseUrl = 'http://172.17.2.58/api'//用于联调开发环境
 
   // 获取token
   const token = uni.getStorageSync("token");
