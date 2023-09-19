@@ -68,7 +68,7 @@ const uploadImage = async () => {
   const promises = fileList.value.map((item) => {
     return new Promise((resolve, reject) => {
       uni.uploadFile({
-        url: 'http://172.17.2.58/api/publics/storage/upload',
+        url: 'https://jzo2o-api-test.itheima.net/publics/storage/upload',
         files: [
           {
             name: 'file',

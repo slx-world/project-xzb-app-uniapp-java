@@ -4704,7 +4704,7 @@ if (uni.restoreGlobal) {
   };
   Object.defineProperties(Store.prototype, prototypeAccessors);
   function request({ url = "", params = {}, method = "GET" }) {
-    let baseUrl = "/api";
+    let baseUrl = "https://jzo2o-api-test.itheima.net";
     const token = uni.getStorageSync("token");
     let header = {
       "Access-Control-Allow-Origin": "*",
@@ -16641,7 +16641,7 @@ if (uni.restoreGlobal) {
         const promises = fileList.value.map((item) => {
           return new Promise((resolve, reject) => {
             uni.uploadFile({
-              url: "http://172.17.2.58/api/publics/storage/upload",
+              url: "https://jzo2o-api-test.itheima.net/publics/storage/upload",
               files: [
                 {
                   name: "file",
@@ -32724,7 +32724,7 @@ if (uni.restoreGlobal) {
       const handleSelect = (e2) => {
         const item = e2.tempFiles[0];
         uni.uploadFile({
-          url: "/api/publics/storage/upload",
+          url: "https://jzo2o-api-test.itheima.net/publics/storage/upload",
           files: [
             {
               name: "file",
@@ -32975,7 +32975,7 @@ if (uni.restoreGlobal) {
       const handleSelect = (e2, type) => {
         const item = e2.tempFiles[0];
         uni.uploadFile({
-          url: "/api/publics/storage/upload",
+          url: "https://jzo2o-api-test.itheima.net/publics/storage/upload",
           files: [
             {
               name: "file",

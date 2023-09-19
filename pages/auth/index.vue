@@ -101,7 +101,7 @@ const goBack = () => {
 const handleSelect = (e, type) => {
   const item = e.tempFiles[0];
   uni.uploadFile({
-    url: '/api/publics/storage/upload',
+    url: 'https://jzo2o-api-test.itheima.net/publics/storage/upload',
     files: [
       {
         name: 'file',
