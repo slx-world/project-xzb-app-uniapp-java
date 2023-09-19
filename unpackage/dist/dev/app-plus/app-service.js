@@ -4704,7 +4704,7 @@ if (uni.restoreGlobal) {
   };
   Object.defineProperties(Store.prototype, prototypeAccessors);
   function request({ url = "", params = {}, method = "GET" }) {
-    let baseUrl = "https://jzo2o-api-test.itheima.net";
+    let baseUrl = "http://172.17.2.58/api";
     const token = uni.getStorageSync("token");
     let header = {
       "Access-Control-Allow-Origin": "*",
@@ -5819,7 +5819,7 @@ if (uni.restoreGlobal) {
         } else {
           serviceType.data = [{ id: "", name: "全部" }].concat(props.homeFilterList);
         }
-        formatAppLog("log", "at pages/index/components/homeFilter.vue:112", isOpen.value, "isOpen.value");
+        formatAppLog("log", "at pages/index/components/homeFilter.vue:113", isOpen.value, "isOpen.value");
         emit("handleCanScroll", isOpen.value);
       };
       const handleReset = () => {
@@ -5850,26 +5850,19 @@ if (uni.restoreGlobal) {
           },
           [
             vue.createElementVNode("view", { class: "leftBox" }, [
-              vue.createElementVNode(
-                "view",
-                {
-                  class: vue.normalizeClass(["item", !status.value ? "active" : ""]),
-                  onClick: _cache[0] || (_cache[0] = ($event) => handleClick(0))
-                },
-                "抢单",
-                2
-                /* CLASS */
-              ),
-              vue.createElementVNode(
-                "view",
-                {
-                  class: vue.normalizeClass(["item", status.value ? "active" : ""]),
-                  onClick: _cache[1] || (_cache[1] = ($event) => handleClick(1))
-                },
-                "派单",
-                2
-                /* CLASS */
-              )
+              vue.createCommentVNode(` <view\r
+        class="item"\r
+        :class="!status ? 'active' : ''"\r
+        @click="handleClick(0)"\r
+        >抢单</view\r
+      >\r
+      <view class="item" :class="status ? 'active' : ''" @click="handleClick(1)"\r
+        >派单</view\r
+      > `),
+              vue.createElementVNode("view", {
+                class: "item",
+                onClick: _cache[0] || (_cache[0] = ($event) => handleClick(0))
+              }, "抢单大厅")
             ]),
             !status.value ? (vue.openBlock(), vue.createElementBlock("view", {
               key: 0,
@@ -5881,7 +5874,7 @@ if (uni.restoreGlobal) {
                   "view",
                   {
                     class: vue.normalizeClass(["icon", isOpen.value && type.value === "distance" ? "up" : "down"]),
-                    onClick: _cache[2] || (_cache[2] = ($event) => handleOpen("distance"))
+                    onClick: _cache[1] || (_cache[1] = ($event) => handleOpen("distance"))
                   },
                   null,
                   2
@@ -5894,7 +5887,7 @@ if (uni.restoreGlobal) {
                   "view",
                   {
                     class: vue.normalizeClass(["icon", isOpen.value && type.value === "serviceType" ? "up" : "down"]),
-                    onClick: _cache[3] || (_cache[3] = ($event) => handleOpen("serviceType"))
+                    onClick: _cache[2] || (_cache[2] = ($event) => handleOpen("serviceType"))
                   },
                   null,
                   2
@@ -5968,9 +5961,6 @@ if (uni.restoreGlobal) {
       const msg = vue.ref("");
       const handleToInfo = (item) => {
         formatAppLog("log", "at pages/index/components/homeList.vue:96", item, "进入详情");
-        uni.navigateTo({
-          url: "/pages/orderInfo/index?id=" + item.id + "&type=dispatch"
-        });
       };
       const handleRejectOrder = (id) => {
         formatAppLog("log", "at pages/index/components/homeList.vue:103", "点击了拒单");
@@ -11061,7 +11051,7 @@ if (uni.restoreGlobal) {
         popup2.value.close();
       };
       const bindStartDateChange = (e2) => {
-        formatAppLog("log", "at pages/history/index.vue:139", e2, "eeee");
+        formatAppLog("log", "at pages/history/index.vue:141", e2, "eeee");
         startTime.value = e2.detail.value;
       };
       const bindEndDateChange = (e2) => {
@@ -11087,7 +11077,7 @@ if (uni.restoreGlobal) {
         if (!time)
           delete params.lastSortTime;
         getHistoryOrder(params).then((res) => {
-          formatAppLog("log", "at pages/history/index.vue:172", res, homeList.data, "66666666666");
+          formatAppLog("log", "at pages/history/index.vue:174", res, homeList.data, "66666666666");
           if (res.data.length === 10) {
             isHaveMore.value = true;
           } else {
@@ -11147,6 +11137,7 @@ if (uni.restoreGlobal) {
                       ]),
                       vue.createElementVNode("view", { class: "time" }, [
                         vue.createElementVNode("picker", {
+                          fields: "day",
                           mode: "date",
                           start: startTime.value,
                           end: endTime.value,
@@ -11163,6 +11154,7 @@ if (uni.restoreGlobal) {
                         ], 40, ["start", "end", "value"]),
                         vue.createElementVNode("view", { class: "zhi" }, "至"),
                         vue.createElementVNode("picker", {
+                          fields: "day",
                           mode: "date",
                           start: startTime.value,
                           end: endTime.value,

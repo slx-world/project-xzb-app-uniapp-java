@@ -1,7 +1,7 @@
 <template>
   <view class="homeFilter" :class="fixTop ? 'fixTop' : ''">
     <view class="leftBox">
-      <view
+      <!-- <view
         class="item"
         :class="!status ? 'active' : ''"
         @click="handleClick(0)"
@@ -9,7 +9,8 @@
       >
       <view class="item" :class="status ? 'active' : ''" @click="handleClick(1)"
         >派单</view
-      >
+      > -->
+      <view class="item" @click="handleClick(0)">抢单大厅</view>
     </view>
     <view class="rightBox" v-if="!status">
       <view class="distance">

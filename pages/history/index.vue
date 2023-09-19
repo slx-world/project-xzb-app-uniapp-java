@@ -38,6 +38,7 @@
           </view>
           <view class="time">
             <picker
+              fields="day"
               mode="date"
               :start="startTime"
               :end="endTime"
@@ -50,6 +51,7 @@
 
             <view class="zhi">至</view>
             <picker
+              fields="day"
               mode="date"
               :start="startTime"
               :end="endTime"
