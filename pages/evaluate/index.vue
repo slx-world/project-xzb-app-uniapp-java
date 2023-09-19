@@ -8,7 +8,6 @@
     <UniTab
       :tabBars="tabBars"
       @getTabIndex="getTabIndex"
-      :statusNum="statusNum.data"
     ></UniTab>
     <!-- 订单列表 -->
     <scroll-view
@@ -41,7 +40,7 @@ import { useStore } from 'vuex';
 // 基本数据
 import { evaluateData } from '@/utils/commonData.js';
 //接口
-import { getOrder, getOrderStatusNum } from '@/pages/api/order.js';
+import { getOrder, getOrderStatusNum, getEvaluateList } from '@/pages/api/order.js';
 
 // 导入组件
 // 导航组件
@@ -62,6 +61,10 @@ const title = ref('我的评价');
 const statusNum = reactive({
   data: [],
 });
+const requestData = ref({
+  pageNo: 1,
+  pageSize: 10,
+})
 const isHaveMore = ref(false);
 const tabBars = evaluateData;
 const icCanScroll = ref(true);
@@ -76,40 +79,20 @@ onShow(() => {
   //   tabIndex.value = users.tabIndex;
   // }
   getTabIndex(users.tabIndex);
+  getEvaluateListFunc();
   getOrderStatusNumFunc();
 });
 //上拉加载
 const handleLoad = () => {
   console.log('上拉加载');
   if (isHaveMore.value) {
-    getListData(
-      tabBars[users.tabIndex].value,
-      homeList.data[homeList.data.length - 1].id
-    );
+    requestData.value.pageNo++;
+    getEvaluateListFunc();
   }
 
   // console.log(homeList.data[homeList.data.length - 1].id, '上拉加载');
 };
-//获取各个状态下的订单数量
-const getOrderStatusNumFunc = () => {
-  getOrderStatusNum().then((res) => {
-    statusNum.data = [res.data.noServed, res.data.serving];
-    // console.log(res, '获取各个状态下的订单数量');
-  });
-};
-//获取订单列表数据
-const getListData = (val, id) => {
-  // console.log(val, id, 'val, id');
-  getOrder(val, id).then((res) => {
-    if (res.data.ordersServes.length === 10) {
-      isHaveMore.value = true;
-    } else {
-      isHaveMore.value = false;
-    }
-    homeList.data = homeList.data.concat(res.data.ordersServes);
-    console.log(res, homeList.data, '66666666666');
-  });
-};
+
 // ------定义方法------
 const getRobOrderList = () => {};
 //回到顶部
@@ -122,10 +105,35 @@ const getTabIndex = (index) => {
   scrollToTop();
   store.commit('user/setTabIndex', index);
   homeList.data = [];
-  getListData(tabBars[index].value, '');
+  if (index === 0) {
+    requestData.value = {
+      pageNo: 1,
+      pageSize: 10,
+    };
+  } else {
+    requestData.value = {
+      pageNo: 1,
+      pageSize: 10,
+      scoreLevel: tabBars[index].value,
+    };
+  }
+  homeList.data = []
+  getEvaluateListFunc()
   // console.log(tabBars[index].value, 'index');
 };
-
+const getEvaluateListFunc = () => {
+  getEvaluateList(requestData.value).then((res) => {
+    console.log(res, '获取评价列表');
+    if(res.code === 200){
+      homeList.data = res.data;
+      if (res.data.length < requestData.value.pageSize) {
+        isHaveMore.value = false;
+      } else {
+        isHaveMore.value = true;
+      }
+    }
+  });
+};
 // 返回上一页
 const goBack = () => {
   uni.navigateBack();

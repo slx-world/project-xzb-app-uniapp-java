@@ -4766,6 +4766,11 @@ if (uni.restoreGlobal) {
     method: "post",
     params
   });
+  const getUserInfo = (params) => request({
+    url: `/customer/worker/serve-provider/currentUserInfo`,
+    method: "get",
+    params
+  });
   const getUserSetting = (params) => request({
     url: `/customer/worker/serve-settings/status`,
     method: "get",
@@ -5436,6 +5441,11 @@ if (uni.restoreGlobal) {
   const getHistoryOrderInfo = (params) => request({
     url: `/orders-history/worker/orders/${params}`,
     method: "get"
+  });
+  const getEvaluateList = (params) => request({
+    url: `/customer/worker/evaluation/pageByCurrentUserAndScoreLevel`,
+    method: "get",
+    params
   });
   const _sfc_main$B = {
     __name: "index",
@@ -10553,7 +10563,7 @@ if (uni.restoreGlobal) {
       label: "全部"
     },
     {
-      value: 1,
+      value: 3,
       label: "好评"
     },
     {
@@ -10561,7 +10571,7 @@ if (uni.restoreGlobal) {
       label: "中评"
     },
     {
-      value: 3,
+      value: 1,
       label: "差评"
     }
   ];
@@ -11355,7 +11365,7 @@ if (uni.restoreGlobal) {
       const scrollView = vue.ref(null);
       onShow(() => {
         getTabIndex(users.tabIndex);
-        getOrderStatusNumFunc();
+        getOrderStatusNumFunc2();
       });
       const handleLoad = () => {
         if (isHaveMore.value) {
@@ -11365,7 +11375,7 @@ if (uni.restoreGlobal) {
           );
         }
       };
-      const getOrderStatusNumFunc = () => {
+      const getOrderStatusNumFunc2 = () => {
         getOrderStatusNum().then((res) => {
           statusNum.data = [res.data.noServed, res.data.serving];
         });
@@ -16923,7 +16933,7 @@ if (uni.restoreGlobal) {
                 vue.createElementVNode(
                   "view",
                   { class: "account" },
-                  vue.toDisplayString(__props.baseData.account || "177 9987 8876"),
+                  vue.toDisplayString(__props.baseData.phone || "177 9987 8876"),
                   1
                   /* TEXT */
                 )
@@ -16948,42 +16958,24 @@ if (uni.restoreGlobal) {
         return vue.openBlock(), vue.createElementBlock("view", { class: "boxBg headTop" }, [
           vue.createElementVNode("view", { class: "headItem score" }, [
             vue.createElementVNode("view", { class: "leftBox" }, [
-              vue.createElementVNode("view", { class: "scoreContent" }, "4.7分"),
+              vue.createElementVNode(
+                "view",
+                { class: "scoreContent" },
+                vue.toDisplayString(__props.baseData.score) + "分",
+                1
+                /* TEXT */
+              ),
               vue.createElementVNode("view", { class: "label" }, "综合评分")
             ]),
             vue.createElementVNode("view", { class: "rightBox" }, [
-              vue.createElementVNode("view", { class: "commit" }, [
-                vue.createElementVNode("view", { class: "label" }, "差评率"),
-                vue.createElementVNode("view", { class: "greyLine" }, [
-                  vue.createElementVNode(
-                    "view",
-                    {
-                      class: "redLine",
-                      style: vue.normalizeStyle({ width: `${200 * 0.333}rpx` })
-                    },
-                    null,
-                    4
-                    /* STYLE */
-                  )
-                ]),
-                vue.createElementVNode("view", { class: "num" }, "33.3%")
-              ]),
-              vue.createElementVNode("view", { class: "commit" }, [
-                vue.createElementVNode("view", { class: "label" }, "好评率"),
-                vue.createElementVNode("view", { class: "greyLine" }, [
-                  vue.createElementVNode(
-                    "view",
-                    {
-                      class: "redLine",
-                      style: vue.normalizeStyle({ width: `${200 * 0.333}rpx` })
-                    },
-                    null,
-                    4
-                    /* STYLE */
-                  )
-                ]),
-                vue.createElementVNode("view", { class: "num" }, "33.3%")
-              ])
+              vue.createElementVNode(
+                "view",
+                { class: "scoreContent" },
+                vue.toDisplayString(__props.baseData.goodLevelRate),
+                1
+                /* TEXT */
+              ),
+              vue.createElementVNode("view", { class: "label" }, "综合评分")
             ])
           ])
         ]);
@@ -17036,7 +17028,19 @@ if (uni.restoreGlobal) {
     __name: "index",
     setup(__props) {
       const store2 = useStore();
-      let baseData = uni.getStorageSync("userInfo");
+      const baseData = vue.ref(uni.getStorageSync("userInfo"));
+      vue.onMounted(() => {
+        getUser();
+      });
+      const getUser = async () => {
+        await getUserInfo().then((res) => {
+          if (res.code === 200) {
+            formatAppLog("log", "at pages/my/index.vue:55", res.data, "用户信息");
+            baseData.value = res.data;
+            uni.setStorageSync("userInfo", res.data);
+          }
+        });
+      };
       const handleOut = () => {
         uni.removeStorageSync("token");
         store2.commit("setFootStatus", 0);
@@ -17048,10 +17052,10 @@ if (uni.restoreGlobal) {
         return vue.openBlock(), vue.createElementBlock("view", null, [
           vue.createElementVNode("view", { class: "navFrame" }, [
             vue.createCommentVNode(" 我的基本信息 "),
-            vue.createVNode(BaseInfo, { baseData: vue.unref(baseData) }, null, 8, ["baseData"]),
+            vue.createVNode(BaseInfo, { baseData: baseData.value }, null, 8, ["baseData"]),
             vue.createCommentVNode(" end "),
             vue.createCommentVNode(" 我的评价详情 "),
-            vue.createVNode(Evaluate, { baseData: vue.unref(baseData) }, null, 8, ["baseData"]),
+            vue.createVNode(Evaluate, { baseData: baseData.value }, null, 8, ["baseData"]),
             vue.createCommentVNode(" end "),
             vue.createCommentVNode(" 我的评价 "),
             vue.createVNode(HistoryScope),
@@ -17351,9 +17355,10 @@ if (uni.restoreGlobal) {
     },
     emits: ["refresh"],
     setup(__props, { emit }) {
+      const props = __props;
       const alertDialog = vue.ref(null);
       const store2 = useStore();
-      const user2 = store2.state.user;
+      store2.state.user;
       const emojiShow = vue.ref(false);
       const input = vue.ref(null);
       const focus = vue.ref(true);
@@ -17362,56 +17367,7 @@ if (uni.restoreGlobal) {
       });
       const keyBoardHeight = vue.ref("");
       let list = vue.reactive({
-        data: [
-          {
-            reply: {
-              content: "感谢你的肯定，您的满意就是我们的追求",
-              time: "2022.07.12  18:08"
-            },
-            orderInfo: {
-              id: "7364734677776",
-              time: "2026.5.26 12:30",
-              address: "北京市昌平区红旗大街124号五星大厦19层109室4号五星大厦19层109室",
-              imgUrl: "https://yjy-slwl-oss.oss-cn-hangzhou.aliyuncs.com/3b59ab0c-59fc-4c96-a645-eda33696204b.png"
-            },
-            imgUrl: [
-              "https://yjy-slwl-oss.oss-cn-hangzhou.aliyuncs.com/3b59ab0c-59fc-4c96-a645-eda33696204b.png",
-              "https://yjy-slwl-oss.oss-cn-hangzhou.aliyuncs.com/3b59ab0c-59fc-4c96-a645-eda33696204b.png"
-            ],
-            headUrl: "https://yjy-slwl-oss.oss-cn-hangzhou.aliyuncs.com/3b59ab0c-59fc-4c96-a645-eda33696204b.png",
-            nickName: "戴龙",
-            score: 4,
-            content: "按时上门,打扫非常干净,态度极佳,技能专业,效果超出预期。师傅清洗得非常千净，动作麻利。",
-            time: "2022.07.12  18:08"
-            // serveStartTime: '2023-7-28 11:48:00',
-            // serveAddress: '金燕龙',
-            // serveFee: '666',
-          },
-          {
-            reply: {
-              content: "感谢你的肯定，您的满意就是我们的追求",
-              time: "2022.07.12  18:08"
-            },
-            orderInfo: {
-              id: "7364734677776",
-              time: "2026.5.26 12:30",
-              address: "北京市昌平区红旗大街124号五星大厦19层109室4号五星大厦19层109室",
-              imgUrl: "https://yjy-slwl-oss.oss-cn-hangzhou.aliyuncs.com/3b59ab0c-59fc-4c96-a645-eda33696204b.png"
-            },
-            imgUrl: [
-              "https://yjy-slwl-oss.oss-cn-hangzhou.aliyuncs.com/3b59ab0c-59fc-4c96-a645-eda33696204b.png",
-              "https://yjy-slwl-oss.oss-cn-hangzhou.aliyuncs.com/3b59ab0c-59fc-4c96-a645-eda33696204b.png"
-            ],
-            headUrl: "https://yjy-slwl-oss.oss-cn-hangzhou.aliyuncs.com/3b59ab0c-59fc-4c96-a645-eda33696204b.png",
-            nickName: "戴龙",
-            score: 4,
-            content: "按时上门,打扫非常干净,态度极佳,技能专业,效果超出预期。师傅清洗得非常千净，动作麻利。",
-            time: "2022.07.12  18:08"
-            // serveStartTime: '2023-7-28 11:48:00',
-            // serveAddress: '金燕龙',
-            // serveFee: '666',
-          }
-        ]
+        data: []
       });
       const handleHideKeyBoard = () => {
         if (!emojiShow.value) {
@@ -17423,7 +17379,7 @@ if (uni.restoreGlobal) {
         emojiShow.value = !emojiShow.value;
       };
       const handleSubmit = () => {
-        formatAppLog("log", "at pages/evaluate/components/homeList.vue:217", "提交了");
+        formatAppLog("log", "at pages/evaluate/components/homeList.vue:160", "提交了");
         if (!inputValue.value.length) {
           return;
         } else {
@@ -17434,27 +17390,19 @@ if (uni.restoreGlobal) {
         inputValue.value = inputValue.value + item;
       };
       const handleBlur = () => {
-        formatAppLog("log", "at pages/evaluate/components/homeList.vue:230", input.value, "----------");
+        formatAppLog("log", "at pages/evaluate/components/homeList.vue:173", input.value, "----------");
       };
       const handleFocus = () => {
         emojiShow.value = false;
       };
-      const handleReply = () => {
-        alertDialog.value.open();
-        focus.value = true;
-        uni.onKeyboardHeightChange((res) => {
-          formatAppLog("log", "at pages/evaluate/components/homeList.vue:242", "键盘高度变化12：", user2.keyBoardHeight, res.height);
-          keyBoardHeight.value = user2.keyBoardHeight || res.height;
-          store2.commit("user/setKeyBoardHeight", user2.keyBoardHeight || res.height);
-        });
-      };
       const handleToInfo = (item) => {
-        formatAppLog("log", "at pages/evaluate/components/homeList.vue:252", item, "进入详情");
+        formatAppLog("log", "at pages/evaluate/components/homeList.vue:195", item, "进入详情");
         uni.navigateTo({
-          url: "/pages/orderInfo/index?id=" + item.id
+          url: "/pages/orderInfo/index?id=" + item.relationId
         });
       };
       vue.watchEffect(() => {
+        list.data = props.data;
       });
       return (_ctx, _cache) => {
         const _component_uni_rate = resolveEasycom(vue.resolveDynamicComponent("uni-rate"), __easycom_0);
@@ -17464,6 +17412,7 @@ if (uni.restoreGlobal) {
             vue.Fragment,
             null,
             vue.renderList(vue.unref(list).data, (item) => {
+              var _a, _b;
               return vue.openBlock(), vue.createElementBlock("view", {
                 class: "card",
                 key: item.id,
@@ -17473,12 +17422,12 @@ if (uni.restoreGlobal) {
                   vue.createElementVNode("view", { class: "header" }, [
                     vue.createElementVNode("view", { class: "left" }, [
                       vue.createElementVNode("image", {
-                        src: item.headUrl
+                        src: (_a = item.evaluatorInfo) == null ? void 0 : _a.avatar
                       }, null, 8, ["src"]),
                       vue.createElementVNode(
                         "text",
                         { class: "nickName" },
-                        vue.toDisplayString(item.nickName),
+                        vue.toDisplayString((_b = item.evaluatorInfo) == null ? void 0 : _b.nickName),
                         1
                         /* TEXT */
                       )
@@ -17487,7 +17436,7 @@ if (uni.restoreGlobal) {
                       vue.createCommentVNode(" 设置星星间隔 "),
                       vue.createVNode(_component_uni_rate, {
                         readonly: "",
-                        value: item.score,
+                        value: item.totalScore,
                         margin: 5,
                         color: "#D2DBE7",
                         "active-color": "#F74347"
@@ -17495,7 +17444,7 @@ if (uni.restoreGlobal) {
                       vue.createElementVNode(
                         "text",
                         null,
-                        vue.toDisplayString(item.score) + "分",
+                        vue.toDisplayString(item.totalScore) + "分",
                         1
                         /* TEXT */
                       )
@@ -17512,23 +17461,20 @@ if (uni.restoreGlobal) {
                     vue.createElementVNode(
                       "text",
                       null,
-                      vue.toDisplayString(item.time),
+                      vue.toDisplayString(item.createTime),
                       1
                       /* TEXT */
                     ),
-                    vue.createElementVNode("text", {
-                      class: "replys",
-                      onClick: vue.withModifiers(handleReply, ["stop"])
-                    }, "回复", 8, ["onClick"])
+                    vue.createCommentVNode(' <text class="replys" @click.stop="handleReply">回复</text> ')
                   ]),
-                  item.imgUrl.length ? (vue.openBlock(), vue.createElementBlock("view", {
+                  item.pictureArray ? (vue.openBlock(), vue.createElementBlock("view", {
                     key: 0,
                     class: "img"
                   }, [
                     (vue.openBlock(true), vue.createElementBlock(
                       vue.Fragment,
                       null,
-                      vue.renderList(item.imgUrl, (item1, index) => {
+                      vue.renderList(item.pictureArray, (item1, index) => {
                         return vue.openBlock(), vue.createElementBlock("image", {
                           src: item1,
                           key: index
@@ -17541,7 +17487,7 @@ if (uni.restoreGlobal) {
                   vue.createElementVNode("view", { class: "order" }, [
                     vue.createElementVNode("view", { class: "left" }, [
                       vue.createElementVNode("image", {
-                        src: item.orderInfo.imgUrl
+                        src: item.serveItemImg
                       }, null, 8, ["src"])
                     ]),
                     vue.createElementVNode("view", { class: "right" }, [
@@ -17550,7 +17496,7 @@ if (uni.restoreGlobal) {
                         vue.createElementVNode(
                           "text",
                           null,
-                          vue.toDisplayString(item.orderInfo.id),
+                          vue.toDisplayString(item.relationId),
                           1
                           /* TEXT */
                         )
@@ -17560,7 +17506,7 @@ if (uni.restoreGlobal) {
                         vue.createElementVNode(
                           "text",
                           null,
-                          vue.toDisplayString(item.orderInfo.time),
+                          vue.toDisplayString(item.updateTime),
                           1
                           /* TEXT */
                         )
@@ -17568,31 +17514,13 @@ if (uni.restoreGlobal) {
                       vue.createElementVNode(
                         "view",
                         { class: "address" },
-                        vue.toDisplayString(item.orderInfo.address),
+                        vue.toDisplayString(item.serveAddress),
                         1
                         /* TEXT */
                       )
                     ])
                   ]),
-                  vue.createElementVNode("view", { class: "reply" }, [
-                    vue.createElementVNode(
-                      "view",
-                      { class: "content" },
-                      vue.toDisplayString(item.reply.content),
-                      1
-                      /* TEXT */
-                    ),
-                    vue.createElementVNode("view", { class: "foot" }, [
-                      vue.createElementVNode(
-                        "text",
-                        null,
-                        vue.toDisplayString(item.reply.time),
-                        1
-                        /* TEXT */
-                      ),
-                      vue.createElementVNode("text", null, "删除")
-                    ])
-                  ])
+                  vue.createCommentVNode(' <view class="reply">\r\n          <view class="content">{{ item.reply.content }}</view>\r\n          <view class="foot">\r\n            <text>{{ item.reply.time }}</text>\r\n            <text>删除</text>\r\n          </view>\r\n        </view> ')
                 ])
               ], 8, ["onClick"]);
             }),
@@ -17701,8 +17629,12 @@ if (uni.restoreGlobal) {
       const store2 = useStore();
       const users = store2.state.user;
       const title = vue.ref("我的评价");
-      const statusNum = vue.reactive({
+      vue.reactive({
         data: []
+      });
+      const requestData = vue.ref({
+        pageNo: 1,
+        pageSize: 10
       });
       const isHaveMore = vue.ref(false);
       const tabBars = evaluateData;
@@ -17714,32 +17646,15 @@ if (uni.restoreGlobal) {
       const scrollView = vue.ref(null);
       onShow(() => {
         getTabIndex(users.tabIndex);
+        getEvaluateListFunc();
         getOrderStatusNumFunc();
       });
       const handleLoad = () => {
-        formatAppLog("log", "at pages/evaluate/index.vue:83", "上拉加载");
+        formatAppLog("log", "at pages/evaluate/index.vue:87", "上拉加载");
         if (isHaveMore.value) {
-          getListData(
-            tabBars[users.tabIndex].value,
-            homeList.data[homeList.data.length - 1].id
-          );
+          requestData.value.pageNo++;
+          getEvaluateListFunc();
         }
-      };
-      const getOrderStatusNumFunc = () => {
-        getOrderStatusNum().then((res) => {
-          statusNum.data = [res.data.noServed, res.data.serving];
-        });
-      };
-      const getListData = (val, id) => {
-        getOrder(val, id).then((res) => {
-          if (res.data.ordersServes.length === 10) {
-            isHaveMore.value = true;
-          } else {
-            isHaveMore.value = false;
-          }
-          homeList.data = homeList.data.concat(res.data.ordersServes);
-          formatAppLog("log", "at pages/evaluate/index.vue:110", res, homeList.data, "66666666666");
-        });
       };
       const getRobOrderList = () => {
       };
@@ -17750,7 +17665,33 @@ if (uni.restoreGlobal) {
         scrollToTop();
         store2.commit("user/setTabIndex", index);
         homeList.data = [];
-        getListData(tabBars[index].value, "");
+        if (index === 0) {
+          requestData.value = {
+            pageNo: 1,
+            pageSize: 10
+          };
+        } else {
+          requestData.value = {
+            pageNo: 1,
+            pageSize: 10,
+            scoreLevel: tabBars[index].value
+          };
+        }
+        homeList.data = [];
+        getEvaluateListFunc();
+      };
+      const getEvaluateListFunc = () => {
+        getEvaluateList(requestData.value).then((res) => {
+          formatAppLog("log", "at pages/evaluate/index.vue:126", res, "获取评价列表");
+          if (res.code === 200) {
+            homeList.data = res.data;
+            if (res.data.length < requestData.value.pageSize) {
+              isHaveMore.value = false;
+            } else {
+              isHaveMore.value = true;
+            }
+          }
+        });
       };
       const goBack = () => {
         uni.navigateBack();
@@ -17770,9 +17711,8 @@ if (uni.restoreGlobal) {
               vue.createCommentVNode(" 状态筛选 "),
               vue.createVNode(UniTab, {
                 tabBars: vue.unref(tabBars),
-                onGetTabIndex: getTabIndex,
-                statusNum: statusNum.data
-              }, null, 8, ["tabBars", "statusNum"]),
+                onGetTabIndex: getTabIndex
+              }, null, 8, ["tabBars"]),
               vue.createCommentVNode(" 订单列表 "),
               vue.createElementVNode("scroll-view", {
                 "scroll-y": icCanScroll.value,

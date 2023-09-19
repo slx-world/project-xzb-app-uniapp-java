@@ -112,3 +112,10 @@ export const getHistoryOrderInfo = (params) =>
 //     method: 'post',
 //     params
 //   })
+// 评价列表
+export const getEvaluateList = (params) =>
+  request({
+    url: `/customer/worker/evaluation/pageByCurrentUserAndScoreLevel`,
+    method: 'get',
+    params
+  })

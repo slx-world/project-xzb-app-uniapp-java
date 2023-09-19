@@ -65,7 +65,7 @@ export const evaluateData = [
     label: '全部'
   },
   {
-    value: 1,
+    value: 3,
     label: '好评'
   },
   {
@@ -73,7 +73,7 @@ export const evaluateData = [
     label: '中评'
   },
   {
-    value: 3,
+    value: 1,
     label: '差评'
   }
 ]

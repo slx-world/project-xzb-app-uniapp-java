@@ -16,3 +16,10 @@ export const getsmsCode = (params) =>
     method: 'post',
     params
   })
+// 获取当前用户信息
+export const getUserInfo = (params) =>
+  request({
+    url: `/customer/worker/serve-provider/currentUserInfo`,
+    method: 'get',
+    params
+  })

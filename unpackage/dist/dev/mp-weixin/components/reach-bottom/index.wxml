@@ -1,1 +1,0 @@
-<uni-load-more wx:if="{{a}}" u-i="b116a256-0" bind:__l="__l" u-p="{{a}}"/>
