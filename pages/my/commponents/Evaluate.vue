@@ -7,7 +7,7 @@
       </view>
       <view class="rightBox">
         <view class="scoreContent">{{baseData.goodLevelRate}}</view>
-        <view class="label">综合评分</view>
+        <view class="label">好评率</view>
       </view>
     </view>
   </view>
