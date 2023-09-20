@@ -94,9 +94,9 @@ const msg = ref('');
 //进入派单详情
 const handleToInfo = (item) => {
   console.log(item, '进入详情');
-  uni.navigateTo({
-    url: '/pages/orderInfo/index?id=' + item.id + '&type=dispatch',
-  });
+  // uni.navigateTo({
+  //   url: '/pages/orderInfo/index?id=' + item.id + '&type=dispatch',
+  // });
 };
 //拒单
 const handleRejectOrder = (id) => {

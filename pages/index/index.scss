@@ -27,14 +27,15 @@ uni-page-head,
   .leftBox{
     height: 60rpx;
     width:180rpx ;
-    background-color: var(--color-gray-e9);
+    // background-color: var(--color-gray-e9);
     border-radius: 8rpx;
     display: flex;
     line-height: 60rpx;
-    font-size: 28rpx;
-    color: var(--color-gray-59);
+    font-size: 32rpx;
+    color: var(--color-black-15);
     justify-content: space-between;
     margin-left: 30rpx;
+    font-weight: 500;
   }
   .item:first-child{
     margin-left: 20rpx;
