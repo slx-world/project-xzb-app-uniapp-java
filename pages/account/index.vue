@@ -282,7 +282,9 @@ const handleSubmit = () => {
           duration: 1000,
           icon: 'none',
         });
-        uni.navigateBack();
+        setTimeout(() => {
+          uni.navigateBack();
+        }, 1000);
       }
     })
     .catch((err) => {

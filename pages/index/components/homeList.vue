@@ -155,7 +155,6 @@ const handleRob = (id) => {
         isRob.value = false;
       }
       alertDialog.value.open();
-      emit('refresh');
     })
     .catch((err) => {
       if (err.code === 608) {
@@ -169,7 +168,6 @@ const handleRob = (id) => {
           icon: 'none',
         });
       }
-      emit('refresh');
       console.log(err, 'errrrr');
     });
 };

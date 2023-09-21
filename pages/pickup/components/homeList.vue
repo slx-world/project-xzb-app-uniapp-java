@@ -53,12 +53,12 @@
         </view>
       </view>
       <view class="cardFooter" v-if="[1, 2].includes(item.serveStatus)">
-        <view
+        <!-- <view
           v-if="[1].includes(item.serveStatus)"
           class="robBtn btn-gray"
           @click.stop="handleCancel(item.id)"
           >取消订单</view
-        >
+        > -->
         <view
           v-if="[1, 2].includes(item.serveStatus)"
           class="robBtn btn-red"

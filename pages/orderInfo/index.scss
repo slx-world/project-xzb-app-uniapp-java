@@ -196,4 +196,19 @@
   .end{
     justify-content: flex-end;
   }
+  .phone-button {
+    width: 720rpx;
+    height: 112rpx;
+    margin: 0 auto;
+    background-color: #fff;
+    border-radius: 24rpx;
+    font-size: 36rpx;
+    font-weight: 500;
+    margin-bottom: 20rpx;
+    color: #f74c50;
+    line-height: 112rpx;
+    &:last-child {
+      color: #151515;
+    }
+  }
 }
