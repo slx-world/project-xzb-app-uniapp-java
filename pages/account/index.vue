@@ -119,6 +119,7 @@
 
 <script setup>
 import { ref, reactive, onMounted } from 'vue';
+import { baseUrl } from '../../utils/env';
 import { postAccount, getAccountInfo } from '../api/setting.js';
 // 导入组件
 // 导航组件
@@ -198,7 +199,7 @@ const getAccountInfoFunc = () => {
 const handleSelect = (e) => {
   const item = e.tempFiles[0];
   uni.uploadFile({
-    url: 'https://jzo2o-api-test.itheima.net/publics/storage/upload',
+    url: `${baseUrl}` + '/publics/storage/upload',
     files: [
       {
         name: 'file',

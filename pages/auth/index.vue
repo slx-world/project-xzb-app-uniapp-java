@@ -81,6 +81,7 @@
 
 <script setup>
 import { ref } from 'vue';
+import { baseUrl } from '../../utils/env';
 // 导入组件
 // 导航组件
 import UniNav from '@/components/uni-nav/index.vue';
@@ -106,7 +107,7 @@ const handleDelete = (type) => {
 const handleSelect = (e, type) => {
   const item = e.tempFiles[0];
   uni.uploadFile({
-    url: 'https://jzo2o-api-test.itheima.net/publics/storage/upload',
+    url: `${baseUrl}` + '/publics/storage/upload',
     files: [
       {
         name: 'file',

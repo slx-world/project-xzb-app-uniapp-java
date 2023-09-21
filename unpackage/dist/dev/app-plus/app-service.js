@@ -4703,8 +4703,8 @@ if (uni.restoreGlobal) {
     this._committing = committing;
   };
   Object.defineProperties(Store.prototype, prototypeAccessors);
+  const baseUrl = "http://172.17.2.58/api";
   function request({ url = "", params = {}, method = "GET" }) {
-    let baseUrl = "http://172.17.2.58/api";
     const token = uni.getStorageSync("token");
     let header = {
       "Access-Control-Allow-Origin": "*",
@@ -16630,22 +16630,22 @@ if (uni.restoreGlobal) {
         orderId.value = options.id;
         title.value = options.status == 1 ? "开始服务" : "完成服务";
         from.value = options.type;
-        formatAppLog("log", "at pages/serveRecord/index.vue:56", options, "服务记录页面");
+        formatAppLog("log", "at pages/serveRecord/index.vue:57", options, "服务记录页面");
       });
       const handleDelete = (e2) => {
         fileList.value = fileList.value.filter(
           (item) => item.uuid !== e2.tempFile.uuid
         );
-        formatAppLog("log", "at pages/serveRecord/index.vue:62", e2.tempFile.uuid, "删除回调");
+        formatAppLog("log", "at pages/serveRecord/index.vue:63", e2.tempFile.uuid, "删除回调");
       };
       const handleSuccess = (e2) => {
-        formatAppLog("log", "at pages/serveRecord/index.vue:65", e2, "上传成功回调");
+        formatAppLog("log", "at pages/serveRecord/index.vue:66", e2, "上传成功回调");
       };
       const uploadImage2 = async () => {
         const promises = fileList.value.map((item) => {
           return new Promise((resolve, reject) => {
             uni.uploadFile({
-              url: "https://jzo2o-api-test.itheima.net/publics/storage/upload",
+              url: `${baseUrl}/publics/storage/upload`,
               files: [
                 {
                   name: "file",
@@ -16670,7 +16670,7 @@ if (uni.restoreGlobal) {
           const uploadedImages = await Promise.all(promises);
           return uploadedImages;
         } catch (error) {
-          formatAppLog("error", "at pages/serveRecord/index.vue:98", error);
+          formatAppLog("error", "at pages/serveRecord/index.vue:99", error);
           uni.showToast({
             title: "图片上传失败",
             duration: 1e3,
@@ -16687,7 +16687,7 @@ if (uni.restoreGlobal) {
         }
       };
       const handleFail = () => {
-        formatAppLog("log", "at pages/serveRecord/index.vue:115", e, "上传失败");
+        formatAppLog("log", "at pages/serveRecord/index.vue:116", e, "上传失败");
       };
       const handleSubmit = async () => {
         const uploadedImages = await uploadImage2();
@@ -16757,11 +16757,11 @@ if (uni.restoreGlobal) {
             }
           });
         }
-        formatAppLog("log", "at pages/serveRecord/index.vue:192", uploadedImages, "上传后的图片链接数组");
+        formatAppLog("log", "at pages/serveRecord/index.vue:193", uploadedImages, "上传后的图片链接数组");
       };
       const handleInput = (e2) => {
         remark.value = e2.detail.value;
-        formatAppLog("log", "at pages/serveRecord/index.vue:196", e2.detail.value, "-----");
+        formatAppLog("log", "at pages/serveRecord/index.vue:197", e2.detail.value, "-----");
       };
       const goBack = () => {
         uni.navigateBack();
@@ -32675,7 +32675,7 @@ if (uni.restoreGlobal) {
       const handleSelect = (e2) => {
         const item = e2.tempFiles[0];
         uni.uploadFile({
-          url: "https://jzo2o-api-test.itheima.net/publics/storage/upload",
+          url: `${baseUrl}/publics/storage/upload`,
           files: [
             {
               name: "file",
@@ -32742,7 +32742,7 @@ if (uni.restoreGlobal) {
           return;
         flag.value = false;
         postAccount(formData.value).then((res) => {
-          formatAppLog("log", "at pages/account/index.vue:274", res, "ress");
+          formatAppLog("log", "at pages/account/index.vue:275", res, "ress");
           setTimeout(() => {
             flag.value = true;
           }, 1e3);
@@ -32769,12 +32769,12 @@ if (uni.restoreGlobal) {
         formData.value.province = e2.province.label;
         formData.value.city = e2.city.label;
         formData.value.district = e2.area.label;
-        formatAppLog("log", "at pages/account/index.vue:303", e2, "省市区");
+        formatAppLog("log", "at pages/account/index.vue:304", e2, "省市区");
       };
       const handleBank = (e2) => {
         bankIndex.value = e2.detail.value;
         formData.value.bankName = bankArray.value[e2.detail.value].label;
-        formatAppLog("log", "at pages/account/index.vue:309", e2.detail.value, bankIndex.value, "数组下标");
+        formatAppLog("log", "at pages/account/index.vue:310", e2.detail.value, bankIndex.value, "数组下标");
       };
       const goBack = () => {
         uni.navigateBack();
@@ -32940,7 +32940,7 @@ if (uni.restoreGlobal) {
       const handleSelect = (e2, type) => {
         const item = e2.tempFiles[0];
         uni.uploadFile({
-          url: "https://jzo2o-api-test.itheima.net/publics/storage/upload",
+          url: `${baseUrl}/publics/storage/upload`,
           files: [
             {
               name: "file",
@@ -32953,7 +32953,7 @@ if (uni.restoreGlobal) {
           },
           success: (uploadFileRes) => {
             formData.value[type] = JSON.parse(uploadFileRes.data).data.url;
-            formatAppLog("log", "at pages/auth/index.vue:124", JSON.parse(uploadFileRes.data).data.url, "-----");
+            formatAppLog("log", "at pages/auth/index.vue:125", JSON.parse(uploadFileRes.data).data.url, "-----");
           },
           fail: (err) => {
             uni.showToast({
@@ -32963,10 +32963,10 @@ if (uni.restoreGlobal) {
             });
           }
         });
-        formatAppLog("log", "at pages/auth/index.vue:135", e2, type, "eeeeeeeee");
+        formatAppLog("log", "at pages/auth/index.vue:136", e2, type, "eeeeeeeee");
       };
       const handleSubmit = () => {
-        formatAppLog("log", "at pages/auth/index.vue:139", formData.value, "formData.value");
+        formatAppLog("log", "at pages/auth/index.vue:140", formData.value, "formData.value");
         if (!formData.value.name) {
           return uni.showToast({
             title: "请填写真实姓名",
@@ -33001,7 +33001,7 @@ if (uni.restoreGlobal) {
         if (!flag.value)
           return;
         flag.value = false;
-        formatAppLog("log", "at pages/auth/index.vue:174", flag.value, "flag.value");
+        formatAppLog("log", "at pages/auth/index.vue:175", flag.value, "flag.value");
         postAuth(formData.value).then((res) => {
           setTimeout(() => {
             flag.value = true;
