@@ -911,7 +911,7 @@ uni-page-head[data-v-538110be],
 .homeFilter.fixTop[data-v-538110be] {
   position: fixed;
   top: 1.5625rem;
-  z-index: 9999;
+  z-index: 99;
   margin-top: 0;
   width: 100%;
 }
@@ -1202,7 +1202,7 @@ uni-page-head[data-v-5d962223],
 .homeFilter.fixTop[data-v-5d962223] {
   position: fixed;
   top: 1.5625rem;
-  z-index: 9999;
+  z-index: 99;
   margin-top: 0;
   width: 100%;
 }
@@ -1493,7 +1493,7 @@ uni-page-head[data-v-1cf27b2a],
 .homeFilter.fixTop[data-v-1cf27b2a] {
   position: fixed;
   top: 1.5625rem;
-  z-index: 9999;
+  z-index: 99;
   margin-top: 0;
   width: 100%;
 }

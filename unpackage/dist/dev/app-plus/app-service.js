@@ -6018,18 +6018,18 @@ if (uni.restoreGlobal) {
               icon: "none"
             });
           }
-          formatAppLog("log", "at pages/index/components/homeList.vue:173", err, "errrrr");
+          formatAppLog("log", "at pages/index/components/homeList.vue:172", err, "errrrr");
         });
       };
       vue.watchEffect(() => {
         list.data = props.data;
         orderType.value = props.type;
-        formatAppLog("log", "at pages/index/components/homeList.vue:179", list.data, props, "++++++++++++++");
+        formatAppLog("log", "at pages/index/components/homeList.vue:178", list.data, props, "++++++++++++++");
       });
       vue.watch(
         () => props.type,
         () => {
-          formatAppLog("log", "at pages/index/components/homeList.vue:185", props.type, "=================");
+          formatAppLog("log", "at pages/index/components/homeList.vue:184", props.type, "=================");
         }
       );
       return (_ctx, _cache) => {
