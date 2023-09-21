@@ -127,7 +127,7 @@
           info.data.serveInfo.realServeStartTime
         "
       >
-        <view class="subTitle">服务前</view>
+        <view class="subTitle">服务前照片</view>
         <view class="imgList">
           <image
             class="img"
@@ -153,7 +153,7 @@
           info.data.serveStatus === 3 && info.data.serveInfo.realServeEndTime
         "
       >
-        <view class="subTitle">服务后</view>
+        <view class="subTitle">服务后照片</view>
         <view class="imgList">
           <image
             class="img"

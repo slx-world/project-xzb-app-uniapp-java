@@ -6014,6 +6014,7 @@ if (uni.restoreGlobal) {
             isRob.value = false;
           }
           alertDialog.value.open();
+          emit("refresh");
         }).catch((err) => {
           if (err.code === 608) {
             isRob.value = false;
@@ -6026,18 +6027,19 @@ if (uni.restoreGlobal) {
               icon: "none"
             });
           }
-          formatAppLog("log", "at pages/index/components/homeList.vue:171", err, "errrrr");
+          emit("refresh");
+          formatAppLog("log", "at pages/index/components/homeList.vue:173", err, "errrrr");
         });
       };
       vue.watchEffect(() => {
         list.data = props.data;
         orderType.value = props.type;
-        formatAppLog("log", "at pages/index/components/homeList.vue:177", list.data, props, "++++++++++++++");
+        formatAppLog("log", "at pages/index/components/homeList.vue:179", list.data, props, "++++++++++++++");
       });
       vue.watch(
         () => props.type,
         () => {
-          formatAppLog("log", "at pages/index/components/homeList.vue:183", props.type, "=================");
+          formatAppLog("log", "at pages/index/components/homeList.vue:185", props.type, "=================");
         }
       );
       return (_ctx, _cache) => {
@@ -11765,7 +11767,7 @@ if (uni.restoreGlobal) {
               key: 0,
               class: "serveBefore"
             }, [
-              vue.createElementVNode("view", { class: "subTitle" }, "服务前"),
+              vue.createElementVNode("view", { class: "subTitle" }, "服务前照片"),
               vue.createElementVNode("view", { class: "imgList" }, [
                 (vue.openBlock(true), vue.createElementBlock(
                   vue.Fragment,
@@ -11804,7 +11806,7 @@ if (uni.restoreGlobal) {
               key: 1,
               class: "serveAfter"
             }, [
-              vue.createElementVNode("view", { class: "subTitle" }, "服务后"),
+              vue.createElementVNode("view", { class: "subTitle" }, "服务后照片"),
               vue.createElementVNode("view", { class: "imgList" }, [
                 (vue.openBlock(true), vue.createElementBlock(
                   vue.Fragment,
@@ -16903,6 +16905,20 @@ if (uni.restoreGlobal) {
       }
     },
     setup(__props) {
+      const certificationStatus = vue.ref(0);
+      vue.onMounted(() => {
+        getUserSetting().then((res) => {
+          if (res.code == 200) {
+            certificationStatus.value = res.data.certificationStatus;
+          }
+        }).catch((err) => {
+          uni.showToast({
+            title: err.msg || "接口调用失败",
+            duration: 1500,
+            icon: "none"
+          });
+        });
+      });
       return (_ctx, _cache) => {
         return vue.openBlock(), vue.createElementBlock("view", { class: "nav-bg mnav-bg" }, [
           vue.createElementVNode("view", { class: "headBg" }),
@@ -16911,17 +16927,23 @@ if (uni.restoreGlobal) {
               vue.createElementVNode("view", { class: "head" }, [
                 __props.baseData.avatar === "" ? (vue.openBlock(), vue.createElementBlock("icon", { key: 0 })) : (vue.openBlock(), vue.createElementBlock("image", {
                   key: 1,
-                  src: __props.baseData.avatar || "../../../static/new/empty.png"
+                  src: __props.baseData.avatar || "../../../static/new/toux.png"
                 }, null, 8, ["src"]))
               ]),
               vue.createElementVNode("view", { class: "info" }, [
-                vue.createElementVNode(
-                  "view",
-                  { class: "tit" },
-                  vue.toDisplayString(__props.baseData.name || "吴彦祖"),
-                  1
-                  /* TEXT */
-                ),
+                vue.createElementVNode("view", { class: "tit" }, [
+                  vue.createElementVNode(
+                    "view",
+                    { class: "name" },
+                    vue.toDisplayString(__props.baseData.name || "吴彦祖"),
+                    1
+                    /* TEXT */
+                  ),
+                  certificationStatus.value === 2 ? (vue.openBlock(), vue.createElementBlock("view", {
+                    key: 0,
+                    class: "isAuth"
+                  }, "已认证")) : vue.createCommentVNode("v-if", true)
+                ]),
                 vue.createElementVNode(
                   "view",
                   { class: "account" },
@@ -16967,7 +16989,7 @@ if (uni.restoreGlobal) {
                 1
                 /* TEXT */
               ),
-              vue.createElementVNode("view", { class: "label" }, "综合评分")
+              vue.createElementVNode("view", { class: "label" }, "好评率")
             ])
           ])
         ]);
@@ -32400,16 +32422,27 @@ if (uni.restoreGlobal) {
               return item.label === props.countyName;
             });
           getList();
-        }
+          formatAppLog(
+            "log",
+            "at pages/account/components/selectArea.vue:161",
+            props,
+            areaIndex.data,
+            cityData[areaIndex.data[0]],
+            "fffffffffffffffffffffff"
+          );
+        },
+        { deep: true }
       );
       const handlePickStart = () => {
         chooseType.value = "select";
+        formatAppLog("log", "at pages/account/components/selectArea.vue:175", 123);
       };
       const bindChange = (event) => {
+        formatAppLog("log", "at pages/account/components/selectArea.vue:180", event, areaIndex.data, chooseType.value, "event");
         if (chooseType.value === "click")
           return;
         if (areaIndex.data[0] !== event.detail.value[0]) {
-          city.data = cityData[event.detail.value[1]];
+          city.data = cityData[event.detail.value[0]];
           area.data = areaData[event.detail.value[0]][event.detail.value[1]];
           selectedProvince.data = province.data[event.detail.value[0]];
           event.detail.value[1] = 0;
@@ -32417,26 +32450,15 @@ if (uni.restoreGlobal) {
           selectedCity.data = city.data[event.detail.value[1]];
           selectedArea.data = area.data[event.detail.value[2]];
         } else if (areaIndex.data[1] !== event.detail.value[1]) {
+          formatAppLog("log", "at pages/account/components/selectArea.vue:193", event.detail.value, city.data, area.data, "==========");
           area.data = areaData[event.detail.value[0]][event.detail.value[1]];
           event.detail.value[2] = 0;
           selectedCity.data = city.data[event.detail.value[1]];
           selectedArea.data = area.data[event.detail.value[2]];
-          selectedProvince.data = province.data[event.detail.value[0]];
         } else {
           selectedArea.data = area.data[event.detail.value[2]];
-          selectedCity.data = city.data[event.detail.value[1]];
-          selectedProvince.data = province.data[event.detail.value[0]];
         }
         areaIndex.data = event.detail.value;
-        formatAppLog(
-          "log",
-          "at pages/account/components/selectArea.vue:195",
-          event,
-          selectedCity.data,
-          selectedArea.data,
-          selectedProvince.data,
-          "event"
-        );
       };
       const handleOpen = () => {
         popup2.value.open("bottom");
@@ -32586,10 +32608,8 @@ if (uni.restoreGlobal) {
     __name: "index",
     setup(__props) {
       const title = vue.ref("账户设置");
-      vue.ref("");
-      vue.ref("");
-      vue.ref("");
-      let bankIndex = vue.ref(3);
+      const flag = vue.ref(true);
+      let bankIndex = vue.ref(0);
       const selectArea = vue.ref();
       const formData = vue.ref({
         name: "",
@@ -32638,13 +32658,12 @@ if (uni.restoreGlobal) {
         getAccountInfo().then((res) => {
           formData.value.name = res.data.name;
           formData.value.bankName = res.data.bankName;
-          formData.value.province = res.data.province;
-          formData.value.city = res.data.city;
-          formData.value.district = res.data.district;
+          formData.value.province = res.data.province || 0;
+          formData.value.city = res.data.city || 0;
+          formData.value.district = res.data.district || 0;
           formData.value.branch = res.data.branch;
           formData.value.account = res.data.account;
           formData.value.accountCertification = res.data.accountCertification;
-          formatAppLog("log", "at pages/account/index.vue:191", res, "resssssss");
         }).catch((err) => {
           uni.showToast({
             title: err.msg || "账户信息获取失败!",
@@ -32719,16 +32738,26 @@ if (uni.restoreGlobal) {
             icon: "none"
           });
         }
+        if (!flag.value)
+          return;
+        flag.value = false;
         postAccount(formData.value).then((res) => {
-          formatAppLog("log", "at pages/account/index.vue:276", res, "ress");
+          formatAppLog("log", "at pages/account/index.vue:274", res, "ress");
+          setTimeout(() => {
+            flag.value = true;
+          }, 1e3);
           if (res.code === 200) {
             uni.showToast({
               title: "提交成功!",
               duration: 1e3,
               icon: "none"
             });
+            uni.navigateBack();
           }
         }).catch((err) => {
+          setTimeout(() => {
+            flag.value = true;
+          }, 1e3);
           uni.showToast({
             title: err.msg || "提交失败!",
             duration: 1e3,
@@ -32740,12 +32769,12 @@ if (uni.restoreGlobal) {
         formData.value.province = e2.province.label;
         formData.value.city = e2.city.label;
         formData.value.district = e2.area.label;
-        formatAppLog("log", "at pages/account/index.vue:298", e2, "省市区");
+        formatAppLog("log", "at pages/account/index.vue:303", e2, "省市区");
       };
       const handleBank = (e2) => {
         bankIndex.value = e2.detail.value;
         formData.value.bankName = bankArray.value[e2.detail.value].label;
-        formatAppLog("log", "at pages/account/index.vue:304", e2.detail.value, bankIndex.value, "数组下标");
+        formatAppLog("log", "at pages/account/index.vue:309", e2.detail.value, bankIndex.value, "数组下标");
       };
       const goBack = () => {
         uni.navigateBack();
@@ -32894,6 +32923,7 @@ if (uni.restoreGlobal) {
     __name: "index",
     setup(__props) {
       const title = vue.ref("实名认证");
+      const flag = vue.ref(true);
       const formData = vue.ref({
         certificationMaterial: "",
         idCardNo: "",
@@ -32903,6 +32933,9 @@ if (uni.restoreGlobal) {
       });
       const goBack = () => {
         uni.navigateBack();
+      };
+      const handleDelete = (type) => {
+        formData.value[type] = "";
       };
       const handleSelect = (e2, type) => {
         const item = e2.tempFiles[0];
@@ -32920,7 +32953,7 @@ if (uni.restoreGlobal) {
           },
           success: (uploadFileRes) => {
             formData.value[type] = JSON.parse(uploadFileRes.data).data.url;
-            formatAppLog("log", "at pages/auth/index.vue:119", JSON.parse(uploadFileRes.data).data.url, "-----");
+            formatAppLog("log", "at pages/auth/index.vue:124", JSON.parse(uploadFileRes.data).data.url, "-----");
           },
           fail: (err) => {
             uni.showToast({
@@ -32930,10 +32963,10 @@ if (uni.restoreGlobal) {
             });
           }
         });
-        formatAppLog("log", "at pages/auth/index.vue:130", e2, type, "eeeeeeeee");
+        formatAppLog("log", "at pages/auth/index.vue:135", e2, type, "eeeeeeeee");
       };
       const handleSubmit = () => {
-        formatAppLog("log", "at pages/auth/index.vue:134", formData.value, "formData.value");
+        formatAppLog("log", "at pages/auth/index.vue:139", formData.value, "formData.value");
         if (!formData.value.name) {
           return uni.showToast({
             title: "请填写真实姓名",
@@ -32965,14 +32998,23 @@ if (uni.restoreGlobal) {
             icon: "none"
           });
         }
+        if (!flag.value)
+          return;
+        flag.value = false;
+        formatAppLog("log", "at pages/auth/index.vue:174", flag.value, "flag.value");
         postAuth(formData.value).then((res) => {
-          formatAppLog("log", "at pages/auth/index.vue:168", res, "ress");
+          setTimeout(() => {
+            flag.value = true;
+          }, 1e3);
           if (res.code === 200) {
             uni.navigateTo({
               url: "/pages/setting/index"
             });
           }
         }).catch((err) => {
+          setTimeout(() => {
+            flag.value = true;
+          }, 1e3);
           uni.showToast({
             title: err.msg || "提交失败!",
             duration: 1e3,
@@ -33018,8 +33060,8 @@ if (uni.restoreGlobal) {
                   limit: "1",
                   title: "",
                   onSelect: _cache[2] || (_cache[2] = (e2) => handleSelect(e2, "frontImg")),
-                  onDelete: _ctx.handleDelete
-                }, null, 8, ["onDelete"]),
+                  onDelete: _cache[3] || (_cache[3] = ($event) => handleDelete("frontImg"))
+                }),
                 vue.createElementVNode("view", { class: "photoLabel" }, "人像面照片")
               ]),
               vue.createElementVNode("view", { class: "photoItem" }, [
@@ -33038,9 +33080,9 @@ if (uni.restoreGlobal) {
                 vue.createVNode(_component_uni_file_picker, {
                   limit: "1",
                   title: "",
-                  onSelect: _cache[3] || (_cache[3] = (e2) => handleSelect(e2, "backImg")),
-                  onDelete: _ctx.handleDelete
-                }, null, 8, ["onDelete"]),
+                  onSelect: _cache[4] || (_cache[4] = (e2) => handleSelect(e2, "backImg")),
+                  onDelete: _cache[5] || (_cache[5] = ($event) => handleDelete("backImg"))
+                }),
                 vue.createElementVNode("view", { class: "photoLabel" }, "国徽面照片 ")
               ]),
               vue.createElementVNode("view", { class: "photoItem" }, [
@@ -33059,9 +33101,9 @@ if (uni.restoreGlobal) {
                 vue.createVNode(_component_uni_file_picker, {
                   limit: "1",
                   title: "",
-                  onSelect: _cache[4] || (_cache[4] = (e2) => handleSelect(e2, "certificationMaterial")),
-                  onDelete: _ctx.handleDelete
-                }, null, 8, ["onDelete"]),
+                  onSelect: _cache[6] || (_cache[6] = (e2) => handleSelect(e2, "certificationMaterial")),
+                  onDelete: _cache[7] || (_cache[7] = ($event) => handleDelete("certificationMaterial"))
+                }),
                 vue.createElementVNode("view", { class: "photoLabel" }, "资料上传 ")
               ])
             ])
@@ -33111,7 +33153,7 @@ if (uni.restoreGlobal) {
           vue.createElementVNode(
             "view",
             { class: "content" },
-            "原因：" + vue.toDisplayString(reason.value),
+            "原因：" + vue.toDisplayString(reason.value === "null" ? "无" : reason.value),
             1
             /* TEXT */
           ),

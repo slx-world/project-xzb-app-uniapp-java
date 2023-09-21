@@ -125,10 +125,8 @@ import { postAccount, getAccountInfo } from '../api/setting.js';
 import SelectArea from './components/selectArea.vue';
 import UniNav from '@/components/uni-nav/index.vue';
 const title = ref('账户设置');
-let provinceName = ref('');
-let cityName = ref('');
-let countyName = ref('');
-let bankIndex = ref(3);
+const flag = ref(true);
+let bankIndex = ref(0);
 const selectArea = ref();
 const formData = ref({
   name: '',
@@ -180,15 +178,13 @@ const getAccountInfoFunc = () => {
       formData.value.name = res.data.name;
       formData.value.bankName = res.data.bankName;
 
-      formData.value.province = res.data.province;
-      formData.value.city = res.data.city;
-      formData.value.district = res.data.district;
+      formData.value.province = res.data.province || 0;
+      formData.value.city = res.data.city || 0;
+      formData.value.district = res.data.district || 0;
 
       formData.value.branch = res.data.branch;
       formData.value.account = res.data.account;
       formData.value.accountCertification = res.data.accountCertification;
-      // selectArea.value.getList();
-      console.log(res, 'resssssss');
     })
     .catch((err) => {
       uni.showToast({
@@ -271,18 +267,27 @@ const handleSubmit = () => {
       icon: 'none',
     });
   }
+  if (!flag.value) return;
+  flag.value = false;
   postAccount(formData.value)
     .then((res) => {
       console.log(res, 'ress');
+      setTimeout(() => {
+        flag.value = true;
+      }, 1000);
       if (res.code === 200) {
         uni.showToast({
           title: '提交成功!',
           duration: 1000,
           icon: 'none',
         });
+        uni.navigateBack();
       }
     })
     .catch((err) => {
+      setTimeout(() => {
+        flag.value = true;
+      }, 1000);
       uni.showToast({
         title: err.msg || '提交失败!',
         duration: 1000,

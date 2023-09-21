@@ -259,7 +259,7 @@
         "devServer" : {
             "proxy" : {
                 "/api" : {
-                    "target" : "http://172.17.2.58/",
+                    "target" : "http://172.17.2.58",
                     "changeOrigin" : true,
                     "secure" : false,
                     "pathRewrite" : {

@@ -10,6 +10,7 @@ export default {
       tabIndex: 0, //储存当前触发的tab值
       keyBoardHeight: 0,//记录键盘高度
 
+
       userBase: {}, // 用户信息
       pages: 0,//总页数
       page: 1, //当前页码
