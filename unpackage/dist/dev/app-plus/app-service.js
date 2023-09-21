@@ -42,11 +42,11 @@ if (uni.restoreGlobal) {
     name: "StarPage",
     setup: (props) => {
       vue.onMounted(() => {
-        const times2 = setTimeout(() => {
+        const times = setTimeout(() => {
           uni.redirectTo({
             url: "/pages/login/user"
           });
-          clearTimeout(times2);
+          clearTimeout(times);
         }, 3e3);
       });
       return {};
@@ -4873,23 +4873,18 @@ if (uni.restoreGlobal) {
       const handleSubmit = async () => {
         const valid = await customForm.value.validate();
         if (valid) {
-          let times2 = setTimeout(() => {
-            uni.showLoading({
-              title: "loading",
-              mask: true
-            });
-          }, 500);
+          uni.showLoading({
+            title: "loading",
+            mask: true
+          });
           await phoneLogins(fromInfo).then(async (res) => {
             formatAppLog("log", "at pages/login/user.vue:169", res, "登录结果获取");
-            setTimeout(function() {
-              uni.hideLoading();
-            }, 500);
-            clearTimeout(times2);
+            uni.hideLoading();
             if (res.code === 200) {
               uni.setStorageSync("token", res.data.token);
               store2.commit("user/setToken", res.data.token);
               await getUserSetting().then((res2) => {
-                formatAppLog("log", "at pages/login/user.vue:182", res2, "getUserSetting");
+                formatAppLog("log", "at pages/login/user.vue:178", res2, "getUserSetting");
                 if (Boolean(res2.data.settingsStatus)) {
                   uni.redirectTo({
                     url: "/pages/index/index"
@@ -4908,10 +4903,7 @@ if (uni.restoreGlobal) {
               });
             }
           }).catch((err) => {
-            setTimeout(function() {
-              uni.hideLoading();
-            }, 500);
-            formatAppLog("log", "at pages/login/user.vue:207", err, "err");
+            uni.hideLoading();
             if (err.code === 605) {
               reason.value = err.msg;
               alertDialog.value.open();
@@ -11961,7 +11953,7 @@ if (uni.restoreGlobal) {
       const users = store2.state.user;
       const type = vue.ref("");
       const alertDialog = vue.ref(null);
-      const noCancelDialog2 = vue.ref(null);
+      const noCancelDialog = vue.ref(null);
       const content2 = vue.ref("");
       let info = vue.reactive({
         data: {
@@ -12019,7 +12011,7 @@ if (uni.restoreGlobal) {
         close();
       };
       const close = () => {
-        noCancelDialog2.value.close();
+        noCancelDialog.value.close();
       };
       const handleClose = () => {
         alertDialog.value.close();
@@ -12091,7 +12083,7 @@ if (uni.restoreGlobal) {
         );
         if (time < 2 * 60 * 60 * 1e3) {
           content2.value = "当前不可自行取消订单， 如需取消需拨打客服热线 400-000-4000";
-          noCancelDialog2.value.open();
+          noCancelDialog.value.open();
         } else {
           uni.navigateTo({
             url: "/pages/cancel/index?id=" + item.id + "&type=info"
@@ -12452,7 +12444,7 @@ if (uni.restoreGlobal) {
             _component_uni_popup,
             {
               ref_key: "noCancelDialog",
-              ref: noCancelDialog2,
+              ref: noCancelDialog,
               "is-mask-click": false,
               class: "freeze"
             },
@@ -12529,10 +12521,12 @@ if (uni.restoreGlobal) {
           await cancelOrder(params).then((res) => {
             formatAppLog("log", "at pages/cancel/index.vue:85", res, "fuckkkkkk");
             if (res.code === 200) {
-              setTimeout(function() {
-                uni.hideLoading();
-              }, 500);
-              clearTimeout(times);
+              uni.hideLoading();
+              uni.showToast({
+                title: "取消成功!",
+                duration: 1e3,
+                icon: "none"
+              });
               if (from.value === "list") {
                 goBack();
               } else {
@@ -12542,13 +12536,7 @@ if (uni.restoreGlobal) {
               }
               cancel.value = "";
               orderId.value = "";
-              return uni.showToast({
-                title: "取消成功!",
-                duration: 1e3,
-                icon: "none"
-              });
             } else {
-              uni.hideLoading();
               return uni.showToast({
                 title: res.msg || "请求失败",
                 duration: 1e3,
@@ -12558,7 +12546,6 @@ if (uni.restoreGlobal) {
           }).catch((err) => {
             uni.hideLoading();
             if (err.code == 607) {
-              noCancelDialog.value.open();
               content.value = err.msg || "取消失败";
             } else {
               uni.showToast({
@@ -12586,7 +12573,7 @@ if (uni.restoreGlobal) {
             rejectReason: cancelData.filter((item) => item.value === cancel.value)[0].label
           };
           await rejectOrder(params).then((res) => {
-            formatAppLog("log", "at pages/cancel/index.vue:155", res, "res");
+            formatAppLog("log", "at pages/cancel/index.vue:148", res, "res");
             if (res.code === 200) {
               uni.hideLoading();
               if (from.value === "list" || from.value === "dispatch") {

@@ -84,11 +84,12 @@ const handleCancelSubmit = async () => {
       .then((res) => {
         console.log(res, 'fuckkkkkk');
         if (res.code === 200) {
-          // 操作成功后清除loading
-          setTimeout(function () {
-            uni.hideLoading();
-          }, 500);
-          clearTimeout(times);
+          uni.hideLoading();
+          uni.showToast({
+            title: '取消成功!',
+            duration: 1000,
+            icon: 'none',
+          });
           if (from.value === 'list') {
             goBack();
           } else {
@@ -102,14 +103,7 @@ const handleCancelSubmit = async () => {
           }
           cancel.value = '';
           orderId.value = '';
-
-          return uni.showToast({
-            title: '取消成功!',
-            duration: 1000,
-            icon: 'none',
-          });
         } else {
-          uni.hideLoading();
           return uni.showToast({
             title: res.msg || '请求失败',
             duration: 1000,
@@ -120,7 +114,6 @@ const handleCancelSubmit = async () => {
       .catch((err) => {
         uni.hideLoading();
         if (err.code == 607) {
-          noCancelDialog.value.open();
           content.value = err.msg || '取消失败';
         } else {
           uni.showToast({
