@@ -385,7 +385,7 @@ const handleDelete = (id) => {
 };
 //取消原因
 const handleCancel = (item) => {
-  // console.log(item, item.ordersInfo.serveStartTime, 'item');
+  console.log(item, item.ordersInfo.serveStartTime, 'item');
 
   // 当前时间
   const now = new Date().getTime();
@@ -403,7 +403,7 @@ const handleCancel = (item) => {
     noCancelDialog.value.open();
   } else {
     uni.navigateTo({
-      url: '/pages/cancel/index?id=' + item.data.id + '&type=' + 'info',
+      url: '/pages/cancel/index?id=' + item.id + '&type=' + 'info',
     });
   }
 };

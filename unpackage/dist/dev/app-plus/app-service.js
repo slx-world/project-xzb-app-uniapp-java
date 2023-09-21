@@ -6026,18 +6026,18 @@ if (uni.restoreGlobal) {
               icon: "none"
             });
           }
-          formatAppLog("log", "at pages/index/components/homeList.vue:171", err, "errrrr");
+          formatAppLog("log", "at pages/index/components/homeList.vue:173", err, "errrrr");
         });
       };
       vue.watchEffect(() => {
         list.data = props.data;
         orderType.value = props.type;
-        formatAppLog("log", "at pages/index/components/homeList.vue:177", list.data, props, "++++++++++++++");
+        formatAppLog("log", "at pages/index/components/homeList.vue:179", list.data, props, "++++++++++++++");
       });
       vue.watch(
         () => props.type,
         () => {
-          formatAppLog("log", "at pages/index/components/homeList.vue:183", props.type, "=================");
+          formatAppLog("log", "at pages/index/components/homeList.vue:185", props.type, "=================");
         }
       );
       return (_ctx, _cache) => {
@@ -12078,6 +12078,7 @@ if (uni.restoreGlobal) {
         });
       };
       const handleCancel = (item) => {
+        formatAppLog("log", "at pages/orderInfo/index.vue:388", item, item.ordersInfo.serveStartTime, "item");
         const now = (/* @__PURE__ */ new Date()).getTime();
         const time = new Date(item.ordersInfo.serveStartTime).getTime() - now;
         formatAppLog(
@@ -12093,7 +12094,7 @@ if (uni.restoreGlobal) {
           noCancelDialog2.value.open();
         } else {
           uni.navigateTo({
-            url: "/pages/cancel/index?id=" + item.data.id + "&type=info"
+            url: "/pages/cancel/index?id=" + item.id + "&type=info"
           });
         }
       };
