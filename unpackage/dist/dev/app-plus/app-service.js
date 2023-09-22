@@ -5952,10 +5952,10 @@ if (uni.restoreGlobal) {
       const alertDialog = vue.ref(null);
       const msg = vue.ref("");
       const handleToInfo = (item) => {
-        formatAppLog("log", "at pages/index/components/homeList.vue:96", item, "进入详情");
+        formatAppLog("log", "at pages/index/components/homeList.vue:98", item, "进入详情");
       };
       const handleRejectOrder = (id) => {
-        formatAppLog("log", "at pages/index/components/homeList.vue:103", "点击了拒单");
+        formatAppLog("log", "at pages/index/components/homeList.vue:105", "点击了拒单");
         uni.navigateTo({
           url: "/pages/cancel/index?id=" + id + "&type=dispatch"
         });
@@ -5964,7 +5964,7 @@ if (uni.restoreGlobal) {
         receiveOrder({
           id
         }).then((res) => {
-          formatAppLog("log", "at pages/index/components/homeList.vue:114", res, "接单");
+          formatAppLog("log", "at pages/index/components/homeList.vue:116", res, "接单");
           if (res.code === 200) {
             uni.showToast({
               title: "接单成功!",
@@ -5985,7 +5985,7 @@ if (uni.restoreGlobal) {
             duration: 1e3,
             icon: "none"
           });
-          formatAppLog("log", "at pages/index/components/homeList.vue:136", err, "接单失败");
+          formatAppLog("log", "at pages/index/components/homeList.vue:138", err, "接单失败");
         });
       };
       const handleClose = () => {
@@ -5999,7 +5999,7 @@ if (uni.restoreGlobal) {
         robOrder({
           id
         }).then((res) => {
-          formatAppLog("log", "at pages/index/components/homeList.vue:151", res, "抢单");
+          formatAppLog("log", "at pages/index/components/homeList.vue:153", res, "抢单");
           if (res.code === 200) {
             isRob.value = true;
           } else {
@@ -6018,18 +6018,18 @@ if (uni.restoreGlobal) {
               icon: "none"
             });
           }
-          formatAppLog("log", "at pages/index/components/homeList.vue:172", err, "errrrr");
+          formatAppLog("log", "at pages/index/components/homeList.vue:174", err, "errrrr");
         });
       };
       vue.watchEffect(() => {
         list.data = props.data;
         orderType.value = props.type;
-        formatAppLog("log", "at pages/index/components/homeList.vue:178", list.data, props, "++++++++++++++");
+        formatAppLog("log", "at pages/index/components/homeList.vue:180", list.data, props, "++++++++++++++");
       });
       vue.watch(
         () => props.type,
         () => {
-          formatAppLog("log", "at pages/index/components/homeList.vue:184", props.type, "=================");
+          formatAppLog("log", "at pages/index/components/homeList.vue:186", props.type, "=================");
         }
       );
       return (_ctx, _cache) => {
@@ -6137,13 +6137,25 @@ if (uni.restoreGlobal) {
                   ),
                   vue.createElementVNode(
                     "view",
-                    { class: "content" },
-                    vue.toDisplayString(isRob.value ? "抢单成功" : msg.value ? msg.value : "很遗憾，抢单失败"),
-                    1
-                    /* TEXT */
+                    {
+                      class: vue.normalizeClass(["content", isRob.value ? "title" : "content"])
+                    },
+                    [
+                      !isRob.value ? (vue.openBlock(), vue.createElementBlock("view", {
+                        key: 0,
+                        class: "title"
+                      }, "抢单失败")) : vue.createCommentVNode("v-if", true),
+                      vue.createTextVNode(
+                        " " + vue.toDisplayString(isRob.value ? "抢单成功" : msg.value ? msg.value : "很遗憾，抢单失败"),
+                        1
+                        /* TEXT */
+                      )
+                    ],
+                    2
+                    /* CLASS */
                   ),
                   vue.createElementVNode("view", {
-                    class: "footer",
+                    class: "dialogFooter",
                     onClick: handleClose
                   }, "确定")
                 ]),
@@ -11955,6 +11967,7 @@ if (uni.restoreGlobal) {
       const alertDialog = vue.ref(null);
       const noCancelDialog = vue.ref(null);
       const content2 = vue.ref("");
+      const phoneNum = vue.ref("");
       let info = vue.reactive({
         data: {
           serveStatus: 1,
@@ -12002,11 +12015,12 @@ if (uni.restoreGlobal) {
       });
       vue.ref(users.tabIndex ? users.tabIndex : 0);
       onLoad((options) => {
-        formatAppLog("log", "at pages/orderInfo/index.vue:307", options, (/* @__PURE__ */ new Date()).getTime(), "options");
+        formatAppLog("log", "at pages/orderInfo/index.vue:312", options, (/* @__PURE__ */ new Date()).getTime(), "options");
         type.value = options.type;
         getOrderInfoFunc(options.id);
       });
-      const openPhone = () => {
+      const openPhone = (val) => {
+        phoneNum.value = val;
         alertDialog.value.open();
         close();
       };
@@ -12034,17 +12048,17 @@ if (uni.restoreGlobal) {
         if (type.value === "dispatch") {
           getDispatchOrderInfo(id).then((res) => {
             info.data = res.data;
-            formatAppLog("log", "at pages/orderInfo/index.vue:341", res.data, "获取派单订单详情");
+            formatAppLog("log", "at pages/orderInfo/index.vue:347", res.data, "获取派单订单详情");
           });
         } else if (type.value === "history") {
           getHistoryOrderInfo(id).then((res) => {
             info.data = res.data;
-            formatAppLog("log", "at pages/orderInfo/index.vue:346", res.data, "获取历史订单订单详情");
+            formatAppLog("log", "at pages/orderInfo/index.vue:352", res.data, "获取历史订单订单详情");
           });
         } else {
           getOrderInfo(id).then((res) => {
             info.data = res.data;
-            formatAppLog("log", "at pages/orderInfo/index.vue:351", res.data, "获取订单详情");
+            formatAppLog("log", "at pages/orderInfo/index.vue:357", res.data, "获取订单详情");
           });
         }
       };
@@ -12070,12 +12084,12 @@ if (uni.restoreGlobal) {
         });
       };
       const handleCancel = (item) => {
-        formatAppLog("log", "at pages/orderInfo/index.vue:388", item, item.ordersInfo.serveStartTime, "item");
+        formatAppLog("log", "at pages/orderInfo/index.vue:394", item, item.ordersInfo.serveStartTime, "item");
         const now = (/* @__PURE__ */ new Date()).getTime();
         const time = new Date(item.ordersInfo.serveStartTime).getTime() - now;
         formatAppLog(
           "log",
-          "at pages/orderInfo/index.vue:394",
+          "at pages/orderInfo/index.vue:400",
           now,
           new Date(item.ordersInfo.serveStartTime).getTime(),
           new Date(item.ordersInfo.serveStartTime).getTime() - now,
@@ -12153,7 +12167,10 @@ if (uni.restoreGlobal) {
               ),
               vue.createElementVNode(
                 "text",
-                { class: "phone" },
+                {
+                  class: "phone",
+                  onClick: _cache[0] || (_cache[0] = ($event) => openPhone(vue.unref(info).data.customerInfo.contactsPhone))
+                },
                 vue.toDisplayString(vue.unref(info).data.customerInfo.contactsPhone),
                 1
                 /* TEXT */
@@ -12391,14 +12408,14 @@ if (uni.restoreGlobal) {
               [1].includes(vue.unref(info).data.serveStatus) ? (vue.openBlock(), vue.createElementBlock("view", {
                 key: 0,
                 class: "btn-gray",
-                onClick: _cache[0] || (_cache[0] = ($event) => handleCancel(vue.unref(info).data))
+                onClick: _cache[1] || (_cache[1] = ($event) => handleCancel(vue.unref(info).data))
               }, "取消订单")) : vue.createCommentVNode("v-if", true),
               [1, 2].includes(vue.unref(info).data.serveStatus) ? (vue.openBlock(), vue.createElementBlock(
                 "view",
                 {
                   key: 1,
                   class: "btn-red",
-                  onClick: _cache[1] || (_cache[1] = ($event) => handleServeRecord(vue.unref(info).data.id, vue.unref(info).data.serveStatus))
+                  onClick: _cache[2] || (_cache[2] = ($event) => handleServeRecord(vue.unref(info).data.id, vue.unref(info).data.serveStatus))
                 },
                 vue.toDisplayString(vue.unref(info).data.serveStatus === 1 ? "开始服务" : "完成服务"),
                 1
@@ -12407,7 +12424,7 @@ if (uni.restoreGlobal) {
               [4].includes(vue.unref(info).data.serveStatus) ? (vue.openBlock(), vue.createElementBlock("view", {
                 key: 2,
                 class: "btn-gray",
-                onClick: _cache[2] || (_cache[2] = ($event) => handleDelete(vue.unref(info).data.id))
+                onClick: _cache[3] || (_cache[3] = ($event) => handleDelete(vue.unref(info).data.id))
               }, "删除订单")) : vue.createCommentVNode("v-if", true)
             ],
             2
@@ -12424,10 +12441,16 @@ if (uni.restoreGlobal) {
             },
             {
               default: vue.withCtx(() => [
-                vue.createElementVNode("button", {
-                  class: "phone-button",
-                  onClick: makePhoneCall
-                }, " 呼叫 400-000-4000 "),
+                vue.createElementVNode(
+                  "button",
+                  {
+                    class: "phone-button",
+                    onClick: makePhoneCall
+                  },
+                  " 呼叫 " + vue.toDisplayString(phoneNum.value || "400-000-4000"),
+                  1
+                  /* TEXT */
+                ),
                 vue.createElementVNode("button", {
                   class: "phone-button",
                   onClick: handleClose
@@ -16736,8 +16759,8 @@ if (uni.restoreGlobal) {
           });
         } else {
           finishServe(finishParams).then((res) => {
+            uni.hideLoading();
             if (res.code === 200) {
-              uni.hideLoading();
               sameFunc();
             } else {
               uni.showToast({
@@ -16746,13 +16769,20 @@ if (uni.restoreGlobal) {
                 icon: "none"
               });
             }
+          }).catch((err) => {
+            uni.hideLoading();
+            uni.showToast({
+              title: "接口提交失败!",
+              duration: 1e3,
+              icon: "none"
+            });
           });
         }
-        formatAppLog("log", "at pages/serveRecord/index.vue:193", uploadedImages, "上传后的图片链接数组");
+        formatAppLog("log", "at pages/serveRecord/index.vue:202", uploadedImages, "上传后的图片链接数组");
       };
       const handleInput = (e2) => {
         remark.value = e2.detail.value;
-        formatAppLog("log", "at pages/serveRecord/index.vue:197", e2.detail.value, "-----");
+        formatAppLog("log", "at pages/serveRecord/index.vue:206", e2.detail.value, "-----");
       };
       const goBack = () => {
         uni.navigateBack();

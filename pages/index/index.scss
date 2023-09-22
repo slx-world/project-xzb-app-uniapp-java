@@ -301,19 +301,32 @@ uni-page-head,
   }
     .dialog{
     width:442rpx ;
-    height: 326rpx;
+    min-height: 326rpx;
     background-color: var(--neutral-color-white);
     border-radius: 24rpx;
     position: relative;
     .content{
       // height: 225rpx;
       text-align: center;
-      font-size: 36rpx;
+      font-size: 28rpx;
       color: var(--color-black-19);
       padding-top: 136rpx;
       padding-bottom: 38rpx;
+      .title{
+        text-align: center;
+        font-size: 36rpx;
+        color: var(--color-black-19);
+        margin-bottom: 20rpx;
+        font-weight: 600;
+      }
     }
-    .footer{
+    .title{
+      text-align: center;
+      font-size: 36rpx;
+      font-weight: 600;
+      color: var(--color-black-19);
+    }
+    .dialogFooter{
       font-size: 32rpx ;
       color: var(--color-red-bg);
       text-align: center;

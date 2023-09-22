@@ -175,19 +175,28 @@ const handleSubmit = async () => {
         });
       });
   } else {
-    finishServe(finishParams).then((res) => {
-      if (res.code === 200) {
+    finishServe(finishParams)
+      .then((res) => {
         // 操作成功后清除loading
         uni.hideLoading();
-        sameFunc();
-      } else {
+        if (res.code === 200) {
+          sameFunc();
+        } else {
+          uni.showToast({
+            title: '接口提交失败!',
+            duration: 1000,
+            icon: 'none',
+          });
+        }
+      })
+      .catch((err) => {
+        uni.hideLoading();
         uni.showToast({
           title: '接口提交失败!',
           duration: 1000,
           icon: 'none',
         });
-      }
-    });
+      });
   }
 
   console.log(uploadedImages, '上传后的图片链接数组');

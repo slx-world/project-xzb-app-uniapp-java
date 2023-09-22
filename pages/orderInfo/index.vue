@@ -33,7 +33,11 @@
       <view class="title">客户信息</view>
       <view class="nameAndPhone">
         <text class="name">{{ info.data.customerInfo.contactsName }}</text>
-        <text class="phone">{{ info.data.customerInfo.contactsPhone }}</text>
+        <text
+          class="phone"
+          @click="openPhone(info.data.customerInfo.contactsPhone)"
+          >{{ info.data.customerInfo.contactsPhone }}</text
+        >
       </view>
       <view class="address">
         <view class="location"></view>
@@ -201,7 +205,7 @@
     <!-- 提示窗示例 -->
     <uni-popup ref="alertDialog" type="bottom" :is-mask-click="false">
       <button class="phone-button" @click="makePhoneCall">
-        呼叫 400-000-4000
+        呼叫 {{ phoneNum || '400-000-4000' }}
       </button>
       <button class="phone-button" @click="handleClose">取消</button>
     </uni-popup>
@@ -257,6 +261,7 @@ const type = ref(''); //从哪个页面来
 const alertDialog = ref(null); //提示窗
 const noCancelDialog = ref(null); //不可取消提示框
 const content = ref(''); //取消失败弹窗提示语
+const phoneNum = ref(''); //拨打的电话号码
 let info = reactive({
   data: {
     serveStatus: 1,
@@ -309,7 +314,8 @@ onLoad((options) => {
   getOrderInfoFunc(options.id);
 });
 //打开拨打电话弹窗
-const openPhone = () => {
+const openPhone = (val) => {
+  phoneNum.value = val;
   alertDialog.value.open();
   close();
 };

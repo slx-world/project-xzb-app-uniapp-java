@@ -1017,19 +1017,32 @@ uni-page-head[data-v-538110be],
 }
 .homeList .dialog[data-v-538110be] {
   width: 13.8125rem;
-  height: 10.1875rem;
+  min-height: 10.1875rem;
   background-color: var(--neutral-color-white);
   border-radius: 0.75rem;
   position: relative;
 }
 .homeList .dialog .content[data-v-538110be] {
   text-align: center;
-  font-size: 1.125rem;
+  font-size: 0.875rem;
   color: var(--color-black-19);
   padding-top: 4.25rem;
   padding-bottom: 1.1875rem;
 }
-.homeList .dialog .footer[data-v-538110be] {
+.homeList .dialog .content .title[data-v-538110be] {
+  text-align: center;
+  font-size: 1.125rem;
+  color: var(--color-black-19);
+  margin-bottom: 0.625rem;
+  font-weight: 600;
+}
+.homeList .dialog .title[data-v-538110be] {
+  text-align: center;
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--color-black-19);
+}
+.homeList .dialog .dialogFooter[data-v-538110be] {
   font-size: 1rem;
   color: var(--color-red-bg);
   text-align: center;
@@ -1308,19 +1321,32 @@ uni-page-head[data-v-5d962223],
 }
 .homeList .dialog[data-v-5d962223] {
   width: 13.8125rem;
-  height: 10.1875rem;
+  min-height: 10.1875rem;
   background-color: var(--neutral-color-white);
   border-radius: 0.75rem;
   position: relative;
 }
 .homeList .dialog .content[data-v-5d962223] {
   text-align: center;
-  font-size: 1.125rem;
+  font-size: 0.875rem;
   color: var(--color-black-19);
   padding-top: 4.25rem;
   padding-bottom: 1.1875rem;
 }
-.homeList .dialog .footer[data-v-5d962223] {
+.homeList .dialog .content .title[data-v-5d962223] {
+  text-align: center;
+  font-size: 1.125rem;
+  color: var(--color-black-19);
+  margin-bottom: 0.625rem;
+  font-weight: 600;
+}
+.homeList .dialog .title[data-v-5d962223] {
+  text-align: center;
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--color-black-19);
+}
+.homeList .dialog .dialogFooter[data-v-5d962223] {
   font-size: 1rem;
   color: var(--color-red-bg);
   text-align: center;
@@ -1599,19 +1625,32 @@ uni-page-head[data-v-1cf27b2a],
 }
 .homeList .dialog[data-v-1cf27b2a] {
   width: 13.8125rem;
-  height: 10.1875rem;
+  min-height: 10.1875rem;
   background-color: var(--neutral-color-white);
   border-radius: 0.75rem;
   position: relative;
 }
 .homeList .dialog .content[data-v-1cf27b2a] {
   text-align: center;
-  font-size: 1.125rem;
+  font-size: 0.875rem;
   color: var(--color-black-19);
   padding-top: 4.25rem;
   padding-bottom: 1.1875rem;
 }
-.homeList .dialog .footer[data-v-1cf27b2a] {
+.homeList .dialog .content .title[data-v-1cf27b2a] {
+  text-align: center;
+  font-size: 1.125rem;
+  color: var(--color-black-19);
+  margin-bottom: 0.625rem;
+  font-weight: 600;
+}
+.homeList .dialog .title[data-v-1cf27b2a] {
+  text-align: center;
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--color-black-19);
+}
+.homeList .dialog .dialogFooter[data-v-1cf27b2a] {
   font-size: 1rem;
   color: var(--color-red-bg);
   text-align: center;
