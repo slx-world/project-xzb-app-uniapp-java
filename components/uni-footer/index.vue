@@ -61,12 +61,12 @@ let tabbar = ref([
   // 	selectedIconPath: 'static/qrcode.png',
   // 	text: ''
   // },
-  {
-    pagePath: '/pages/delivery/index',
-    iconPath: 'static/delivery.png',
-    selectedIconPath: 'static/deliveryActive.png',
-    text: '消息',
-  },
+  // {
+  //   pagePath: '/pages/delivery/index',
+  //   iconPath: 'static/delivery.png',
+  //   selectedIconPath: 'static/deliveryActive.png',
+  //   text: '消息',
+  // },
   {
     pagePath: '/pages/my/index',
     iconPath: 'static/user.png',

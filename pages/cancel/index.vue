@@ -82,7 +82,7 @@ const handleCancelSubmit = async () => {
     };
     await cancelOrder(params)
       .then((res) => {
-        console.log(res, 'fuckkkkkk');
+        // console.log(res, 'fuckkkkkk');
         if (res.code === 200) {
           uni.hideLoading();
           uni.showToast({
@@ -90,17 +90,10 @@ const handleCancelSubmit = async () => {
             duration: 1000,
             icon: 'none',
           });
-          if (from.value === 'list') {
-            goBack();
-          } else {
-            uni.navigateTo({
-              url:
-                '/pages/orderInfo/index?id=' +
-                orderId.value +
-                '&type=' +
-                'info',
-            });
-          }
+          uni.navigateTo({
+            url: '/pages/pickup/index',
+          });
+
           cancel.value = '';
           orderId.value = '';
         } else {
