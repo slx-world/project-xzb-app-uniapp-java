@@ -79,7 +79,7 @@
       <view class="title">订单信息</view>
       <view class="orderNum info first">
         <text class="label">订单编号</text>
-        <text class="content">{{ info.data.ordersInfo.ordersId }}</text>
+        <text class="content">{{ info.data.id }}</text>
       </view>
       <view class="orderTime info">
         <text class="label">预约时间</text>

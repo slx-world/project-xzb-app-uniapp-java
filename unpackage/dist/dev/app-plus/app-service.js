@@ -4703,7 +4703,7 @@ if (uni.restoreGlobal) {
     this._committing = committing;
   };
   Object.defineProperties(Store.prototype, prototypeAccessors);
-  const baseUrl = "/api";
+  const baseUrl = "https://jzo2o-api-test.itheima.net";
   function request({ url = "", params = {}, method = "GET" }) {
     const token = uni.getStorageSync("token");
     let header = {
@@ -4762,7 +4762,7 @@ if (uni.restoreGlobal) {
     params
   });
   const getsmsCode = (params) => request({
-    url: `/customer/open/sms-code/send`,
+    url: `/publics/sms-code/send`,
     method: "post",
     params
   });
@@ -5646,14 +5646,8 @@ if (uni.restoreGlobal) {
       ]);
       const changeTab = (item, index) => {
         store2.commit("user/setFilterOverTime", null);
-        if (item.text !== "") {
+        if (item.text !== "消息") {
           currentPage.value = index;
-          store2.commit("setFootStatus", index);
-          store2.commit("user/setDeliveryData", []);
-          store2.commit("user/setTabIndex", 0);
-          store2.commit("user/setTaskStatus", 0);
-          store2.commit("user/setDetailType", 0);
-          store2.commit("user/setNewType", null);
           uni.redirectTo({
             url: item.pagePath,
             success: (e2) => {
@@ -5663,7 +5657,7 @@ if (uni.restoreGlobal) {
           });
         } else {
           uni.showToast({
-            title: "程序员哥哥正在实现中",
+            title: "当前功能非教学版本！",
             duration: 1e3,
             icon: "none"
           });
@@ -8967,27 +8961,6 @@ if (uni.restoreGlobal) {
       return /* @__PURE__ */ new Date(NaN);
     }
   }
-  function addMonths(dirtyDate, dirtyAmount) {
-    requiredArgs(2, arguments);
-    var date = toDate(dirtyDate);
-    var amount = toInteger(dirtyAmount);
-    if (isNaN(amount)) {
-      return /* @__PURE__ */ new Date(NaN);
-    }
-    if (!amount) {
-      return date;
-    }
-    var dayOfMonth = date.getDate();
-    var endOfDesiredMonth = new Date(date.getTime());
-    endOfDesiredMonth.setMonth(date.getMonth() + amount + 1, 0);
-    var daysInMonth = endOfDesiredMonth.getDate();
-    if (dayOfMonth >= daysInMonth) {
-      return endOfDesiredMonth;
-    } else {
-      date.setFullYear(endOfDesiredMonth.getFullYear(), endOfDesiredMonth.getMonth(), dayOfMonth);
-      return date;
-    }
-  }
   function addMilliseconds(dirtyDate, dirtyAmount) {
     requiredArgs(2, arguments);
     var timestamp = toDate(dirtyDate).getTime();
@@ -9003,11 +8976,6 @@ if (uni.restoreGlobal) {
     utcDate.setUTCFullYear(date.getFullYear());
     return date.getTime() - utcDate.getTime();
   }
-  function addYears(dirtyDate, dirtyAmount) {
-    requiredArgs(2, arguments);
-    var amount = toInteger(dirtyAmount);
-    return addMonths(dirtyDate, amount * 12);
-  }
   function isDate(value) {
     requiredArgs(1, arguments);
     return value instanceof Date || _typeof(value) === "object" && Object.prototype.toString.call(value) === "[object Date]";
@@ -9019,22 +8987,6 @@ if (uni.restoreGlobal) {
     }
     var date = toDate(dirtyDate);
     return !isNaN(Number(date));
-  }
-  function endOfYear(dirtyDate) {
-    requiredArgs(1, arguments);
-    var date = toDate(dirtyDate);
-    var year = date.getFullYear();
-    date.setFullYear(year + 1, 0, 0);
-    date.setHours(23, 59, 59, 999);
-    return date;
-  }
-  function startOfYear(dirtyDate) {
-    requiredArgs(1, arguments);
-    var cleanDate = toDate(dirtyDate);
-    var date = /* @__PURE__ */ new Date(0);
-    date.setFullYear(cleanDate.getFullYear(), 0, 1);
-    date.setHours(0, 0, 0, 0);
-    return date;
   }
   function subMilliseconds(dirtyDate, dirtyAmount) {
     requiredArgs(2, arguments);
@@ -10488,11 +10440,6 @@ if (uni.restoreGlobal) {
     }
     return matched[1].replace(doubleQuoteRegExp, "'");
   }
-  function subYears(dirtyDate, dirtyAmount) {
-    requiredArgs(2, arguments);
-    var amount = toInteger(dirtyAmount);
-    return addYears(dirtyDate, -amount);
-  }
   const orderStatus = [
     {
       value: 1,
@@ -11029,10 +10976,8 @@ if (uni.restoreGlobal) {
       const homeList = vue.reactive({
         data: []
       });
-      const startTime = vue.ref(
-        format(startOfYear(subYears(/* @__PURE__ */ new Date(), 1)), "yyyy-MM-dd")
-      );
-      const endTime = vue.ref(format(endOfYear(subYears(/* @__PURE__ */ new Date(), 1)), "yyyy-MM-dd"));
+      const startTime = vue.ref(format((/* @__PURE__ */ new Date()).getTime() - 15552e6, "yyyy-MM-dd"));
+      const endTime = vue.ref(format(/* @__PURE__ */ new Date(), "yyyy-MM-dd"));
       const scrollTop = vue.ref(0);
       const scrollView = vue.ref(null);
       onShow(() => {
@@ -11055,11 +11000,26 @@ if (uni.restoreGlobal) {
         popup2.value.close();
       };
       const bindStartDateChange = (e2) => {
-        formatAppLog("log", "at pages/history/index.vue:141", e2, "eeee");
-        startTime.value = e2.detail.value;
+        if (new Date(endTime.value).getTime() - new Date(e2.detail.value).getTime() > 31536e6) {
+          uni.showToast({
+            title: "时间间隔不能大于365天",
+            duration: 1e3,
+            icon: "none"
+          });
+        } else {
+          startTime.value = e2.detail.value;
+        }
       };
       const bindEndDateChange = (e2) => {
-        endTime.value = e2.detail.value;
+        if (new Date(e2.detail.value).getTime() - new Date(startTime.value).getTime() > 31536e6) {
+          return uni.showToast({
+            title: "时间间隔不能大于365天",
+            duration: 1e3,
+            icon: "none"
+          });
+        } else {
+          endTime.value = e2.detail.value;
+        }
       };
       const goBack = () => {
         uni.navigateBack();
@@ -11081,7 +11041,7 @@ if (uni.restoreGlobal) {
         if (!time)
           delete params.lastSortTime;
         getHistoryOrder(params).then((res) => {
-          formatAppLog("log", "at pages/history/index.vue:174", res, homeList.data, "66666666666");
+          formatAppLog("log", "at pages/history/index.vue:182", res, homeList.data, "66666666666");
           if (res.data.length === 10) {
             isHaveMore.value = true;
           } else {
@@ -11123,72 +11083,75 @@ if (uni.restoreGlobal) {
                   onRefresh: getRobOrderList
                 }, null, 8, ["data"])) : (vue.openBlock(), vue.createBlock(Empty, { key: 1 })),
                 vue.createCommentVNode(" 普通弹窗 "),
-                vue.createVNode(_component_uni_popup, {
-                  ref_key: "popup",
-                  ref: popup2,
-                  "background-color": "#fff",
-                  onChange: _ctx.change,
-                  type: "bottom"
-                }, {
-                  default: vue.withCtx(() => [
-                    vue.createElementVNode("view", { class: "popup-content" }, [
-                      vue.createElementVNode("view", { class: "header" }, [
-                        vue.createElementVNode("view", { class: "tips" }, "选择时间"),
-                        vue.createElementVNode("image", {
-                          class: "close",
-                          src: "/static/new/btn_nav_close@2x.png"
-                        })
-                      ]),
-                      vue.createElementVNode("view", { class: "time" }, [
-                        vue.createElementVNode("picker", {
-                          fields: "day",
-                          mode: "date",
-                          start: startTime.value,
-                          end: endTime.value,
-                          value: startTime.value,
-                          onChange: bindStartDateChange
-                        }, [
-                          vue.createElementVNode(
-                            "view",
-                            { class: "startTime" },
-                            vue.toDisplayString(startTime.value || "开始时间"),
-                            1
-                            /* TEXT */
-                          )
-                        ], 40, ["start", "end", "value"]),
-                        vue.createElementVNode("view", { class: "zhi" }, "至"),
-                        vue.createElementVNode("picker", {
-                          fields: "day",
-                          mode: "date",
-                          start: startTime.value,
-                          end: endTime.value,
-                          value: endTime.value,
-                          onChange: bindEndDateChange
-                        }, [
-                          vue.createElementVNode(
-                            "view",
-                            { class: "endTime" },
-                            vue.toDisplayString(endTime.value || "结束时间"),
-                            1
-                            /* TEXT */
-                          )
-                        ], 40, ["start", "end", "value"])
-                      ]),
-                      vue.createElementVNode("view", { class: "footer" }, [
-                        vue.createElementVNode("view", {
-                          class: "reset",
-                          onClick: handleReset
-                        }, "重置"),
-                        vue.createElementVNode("view", {
-                          class: "confirm",
-                          onClick: searchDataByTime
-                        }, "确定")
+                vue.createVNode(
+                  _component_uni_popup,
+                  {
+                    ref_key: "popup",
+                    ref: popup2,
+                    "background-color": "#fff",
+                    type: "bottom"
+                  },
+                  {
+                    default: vue.withCtx(() => [
+                      vue.createElementVNode("view", { class: "popup-content" }, [
+                        vue.createElementVNode("view", { class: "header" }, [
+                          vue.createElementVNode("view", { class: "tips" }, "选择时间"),
+                          vue.createElementVNode("image", {
+                            class: "close",
+                            src: "/static/new/btn_nav_close@2x.png"
+                          })
+                        ]),
+                        vue.createElementVNode("view", { class: "time" }, [
+                          vue.createElementVNode("picker", {
+                            fields: "day",
+                            mode: "date",
+                            value: startTime.value,
+                            end: endTime.value,
+                            onChange: bindStartDateChange
+                          }, [
+                            vue.createElementVNode(
+                              "view",
+                              { class: "startTime" },
+                              vue.toDisplayString(startTime.value || "开始时间"),
+                              1
+                              /* TEXT */
+                            )
+                          ], 40, ["value", "end"]),
+                          vue.createElementVNode("view", { class: "zhi" }, "至"),
+                          vue.createElementVNode("picker", {
+                            fields: "day",
+                            mode: "date",
+                            value: endTime.value,
+                            end: endTime.value,
+                            onChange: bindEndDateChange
+                          }, [
+                            vue.createElementVNode(
+                              "view",
+                              { class: "endTime" },
+                              vue.toDisplayString(endTime.value || "结束时间"),
+                              1
+                              /* TEXT */
+                            )
+                          ], 40, ["value", "end"])
+                        ]),
+                        vue.createElementVNode("view", { class: "footer" }, [
+                          vue.createElementVNode("view", {
+                            class: "reset",
+                            onClick: handleReset
+                          }, "重置"),
+                          vue.createElementVNode("view", {
+                            class: "confirm",
+                            onClick: searchDataByTime
+                          }, "确定")
+                        ])
                       ])
-                    ])
-                  ]),
-                  _: 1
-                  /* STABLE */
-                }, 8, ["onChange"])
+                    ]),
+                    _: 1
+                    /* STABLE */
+                  },
+                  512
+                  /* NEED_PATCH */
+                )
               ], 40, ["scroll-y", "scroll-top"]),
               vue.createVNode(UniFooter, { pagePath: "pages/pickup/index" })
             ]),
@@ -12242,7 +12205,7 @@ if (uni.restoreGlobal) {
               vue.createElementVNode(
                 "text",
                 { class: "content" },
-                vue.toDisplayString(vue.unref(info).data.ordersInfo.ordersId),
+                vue.toDisplayString(vue.unref(info).data.id),
                 1
                 /* TEXT */
               )
@@ -12542,7 +12505,6 @@ if (uni.restoreGlobal) {
             cancelReason: cancelData.filter((item) => item.value === cancel.value)[0].label
           };
           await cancelOrder(params).then((res) => {
-            formatAppLog("log", "at pages/cancel/index.vue:85", res, "fuckkkkkk");
             if (res.code === 200) {
               uni.hideLoading();
               uni.showToast({
@@ -12550,13 +12512,9 @@ if (uni.restoreGlobal) {
                 duration: 1e3,
                 icon: "none"
               });
-              if (from.value === "list") {
-                goBack();
-              } else {
-                uni.navigateTo({
-                  url: "/pages/orderInfo/index?id=" + orderId.value + "&type=info"
-                });
-              }
+              uni.navigateTo({
+                url: "/pages/pickup/index"
+              });
               cancel.value = "";
               orderId.value = "";
             } else {
@@ -12596,7 +12554,7 @@ if (uni.restoreGlobal) {
             rejectReason: cancelData.filter((item) => item.value === cancel.value)[0].label
           };
           await rejectOrder(params).then((res) => {
-            formatAppLog("log", "at pages/cancel/index.vue:148", res, "res");
+            formatAppLog("log", "at pages/cancel/index.vue:141", res, "res");
             if (res.code === 200) {
               uni.hideLoading();
               if (from.value === "list" || from.value === "dispatch") {

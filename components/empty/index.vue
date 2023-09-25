@@ -26,9 +26,8 @@ const emit = defineEmits(); //子组件向父组件事件传递
     background-image: url('../../static/new/empty.png');
     background-position: center;
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: contain;
     padding-top: 114rpx !important;
-    margin-bottom: 43rpx !important;
   }
 }
 </style>
