@@ -40,8 +40,6 @@
             <picker
               fields="day"
               mode="date"
-              :start="startTime"
-              :end="endTime"
               :value="startTime"
               @change="bindStartDateChange"
               ><view class="startTime">{{
@@ -53,8 +51,6 @@
             <picker
               fields="day"
               mode="date"
-              :start="startTime"
-              :end="endTime"
               :value="endTime"
               @change="bindEndDateChange"
               ><view class="endTime">{{ endTime || '结束时间' }}</view></picker
@@ -104,10 +100,12 @@ const icCanScroll = ref(true);
 const homeList = reactive({
   data: [],
 });
-const startTime = ref(
-  format(startOfYear(subYears(new Date(), 1)), 'yyyy-MM-dd')
-);
-const endTime = ref(format(endOfYear(subYears(new Date(), 1)), 'yyyy-MM-dd'));
+const startTime = ref(format(new Date().getTime() - 15552000000, 'yyyy-MM-dd'));
+const endTime = ref(format(new Date(), 'yyyy-MM-dd'));
+// const startTime = ref(
+//   format(startOfYear(subYears(new Date(), 1)), 'yyyy-MM-dd')
+// );
+// const endTime = ref(format(endOfYear(subYears(new Date(), 1)), 'yyyy-MM-dd'));
 const scrollTop = ref(0);
 const scrollView = ref(null);
 // ------生命周期------
@@ -138,12 +136,33 @@ const searchDataByTime = () => {
 };
 //开始时间
 const bindStartDateChange = (e) => {
-  console.log(e, 'eeee');
-  startTime.value = e.detail.value;
+  if (
+    new Date(endTime.value).getTime() - new Date(e.detail.value).getTime() >
+    31536000000
+  ) {
+    uni.showToast({
+      title: '时间间隔不能大于365天',
+      duration: 1000,
+      icon: 'none',
+    });
+  } else {
+    startTime.value = e.detail.value;
+  }
 };
 //结束时间
 const bindEndDateChange = (e) => {
-  endTime.value = e.detail.value;
+  if (
+    new Date(e.detail.value).getTime() - new Date(startTime.value).getTime() >
+    31536000000
+  ) {
+    return uni.showToast({
+      title: '时间间隔不能大于365天',
+      duration: 1000,
+      icon: 'none',
+    });
+  } else {
+    endTime.value = e.detail.value;
+  }
 };
 // 返回上一页
 const goBack = () => {
