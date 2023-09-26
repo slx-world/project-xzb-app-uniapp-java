@@ -4703,7 +4703,7 @@ if (uni.restoreGlobal) {
     this._committing = committing;
   };
   Object.defineProperties(Store.prototype, prototypeAccessors);
-  const baseUrl = "https://jzo2o-api-test.itheima.net";
+  const baseUrl = "/api";
   function request({ url = "", params = {}, method = "GET" }) {
     const token = uni.getStorageSync("token");
     let header = {
@@ -6201,7 +6201,6 @@ if (uni.restoreGlobal) {
         data: []
       });
       vue.onMounted(() => {
-        getList();
         getHomeFilterList();
       });
       onShow(() => {

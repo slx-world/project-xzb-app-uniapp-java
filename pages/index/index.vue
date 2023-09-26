@@ -87,7 +87,7 @@ let homeList = reactive({
 });
 // ------生命周期------
 onMounted(() => {
-  getList();
+  // getList();
   getHomeFilterList();
 });
 onShow(() => {
