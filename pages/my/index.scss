@@ -50,9 +50,25 @@
 			flex: 1;
 			font-size: var(--font-size-16);
       .tit{
-        color: var(--color-black-19);
-        font-size: 32rpx;
-        font-weight: bold;
+        .name{
+          color: var(--color-black-19);
+          font-size: 32rpx;
+          font-weight: bold;
+        }
+        .isAuth{
+          width: 86rpx;
+          height: 34rpx;
+          background: #FFE8E8;
+          border-radius: 4rpx;
+          font-size: 24rpx;
+          color:var(--color-red-bg);
+          text-align: center;
+          line-height: 34rpx;
+          margin-left: 16rpx;
+        }
+        display: flex;
+        align-items: center;
+       
       }
       .account{
         color: var(--color-gray-59);

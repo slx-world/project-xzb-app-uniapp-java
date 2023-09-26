@@ -1,6 +1,7 @@
 
+// 开发环境
+// export const baseUrl = 'http://172.17.2.58/api'
+//浏览器联调环境
+export const baseUrl = '/api'
 // 测试环境
-// export const baseUrl = 'http://slwl-geteway-t.itheima.net/courier'
-// export const baseUrl ='http://172.16.43.24:9527/courier'
-// 线上环境
-export const baseUrl = 'http://slwl-geteway.itheima.net/courier'
+// export const baseUrl = 'https://jzo2o-api-test.itheima.net'

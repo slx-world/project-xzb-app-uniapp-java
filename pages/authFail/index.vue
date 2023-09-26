@@ -5,7 +5,7 @@
     <UniNav :title="title" @goBack="goBack"></UniNav>
     <image class="bImg" src="../../static/new/img_weitongguo@2x.png"></image>
     <view class="content">提交的认证审核末通过</view>
-    <view class="content">原因：{{ reason }}</view>
+    <view class="content">原因：{{ reason === 'null' ? '无' : reason }}</view>
     <view class="btn-red" @click="toAuth">重新认证</view>
   </view>
 </template>

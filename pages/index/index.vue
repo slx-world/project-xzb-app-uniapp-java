@@ -46,7 +46,7 @@
         :type="orderType"
         @refresh="getList"
       ></HomeList>
-      <Empty v-else></Empty>
+      <Empty v-else :canPickUp="users.canPickUp"></Empty>
     </scroll-view>
 
     <!-- footer -->
@@ -60,6 +60,7 @@ import { ref, reactive, onMounted } from 'vue';
 import { onPullDownRefresh, onShow } from '@dcloudio/uni-app';
 // 导入接口
 import { getRobOrder, getHomeFilter, getDispatchOrder } from '../api/order.js';
+import { getUserSetting } from '../api/setting';
 // 导入组件
 // 导航
 import UniNav from '@/components/uni-home-nav/index.vue';
@@ -69,11 +70,15 @@ import UniFooter from '@/components/uni-footer/index.vue';
 import Empty from '@/components/empty/index.vue';
 import HomeFilter from './components/homeFilter';
 import HomeList from './components/homeList';
+import { useStore } from 'vuex';
+
 // ------定义变量------
 const fixTop = ref(false);
 const icCanScroll = ref(true);
 const orderType = ref(0); //0：抢单,1:派单
 const serveId = ref('');
+const store = useStore(); //vuex获取、储存数据
+const users = store.state.user;
 let homeFilterList = reactive({
   data: [],
 });
@@ -82,11 +87,12 @@ let homeList = reactive({
 });
 // ------生命周期------
 onMounted(() => {
-  getList();
+  // getList();
   getHomeFilterList();
 });
 onShow(() => {
   getList();
+  getSetting();
 });
 // ------定义方法------
 //下拉刷新
@@ -95,13 +101,28 @@ onPullDownRefresh(() => {
   setTimeout(function () {
     uni.stopPullDownRefresh();
   }, 1000);
-  console.log('refresh');
 });
 const tabChange = (val, id) => {
   //val（0抢单，1派单）
   orderType.value = val;
   serveId.value = id;
   getList();
+};
+//获取配置信息
+const getSetting = () => {
+  getUserSetting()
+    .then((res) => {
+      if (res.code == 200) {
+        store.commit('user/setKeyCanPickUp', res.data.canPickUp);
+      }
+    })
+    .catch((err) => {
+      uni.showToast({
+        title: err.msg || '接口调用失败',
+        duration: 1500,
+        icon: 'none',
+      });
+    });
 };
 const getList = () => {
   if (!orderType.value) {

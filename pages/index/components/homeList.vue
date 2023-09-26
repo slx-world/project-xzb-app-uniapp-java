@@ -51,10 +51,12 @@
     <uni-popup ref="alertDialog" type="dialog" :is-mask-click="false">
       <view class="dialog">
         <view class="img" :class="isRob ? 'success' : 'fail'"></view>
-        <view class="content">{{
-          isRob ? '抢单成功' : msg ? msg : '很遗憾，抢单失败'
-        }}</view>
-        <view class="footer" @click="handleClose">确定</view>
+
+        <view class="content" :class="isRob ? 'title' : 'content'">
+          <view class="title" v-if="!isRob">抢单失败</view>
+          {{ isRob ? '抢单成功' : msg ? msg : '很遗憾，抢单失败' }}</view
+        >
+        <view class="dialogFooter" @click="handleClose">确定</view>
       </view>
       <!-- <image
         class="dialogImg"
@@ -168,6 +170,7 @@ const handleRob = (id) => {
           icon: 'none',
         });
       }
+
       console.log(err, 'errrrr');
     });
 };

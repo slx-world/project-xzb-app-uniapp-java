@@ -33,7 +33,11 @@
       <view class="title">客户信息</view>
       <view class="nameAndPhone">
         <text class="name">{{ info.data.customerInfo.contactsName }}</text>
-        <text class="phone">{{ info.data.customerInfo.contactsPhone }}</text>
+        <text
+          class="phone"
+          @click="openPhone(info.data.customerInfo.contactsPhone)"
+          >{{ info.data.customerInfo.contactsPhone }}</text
+        >
       </view>
       <view class="address">
         <view class="location"></view>
@@ -75,7 +79,7 @@
       <view class="title">订单信息</view>
       <view class="orderNum info first">
         <text class="label">订单编号</text>
-        <text class="content">{{ info.data.ordersInfo.ordersId }}</text>
+        <text class="content">{{ info.data.id }}</text>
       </view>
       <view class="orderTime info">
         <text class="label">预约时间</text>
@@ -127,7 +131,7 @@
           info.data.serveInfo.realServeStartTime
         "
       >
-        <view class="subTitle">服务前</view>
+        <view class="subTitle">服务前照片</view>
         <view class="imgList">
           <image
             class="img"
@@ -153,7 +157,7 @@
           info.data.serveStatus === 3 && info.data.serveInfo.realServeEndTime
         "
       >
-        <view class="subTitle">服务后</view>
+        <view class="subTitle">服务后照片</view>
         <view class="imgList">
           <image
             class="img"
@@ -181,7 +185,7 @@
     >
       <view
         class="btn-gray"
-        @click="handleCancel(info.data.id)"
+        @click="handleCancel(info.data)"
         v-if="[1].includes(info.data.serveStatus)"
         >取消订单</view
       >
@@ -198,6 +202,33 @@
         >删除订单</view
       >
     </view>
+    <!-- 提示窗示例 -->
+    <uni-popup ref="alertDialog" type="bottom" :is-mask-click="false">
+      <button class="phone-button" @click="makePhoneCall">
+        呼叫 {{ phoneNum || '400-000-4000' }}
+      </button>
+      <button class="phone-button" @click="handleClose">取消</button>
+    </uni-popup>
+    <!-- 提示窗提示无法取消 -->
+    <uni-popup ref="noCancelDialog" :is-mask-click="false" class="freeze">
+      <uni-popup-dialog
+        mode="base"
+        content="当前不可自行取消订单，如需取消需拨打客服热线400-000-4000"
+        title=" "
+        :animation="false"
+        :before-close="true"
+        confirmText="联系客服"
+        cancelText="我知道了"
+        @close="close"
+        @confirm="openPhone"
+      >
+        <template #default>
+          <view class="cancelDialog">
+            {{ content }}
+          </view>
+        </template>
+      </uni-popup-dialog>
+    </uni-popup>
   </view>
 </template>
 <script setup>
@@ -227,6 +258,10 @@ const store = useStore();
 const users = store.state.user;
 const emit = defineEmits(''); //子组件向父组件事件传递
 const type = ref(''); //从哪个页面来
+const alertDialog = ref(null); //提示窗
+const noCancelDialog = ref(null); //不可取消提示框
+const content = ref(''); //取消失败弹窗提示语
+const phoneNum = ref(''); //拨打的电话号码
 let info = reactive({
   data: {
     serveStatus: 1,
@@ -274,10 +309,29 @@ let info = reactive({
 let tabIndex = ref(users.tabIndex ? users.tabIndex : 0); //当前tab
 // ------定义方法------
 onLoad((options) => {
-  console.log(options, 'options');
+  console.log(options, new Date().getTime(), 'options');
   type.value = options.type;
   getOrderInfoFunc(options.id);
 });
+//打开拨打电话弹窗
+const openPhone = (val) => {
+  phoneNum.value = val;
+  alertDialog.value.open();
+  close();
+};
+//关闭删除确认提示框
+const close = () => {
+  noCancelDialog.value.close();
+};
+const handleClose = () => {
+  alertDialog.value.close();
+};
+// 拨打电话
+const makePhoneCall = () => {
+  uni.makePhoneCall({
+    phoneNumber: '400-000-4000', //仅为示例，并非真实的电话号码
+  });
+};
 //预览图片
 const previewImage = (url, imgList) => {
   uni.previewImage({
@@ -336,10 +390,28 @@ const handleDelete = (id) => {
     });
 };
 //取消原因
-const handleCancel = (id) => {
-  uni.navigateTo({
-    url: '/pages/cancel/index?id=' + id + '&type=' + 'info',
-  });
+const handleCancel = (item) => {
+  console.log(item, item.ordersInfo.serveStartTime, 'item');
+
+  // 当前时间
+  const now = new Date().getTime();
+  // 判断当前时间与服务开始时间的差值，如果小于2小时，弹出提示框
+  const time = new Date(item.ordersInfo.serveStartTime).getTime() - now;
+  console.log(
+    now,
+    new Date(item.ordersInfo.serveStartTime).getTime(),
+    new Date(item.ordersInfo.serveStartTime).getTime() - now,
+    'time'
+  );
+  if (time < 2 * 60 * 60 * 1000) {
+    content.value =
+      '当前不可自行取消订单， 如需取消需拨打客服热线 400-000-4000';
+    noCancelDialog.value.open();
+  } else {
+    uni.navigateTo({
+      url: '/pages/cancel/index?id=' + item.id + '&type=' + 'info',
+    });
+  }
 };
 // 返回上一页
 const goBack = () => {

@@ -19,6 +19,7 @@
 import { ref } from 'vue';
 import { getUserSetting, setPickUpStatus } from '../api/setting.js';
 import { onShow } from '@dcloudio/uni-app';
+
 // 导航组件
 import UniNav from '@/components/uni-nav/index.vue';
 const canPickUp = ref(false); //是否开启接单

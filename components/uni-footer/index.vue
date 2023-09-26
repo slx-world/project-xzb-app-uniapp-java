@@ -78,16 +78,8 @@ let tabbar = ref([
 // 触发tab事件
 const changeTab = (item, index) => {
   store.commit('user/setFilterOverTime', null);
-  if (item.text !== '') {
+  if (item.text !== '消息') {
     currentPage.value = index;
-    store.commit('setFootStatus', index);
-    // 因为取件、派件数据列表存在了vuex里面，切换tab时为了避免有沉余的数据，所以触发tab的时候先清空下数据
-    store.commit('user/setDeliveryData', []);
-    store.commit('user/setTabIndex', 0);
-    store.commit('user/setTaskStatus', 0);
-    store.commit('user/setDetailType', 0);
-
-    store.commit('user/setNewType', null);
     // 页面跳转
     uni.redirectTo({
       url: item.pagePath,
@@ -96,7 +88,7 @@ const changeTab = (item, index) => {
     });
   } else {
     uni.showToast({
-      title: '程序员哥哥正在实现中',
+      title: '当前功能非教学版本！',
       duration: 1000,
       icon: 'none',
     });

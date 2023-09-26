@@ -141,12 +141,12 @@ const handleSubmit = async () => {
   if (valid) {
     // 登录接口
     // 网络慢的时候添加按钮loading
-    let times = setTimeout(() => {
-      uni.showLoading({
-        title: 'loading',
-        mask: true,
-      });
-    }, 500);
+
+    uni.showLoading({
+      title: 'loading',
+      mask: true,
+    });
+
     // // 判断配置的url是否正确，超过5秒中提示报错，清除定时器
     // let timVal = 1;
     // let t = setInterval(() => {
@@ -168,11 +168,7 @@ const handleSubmit = async () => {
       .then(async (res) => {
         console.log(res, '登录结果获取');
         // 操作成功后清除loading
-        setTimeout(function () {
-          uni.hideLoading();
-        }, 500);
-        // 清除定时器
-        clearTimeout(times);
+        uni.hideLoading();
         // clearInterval(t);
         if (res.code === 200) {
           // 存储token
@@ -201,10 +197,7 @@ const handleSubmit = async () => {
         }
       })
       .catch((err) => {
-        setTimeout(function () {
-          uni.hideLoading();
-        }, 500);
-        console.log(err, 'err');
+        uni.hideLoading();
         if (err.code === 605) {
           reason.value = err.msg;
           alertDialog.value.open();

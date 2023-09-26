@@ -30,7 +30,7 @@
             limit="1"
             title=""
             @select="(e) => handleSelect(e, 'frontImg')"
-            @delete="handleDelete"
+            @delete="handleDelete('frontImg')"
           ></uni-file-picker>
           <view class="photoLabel">人像面照片</view>
         </view>
@@ -48,7 +48,7 @@
             limit="1"
             title=""
             @select="(e) => handleSelect(e, 'backImg')"
-            @delete="handleDelete"
+            @delete="handleDelete('backImg')"
           ></uni-file-picker>
           <view class="photoLabel">国徽面照片 </view>
         </view>
@@ -66,7 +66,7 @@
             limit="1"
             title=""
             @select="(e) => handleSelect(e, 'certificationMaterial')"
-            @delete="handleDelete"
+            @delete="handleDelete('certificationMaterial')"
           ></uni-file-picker>
           <view class="photoLabel">资料上传 </view>
         </view>
@@ -81,11 +81,13 @@
 
 <script setup>
 import { ref } from 'vue';
+import { baseUrl } from '../../utils/env';
 // 导入组件
 // 导航组件
 import UniNav from '@/components/uni-nav/index.vue';
 import { postAuth } from '../api/setting.js';
 const title = ref('实名认证');
+const flag = ref(true);
 const formData = ref({
   certificationMaterial: '',
   idCardNo: '',
@@ -97,11 +99,15 @@ const formData = ref({
 const goBack = () => {
   uni.navigateBack();
 };
+const handleDelete = (type) => {
+  // console.log(e, 'eeeee');
+  formData.value[type] = '';
+};
 //上传图片
 const handleSelect = (e, type) => {
   const item = e.tempFiles[0];
   uni.uploadFile({
-    url: 'https://jzo2o-api-test.itheima.net/publics/storage/upload',
+    url: `${baseUrl}` + '/publics/storage/upload',
     files: [
       {
         name: 'file',
@@ -163,9 +169,16 @@ const handleSubmit = () => {
       icon: 'none',
     });
   }
+
+  if (!flag.value) return;
+  flag.value = false;
+  console.log(flag.value, 'flag.value');
   postAuth(formData.value)
     .then((res) => {
-      console.log(res, 'ress');
+      setTimeout(() => {
+        flag.value = true;
+      }, 1000);
+
       if (res.code === 200) {
         uni.navigateTo({
           url: '/pages/setting/index',
@@ -173,6 +186,9 @@ const handleSubmit = () => {
       }
     })
     .catch((err) => {
+      setTimeout(() => {
+        flag.value = true;
+      }, 1000);
       uni.showToast({
         title: err.msg || '提交失败!',
         duration: 1000,

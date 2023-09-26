@@ -158,22 +158,31 @@ watch(
         return item.label === props.countyName;
       });
     getList();
-    // console.log(props, areaIndex.data, cityData[areaIndex.data[0]], 'props');
-  }
+    console.log(
+      props,
+      areaIndex.data,
+      cityData[areaIndex.data[0]],
+      'fffffffffffffffffffffff'
+    );
+  },
+  { deep: true }
 );
 
 //获取省市区
 
 const handlePickStart = () => {
   chooseType.value = 'select';
+  console.log(123);
 };
 
 //选择省市区
 const bindChange = (event) => {
+  console.log(event, areaIndex.data, chooseType.value, 'event');
   if (chooseType.value === 'click') return;
+  // event.detail.value = [0, 0, 0];
   //二级地址获取
   if (areaIndex.data[0] !== event.detail.value[0]) {
-    city.data = cityData[event.detail.value[1]];
+    city.data = cityData[event.detail.value[0]];
     area.data = areaData[event.detail.value[0]][event.detail.value[1]];
     selectedProvince.data = province.data[event.detail.value[0]];
     event.detail.value[1] = 0;
@@ -181,24 +190,16 @@ const bindChange = (event) => {
     selectedCity.data = city.data[event.detail.value[1]];
     selectedArea.data = area.data[event.detail.value[2]];
   } else if (areaIndex.data[1] !== event.detail.value[1]) {
+    console.log(event.detail.value, city.data, area.data, '==========');
     area.data = areaData[event.detail.value[0]][event.detail.value[1]];
     event.detail.value[2] = 0;
     selectedCity.data = city.data[event.detail.value[1]];
     selectedArea.data = area.data[event.detail.value[2]];
-    selectedProvince.data = province.data[event.detail.value[0]];
   } else {
     selectedArea.data = area.data[event.detail.value[2]];
-    selectedCity.data = city.data[event.detail.value[1]];
-    selectedProvince.data = province.data[event.detail.value[0]];
   }
+
   areaIndex.data = event.detail.value;
-  console.log(
-    event,
-    selectedCity.data,
-    selectedArea.data,
-    selectedProvince.data,
-    'event'
-  );
 };
 
 // 打开弹层

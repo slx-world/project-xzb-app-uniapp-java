@@ -12,7 +12,7 @@ export const phoneLogins = (params) =>
 // 发送短信验证码
 export const getsmsCode = (params) =>
   request({
-    url: `/customer/open/sms-code/send`,
+    url: `/publics/sms-code/send`,
     method: 'post',
     params
   })
