@@ -5734,13 +5734,24 @@ if (uni.restoreGlobal) {
   const UniFooter = /* @__PURE__ */ _export_sfc(_sfc_main$A, [["__file", "E:/project/小智帮/project-xzb-app-uniapp-java（服务端）/components/uni-footer/index.vue"]]);
   const _sfc_main$z = {
     __name: "index",
-    props: {},
+    props: {
+      canPickUp: {
+        type: Boolean,
+        default: () => []
+      }
+    },
     setup(__props, { emit }) {
       return (_ctx, _cache) => {
         return vue.openBlock(), vue.createElementBlock("view", { class: "empty" }, [
           vue.createElementVNode("view", { class: "image" }),
           vue.createCommentVNode(' <image class="aimage" src="../../static/new/empty.png"></image> '),
-          vue.createElementVNode("view", { class: "content" }, "暂无相关内容哦～")
+          __props.canPickUp ? (vue.openBlock(), vue.createElementBlock("view", {
+            key: 0,
+            class: "content"
+          }, vue.toDisplayString("暂无相关内容哦～"))) : (vue.openBlock(), vue.createElementBlock("view", {
+            key: 1,
+            class: "content"
+          }, " 当前未开启接单设置，无法进行抢单哦～ "))
         ]);
       };
     }
@@ -6181,6 +6192,8 @@ if (uni.restoreGlobal) {
       const icCanScroll = vue.ref(true);
       const orderType = vue.ref(0);
       const serveId = vue.ref("");
+      const store2 = useStore();
+      const users = store2.state.user;
       let homeFilterList = vue.reactive({
         data: []
       });
@@ -6193,18 +6206,32 @@ if (uni.restoreGlobal) {
       });
       onShow(() => {
         getList();
+        getSetting();
       });
       onPullDownRefresh(() => {
         getList();
         setTimeout(function() {
           uni.stopPullDownRefresh();
         }, 1e3);
-        formatAppLog("log", "at pages/index/index.vue:98", "refresh");
+        formatAppLog("log", "at pages/index/index.vue:104", "refresh");
       });
       const tabChange = (val, id) => {
         orderType.value = val;
         serveId.value = id;
         getList();
+      };
+      const getSetting = () => {
+        getUserSetting().then((res) => {
+          if (res.code == 200) {
+            store2.commit("user/setKeyCanPickUp", res.data.canPickUp);
+          }
+        }).catch((err) => {
+          uni.showToast({
+            title: err.msg || "接口调用失败",
+            duration: 1500,
+            icon: "none"
+          });
+        });
       };
       const getList = () => {
         if (!orderType.value) {
@@ -6216,13 +6243,13 @@ if (uni.restoreGlobal) {
       const getDispatchList = (params) => {
         getDispatchOrder(params).then((res) => {
           homeList.data = res.data.list || [];
-          formatAppLog("log", "at pages/index/index.vue:117", res, homeList.data, "派单");
+          formatAppLog("log", "at pages/index/index.vue:139", res, homeList.data, "派单");
         });
       };
       const getRobOrderList = (params) => {
         getRobOrder(params).then((res) => {
           homeList.data = res.data.ordersSeizes || [];
-          formatAppLog("log", "at pages/index/index.vue:124", res, homeList.data, "抢单");
+          formatAppLog("log", "at pages/index/index.vue:146", res, homeList.data, "抢单");
         });
       };
       const getHomeFilterList = () => {
@@ -6231,7 +6258,7 @@ if (uni.restoreGlobal) {
         });
       };
       const handleCanScroll = (val) => {
-        formatAppLog("log", "at pages/index/index.vue:136", val, "是否可滑动");
+        formatAppLog("log", "at pages/index/index.vue:158", val, "是否可滑动");
         icCanScroll.value = !val;
       };
       const handleScroll = (e2) => {
@@ -6286,7 +6313,10 @@ if (uni.restoreGlobal) {
               data: vue.unref(homeList).data,
               type: orderType.value,
               onRefresh: getList
-            }, null, 8, ["data", "type"])) : (vue.openBlock(), vue.createBlock(Empty, { key: 2 }))
+            }, null, 8, ["data", "type"])) : (vue.openBlock(), vue.createBlock(Empty, {
+              key: 2,
+              canPickUp: vue.unref(users).canPickUp
+            }, null, 8, ["canPickUp"]))
           ], 40, ["scroll-y"]),
           vue.createCommentVNode(" footer "),
           vue.createVNode(UniFooter, { pagePath: "pages/index/index" }),
@@ -33233,6 +33263,8 @@ if (uni.restoreGlobal) {
         //储存当前触发的tab值
         keyBoardHeight: 0,
         //记录键盘高度
+        canPickUp: true,
+        //是否开启接单
         userBase: {},
         // 用户信息
         pages: 0,
@@ -33310,6 +33342,9 @@ if (uni.restoreGlobal) {
       };
     },
     mutations: {
+      setKeyCanPickUp(state, provider) {
+        state.canPickUp = provider;
+      },
       setKeyBoardHeight(state, provider) {
         state.keyBoardHeight = provider;
       },

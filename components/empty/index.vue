@@ -2,7 +2,8 @@
   <view class="empty">
     <view class="image"></view>
     <!-- <image class="aimage" src="../../static/new/empty.png"></image> -->
-    <view class="content">暂无相关内容哦～</view>
+    <view v-if="canPickUp" class="content">{{ '暂无相关内容哦～' }}</view>
+    <view v-else class="content"> 当前未开启接单设置，无法进行抢单哦～ </view>
   </view>
 </template>
 
@@ -10,7 +11,12 @@
 import { ref } from 'vue';
 import { useStore } from 'vuex';
 // 获取父组件数据
-const props = defineProps({});
+const props = defineProps({
+  canPickUp: {
+    type: Boolean,
+    default: () => [],
+  },
+});
 // ------定义变量------
 const emit = defineEmits(); //子组件向父组件事件传递
 </script>

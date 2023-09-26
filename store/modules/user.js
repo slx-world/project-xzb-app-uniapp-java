@@ -9,6 +9,7 @@ export default {
       cityName: '请选择',//服务范围城市名称
       tabIndex: 0, //储存当前触发的tab值
       keyBoardHeight: 0,//记录键盘高度
+      canPickUp: true,//是否开启接单
 
 
       userBase: {}, // 用户信息
@@ -54,6 +55,9 @@ export default {
     }
   },
   mutations: {
+    setKeyCanPickUp (state, provider) {
+      state.canPickUp = provider;
+    },
     setKeyBoardHeight (state, provider) {
       state.keyBoardHeight = provider;
     },
