@@ -101,7 +101,6 @@ onPullDownRefresh(() => {
   setTimeout(function () {
     uni.stopPullDownRefresh();
   }, 1000);
-  console.log('refresh');
 });
 const tabChange = (val, id) => {
   //val（0抢单，1派单）

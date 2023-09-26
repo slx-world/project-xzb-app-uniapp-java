@@ -6213,7 +6213,6 @@ if (uni.restoreGlobal) {
         setTimeout(function() {
           uni.stopPullDownRefresh();
         }, 1e3);
-        formatAppLog("log", "at pages/index/index.vue:104", "refresh");
       });
       const tabChange = (val, id) => {
         orderType.value = val;
@@ -6243,13 +6242,13 @@ if (uni.restoreGlobal) {
       const getDispatchList = (params) => {
         getDispatchOrder(params).then((res) => {
           homeList.data = res.data.list || [];
-          formatAppLog("log", "at pages/index/index.vue:139", res, homeList.data, "派单");
+          formatAppLog("log", "at pages/index/index.vue:138", res, homeList.data, "派单");
         });
       };
       const getRobOrderList = (params) => {
         getRobOrder(params).then((res) => {
           homeList.data = res.data.ordersSeizes || [];
-          formatAppLog("log", "at pages/index/index.vue:146", res, homeList.data, "抢单");
+          formatAppLog("log", "at pages/index/index.vue:145", res, homeList.data, "抢单");
         });
       };
       const getHomeFilterList = () => {
@@ -6258,7 +6257,7 @@ if (uni.restoreGlobal) {
         });
       };
       const handleCanScroll = (val) => {
-        formatAppLog("log", "at pages/index/index.vue:158", val, "是否可滑动");
+        formatAppLog("log", "at pages/index/index.vue:157", val, "是否可滑动");
         icCanScroll.value = !val;
       };
       const handleScroll = (e2) => {
