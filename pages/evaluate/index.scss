@@ -20,7 +20,7 @@
       background-color: var(--neutral-color-white);
       // margin: 30rpx;
       padding: 34rpx;
-      margin-top:30rpx ;
+      // margin-top:30rpx ;
     }
     .reply{
       margin-top: 20rpx;
@@ -61,7 +61,7 @@
           margin-bottom: 8rpx;
         }
         .time{
-          margin-bottom: 16rpx;
+          margin-bottom: 30rpx;
           text{
             color: var(--color-black-19);
           }
@@ -79,7 +79,7 @@
    
     }
     .img{
-      margin-top: 30rpx;
+      margin-bottom: 30rpx;
       image{
         height: 100rpx;
         width: 100rpx;

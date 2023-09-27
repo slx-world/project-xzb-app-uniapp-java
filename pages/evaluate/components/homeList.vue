@@ -5,7 +5,6 @@
       class="card"
       v-for="item in list.data"
       :key="item.id"
-      @click="handleToInfo(item)"
     >
       <view class="evaluate">
         <view class="header">
@@ -19,6 +18,7 @@
               readonly
               :value="item.totalScore"
               :margin="5"
+              :size="15"
               color="#D2DBE7"
               active-color="#F74347"
             />
@@ -27,7 +27,7 @@
         </view>
         <view class="content">{{ item.content }}</view>
         <view class="time">
-          <text>{{ item.createTime }}</text>
+          <text>{{ formatDateTimeToDateTimeString(new Date(item.createTime.replace(/-/g, '/'))) }}</text>
           <!-- <text class="replys" @click.stop="handleReply">回复</text> -->
         </view>
         <view class="img" v-if="item.pictureArray">
@@ -48,7 +48,7 @@
             </view>
             <view class="time">
               <text>预约时间 </text>
-              <text>{{ item.updateTime }}</text>
+              <text>{{ formatDateTimeToDateTimeString(new Date(item.updateTime.replace(/-/g, '/'))) }}</text>
             </view>
             <view class="address">{{ item.serveAddress }}</view>
           </view>
@@ -119,6 +119,7 @@
 <script setup>
 import { ref, reactive, onMounted, watch, watchEffect } from 'vue';
 import { useStore } from 'vuex';
+import { formatDateTimeToDateTimeString } from '../../utils';
 // 基本数据(订单状态)
 import { ImgList } from '@/utils/commonData.js';
 const emit = defineEmits(['refresh']); //子组件向父组件事件传递
