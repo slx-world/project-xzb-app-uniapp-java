@@ -678,7 +678,6 @@
 .evaluate .homeList .card[data-v-1422da40] {
   background-color: var(--neutral-color-white);
   padding: 1.0625rem;
-  margin-top: 0.9375rem;
 }
 .evaluate .homeList .reply[data-v-1422da40] {
   margin-top: 0.625rem;
@@ -727,7 +726,8 @@
   margin-right: 0.625rem;
 }
 .evaluate .homeList .img[data-v-1422da40] {
-  margin-top: 0.9375rem;
+  margin-top: 0.125rem;
+  margin-bottom: 0.9375rem;
 }
 .evaluate .homeList .img uni-image[data-v-1422da40] {
   height: 3.125rem;
@@ -737,6 +737,7 @@
 .evaluate .homeList .time[data-v-1422da40] {
   color: var(--color-gray-9);
   font-size: 0.75rem;
+  margin-bottom: 0.9375rem;
 }
 .evaluate .homeList .time .replys[data-v-1422da40] {
   color: var(--color-gray-59);
@@ -1120,7 +1121,6 @@ uni-page-head[data-v-2cd4902b],
 .evaluate .homeList .card[data-v-2cd4902b] {
   background-color: var(--neutral-color-white);
   padding: 1.0625rem;
-  margin-top: 0.9375rem;
 }
 .evaluate .homeList .reply[data-v-2cd4902b] {
   margin-top: 0.625rem;
@@ -1169,7 +1169,8 @@ uni-page-head[data-v-2cd4902b],
   margin-right: 0.625rem;
 }
 .evaluate .homeList .img[data-v-2cd4902b] {
-  margin-top: 0.9375rem;
+  margin-top: 0.125rem;
+  margin-bottom: 0.9375rem;
 }
 .evaluate .homeList .img uni-image[data-v-2cd4902b] {
   height: 3.125rem;
@@ -1179,6 +1180,7 @@ uni-page-head[data-v-2cd4902b],
 .evaluate .homeList .time[data-v-2cd4902b] {
   color: var(--color-gray-9);
   font-size: 0.75rem;
+  margin-bottom: 0.9375rem;
 }
 .evaluate .homeList .time .replys[data-v-2cd4902b] {
   color: var(--color-gray-59);
