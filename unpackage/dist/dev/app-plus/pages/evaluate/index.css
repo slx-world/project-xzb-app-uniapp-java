@@ -678,7 +678,6 @@
 .evaluate .homeList .card[data-v-1422da40] {
   background-color: var(--neutral-color-white);
   padding: 1.0625rem;
-  margin-top: 0.9375rem;
 }
 .evaluate .homeList .reply[data-v-1422da40] {
   margin-top: 0.625rem;
@@ -715,7 +714,7 @@
   margin-bottom: 0.25rem;
 }
 .evaluate .homeList .order .right .time[data-v-1422da40] {
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.9375rem;
 }
 .evaluate .homeList .order .right .time uni-text[data-v-1422da40] {
   color: var(--color-black-19);
@@ -727,7 +726,7 @@
   margin-right: 0.625rem;
 }
 .evaluate .homeList .img[data-v-1422da40] {
-  margin-top: 0.9375rem;
+  margin-bottom: 0.9375rem;
 }
 .evaluate .homeList .img uni-image[data-v-1422da40] {
   height: 3.125rem;
@@ -1120,7 +1119,6 @@ uni-page-head[data-v-2cd4902b],
 .evaluate .homeList .card[data-v-2cd4902b] {
   background-color: var(--neutral-color-white);
   padding: 1.0625rem;
-  margin-top: 0.9375rem;
 }
 .evaluate .homeList .reply[data-v-2cd4902b] {
   margin-top: 0.625rem;
@@ -1157,7 +1155,7 @@ uni-page-head[data-v-2cd4902b],
   margin-bottom: 0.25rem;
 }
 .evaluate .homeList .order .right .time[data-v-2cd4902b] {
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.9375rem;
 }
 .evaluate .homeList .order .right .time uni-text[data-v-2cd4902b] {
   color: var(--color-black-19);
@@ -1169,7 +1167,7 @@ uni-page-head[data-v-2cd4902b],
   margin-right: 0.625rem;
 }
 .evaluate .homeList .img[data-v-2cd4902b] {
-  margin-top: 0.9375rem;
+  margin-bottom: 0.9375rem;
 }
 .evaluate .homeList .img uni-image[data-v-2cd4902b] {
   height: 3.125rem;

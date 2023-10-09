@@ -4703,7 +4703,7 @@ if (uni.restoreGlobal) {
     this._committing = committing;
   };
   Object.defineProperties(Store.prototype, prototypeAccessors);
-  const baseUrl = "/api";
+  const baseUrl = "https://jzo2o-api-test.itheima.net";
   function request({ url = "", params = {}, method = "GET" }) {
     const token = uni.getStorageSync("token");
     let header = {
@@ -5611,7 +5611,6 @@ if (uni.restoreGlobal) {
     },
     setup(__props) {
       const store2 = useStore();
-      const currentPage = vue.ref(store2.state.footStatus);
       let tabbar = vue.ref([
         {
           pagePath: "/pages/index/index",
@@ -5625,12 +5624,6 @@ if (uni.restoreGlobal) {
           selectedIconPath: "static/collectActive.png",
           text: "订单"
         },
-        // {
-        // 	pagePath: '',
-        // 	iconPath: 'static/qrcode.png',
-        // 	selectedIconPath: 'static/qrcode.png',
-        // 	text: ''
-        // },
         {
           pagePath: "/pages/delivery/index",
           iconPath: "static/delivery.png",
@@ -5645,15 +5638,11 @@ if (uni.restoreGlobal) {
         }
       ]);
       const changeTab = (item, index) => {
-        store2.commit("user/setFilterOverTime", null);
+        store2.commit("setFootStatus", index);
+        formatAppLog("log", "at components/uni-footer/index.vue:77", store2.state.footStatus, "store");
         if (item.text !== "消息") {
-          currentPage.value = index;
           uni.redirectTo({
-            url: item.pagePath,
-            success: (e2) => {
-            },
-            fail: () => {
-            }
+            url: item.pagePath
           });
         } else {
           uni.showToast({
@@ -5676,19 +5665,13 @@ if (uni.restoreGlobal) {
                   null,
                   vue.renderList(vue.unref(tabbar), (item, index) => {
                     return vue.openBlock(), vue.createElementBlock("view", {
-                      class: vue.normalizeClass(["tabbar-item", currentPage.value === index ? "active" : ""]),
+                      class: vue.normalizeClass(["tabbar-item", vue.unref(store2).state.footStatus === index ? "active" : ""]),
                       key: index,
                       onClick: ($event) => changeTab(item, index)
                     }, [
-                      (vue.openBlock(), vue.createElementBlock("view", {
-                        key: 0,
-                        class: "uni-tabbar__bd"
-                      }, [
-                        item.pagePath !== "" ? (vue.openBlock(), vue.createElementBlock("view", {
-                          key: 0,
-                          class: "uni-tabbar__icon"
-                        }, [
-                          currentPage.value === index ? (vue.openBlock(), vue.createElementBlock("img", {
+                      vue.createElementVNode("view", { class: "uni-tabbar__bd" }, [
+                        vue.createElementVNode("view", { class: "uni-tabbar__icon" }, [
+                          vue.unref(store2).state.footStatus === index ? (vue.openBlock(), vue.createElementBlock("img", {
                             key: 0,
                             class: "item-img",
                             src: item.selectedIconPath
@@ -5697,19 +5680,12 @@ if (uni.restoreGlobal) {
                             class: "item-img",
                             src: item.iconPath
                           }, null, 8, ["src"]))
-                        ])) : (vue.openBlock(), vue.createElementBlock("view", {
-                          key: 1,
-                          class: "qrCode"
-                        }, [
-                          vue.createElementVNode("img", {
-                            src: item.iconPath
-                          }, null, 8, ["src"])
-                        ]))
-                      ])),
+                        ])
+                      ]),
                       item.text !== "" ? (vue.openBlock(), vue.createElementBlock(
                         "view",
                         {
-                          key: 1,
+                          key: 0,
                           class: "uni-tabbar__label"
                         },
                         vue.toDisplayString(item.text),
@@ -5736,8 +5712,7 @@ if (uni.restoreGlobal) {
     __name: "index",
     props: {
       canPickUp: {
-        type: Boolean,
-        default: () => []
+        type: Boolean
       }
     },
     setup(__props, { emit }) {
@@ -11365,7 +11340,7 @@ if (uni.restoreGlobal) {
             isHaveMore.value = false;
           }
           homeList.data = homeList.data.concat(res.data.ordersServes);
-          formatAppLog("log", "at pages/pickup/index.vue:108", res, homeList.data, "66666666666");
+          formatAppLog("log", "at pages/pickup/index.vue:107", res, homeList.data, "66666666666");
         });
       };
       const getRobOrderList = () => {
@@ -11396,7 +11371,6 @@ if (uni.restoreGlobal) {
               vue.createElementVNode("scroll-view", {
                 "scroll-y": icCanScroll.value,
                 class: vue.normalizeClass(["scrollList", homeList.data.length ? "" : "noData"]),
-                onScroll: _cache[0] || (_cache[0] = (...args) => _ctx.handleScroll && _ctx.handleScroll(...args)),
                 onScrolltolower: handleLoad,
                 "upper-threshold": 50,
                 ref_key: "scrollView",
@@ -17366,6 +17340,18 @@ if (uni.restoreGlobal) {
     ]);
   }
   const __easycom_0 = /* @__PURE__ */ _export_sfc(_sfc_main$7, [["render", _sfc_render], ["__scopeId", "data-v-5c8fbdf3"], ["__file", "E:/project/小智帮/project-xzb-app-uniapp-java（服务端）/uni_modules/uni-rate/components/uni-rate/uni-rate.vue"]]);
+  const formatDateTimeToDateTimeString = (dateTime) => {
+    if (!(dateTime instanceof Date)) {
+      throw new Error("Invalid date format.");
+    }
+    const year = dateTime.getFullYear();
+    const month = String(dateTime.getMonth() + 1).padStart(2, "0");
+    const day = String(dateTime.getDate()).padStart(2, "0");
+    const hour = String(dateTime.getHours()).padStart(2, "0");
+    const minute = String(dateTime.getMinutes()).padStart(2, "0");
+    const dateTimeString = `${year}-${month}-${day} ${hour}:${minute}`;
+    return dateTimeString;
+  };
   const _sfc_main$6 = {
     __name: "homeList",
     props: {
@@ -17400,7 +17386,7 @@ if (uni.restoreGlobal) {
         emojiShow.value = !emojiShow.value;
       };
       const handleSubmit = () => {
-        formatAppLog("log", "at pages/evaluate/components/homeList.vue:160", "提交了");
+        formatAppLog("log", "at pages/evaluate/components/homeList.vue:161", "提交了");
         if (!inputValue.value.length) {
           return;
         } else {
@@ -17411,16 +17397,10 @@ if (uni.restoreGlobal) {
         inputValue.value = inputValue.value + item;
       };
       const handleBlur = () => {
-        formatAppLog("log", "at pages/evaluate/components/homeList.vue:173", input.value, "----------");
+        formatAppLog("log", "at pages/evaluate/components/homeList.vue:174", input.value, "----------");
       };
       const handleFocus = () => {
         emojiShow.value = false;
-      };
-      const handleToInfo = (item) => {
-        formatAppLog("log", "at pages/evaluate/components/homeList.vue:195", item, "进入详情");
-        uni.navigateTo({
-          url: "/pages/orderInfo/index?id=" + item.relationId
-        });
       };
       vue.watchEffect(() => {
         list.data = props.data;
@@ -17436,8 +17416,7 @@ if (uni.restoreGlobal) {
               var _a, _b;
               return vue.openBlock(), vue.createElementBlock("view", {
                 class: "card",
-                key: item.id,
-                onClick: ($event) => handleToInfo(item)
+                key: item.id
               }, [
                 vue.createElementVNode("view", { class: "evaluate" }, [
                   vue.createElementVNode("view", { class: "header" }, [
@@ -17459,6 +17438,7 @@ if (uni.restoreGlobal) {
                         readonly: "",
                         value: item.totalScore,
                         margin: 5,
+                        size: 15,
                         color: "#D2DBE7",
                         "active-color": "#F74347"
                       }, null, 8, ["value"]),
@@ -17482,7 +17462,7 @@ if (uni.restoreGlobal) {
                     vue.createElementVNode(
                       "text",
                       null,
-                      vue.toDisplayString(item.createTime),
+                      vue.toDisplayString(vue.unref(formatDateTimeToDateTimeString)(new Date(item.createTime.replace(/-/g, "/")))),
                       1
                       /* TEXT */
                     ),
@@ -17527,7 +17507,7 @@ if (uni.restoreGlobal) {
                         vue.createElementVNode(
                           "text",
                           null,
-                          vue.toDisplayString(item.updateTime),
+                          vue.toDisplayString(vue.unref(formatDateTimeToDateTimeString)(new Date(item.updateTime.replace(/-/g, "/")))),
                           1
                           /* TEXT */
                         )
@@ -17543,7 +17523,7 @@ if (uni.restoreGlobal) {
                   ]),
                   vue.createCommentVNode(' <view class="reply">\r\n          <view class="content">{{ item.reply.content }}</view>\r\n          <view class="foot">\r\n            <text>{{ item.reply.time }}</text>\r\n            <text>删除</text>\r\n          </view>\r\n        </view> ')
                 ])
-              ], 8, ["onClick"]);
+              ]);
             }),
             128
             /* KEYED_FRAGMENT */
@@ -33236,6 +33216,7 @@ if (uni.restoreGlobal) {
       // 公用footer的激活码
       setFootStatus(state, provider) {
         state.footStatus = provider;
+        formatAppLog("log", "at store/modules/global.js:11", "???");
       },
       setOrderActive(state, provider) {
         state.footStatus = provider;
