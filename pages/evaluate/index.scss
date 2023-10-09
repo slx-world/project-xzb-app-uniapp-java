@@ -61,7 +61,7 @@
           margin-bottom: 8rpx;
         }
         .time{
-          margin-bottom: 30rpx;
+          margin-bottom: 16rpx;
           text{
             color: var(--color-black-19);
           }
@@ -79,6 +79,7 @@
    
     }
     .img{
+      margin-top: 4rpx;
       margin-bottom: 30rpx;
       image{
         height: 100rpx;
@@ -89,6 +90,7 @@
     .time{
       color: var(--color-gray-9);
       font-size: 24rpx;
+      margin-bottom: 30rpx;
       .replys{
         color: var(--color-gray-59);
         margin-left: 36rpx;

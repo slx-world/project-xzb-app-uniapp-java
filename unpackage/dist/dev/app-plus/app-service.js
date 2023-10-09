@@ -4715,7 +4715,7 @@ if (uni.restoreGlobal) {
       header["Content-Type"] = "application/x-www-form-urlencoded";
     }
     const requestRes = new Promise((resolve, reject) => {
-      formatAppLog("log", "at utils/request.js:19", params, baseUrl + url, "进来了么");
+      formatAppLog("log", "at utils/request.js:16", params, baseUrl + url, "进来了么");
       uni.request({
         url: baseUrl + url,
         data: params,
@@ -4723,7 +4723,7 @@ if (uni.restoreGlobal) {
         method,
         sslVerify: false
       }).then((res) => {
-        formatAppLog("log", "at utils/request.js:27", params, url, res, "header");
+        formatAppLog("log", "at utils/request.js:24", params, url, res, "header");
         const { data } = res;
         if (res.statusCode == 401) {
           uni.showToast({
@@ -4749,7 +4749,7 @@ if (uni.restoreGlobal) {
           reject(res.data);
         }
       }).catch((err) => {
-        formatAppLog("log", "at utils/request.js:55", err, "errr");
+        formatAppLog("log", "at utils/request.js:52", err, "errr");
         const error = { data: { msg: err.data } };
         reject(error);
       });

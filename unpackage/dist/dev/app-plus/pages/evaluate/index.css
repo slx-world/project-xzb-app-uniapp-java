@@ -714,7 +714,7 @@
   margin-bottom: 0.25rem;
 }
 .evaluate .homeList .order .right .time[data-v-1422da40] {
-  margin-bottom: 0.9375rem;
+  margin-bottom: 0.5rem;
 }
 .evaluate .homeList .order .right .time uni-text[data-v-1422da40] {
   color: var(--color-black-19);
@@ -726,6 +726,7 @@
   margin-right: 0.625rem;
 }
 .evaluate .homeList .img[data-v-1422da40] {
+  margin-top: 0.125rem;
   margin-bottom: 0.9375rem;
 }
 .evaluate .homeList .img uni-image[data-v-1422da40] {
@@ -736,6 +737,7 @@
 .evaluate .homeList .time[data-v-1422da40] {
   color: var(--color-gray-9);
   font-size: 0.75rem;
+  margin-bottom: 0.9375rem;
 }
 .evaluate .homeList .time .replys[data-v-1422da40] {
   color: var(--color-gray-59);
@@ -1155,7 +1157,7 @@ uni-page-head[data-v-2cd4902b],
   margin-bottom: 0.25rem;
 }
 .evaluate .homeList .order .right .time[data-v-2cd4902b] {
-  margin-bottom: 0.9375rem;
+  margin-bottom: 0.5rem;
 }
 .evaluate .homeList .order .right .time uni-text[data-v-2cd4902b] {
   color: var(--color-black-19);
@@ -1167,6 +1169,7 @@ uni-page-head[data-v-2cd4902b],
   margin-right: 0.625rem;
 }
 .evaluate .homeList .img[data-v-2cd4902b] {
+  margin-top: 0.125rem;
   margin-bottom: 0.9375rem;
 }
 .evaluate .homeList .img uni-image[data-v-2cd4902b] {
@@ -1177,6 +1180,7 @@ uni-page-head[data-v-2cd4902b],
 .evaluate .homeList .time[data-v-2cd4902b] {
   color: var(--color-gray-9);
   font-size: 0.75rem;
+  margin-bottom: 0.9375rem;
 }
 .evaluate .homeList .time .replys[data-v-2cd4902b] {
   color: var(--color-gray-59);
