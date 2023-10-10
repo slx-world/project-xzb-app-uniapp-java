@@ -1,6 +1,34 @@
 <!-- 订单页面 -->
 <template>
   <view class="historyOrder">
+    <gscosmosDateSelect
+      :date="startTime"
+      :minYear="1900"
+      :maxYear="2100"
+      timeType="start"
+      :defaultValue="[
+        new Date(startTime).getFullYear() - 1900,
+        new Date(startTime).getMonth(),
+        new Date(startTime).getDate() - 1,
+      ]"
+      @confirm="bindStartDateChange"
+      :showCalendar="dateSelecStarttVisiable"
+      @cancel="handleClose"
+    ></gscosmosDateSelect>
+    <gscosmosDateSelect
+      :date="endTime"
+      :minYear="1900"
+      :maxYear="2100"
+      timeType="end"
+      :defaultValue="[
+        new Date(endTime).getFullYear() - 1900,
+        new Date(endTime).getMonth(),
+        new Date(endTime).getDate() - 1,
+      ]"
+      @confirm="bindEndDateChange"
+      :showCalendar="dateSelecEndtVisiable"
+      @cancel="handleClose"
+    ></gscosmosDateSelect>
     <!-- nav -->
     <UniNav
       title="历史订单"
@@ -12,7 +40,6 @@
     <scroll-view
       :scroll-y="icCanScroll"
       class="scrollList"
-      @scroll="handleScroll"
       @scrolltolower="handleLoad"
       :upper-threshold="50"
       ref="scrollView"
@@ -29,29 +56,20 @@
         <view class="popup-content">
           <view class="header">
             <view class="tips">选择时间</view>
-            <image class="close" src="../../static/new/btn_nav_close@2x.png" />
+            <image
+              class="close"
+              src="../../static/new/btn_nav_close@2x.png"
+              @click="popup.close()"
+            />
           </view>
           <view class="time">
-            <picker
-              fields="day"
-              mode="date"
-              :value="startTime"
-              :end="endTime"
-              @change="bindStartDateChange"
-              ><view class="startTime">{{
-                startTime || '开始时间'
-              }}</view></picker
-            >
-
-            <view class="zhi">至</view>
-            <picker
-              fields="day"
-              mode="date"
-              :value="endTime"
-              :end="endTime"
-              @change="bindEndDateChange"
-              ><view class="endTime">{{ endTime || '结束时间' }}</view></picker
-            >
+            <view class="startTime" @click="handleStartTime">{{
+              startTime || '开始时间'
+            }}</view>
+            <view class="zhi">至</view
+            ><view class="endTime" @click="handleEndTime">{{
+              endTime || '结束时间'
+            }}</view>
           </view>
           <view class="footer">
             <view class="reset" @click="handleReset">重置</view>
@@ -88,6 +106,8 @@ import UniFooter from '@/components/uni-footer/index.vue';
 import UniTab from '@/components/uni-tab/index.vue';
 // 导航组件
 import UniNav from '@/components/uni-nav/index.vue';
+// 日期选择
+import gscosmosDateSelect from '../../components/gscosmosDateSelect';
 // ------定义变量------
 const store = useStore();
 const emit = defineEmits(''); //子组件向父组件事件传递
@@ -99,6 +119,8 @@ const homeList = reactive({
 });
 const startTime = ref(format(new Date().getTime() - 15552000000, 'yyyy-MM-dd'));
 const endTime = ref(format(new Date(), 'yyyy-MM-dd'));
+const dateSelecStarttVisiable = ref(false);
+const dateSelecEndtVisiable = ref(false);
 const scrollTop = ref(0);
 const scrollView = ref(null);
 // ------生命周期------
@@ -126,7 +148,7 @@ const searchDataByTime = () => {
 //开始时间
 const bindStartDateChange = (e) => {
   if (
-    new Date(endTime.value).getTime() - new Date(e.detail.value).getTime() >
+    new Date(endTime.value).getTime() - format(new Date(e.solarDate), 'yyyy-MM-dd').getTime() >
     31536000000
   ) {
     uni.showToast({
@@ -135,13 +157,13 @@ const bindStartDateChange = (e) => {
       icon: 'none',
     });
   } else {
-    startTime.value = e.detail.value;
+    startTime.value = format(new Date(e.solarDate), 'yyyy-MM-dd');
   }
 };
 //结束时间
 const bindEndDateChange = (e) => {
   if (
-    new Date(e.detail.value).getTime() - new Date(startTime.value).getTime() >
+    new Date(format(new Date(e.solarDate), 'yyyy-MM-dd')).getTime() - new Date(startTime.value).getTime() >
     31536000000
   ) {
     return uni.showToast({
@@ -150,8 +172,15 @@ const bindEndDateChange = (e) => {
       icon: 'none',
     });
   } else {
-    endTime.value = e.detail.value;
+    endTime.value = format(new Date(e.solarDate), 'yyyy-MM-dd');
   }
+};
+// 打开开始时间弹窗
+const handleStartTime = () => {
+  dateSelecStarttVisiable.value = true;
+};
+const handleEndTime = () => {
+  dateSelecEndtVisiable.value = true;
 };
 // 返回上一页
 const goBack = () => {
@@ -187,6 +216,10 @@ const getListData = (time) => {
     }
     homeList.data = homeList.data.concat(res.data);
   });
+};
+const handleClose = () => {
+  dateSelecStarttVisiable.value = false;
+  dateSelecEndtVisiable.value = false;
 };
 // ------定义方法------
 const getRobOrderList = () => {};

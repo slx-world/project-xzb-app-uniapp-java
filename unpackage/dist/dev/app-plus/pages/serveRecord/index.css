@@ -69,19 +69,20 @@
 }
 .icon-del-box[data-v-bdfc07e0] {
   display: flex;
-  align-items: center;
-  justify-content: center;
   position: absolute;
-  top: 3px;
-  right: 3px;
-  height: 26px;
-  width: 26px;
+  top: -2.03125rem;
+  right: -2.03125rem;
+  height: 4.0625rem;
+  width: 4.0625rem;
   border-radius: 50%;
   background-color: rgba(0, 0, 0, 0.5);
   z-index: 2;
   transform: rotate(-45deg);
 }
 .icon-del[data-v-bdfc07e0] {
+  position: absolute;
+  bottom: 2.03125rem;
+  right: 2.75rem;
   width: 15px;
   height: 2px;
   background-color: #fff;
@@ -817,6 +818,7 @@
   border-bottom-width: 0.03125rem;
   border-bottom-style: solid;
   border-bottom-color: #eee;
+  box-shadow: 0 2px 4px 0 #181a390a;
 }
 .uni-ellipsis-1[data-v-26544265] {
   overflow: hidden;
@@ -833,7 +835,7 @@
 .serveRecord .card[data-v-1ccdec0f] {
   margin-top: 0.9375rem;
   background-color: var(--neutral-color-white);
-  padding: 1.25rem 0.96875rem 1.25rem 1.375rem;
+  padding: 1.25rem 0.9375rem 1.25rem 0.9375rem;
 }
 .serveRecord .title[data-v-1ccdec0f] {
   font-size: 1rem;
@@ -852,8 +854,8 @@
   position: absolute;
   font-size: 0.875rem;
   color: var(--color-gray-9);
-  right: 2.1875rem;
-  bottom: 1.875rem;
+  right: 1.5625rem;
+  bottom: 2.5rem;
 }
 .serveRecord .remark .limit .min[data-v-1ccdec0f] {
   color: var(--color-red-bg);
@@ -870,7 +872,7 @@
   background-color: var(--neutral-color-background);
   padding: 0.875rem;
   height: calc(100% - 0.875rem);
-  width: calc(100% - 0.5625rem);
+  width: calc(100% - 1.75rem);
 }
 .serveRecord .footer[data-v-1ccdec0f] {
   width: 100%;
@@ -892,4 +894,24 @@
   text-align: center;
   line-height: 2.75rem;
   margin-top: 0.9375rem;
+}
+[data-v-1ccdec0f] .uni-textarea-placeholder {
+  z-index: 100;
+  top: 0.625rem;
+  left: 0.625rem;
+  width: auto;
+}
+[data-v-1ccdec0f] uni-textarea {
+  width: 21.5625rem;
+  height: 8.125rem;
+}
+.must[data-v-1ccdec0f] {
+  color: #f74346;
+  font-size: 1rem;
+  font-face: PingFangSC;
+  font-weight: 600;
+  line-height: 0;
+  letter-spacing: 0.01rem;
+  paragraph-spacing: 0;
+  text-align: left;
 }

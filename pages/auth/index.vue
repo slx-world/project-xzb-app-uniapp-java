@@ -39,8 +39,7 @@
           <view class="photoLabel">示例图</view>
         </view>
       </view>
-    </view>
-    <!-- 身份证反面 -->
+          <!-- 身份证反面 -->
     <view class="countryPhoto">
       <view class="content">
         <view class="photoItem">
@@ -58,6 +57,8 @@
         </view>
       </view>
     </view>
+    </view>
+
     <view class="data">
       <view class="label">上传证明资料</view>
       <view class="content">

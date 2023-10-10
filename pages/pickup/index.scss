@@ -2,10 +2,15 @@
   .tabScroll{
     position: fixed;
     top: 0rpx;
-    width: 100%!important;
+    width: 100% !important;
+    box-sizing: border-box;
+    padding: 0 36rpx 0 51rpx;
     z-index: 99;
     // height: 140rpx;
     padding-top: 44rpx;
+    :deep(.uni-scroll-view-content .history){
+      margin-right: 0;
+    }
   }
   .homeList{
     padding-top: 100rpx;

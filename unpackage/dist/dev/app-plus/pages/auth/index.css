@@ -686,19 +686,20 @@
 }
 .icon-del-box[data-v-bdfc07e0] {
   display: flex;
-  align-items: center;
-  justify-content: center;
   position: absolute;
-  top: 3px;
-  right: 3px;
-  height: 26px;
-  width: 26px;
+  top: -2.03125rem;
+  right: -2.03125rem;
+  height: 4.0625rem;
+  width: 4.0625rem;
   border-radius: 50%;
   background-color: rgba(0, 0, 0, 0.5);
   z-index: 2;
   transform: rotate(-45deg);
 }
 .icon-del[data-v-bdfc07e0] {
+  position: absolute;
+  bottom: 2.03125rem;
+  right: 2.75rem;
   width: 15px;
   height: 2px;
   background-color: #fff;
@@ -925,6 +926,7 @@
   border-bottom-width: 0.03125rem;
   border-bottom-style: solid;
   border-bottom-color: #eee;
+  box-shadow: 0 2px 4px 0 #181a390a;
 }
 .uni-ellipsis-1[data-v-26544265] {
   overflow: hidden;
@@ -939,19 +941,23 @@
 /* 水平间距 */
 /* 水平间距 */
 .auth[data-v-3f748249] {
-  background-color: var(--neutral-color-white);
   min-height: 100vh;
 }
-.auth .idCard[data-v-3f748249] {
-  margin-top: 1.5625rem;
+.auth .name[data-v-3f748249] {
+  margin-top: 0.9375rem;
+}
+.auth .name[data-v-3f748249], .auth .idCard[data-v-3f748249] {
+  height: 1.375rem;
 }
 .auth .name[data-v-3f748249], .auth .idCard[data-v-3f748249], .auth .idCardPhoto[data-v-3f748249], .auth .data[data-v-3f748249] {
   display: flex;
   align-items: center;
+  background-color: var(--neutral-color-white);
   border-bottom: 0.0625rem solid var(--color-gray-e8);
-  padding-bottom: 0.9375rem;
-  margin-left: 0.9375rem;
-  margin-right: 0.9375rem;
+  padding-bottom: 0.96875rem;
+  padding-top: 0.75rem;
+  padding-left: 0.9375rem;
+  padding-right: 0.9375rem;
 }
 .auth .name[data-v-3f748249] .uni-easyinput__content, .auth .idCard[data-v-3f748249] .uni-easyinput__content, .auth .idCardPhoto[data-v-3f748249] .uni-easyinput__content, .auth .data[data-v-3f748249] .uni-easyinput__content {
   border: none;
@@ -1026,11 +1032,17 @@
 .auth .idCardPhoto .content .photoItem:last-child .photoLabel[data-v-3f748249], .auth .countryPhoto .content .photoItem:last-child .photoLabel[data-v-3f748249], .auth .data .content .photoItem:last-child .photoLabel[data-v-3f748249] {
   margin-right: 2rem;
 }
-.auth .countryPhoto[data-v-3f748249] {
-  margin-top: 1.25rem;
+.auth .idCardPhoto[data-v-3f748249] {
+  margin-top: 0.9375rem;
+  padding-top: 1.28125rem;
+}
+.auth .idCardPhoto[data-v-3f748249] {
+  margin-top: 0.9375rem;
 }
 .auth .data[data-v-3f748249] {
-  padding-bottom: 1.375rem;
+  margin-top: 0;
+  padding-top: 1.28125rem;
+  padding-bottom: 3.3125rem;
 }
 .auth .data .content .photoLabel[data-v-3f748249] {
   text-align: left !important;

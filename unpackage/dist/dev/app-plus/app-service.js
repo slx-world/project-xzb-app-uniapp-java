@@ -38,7 +38,7 @@ if (uni.restoreGlobal) {
     }
     return target;
   };
-  const _sfc_main$L = {
+  const _sfc_main$M = {
     name: "StarPage",
     setup: (props) => {
       vue.onMounted(() => {
@@ -58,7 +58,7 @@ if (uni.restoreGlobal) {
       vue.createElementVNode("view", { class: "bottom" })
     ]);
   }
-  const PagesStartIndex = /* @__PURE__ */ _export_sfc(_sfc_main$L, [["render", _sfc_render$e], ["__scopeId", "data-v-255b53b3"], ["__file", "D:/项目/小智帮/project-xzb-app-uniapp-java/pages/start/index.vue"]]);
+  const PagesStartIndex = /* @__PURE__ */ _export_sfc(_sfc_main$M, [["render", _sfc_render$e], ["__scopeId", "data-v-255b53b3"], ["__file", "D:/项目/小智帮/project-xzb-app-uniapp-java/pages/start/index.vue"]]);
   const ON_SHOW = "onShow";
   const ON_LOAD = "onLoad";
   const ON_PULL_DOWN_REFRESH = "onPullDownRefresh";
@@ -1253,7 +1253,7 @@ if (uni.restoreGlobal) {
     const reg = /^[0-9]*$/g;
     return typeof val === "number" || reg.test(val) ? val + "px" : val;
   };
-  const _sfc_main$K = {
+  const _sfc_main$L = {
     name: "UniIcons",
     emits: ["click"],
     props: {
@@ -1310,8 +1310,8 @@ if (uni.restoreGlobal) {
       /* CLASS, STYLE */
     );
   }
-  const __easycom_0$7 = /* @__PURE__ */ _export_sfc(_sfc_main$K, [["render", _sfc_render$d], ["__scopeId", "data-v-d31e1c47"], ["__file", "D:/项目/小智帮/project-xzb-app-uniapp-java/uni_modules/uni-icons/components/uni-icons/uni-icons.vue"]]);
-  const _sfc_main$J = {
+  const __easycom_0$7 = /* @__PURE__ */ _export_sfc(_sfc_main$L, [["render", _sfc_render$d], ["__scopeId", "data-v-d31e1c47"], ["__file", "D:/项目/小智帮/project-xzb-app-uniapp-java/uni_modules/uni-icons/components/uni-icons/uni-icons.vue"]]);
+  const _sfc_main$K = {
     name: "uni-easyinput",
     emits: ["click", "iconClick", "update:modelValue", "input", "focus", "blur", "confirm"],
     model: {
@@ -1659,8 +1659,8 @@ if (uni.restoreGlobal) {
       /* CLASS, STYLE */
     );
   }
-  const __easycom_0$6 = /* @__PURE__ */ _export_sfc(_sfc_main$J, [["render", _sfc_render$c], ["__scopeId", "data-v-09fd5285"], ["__file", "D:/项目/小智帮/project-xzb-app-uniapp-java/uni_modules/uni-easyinput/components/uni-easyinput/uni-easyinput.vue"]]);
-  const _sfc_main$I = {
+  const __easycom_0$6 = /* @__PURE__ */ _export_sfc(_sfc_main$K, [["render", _sfc_render$c], ["__scopeId", "data-v-09fd5285"], ["__file", "D:/项目/小智帮/project-xzb-app-uniapp-java/uni_modules/uni-easyinput/components/uni-easyinput/uni-easyinput.vue"]]);
+  const _sfc_main$J = {
     name: "uniFormsItem",
     props: {
       // 自定义内容
@@ -2056,7 +2056,7 @@ if (uni.restoreGlobal) {
       /* CLASS */
     );
   }
-  const __easycom_1$1 = /* @__PURE__ */ _export_sfc(_sfc_main$I, [["render", _sfc_render$b], ["__scopeId", "data-v-462874dd"], ["__file", "D:/项目/小智帮/project-xzb-app-uniapp-java/uni_modules/uni-forms/components/uni-forms-item/uni-forms-item.vue"]]);
+  const __easycom_1$1 = /* @__PURE__ */ _export_sfc(_sfc_main$J, [["render", _sfc_render$b], ["__scopeId", "data-v-462874dd"], ["__file", "D:/项目/小智帮/project-xzb-app-uniapp-java/uni_modules/uni-forms/components/uni-forms-item/uni-forms-item.vue"]]);
   var pattern = {
     email: /^\S+?@\S+?\.\S+?$/,
     idcard: /^[1-9]\d{5}(18|19|([23]\d))\d{2}((0[1-9])|(10|11|12))(([0-2][1-9])|10|20|30|31)\d{3}[0-9Xx]$/,
@@ -2477,7 +2477,7 @@ if (uni.restoreGlobal) {
     };
   }
   SchemaValidator.message = new Message();
-  const _sfc_main$H = {
+  const _sfc_main$I = {
     name: "uniForms",
     components: {},
     emits: ["input", "reset", "validate", "submit"],
@@ -2885,7 +2885,7 @@ if (uni.restoreGlobal) {
       /* CLASS */
     );
   }
-  const __easycom_2 = /* @__PURE__ */ _export_sfc(_sfc_main$H, [["render", _sfc_render$a], ["__scopeId", "data-v-9a1e3c32"], ["__file", "D:/项目/小智帮/project-xzb-app-uniapp-java/uni_modules/uni-forms/components/uni-forms/uni-forms.vue"]]);
+  const __easycom_2 = /* @__PURE__ */ _export_sfc(_sfc_main$I, [["render", _sfc_render$a], ["__scopeId", "data-v-9a1e3c32"], ["__file", "D:/项目/小智帮/project-xzb-app-uniapp-java/uni_modules/uni-forms/components/uni-forms/uni-forms.vue"]]);
   class MPAnimation {
     constructor(options, _this) {
       this.options = options;
@@ -2996,7 +2996,7 @@ if (uni.restoreGlobal) {
     clearTimeout(_this.timer);
     return new MPAnimation(option, _this);
   }
-  const _sfc_main$G = {
+  const _sfc_main$H = {
     name: "uniTransition",
     emits: ["click", "change"],
     props: {
@@ -3255,8 +3255,8 @@ if (uni.restoreGlobal) {
       vue.renderSlot(_ctx.$slots, "default")
     ], 14, ["animation"])) : vue.createCommentVNode("v-if", true);
   }
-  const __easycom_0$5 = /* @__PURE__ */ _export_sfc(_sfc_main$G, [["render", _sfc_render$9], ["__file", "D:/项目/小智帮/project-xzb-app-uniapp-java/uni_modules/uni-transition/components/uni-transition/uni-transition.vue"]]);
-  const _sfc_main$F = {
+  const __easycom_0$5 = /* @__PURE__ */ _export_sfc(_sfc_main$H, [["render", _sfc_render$9], ["__file", "D:/项目/小智帮/project-xzb-app-uniapp-java/uni_modules/uni-transition/components/uni-transition/uni-transition.vue"]]);
+  const _sfc_main$G = {
     name: "uniPopup",
     components: {},
     emits: ["change", "maskClick"],
@@ -3644,7 +3644,7 @@ if (uni.restoreGlobal) {
       /* CLASS */
     )) : vue.createCommentVNode("v-if", true);
   }
-  const __easycom_0$4 = /* @__PURE__ */ _export_sfc(_sfc_main$F, [["render", _sfc_render$8], ["__scopeId", "data-v-4dd3c44b"], ["__file", "D:/项目/小智帮/project-xzb-app-uniapp-java/uni_modules/uni-popup/components/uni-popup/uni-popup.vue"]]);
+  const __easycom_0$4 = /* @__PURE__ */ _export_sfc(_sfc_main$G, [["render", _sfc_render$8], ["__scopeId", "data-v-4dd3c44b"], ["__file", "D:/项目/小智帮/project-xzb-app-uniapp-java/uni_modules/uni-popup/components/uni-popup/uni-popup.vue"]]);
   const _imports_0 = "/static/new/img_logo@2x.png";
   function getDevtoolsGlobalHook() {
     return getTarget().__VUE_DEVTOOLS_GLOBAL_HOOK__;
@@ -4703,7 +4703,7 @@ if (uni.restoreGlobal) {
     this._committing = committing;
   };
   Object.defineProperties(Store.prototype, prototypeAccessors);
-  const baseUrl = "/api";
+  const baseUrl = "http://172.17.2.58/api";
   function request({ url = "", params = {}, method = "GET" }) {
     let baseUrl2 = "https://jzo2o-api-test.itheima.net";
     const token = uni.getStorageSync("token");
@@ -4825,7 +4825,7 @@ if (uni.restoreGlobal) {
     url: `/customer/worker/bank-account/currentUserBankAccount`,
     method: "get"
   });
-  const _sfc_main$E = {
+  const _sfc_main$F = {
     __name: "user",
     setup(__props) {
       const store2 = useStore();
@@ -5060,8 +5060,8 @@ if (uni.restoreGlobal) {
       };
     }
   };
-  const PagesLoginUser = /* @__PURE__ */ _export_sfc(_sfc_main$E, [["__file", "D:/项目/小智帮/project-xzb-app-uniapp-java/pages/login/user.vue"]]);
-  const _sfc_main$D = {
+  const PagesLoginUser = /* @__PURE__ */ _export_sfc(_sfc_main$F, [["__file", "D:/项目/小智帮/project-xzb-app-uniapp-java/pages/login/user.vue"]]);
+  const _sfc_main$E = {
     name: "UniStatusBar",
     data() {
       return {
@@ -5086,9 +5086,9 @@ if (uni.restoreGlobal) {
       /* STYLE */
     );
   }
-  const statusBar = /* @__PURE__ */ _export_sfc(_sfc_main$D, [["render", _sfc_render$7], ["__scopeId", "data-v-7920e3e0"], ["__file", "D:/项目/小智帮/project-xzb-app-uniapp-java/uni_modules/uni-nav-bar/components/uni-nav-bar/uni-status-bar.vue"]]);
+  const statusBar = /* @__PURE__ */ _export_sfc(_sfc_main$E, [["render", _sfc_render$7], ["__scopeId", "data-v-7920e3e0"], ["__file", "D:/项目/小智帮/project-xzb-app-uniapp-java/uni_modules/uni-nav-bar/components/uni-nav-bar/uni-status-bar.vue"]]);
   const getVal = (val) => typeof val === "number" ? val + "px" : val;
-  const _sfc_main$C = {
+  const _sfc_main$D = {
     name: "UniNavBar",
     components: {
       statusBar
@@ -5363,7 +5363,7 @@ if (uni.restoreGlobal) {
       /* CLASS */
     );
   }
-  const __easycom_0$3 = /* @__PURE__ */ _export_sfc(_sfc_main$C, [["render", _sfc_render$6], ["__scopeId", "data-v-26544265"], ["__file", "D:/项目/小智帮/project-xzb-app-uniapp-java/uni_modules/uni-nav-bar/components/uni-nav-bar/uni-nav-bar.vue"]]);
+  const __easycom_0$3 = /* @__PURE__ */ _export_sfc(_sfc_main$D, [["render", _sfc_render$6], ["__scopeId", "data-v-26544265"], ["__file", "D:/项目/小智帮/project-xzb-app-uniapp-java/uni_modules/uni-nav-bar/components/uni-nav-bar/uni-nav-bar.vue"]]);
   const getDispatchOrder = (params) => request({
     url: `/orders-dispatch/worker/queryForList?serveTypeId=${params}`,
     method: "get"
@@ -5440,7 +5440,7 @@ if (uni.restoreGlobal) {
     method: "get",
     params
   });
-  const _sfc_main$B = {
+  const _sfc_main$C = {
     __name: "index",
     setup(__props) {
       const location2 = vue.ref("");
@@ -5601,8 +5601,8 @@ if (uni.restoreGlobal) {
       };
     }
   };
-  const UniNav$1 = /* @__PURE__ */ _export_sfc(_sfc_main$B, [["__scopeId", "data-v-5f714409"], ["__file", "D:/项目/小智帮/project-xzb-app-uniapp-java/components/uni-home-nav/index.vue"]]);
-  const _sfc_main$A = {
+  const UniNav$1 = /* @__PURE__ */ _export_sfc(_sfc_main$C, [["__scopeId", "data-v-5f714409"], ["__file", "D:/项目/小智帮/project-xzb-app-uniapp-java/components/uni-home-nav/index.vue"]]);
+  const _sfc_main$B = {
     __name: "index",
     props: {
       pagePath: {
@@ -5732,8 +5732,8 @@ if (uni.restoreGlobal) {
       };
     }
   };
-  const UniFooter = /* @__PURE__ */ _export_sfc(_sfc_main$A, [["__file", "D:/项目/小智帮/project-xzb-app-uniapp-java/components/uni-footer/index.vue"]]);
-  const _sfc_main$z = {
+  const UniFooter = /* @__PURE__ */ _export_sfc(_sfc_main$B, [["__file", "D:/项目/小智帮/project-xzb-app-uniapp-java/components/uni-footer/index.vue"]]);
+  const _sfc_main$A = {
     __name: "index",
     props: {
       canPickUp: {
@@ -5757,8 +5757,8 @@ if (uni.restoreGlobal) {
       };
     }
   };
-  const Empty = /* @__PURE__ */ _export_sfc(_sfc_main$z, [["__scopeId", "data-v-c00e6953"], ["__file", "D:/项目/小智帮/project-xzb-app-uniapp-java/components/empty/index.vue"]]);
-  const _sfc_main$y = {
+  const Empty = /* @__PURE__ */ _export_sfc(_sfc_main$A, [["__scopeId", "data-v-c00e6953"], ["__file", "D:/项目/小智帮/project-xzb-app-uniapp-java/components/empty/index.vue"]]);
+  const _sfc_main$z = {
     __name: "homeFilter",
     props: {
       fixTop: {
@@ -5935,8 +5935,8 @@ if (uni.restoreGlobal) {
       };
     }
   };
-  const HomeFilter = /* @__PURE__ */ _export_sfc(_sfc_main$y, [["__scopeId", "data-v-538110be"], ["__file", "D:/项目/小智帮/project-xzb-app-uniapp-java/pages/index/components/homeFilter.vue"]]);
-  const _sfc_main$x = {
+  const HomeFilter = /* @__PURE__ */ _export_sfc(_sfc_main$z, [["__scopeId", "data-v-538110be"], ["__file", "D:/项目/小智帮/project-xzb-app-uniapp-java/pages/index/components/homeFilter.vue"]]);
+  const _sfc_main$y = {
     __name: "homeList",
     props: {
       data: {
@@ -6185,8 +6185,8 @@ if (uni.restoreGlobal) {
       };
     }
   };
-  const HomeList$3 = /* @__PURE__ */ _export_sfc(_sfc_main$x, [["__scopeId", "data-v-5d962223"], ["__file", "D:/项目/小智帮/project-xzb-app-uniapp-java/pages/index/components/homeList.vue"]]);
-  const _sfc_main$w = {
+  const HomeList$3 = /* @__PURE__ */ _export_sfc(_sfc_main$y, [["__scopeId", "data-v-5d962223"], ["__file", "D:/项目/小智帮/project-xzb-app-uniapp-java/pages/index/components/homeList.vue"]]);
+  const _sfc_main$x = {
     __name: "index",
     setup(__props) {
       const fixTop = vue.ref(false);
@@ -6324,8 +6324,8 @@ if (uni.restoreGlobal) {
       };
     }
   };
-  const PagesIndexIndex = /* @__PURE__ */ _export_sfc(_sfc_main$w, [["__scopeId", "data-v-1cf27b2a"], ["__file", "D:/项目/小智帮/project-xzb-app-uniapp-java/pages/index/index.vue"]]);
-  const _sfc_main$v = {
+  const PagesIndexIndex = /* @__PURE__ */ _export_sfc(_sfc_main$x, [["__scopeId", "data-v-1cf27b2a"], ["__file", "D:/项目/小智帮/project-xzb-app-uniapp-java/pages/index/index.vue"]]);
+  const _sfc_main$w = {
     __name: "index",
     props: {
       title: {
@@ -6371,8 +6371,8 @@ if (uni.restoreGlobal) {
       };
     }
   };
-  const UniNav = /* @__PURE__ */ _export_sfc(_sfc_main$v, [["__scopeId", "data-v-6e45a3f8"], ["__file", "D:/项目/小智帮/project-xzb-app-uniapp-java/components/uni-nav/index.vue"]]);
-  const _sfc_main$u = {
+  const UniNav = /* @__PURE__ */ _export_sfc(_sfc_main$w, [["__scopeId", "data-v-6e45a3f8"], ["__file", "D:/项目/小智帮/project-xzb-app-uniapp-java/components/uni-nav/index.vue"]]);
+  const _sfc_main$v = {
     __name: "index",
     setup(__props) {
       const activeId = vue.ref(null);
@@ -6548,8 +6548,8 @@ if (uni.restoreGlobal) {
       };
     }
   };
-  const PagesServiceSkillIndex = /* @__PURE__ */ _export_sfc(_sfc_main$u, [["__scopeId", "data-v-6ade5948"], ["__file", "D:/项目/小智帮/project-xzb-app-uniapp-java/pages/serviceSkill/index.vue"]]);
-  const _sfc_main$t = {
+  const PagesServiceSkillIndex = /* @__PURE__ */ _export_sfc(_sfc_main$v, [["__scopeId", "data-v-6ade5948"], ["__file", "D:/项目/小智帮/project-xzb-app-uniapp-java/pages/serviceSkill/index.vue"]]);
+  const _sfc_main$u = {
     __name: "index",
     setup(__props) {
       const canPickUp = vue.ref(false);
@@ -6607,8 +6607,8 @@ if (uni.restoreGlobal) {
       };
     }
   };
-  const PagesGetOrderIndex = /* @__PURE__ */ _export_sfc(_sfc_main$t, [["__scopeId", "data-v-2eafd06a"], ["__file", "D:/项目/小智帮/project-xzb-app-uniapp-java/pages/getOrder/index.vue"]]);
-  const _sfc_main$s = {
+  const PagesGetOrderIndex = /* @__PURE__ */ _export_sfc(_sfc_main$u, [["__scopeId", "data-v-2eafd06a"], ["__file", "D:/项目/小智帮/project-xzb-app-uniapp-java/pages/getOrder/index.vue"]]);
+  const _sfc_main$t = {
     __name: "index",
     setup(__props) {
       const cityName = vue.ref("请选择");
@@ -6808,7 +6808,7 @@ if (uni.restoreGlobal) {
       };
     }
   };
-  const PagesServiceRangeIndex = /* @__PURE__ */ _export_sfc(_sfc_main$s, [["__scopeId", "data-v-a953d043"], ["__file", "D:/项目/小智帮/project-xzb-app-uniapp-java/pages/serviceRange/index.vue"]]);
+  const PagesServiceRangeIndex = /* @__PURE__ */ _export_sfc(_sfc_main$t, [["__scopeId", "data-v-a953d043"], ["__file", "D:/项目/小智帮/project-xzb-app-uniapp-java/pages/serviceRange/index.vue"]]);
   const Citys = {
     list: [
       {
@@ -8490,7 +8490,7 @@ if (uni.restoreGlobal) {
       }
     ]
   };
-  const _sfc_main$r = {
+  const _sfc_main$s = {
     __name: "index",
     setup(__props) {
       const store2 = useStore();
@@ -8772,8 +8772,8 @@ if (uni.restoreGlobal) {
       };
     }
   };
-  const PagesCityIndex = /* @__PURE__ */ _export_sfc(_sfc_main$r, [["__scopeId", "data-v-5a18b3c9"], ["__file", "D:/项目/小智帮/project-xzb-app-uniapp-java/pages/city/index.vue"]]);
-  const _sfc_main$q = {
+  const PagesCityIndex = /* @__PURE__ */ _export_sfc(_sfc_main$s, [["__scopeId", "data-v-5a18b3c9"], ["__file", "D:/项目/小智帮/project-xzb-app-uniapp-java/pages/city/index.vue"]]);
+  const _sfc_main$r = {
     __name: "index",
     setup(__props) {
       const canPickUp = vue.ref(false);
@@ -8951,7 +8951,7 @@ if (uni.restoreGlobal) {
       };
     }
   };
-  const PagesSettingIndex = /* @__PURE__ */ _export_sfc(_sfc_main$q, [["__file", "D:/项目/小智帮/project-xzb-app-uniapp-java/pages/setting/index.vue"]]);
+  const PagesSettingIndex = /* @__PURE__ */ _export_sfc(_sfc_main$r, [["__file", "D:/项目/小智帮/project-xzb-app-uniapp-java/pages/setting/index.vue"]]);
   function _typeof(o2) {
     "@babel/helpers - typeof";
     return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function(o3) {
@@ -10579,7 +10579,7 @@ if (uni.restoreGlobal) {
     "🤞",
     "😫"
   ];
-  const _sfc_main$p = {
+  const _sfc_main$q = {
     __name: "homeList",
     props: {
       data: {
@@ -10719,8 +10719,8 @@ if (uni.restoreGlobal) {
       };
     }
   };
-  const HomeList$2 = /* @__PURE__ */ _export_sfc(_sfc_main$p, [["__scopeId", "data-v-dee59258"], ["__file", "D:/项目/小智帮/project-xzb-app-uniapp-java/pages/history/components/homeList.vue"]]);
-  const _sfc_main$o = {
+  const HomeList$2 = /* @__PURE__ */ _export_sfc(_sfc_main$q, [["__scopeId", "data-v-dee59258"], ["__file", "D:/项目/小智帮/project-xzb-app-uniapp-java/pages/history/components/homeList.vue"]]);
+  const _sfc_main$p = {
     name: "UniBadge",
     emits: ["click"],
     props: {
@@ -10863,8 +10863,8 @@ if (uni.restoreGlobal) {
       )) : vue.createCommentVNode("v-if", true)
     ]);
   }
-  const __easycom_0$2 = /* @__PURE__ */ _export_sfc(_sfc_main$o, [["render", _sfc_render$5], ["__scopeId", "data-v-c97cb896"], ["__file", "D:/项目/小智帮/project-xzb-app-uniapp-java/uni_modules/uni-badge/components/uni-badge/uni-badge.vue"]]);
-  const _sfc_main$n = {
+  const __easycom_0$2 = /* @__PURE__ */ _export_sfc(_sfc_main$p, [["render", _sfc_render$5], ["__scopeId", "data-v-c97cb896"], ["__file", "D:/项目/小智帮/project-xzb-app-uniapp-java/uni_modules/uni-badge/components/uni-badge/uni-badge.vue"]]);
+  const _sfc_main$o = {
     __name: "index",
     props: {
       tabBars: {
@@ -10993,7 +10993,1209 @@ if (uni.restoreGlobal) {
       };
     }
   };
-  const UniTab = /* @__PURE__ */ _export_sfc(_sfc_main$n, [["__file", "D:/项目/小智帮/project-xzb-app-uniapp-java/components/uni-tab/index.vue"]]);
+  const UniTab = /* @__PURE__ */ _export_sfc(_sfc_main$o, [["__file", "D:/项目/小智帮/project-xzb-app-uniapp-java/components/uni-tab/index.vue"]]);
+  const calendar = {
+    /**
+     * 农历1900-2100的润大小信息表
+     * @Array Of Property
+     * @return Hex
+     */
+    lunarInfo: [
+      19416,
+      19168,
+      42352,
+      21717,
+      53856,
+      55632,
+      91476,
+      22176,
+      39632,
+      21970,
+      //1900-1909
+      19168,
+      42422,
+      42192,
+      53840,
+      119381,
+      46400,
+      54944,
+      44450,
+      38320,
+      84343,
+      //1910-1919
+      18800,
+      42160,
+      46261,
+      27216,
+      27968,
+      109396,
+      11104,
+      38256,
+      21234,
+      18800,
+      //1920-1929
+      25958,
+      54432,
+      59984,
+      92821,
+      23248,
+      11104,
+      100067,
+      37600,
+      116951,
+      51536,
+      //1930-1939
+      54432,
+      120998,
+      46416,
+      22176,
+      107956,
+      9680,
+      37584,
+      53938,
+      43344,
+      46423,
+      //1940-1949
+      27808,
+      46416,
+      86869,
+      19872,
+      42416,
+      83315,
+      21168,
+      43432,
+      59728,
+      27296,
+      //1950-1959
+      44710,
+      43856,
+      19296,
+      43748,
+      42352,
+      21088,
+      62051,
+      55632,
+      23383,
+      22176,
+      //1960-1969
+      38608,
+      19925,
+      19152,
+      42192,
+      54484,
+      53840,
+      54616,
+      46400,
+      46752,
+      103846,
+      //1970-1979
+      38320,
+      18864,
+      43380,
+      42160,
+      45690,
+      27216,
+      27968,
+      44870,
+      43872,
+      38256,
+      //1980-1989
+      19189,
+      18800,
+      25776,
+      29859,
+      59984,
+      27480,
+      23232,
+      43872,
+      38613,
+      37600,
+      //1990-1999
+      51552,
+      55636,
+      54432,
+      55888,
+      30034,
+      22176,
+      43959,
+      9680,
+      37584,
+      51893,
+      //2000-2009
+      43344,
+      46240,
+      47780,
+      44368,
+      21977,
+      19360,
+      42416,
+      86390,
+      21168,
+      43312,
+      //2010-2019
+      31060,
+      27296,
+      44368,
+      23378,
+      19296,
+      42726,
+      42208,
+      53856,
+      60005,
+      54576,
+      //2020-2029
+      23200,
+      30371,
+      38608,
+      19195,
+      19152,
+      42192,
+      118966,
+      53840,
+      54560,
+      56645,
+      //2030-2039
+      46496,
+      22224,
+      21938,
+      18864,
+      42359,
+      42160,
+      43600,
+      111189,
+      27936,
+      44448,
+      //2040-2049
+      /**Add By JJonline@JJonline.Cn**/
+      84835,
+      37744,
+      18936,
+      18800,
+      25776,
+      92326,
+      59984,
+      27424,
+      108228,
+      43744,
+      //2050-2059
+      37600,
+      53987,
+      51552,
+      54615,
+      54432,
+      55888,
+      23893,
+      22176,
+      42704,
+      21972,
+      //2060-2069
+      21200,
+      43448,
+      43344,
+      46240,
+      46758,
+      44368,
+      21920,
+      43940,
+      42416,
+      21168,
+      //2070-2079
+      45683,
+      26928,
+      29495,
+      27296,
+      44368,
+      84821,
+      19296,
+      42352,
+      21732,
+      53600,
+      //2080-2089
+      59752,
+      54560,
+      55968,
+      92838,
+      22224,
+      19168,
+      43476,
+      41680,
+      53584,
+      62034,
+      //2090-2099
+      54560
+    ],
+    //2100
+    /**
+     * 公历每个月份的天数普通表
+     * @Array Of Property
+     * @return Number
+     */
+    solarMonth: [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31],
+    /**
+     * 天干地支之天干速查表
+     * @Array Of Property trans["甲","乙","丙","丁","戊","己","庚","辛","壬","癸"]
+     * @return Cn string
+     */
+    Gan: ["甲", "乙", "丙", "丁", "戊", "己", "庚", "辛", "壬", "癸"],
+    /**
+     * 天干地支之地支速查表
+     * @Array Of Property
+     * @trans["子","丑","寅","卯","辰","巳","午","未","申","酉","戌","亥"]
+     * @return Cn string
+     */
+    Zhi: ["子", "丑", "寅", "卯", "辰", "巳", "午", "未", "申", "酉", "戌", "亥"],
+    /**
+     * 天干地支之地支速查表<=>生肖
+     * @Array Of Property
+     * @trans["鼠","牛","虎","兔","龙","蛇","马","羊","猴","鸡","狗","猪"]
+     * @return Cn string
+     */
+    Animals: ["鼠", "牛", "虎", "兔", "龙", "蛇", "马", "羊", "猴", "鸡", "狗", "猪"],
+    /**
+     * 阳历节日
+     */
+    festival: {
+      "1-1": { title: "元旦节" },
+      "2-14": { title: "情人节" },
+      "5-1": { title: "劳动节" },
+      "5-4": { title: "青年节" },
+      "6-1": { title: "儿童节" },
+      "9-10": { title: "教师节" },
+      "10-1": { title: "国庆节" },
+      "12-25": { title: "圣诞节" },
+      "3-8": { title: "妇女节" },
+      "3-12": { title: "植树节" },
+      "4-1": { title: "愚人节" },
+      "5-12": { title: "护士节" },
+      "7-1": { title: "建党节" },
+      "8-1": { title: "建军节" },
+      "12-24": { title: "平安夜" }
+    },
+    /**
+     * 农历节日
+     */
+    lFestival: {
+      "12-30": { title: "除夕" },
+      "1-1": { title: "春节" },
+      "1-15": { title: "元宵节" },
+      "2-2": { title: "龙抬头" },
+      "5-5": { title: "端午节" },
+      "7-7": { title: "七夕节" },
+      "7-15": { title: "中元节" },
+      "8-15": { title: "中秋节" },
+      "9-9": { title: "重阳节" },
+      "10-1": { title: "寒衣节" },
+      "10-15": { title: "下元节" },
+      "12-8": { title: "腊八节" },
+      "12-23": { title: "北方小年" },
+      "12-24": { title: "南方小年" }
+    },
+    /**
+     * 返回默认定义的阳历节日
+     */
+    getFestival() {
+      return this.festival;
+    },
+    /**
+     * 返回默认定义的内容里节日
+     */
+    getLunarFestival() {
+      return this.lFestival;
+    },
+    /**
+     *
+     * @param param {Object} 按照festival的格式输入数据，设置阳历节日
+     */
+    setFestival(param = {}) {
+      this.festival = param;
+    },
+    /**
+     *
+     * @param param {Object} 按照lFestival的格式输入数据，设置农历节日
+     */
+    setLunarFestival(param = {}) {
+      this.lFestival = param;
+    },
+    /**
+     * 24节气速查表
+     * @Array Of Property
+     * @trans["小寒","大寒","立春","雨水","惊蛰","春分","清明","谷雨","立夏","小满","芒种","夏至","小暑","大暑","立秋","处暑","白露","秋分","寒露","霜降","立冬","小雪","大雪","冬至"]
+     * @return Cn string
+     */
+    solarTerm: ["小寒", "大寒", "立春", "雨水", "惊蛰", "春分", "清明", "谷雨", "立夏", "小满", "芒种", "夏至", "小暑", "大暑", "立秋", "处暑", "白露", "秋分", "寒露", "霜降", "立冬", "小雪", "大雪", "冬至"],
+    /**
+     * 1900-2100各年的24节气日期速查表
+     * @Array Of Property
+     * @return 0x string For splice
+     */
+    sTermInfo: [
+      "9778397bd097c36b0b6fc9274c91aa",
+      "97b6b97bd19801ec9210c965cc920e",
+      "97bcf97c3598082c95f8c965cc920f",
+      "97bd0b06bdb0722c965ce1cfcc920f",
+      "b027097bd097c36b0b6fc9274c91aa",
+      "97b6b97bd19801ec9210c965cc920e",
+      "97bcf97c359801ec95f8c965cc920f",
+      "97bd0b06bdb0722c965ce1cfcc920f",
+      "b027097bd097c36b0b6fc9274c91aa",
+      "97b6b97bd19801ec9210c965cc920e",
+      "97bcf97c359801ec95f8c965cc920f",
+      "97bd0b06bdb0722c965ce1cfcc920f",
+      "b027097bd097c36b0b6fc9274c91aa",
+      "9778397bd19801ec9210c965cc920e",
+      "97b6b97bd19801ec95f8c965cc920f",
+      "97bd09801d98082c95f8e1cfcc920f",
+      "97bd097bd097c36b0b6fc9210c8dc2",
+      "9778397bd197c36c9210c9274c91aa",
+      "97b6b97bd19801ec95f8c965cc920e",
+      "97bd09801d98082c95f8e1cfcc920f",
+      "97bd097bd097c36b0b6fc9210c8dc2",
+      "9778397bd097c36c9210c9274c91aa",
+      "97b6b97bd19801ec95f8c965cc920e",
+      "97bcf97c3598082c95f8e1cfcc920f",
+      "97bd097bd097c36b0b6fc9210c8dc2",
+      "9778397bd097c36c9210c9274c91aa",
+      "97b6b97bd19801ec9210c965cc920e",
+      "97bcf97c3598082c95f8c965cc920f",
+      "97bd097bd097c35b0b6fc920fb0722",
+      "9778397bd097c36b0b6fc9274c91aa",
+      "97b6b97bd19801ec9210c965cc920e",
+      "97bcf97c3598082c95f8c965cc920f",
+      "97bd097bd097c35b0b6fc920fb0722",
+      "9778397bd097c36b0b6fc9274c91aa",
+      "97b6b97bd19801ec9210c965cc920e",
+      "97bcf97c359801ec95f8c965cc920f",
+      "97bd097bd097c35b0b6fc920fb0722",
+      "9778397bd097c36b0b6fc9274c91aa",
+      "97b6b97bd19801ec9210c965cc920e",
+      "97bcf97c359801ec95f8c965cc920f",
+      "97bd097bd097c35b0b6fc920fb0722",
+      "9778397bd097c36b0b6fc9274c91aa",
+      "97b6b97bd19801ec9210c965cc920e",
+      "97bcf97c359801ec95f8c965cc920f",
+      "97bd097bd07f595b0b6fc920fb0722",
+      "9778397bd097c36b0b6fc9210c8dc2",
+      "9778397bd19801ec9210c9274c920e",
+      "97b6b97bd19801ec95f8c965cc920f",
+      "97bd07f5307f595b0b0bc920fb0722",
+      "7f0e397bd097c36b0b6fc9210c8dc2",
+      "9778397bd097c36c9210c9274c920e",
+      "97b6b97bd19801ec95f8c965cc920f",
+      "97bd07f5307f595b0b0bc920fb0722",
+      "7f0e397bd097c36b0b6fc9210c8dc2",
+      "9778397bd097c36c9210c9274c91aa",
+      "97b6b97bd19801ec9210c965cc920e",
+      "97bd07f1487f595b0b0bc920fb0722",
+      "7f0e397bd097c36b0b6fc9210c8dc2",
+      "9778397bd097c36b0b6fc9274c91aa",
+      "97b6b97bd19801ec9210c965cc920e",
+      "97bcf7f1487f595b0b0bb0b6fb0722",
+      "7f0e397bd097c35b0b6fc920fb0722",
+      "9778397bd097c36b0b6fc9274c91aa",
+      "97b6b97bd19801ec9210c965cc920e",
+      "97bcf7f1487f595b0b0bb0b6fb0722",
+      "7f0e397bd097c35b0b6fc920fb0722",
+      "9778397bd097c36b0b6fc9274c91aa",
+      "97b6b97bd19801ec9210c965cc920e",
+      "97bcf7f1487f531b0b0bb0b6fb0722",
+      "7f0e397bd097c35b0b6fc920fb0722",
+      "9778397bd097c36b0b6fc9274c91aa",
+      "97b6b97bd19801ec9210c965cc920e",
+      "97bcf7f1487f531b0b0bb0b6fb0722",
+      "7f0e397bd07f595b0b6fc920fb0722",
+      "9778397bd097c36b0b6fc9274c91aa",
+      "97b6b97bd19801ec9210c9274c920e",
+      "97bcf7f0e47f531b0b0bb0b6fb0722",
+      "7f0e397bd07f595b0b0bc920fb0722",
+      "9778397bd097c36b0b6fc9210c91aa",
+      "97b6b97bd197c36c9210c9274c920e",
+      "97bcf7f0e47f531b0b0bb0b6fb0722",
+      "7f0e397bd07f595b0b0bc920fb0722",
+      "9778397bd097c36b0b6fc9210c8dc2",
+      "9778397bd097c36c9210c9274c920e",
+      "97b6b7f0e47f531b0723b0b6fb0722",
+      "7f0e37f5307f595b0b0bc920fb0722",
+      "7f0e397bd097c36b0b6fc9210c8dc2",
+      "9778397bd097c36b0b70c9274c91aa",
+      "97b6b7f0e47f531b0723b0b6fb0721",
+      "7f0e37f1487f595b0b0bb0b6fb0722",
+      "7f0e397bd097c35b0b6fc9210c8dc2",
+      "9778397bd097c36b0b6fc9274c91aa",
+      "97b6b7f0e47f531b0723b0b6fb0721",
+      "7f0e27f1487f595b0b0bb0b6fb0722",
+      "7f0e397bd097c35b0b6fc920fb0722",
+      "9778397bd097c36b0b6fc9274c91aa",
+      "97b6b7f0e47f531b0723b0b6fb0721",
+      "7f0e27f1487f531b0b0bb0b6fb0722",
+      "7f0e397bd097c35b0b6fc920fb0722",
+      "9778397bd097c36b0b6fc9274c91aa",
+      "97b6b7f0e47f531b0723b0b6fb0721",
+      "7f0e27f1487f531b0b0bb0b6fb0722",
+      "7f0e397bd097c35b0b6fc920fb0722",
+      "9778397bd097c36b0b6fc9274c91aa",
+      "97b6b7f0e47f531b0723b0b6fb0721",
+      "7f0e27f1487f531b0b0bb0b6fb0722",
+      "7f0e397bd07f595b0b0bc920fb0722",
+      "9778397bd097c36b0b6fc9274c91aa",
+      "97b6b7f0e47f531b0723b0787b0721",
+      "7f0e27f0e47f531b0b0bb0b6fb0722",
+      "7f0e397bd07f595b0b0bc920fb0722",
+      "9778397bd097c36b0b6fc9210c91aa",
+      "97b6b7f0e47f149b0723b0787b0721",
+      "7f0e27f0e47f531b0723b0b6fb0722",
+      "7f0e397bd07f595b0b0bc920fb0722",
+      "9778397bd097c36b0b6fc9210c8dc2",
+      "977837f0e37f149b0723b0787b0721",
+      "7f07e7f0e47f531b0723b0b6fb0722",
+      "7f0e37f5307f595b0b0bc920fb0722",
+      "7f0e397bd097c35b0b6fc9210c8dc2",
+      "977837f0e37f14998082b0787b0721",
+      "7f07e7f0e47f531b0723b0b6fb0721",
+      "7f0e37f1487f595b0b0bb0b6fb0722",
+      "7f0e397bd097c35b0b6fc9210c8dc2",
+      "977837f0e37f14998082b0787b06bd",
+      "7f07e7f0e47f531b0723b0b6fb0721",
+      "7f0e27f1487f531b0b0bb0b6fb0722",
+      "7f0e397bd097c35b0b6fc920fb0722",
+      "977837f0e37f14998082b0787b06bd",
+      "7f07e7f0e47f531b0723b0b6fb0721",
+      "7f0e27f1487f531b0b0bb0b6fb0722",
+      "7f0e397bd097c35b0b6fc920fb0722",
+      "977837f0e37f14998082b0787b06bd",
+      "7f07e7f0e47f531b0723b0b6fb0721",
+      "7f0e27f1487f531b0b0bb0b6fb0722",
+      "7f0e397bd07f595b0b0bc920fb0722",
+      "977837f0e37f14998082b0787b06bd",
+      "7f07e7f0e47f531b0723b0b6fb0721",
+      "7f0e27f1487f531b0b0bb0b6fb0722",
+      "7f0e397bd07f595b0b0bc920fb0722",
+      "977837f0e37f14998082b0787b06bd",
+      "7f07e7f0e47f149b0723b0787b0721",
+      "7f0e27f0e47f531b0b0bb0b6fb0722",
+      "7f0e397bd07f595b0b0bc920fb0722",
+      "977837f0e37f14998082b0723b06bd",
+      "7f07e7f0e37f149b0723b0787b0721",
+      "7f0e27f0e47f531b0723b0b6fb0722",
+      "7f0e397bd07f595b0b0bc920fb0722",
+      "977837f0e37f14898082b0723b02d5",
+      "7ec967f0e37f14998082b0787b0721",
+      "7f07e7f0e47f531b0723b0b6fb0722",
+      "7f0e37f1487f595b0b0bb0b6fb0722",
+      "7f0e37f0e37f14898082b0723b02d5",
+      "7ec967f0e37f14998082b0787b0721",
+      "7f07e7f0e47f531b0723b0b6fb0722",
+      "7f0e37f1487f531b0b0bb0b6fb0722",
+      "7f0e37f0e37f14898082b0723b02d5",
+      "7ec967f0e37f14998082b0787b06bd",
+      "7f07e7f0e47f531b0723b0b6fb0721",
+      "7f0e37f1487f531b0b0bb0b6fb0722",
+      "7f0e37f0e37f14898082b072297c35",
+      "7ec967f0e37f14998082b0787b06bd",
+      "7f07e7f0e47f531b0723b0b6fb0721",
+      "7f0e27f1487f531b0b0bb0b6fb0722",
+      "7f0e37f0e37f14898082b072297c35",
+      "7ec967f0e37f14998082b0787b06bd",
+      "7f07e7f0e47f531b0723b0b6fb0721",
+      "7f0e27f1487f531b0b0bb0b6fb0722",
+      "7f0e37f0e366aa89801eb072297c35",
+      "7ec967f0e37f14998082b0787b06bd",
+      "7f07e7f0e47f149b0723b0787b0721",
+      "7f0e27f1487f531b0b0bb0b6fb0722",
+      "7f0e37f0e366aa89801eb072297c35",
+      "7ec967f0e37f14998082b0723b06bd",
+      "7f07e7f0e47f149b0723b0787b0721",
+      "7f0e27f0e47f531b0723b0b6fb0722",
+      "7f0e37f0e366aa89801eb072297c35",
+      "7ec967f0e37f14998082b0723b06bd",
+      "7f07e7f0e37f14998083b0787b0721",
+      "7f0e27f0e47f531b0723b0b6fb0722",
+      "7f0e37f0e366aa89801eb072297c35",
+      "7ec967f0e37f14898082b0723b02d5",
+      "7f07e7f0e37f14998082b0787b0721",
+      "7f07e7f0e47f531b0723b0b6fb0722",
+      "7f0e36665b66aa89801e9808297c35",
+      "665f67f0e37f14898082b0723b02d5",
+      "7ec967f0e37f14998082b0787b0721",
+      "7f07e7f0e47f531b0723b0b6fb0722",
+      "7f0e36665b66a449801e9808297c35",
+      "665f67f0e37f14898082b0723b02d5",
+      "7ec967f0e37f14998082b0787b06bd",
+      "7f07e7f0e47f531b0723b0b6fb0721",
+      "7f0e36665b66a449801e9808297c35",
+      "665f67f0e37f14898082b072297c35",
+      "7ec967f0e37f14998082b0787b06bd",
+      "7f07e7f0e47f531b0723b0b6fb0721",
+      "7f0e26665b66a449801e9808297c35",
+      "665f67f0e37f1489801eb072297c35",
+      "7ec967f0e37f14998082b0787b06bd",
+      "7f07e7f0e47f531b0723b0b6fb0721",
+      "7f0e27f1487f531b0b0bb0b6fb0722"
+    ],
+    /**
+     * 数字转中文速查表
+     * @Array Of Property
+     * @trans ['日','一','二','三','四','五','六','七','八','九','十']
+     * @return Cn string
+     */
+    nStr1: ["日", "一", "二", "三", "四", "五", "六", "七", "八", "九", "十"],
+    /**
+     * 日期转农历称呼速查表
+     * @Array Of Property
+     * @trans ['初','十','廿','卅']
+     * @return Cn string
+     */
+    nStr2: ["初", "十", "廿", "卅"],
+    /**
+     * 月份转农历称呼速查表
+     * @Array Of Property
+     * @trans ['正','一','二','三','四','五','六','七','八','九','十','冬','腊']
+     * @return Cn string
+     */
+    nStr3: ["正", "二", "三", "四", "五", "六", "七", "八", "九", "十", "冬", "腊"],
+    /**
+     * 返回农历y年一整年的总天数
+     * @param y lunar Year
+     * @return Number
+     * @eg:var count = calendar.lYearDays(1987) ;//count=387
+     */
+    lYearDays: function(y2) {
+      let i2, sum = 348;
+      for (i2 = 32768; i2 > 8; i2 >>= 1) {
+        sum += this.lunarInfo[y2 - 1900] & i2 ? 1 : 0;
+      }
+      return sum + this.leapDays(y2);
+    },
+    /**
+     * 返回农历y年闰月是哪个月；若y年没有闰月 则返回0
+     * @param y lunar Year
+     * @return Number (0-12)
+     * @eg:var leapMonth = calendar.leapMonth(1987) ;//leapMonth=6
+     */
+    leapMonth: function(y2) {
+      return this.lunarInfo[y2 - 1900] & 15;
+    },
+    /**
+     * 返回农历y年闰月的天数 若该年没有闰月则返回0
+     * @param y lunar Year
+     * @return Number (0、29、30)
+     * @eg:var leapMonthDay = calendar.leapDays(1987) ;//leapMonthDay=29
+     */
+    leapDays: function(y2) {
+      if (this.leapMonth(y2)) {
+        return this.lunarInfo[y2 - 1900] & 65536 ? 30 : 29;
+      }
+      return 0;
+    },
+    /**
+     * 返回农历y年m月（非闰月）的总天数，计算m为闰月时的天数请使用leapDays方法
+     * @param y lunar Year
+     * @param m lunar Month
+     * @return Number (-1、29、30)
+     * @eg:var MonthDay = calendar.monthDays(1987,9) ;//MonthDay=29
+     */
+    monthDays: function(y2, m2) {
+      if (m2 > 12 || m2 < 1) {
+        return -1;
+      }
+      return this.lunarInfo[y2 - 1900] & 65536 >> m2 ? 30 : 29;
+    },
+    /**
+     * 返回公历(!)y年m月的天数
+     * @param y solar Year
+     * @param m solar Month
+     * @return Number (-1、28、29、30、31)
+     * @eg:var solarMonthDay = calendar.leapDays(1987) ;//solarMonthDay=30
+     */
+    solarDays: function(y2, m2) {
+      if (m2 > 12 || m2 < 1) {
+        return -1;
+      }
+      const ms2 = m2 - 1;
+      if (ms2 === 1) {
+        return y2 % 4 === 0 && y2 % 100 !== 0 || y2 % 400 === 0 ? 29 : 28;
+      } else {
+        return this.solarMonth[ms2];
+      }
+    },
+    /**
+     * 农历年份转换为干支纪年
+     * @param  lYear 农历年的年份数
+     * @return Cn string
+     */
+    toGanZhiYear: function(lYear) {
+      var ganKey = (lYear - 3) % 10;
+      var zhiKey = (lYear - 3) % 12;
+      if (ganKey === 0)
+        ganKey = 10;
+      if (zhiKey === 0)
+        zhiKey = 12;
+      return this.Gan[ganKey - 1] + this.Zhi[zhiKey - 1];
+    },
+    /**
+     * 公历月、日判断所属星座
+     * @param  cMonth [description]
+     * @param  cDay [description]
+     * @return Cn string
+     */
+    toAstro: function(cMonth, cDay) {
+      const s2 = "魔羯水瓶双鱼白羊金牛双子巨蟹狮子处女天秤天蝎射手魔羯";
+      const arr = [20, 19, 21, 21, 21, 22, 23, 23, 23, 23, 22, 22];
+      return s2.substr(cMonth * 2 - (cDay < arr[cMonth - 1] ? 2 : 0), 2) + "座";
+    },
+    /**
+     * 传入offset偏移量返回干支
+     * @param offset 相对甲子的偏移量
+     * @return Cn string
+     */
+    toGanZhi: function(offset) {
+      return this.Gan[offset % 10] + this.Zhi[offset % 12];
+    },
+    /**
+     * 传入公历(!)y年获得该年第n个节气的公历日期
+     * @param y y公历年(1900-2100)
+     * @param n n二十四节气中的第几个节气(1~24)；从n=1(小寒)算起
+     * @return day Number
+     * @eg:var _24 = calendar.getTerm(1987,3) ;//_24=4;意即1987年2月4日立春
+     */
+    getTerm: function(y2, n2) {
+      if (y2 < 1900 || y2 > 2100 || n2 < 1 || n2 > 24) {
+        return -1;
+      }
+      const _table = this.sTermInfo[y2 - 1900];
+      const _calcDay = [];
+      for (let index = 0; index < _table.length; index += 5) {
+        const chunk = parseInt("0x" + _table.substr(index, 5)).toString();
+        _calcDay.push(
+          chunk[0],
+          chunk.substr(1, 2),
+          chunk[3],
+          chunk.substr(4, 2)
+        );
+      }
+      return parseInt(_calcDay[n2 - 1]);
+    },
+    /**
+      * 农历年份数字称呼速查表
+      * @Array Of Property
+      * @trans ['零','一','二','三','四','五','六','七','八','九','十']
+      * @return Cn string
+      */
+    nStr4: ["零", "一", "二", "三", "四", "五", "六", "七", "八", "九", "十"],
+    /**
+     * 
+     * @param y lunar year 
+     * @returns Cn string
+     * @eg: var cnYear = calendar,toChinaYear(1900); // cnYear=""
+     */
+    toChinaYear: function(y2) {
+      let year = y2.toString().split("");
+      return `${this.nStr4[year[0]]}${this.nStr4[year[1]]}${this.nStr4[year[2]]}${this.nStr4[year[3]]}`;
+    },
+    /**
+     * 传入农历数字月份返回汉语通俗表示法
+     * @param m lunar month
+     * @return Cn string
+     * @eg:var cnMonth = calendar.toChinaMonth(12) ;//cnMonth='腊月'
+     */
+    toChinaMonth: function(m2) {
+      if (m2 > 12 || m2 < 1) {
+        return -1;
+      }
+      let s2 = this.nStr3[m2 - 1];
+      s2 += "月";
+      return s2;
+    },
+    /**
+     * 传入农历日期数字返回汉字表示法
+     * @param d lunar day
+     * @return Cn string
+     * @eg:var cnDay = calendar.toChinaDay(21) ;//cnMonth='廿一'
+     */
+    toChinaDay: function(d2) {
+      let s2;
+      switch (d2) {
+        case 10:
+          s2 = "初十";
+          break;
+        case 20:
+          s2 = "二十";
+          break;
+        case 30:
+          s2 = "三十";
+          break;
+        default:
+          s2 = this.nStr2[Math.floor(d2 / 10)];
+          s2 += this.nStr1[d2 % 10];
+      }
+      return s2;
+    },
+    /**
+     * 年份转生肖[!仅能大致转换] => 精确划分生肖分界线是“立春”
+     * @param y year
+     * @return Cn string
+     * @eg:var animal = calendar.getAnimal(1987) ;//animal='兔'
+     */
+    getAnimal: function(y2) {
+      return this.Animals[(y2 - 4) % 12];
+    },
+    /**
+     * 传入阳历年月日获得详细的公历、农历object信息 <=>JSON
+     * !important! 公历参数区间1900.1.31~2100.12.31
+     * @param yPara  solar year
+     * @param mPara  solar month
+     * @param dPara  solar day
+     * @return JSON object
+     * @eg:__f__('log','at components/gscosmosDateSelect/calendar.js:455',calendar.solar2lunar(1987,11,01));
+     */
+    solar2lunar: function(yPara, mPara, dPara) {
+      let y2 = parseInt(yPara);
+      let m2 = parseInt(mPara);
+      let d2 = parseInt(dPara);
+      if (y2 < 1900 || y2 > 2100) {
+        return -1;
+      }
+      if (y2 === 1900 && m2 === 1 && d2 < 31) {
+        return -1;
+      }
+      let objDate;
+      if (!y2) {
+        objDate = /* @__PURE__ */ new Date();
+      } else {
+        objDate = new Date(y2, parseInt(m2) - 1, d2);
+      }
+      let i2, leap = 0, temp = 0;
+      y2 = objDate.getFullYear();
+      m2 = objDate.getMonth() + 1;
+      d2 = objDate.getDate();
+      let offset = (Date.UTC(objDate.getFullYear(), objDate.getMonth(), objDate.getDate()) - Date.UTC(1900, 0, 31)) / 864e5;
+      for (i2 = 1900; i2 < 2101 && offset > 0; i2++) {
+        temp = this.lYearDays(i2);
+        offset -= temp;
+      }
+      if (offset < 0) {
+        offset += temp;
+        i2--;
+      }
+      let isTodayObj = /* @__PURE__ */ new Date(), isToday = false;
+      if (isTodayObj.getFullYear() === y2 && isTodayObj.getMonth() + 1 === m2 && isTodayObj.getDate() === d2) {
+        isToday = true;
+      }
+      let nWeek = objDate.getDay(), cWeek = this.nStr1[nWeek];
+      if (nWeek === 0) {
+        nWeek = 7;
+      }
+      const year = i2;
+      leap = this.leapMonth(i2);
+      let isLeap = false;
+      for (i2 = 1; i2 < 13 && offset > 0; i2++) {
+        if (leap > 0 && i2 === leap + 1 && isLeap === false) {
+          --i2;
+          isLeap = true;
+          temp = this.leapDays(year);
+        } else {
+          temp = this.monthDays(year, i2);
+        }
+        if (isLeap === true && i2 === leap + 1) {
+          isLeap = false;
+        }
+        offset -= temp;
+      }
+      if (offset === 0 && leap > 0 && i2 === leap + 1) {
+        if (isLeap) {
+          isLeap = false;
+        } else {
+          isLeap = true;
+          --i2;
+        }
+      }
+      if (offset < 0) {
+        offset += temp;
+        --i2;
+      }
+      const month = i2;
+      const day = offset + 1;
+      const sm = m2 - 1;
+      const gzY = this.toGanZhiYear(year);
+      const firstNode = this.getTerm(y2, m2 * 2 - 1);
+      const secondNode = this.getTerm(y2, m2 * 2);
+      let gzM = this.toGanZhi((y2 - 1900) * 12 + m2 + 11);
+      if (d2 >= firstNode) {
+        gzM = this.toGanZhi((y2 - 1900) * 12 + m2 + 12);
+      }
+      let isTerm = false;
+      let Term = null;
+      if (firstNode === d2) {
+        isTerm = true;
+        Term = this.solarTerm[m2 * 2 - 2];
+      }
+      if (secondNode === d2) {
+        isTerm = true;
+        Term = this.solarTerm[m2 * 2 - 1];
+      }
+      const dayCyclical = Date.UTC(y2, sm, 1, 0, 0, 0, 0) / 864e5 + 25567 + 10;
+      const gzD = this.toGanZhi(dayCyclical + d2 - 1);
+      const astro = this.toAstro(m2, d2);
+      const solarDate = y2 + "-" + m2 + "-" + d2;
+      const lunarDate = year + "-" + month + "-" + day;
+      const festival = this.festival;
+      const lFestival = this.lFestival;
+      const festivalDate = m2 + "-" + d2;
+      let lunarFestivalDate = month + "-" + day;
+      if (month === 12 && day === 29 && this.monthDays(year, month) === 29) {
+        lunarFestivalDate = "12-30";
+      }
+      return {
+        date: solarDate,
+        lunarDate,
+        festival: festival[festivalDate] ? festival[festivalDate].title : null,
+        lunarFestival: lFestival[lunarFestivalDate] ? lFestival[lunarFestivalDate].title : null,
+        "lYear": year,
+        "lMonth": month,
+        "lDay": day,
+        "Animal": this.getAnimal(year),
+        "IMonthCn": (isLeap ? "闰" : "") + this.toChinaMonth(month),
+        "IDayCn": this.toChinaDay(day),
+        "cYear": y2,
+        "cMonth": m2,
+        "cDay": d2,
+        "gzYear": gzY,
+        "gzMonth": gzM,
+        "gzDay": gzD,
+        "isToday": isToday,
+        "isLeap": isLeap,
+        "nWeek": nWeek,
+        "ncWeek": "星期" + cWeek,
+        "isTerm": isTerm,
+        "Term": Term,
+        "astro": astro
+      };
+    },
+    /**
+     * 传入农历年月日以及传入的月份是否闰月获得详细的公历、农历object信息 <=>JSON
+     * !important! 参数区间1900.1.31~2100.12.1
+     * @param y  lunar year
+     * @param m  lunar month
+     * @param d  lunar day
+     * @param isLeapMonth  lunar month is leap or not.[如果是农历闰月第四个参数赋值true即可]
+     * @return JSON object
+     * @eg:__f__('log','at components/gscosmosDateSelect/calendar.js:627',calendar.lunar2solar(1987,9,10));
+     */
+    lunar2solar: function(y2, m2, d2, isLeapMonth) {
+      y2 = parseInt(y2);
+      m2 = parseInt(m2);
+      d2 = parseInt(d2);
+      isLeapMonth = !!isLeapMonth;
+      const leapMonth = this.leapMonth(y2);
+      this.leapDays(y2);
+      if (isLeapMonth && leapMonth !== m2) {
+        return -1;
+      }
+      if (y2 === 2100 && m2 === 12 && d2 > 1 || y2 === 1900 && m2 === 1 && d2 < 31) {
+        return -1;
+      }
+      const day = this.monthDays(y2, m2);
+      let _day = day;
+      if (isLeapMonth) {
+        _day = this.leapDays(y2, m2);
+      }
+      if (y2 < 1900 || y2 > 2100 || d2 > _day) {
+        return -1;
+      }
+      let offset = 0;
+      let i2;
+      for (i2 = 1900; i2 < y2; i2++) {
+        offset += this.lYearDays(i2);
+      }
+      let leap = 0, isAdd = false;
+      for (i2 = 1; i2 < m2; i2++) {
+        leap = this.leapMonth(y2);
+        if (!isAdd) {
+          if (leap <= i2 && leap > 0) {
+            offset += this.leapDays(y2);
+            isAdd = true;
+          }
+        }
+        offset += this.monthDays(y2, i2);
+      }
+      if (isLeapMonth) {
+        offset += day;
+      }
+      const strap = Date.UTC(1900, 1, 30, 0, 0, 0);
+      const calObj = new Date((offset + d2 - 31) * 864e5 + strap);
+      const cY = calObj.getUTCFullYear();
+      const cM = calObj.getUTCMonth() + 1;
+      const cD = calObj.getUTCDate();
+      return this.solar2lunar(cY, cM, cD);
+    }
+  };
+  const _sfc_main$n = {
+    __name: "index",
+    props: {
+      showCalendar: {
+        type: Boolean,
+        default: false
+      },
+      defaultValue: {
+        type: Array,
+        default: () => [100, 0, 0]
+      },
+      defaultType: {
+        type: String,
+        default: () => "solar"
+      },
+      timeType: {
+        type: String
+      },
+      isSwitch: {
+        type: Boolean,
+        default: true
+      },
+      minYear: {
+        type: Number,
+        default: 1900
+      },
+      maxYear: {
+        type: Number,
+        default: 2100
+      }
+    },
+    emits: ["confirm", "cancel"],
+    setup(__props, { emit }) {
+      const props = __props;
+      const showCalendar = vue.ref(false);
+      const type = vue.ref("solar");
+      const dateInfo = vue.ref({});
+      const indicatorStyle = `height: ${Math.round(
+        uni.getSystemInfoSync().screenWidth / (750 / 60)
+      )}px;`;
+      const years = vue.ref([]);
+      const months = vue.ref([]);
+      const days = vue.ref([]);
+      const minYear = 1900;
+      const maxYear = 2100;
+      const selectValue = vue.ref(props.defaultValue);
+      vue.watch(
+        () => props.showCalendar,
+        (newV, oldV) => {
+          showCalendar.value = newV;
+          getYear();
+          getMonth();
+          getDay();
+        }
+      );
+      const getYear = () => {
+        years.value = [];
+        if (type.value === "solar") {
+          for (let i2 = minYear; i2 <= maxYear; i2++) {
+            years.value.push(i2);
+          }
+          getMonth();
+          return years;
+        }
+        if (type.value === "lunar") {
+          for (let i2 = minYear; i2 <= maxYear; i2++) {
+            years.value.push(calendar.toChinaYear(i2));
+          }
+          return years;
+        }
+      };
+      const getMonth = () => {
+        months.value = [];
+        if (type.value === "solar") {
+          for (let i2 = 1; i2 <= 12; i2++) {
+            months.value.push(i2 + "月");
+          }
+          return months;
+        }
+        if (type.value === "lunar") {
+          const year = selectValue.value[0] + minYear;
+          const leap_month = calendar.leapMonth(year);
+          for (let i2 = 1; i2 <= 12; i2++) {
+            months.value.push(calendar.toChinaMonth(i2));
+            if (i2 == leap_month) {
+              months.value.push("闰" + calendar.toChinaMonth(i2));
+            }
+          }
+          return months;
+        }
+      };
+      const getDay = () => {
+        days.value = [];
+        let year = selectValue.value[0] + minYear;
+        let month = selectValue.value[1] + 1;
+        for (let i2 = 1; i2 <= calendar.solarDays(year, month); i2++) {
+          days.value.push(i2 + "日");
+        }
+        return days;
+      };
+      const bindChange = async (e2) => {
+        let val = e2.detail.value;
+        selectValue.value = await val;
+        const year = val[0] + minYear;
+        const month = val[1] + 1;
+        const day = val[2] + 1;
+        setSolarDate(year, month, day);
+      };
+      const setSolarDate = (y2, m2, d2) => {
+        const dt2 = calendar.solar2lunar(y2, m2, d2);
+        dateInfo.value = {
+          type: "solar",
+          Animal: dt2.Animal,
+          astro: dt2.astro,
+          ncWeek: dt2.ncWeek,
+          nWeek: dt2.nWeek,
+          gzYear: dt2.gzYear,
+          gzMonth: dt2.gzMonth,
+          gzDay: dt2.gzDay,
+          IMonthCn: dt2.IMonthCn,
+          IDayCn: dt2.IDayCn,
+          festival: dt2.festival,
+          year: dt2.cYear,
+          month: dt2.cMonth,
+          day: dt2.cDay,
+          solarDate: dt2.date,
+          lDay: dt2.lDay,
+          lMonth: dt2.lMonth,
+          lYear: dt2.lYear,
+          lunarDate: `${dt2.gzYear}年${dt2.IMonthCn}${dt2.IDayCn}(${dt2.date})`,
+          lunarDateNumber: dt2.lunarDate,
+          Term: dt2.Term,
+          isTerm: dt2.isTerm,
+          isLeap: dt2.isLeap,
+          isToday: dt2.isToday
+        };
+      };
+      vue.watch(selectValue, (newV, oldV) => {
+        getYear();
+        getMonth();
+        getDay();
+      });
+      const cancel = () => {
+        emit("cancel");
+      };
+      const confirmFun = () => {
+        if (Object.keys(dateInfo.value).length === 0) {
+          setSolarDate(props.defaultValue[0] + 1900, props.defaultValue[1] + 1, props.defaultValue[2] + 1);
+        }
+        formatAppLog("log", "at components/gscosmosDateSelect/index.vue:217", dateInfo.value);
+        emit("confirm", dateInfo.value);
+      };
+      return (_ctx, _cache) => {
+        return vue.withDirectives((vue.openBlock(), vue.createElementBlock(
+          "view",
+          {
+            class: "mask",
+            onClick: _cache[2] || (_cache[2] = vue.withModifiers(($event) => showCalendar.value = false, ["stop"]))
+          },
+          [
+            vue.createElementVNode("view", {
+              class: "calendar",
+              onClick: _cache[1] || (_cache[1] = vue.withModifiers(() => {
+              }, ["stop"]))
+            }, [
+              vue.createElementVNode("view", {
+                class: "content",
+                onClick: _cache[0] || (_cache[0] = vue.withModifiers(() => {
+                }, ["stop"]))
+              }, [
+                vue.createElementVNode("view", { class: "title" }, [
+                  vue.createElementVNode("view", { class: "sure" }),
+                  vue.createElementVNode(
+                    "view",
+                    { class: "left" },
+                    vue.toDisplayString(__props.timeType === "start" ? "开始时间" : "结束时间"),
+                    1
+                    /* TEXT */
+                  ),
+                  vue.createElementVNode("view", {
+                    class: "close",
+                    onClick: cancel
+                  })
+                ]),
+                vue.createElementVNode("picker-view", {
+                  "indicator-style": indicatorStyle,
+                  value: selectValue.value,
+                  onChange: bindChange
+                }, [
+                  vue.createElementVNode("picker-view-column", null, [
+                    (vue.openBlock(true), vue.createElementBlock(
+                      vue.Fragment,
+                      null,
+                      vue.renderList(years.value, (item, index) => {
+                        return vue.openBlock(), vue.createElementBlock(
+                          "view",
+                          {
+                            class: vue.normalizeClass(["item", selectValue.value[0] === index ? "active" : ""]),
+                            key: index
+                          },
+                          vue.toDisplayString(item) + "年",
+                          3
+                          /* TEXT, CLASS */
+                        );
+                      }),
+                      128
+                      /* KEYED_FRAGMENT */
+                    ))
+                  ]),
+                  vue.createElementVNode("picker-view-column", null, [
+                    (vue.openBlock(true), vue.createElementBlock(
+                      vue.Fragment,
+                      null,
+                      vue.renderList(months.value, (item, index) => {
+                        return vue.openBlock(), vue.createElementBlock(
+                          "view",
+                          {
+                            class: vue.normalizeClass(["item", selectValue.value[1] === index ? "active" : ""]),
+                            key: index
+                          },
+                          vue.toDisplayString(item),
+                          3
+                          /* TEXT, CLASS */
+                        );
+                      }),
+                      128
+                      /* KEYED_FRAGMENT */
+                    ))
+                  ]),
+                  vue.createElementVNode("picker-view-column", null, [
+                    (vue.openBlock(true), vue.createElementBlock(
+                      vue.Fragment,
+                      null,
+                      vue.renderList(days.value, (item, index) => {
+                        return vue.openBlock(), vue.createElementBlock(
+                          "view",
+                          {
+                            class: vue.normalizeClass(["item", selectValue.value[2] === index ? "active" : ""]),
+                            key: index
+                          },
+                          vue.toDisplayString(item),
+                          3
+                          /* TEXT, CLASS */
+                        );
+                      }),
+                      128
+                      /* KEYED_FRAGMENT */
+                    ))
+                  ])
+                ], 40, ["value"]),
+                vue.createElementVNode("view", { class: "pageFoot" }, [
+                  vue.createElementVNode("button", {
+                    onClick: confirmFun,
+                    class: "agree-btn btn"
+                  }, "确定")
+                ])
+              ])
+            ])
+          ],
+          512
+          /* NEED_PATCH */
+        )), [
+          [vue.vShow, showCalendar.value]
+        ]);
+      };
+    }
+  };
+  const gscosmosDateSelect = /* @__PURE__ */ _export_sfc(_sfc_main$n, [["__scopeId", "data-v-d9a95d4f"], ["__file", "D:/项目/小智帮/project-xzb-app-uniapp-java/components/gscosmosDateSelect/index.vue"]]);
   const _sfc_main$m = {
     __name: "index",
     emits: "",
@@ -11007,6 +12209,8 @@ if (uni.restoreGlobal) {
       });
       const startTime = vue.ref(format((/* @__PURE__ */ new Date()).getTime() - 15552e6, "yyyy-MM-dd"));
       const endTime = vue.ref(format(/* @__PURE__ */ new Date(), "yyyy-MM-dd"));
+      const dateSelecStarttVisiable = vue.ref(false);
+      const dateSelecEndtVisiable = vue.ref(false);
       const scrollTop = vue.ref(0);
       const scrollView = vue.ref(null);
       onShow(() => {
@@ -11029,26 +12233,32 @@ if (uni.restoreGlobal) {
         popup2.value.close();
       };
       const bindStartDateChange = (e2) => {
-        if (new Date(endTime.value).getTime() - new Date(e2.detail.value).getTime() > 31536e6) {
+        if (new Date(endTime.value).getTime() - format(new Date(e2.solarDate), "yyyy-MM-dd").getTime() > 31536e6) {
           uni.showToast({
             title: "时间间隔不能大于365天",
             duration: 1e3,
             icon: "none"
           });
         } else {
-          startTime.value = e2.detail.value;
+          startTime.value = format(new Date(e2.solarDate), "yyyy-MM-dd");
         }
       };
       const bindEndDateChange = (e2) => {
-        if (new Date(e2.detail.value).getTime() - new Date(startTime.value).getTime() > 31536e6) {
+        if (new Date(format(new Date(e2.solarDate), "yyyy-MM-dd")).getTime() - new Date(startTime.value).getTime() > 31536e6) {
           return uni.showToast({
             title: "时间间隔不能大于365天",
             duration: 1e3,
             icon: "none"
           });
         } else {
-          endTime.value = e2.detail.value;
+          endTime.value = format(new Date(e2.solarDate), "yyyy-MM-dd");
         }
+      };
+      const handleStartTime = () => {
+        dateSelecStarttVisiable.value = true;
+      };
+      const handleEndTime = () => {
+        dateSelecEndtVisiable.value = true;
       };
       const goBack = () => {
         uni.navigateBack();
@@ -11070,7 +12280,7 @@ if (uni.restoreGlobal) {
         if (!time)
           delete params.lastSortTime;
         getHistoryOrder(params).then((res) => {
-          formatAppLog("log", "at pages/history/index.vue:182", res, homeList.data, "66666666666");
+          formatAppLog("log", "at pages/history/index.vue:211", res, homeList.data, "66666666666");
           if (res.data.length === 10) {
             isHaveMore.value = true;
           } else {
@@ -11078,6 +12288,10 @@ if (uni.restoreGlobal) {
           }
           homeList.data = homeList.data.concat(res.data);
         });
+      };
+      const handleClose = () => {
+        dateSelecStarttVisiable.value = false;
+        dateSelecEndtVisiable.value = false;
       };
       const getRobOrderList = () => {
       };
@@ -11088,6 +12302,34 @@ if (uni.restoreGlobal) {
           null,
           [
             vue.createElementVNode("view", { class: "historyOrder" }, [
+              vue.createVNode(vue.unref(gscosmosDateSelect), {
+                date: startTime.value,
+                minYear: 1900,
+                maxYear: 2100,
+                timeType: "start",
+                defaultValue: [
+                  new Date(startTime.value).getFullYear() - 1900,
+                  new Date(startTime.value).getMonth(),
+                  new Date(startTime.value).getDate() - 1
+                ],
+                onConfirm: bindStartDateChange,
+                showCalendar: dateSelecStarttVisiable.value,
+                onCancel: handleClose
+              }, null, 8, ["date", "defaultValue", "showCalendar"]),
+              vue.createVNode(vue.unref(gscosmosDateSelect), {
+                date: endTime.value,
+                minYear: 1900,
+                maxYear: 2100,
+                timeType: "end",
+                defaultValue: [
+                  new Date(endTime.value).getFullYear() - 1900,
+                  new Date(endTime.value).getMonth(),
+                  new Date(endTime.value).getDate() - 1
+                ],
+                onConfirm: bindEndDateChange,
+                showCalendar: dateSelecEndtVisiable.value,
+                onCancel: handleClose
+              }, null, 8, ["date", "defaultValue", "showCalendar"]),
               vue.createCommentVNode(" nav "),
               vue.createVNode(UniNav, {
                 title: "历史订单",
@@ -11099,7 +12341,6 @@ if (uni.restoreGlobal) {
               vue.createElementVNode("scroll-view", {
                 "scroll-y": icCanScroll.value,
                 class: "scrollList",
-                onScroll: _cache[0] || (_cache[0] = (...args) => _ctx.handleScroll && _ctx.handleScroll(...args)),
                 onScrolltolower: handleLoad,
                 "upper-threshold": 50,
                 ref_key: "scrollView",
@@ -11127,41 +12368,32 @@ if (uni.restoreGlobal) {
                           vue.createElementVNode("view", { class: "tips" }, "选择时间"),
                           vue.createElementVNode("image", {
                             class: "close",
-                            src: "/static/new/btn_nav_close@2x.png"
+                            src: "/static/new/btn_nav_close@2x.png",
+                            onClick: _cache[0] || (_cache[0] = ($event) => popup2.value.close())
                           })
                         ]),
                         vue.createElementVNode("view", { class: "time" }, [
-                          vue.createElementVNode("picker", {
-                            fields: "day",
-                            mode: "date",
-                            value: startTime.value,
-                            end: endTime.value,
-                            onChange: bindStartDateChange
-                          }, [
-                            vue.createElementVNode(
-                              "view",
-                              { class: "startTime" },
-                              vue.toDisplayString(startTime.value || "开始时间"),
-                              1
-                              /* TEXT */
-                            )
-                          ], 40, ["value", "end"]),
+                          vue.createElementVNode(
+                            "view",
+                            {
+                              class: "startTime",
+                              onClick: handleStartTime
+                            },
+                            vue.toDisplayString(startTime.value || "开始时间"),
+                            1
+                            /* TEXT */
+                          ),
                           vue.createElementVNode("view", { class: "zhi" }, "至"),
-                          vue.createElementVNode("picker", {
-                            fields: "day",
-                            mode: "date",
-                            value: endTime.value,
-                            end: endTime.value,
-                            onChange: bindEndDateChange
-                          }, [
-                            vue.createElementVNode(
-                              "view",
-                              { class: "endTime" },
-                              vue.toDisplayString(endTime.value || "结束时间"),
-                              1
-                              /* TEXT */
-                            )
-                          ], 40, ["value", "end"])
+                          vue.createElementVNode(
+                            "view",
+                            {
+                              class: "endTime",
+                              onClick: handleEndTime
+                            },
+                            vue.toDisplayString(endTime.value || "结束时间"),
+                            1
+                            /* TEXT */
+                          )
                         ]),
                         vue.createElementVNode("view", { class: "footer" }, [
                           vue.createElementVNode("view", {
@@ -16786,13 +18018,14 @@ if (uni.restoreGlobal) {
             onGoBack: goBack
           }, null, 8, ["title"]),
           vue.createElementVNode("view", { class: "img card" }, [
-            vue.createElementVNode(
-              "view",
-              { class: "title" },
-              "服务" + vue.toDisplayString(title.value === "开始服务" ? "前" : "后") + "照片",
-              1
-              /* TEXT */
-            ),
+            vue.createElementVNode("view", { class: "title" }, [
+              vue.createTextVNode(
+                "服务" + vue.toDisplayString(title.value === "开始服务" ? "前" : "后") + "照片",
+                1
+                /* TEXT */
+              ),
+              vue.createElementVNode("span", { class: "must" }, "*")
+            ]),
             vue.createVNode(_component_uni_file_picker, {
               limit: "3",
               title: "最多上传3张图片",
@@ -32972,7 +34205,7 @@ if (uni.restoreGlobal) {
           },
           success: (uploadFileRes) => {
             formData.value[type] = JSON.parse(uploadFileRes.data).data.url;
-            formatAppLog("log", "at pages/auth/index.vue:125", JSON.parse(uploadFileRes.data).data.url, "-----");
+            formatAppLog("log", "at pages/auth/index.vue:126", JSON.parse(uploadFileRes.data).data.url, "-----");
           },
           fail: (err) => {
             uni.showToast({
@@ -32982,10 +34215,10 @@ if (uni.restoreGlobal) {
             });
           }
         });
-        formatAppLog("log", "at pages/auth/index.vue:136", e2, type, "eeeeeeeee");
+        formatAppLog("log", "at pages/auth/index.vue:137", e2, type, "eeeeeeeee");
       };
       const handleSubmit = () => {
-        formatAppLog("log", "at pages/auth/index.vue:140", formData.value, "formData.value");
+        formatAppLog("log", "at pages/auth/index.vue:141", formData.value, "formData.value");
         if (!formData.value.name) {
           return uni.showToast({
             title: "请填写真实姓名",
@@ -33020,7 +34253,7 @@ if (uni.restoreGlobal) {
         if (!flag.value)
           return;
         flag.value = false;
-        formatAppLog("log", "at pages/auth/index.vue:175", flag.value, "flag.value");
+        formatAppLog("log", "at pages/auth/index.vue:176", flag.value, "flag.value");
         postAuth(formData.value).then((res) => {
           setTimeout(() => {
             flag.value = true;
@@ -33090,26 +34323,26 @@ if (uni.restoreGlobal) {
                 }),
                 vue.createElementVNode("view", { class: "photoLabel" }, "示例图")
               ])
-            ])
-          ]),
-          vue.createCommentVNode(" 身份证反面 "),
-          vue.createElementVNode("view", { class: "countryPhoto" }, [
-            vue.createElementVNode("view", { class: "content" }, [
-              vue.createElementVNode("view", { class: "photoItem" }, [
-                vue.createVNode(_component_uni_file_picker, {
-                  limit: "1",
-                  title: "",
-                  onSelect: _cache[4] || (_cache[4] = (e2) => handleSelect(e2, "backImg")),
-                  onDelete: _cache[5] || (_cache[5] = ($event) => handleDelete("backImg"))
-                }),
-                vue.createElementVNode("view", { class: "photoLabel" }, "国徽面照片 ")
-              ]),
-              vue.createElementVNode("view", { class: "photoItem" }, [
-                vue.createElementVNode("image", {
-                  class: "forImg",
-                  src: "/static/new/ren@2x.png"
-                }),
-                vue.createElementVNode("view", { class: "photoLabel" }, "示例图")
+            ]),
+            vue.createCommentVNode(" 身份证反面 "),
+            vue.createElementVNode("view", { class: "countryPhoto" }, [
+              vue.createElementVNode("view", { class: "content" }, [
+                vue.createElementVNode("view", { class: "photoItem" }, [
+                  vue.createVNode(_component_uni_file_picker, {
+                    limit: "1",
+                    title: "",
+                    onSelect: _cache[4] || (_cache[4] = (e2) => handleSelect(e2, "backImg")),
+                    onDelete: _cache[5] || (_cache[5] = ($event) => handleDelete("backImg"))
+                  }),
+                  vue.createElementVNode("view", { class: "photoLabel" }, "国徽面照片 ")
+                ]),
+                vue.createElementVNode("view", { class: "photoItem" }, [
+                  vue.createElementVNode("image", {
+                    class: "forImg",
+                    src: "/static/new/ren@2x.png"
+                  }),
+                  vue.createElementVNode("view", { class: "photoLabel" }, "示例图")
+                ])
               ])
             ])
           ]),

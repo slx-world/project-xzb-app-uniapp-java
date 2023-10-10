@@ -329,6 +329,7 @@
 		border-bottom-width: 1rpx;
 		border-bottom-style: solid;
 		border-bottom-color: #eee;
+    box-shadow: 0 2px 4px 0 #181a390a;
 	}
 
 	.uni-ellipsis-1 {

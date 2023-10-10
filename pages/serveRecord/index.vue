@@ -5,7 +5,7 @@
     <UniNav :title="title" @goBack="goBack"></UniNav>
     <view class="img card">
       <view class="title"
-        >服务{{ title === '开始服务' ? '前' : '后' }}照片</view
+        >服务{{ title === '开始服务' ? '前' : '后' }}照片<span class="must">*</span></view
       >
       <uni-file-picker
         limit="3"

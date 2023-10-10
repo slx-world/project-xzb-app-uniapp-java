@@ -270,13 +270,12 @@
 		/* #ifndef APP-NVUE */
 		display: flex;
 		/* #endif */
-		align-items: center;
-		justify-content: center;
+    // 
 		position: absolute;
-		top: 3px;
-		right: 3px;
-		height: 26px;
-		width: 26px;
+		top: -65rpx;
+		right: -65rpx;
+		height: 130rpx;
+		width: 130rpx;
 		border-radius: 50%;
 		background-color: rgba(0, 0, 0, 0.5);
 		z-index: 2;
@@ -284,6 +283,9 @@
 	}
 
 	.icon-del {
+    position: absolute;
+    bottom: 65rpx;
+    right: 88rpx;
 		width: 15px;
 		height: 2px;
 		background-color: #fff;
