@@ -13,7 +13,6 @@
       :scroll-y="icCanScroll"
       class="scrollList"
       :class="homeList.data.length ? '' : 'noData'"
-      @scroll="handleScroll"
       @scrolltolower="handleLoad"
       :upper-threshold="50"
       ref="scrollView"

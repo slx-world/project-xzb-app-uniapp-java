@@ -4705,7 +4705,6 @@ if (uni.restoreGlobal) {
   Object.defineProperties(Store.prototype, prototypeAccessors);
   const baseUrl = "http://172.17.2.58/api";
   function request({ url = "", params = {}, method = "GET" }) {
-    let baseUrl2 = "https://jzo2o-api-test.itheima.net";
     const token = uni.getStorageSync("token");
     let header = {
       "Access-Control-Allow-Origin": "*",
@@ -4716,15 +4715,15 @@ if (uni.restoreGlobal) {
       header["Content-Type"] = "application/x-www-form-urlencoded";
     }
     const requestRes = new Promise((resolve, reject) => {
-      formatAppLog("log", "at utils/request.js:19", params, baseUrl2 + url, "进来了么");
+      formatAppLog("log", "at utils/request.js:16", params, baseUrl + url, "进来了么");
       uni.request({
-        url: baseUrl2 + url,
+        url: baseUrl + url,
         data: params,
         header,
         method,
         sslVerify: false
       }).then((res) => {
-        formatAppLog("log", "at utils/request.js:27", params, url, res, "header");
+        formatAppLog("log", "at utils/request.js:24", params, url, res, "header");
         const { data } = res;
         if (res.statusCode == 401) {
           uni.showToast({
@@ -4750,7 +4749,7 @@ if (uni.restoreGlobal) {
           reject(res.data);
         }
       }).catch((err) => {
-        formatAppLog("log", "at utils/request.js:55", err, "errr");
+        formatAppLog("log", "at utils/request.js:52", err, "errr");
         const error = { data: { msg: err.data } };
         reject(error);
       });
@@ -5612,7 +5611,6 @@ if (uni.restoreGlobal) {
     },
     setup(__props) {
       const store2 = useStore();
-      const currentPage = vue.ref(store2.state.footStatus);
       let tabbar = vue.ref([
         {
           pagePath: "/pages/index/index",
@@ -5626,12 +5624,6 @@ if (uni.restoreGlobal) {
           selectedIconPath: "static/collectActive.png",
           text: "订单"
         },
-        // {
-        // 	pagePath: '',
-        // 	iconPath: 'static/qrcode.png',
-        // 	selectedIconPath: 'static/qrcode.png',
-        // 	text: ''
-        // },
         {
           pagePath: "/pages/delivery/index",
           iconPath: "static/delivery.png",
@@ -5646,15 +5638,11 @@ if (uni.restoreGlobal) {
         }
       ]);
       const changeTab = (item, index) => {
-        store2.commit("user/setFilterOverTime", null);
+        store2.commit("setFootStatus", index);
+        formatAppLog("log", "at components/uni-footer/index.vue:77", store2.state.footStatus, "store");
         if (item.text !== "消息") {
-          currentPage.value = index;
           uni.redirectTo({
-            url: item.pagePath,
-            success: (e2) => {
-            },
-            fail: () => {
-            }
+            url: item.pagePath
           });
         } else {
           uni.showToast({
@@ -5677,19 +5665,13 @@ if (uni.restoreGlobal) {
                   null,
                   vue.renderList(vue.unref(tabbar), (item, index) => {
                     return vue.openBlock(), vue.createElementBlock("view", {
-                      class: vue.normalizeClass(["tabbar-item", currentPage.value === index ? "active" : ""]),
+                      class: vue.normalizeClass(["tabbar-item", vue.unref(store2).state.footStatus === index ? "active" : ""]),
                       key: index,
                       onClick: ($event) => changeTab(item, index)
                     }, [
-                      (vue.openBlock(), vue.createElementBlock("view", {
-                        key: 0,
-                        class: "uni-tabbar__bd"
-                      }, [
-                        item.pagePath !== "" ? (vue.openBlock(), vue.createElementBlock("view", {
-                          key: 0,
-                          class: "uni-tabbar__icon"
-                        }, [
-                          currentPage.value === index ? (vue.openBlock(), vue.createElementBlock("img", {
+                      vue.createElementVNode("view", { class: "uni-tabbar__bd" }, [
+                        vue.createElementVNode("view", { class: "uni-tabbar__icon" }, [
+                          vue.unref(store2).state.footStatus === index ? (vue.openBlock(), vue.createElementBlock("img", {
                             key: 0,
                             class: "item-img",
                             src: item.selectedIconPath
@@ -5698,19 +5680,12 @@ if (uni.restoreGlobal) {
                             class: "item-img",
                             src: item.iconPath
                           }, null, 8, ["src"]))
-                        ])) : (vue.openBlock(), vue.createElementBlock("view", {
-                          key: 1,
-                          class: "qrCode"
-                        }, [
-                          vue.createElementVNode("img", {
-                            src: item.iconPath
-                          }, null, 8, ["src"])
-                        ]))
-                      ])),
+                        ])
+                      ]),
                       item.text !== "" ? (vue.openBlock(), vue.createElementBlock(
                         "view",
                         {
-                          key: 1,
+                          key: 0,
                           class: "uni-tabbar__label"
                         },
                         vue.toDisplayString(item.text),
@@ -5737,8 +5712,7 @@ if (uni.restoreGlobal) {
     __name: "index",
     props: {
       canPickUp: {
-        type: Boolean,
-        default: () => []
+        type: Boolean
       }
     },
     setup(__props, { emit }) {
@@ -12034,7 +12008,7 @@ if (uni.restoreGlobal) {
         const year = val[0] + minYear;
         const month = val[1] + 1;
         const day = val[2] + 1;
-        setSolarDate(year, month, day);
+        formatAppLog("log", "at components/gscosmosDateSelect/index.vue:170", year, month, day, "year, month, day");
       };
       const setSolarDate = (y2, m2, d2) => {
         const dt2 = calendar.solar2lunar(y2, m2, d2);
@@ -12075,9 +12049,13 @@ if (uni.restoreGlobal) {
       };
       const confirmFun = () => {
         if (Object.keys(dateInfo.value).length === 0) {
-          setSolarDate(props.defaultValue[0] + 1900, props.defaultValue[1] + 1, props.defaultValue[2] + 1);
+          setSolarDate(
+            props.defaultValue[0] + 1900,
+            props.defaultValue[1] + 1,
+            props.defaultValue[2] + 1
+          );
         }
-        formatAppLog("log", "at components/gscosmosDateSelect/index.vue:217", dateInfo.value);
+        formatAppLog("log", "at components/gscosmosDateSelect/index.vue:222", dateInfo.value);
         emit("confirm", dateInfo.value);
       };
       return (_ctx, _cache) => {
@@ -12181,7 +12159,7 @@ if (uni.restoreGlobal) {
                 vue.createElementVNode("view", { class: "pageFoot" }, [
                   vue.createElementVNode("button", {
                     onClick: confirmFun,
-                    class: "agree-btn btn"
+                    class: "confirm"
                   }, "确定")
                 ])
               ])
@@ -12208,7 +12186,7 @@ if (uni.restoreGlobal) {
         data: []
       });
       const startTime = vue.ref(format((/* @__PURE__ */ new Date()).getTime() - 15552e6, "yyyy-MM-dd"));
-      const endTime = vue.ref(format(/* @__PURE__ */ new Date(), "yyyy-MM-dd"));
+      const endTime = vue.ref(format(/* @__PURE__ */ new Date() - 864e5, "yyyy-MM-dd"));
       const dateSelecStarttVisiable = vue.ref(false);
       const dateSelecEndtVisiable = vue.ref(false);
       const scrollTop = vue.ref(0);
@@ -12598,7 +12576,7 @@ if (uni.restoreGlobal) {
             isHaveMore.value = false;
           }
           homeList.data = homeList.data.concat(res.data.ordersServes);
-          formatAppLog("log", "at pages/pickup/index.vue:108", res, homeList.data, "66666666666");
+          formatAppLog("log", "at pages/pickup/index.vue:107", res, homeList.data, "66666666666");
         });
       };
       const getRobOrderList = () => {
@@ -12629,7 +12607,6 @@ if (uni.restoreGlobal) {
               vue.createElementVNode("scroll-view", {
                 "scroll-y": icCanScroll.value,
                 class: vue.normalizeClass(["scrollList", homeList.data.length ? "" : "noData"]),
-                onScroll: _cache[0] || (_cache[0] = (...args) => _ctx.handleScroll && _ctx.handleScroll(...args)),
                 onScrolltolower: handleLoad,
                 "upper-threshold": 50,
                 ref_key: "scrollView",
@@ -34479,6 +34456,7 @@ if (uni.restoreGlobal) {
       // 公用footer的激活码
       setFootStatus(state, provider) {
         state.footStatus = provider;
+        formatAppLog("log", "at store/modules/global.js:11", "???");
       },
       setOrderActive(state, provider) {
         state.footStatus = provider;

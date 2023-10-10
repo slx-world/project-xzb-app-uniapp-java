@@ -4,21 +4,20 @@
     <view class="uni-tabbar">
       <view
         class="tabbar-item"
-        :class="currentPage === index ? 'active' : ''"
+        :class="store.state.footStatus === index ? 'active' : ''"
         v-for="(item, index) in tabbar"
         :key="index"
         @tap="changeTab(item, index)"
       >
-        <view v-if="true" class="uni-tabbar__bd">
-          <view class="uni-tabbar__icon" v-if="item.pagePath !== ''">
+        <view class="uni-tabbar__bd">
+          <view class="uni-tabbar__icon">
             <img
-              v-if="currentPage === index"
+              v-if="store.state.footStatus === index"
               class="item-img"
               :src="item.selectedIconPath"
             />
             <img v-else class="item-img" :src="item.iconPath" />
           </view>
-          <view v-else class="qrCode"><img :src="item.iconPath" /></view>
         </view>
         <view class="uni-tabbar__label" v-if="item.text !== ''">{{
           item.text
@@ -41,7 +40,6 @@ const props = defineProps({
 });
 // ------定义变量------
 const store = useStore(); //vuex获取储存数据
-const currentPage = ref(store.state.footStatus); //获取储存的当前tab状态
 let tabbar = ref([
   {
     pagePath: '/pages/index/index',
@@ -55,12 +53,6 @@ let tabbar = ref([
     selectedIconPath: 'static/collectActive.png',
     text: '订单',
   },
-  // {
-  // 	pagePath: '',
-  // 	iconPath: 'static/qrcode.png',
-  // 	selectedIconPath: 'static/qrcode.png',
-  // 	text: ''
-  // },
   {
     pagePath: '/pages/delivery/index',
     iconPath: 'static/delivery.png',
@@ -75,16 +67,18 @@ let tabbar = ref([
   },
 ]);
 // ------方法------
+
 // 触发tab事件
 const changeTab = (item, index) => {
-  store.commit('user/setFilterOverTime', null);
+  // console.log(currentPage.value, index, '---------');
+  store.commit('setFootStatus', index);
+  // store.state.footStatus = index;
+  // currentPage.value = index;
+  console.log(store.state.footStatus, 'store');
   if (item.text !== '消息') {
-    currentPage.value = index;
     // 页面跳转
     uni.redirectTo({
       url: item.pagePath,
-      success: (e) => {},
-      fail: () => {},
     });
   } else {
     uni.showToast({
