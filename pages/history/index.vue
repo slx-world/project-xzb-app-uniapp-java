@@ -118,7 +118,7 @@ const homeList = reactive({
   data: [],
 });
 const startTime = ref(format(new Date().getTime() - 15552000000, 'yyyy-MM-dd'));
-const endTime = ref(format(new Date(), 'yyyy-MM-dd'));
+const endTime = ref(format(new Date() - 86400000, 'yyyy-MM-dd'));
 const dateSelecStarttVisiable = ref(false);
 const dateSelecEndtVisiable = ref(false);
 const scrollTop = ref(0);

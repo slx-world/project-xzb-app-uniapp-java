@@ -1097,6 +1097,16 @@
 .pageFoot[data-v-d9a95d4f] {
   background: #ffffff;
   box-shadow: 0 0 0.375rem 0 #0000001a;
+  width: 100%;
+  padding-top: 0.9375rem;
+  padding-bottom: 0.9375rem;
+}
+.confirm[data-v-d9a95d4f] {
+  width: 12.75rem;
+  height: 2.75rem;
+  background: #f74346;
+  border-radius: 1.5625rem;
+  color: #fff;
 }
 /* 水平间距 */
 /* 水平间距 */

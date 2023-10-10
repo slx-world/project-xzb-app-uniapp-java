@@ -43,7 +43,7 @@
           </picker-view-column>
         </picker-view>
         <view class="pageFoot">
-          <button @click="confirmFun" class="agree-btn btn">确定</button>
+          <button @click="confirmFun" class="confirm">确定</button>
         </view>
       </view>
     </view>
@@ -111,7 +111,7 @@ watch(
 // Make sure to import the calendar object if it's in a separate file
 
 const getYear = () => {
-  years.value = []
+  years.value = [];
   if (type.value === 'solar') {
     for (let i = minYear; i <= maxYear; i++) {
       years.value.push(i);
@@ -129,7 +129,7 @@ const getYear = () => {
 };
 
 const getMonth = () => {
-  months.value = []
+  months.value = [];
   if (type.value === 'solar') {
     for (let i = 1; i <= 12; i++) {
       months.value.push(i + '月');
@@ -152,7 +152,7 @@ const getMonth = () => {
 };
 
 const getDay = () => {
-  days.value = []
+  days.value = [];
   let year = selectValue.value[0] + minYear;
   let month = selectValue.value[1] + 1;
   for (let i = 1; i <= calendar.solarDays(year, month); i++) {
@@ -167,7 +167,8 @@ const bindChange = async (e) => {
   const year = val[0] + minYear;
   const month = val[1] + 1;
   const day = val[2] + 1;
-  setSolarDate(year, month, day);
+  console.log(year, month, day, 'year, month, day');
+  // setSolarDate(year, month, day);
 };
 
 const setSolarDate = (y, m, d) => {
@@ -212,7 +213,11 @@ const cancel = () => {
 
 const confirmFun = () => {
   if (Object.keys(dateInfo.value).length === 0) {
-    setSolarDate(props.defaultValue[0] + 1900, props.defaultValue[1] + 1, props.defaultValue[2] + 1);
+    setSolarDate(
+      props.defaultValue[0] + 1900,
+      props.defaultValue[1] + 1,
+      props.defaultValue[2] + 1
+    );
   }
   console.log(dateInfo.value);
   emit('confirm', dateInfo.value);
@@ -407,5 +412,15 @@ const confirmFun = () => {
 .pageFoot {
   background: #ffffff;
   box-shadow: 0 0 12rpx 0 #0000001a;
+  width: 100%;
+  padding-top: 30rpx;
+  padding-bottom: 30rpx;
+}
+.confirm {
+  width: 408rpx;
+  height: 88rpx;
+  background: #f74346;
+  border-radius: 50rpx;
+  color: #fff;
 }
 </style>
