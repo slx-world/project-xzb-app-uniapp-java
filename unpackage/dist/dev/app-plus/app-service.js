@@ -12009,6 +12009,7 @@ if (uni.restoreGlobal) {
         const month = val[1] + 1;
         const day = val[2] + 1;
         formatAppLog("log", "at components/gscosmosDateSelect/index.vue:170", year, month, day, "year, month, day");
+        setSolarDate(year, month, day);
       };
       const setSolarDate = (y2, m2, d2) => {
         const dt2 = calendar.solar2lunar(y2, m2, d2);
@@ -12059,117 +12060,110 @@ if (uni.restoreGlobal) {
         emit("confirm", dateInfo.value);
       };
       return (_ctx, _cache) => {
-        return vue.withDirectives((vue.openBlock(), vue.createElementBlock(
-          "view",
-          {
-            class: "mask",
-            onClick: _cache[2] || (_cache[2] = vue.withModifiers(($event) => showCalendar.value = false, ["stop"]))
-          },
-          [
+        return showCalendar.value ? (vue.openBlock(), vue.createElementBlock("view", {
+          key: 0,
+          class: "mask",
+          onClick: _cache[2] || (_cache[2] = vue.withModifiers(($event) => showCalendar.value = false, ["stop"]))
+        }, [
+          vue.createElementVNode("view", {
+            class: "calendar",
+            onClick: _cache[1] || (_cache[1] = vue.withModifiers(() => {
+            }, ["stop"]))
+          }, [
             vue.createElementVNode("view", {
-              class: "calendar",
-              onClick: _cache[1] || (_cache[1] = vue.withModifiers(() => {
+              class: "content",
+              onClick: _cache[0] || (_cache[0] = vue.withModifiers(() => {
               }, ["stop"]))
             }, [
-              vue.createElementVNode("view", {
-                class: "content",
-                onClick: _cache[0] || (_cache[0] = vue.withModifiers(() => {
-                }, ["stop"]))
+              vue.createElementVNode("view", { class: "title" }, [
+                vue.createElementVNode("view", { class: "sure" }),
+                vue.createElementVNode(
+                  "view",
+                  { class: "left" },
+                  vue.toDisplayString(__props.timeType === "start" ? "开始时间" : "结束时间"),
+                  1
+                  /* TEXT */
+                ),
+                vue.createElementVNode("view", {
+                  class: "close",
+                  onClick: cancel
+                })
+              ]),
+              vue.createElementVNode("picker-view", {
+                "indicator-style": indicatorStyle,
+                value: selectValue.value,
+                onChange: bindChange
               }, [
-                vue.createElementVNode("view", { class: "title" }, [
-                  vue.createElementVNode("view", { class: "sure" }),
-                  vue.createElementVNode(
-                    "view",
-                    { class: "left" },
-                    vue.toDisplayString(__props.timeType === "start" ? "开始时间" : "结束时间"),
-                    1
-                    /* TEXT */
-                  ),
-                  vue.createElementVNode("view", {
-                    class: "close",
-                    onClick: cancel
-                  })
+                vue.createElementVNode("picker-view-column", null, [
+                  (vue.openBlock(true), vue.createElementBlock(
+                    vue.Fragment,
+                    null,
+                    vue.renderList(years.value, (item, index) => {
+                      return vue.openBlock(), vue.createElementBlock(
+                        "view",
+                        {
+                          class: vue.normalizeClass(["item", selectValue.value[0] === index ? "active" : ""]),
+                          key: index
+                        },
+                        vue.toDisplayString(item) + "年",
+                        3
+                        /* TEXT, CLASS */
+                      );
+                    }),
+                    128
+                    /* KEYED_FRAGMENT */
+                  ))
                 ]),
-                vue.createElementVNode("picker-view", {
-                  "indicator-style": indicatorStyle,
-                  value: selectValue.value,
-                  onChange: bindChange
-                }, [
-                  vue.createElementVNode("picker-view-column", null, [
-                    (vue.openBlock(true), vue.createElementBlock(
-                      vue.Fragment,
-                      null,
-                      vue.renderList(years.value, (item, index) => {
-                        return vue.openBlock(), vue.createElementBlock(
-                          "view",
-                          {
-                            class: vue.normalizeClass(["item", selectValue.value[0] === index ? "active" : ""]),
-                            key: index
-                          },
-                          vue.toDisplayString(item) + "年",
-                          3
-                          /* TEXT, CLASS */
-                        );
-                      }),
-                      128
-                      /* KEYED_FRAGMENT */
-                    ))
-                  ]),
-                  vue.createElementVNode("picker-view-column", null, [
-                    (vue.openBlock(true), vue.createElementBlock(
-                      vue.Fragment,
-                      null,
-                      vue.renderList(months.value, (item, index) => {
-                        return vue.openBlock(), vue.createElementBlock(
-                          "view",
-                          {
-                            class: vue.normalizeClass(["item", selectValue.value[1] === index ? "active" : ""]),
-                            key: index
-                          },
-                          vue.toDisplayString(item),
-                          3
-                          /* TEXT, CLASS */
-                        );
-                      }),
-                      128
-                      /* KEYED_FRAGMENT */
-                    ))
-                  ]),
-                  vue.createElementVNode("picker-view-column", null, [
-                    (vue.openBlock(true), vue.createElementBlock(
-                      vue.Fragment,
-                      null,
-                      vue.renderList(days.value, (item, index) => {
-                        return vue.openBlock(), vue.createElementBlock(
-                          "view",
-                          {
-                            class: vue.normalizeClass(["item", selectValue.value[2] === index ? "active" : ""]),
-                            key: index
-                          },
-                          vue.toDisplayString(item),
-                          3
-                          /* TEXT, CLASS */
-                        );
-                      }),
-                      128
-                      /* KEYED_FRAGMENT */
-                    ))
-                  ])
-                ], 40, ["value"]),
-                vue.createElementVNode("view", { class: "pageFoot" }, [
-                  vue.createElementVNode("button", {
-                    onClick: confirmFun,
-                    class: "confirm"
-                  }, "确定")
+                vue.createElementVNode("picker-view-column", null, [
+                  (vue.openBlock(true), vue.createElementBlock(
+                    vue.Fragment,
+                    null,
+                    vue.renderList(months.value, (item, index) => {
+                      return vue.openBlock(), vue.createElementBlock(
+                        "view",
+                        {
+                          class: vue.normalizeClass(["item", selectValue.value[1] === index ? "active" : ""]),
+                          key: index
+                        },
+                        vue.toDisplayString(item),
+                        3
+                        /* TEXT, CLASS */
+                      );
+                    }),
+                    128
+                    /* KEYED_FRAGMENT */
+                  ))
+                ]),
+                vue.createElementVNode("picker-view-column", null, [
+                  (vue.openBlock(true), vue.createElementBlock(
+                    vue.Fragment,
+                    null,
+                    vue.renderList(days.value, (item, index) => {
+                      return vue.openBlock(), vue.createElementBlock(
+                        "view",
+                        {
+                          class: vue.normalizeClass(["item", selectValue.value[2] === index ? "active" : ""]),
+                          key: index
+                        },
+                        vue.toDisplayString(item),
+                        3
+                        /* TEXT, CLASS */
+                      );
+                    }),
+                    128
+                    /* KEYED_FRAGMENT */
+                  ))
                 ])
+              ], 40, ["value"]),
+              vue.createElementVNode("view", { class: "pageFoot" }, [
+                vue.createElementVNode("button", {
+                  onClick: confirmFun,
+                  class: "confirm"
+                }, "确定")
               ])
             ])
-          ],
-          512
-          /* NEED_PATCH */
-        )), [
-          [vue.vShow, showCalendar.value]
-        ]);
+          ])
+        ])) : vue.createCommentVNode("v-if", true);
       };
     }
   };

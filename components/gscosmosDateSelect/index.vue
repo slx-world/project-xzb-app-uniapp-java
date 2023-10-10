@@ -1,5 +1,5 @@
 <template>
-  <view class="mask" v-show="showCalendar" @click.stop="showCalendar = false">
+  <view class="mask" v-if="showCalendar" @click.stop="showCalendar = false">
     <view class="calendar" @tap.stop>
       <view class="content" @tap.stop>
         <view class="title">
@@ -168,7 +168,7 @@ const bindChange = async (e) => {
   const month = val[1] + 1;
   const day = val[2] + 1;
   console.log(year, month, day, 'year, month, day');
-  // setSolarDate(year, month, day);
+  setSolarDate(year, month, day);
 };
 
 const setSolarDate = (y, m, d) => {
