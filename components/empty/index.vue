@@ -14,6 +14,7 @@ import { useStore } from 'vuex';
 const props = defineProps({
   canPickUp: {
     type: Boolean,
+    default: true,
   },
 });
 // ------定义变量------

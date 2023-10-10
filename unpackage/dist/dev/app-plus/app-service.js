@@ -4703,7 +4703,7 @@ if (uni.restoreGlobal) {
     this._committing = committing;
   };
   Object.defineProperties(Store.prototype, prototypeAccessors);
-  const baseUrl = "https://jzo2o-api-test.itheima.net";
+  const baseUrl = "/api";
   function request({ url = "", params = {}, method = "GET" }) {
     const token = uni.getStorageSync("token");
     let header = {
@@ -5712,7 +5712,8 @@ if (uni.restoreGlobal) {
     __name: "index",
     props: {
       canPickUp: {
-        type: Boolean
+        type: Boolean,
+        default: true
       }
     },
     setup(__props, { emit }) {
