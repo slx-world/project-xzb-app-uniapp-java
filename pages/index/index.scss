@@ -102,13 +102,17 @@ uni-page-head,
       padding-top: 41rpx;
       .serviceItem{
         text-align: center;
-        line-height: 64rpx;
+        // line-height: 64rpx;
         height: 64rpx;
         width: 216rpx;
         border-radius: 32rpx;
         background-color: var(--color-gray-f2);
         margin-bottom: 41rpx;
         margin-left: 20rpx;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        // padding-top: 2rpx;
         &.active{
           height: 60rpx;
           width: 212rpx;

@@ -8,6 +8,7 @@
           @click="handleClick"
         ></image>
         {{ location }}
+        <!-- {{ '北京市' }} -->
       </view>
       <view
         class="item"
@@ -177,6 +178,9 @@ const handleLink = (val) => {
       border-radius: 34rpx;
       margin-top: 63rpx;
       background-color: var(--neutral-color-white);
+      display: flex;
+      align-items: center;
+      justify-content: center;
       image {
         width: 32rpx;
         height: 36rpx;

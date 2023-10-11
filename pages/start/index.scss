@@ -1,7 +1,7 @@
 .starPage{
 	.page{
 		background: #fff url(@/static/new/start.jpg) no-repeat ;
-		background-size:cover;
+		background-size:100% 100%;
     width: 100%;
     height: calc(100vh - 360rpx);
 	}

@@ -2646,7 +2646,7 @@ body {
   line-height: 1rem;
 }
 .footBox .tabbar-item.active .uni-tabbar__label {
-  color: var(--essential-color-red);
+  color: var(--color-black-19);
 }
 .uni-error-message-text {
   color: var(--essential-color-red) !important;
@@ -3022,6 +3022,9 @@ body {
 }
  .addressCon .item .receiveIcon {
   background: var(--essential-color-red);
+}
+ .uni-radio-input:hover {
+  border-color: #d1d1d1 !important;
 }
  .checkRadio .uni-radio-wrapper .uni-radio-input {
   background: url(static/checkbox.png) no-repeat;

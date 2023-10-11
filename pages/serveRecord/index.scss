@@ -2,7 +2,7 @@
   .card{
     margin-top: 30rpx;
     background-color: var(--neutral-color-white);
-    padding: 40rpx 31rpx 40rpx 44rpx;
+    padding: 40rpx 30rpx 40rpx 30rpx;
   }
 
   .title{
@@ -21,8 +21,8 @@
       position: absolute;
       font-size: 28rpx;
       color: var(--color-gray-9);
-      right: 70rpx;
-      bottom: 60rpx;
+      right: 50rpx;
+      bottom: 80rpx;
       .min{
         color: var(--color-red-bg);
       }
@@ -41,11 +41,14 @@
   ::v-deep .file-picker__box-content{
     background-color: var(--color-gray-eb);
   }
+  ::v-deep .file-title{
+    visibility: hidden;
+  }
   ::v-deep .uni-textarea-textarea{
     background-color: var(--neutral-color-background);
     padding: 28rpx;
     height: calc(100% - 28rpx);
-    width: calc(100% - 18rpx);
+    width: calc(100% - 56rpx);
   }
   .footer {
     width: 100%;
@@ -69,4 +72,23 @@
     }
   }
 }
-
+::v-deep .uni-textarea-placeholder {
+  z-index: 100;
+  top: 20rpx;
+  left: 20rpx;
+  width: auto;
+}
+::v-deep uni-textarea{
+  width: 690rpx;
+  height: 260rpx;
+}
+.must{
+  color: #f74346;
+  font-size: 32rpx;
+  font-face: PingFangSC;
+  font-weight: 600;
+  line-height: 0;
+  letter-spacing: 0.32rpx;
+  paragraph-spacing: 0;
+  text-align: left;
+}

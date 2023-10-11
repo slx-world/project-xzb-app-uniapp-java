@@ -22,7 +22,7 @@
         align-items: center;
         .tag {
           height: 44rpx;
-          line-height: 41rpx;
+          line-height: 44rpx;
           .selectNum{
             color: var(--color-gray-59);
             font-size: 24rpx;
@@ -89,7 +89,7 @@
           font-size: 28rpx;
           color: #151515;
           border-radius: 16rpx;
-          border: 2rpx solid transparent;
+          // border: 2rpx solid transparent;
   
           &:nth-child(2n) {
             margin-right: 0;

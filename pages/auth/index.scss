@@ -1,19 +1,27 @@
 .auth{
-  background-color: var(--neutral-color-white);
+  // background-color: var(--neutral-color-white);
   min-height: 100vh;
   // padding: 0 30rpx;
   // padding-bottom: 1a6rpx;
   .idCard{
-    margin-top: 50rpx;
+    // margin-top: 50rpx;
+  }
+  .name{
+    margin-top: 30rpx;
+  }
+  .name,.idCard{
+    height: 44rpx;
   }
   .name,.idCard,.idCardPhoto,.data{
     display: flex;
     align-items: center;
+    background-color: var(--neutral-color-white);
     border-bottom: 2rpx solid var(--color-gray-e8);
-    padding-bottom: 30rpx;
+    padding-bottom: 31rpx;
+    padding-top: 24rpx;
     // margin: 0 30rpx;
-    margin-left: 30rpx;
-    margin-right: 30rpx;
+    padding-left: 30rpx;
+    padding-right: 30rpx;
     ::v-deep .uni-easyinput__content{
       border:none
     }
@@ -93,11 +101,17 @@
       }
     }
   }
-  .countryPhoto{
-    margin-top: 40rpx;
+  .idCardPhoto{
+    margin-top: 30rpx;
+    padding-top: 41rpx;
+  }
+  .idCardPhoto{
+    margin-top: 30rpx;
   }
   .data{
-    padding-bottom: 44rpx;
+    margin-top: 0;
+    padding-top: 41rpx;
+    padding-bottom: 106rpx;
     .content{
       .photoLabel{
         text-align: left!important;

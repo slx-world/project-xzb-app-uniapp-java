@@ -23,7 +23,7 @@ const emit = defineEmits(); //子组件向父组件事件传递
 <style lang="scss" scoped>
 .empty {
   .content {
-    font-size: 26rpx;
+    font-size: 24rpx;
     color: var(--color-black-15);
   }
   .image {
@@ -34,6 +34,7 @@ const emit = defineEmits(); //子组件向父组件事件传递
     background-repeat: no-repeat;
     background-size: contain;
     padding-top: 114rpx !important;
+    margin-bottom: 0px;
   }
 }
 </style>

@@ -590,6 +590,7 @@
   border-bottom-width: 0.03125rem;
   border-bottom-style: solid;
   border-bottom-color: #eee;
+  box-shadow: 0 2px 4px 0 #181a390a;
 }
 .uni-ellipsis-1[data-v-26544265] {
   overflow: hidden;
@@ -604,7 +605,7 @@
 /* 水平间距 */
 /* 水平间距 */
 .empty .content[data-v-c00e6953] {
-  font-size: 0.8125rem;
+  font-size: 0.75rem;
   color: var(--color-black-15);
 }
 .empty .image[data-v-c00e6953] {
@@ -615,6 +616,7 @@
   background-repeat: no-repeat;
   background-size: contain;
   padding-top: 3.5625rem !important;
+  margin-bottom: 0px;
 }
 /* 水平间距 */
 /* 水平间距 */

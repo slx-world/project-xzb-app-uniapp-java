@@ -1188,7 +1188,7 @@ body[data-v-10597487] {
   line-height: 1rem;
 }
 .footBox .tabbar-item.active .uni-tabbar__label[data-v-10597487] {
-  color: var(--essential-color-red);
+  color: var(--color-black-19);
 }
 .uni-error-message-text[data-v-10597487] {
   color: var(--essential-color-red) !important;
@@ -1564,6 +1564,9 @@ body[data-v-10597487] {
 }
 [data-v-10597487] .addressCon .item .receiveIcon {
   background: var(--essential-color-red);
+}
+[data-v-10597487] .uni-radio-input:hover {
+  border-color: #d1d1d1 !important;
 }
 [data-v-10597487] .checkRadio .uni-radio-wrapper .uni-radio-input {
   background: url(../../static/checkbox.png) no-repeat;

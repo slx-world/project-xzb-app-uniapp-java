@@ -590,6 +590,7 @@
   border-bottom-width: 0.03125rem;
   border-bottom-style: solid;
   border-bottom-color: #eee;
+  box-shadow: 0 2px 4px 0 #181a390a;
 }
 .uni-ellipsis-1[data-v-26544265] {
   overflow: hidden;

@@ -590,6 +590,7 @@
   border-bottom-width: 0.03125rem;
   border-bottom-style: solid;
   border-bottom-color: #eee;
+  box-shadow: 0 2px 4px 0 #181a390a;
 }
 .uni-ellipsis-1[data-v-26544265] {
   overflow: hidden;
@@ -726,6 +727,9 @@
   border-radius: 1.0625rem;
   margin-top: 1.96875rem;
   background-color: var(--neutral-color-white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .navBox .baseSetting .location uni-image[data-v-5f714409] {
   width: 1rem;
@@ -748,7 +752,7 @@
 /* 水平间距 */
 /* 水平间距 */
 .empty .content[data-v-c00e6953] {
-  font-size: 0.8125rem;
+  font-size: 0.75rem;
   color: var(--color-black-15);
 }
 .empty .image[data-v-c00e6953] {
@@ -759,6 +763,7 @@
   background-repeat: no-repeat;
   background-size: contain;
   padding-top: 3.5625rem !important;
+  margin-bottom: 0px;
 }
 /* 水平间距 */
 /* 水平间距 */
@@ -864,13 +869,15 @@ uni-page-head[data-v-538110be],
 }
 .homeFilter .filterPopup .service .serviceItem[data-v-538110be] {
   text-align: center;
-  line-height: 2rem;
   height: 2rem;
   width: 6.75rem;
   border-radius: 1rem;
   background-color: var(--color-gray-f2);
   margin-bottom: 1.28125rem;
   margin-left: 0.625rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .homeFilter .filterPopup .service .serviceItem.active[data-v-538110be] {
   height: 1.875rem;
@@ -1168,13 +1175,15 @@ uni-page-head[data-v-5d962223],
 }
 .homeFilter .filterPopup .service .serviceItem[data-v-5d962223] {
   text-align: center;
-  line-height: 2rem;
   height: 2rem;
   width: 6.75rem;
   border-radius: 1rem;
   background-color: var(--color-gray-f2);
   margin-bottom: 1.28125rem;
   margin-left: 0.625rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .homeFilter .filterPopup .service .serviceItem.active[data-v-5d962223] {
   height: 1.875rem;
@@ -1472,13 +1481,15 @@ uni-page-head[data-v-1cf27b2a],
 }
 .homeFilter .filterPopup .service .serviceItem[data-v-1cf27b2a] {
   text-align: center;
-  line-height: 2rem;
   height: 2rem;
   width: 6.75rem;
   border-radius: 1rem;
   background-color: var(--color-gray-f2);
   margin-bottom: 1.28125rem;
   margin-left: 0.625rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .homeFilter .filterPopup .service .serviceItem.active[data-v-1cf27b2a] {
   height: 1.875rem;

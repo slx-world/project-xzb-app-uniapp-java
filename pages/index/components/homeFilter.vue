@@ -34,7 +34,11 @@
       <view class="service">
         <view
           class="serviceItem"
-          :class="activeType === item.id ? 'active' : ''"
+          :class="
+            (type === 'distance' ? distanceActive : activeType) === item.id
+              ? 'active'
+              : ''
+          "
           v-for="(item, index) in serviceType.data"
           :key="index"
           @click="handleService(item.id)"
@@ -51,7 +55,6 @@
 </template>
 
 <script setup>
-import { useStore } from 'vuex';
 import { ref, reactive, watch } from 'vue';
 const emit = defineEmits(['handleCanScroll', 'getList', 'tabChange']); //子组件向父组件事件传递
 // 获取父组件值、方法
@@ -71,7 +74,8 @@ const isOpen = ref(false);
 let serviceType = reactive({
   data: [],
 });
-const activeType = ref('');
+const activeType = ref(''); //服务类型选中值
+const distanceActive = ref(''); //距离筛选选中值
 // ------定义方法------
 const handleClick = (val) => {
   status.value = val;
@@ -83,7 +87,7 @@ const handleOpen = (val) => {
   if (val === 'distance') {
     serviceType.data = [
       {
-        id: 0,
+        id: '',
         name: '全部',
       },
       {
@@ -119,18 +123,29 @@ const handleOpen = (val) => {
 
 const handleReset = () => {
   activeType.value = '';
+  distanceActive.value = '';
   isOpen.value = false;
   emit('handleCanScroll', isOpen.value);
   emit('tabChange', status.value, activeType.value);
 };
 
 const handleService = (val) => {
-  activeType.value = val;
+  if (type.value === 'distance') {
+    distanceActive.value = val;
+    activeType.value = '';
+  } else {
+    activeType.value = val;
+    distanceActive.value = '';
+  }
 };
 const handleSubmit = () => {
   isOpen.value = false;
   emit('handleCanScroll', isOpen.value);
-  emit('tabChange', status.value, activeType.value);
+  emit(
+    'tabChange',
+    status.value,
+    type.value === 'distance' ? distanceActive.value : activeType.value
+  );
 };
 watch(
   () => props.homeFilterList,

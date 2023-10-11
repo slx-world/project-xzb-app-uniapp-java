@@ -590,6 +590,7 @@
   border-bottom-width: 0.03125rem;
   border-bottom-style: solid;
   border-bottom-color: #eee;
+  box-shadow: 0 2px 4px 0 #181a390a;
 }
 .uni-ellipsis-1[data-v-26544265] {
   overflow: hidden;
@@ -628,7 +629,7 @@
 }
 .serviceSkill .servicePage .left .tagBox .tag[data-v-6ade5948] {
   height: 1.375rem;
-  line-height: 1.28125rem;
+  line-height: 1.375rem;
 }
 .serviceSkill .servicePage .left .tagBox .tag .selectNum[data-v-6ade5948] {
   color: var(--color-gray-59);
@@ -687,7 +688,6 @@
   font-size: 0.875rem;
   color: #151515;
   border-radius: 0.5rem;
-  border: 0.0625rem solid transparent;
 }
 .serviceSkill .servicePage .serviceBox .clean .card[data-v-6ade5948]:nth-child(2n) {
   margin-right: 0;

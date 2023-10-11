@@ -307,7 +307,7 @@ body {
 		}
 		&.active {
 			.uni-tabbar__label {
-				color: var(--essential-color-red);
+				color: var(--color-black-19);
 			}
 		}
 	}
@@ -747,6 +747,10 @@ body {
 			background: var(--essential-color-red);
 		}
 	}
+}
+
+::v-deep .uni-radio-input:hover{
+  border-color: #d1d1d1!important;
 }
 ::v-deep .checkRadio {
 	.uni-radio-wrapper {

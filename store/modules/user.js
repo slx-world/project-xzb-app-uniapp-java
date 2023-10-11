@@ -11,7 +11,6 @@ export default {
       keyBoardHeight: 0,//记录键盘高度
       canPickUp: true,//是否开启接单
 
-
       userBase: {}, // 用户信息
       pages: 0,//总页数
       page: 1, //当前页码
@@ -55,6 +54,12 @@ export default {
     }
   },
   mutations: {
+    setKeyServiceType (state, provider) {
+      state.serviceType = provider;
+    },
+    setKeyDistance (state, provider) {
+      state.distance = provider;
+    },
     setKeyCanPickUp (state, provider) {
       state.canPickUp = provider;
     },
