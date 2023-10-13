@@ -30,11 +30,9 @@
 </template>
 
 <script setup>
-import { ref, onMounted, nextTick } from 'vue';
+import { ref } from 'vue';
 import { cancelOrder, rejectOrder } from '../api/order';
 import { onLoad } from '@dcloudio/uni-app';
-// 设置字符串的长度
-import { validateTextLength } from '@/utils/index.js';
 import { cancelData } from '@/utils/commonData.js';
 // 导入组件
 // 导航组件
@@ -82,7 +80,6 @@ const handleCancelSubmit = async () => {
     };
     await cancelOrder(params)
       .then((res) => {
-        // console.log(res, 'fuckkkkkk');
         if (res.code === 200) {
           uni.hideLoading();
           uni.showToast({

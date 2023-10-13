@@ -4703,7 +4703,7 @@ if (uni.restoreGlobal) {
     this._committing = committing;
   };
   Object.defineProperties(Store.prototype, prototypeAccessors);
-  const baseUrl = "http://172.17.2.58/api";
+  const baseUrl = "https://jzo2o-api-test.itheima.net";
   function request({ url = "", params = {}, method = "GET" }) {
     const token = uni.getStorageSync("token");
     let header = {

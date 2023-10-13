@@ -89,10 +89,6 @@ let fromInfo = reactive({
   veriryCode: '', // 密码
   userType: 2,
 });
-// let fromInfo = reactive({
-// 	account: '', //账号
-// 	password: '', // 密码
-// });
 // 表单校验
 const customRules = reactive({
   phone: {

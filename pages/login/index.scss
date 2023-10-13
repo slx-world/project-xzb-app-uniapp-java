@@ -133,15 +133,6 @@ uni-page-head,
 .pwdBox {
 	position: relative;
 	text {
-		
-		// &.pwdIcon {
-		// 	background: url(@/static/icon-close.png);
-		// 	background-size: contain;
-		// }
-		// &.showPwdIcon {
-		// 	background: url(@/static/icon-open.png);
-		// 	background-size: contain;
-		// }
 		&.clearIcon {
 			position: absolute;
 			width: auto;
@@ -155,9 +146,6 @@ uni-page-head,
 			font-family: uniicons;
 			    text-decoration: none;
 			    text-align: center;
-			// &:before{
-			// 	content: "\e66d";
-			// }
 		}
 	}
 }
