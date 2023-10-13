@@ -751,6 +751,9 @@
   font-size: 1.125rem;
   margin-bottom: 0.4375rem;
 }
+.order-info .status.failStatus[data-v-c0232ef0] {
+  color: var(--color-black-19);
+}
 .order-info .serveTime[data-v-c0232ef0] {
   font-size: 0.875rem;
 }
