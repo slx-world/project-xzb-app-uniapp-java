@@ -8,7 +8,6 @@
       :markers="[markers.data]"
       :latitude="location.latitude"
       :longitude="location.longitude"
-      @markertap="markerTap"
     >
     </map>
     <cover-view class="address">
@@ -48,7 +47,7 @@
 <script setup>
 import { ref, reactive, onMounted } from 'vue';
 import { useStore } from 'vuex';
-import { onLoad, onShow } from '@dcloudio/uni-app';
+import { onShow } from '@dcloudio/uni-app';
 import { getSettingInfo, setServiceSetting } from '../api/setting.js';
 // 导航组件
 import UniNav from '@/components/uni-nav/index.vue';
@@ -71,9 +70,6 @@ const markers = reactive({
     height: 60,
   },
 });
-const markerTap = () => {
-  console.log('111');
-};
 //选择服务城市
 const handleSelectCity = () => {
   uni.navigateTo({
@@ -93,7 +89,6 @@ const handleChooseRange = () => {
       markers.data.longitude = res.longitude;
       store.commit('user/setLocation', location);
       store.commit('user/setAddress', address.value);
-      console.log(res, '选择具体服务范围成功');
     },
     fail: function (err) {
       console.log(err, '选择具体服务范围失败');
@@ -150,20 +145,16 @@ onShow(() => {
             location.longitude = res.longitude;
             markers.data.latitude = res.latitude;
             markers.data.longitude = res.longitude;
-
-            // console.log(res, '获取当前位置成功');
           },
           fail: (err) => {
             location.latitude = 39.909187;
             location.longitude = 116.397455;
             markers.data.latitude = 39.909187;
             markers.data.longitude = 116.397455;
-            // console.log(err, '获取当前位置失败');
           },
         });
         cityName.value = users.cityName;
       } else {
-        // console.log(users.cityName, users.cityCode, '???');
         store.commit('user/setCityCode', users.cityCode || res.data.cityCode);
         //有位置信息则进行赋值
         cityName.value =

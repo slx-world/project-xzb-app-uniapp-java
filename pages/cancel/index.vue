@@ -48,13 +48,11 @@ onLoad((options) => {
   orderId.value = options.id;
   from.value = options.type;
   title.value = from.value === 'dispatch' ? '拒单原因' : '取消原因';
-  console.log(options, '取消订单');
 });
 // ------定义方法------
 // 取消订单原因选择
 const handleCause = (value) => {
   cancel.value = value;
-  console.log(value, '----------');
 };
 
 //确认提交
@@ -135,7 +133,6 @@ const handleRejectSubmit = async () => {
     };
     await rejectOrder(params)
       .then((res) => {
-        console.log(res, 'res');
         if (res.code === 200) {
           // 操作成功后清除loading
           uni.hideLoading();

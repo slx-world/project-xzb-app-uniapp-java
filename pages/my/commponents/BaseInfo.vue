@@ -22,7 +22,7 @@
   </view>
 </template>
 <script setup>
-import { ref, reactive, onMounted } from 'vue';
+import { ref, onMounted } from 'vue';
 import { getUserSetting } from '../../api/setting.js';
 // 获取父组件数据
 const props = defineProps({
@@ -47,18 +47,5 @@ onMounted(() => {
       });
     });
 });
-// ------定义方法------
-// 二维码暂时不做
-const handleQr = () => {
-  // TODO暂时保留
-  // uni.navigateTo({
-  // 	url:'/pages/my/qrCode'
-  // })
-  uni.showToast({
-    title: '程序员哥哥正在实现中',
-    duration: 1000,
-    icon: 'none',
-  });
-};
 </script>
 <style src="./../index.scss" lang="scss" scoped></style>

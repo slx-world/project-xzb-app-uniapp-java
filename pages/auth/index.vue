@@ -39,24 +39,24 @@
           <view class="photoLabel">示例图</view>
         </view>
       </view>
-          <!-- 身份证反面 -->
-    <view class="countryPhoto">
-      <view class="content">
-        <view class="photoItem">
-          <uni-file-picker
-            limit="1"
-            title=""
-            @select="(e) => handleSelect(e, 'backImg')"
-            @delete="handleDelete('backImg')"
-          ></uni-file-picker>
-          <view class="photoLabel">国徽面照片 </view>
-        </view>
-        <view class="photoItem">
-          <image class="forImg" src="../../static/new/ren@2x.png"></image>
-          <view class="photoLabel">示例图</view>
+      <!-- 身份证反面 -->
+      <view class="countryPhoto">
+        <view class="content">
+          <view class="photoItem">
+            <uni-file-picker
+              limit="1"
+              title=""
+              @select="(e) => handleSelect(e, 'backImg')"
+              @delete="handleDelete('backImg')"
+            ></uni-file-picker>
+            <view class="photoLabel">国徽面照片 </view>
+          </view>
+          <view class="photoItem">
+            <image class="forImg" src="../../static/new/ren@2x.png"></image>
+            <view class="photoLabel">示例图</view>
+          </view>
         </view>
       </view>
-    </view>
     </view>
 
     <view class="data">
@@ -101,7 +101,6 @@ const goBack = () => {
   uni.navigateBack();
 };
 const handleDelete = (type) => {
-  // console.log(e, 'eeeee');
   formData.value[type] = '';
 };
 //上传图片
@@ -120,13 +119,9 @@ const handleSelect = (e, type) => {
       Authorization: uni.getStorageSync('token'),
     },
     success: (uploadFileRes) => {
-      // const imageUrl = JSON.parse(uploadFileRes.data).data.url;
-      // resolve(imageUrl); // 上传成功后将图片链接传给 Promise 的 resolve
       formData.value[type] = JSON.parse(uploadFileRes.data).data.url;
-      console.log(JSON.parse(uploadFileRes.data).data.url, '-----');
     },
-    fail: (err) => {
-      // reject(err); // 上传失败时将错误信息传给 Promise 的 reject
+    fail: () => {
       uni.showToast({
         title: '图片上传失败',
         duration: 1000,
@@ -134,11 +129,9 @@ const handleSelect = (e, type) => {
       });
     },
   });
-  console.log(e, type, 'eeeeeeeee');
 };
 //提交实名认证
 const handleSubmit = () => {
-  console.log(formData.value, 'formData.value');
   if (!formData.value.name) {
     return uni.showToast({
       title: '请填写真实姓名',
@@ -173,7 +166,6 @@ const handleSubmit = () => {
 
   if (!flag.value) return;
   flag.value = false;
-  console.log(flag.value, 'flag.value');
   postAuth(formData.value)
     .then((res) => {
       setTimeout(() => {

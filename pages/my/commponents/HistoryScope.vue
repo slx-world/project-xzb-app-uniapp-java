@@ -14,7 +14,6 @@
 </template>
 <script setup>
 import { useStore } from 'vuex';
-const store = useStore(); //vuex获取储存数据
 // ------定义方法------
 // 账户设置
 const handleAccount = () => {
@@ -24,8 +23,6 @@ const handleAccount = () => {
 };
 // 我的评价
 const handleHistory = () => {
-  // store.commit('user/setTabIndex', 0);
-  // store.commit('user/setTaskStatus', -1);
   uni.navigateTo({
     url: '/pages/evaluate/index',
   });

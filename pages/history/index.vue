@@ -85,13 +85,11 @@
 </template>
 
 <script setup>
-import { ref, reactive, nextTick } from 'vue';
+import { ref, reactive } from 'vue';
 import { onShow } from '@dcloudio/uni-app';
 import { useStore } from 'vuex';
-import { subYears, startOfYear, endOfYear, format } from 'date-fns';
+import { format } from 'date-fns';
 
-// 基本数据
-import { DeliveryData } from '@/utils/commonData.js';
 //接口
 import { getHistoryOrder } from '@/pages/api/order.js';
 
@@ -102,14 +100,11 @@ import Empty from '@/components/empty/index.vue';
 import HomeList from './components/homeList';
 // 底部导航
 import UniFooter from '@/components/uni-footer/index.vue';
-// tab切换
-import UniTab from '@/components/uni-tab/index.vue';
 // 导航组件
 import UniNav from '@/components/uni-nav/index.vue';
 // 日期选择
 import gscosmosDateSelect from '../../components/gscosmosDateSelect';
 // ------定义变量------
-const store = useStore();
 const emit = defineEmits(''); //子组件向父组件事件传递
 const popup = ref('');
 const isHaveMore = ref(false);
@@ -148,7 +143,8 @@ const searchDataByTime = () => {
 //开始时间
 const bindStartDateChange = (e) => {
   if (
-    new Date(endTime.value).getTime() - format(new Date(e.solarDate), 'yyyy-MM-dd').getTime() >
+    new Date(endTime.value).getTime() -
+      format(new Date(e.solarDate), 'yyyy-MM-dd').getTime() >
     31536000000
   ) {
     uni.showToast({
@@ -163,7 +159,8 @@ const bindStartDateChange = (e) => {
 //结束时间
 const bindEndDateChange = (e) => {
   if (
-    new Date(format(new Date(e.solarDate), 'yyyy-MM-dd')).getTime() - new Date(startTime.value).getTime() >
+    new Date(format(new Date(e.solarDate), 'yyyy-MM-dd')).getTime() -
+      new Date(startTime.value).getTime() >
     31536000000
   ) {
     return uni.showToast({
@@ -191,16 +188,12 @@ const handletTime = () => {
 };
 //上拉加载
 const handleLoad = () => {
-  // console.log(users.tabIndex, '上拉加载');
   if (isHaveMore.value) {
     getListData(homeList.data[homeList.data.length - 1].sortTime);
   }
-
-  // console.log(homeList.data[homeList.data.length - 1].id, '上拉加载');
 };
 //获取订单列表数据
 const getListData = (time) => {
-  // console.log(val, id, 'val, id');
   const params = {
     minSortTime: startTime.value + ' 00:00:00',
     maxSortTime: endTime.value + ' 23:59:59',
@@ -208,7 +201,6 @@ const getListData = (time) => {
   };
   if (!time) delete params.lastSortTime;
   getHistoryOrder(params).then((res) => {
-    console.log(res, homeList.data, '66666666666');
     if (res.data.length === 10) {
       isHaveMore.value = true;
     } else {
@@ -223,10 +215,6 @@ const handleClose = () => {
 };
 // ------定义方法------
 const getRobOrderList = () => {};
-//回到顶部
-const scrollToTop = () => {
-  scrollTop.value = scrollTop.value === 0 ? 1 : 0;
-};
 </script>
 <style src="../../styles/expressage.scss" lang="scss" scoped></style>
 <style src="./index.scss" lang="scss" scoped></style>

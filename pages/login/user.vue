@@ -162,7 +162,6 @@ const handleSubmit = async () => {
 
     await phoneLogins(fromInfo)
       .then(async (res) => {
-        console.log(res, '登录结果获取');
         // 操作成功后清除loading
         uni.hideLoading();
         // clearInterval(t);
@@ -171,7 +170,6 @@ const handleSubmit = async () => {
           uni.setStorageSync('token', res.data.token);
           store.commit('user/setToken', res.data.token);
           await getUserSetting().then((res) => {
-            console.log(res, 'getUserSetting');
             if (Boolean(res.data.settingsStatus)) {
               // 跳转到首页
               uni.redirectTo({

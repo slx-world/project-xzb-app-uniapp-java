@@ -77,7 +77,6 @@ const handleRob = (id) => {
     id: id,
   })
     .then((res) => {
-      console.log(res, '抢单');
       if (res.code === 200) {
         isRob.value = true;
       } else {

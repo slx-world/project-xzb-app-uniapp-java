@@ -43,7 +43,7 @@
 import { ref } from 'vue';
 import { baseUrl } from '../../utils/env';
 import { startServe, finishServe } from '../api/order.js';
-import { onLoad, onShow } from '@dcloudio/uni-app';
+import { onLoad } from '@dcloudio/uni-app';
 // 导航组件
 import UniNav from '@/components/uni-nav/index.vue';
 const title = ref('开始服务');
@@ -56,13 +56,11 @@ onLoad((options) => {
   orderId.value = options.id;
   title.value = options.status == 1 ? '开始服务' : '完成服务';
   from.value = options.type;
-  console.log(options, '服务记录页面');
 });
 const handleDelete = (e) => {
   fileList.value = fileList.value.filter(
     (item) => item.uuid !== e.tempFile.uuid
   );
-  console.log(e.tempFile.uuid, '删除回调');
 };
 const handleSuccess = (e) => {
   console.log(e, '上传成功回调');
@@ -200,12 +198,9 @@ const handleSubmit = async () => {
         });
       });
   }
-
-  console.log(uploadedImages, '上传后的图片链接数组');
 };
 const handleInput = (e) => {
   remark.value = e.detail.value;
-  console.log(e.detail.value, '-----');
 };
 // 返回上一页
 const goBack = () => {

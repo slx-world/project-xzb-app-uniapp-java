@@ -10,13 +10,21 @@
           : 'failStatus'
       "
     >
-      <view class="status">{{
-        info.data.serveStatus
-          ? orderStatus.filter(
-              (item) => item.value === info.data.serveStatus
-            )[0].label
-          : '派单中'
-      }}</view>
+      <view
+        class="status"
+        :class="
+          [1, 2, 3].includes(info.data.serveStatus) || !info.data.serveStatus
+            ? 'successStatus'
+            : 'failStatus'
+        "
+        >{{
+          info.data.serveStatus
+            ? orderStatus.filter(
+                (item) => item.value === info.data.serveStatus
+              )[0].label
+            : '派单中'
+        }}</view
+      >
       <view
         class="serveTime"
         v-if="info.data.serveStatus === 1 || !info.data.serveStatus"
@@ -103,7 +111,7 @@
       </view>
     </view>
     <!-- 退款信息 -->
-    <view class="orderInfo card" v-if="info.data.serveStatus === 4">
+    <!-- <view class="orderInfo card" v-if="info.data.serveStatus === 4">
       <view class="title">退款信息</view>
       <view class="orderNum info first">
         <text class="label">退款时间</text>
@@ -113,11 +121,11 @@
         <text class="label">退款原因</text>
         <text class="content">{{ info.data.cancelInfo.cancelReason }}</text>
       </view>
-      <!-- <view class="orderTime info">
+      <view class="orderTime info">
         <text class="label">退款金额</text>
         <text class="content">￥{{ info.data.cancelInfo.refundAmount }}</text>
-      </view> -->
-    </view>
+      </view>
+    </view> -->
     <!-- 服务记录 -->
     <view
       class="serveRecord card"
@@ -232,7 +240,7 @@
   </view>
 </template>
 <script setup>
-import { ref, reactive, onMounted } from 'vue';
+import { ref, reactive } from 'vue';
 import { onLoad } from '@dcloudio/uni-app';
 // 导航组件
 import UniNav from '@/components/uni-nav/index.vue';
@@ -309,7 +317,6 @@ let info = reactive({
 let tabIndex = ref(users.tabIndex ? users.tabIndex : 0); //当前tab
 // ------定义方法------
 onLoad((options) => {
-  console.log(options, new Date().getTime(), 'options');
   type.value = options.type;
   getOrderInfoFunc(options.id);
 });
@@ -344,17 +351,14 @@ const getOrderInfoFunc = (id) => {
   if (type.value === 'dispatch') {
     getDispatchOrderInfo(id).then((res) => {
       info.data = res.data;
-      console.log(res.data, '获取派单订单详情');
     });
   } else if (type.value === 'history') {
     getHistoryOrderInfo(id).then((res) => {
       info.data = res.data;
-      console.log(res.data, '获取历史订单订单详情');
     });
   } else {
     getOrderInfo(id).then((res) => {
       info.data = res.data;
-      console.log(res.data, '获取订单详情');
     });
   }
 };
@@ -391,18 +395,10 @@ const handleDelete = (id) => {
 };
 //取消原因
 const handleCancel = (item) => {
-  console.log(item, item.ordersInfo.serveStartTime, 'item');
-
   // 当前时间
   const now = new Date().getTime();
   // 判断当前时间与服务开始时间的差值，如果小于2小时，弹出提示框
   const time = new Date(item.ordersInfo.serveStartTime).getTime() - now;
-  console.log(
-    now,
-    new Date(item.ordersInfo.serveStartTime).getTime(),
-    new Date(item.ordersInfo.serveStartTime).getTime() - now,
-    'time'
-  );
   if (time < 2 * 60 * 60 * 1000) {
     content.value =
       '当前不可自行取消订单， 如需取消需拨打客服热线 400-000-4000';

@@ -51,14 +51,12 @@ onShow(() => {
     success: function (res) {
       location.value = res.address.city;
       cityCode.value = res.address.cityCode;
-      console.log(res, '获取当前位置成功');
       getSettingInfo().then((res1) => {
         if (res1.data.cityCode === cityCode.value) {
           return;
         } else {
           alertDialog.value.open();
         }
-        console.log(res1, '获取当前配置的位置信息');
       });
     },
     fail: (err) => {
@@ -78,7 +76,6 @@ const handleNo = () => {
 };
 const handleClick = () => {
   alertDialog.value.open();
-  // console.log(123);
 };
 // ------定义变量------
 const baseSetting = reactive([
@@ -118,12 +115,10 @@ const handleLink = (val) => {
   height: 320rpx;
   .dialog {
     width: 556rpx;
-    // height: 272rpx;
     background-color: var(--neutral-color-white);
     border-radius: 24rpx;
     position: relative;
     .content {
-      // height: 225rpx;
       text-align: center;
       font-size: 28rpx;
       color: var(--color-black-19);

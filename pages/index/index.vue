@@ -128,7 +128,6 @@ const getHomeFilterList = () => {
 };
 //点击服务类型展开时不可滚动
 const handleCanScroll = (val) => {
-  console.log(val, '是否可滑动');
   icCanScroll.value = !val;
 };
 // 监听滚动

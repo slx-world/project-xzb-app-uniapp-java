@@ -3,6 +3,7 @@
     margin-top: 30rpx;
     background-color: var(--neutral-color-white);
     padding: 40rpx 30rpx 40rpx 30rpx;
+    position: relative;
   }
 
   .title{
@@ -74,9 +75,12 @@
 }
 ::v-deep .uni-textarea-placeholder {
   z-index: 100;
-  top: 20rpx;
-  left: 20rpx;
+  // padding: 28rpx;
+  top: 25rpx;
+  left: 30rpx;
+  background-color: var(--neutral-color-background);
   width: auto;
+  height: 40rpx;
 }
 ::v-deep uni-textarea{
   width: 690rpx;

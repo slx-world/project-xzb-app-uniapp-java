@@ -118,7 +118,7 @@
 </template>
 
 <script setup>
-import { ref, reactive, onMounted } from 'vue';
+import { ref, onMounted } from 'vue';
 import { baseUrl } from '../../utils/env';
 import { postAccount, getAccountInfo } from '../api/setting.js';
 // 导入组件
@@ -215,8 +215,7 @@ const handleSelect = (e) => {
         uploadFileRes.data
       ).data.url;
     },
-    fail: (err) => {
-      // reject(err); // 上传失败时将错误信息传给 Promise 的 reject
+    fail: () => {
       uni.showToast({
         title: '图片上传失败',
         duration: 1000,
@@ -272,7 +271,6 @@ const handleSubmit = () => {
   flag.value = false;
   postAccount(formData.value)
     .then((res) => {
-      console.log(res, 'ress');
       setTimeout(() => {
         flag.value = true;
       }, 1000);
@@ -303,13 +301,11 @@ const getAreaData = (e) => {
   formData.value.province = e.province.label;
   formData.value.city = e.city.label;
   formData.value.district = e.area.label;
-  console.log(e, '省市区');
 };
 //选择银行
 const handleBank = (e) => {
   bankIndex.value = e.detail.value;
   formData.value.bankName = bankArray.value[e.detail.value].label;
-  console.log(e.detail.value, bankIndex.value, '数组下标');
 };
 // 返回上一页
 const goBack = () => {

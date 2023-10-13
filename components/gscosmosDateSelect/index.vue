@@ -167,7 +167,6 @@ const bindChange = async (e) => {
   const year = val[0] + minYear;
   const month = val[1] + 1;
   const day = val[2] + 1;
-  console.log(year, month, day, 'year, month, day');
   setSolarDate(year, month, day);
 };
 
@@ -219,7 +218,6 @@ const confirmFun = () => {
       props.defaultValue[2] + 1
     );
   }
-  console.log(dateInfo.value);
   emit('confirm', dateInfo.value);
 };
 </script>
