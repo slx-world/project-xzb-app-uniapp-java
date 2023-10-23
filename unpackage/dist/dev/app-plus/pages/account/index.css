@@ -806,41 +806,44 @@
 
 .uni-file-picker[data-v-6223573f] {
 
-		box-sizing: border-box;
-		overflow: hidden;
+  box-sizing: border-box;
+  overflow: hidden;
 }
 .uni-file-picker__header[data-v-6223573f] {
-		padding-top: 5px;
-		padding-bottom: 10px;
+  padding-top: 5px;
+  padding-bottom: 10px;
 
-		display: flex;
+  display: flex;
 
-		justify-content: space-between;
+  justify-content: space-between;
+  position: absolute;
+  right: 0.9375rem;
+  top: 0.9375rem;
 }
 .file-title[data-v-6223573f] {
-		font-size: 14px;
-		color: #333;
+  font-size: 14px;
+  color: #333;
 }
 .file-count[data-v-6223573f] {
-		font-size: 14px;
-		color: #999;
+  font-size: 14px;
+  color: #999;
 }
 .is-add[data-v-6223573f] {
 
-		display: flex;
+  display: flex;
 
-		align-items: center;
-		justify-content: center;
+  align-items: center;
+  justify-content: center;
 }
 .icon-add[data-v-6223573f] {
-		width: 50px;
-		height: 5px;
-		background-color: #f1f1f1;
-		border-radius: 2px;
+  width: 50px;
+  height: 5px;
+  background-color: #f1f1f1;
+  border-radius: 2px;
 }
 .rotate[data-v-6223573f] {
-		position: absolute;
-		transform: rotate(90deg);
+  position: absolute;
+  transform: rotate(90deg);
 }
 
 /* 水平间距 */

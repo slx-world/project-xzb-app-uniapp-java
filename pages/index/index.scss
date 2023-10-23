@@ -87,22 +87,18 @@ uni-page-head,
     background-color: rgba($color: #000000, $alpha: 0.25);
     position: absolute;
     width: 100%;
-    // height: calc(100vh - 494rpx);
     height: 100vh;
     top: 90rpx;
-    // top: 544rpx;
     z-index: 9;
     .service{
       display: flex;
       background-color: var(--neutral-color-white);
       border-top: 2rpx solid var(--color-gray-e8);
-      // justify-content: space-between;
       padding: 0 29rpx;
       flex-wrap: wrap;
       padding-top: 41rpx;
       .serviceItem{
         text-align: center;
-        // line-height: 64rpx;
         height: 64rpx;
         width: 216rpx;
         border-radius: 32rpx;
@@ -112,7 +108,6 @@ uni-page-head,
         display: flex;
         align-items: center;
         justify-content: center;
-        // padding-top: 2rpx;
         &.active{
           height: 60rpx;
           width: 212rpx;
@@ -212,56 +207,24 @@ uni-page-head,
       .address{
         .addressContent{
           color: var(--color-black-19);
-          // max-width: 290rpx;
           white-space: pre-wrap;
           font-size: 28rpx;
           line-height: 32rpx;
           margin-right: 0rpx;
           margin-bottom: 19rpx;
         }
-        // .moreThan2{
-        //   display: -webkit-box;
-        //   -webkit-box-orient: vertical;
-        //   -webkit-line-clamp: 2;
-        //   overflow: hidden;
-        //   text-overflow: ellipsis;
-        //   white-space: normal;
-        //   margin-right: 0rpx;
-        // }
-        // .toggle{
-        //   display: flex;
-        //   align-items: center;
-        //   margin-top: 10rpx;
-        //   justify-content: flex-end;
-        //   .icon{
-        //     height: 16rpx;
-        //     width: 16rpx;
-        //     background-size: cover;
-        //     background-repeat: no-repeat;
-        //     background-position: center;
-        //     margin-right: 14rpx;
-        //   }
-        //   .down{
-        //     background-image: url('../../static/new/icon_xuanze@2x.png');
-        //   }
-        //   .up{
-        //     background-image: url('../../static/new/icon_xuanze_sel@2x.png');
-        //   }
-        // }
       }
     }
     .cardFooter{
       display: flex;
       align-items: center;
       justify-content: space-between;
-      // white-space: nowrap;
       border-top: 2rpx solid var(--color-gray-e8);
       height: 95rpx;
       .price{
         font-size: 36rpx;
         font-weight: bold;
         color: var(--color-red-bg);
-        // white-space: nowrap;
         .price-label{
           font-size: 28rpx;
           font-weight: normal;
@@ -310,7 +273,6 @@ uni-page-head,
     border-radius: 24rpx;
     position: relative;
     .content{
-      // height: 225rpx;
       text-align: center;
       font-size: 28rpx;
       color: var(--color-black-19);

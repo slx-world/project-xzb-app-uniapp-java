@@ -15,7 +15,6 @@
         <view class="rightCardContent">
           <view class="title">
             {{ item.serveItemName }}
-            <!-- {{ item.id }} -->
           </view>
           <view class="serviceTime">
             <text>{{
@@ -53,12 +52,6 @@
         </view>
       </view>
       <view class="cardFooter" v-if="[1, 2].includes(item.serveStatus)">
-        <!-- <view
-          v-if="[1].includes(item.serveStatus)"
-          class="robBtn btn-gray"
-          @click.stop="handleCancel(item.id)"
-          >取消订单</view
-        > -->
         <view
           v-if="[1, 2].includes(item.serveStatus)"
           class="robBtn btn-red"
@@ -67,8 +60,6 @@
         >
       </view>
     </view>
-    <!-- 加载底部 -->
-    <!-- <uni-load-more :status="status" v-if="!isShowMore && isLogin && allOrderList.data.length" /> -->
     <view class="footer">- 已 经 到 底 了 -</view>
   </view>
 </template>
@@ -103,15 +94,8 @@ const handleTime = (val) => {
 };
 
 const handleToInfo = (item) => {
-  console.log(item, '进入详情');
   uni.navigateTo({
     url: '/pages/orderInfo/index?id=' + item.id,
-  });
-};
-const handleCancel = (id) => {
-  console.log('fff');
-  uni.navigateTo({
-    url: '/pages/cancel/index?id=' + id + '&type=list',
   });
 };
 const handleServeRecord = (id, status) => {

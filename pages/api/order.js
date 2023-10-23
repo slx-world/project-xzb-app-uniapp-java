@@ -2,23 +2,10 @@ import {
   request
 } from "../../utils/request.js"
 
-//获取派单列表
-export const getDispatchOrder = (params) =>
-  request({
-    url: `/orders-dispatch/worker/queryForList?serveTypeId=${params}`,
-    method: 'get',
-  })
 //拒单
 export const rejectOrder = (params) =>
   request({
     url: `/orders-dispatch/worker/reject`,
-    method: 'post',
-    params
-  })
-//接单
-export const receiveOrder = (params) =>
-  request({
-    url: `/orders-dispatch/worker/receive`,
     method: 'post',
     params
   })

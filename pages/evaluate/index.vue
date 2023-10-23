@@ -5,10 +5,7 @@
     <UniNav :title="title" @goBack="goBack"></UniNav>
     <!-- nav -->
     <!-- 状态筛选 -->
-    <UniTab
-      :tabBars="tabBars"
-      @getTabIndex="getTabIndex"
-    ></UniTab>
+    <UniTab :tabBars="tabBars" @getTabIndex="getTabIndex"></UniTab>
     <!-- 订单列表 -->
     <scroll-view
       :scroll-y="icCanScroll"
@@ -40,7 +37,11 @@ import { useStore } from 'vuex';
 // 基本数据
 import { evaluateData } from '@/utils/commonData.js';
 //接口
-import { getOrder, getOrderStatusNum, getEvaluateList } from '@/pages/api/order.js';
+import {
+  getOrder,
+  getOrderStatusNum,
+  getEvaluateList,
+} from '@/pages/api/order.js';
 
 // 导入组件
 // 导航组件
@@ -64,7 +65,7 @@ const statusNum = reactive({
 const requestData = ref({
   pageNo: 1,
   pageSize: 10,
-})
+});
 const isHaveMore = ref(false);
 const tabBars = evaluateData;
 const icCanScroll = ref(true);
@@ -75,22 +76,16 @@ const scrollTop = ref(0);
 const scrollView = ref(null);
 // ------生命周期------
 onShow(() => {
-  // if (users.tabIndex) {
-  //   tabIndex.value = users.tabIndex;
-  // }
   getTabIndex(users.tabIndex);
   getEvaluateListFunc();
   getOrderStatusNumFunc();
 });
 //上拉加载
 const handleLoad = () => {
-  console.log('上拉加载');
   if (isHaveMore.value) {
     requestData.value.pageNo++;
     getEvaluateListFunc();
   }
-
-  // console.log(homeList.data[homeList.data.length - 1].id, '上拉加载');
 };
 
 // ------定义方法------
@@ -101,7 +96,6 @@ const scrollToTop = () => {
 };
 // 获取tab切换当前的index
 const getTabIndex = (index) => {
-  // console.log(index, 'indexxxxxx');
   scrollToTop();
   store.commit('user/setTabIndex', index);
   homeList.data = [];
@@ -117,14 +111,12 @@ const getTabIndex = (index) => {
       scoreLevel: tabBars[index].value,
     };
   }
-  homeList.data = []
-  getEvaluateListFunc()
-  // console.log(tabBars[index].value, 'index');
+  homeList.data = [];
+  getEvaluateListFunc();
 };
 const getEvaluateListFunc = () => {
   getEvaluateList(requestData.value).then((res) => {
-    console.log(res, '获取评价列表');
-    if(res.code === 200){
+    if (res.code === 200) {
       homeList.data = res.data;
       if (res.data.length < requestData.value.pageSize) {
         isHaveMore.value = false;

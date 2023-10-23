@@ -1,11 +1,7 @@
 <!-- 列表 -->
 <template>
   <view class="homeList">
-    <view
-      class="card"
-      v-for="item in list.data"
-      :key="item.id"
-    >
+    <view class="card" v-for="item in list.data" :key="item.id">
       <view class="evaluate">
         <view class="header">
           <view class="left">
@@ -27,7 +23,11 @@
         </view>
         <view class="content">{{ item.content }}</view>
         <view class="time">
-          <text>{{ formatDateTimeToDateTimeString(new Date(item.createTime.replace(/-/g, '/'))) }}</text>
+          <text>{{
+            formatDateTimeToDateTimeString(
+              new Date(item.createTime.replace(/-/g, '/'))
+            )
+          }}</text>
           <!-- <text class="replys" @click.stop="handleReply">回复</text> -->
         </view>
         <view class="img" v-if="item.pictureArray">
@@ -48,7 +48,11 @@
             </view>
             <view class="time">
               <text>预约时间 </text>
-              <text>{{ formatDateTimeToDateTimeString(new Date(item.updateTime.replace(/-/g, '/'))) }}</text>
+              <text>{{
+                formatDateTimeToDateTimeString(
+                  new Date(item.updateTime.replace(/-/g, '/'))
+                )
+              }}</text>
             </view>
             <view class="address">{{ item.serveAddress }}</view>
           </view>
@@ -75,7 +79,6 @@
           @focus="handleFocus"
           placeholder="请输入你的回复（80字以内）"
           v-model="inputValue"
-          @blur="handleBlur"
           auto-height
           placeholder-class="placeholder"
         />
@@ -146,8 +149,6 @@ let list = reactive({
 });
 //弹出或者收起键盘
 const handleHideKeyBoard = () => {
-  // console.log('///////////');
-  // console.log(user.keyBoardHeight, 'handleHideKeyBoard');
   if (!emojiShow.value) {
     uni.hideKeyboard();
     focus.value = false;
@@ -158,9 +159,7 @@ const handleHideKeyBoard = () => {
 };
 //提交
 const handleSubmit = () => {
-  console.log('提交了');
   if (!inputValue.value.length) {
-    // focus.value = true;
     return;
   } else {
     alertDialog.value.close();
@@ -169,9 +168,6 @@ const handleSubmit = () => {
 //选择表情
 const handleClickEmoji = (item) => {
   inputValue.value = inputValue.value + item;
-};
-const handleBlur = () => {
-  console.log(input.value, '----------');
 };
 //弹出键盘
 const handleFocus = () => {
@@ -183,38 +179,12 @@ const handleReply = () => {
   focus.value = true;
   // 监听键盘高度变化事件
   uni.onKeyboardHeightChange((res) => {
-    console.log('键盘高度变化12：', user.keyBoardHeight, res.height);
     keyBoardHeight.value = user.keyBoardHeight || res.height;
     store.commit('user/setKeyBoardHeight', user.keyBoardHeight || res.height);
-    // if (!res.height) alertDialog.value.close();
-
     // 这里可以根据需要对键盘高度进行处理
   });
 };
 
-const handleToInfo = (item) => {
-  console.log(item, '进入详情');
-  uni.navigateTo({
-    url: '/pages/orderInfo/index?id=' + item.relationId,
-  });
-};
-const handleCancel = (id) => {
-  console.log('fff');
-  uni.navigateTo({
-    url: '/pages/cancel/index?id=' + id + '&type=list',
-  });
-};
-const handleServeRecord = (id, status) => {
-  uni.navigateTo({
-    url:
-      '/pages/serveRecord/index?status=' +
-      status +
-      '&id=' +
-      id +
-      '&type=' +
-      'list',
-  });
-};
 watchEffect(() => {
   list.data = props.data;
 });

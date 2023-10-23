@@ -29,7 +29,6 @@
 import { ref, onMounted } from 'vue';
 import { useStore } from 'vuex';
 // 时间处理
-import { overTimeFormat } from '@/utils/index.js';
 import { getUserInfo } from '@/pages/api/user.js';
 // 导入组件
 // 底部导航
@@ -52,7 +51,6 @@ onMounted(() => {
 const getUser = async () => {
   await getUserInfo().then((res) => {
     if (res.code === 200) {
-      console.log(res.data, '用户信息');
       baseData.value = res.data;
       uni.setStorageSync('userInfo', res.data);
     }

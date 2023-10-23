@@ -74,7 +74,6 @@ const getServiceSkillAllFunc = () => {
         serviceSkill.data = res.data;
         activeId.value = res.data[0].serveTypeId;
         rightItem.data = serviceSkill.data[0].serveSkillItemResDTOList;
-        console.log(serviceSkill.data, 'serviceSkill.data');
       }
     })
     .catch((err) => {
@@ -102,14 +101,13 @@ const handleSelect = (active) => {
     (rightItem.data = [
       ...serviceSkill.data[activeIndex.value].serveSkillItemResDTOList,
     ]);
-  console.log(serviceSkill.data, '点击后 ');
 };
 //点击保存
 const handleSubmit = () => {
   const selectedList = [];
   const arr = [];
-  serviceSkill.data.forEach((item, index) => {
-    item.serveSkillItemResDTOList.forEach((item1, index1) => {
+  serviceSkill.data.forEach((item) => {
+    item.serveSkillItemResDTOList.forEach((item1) => {
       if (item1.isSelected) {
         selectedList.push({
           serveItemId: item1.serveItemId,
@@ -121,7 +119,6 @@ const handleSubmit = () => {
       }
     });
   });
-  // console.log(selectedList, arr, serviceSkill.data, 'selectedList');
   updateServiceSkill(selectedList)
     .then((res) => {
       if (res.code === 200) {
@@ -145,7 +142,6 @@ const handleCancel = () => {
 //点击编辑
 const handleEdit = () => {
   status.value = 'edit';
-  console.log('编辑状态');
 };
 // 切换侧边栏
 const tabChange = (item, index) => {
@@ -153,7 +149,6 @@ const tabChange = (item, index) => {
   activeIndex.value = index;
   rightItem.data =
     serviceSkill.data[activeIndex.value].serveSkillItemResDTOList;
-  // getServiceSkillByClassifyFunc();
 };
 
 // 返回上一页

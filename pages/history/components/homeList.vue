@@ -103,13 +103,11 @@ const handleTime = (val) => {
 };
 
 const handleToInfo = (item) => {
-  console.log(item, '进入详情');
   uni.navigateTo({
     url: '/pages/orderInfo/index?id=' + item.id + '&type=history',
   });
 };
 const handleCancel = (id) => {
-  console.log('fff');
   uni.navigateTo({
     url: '/pages/cancel/index?id=' + id + '&type=list',
   });

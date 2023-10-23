@@ -53,7 +53,6 @@
         :key="index"
         class="cityList"
       >
-        <!-- <view class="letter-header bold">{{ item.idx }}</view> -->
         <view class="contents">
           <view class="city-div" @click="selectCity(item)">
             <text class="city">{{ item.name }}</text>
@@ -91,7 +90,7 @@ import UniNav from '@/components/uni-nav/index.vue';
 import { useStore } from 'vuex';
 import { getOpenCity } from '../api/setting.js';
 import { Citys } from '@/pages/city/city.js';
-import { ref, reactive, onMounted, watch, getCurrentInstance } from 'vue';
+import { ref, onMounted, watch, getCurrentInstance } from 'vue';
 import { onLoad } from '@dcloudio/uni-app';
 import { data } from './utils/h5Data';
 // import { getAddress } from '../api/address';
@@ -104,15 +103,12 @@ const winOffsetY = ref(0); //滚动条距离顶部的距离
 const touchmove = ref(false); //是否滑动
 const scrollHeight = ref(''); //滚动高度
 const letter = ref([]); //字母
-const searchValue = ref(''); //搜索值
 const scrollIntoId = ref(''); //滚动到的id
 const list = ref([]); //城市列表
 const activeId = ref(1); //选中的id
 const disPosition = ref(true); //是否显示定位
-// const cacheLocation = ref([{ 'cityName': '北京' }]);
 // 当前所在城市
 const currentCity = ref();
-const position = ref();
 const po_tips = ref('重新定位');
 const hotCity = ref([
   { name: '北京市', cityCode: '010' },
@@ -140,15 +136,6 @@ onLoad((option) => {
 // 返回上一页
 const goBack = () => {
   uni.navigateBack();
-  // uni.navigateTo({
-  //   url:
-  //     '/pages/serviceRange/index?cityCode=' +
-  //     currentCity.value.cityCode +
-  //     '&name=' +
-  //     currentCity.value.name +
-  //     '&address=' +
-  //     address.value,
-  // });
 };
 // touchStart是手指触摸到屏幕触发的事件
 const touchStart = (e) => {
@@ -188,7 +175,6 @@ onMounted(() => {
   setList();
   getOpenCity().then((res) => {
     list.value = res.data;
-    console.log(res, 'getOpenCity');
     let arr = [];
     hotCity.value.map((item) => {
       list.value.map((item1) => {
@@ -198,7 +184,6 @@ onMounted(() => {
       });
     });
     hotCity.value = arr;
-    console.log(arr, 'arr');
   });
 });
 // 定位
@@ -237,22 +222,7 @@ const getWarpWeft = () => {
     });
   }
 };
-// 根据定位经纬度获取城市
-const getCity = (position) => {
-  let params = {
-    location: position.longitude + ',' + position.latitude,
-  };
-  // getAddress(params).then((res) => {
-  //   console.log(res);
-  //   if (res.data.code === 200) {
-  //     currentCity.value = res.data.data;
-  //     uni.setStorageSync('city', currentCity.value);
-  //     // disPosition.value = false;
-  //   }
-  // });
-};
 const selectCity = (city) => {
-  console.log(city, 'city');
   currentCity.value = city;
   store.commit('user/setCityCode', city.cityCode);
   store.commit('user/setCityName', city.name);

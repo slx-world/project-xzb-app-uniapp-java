@@ -46,32 +46,25 @@ const location = ref('');
 const cityCode = ref('');
 const alertDialog = ref(null);
 onShow(() => {
-  if (process.env.VUE_APP_PLATFORM === 'h5') {
-    location.value = data.city;
-    cityCode.value = data.cityCode;
-  } else {
-    uni.getLocation({
-      type: 'gcj02',
-      geocode: true,
-      success: function (res) {
-        location.value = res.address.city;
-        cityCode.value = res.address.cityCode;
-        console.log(res, '获取当前位置成功');
-        getSettingInfo().then((res1) => {
-          if (res1.data.cityCode === cityCode.value) {
-            return;
-          } else {
-            alertDialog.value.open();
-          }
-          console.log(res1, '获取当前配置的位置信息');
-        });
-      },
-      fail: (err) => {
-        location.value = '获取失败';
-        console.log(err, '获取当前位置失败');
-      },
-    });
-  }
+  uni.getLocation({
+    type: 'gcj02',
+    geocode: true,
+    success: function (res) {
+      location.value = res.address.city;
+      cityCode.value = res.address.cityCode;
+      getSettingInfo().then((res1) => {
+        if (res1.data.cityCode === cityCode.value) {
+          return;
+        } else {
+          alertDialog.value.open();
+        }
+      });
+    },
+    fail: (err) => {
+      location.value = '获取失败';
+      console.log(err, '获取当前位置失败');
+    },
+  });
 });
 const handleToSet = () => {
   alertDialog.value.close();
@@ -84,7 +77,6 @@ const handleNo = () => {
 };
 const handleClick = () => {
   alertDialog.value.open();
-  // console.log(123);
 };
 // ------定义变量------
 const baseSetting = reactive([
@@ -124,12 +116,10 @@ const handleLink = (val) => {
   height: 320rpx;
   .dialog {
     width: 556rpx;
-    // height: 272rpx;
     background-color: var(--neutral-color-white);
     border-radius: 24rpx;
     position: relative;
     .content {
-      // height: 225rpx;
       text-align: center;
       font-size: 28rpx;
       color: var(--color-black-19);

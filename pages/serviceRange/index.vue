@@ -8,7 +8,6 @@
       :markers="[markers.data]"
       :latitude="location.latitude"
       :longitude="location.longitude"
-      @markertap="markerTap"
     >
     </map>
     <cover-view class="address">
@@ -48,7 +47,7 @@
 <script setup>
 import { ref, reactive, onMounted } from 'vue';
 import { useStore } from 'vuex';
-import { onLoad, onShow } from '@dcloudio/uni-app';
+import { onShow } from '@dcloudio/uni-app';
 import { getSettingInfo, setServiceSetting } from '../api/setting.js';
 import { data } from './utils/h5Data';
 // 导航组件
@@ -72,9 +71,6 @@ const markers = reactive({
     height: 60,
   },
 });
-const markerTap = () => {
-  console.log('111');
-};
 //选择服务城市
 const handleSelectCity = () => {
   uni.navigateTo({
@@ -94,7 +90,6 @@ const handleChooseRange = () => {
       markers.data.longitude = res.longitude;
       store.commit('user/setLocation', location);
       store.commit('user/setAddress', address.value);
-      console.log(res, '选择具体服务范围成功');
     },
     fail: function (err) {
       console.log(err, '选择具体服务范围失败');
@@ -170,7 +165,6 @@ onShow(() => {
           cityName.value = users.cityName;
         }
       } else {
-        // console.log(users.cityName, users.cityCode, '???');
         store.commit('user/setCityCode', users.cityCode || res.data.cityCode);
         //有位置信息则进行赋值
         cityName.value =

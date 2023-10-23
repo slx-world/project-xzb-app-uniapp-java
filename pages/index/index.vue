@@ -30,20 +30,10 @@
         @tabChange="tabChange"
       >
       </HomeFilter>
-      <!-- <view class="uni-form-item uni-column">
-        <view class="title">控制键盘的input</view>
-        <input
-          class="uni-input"
-          ref="input1"
-          @input="hideKeyboard"
-          placeholder="输入123自动收起键盘"
-        />
-      </view> -->
       <!-- end -->
       <HomeList
         v-if="homeList.data.length"
         :data="homeList.data"
-        :type="orderType"
         @refresh="getList"
       ></HomeList>
       <Empty v-else :canPickUp="users.canPickUp"></Empty>
@@ -59,7 +49,7 @@
 import { ref, reactive, onMounted } from 'vue';
 import { onPullDownRefresh, onShow } from '@dcloudio/uni-app';
 // 导入接口
-import { getRobOrder, getHomeFilter, getDispatchOrder } from '../api/order.js';
+import { getRobOrder, getHomeFilter } from '../api/order.js';
 import { getUserSetting } from '../api/setting';
 // 导入组件
 // 导航
@@ -75,7 +65,6 @@ import { useStore } from 'vuex';
 // ------定义变量------
 const fixTop = ref(false);
 const icCanScroll = ref(true);
-const orderType = ref(0); //0：抢单,1:派单
 const serveId = ref('');
 const store = useStore(); //vuex获取、储存数据
 const users = store.state.user;
@@ -103,8 +92,6 @@ onPullDownRefresh(() => {
   }, 1000);
 });
 const tabChange = (val, id) => {
-  //val（0抢单，1派单）
-  orderType.value = val;
   serveId.value = id;
   getList();
 };
@@ -125,36 +112,22 @@ const getSetting = () => {
     });
 };
 const getList = () => {
-  if (!orderType.value) {
-    getRobOrderList(serveId.value);
-  } else {
-    getDispatchList(serveId.value);
-  }
-};
-//派单列表
-const getDispatchList = (params) => {
-  getDispatchOrder(params).then((res) => {
-    homeList.data = res.data.list || [];
-    console.log(res, homeList.data, '派单');
-  });
+  getRobOrderList(serveId.value);
 };
 //获取抢单列表
 const getRobOrderList = (params) => {
   getRobOrder(params).then((res) => {
     homeList.data = res.data.ordersSeizes || [];
-    console.log(res, homeList.data, '抢单');
   });
 };
 //获取首页顶部筛选服务项数据
 const getHomeFilterList = () => {
   getHomeFilter().then((res) => {
-    // console.log(res.data, 'getHomeFilterList');
     homeFilterList.data = res.data;
   });
 };
 //点击服务类型展开时不可滚动
 const handleCanScroll = (val) => {
-  console.log(val, '是否可滑动');
   icCanScroll.value = !val;
 };
 // 监听滚动
@@ -164,7 +137,6 @@ const handleScroll = (e) => {
   } else {
     fixTop.value = false;
   }
-  // console.log(e, fixTop.value, 'eeeeeeeeee');
 };
 
 // 返回上一页

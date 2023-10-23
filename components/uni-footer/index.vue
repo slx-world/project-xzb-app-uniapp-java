@@ -70,11 +70,7 @@ let tabbar = ref([
 
 // 触发tab事件
 const changeTab = (item, index) => {
-  // console.log(currentPage.value, index, '---------');
   store.commit('setFootStatus', index);
-  // store.state.footStatus = index;
-  // currentPage.value = index;
-  console.log(store.state.footStatus, 'store');
   if (item.text !== '消息') {
     // 页面跳转
     uni.redirectTo({

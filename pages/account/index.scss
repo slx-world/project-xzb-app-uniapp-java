@@ -1,8 +1,6 @@
 .account{
   background-color: var(--neutral-color-white);
   min-height: 100vh;
-  // padding: 0 30rpx;
-  // padding-bottom: 1a6rpx;
   .idCard{
     margin-top: 20rpx;
   }
@@ -16,7 +14,6 @@
     align-items: center;
     border-bottom: 2rpx solid var(--color-gray-e8);
     padding-bottom: 10rpx;
-    // margin: 0 30rpx;
     margin-left: 30rpx;
     padding-right: 30rpx;
     ::v-deep .uni-easyinput__content{
@@ -80,7 +77,6 @@
     }
     .content{
       display: flex;
-      // width: 100%;
       .photoItem{
         flex: 1;
         margin-left: 19rpx;

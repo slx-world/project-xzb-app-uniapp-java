@@ -1,15 +1,6 @@
 <template>
   <view class="homeFilter" :class="fixTop ? 'fixTop' : ''">
     <view class="leftBox">
-      <!-- <view
-        class="item"
-        :class="!status ? 'active' : ''"
-        @click="handleClick(0)"
-        >抢单</view
-      >
-      <view class="item" :class="status ? 'active' : ''" @click="handleClick(1)"
-        >派单</view
-      > -->
       <view class="item" @click="handleClick(0)">抢单大厅</view>
     </view>
     <view class="rightBox" v-if="!status">
@@ -114,10 +105,6 @@ const handleOpen = (val) => {
   } else {
     serviceType.data = [{ id: '', name: '全部' }].concat(props.homeFilterList);
   }
-  console.log(isOpen.value, 'isOpen.value');
-  // if (!isOpen.value) {
-  //   activeType.value = '';
-  // }
   emit('handleCanScroll', isOpen.value);
 };
 
@@ -151,7 +138,6 @@ watch(
   () => props.homeFilterList,
   () => {
     serviceType.data = [{ id: '', name: '全部' }].concat(props.homeFilterList);
-    // console.log (serviceType.data, props.homeFilterList, '-fffffffffff');
   }
 );
 </script>
