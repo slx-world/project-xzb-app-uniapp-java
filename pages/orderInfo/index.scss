@@ -38,6 +38,9 @@
   }
   .failStatus{
     background-image: linear-gradient(269deg, #D6D6D6 22%, #EBEBEB 72%);
+    .status{
+      color: #191919;
+    }
   }
   .status,.serveTime{
     color: var(--neutral-color-white);

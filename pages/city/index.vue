@@ -93,6 +93,7 @@ import { getOpenCity } from '../api/setting.js';
 import { Citys } from '@/pages/city/city.js';
 import { ref, reactive, onMounted, watch, getCurrentInstance } from 'vue';
 import { onLoad } from '@dcloudio/uni-app';
+import { data } from './utils/h5Data';
 // import { getAddress } from '../api/address';
 const store = useStore(); //vuex获取、储存数据
 const address = ref('');
@@ -202,32 +203,39 @@ onMounted(() => {
 });
 // 定位
 const getWarpWeft = () => {
-  po_tips.value = '定位中...';
-  // 获取定位
-  uni.getLocation({
-    type: 'gcj02',
-    geocode: true,
-    success: function (res) {
-      currentCity.value = {
-        name: res.address.city,
-      };
-      activeId.value = res.address.cityCode;
-      // console.log(res, activeId.value, 'resres');
-      // position.value = res;
-      // getCity(position.value);
-      // 延时500毫秒，保证效果，展现出定位中的过程
-      setTimeout(() => {
-        po_tips.value = '重新定位';
-      }, 500);
-    },
-    fail: function (res) {
-      console.log(res);
-      setTimeout(() => {
-        po_tips.value = '定位失败';
-      }, 500);
-      disPosition.value = true;
-    },
-  });
+  if (process.env.VUE_APP_PLATFORM === 'h5') {
+    currentCity.value = {
+      name: data.city,
+    };
+    activeId.value = data.cityCode;
+  } else {
+    po_tips.value = '定位中...';
+    // 获取定位
+    uni.getLocation({
+      type: 'gcj02',
+      geocode: true,
+      success: function (res) {
+        currentCity.value = {
+          name: res.address.city,
+        };
+        activeId.value = res.address.cityCode;
+        // console.log(res, activeId.value, 'resres');
+        // position.value = res;
+        // getCity(position.value);
+        // 延时500毫秒，保证效果，展现出定位中的过程
+        setTimeout(() => {
+          po_tips.value = '重新定位';
+        }, 500);
+      },
+      fail: function (res) {
+        console.log(res);
+        setTimeout(() => {
+          po_tips.value = '定位失败';
+        }, 500);
+        disPosition.value = true;
+      },
+    });
+  }
 };
 // 根据定位经纬度获取城市
 const getCity = (position) => {

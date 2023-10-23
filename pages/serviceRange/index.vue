@@ -50,6 +50,7 @@ import { ref, reactive, onMounted } from 'vue';
 import { useStore } from 'vuex';
 import { onLoad, onShow } from '@dcloudio/uni-app';
 import { getSettingInfo, setServiceSetting } from '../api/setting.js';
+import { data } from './utils/h5Data';
 // 导航组件
 import UniNav from '@/components/uni-nav/index.vue';
 const cityName = ref('请选择');
@@ -142,26 +143,32 @@ onShow(() => {
       // console.log(res, '获取当前配置的位置信息');
       //没有设置位置则获取当前位置
       if (!res.data.cityCode) {
-        uni.getLocation({
-          type: 'gcj02',
-          geocode: true,
-          success: function (res) {
-            location.latitude = res.latitude;
-            location.longitude = res.longitude;
-            markers.data.latitude = res.latitude;
-            markers.data.longitude = res.longitude;
-
-            // console.log(res, '获取当前位置成功');
-          },
-          fail: (err) => {
-            location.latitude = 39.909187;
-            location.longitude = 116.397455;
-            markers.data.latitude = 39.909187;
-            markers.data.longitude = 116.397455;
-            // console.log(err, '获取当前位置失败');
-          },
-        });
-        cityName.value = users.cityName;
+        if (process.env.VUE_APP_PLATFORM === 'h5') {
+          location.latitude = data.latitude;
+          location.longitude = data.longitude;
+          markers.data.latitude = data.latitude;
+          markers.data.longitude = data.longitude;
+        } else {
+          uni.getLocation({
+            type: 'gcj02',
+            geocode: true,
+            success: function (res) {
+              location.latitude = res.latitude;
+              location.longitude = res.longitude;
+              markers.data.latitude = res.latitude;
+              markers.data.longitude = res.longitude;
+              // console.log(res, '获取当前位置成功');
+            },
+            fail: (err) => {
+              location.latitude = 39.909187;
+              location.longitude = 116.397455;
+              markers.data.latitude = 39.909187;
+              markers.data.longitude = 116.397455;
+              // console.log(err, '获取当前位置失败');
+            },
+          });
+          cityName.value = users.cityName;
+        }
       } else {
         // console.log(users.cityName, users.cityCode, '???');
         store.commit('user/setCityCode', users.cityCode || res.data.cityCode);

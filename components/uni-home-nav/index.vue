@@ -41,31 +41,37 @@
 import { ref, reactive } from 'vue';
 import { onShow } from '@dcloudio/uni-app';
 import { getSettingInfo } from '../../pages/api/setting';
+import { data } from './utils/h5Data';
 const location = ref('');
 const cityCode = ref('');
 const alertDialog = ref(null);
 onShow(() => {
-  uni.getLocation({
-    type: 'gcj02',
-    geocode: true,
-    success: function (res) {
-      location.value = res.address.city;
-      cityCode.value = res.address.cityCode;
-      console.log(res, '获取当前位置成功');
-      getSettingInfo().then((res1) => {
-        if (res1.data.cityCode === cityCode.value) {
-          return;
-        } else {
-          alertDialog.value.open();
-        }
-        console.log(res1, '获取当前配置的位置信息');
-      });
-    },
-    fail: (err) => {
-      location.value = '获取失败';
-      console.log(err, '获取当前位置失败');
-    },
-  });
+  if (process.env.VUE_APP_PLATFORM === 'h5') {
+    location.value = data.city;
+    cityCode.value = data.cityCode;
+  } else {
+    uni.getLocation({
+      type: 'gcj02',
+      geocode: true,
+      success: function (res) {
+        location.value = res.address.city;
+        cityCode.value = res.address.cityCode;
+        console.log(res, '获取当前位置成功');
+        getSettingInfo().then((res1) => {
+          if (res1.data.cityCode === cityCode.value) {
+            return;
+          } else {
+            alertDialog.value.open();
+          }
+          console.log(res1, '获取当前配置的位置信息');
+        });
+      },
+      fail: (err) => {
+        location.value = '获取失败';
+        console.log(err, '获取当前位置失败');
+      },
+    });
+  }
 });
 const handleToSet = () => {
   alertDialog.value.close();
