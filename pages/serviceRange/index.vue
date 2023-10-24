@@ -52,6 +52,7 @@ import { getSettingInfo, setServiceSetting } from '../api/setting.js';
 import { data } from '../../utils/h5Data.js';
 // 导航组件
 import UniNav from '@/components/uni-nav/index.vue';
+import { add } from 'date-fns';
 const cityName = ref('请选择');
 const address = ref('请选择');
 const store = useStore(); //vuex获取、储存数据
@@ -117,7 +118,9 @@ const handleSubmit = () => {
   setServiceSetting({
     cityCode: users.cityCode,
     location:
-      String(users.location.longitude) + ',' + String(users.location.latitude),
+      String(process.env.VUE_APP_PLATFORM === 'h5' ? users.loacation.longitude : users.location.longitude) +
+      ',' +
+      String(process.env.VUE_APP_PLATFORM === 'h5' ? users.loacation.latitude : users.location.latitude),
     intentionScope: users.address,
     cityName: users.cityName,
   }).then(() => {
@@ -173,7 +176,8 @@ onShow(() => {
         //有位置信息则进行赋值
         cityName.value =
           users.cityName === '请选择' ? res.data.cityName : users.cityName;
-        address.value = res.data.intentionScope;
+        address.value = users.address || res.data.intentionScope;
+        address.value = address.value === '请选择' ? res.data.intentionScope : address.value;
         location.latitude = res.data.location.split(',')[1];
         location.longitude = res.data.location.split(',')[0];
         markers.data.latitude = res.data.location.split(',')[1];
@@ -202,5 +206,6 @@ const goBack = () => {
   uni.navigateBack();
   // clearStore();
 };
+
 </script>
 <style src="./index.scss" lang="scss" scoped></style>
