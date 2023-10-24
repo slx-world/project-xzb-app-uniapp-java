@@ -10,7 +10,7 @@ export default {
       tabIndex: 0, //储存当前触发的tab值
       keyBoardHeight: 0,//记录键盘高度
       canPickUp: true,//是否开启接单
-
+      first: true,//是否第一次进入
       userBase: {}, // 用户信息
       pages: 0,//总页数
       page: 1, //当前页码
@@ -54,6 +54,9 @@ export default {
     },
     setCityName (state, provider) {
       state.cityName = provider
+    },
+    setFirst (state, provider) {
+      state.first = provider
     },
     // 设置token
     setToken (state, provider) {

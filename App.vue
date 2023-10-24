@@ -2,7 +2,7 @@
 import { ref, reactive, onMounted } from 'vue';
 import { onLoad, onShow } from '@dcloudio/uni-app';
 import { useStore } from 'vuex';
-import { data } from './utils/h5Data'
+import { data } from './utils/h5Data.js'
 // ------定义变量------
 const store = useStore(); //vuex获取储存数据
 const locationData = ref({});
@@ -11,8 +11,8 @@ onShow(() => {
   // 输出当前运行的平台和环境，是h5还是app
   if (process.env.VUE_APP_PLATFORM === 'h5') {
     locationData.value = {
-      longitude: data.longitude,
-      latitude: data.latitude,
+      longitude: data?.longitude,
+      latitude: data?.latitude,
     }
     store.commit('user/setlLacation', locationData.value);
   } else {
@@ -29,7 +29,6 @@ onShow(() => {
     });
   }
   // 获取当前位置储存在vuex，获取取件、派件列表时要用到
-
   uni.getNetworkType({
     success: function (res) {},
   });

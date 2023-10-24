@@ -41,29 +41,54 @@
 import { ref, reactive } from 'vue';
 import { onShow } from '@dcloudio/uni-app';
 import { getSettingInfo } from '../../pages/api/setting';
-import { data } from './utils/h5Data';
+import { data } from '../../utils/h5Data.js';
+import { useStore } from 'vuex';
+const store = useStore(); //vuex获取储存数据
+const users = store.state.user;
+const workerCityCode = ref();
+const workerCityName = ref();
 const location = ref('');
 const cityCode = ref('');
 const alertDialog = ref(null);
 onShow(() => {
-  uni.getLocation({
-    type: 'gcj02',
-    geocode: true,
-    success: function (res) {
-      location.value = res.address.city;
-      cityCode.value = res.address.cityCode;
-      getSettingInfo().then((res1) => {
-        if (res1.data.cityCode === cityCode.value) {
-          return;
-        } else {
+  getSettingInfo().then((res) => {
+    workerCityCode.value = res.data.cityCode;
+    workerCityName.value = res.data.cityName;
+    if (process.env.VUE_APP_PLATFORM === 'h5') {
+      location.value = users.cityCode ? users.cityName : data.city;
+      cityCode.value = users.cityCode ? users.cityCode : data.cityCode;
+      if (!users.first) {
+        return;
+      }
+      if (users.cityCode) {
+        if (users.cityCode !== workerCityCode.value) {
           alertDialog.value.open();
+          store.commit('setFirst', false);
         }
+      } else {
+        alertDialog.value.open();
+      }
+    } else {
+      uni.getLocation({
+        type: 'gcj02',
+        geocode: true,
+        success: function (res) {
+          location.value = res.address.city;
+          cityCode.value = res.address.cityCode;
+          if (!users.first) {
+            return;
+          }
+          if (res.address.cityCode !== workerCityCode.value) {
+            alertDialog.value.open();
+            store.commit('setFirst', false);
+          }
+        },
+        fail: (err) => {
+          location.value = '获取失败';
+          console.log(err, '获取当前位置失败');
+        },
       });
-    },
-    fail: (err) => {
-      location.value = '获取失败';
-      console.log(err, '获取当前位置失败');
-    },
+    }
   });
 });
 const handleToSet = () => {
@@ -77,6 +102,7 @@ const handleNo = () => {
 };
 const handleClick = () => {
   alertDialog.value.open();
+  // console.log(123);
 };
 // ------定义变量------
 const baseSetting = reactive([
@@ -116,10 +142,12 @@ const handleLink = (val) => {
   height: 320rpx;
   .dialog {
     width: 556rpx;
+    // height: 272rpx;
     background-color: var(--neutral-color-white);
     border-radius: 24rpx;
     position: relative;
     .content {
+      // height: 225rpx;
       text-align: center;
       font-size: 28rpx;
       color: var(--color-black-19);

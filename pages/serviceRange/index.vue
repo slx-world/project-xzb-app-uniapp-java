@@ -49,7 +49,7 @@ import { ref, reactive, onMounted } from 'vue';
 import { useStore } from 'vuex';
 import { onShow } from '@dcloudio/uni-app';
 import { getSettingInfo, setServiceSetting } from '../api/setting.js';
-import { data } from './utils/h5Data';
+import { data } from '../../utils/h5Data.js';
 // 导航组件
 import UniNav from '@/components/uni-nav/index.vue';
 const cityName = ref('请选择');
@@ -120,7 +120,7 @@ const handleSubmit = () => {
       String(users.location.longitude) + ',' + String(users.location.latitude),
     intentionScope: users.address,
     cityName: users.cityName,
-  }).then((res) => {
+  }).then(() => {
     uni.showToast({
       title: '保存成功',
       duration: 1500,
@@ -166,6 +166,10 @@ onShow(() => {
         }
       } else {
         store.commit('user/setCityCode', users.cityCode || res.data.cityCode);
+        store.commit(
+          'user/setCityName',
+          users.cityName === '请选择' ? res.data.cityName : users.cityName
+        );
         //有位置信息则进行赋值
         cityName.value =
           users.cityName === '请选择' ? res.data.cityName : users.cityName;
@@ -196,7 +200,7 @@ const clearStore = () => {
 // 返回上一页
 const goBack = () => {
   uni.navigateBack();
-  clearStore();
+  // clearStore();
 };
 </script>
 <style src="./index.scss" lang="scss" scoped></style>

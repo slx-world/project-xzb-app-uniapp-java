@@ -92,7 +92,7 @@ import { getOpenCity } from '../api/setting.js';
 import { Citys } from '@/pages/city/city.js';
 import { ref, onMounted, watch, getCurrentInstance } from 'vue';
 import { onLoad } from '@dcloudio/uni-app';
-import { data } from './utils/h5Data';
+import { data } from '../../utils/h5Data.js';
 // import { getAddress } from '../api/address';
 const store = useStore(); //vuex获取、储存数据
 const address = ref('');

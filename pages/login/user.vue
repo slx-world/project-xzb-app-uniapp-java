@@ -74,7 +74,6 @@
 <script setup>
 import { ref, reactive, onMounted } from 'vue';
 import { useStore } from 'vuex';
-import storage from '@/utils/storage.js';
 // 接口
 import { phoneLogins, getsmsCode } from '../api/user.js';
 import { getUserSetting } from '../api/setting.js';
