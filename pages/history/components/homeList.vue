@@ -68,13 +68,12 @@
       </view>
     </view>
     <!-- 加载底部 -->
-    <!-- <uni-load-more :status="status" v-if="!isShowMore && isLogin && allOrderList.data.length" /> -->
     <view class="footer">- 已 经 到 底 了 -</view>
   </view>
 </template>
 
 <script setup>
-import { ref, reactive, onMounted, watch, watchEffect } from 'vue';
+import { reactive, onMounted, watchEffect } from 'vue';
 // 基本数据(订单状态)
 import { orderStatus } from '@/utils/commonData.js';
 const emit = defineEmits(['refresh']); //子组件向父组件事件传递
@@ -86,7 +85,6 @@ const props = defineProps({
   },
 });
 onMounted(() => {});
-const isRob = ref(true);
 let list = reactive({
   data: [
     {
@@ -101,17 +99,19 @@ let list = reactive({
 const handleTime = (val) => {
   return val ? val.replace(/:\d{2}$/, '') : '';
 };
-
+// 前往详情页
 const handleToInfo = (item) => {
   uni.navigateTo({
     url: '/pages/orderInfo/index?id=' + item.id + '&type=history',
   });
 };
+// 前往取消列表
 const handleCancel = (id) => {
   uni.navigateTo({
     url: '/pages/cancel/index?id=' + id + '&type=list',
   });
 };
+// 前往服务记录
 const handleServeRecord = (id, status) => {
   uni.navigateTo({
     url:

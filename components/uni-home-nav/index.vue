@@ -85,7 +85,6 @@ onShow(() => {
         },
         fail: (err) => {
           location.value = '获取失败';
-          console.log(err, '获取当前位置失败');
         },
       });
     }
@@ -102,7 +101,6 @@ const handleNo = () => {
 };
 const handleClick = () => {
   alertDialog.value.open();
-  // console.log(123);
 };
 // ------定义变量------
 const baseSetting = reactive([

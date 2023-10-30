@@ -61,7 +61,6 @@ const handleOut = () => {
   // 移除指定 token
   uni.removeStorageSync('token');
   // 清理本地数据缓存
-  // uni.clearStorage();
   // 移出当前的tab触发事件index值，再次登录后底部菜单会默认选中首页
   store.commit('setFootStatus', 0);
   uni.redirectTo({

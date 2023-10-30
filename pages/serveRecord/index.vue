@@ -129,11 +129,13 @@ const handleSubmit = async () => {
     title: 'loading',
   });
 
+  // 开始服务参数
   let startParams = {
     id: orderId.value,
     serveBeforeImgs: uploadedImages,
     serveBeforeIllustrate: remark.value,
   };
+  // 完成服务参数
   let finishParams = {
     id: orderId.value,
     serveAfterImgs: uploadedImages,
@@ -199,6 +201,7 @@ const handleSubmit = async () => {
       });
   }
 };
+// 输入补充说明
 const handleInput = (e) => {
   remark.value = e.detail.value;
 };

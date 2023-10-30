@@ -1,4 +1,4 @@
-<!-- 订单页面 -->
+<!-- 评价页面 -->
 <template>
   <view class="evaluate">
     <!-- 手机状态栏 -->
@@ -30,18 +30,14 @@
 </template>
 
 <script setup>
-import { ref, reactive, nextTick } from 'vue';
+import { ref, reactive } from 'vue';
 import { onShow } from '@dcloudio/uni-app';
 import { useStore } from 'vuex';
 
 // 基本数据
 import { evaluateData } from '@/utils/commonData.js';
 //接口
-import {
-  getOrder,
-  getOrderStatusNum,
-  getEvaluateList,
-} from '@/pages/api/order.js';
+import { getEvaluateList } from '@/pages/api/order.js';
 
 // 导入组件
 // 导航组件
@@ -59,9 +55,6 @@ const store = useStore();
 const emit = defineEmits(''); //子组件向父组件事件传递
 const users = store.state.user;
 const title = ref('我的评价');
-const statusNum = reactive({
-  data: [],
-});
 const requestData = ref({
   pageNo: 1,
   pageSize: 10,

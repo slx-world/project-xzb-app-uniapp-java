@@ -48,7 +48,6 @@
       <HomeList
         v-if="homeList.data.length"
         :data="homeList.data"
-        @refresh="getRobOrderList"
       ></HomeList>
       <Empty v-else></Empty>
       <!-- 普通弹窗 -->
@@ -87,7 +86,6 @@
 <script setup>
 import { ref, reactive } from 'vue';
 import { onShow } from '@dcloudio/uni-app';
-import { useStore } from 'vuex';
 import { format } from 'date-fns';
 
 //接口
@@ -209,12 +207,11 @@ const getListData = (time) => {
     homeList.data = homeList.data.concat(res.data);
   });
 };
+// 关闭弹窗
 const handleClose = () => {
   dateSelecStarttVisiable.value = false;
   dateSelecEndtVisiable.value = false;
 };
-// ------定义方法------
-const getRobOrderList = () => {};
 </script>
 <style src="../../styles/expressage.scss" lang="scss" scoped></style>
 <style src="./index.scss" lang="scss" scoped></style>

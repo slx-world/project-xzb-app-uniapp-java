@@ -110,22 +110,6 @@
         <text class="content">{{ info.data.cancelInfo.cancelReason }}</text>
       </view>
     </view>
-    <!-- 退款信息 -->
-    <!-- <view class="orderInfo card" v-if="info.data.serveStatus === 4">
-      <view class="title">退款信息</view>
-      <view class="orderNum info first">
-        <text class="label">退款时间</text>
-        <text class="content">{{ info.data.cancelInfo.cancelTime }}</text>
-      </view>
-      <view class="orderTime info first">
-        <text class="label">退款原因</text>
-        <text class="content">{{ info.data.cancelInfo.cancelReason }}</text>
-      </view>
-      <view class="orderTime info">
-        <text class="label">退款金额</text>
-        <text class="content">￥{{ info.data.cancelInfo.refundAmount }}</text>
-      </view>
-    </view> -->
     <!-- 服务记录 -->
     <view
       class="serveRecord card"
@@ -251,7 +235,6 @@ import {
   deleteOrder,
   getHistoryOrderInfo,
 } from '@/pages/api/order.js';
-import { useStore } from 'vuex';
 // 基本数据(订单状态)
 import { orderStatus } from '@/utils/commonData.js';
 // 获取父组件数据
@@ -262,14 +245,13 @@ const props = defineProps({
   },
 });
 // ------定义变量------
-const store = useStore();
-const users = store.state.user;
 const emit = defineEmits(''); //子组件向父组件事件传递
 const type = ref(''); //从哪个页面来
 const alertDialog = ref(null); //提示窗
 const noCancelDialog = ref(null); //不可取消提示框
 const content = ref(''); //取消失败弹窗提示语
 const phoneNum = ref(''); //拨打的电话号码
+// 默认数据
 let info = reactive({
   data: {
     serveStatus: 1,
@@ -314,7 +296,6 @@ let info = reactive({
     },
   },
 });
-let tabIndex = ref(users.tabIndex ? users.tabIndex : 0); //当前tab
 // ------定义方法------
 onLoad((options) => {
   type.value = options.type;

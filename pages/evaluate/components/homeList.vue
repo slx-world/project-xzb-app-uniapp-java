@@ -28,7 +28,6 @@
               new Date(item.createTime.replace(/-/g, '/'))
             )
           }}</text>
-          <!-- <text class="replys" @click.stop="handleReply">回复</text> -->
         </view>
         <view class="img" v-if="item.pictureArray">
           <image
@@ -57,17 +56,9 @@
             <view class="address">{{ item.serveAddress }}</view>
           </view>
         </view>
-        <!-- <view class="reply">
-          <view class="content">{{ item.reply.content }}</view>
-          <view class="foot">
-            <text>{{ item.reply.time }}</text>
-            <text>删除</text>
-          </view>
-        </view> -->
       </view>
     </view>
     <!-- 加载底部 -->
-    <!-- <uni-load-more :status="status" v-if="!isShowMore && isLogin && allOrderList.data.length" /> -->
     <!-- 输入弹出框 -->
     <uni-popup ref="alertDialog" type="bottom" is-mask-click>
       <view class="content" :style="{ bottom: `${keyBoardHeight}px` }">
@@ -109,9 +100,6 @@
           @click="handleClickEmoji(item)"
         >
           {{ item }}
-          <!-- <image :src="item.src" class="emoji-icon"></image
-        > -->
-          <!-- <view></view> -->
         </view>
       </view>
     </uni-popup>
@@ -120,15 +108,12 @@
 </template>
 
 <script setup>
-import { ref, reactive, onMounted, watch, watchEffect } from 'vue';
-import { useStore } from 'vuex';
+import { ref, reactive, watchEffect } from 'vue';
 import { formatDateTimeToDateTimeString } from '../../utils';
 // 基本数据(订单状态)
 import { ImgList } from '@/utils/commonData.js';
 const emit = defineEmits(['refresh']); //子组件向父组件事件传递
 const alertDialog = ref(null);
-const store = useStore(); //vuex获取、储存数据
-const user = store.state.user;
 const emojiShow = ref(false);
 const input = ref(null);
 const focus = ref(true);
@@ -140,7 +125,6 @@ const props = defineProps({
     default: () => [],
   },
 });
-onMounted(() => {});
 
 const keyBoardHeight = ref('');
 
@@ -172,17 +156,6 @@ const handleClickEmoji = (item) => {
 //弹出键盘
 const handleFocus = () => {
   emojiShow.value = false;
-};
-//点击回复
-const handleReply = () => {
-  alertDialog.value.open();
-  focus.value = true;
-  // 监听键盘高度变化事件
-  uni.onKeyboardHeightChange((res) => {
-    keyBoardHeight.value = user.keyBoardHeight || res.height;
-    store.commit('user/setKeyBoardHeight', user.keyBoardHeight || res.height);
-    // 这里可以根据需要对键盘高度进行处理
-  });
 };
 
 watchEffect(() => {

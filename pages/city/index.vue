@@ -212,8 +212,7 @@ const getWarpWeft = () => {
           po_tips.value = '重新定位';
         }, 500);
       },
-      fail: function (res) {
-        console.log(res);
+      fail: function () {
         setTimeout(() => {
           po_tips.value = '定位失败';
         }, 500);

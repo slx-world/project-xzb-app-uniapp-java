@@ -47,11 +47,6 @@
         </div>
         <!-- end -->
         <!-- 更新请求Url - 教学需求 -->
-        <!-- <view class="setUrl" @click="inputDialogToggle">配置请求url</view>
-			<uni-popup ref="inputDialog" type="dialog">
-				<uni-popup-dialog ref="inputClose" mode="input" title="配置URL" :value="baseURL" placeholder="请输入baseURL" @confirm="dialogInputConfirm"></uni-popup-dialog>
-			</uni-popup> -->
-        <!-- 更新请求Url - 教学需求 -->
       </view>
       <!-- end -->
       <!-- 提示窗示例 -->
@@ -72,7 +67,7 @@
 </template>
 
 <script setup>
-import { ref, reactive, onMounted } from 'vue';
+import { ref, reactive } from 'vue';
 import { useStore } from 'vuex';
 // 接口
 import { phoneLogins, getsmsCode } from '../api/user.js';
@@ -117,14 +112,6 @@ const customRules = reactive({
     ],
   },
 });
-// ------声明周期------
-onMounted(() => {
-  // 进入登录页面配置默认的请求url
-  // uni.setStorageSync('baseUrl', 'http://slwl-geteway-t.itheima.net/courier');
-  // 处理定时上报位置的定时器
-  // clearInterval(uni.getStorageSync('positions').timer);
-  // uni.setStorageSync('positions', null);
-});
 // ------定义方法------
 const handleClose = () => {
   alertDialog.value.close();
@@ -142,22 +129,6 @@ const handleSubmit = async () => {
       mask: true,
     });
 
-    // // 判断配置的url是否正确，超过5秒中提示报错，清除定时器
-    // let timVal = 1;
-    // let t = setInterval(() => {
-    //   timVal++;
-    //   if (timVal > 5) {
-    //     uni.showToast({
-    //       title: '网络异常，请重新检查url配置',
-    //       duration: 2000,
-    //       icon: 'none',
-    //     });
-    //     clearInterval(t);
-    //     setTimeout(function () {
-    //       uni.hideLoading();
-    //     }, 500);
-    //   }
-    // }, 1000);
 
     await phoneLogins(fromInfo)
       .then(async (res) => {
@@ -228,17 +199,6 @@ const handlePwd = async () => {
         icon: 'none',
       });
     });
-};
-// 打开设置Url窗口
-const baseURL = ref(uni.getStorageSync('baseUrl'));
-const inputDialog = ref(null);
-const inputDialogToggle = () => {
-  inputDialog.value.open();
-};
-// 报错配置的Url
-const dialogInputConfirm = (val) => {
-  baseURL.value = val;
-  uni.setStorageSync('baseUrl', val);
 };
 </script>
 

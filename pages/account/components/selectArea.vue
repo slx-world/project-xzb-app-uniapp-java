@@ -1,3 +1,4 @@
+<!-- 下拉框 -->
 <template>
   <view class="selectArea">
     <uni-popup ref="popup" type="bottom">
@@ -155,7 +156,6 @@ watch(
 );
 
 //获取省市区
-
 const handlePickStart = () => {
   chooseType.value = 'select';
 };
@@ -180,7 +180,6 @@ const bindChange = (event) => {
   } else {
     selectedArea.data = area.data[event.detail.value[2]];
   }
-
   areaIndex.data = event.detail.value;
 };
 

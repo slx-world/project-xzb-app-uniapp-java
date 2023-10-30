@@ -57,8 +57,8 @@ const users = store.state.user;
 const statusNum = reactive({
   data: [],
 });
-const isHaveMore = ref(false);
-const tabBars = DeliveryData;
+const isHaveMore = ref(false); //是否还有更多数据
+const tabBars = DeliveryData; //tab切换数据
 const icCanScroll = ref(true);
 const homeList = reactive({
   data: [],

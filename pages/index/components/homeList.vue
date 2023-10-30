@@ -96,7 +96,6 @@ const handleRob = (id) => {
           icon: 'none',
         });
       }
-      console.log(err, 'err');
     });
 };
 watchEffect(() => {

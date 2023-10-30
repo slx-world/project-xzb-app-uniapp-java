@@ -52,7 +52,6 @@ import { getSettingInfo, setServiceSetting } from '../api/setting.js';
 import { data } from '../../utils/h5Data.js';
 // 导航组件
 import UniNav from '@/components/uni-nav/index.vue';
-import { add } from 'date-fns';
 const cityName = ref('请选择');
 const address = ref('请选择');
 const store = useStore(); //vuex获取、储存数据
@@ -138,7 +137,6 @@ const handleSubmit = () => {
 onShow(() => {
   getSettingInfo()
     .then((res) => {
-      // console.log(res, '获取当前配置的位置信息');
       //没有设置位置则获取当前位置
       if (!res.data.cityCode) {
         if (process.env.VUE_APP_PLATFORM === 'h5') {
@@ -155,14 +153,12 @@ onShow(() => {
               location.longitude = res.longitude;
               markers.data.latitude = res.latitude;
               markers.data.longitude = res.longitude;
-              // console.log(res, '获取当前位置成功');
             },
             fail: (err) => {
               location.latitude = 39.909187;
               location.longitude = 116.397455;
               markers.data.latitude = 39.909187;
               markers.data.longitude = 116.397455;
-              // console.log(err, '获取当前位置失败');
             },
           });
           cityName.value = users.cityName;

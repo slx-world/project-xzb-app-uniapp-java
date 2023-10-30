@@ -129,6 +129,7 @@ const title = ref('账户设置');
 const flag = ref(true);
 let bankIndex = ref(0);
 const selectArea = ref();
+// 表单数据
 const formData = ref({
   name: '',
   bankName: '',
@@ -140,6 +141,7 @@ const formData = ref({
   accountCertification: '',
   type: 2,
 });
+// 银行下拉框
 const bankArray = ref([
   {
     label: '中国工商银行',
@@ -208,7 +210,7 @@ const handleSelect = (e) => {
       },
     ],
     header: {
-      Authorization: uni.getStorageSync('token'),
+      Authorization: uni.getStorageSync('token'), // 请求头配置token
     },
     success: (uploadFileRes) => {
       formData.value.accountCertification = JSON.parse(

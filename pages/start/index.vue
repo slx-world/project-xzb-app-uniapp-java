@@ -10,7 +10,7 @@
 import { onMounted } from 'vue';
 export default {
   name: 'StarPage',
-  setup: (props) => {
+  setup: () => {
     onMounted(() => {
       const times = setTimeout(() => {
         uni.redirectTo({

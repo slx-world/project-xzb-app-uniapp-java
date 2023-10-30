@@ -1,4 +1,4 @@
-<!--  -->
+<!-- 设置页面 -->
 <template>
   <view class="setting">
     <!-- 手机状态栏 -->
@@ -98,7 +98,7 @@
 </template>
 
 <script setup>
-import { ref, reactive, onMounted } from 'vue';
+import { ref, onMounted } from 'vue';
 import { getUserSetting, setPickUpStatus } from '../api/setting.js';
 import { onShow } from '@dcloudio/uni-app';
 
