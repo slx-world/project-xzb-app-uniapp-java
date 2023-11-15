@@ -144,6 +144,13 @@ onShow(() => {
           location.longitude = data.longitude;
           markers.data.latitude = data.latitude;
           markers.data.longitude = data.longitude;
+          cityName.value = data.city
+          address.value = data.address
+
+          store.commit('user/setCityCode', data.cityCode);
+          store.commit('user/setCityName', data.city);
+          store.commit('user/setAddress', data.address);
+          store.commit('user/setLocation', location);
         } else {
           uni.getLocation({
             type: 'gcj02',
