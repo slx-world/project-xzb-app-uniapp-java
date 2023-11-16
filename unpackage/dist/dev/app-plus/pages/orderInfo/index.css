@@ -744,6 +744,9 @@
 .order-info .failStatus[data-v-c0232ef0] {
   background-image: linear-gradient(269deg, #D6D6D6 22%, #EBEBEB 72%);
 }
+.order-info .failStatus .status[data-v-c0232ef0] {
+  color: #191919;
+}
 .order-info .status[data-v-c0232ef0], .order-info .serveTime[data-v-c0232ef0] {
   color: var(--neutral-color-white);
 }

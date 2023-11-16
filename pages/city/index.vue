@@ -226,7 +226,8 @@ const selectCity = (city) => {
   store.commit('user/setCityCode', city.cityCode);
   store.commit('user/setCityName', city.name);
   if (process.env.VUE_APP_PLATFORM === 'h5') {
-    store.commit('user/setAddress', data.address);
+    store.commit('user/setCityCode', data.city);
+    store.commit('user/setCityName', data.cityCode);
   } 
   uni.navigateBack();
 };

@@ -137,6 +137,7 @@ const handleSubmit = () => {
 onShow(() => {
   getSettingInfo()
     .then((res) => {
+      console.log(process.env.VUE_APP_PLATFORM,'process.env.VUE_APP_PLATFORM')
       //没有设置位置则获取当前位置
       if (!res.data.cityCode) {
         if (process.env.VUE_APP_PLATFORM === 'h5') {
